@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+enum AbilityScalarType {
+	TYPE_UNKNOWN = 0;
+	TYPE_FLOAT = 1;
+	TYPE_INT = 2;
+	TYPE_BOOL = 3;
+	TYPE_TRIGGER = 4;
+	TYPE_STRING = 5;
+	TYPE_UINT = 6;
+}
