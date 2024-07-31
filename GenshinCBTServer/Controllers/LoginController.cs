@@ -15,18 +15,50 @@ namespace GenshinCBTServer.Controllers
         {
            
             GetPlayerTokenReq req = packet.DecodeBody<GetPlayerTokenReq>();
-            Server.Print("Let's go il token è " + req.AccountToken);
+           
+           
             GetPlayerTokenRsp resp = new GetPlayerTokenRsp()
             {
                 AccountUid="0",
                 AccountType=0,
                 Token=req.AccountToken,
-                Retcode=(int)Retcode.RetAccountNotExist,
+                Retcode=0,
                 Uid=1,
                 Msg="Funziona",
             };
             
             session.SendPacket((uint)CmdType.GetPlayerTokenRsp, resp);
         }
+        [Server.Handler(CmdType.PlayerLoginReq)]
+        public static void OnPlayerLoginReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+
+            PlayerLoginReq req = packet.DecodeBody<PlayerLoginReq>();
+
+
+           
+
+            PlayerLoginRsp resp = new PlayerLoginRsp()
+            {
+                DataVersion= 138541,
+                ResVersion= 138541,
+                TargetUid=1,
+                Retcode=0,
+            };
+
+            session.SendPacket((uint)CmdType.PlayerLoginRsp, resp);
+            session.InitiateAccount();
+        }
+        [Server.Handler(CmdType.PingReq)]
+        public static void OnPingReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+
+            PingReq req = packet.DecodeBody<PingReq>();
+
+
+            session.SendPacket((uint)CmdType.PingRsp, new PingRsp() { ClientTime=req.ClientTime,Retcode=0,Seq=req.Seq});
+        }
+        
+        
     }
 }

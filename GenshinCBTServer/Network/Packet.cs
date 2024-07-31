@@ -82,7 +82,7 @@ namespace GenshinCBTServer.Network
 
             return ptr;
         }
-        public static ENetPacket EncodePacket(ushort cmdId, IMessage body)
+        public static IntPtr EncodePacket(ushort cmdId, IMessage body)
         {
             PacketHead head = new PacketHead();
             head.PacketId = cmdId;
@@ -97,10 +97,19 @@ namespace GenshinCBTServer.Network
             PutByteArray(data, headSerialized.ToByteArray(),10);
             PutByteArray(data, bodySerialized.ToByteArray(), 10+ headSerialized.Length);
             PutUInt16(data, 0x89ab, 10 + headSerialized.Length + bodySerialized.Length);
-            IntPtr dataPtr = ByteArrayToIntPtr(data);
-            Server.Print(""+totalSerializedDataSize);
-            ENetPacket enet_packet = enet_packet_create(dataPtr,(ulong) totalSerializedDataSize, 0);
+            IntPtr dataPtr = 0;
            
+            unsafe
+            {
+                fixed (byte* p = data)
+                {
+                    IntPtr ptr = (IntPtr)p;
+                    dataPtr = ptr;
+                }
+            }
+           
+            IntPtr enet_packet = enet_packet_create(dataPtr, (uint)data.Length, 0);
+
             return enet_packet;
         }
         public static Packet Read(ENetPacket packet)
@@ -121,7 +130,7 @@ namespace GenshinCBTServer.Network
             }
             byte[] managedArray = new byte[body_length];
             Array.Copy(byteArray, 10 + (int)head_length, managedArray, 0, (int)body_length);
-           
+           // Server.Print("Incoming packet length: " + packet.dataLength);
             return new Packet() { cmdId = cmdId, finishedBody = managedArray };
         }
     }

@@ -193,11 +193,18 @@ namespace GenshinCBTServer
         public static extern void enet_host_flush(IntPtr host);
         [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr enet_packet_get_data(IntPtr packet);
+      //  [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
+       // public static extern ENetPacket enet_packet_create(IntPtr data, uint dataLength, uint flags);
+
         [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ENetPacket enet_packet_create(IntPtr data, ulong dataLength, uint flags);
+        public static extern IntPtr enet_packet_create(IntPtr data, uint dataLength, uint flags);
+
+        [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ENetPacket enet_packet_create(byte[] data, uint dataLength, PacketFlags flags);
         [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int enet_peer_send(IntPtr peer, byte channelID, ENetPacket packet);
-
+        [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int enet_peer_send(IntPtr peer, byte channelID, IntPtr packet);
 
         public static IntPtr StructToPtr<T>(T structure) where T : struct
         {

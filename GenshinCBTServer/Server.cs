@@ -2,16 +2,19 @@
 using GenshinCBTServer.Network;
 using GenshinCBTServer.Protocol;
 using Google.Protobuf;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using static GenshinCBTServer.ENet;
+using static PlayerQuitDungeonReq.Types;
 
 namespace GenshinCBTServer
 {
@@ -30,6 +33,17 @@ namespace GenshinCBTServer
         }
         public static List<Client> clients = new List<Client>();
         public IntPtr server;
+        public static MongoClient databaseClient = null;
+        public static Dispatch dispatch;
+        public static ResourceManager resourceManager;
+        public static IMongoDatabase GetDatabase()
+        {
+            return databaseClient.GetDatabase("GenshinCBT1");
+        }
+        public static ResourceManager getResources()
+        {
+            return resourceManager;
+        }
         public void Start()
         {
            {
@@ -50,10 +64,19 @@ namespace GenshinCBTServer
 
             ENetAddress address = new ENetAddress();
 
-            
-          
-             enet_address_set_host(ref address, "192.168.1.4");
-            address.port = (ushort)System.Net.IPAddress.HostToNetworkOrder((short)22102); ;
+            Print("Connecting to MongoDB...");
+            databaseClient = new MongoClient("mongodb://localhost:27017");
+            if(databaseClient == null)
+            {
+                Print("An error occured while trying to connect to MongoDB server");
+                return;
+            }
+            Print("Loading resources");
+            resourceManager=new ResourceManager();  
+            resourceManager.Load();
+            Print("Resources loaded");
+             enet_address_set_host(ref address, "127.0.0.1");
+            address.port = (ushort)System.Net.IPAddress.HostToNetworkOrder((short)22102); 
             //address.host = 0;
             Print($"{address.host}:{address.port}");
            
@@ -61,16 +84,21 @@ namespace GenshinCBTServer
            
             if (server == IntPtr.Zero)
             {
-                Console.WriteLine("An error occurred while trying to create an ENet server host.");
+                Print("An error occurred while trying to create an ENet server host.");
                 ENet.enet_deinitialize();
                 return;
             }
             enet_host_compress_with_range_coder(server);
            // enet_host_set_checksum(server, new ENetChecksumCallback(ENet.enet_crc32)); //Non esiste nel .dll
-            Print($"Server started");
+            Print($"Gameserver started");
             new Thread(new ThreadStart(PeerHandle)).Start();
+            new Thread(new ThreadStart(DispatchServer)).Start();
         }
-       
+        public void DispatchServer()
+        {
+            dispatch = new Dispatch();
+            dispatch.Start();
+        }
         public void PeerHandle()
         {
 
@@ -83,7 +111,7 @@ namespace GenshinCBTServer
 
                 if (enet_host_service(server, out netEvent, 20) > 0)
                 {
-                    Print("Net event " + netEvent.type);
+                   // Print("Net event " + netEvent.type);
                 }
 
 
@@ -112,8 +140,9 @@ namespace GenshinCBTServer
                             ENetPacket enetPacket = Marshal.PtrToStructure<ENetPacket>(netEvent.packet);
                           //  Print("Packet received from - ID: " + netEvent.peer + ", IP: " + netEvent.peer + ", Channel ID: " + netEvent.channelID + ", Data length: " + enetPacket.data);
                             Packet genshinPacket = Packet.Read(enetPacket);
-                            Print($"Received from client: {genshinPacket.cmdId} ({((CmdType)genshinPacket.cmdId).ToString()})");
-                            NotifyManager.Notify(clients.Find(client => client.peer == netEvent.peer), (CmdType)genshinPacket.cmdId, genshinPacket);
+                           // Print($"Received from client: {genshinPacket.cmdId} ({((CmdType)genshinPacket.cmdId).ToString()})");
+                         Server.Print($"[client->server] {((CmdType)genshinPacket.cmdId).ToString()}");
+                        NotifyManager.Notify(clients.Find(client => client.peer == netEvent.peer), (CmdType)genshinPacket.cmdId, genshinPacket);
                        
 
                         break;
