@@ -39,10 +39,12 @@ namespace GenshinCBTServer.Controllers
 
 
         }
+
         [Server.Handler(CmdType.SceneInitFinishReq)]
         public static void OnSceneInitFinishReq(Client session, CmdType cmdId, Network.Packet packet)
         {
-
+            
+            
             SceneInitFinishReq req = packet.DecodeBody<SceneInitFinishReq>();
 
 
@@ -57,9 +59,27 @@ namespace GenshinCBTServer.Controllers
                 Name = session.name,
                 PeerId = (uint)session.peer
             });
-
+            PlayerEnterSceneInfoNotify playerEnterSceneInfoNotify = new()
+            {
+                CurAvatarEntityId=session.avatars.Find(av=>av.id== session.GetCurrentAvatar()).asInfo().EntityId,
+                AvatarEnterInfo = 
+                {
+                    new AvatarEnterSceneInfo()
+                    {
+                        AvatarEntityId=session.avatars.Find(av=>av.id== session.GetCurrentAvatar()).asInfo().EntityId,
+                        WeaponEntityId=session.avatars.Find(av=>av.id== session.GetCurrentAvatar()).asInfo().Avatar.Weapon.EntityId,
+                        AvatarGuid=session.avatars.Find(av=>av.id== session.GetCurrentAvatar()).asInfo().Avatar.Guid,
+                        WeaponGuid=session.avatars.Find(av=>av.id== session.GetCurrentAvatar()).asInfo().Avatar.Weapon.Guid,
+                    }
+                },
+                TeamEnterInfo = new()
+                {
+                    TeamEntityId= 150994946,
+                    TeamAbilityInfo = new()
+                }
+            };
             session.SendPacket((uint)CmdType.ScenePlayerInfoNotify, sceneplayerinfonotify);
-
+            
 
 
             HostPlayerNotify hostplayernotify = new() { HostUid = session.uid, HostPeerId = (uint)session.peer };

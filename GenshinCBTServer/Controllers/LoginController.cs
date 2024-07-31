@@ -48,6 +48,8 @@ namespace GenshinCBTServer.Controllers
 
             session.SendPacket((uint)CmdType.PlayerLoginRsp, resp);
             session.InitiateAccount();
+
+            session.TeleportToScene(3);
         }
         [Server.Handler(CmdType.PingReq)]
         public static void OnPingReq(Client session, CmdType cmdId, Network.Packet packet)

@@ -21,7 +21,7 @@ namespace GenshinCBTServer
         public Random random = new Random();
         public IntPtr peer;
         public MapField<uint, uint> openStateMap = new MapField<uint, uint>();
-        public uint currentSceneId = 1;
+        public uint currentSceneId = 1003;
 
         public uint[] team = new uint[4] { 10000020, 0, 0, 0 };
         public int selectedAvatar = 0;
@@ -41,7 +41,7 @@ namespace GenshinCBTServer
             
             SendAllAvatars();
             SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
-            TeleportToScene(currentSceneId);
+            
         }
         public void TeleportToScene(uint scene)
         {

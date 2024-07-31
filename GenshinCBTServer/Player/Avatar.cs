@@ -3,6 +3,7 @@ using Google.Protobuf.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,19 +16,67 @@ namespace GenshinCBTServer.Player
         public int level;
         public int exp;
         public int promoteLevel;
-        public MapField<uint,float> fightprops = new MapField<uint, float>();
+        public uint weaponGuid;
+        public MapField<uint, float> fightprops = new MapField<uint, float>();
         public MapField<uint, PropValue> props = new MapField<uint, PropValue>();
         public float curHp;
-
+        public uint weaponId { get { return 0; } }
+        public MotionInfo motionInfo;
+        Client client;
         public Avatar(Client client,uint id) {
             this.id = id;
+            this.client = client;
             guid = (uint)client.random.Next();
             curHp = Server.getResources().GetAvatarDataById(id).baseHp;
-            
+            motionInfo = new() { Pos = new(), Rot = new(), Speed = new() };
         }
         public void FightPropUpdate(FightPropType key,float value)
         {
             fightprops[(uint)key] = value;
+        }
+        public SceneEntityInfo asInfo()
+        {
+            SceneEntityInfo info = new SceneEntityInfo()
+            {
+                EntityType = ProtEntityType.ProtEntityAvatar,
+                EntityId = guid,
+                MotionInfo = motionInfo,
+                LifeState = 1,
+                RendererChangedInfo = new(),
+
+            };
+            info.Avatar = new()
+            {
+                Uid = client.uid,
+                AvatarId = id,
+                Guid = guid,
+                PeerId = (uint)client.peer,
+                EquipIdList = { 0 },
+                SkillDepotId = Server.getResources().GetAvatarDataById(id).skillDepotId,
+
+                Weapon = new SceneWeaponInfo
+                {
+                    EntityId = weaponGuid + weaponId,
+                    GadgetId = 50000000 + weaponId,
+                    ItemId = weaponId,
+                    Guid = weaponGuid,
+                    Level = 1,
+                    PromoteLevel = 0,
+                    AbilityInfo = new()
+                },
+                
+            };
+            foreach (KeyValuePair<uint, PropValue> prop in props)
+            {
+                info.PropMap.Add(prop.Key, prop.Value);
+
+            }
+            foreach (KeyValuePair<uint, float> prop in fightprops)
+            {
+                info.FightPropMap.Add(prop.Key, prop.Value);
+
+            }
+            return info;
         }
         public AvatarInfo toProto()
         {
