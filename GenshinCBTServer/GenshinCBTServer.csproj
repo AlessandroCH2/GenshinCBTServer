@@ -12,9 +12,10 @@
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.27.2" />
     <PackageReference Include="HttpServerLite" Version="2.1.5" />
-    <PackageReference Include="MongoDB.Driver" Version="2.28.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Pastel" Version="5.1.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>

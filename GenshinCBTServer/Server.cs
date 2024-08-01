@@ -2,7 +2,9 @@
 using GenshinCBTServer.Network;
 using GenshinCBTServer.Protocol;
 using Google.Protobuf;
-using MongoDB.Driver;
+
+
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,9 @@ using System.Resources;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static GenshinCBTServer.Dispatch;
 using static GenshinCBTServer.ENet;
-using static PlayerQuitDungeonReq.Types;
+
 
 namespace GenshinCBTServer
 {
@@ -33,12 +36,13 @@ namespace GenshinCBTServer
         }
         public static List<Client> clients = new List<Client>();
         public IntPtr server;
-        public static MongoClient databaseClient = null;
+      
+        public static SQLiteConnection _db;
         public static Dispatch dispatch;
         public static ResourceManager resourceManager;
-        public static IMongoDatabase GetDatabase()
+        public static SQLiteConnection GetDatabase()
         {
-            return databaseClient.GetDatabase("GenshinCBT1");
+            return _db;
         }
         public static ResourceManager getResources()
         {
@@ -64,21 +68,23 @@ namespace GenshinCBTServer
 
             ENetAddress address = new ENetAddress();
 
-            Print("Connecting to MongoDB...");
-            databaseClient = new MongoClient("mongodb://localhost:27017");
-            if(databaseClient == null)
-            {
-                Print("An error occured while trying to connect to MongoDB server");
-                return;
-            }
-            Print("Loading resources");
+            Print("Creating database");
+          
+            _db = new SQLiteConnection("database.db");
+            _db.CreateTable<Account>();
+            _db.CreateTable<Profile>();
+            
+           
+            Print("Created database!");
+
+            Print("Loading resources...");
             resourceManager=new ResourceManager();  
             resourceManager.Load();
             Print("Resources loaded");
              enet_address_set_host(ref address, "127.0.0.1");
             address.port = (ushort)System.Net.IPAddress.HostToNetworkOrder((short)22102); 
             //address.host = 0;
-            Print($"{address.host}:{address.port}");
+            //Print($"{address.host}:{address.port}");
            
             server = enet_host_create(ref address, 16,0,0,0,0);
            
@@ -89,10 +95,29 @@ namespace GenshinCBTServer
                 return;
             }
             enet_host_compress_with_range_coder(server);
-           // enet_host_set_checksum(server, new ENetChecksumCallback(ENet.enet_crc32)); //Non esiste nel .dll
-            Print($"Gameserver started");
+           // enet_host_set_checksum(server, new ENetChecksumCallback(ENet.enet_crc32)); //Not exist in the .dll, modified .dll compiled with checksum set when host is created.
+            Print($"Gameserver started on 22102");
             new Thread(new ThreadStart(PeerHandle)).Start();
             new Thread(new ThreadStart(DispatchServer)).Start();
+            while (true)
+            {
+                string cmd = Console.ReadLine();
+                string[] split = cmd.Split(":");
+                string[] args = cmd.Split(":").Skip(1).ToArray();
+                string command = split[0];
+                if (command.ToLower() == "dispatch")
+                {
+                    if(args.Length > 0)
+                    {
+                        if (args[0].ToLower() == "new")
+                        {
+                            if (args.Length > 1) {
+                                dispatch.NewAccount(args[1], args[2]);
+                            }
+                        }
+                    }
+                }
+            }
         }
         public void DispatchServer()
         {
@@ -131,6 +156,9 @@ namespace GenshinCBTServer
 
                     case ENet.EventType.Disconnect:
                         Print("Client disconnected - ID: " + netEvent.peer + ", IP: " + netEvent.peer);
+                        Client client_ = clients.Find(client => client.peer == netEvent.peer);
+                        Server.GetDatabase().Update(client_.ToProfile());
+                        clients.Remove(client_);
                         break;
 
 

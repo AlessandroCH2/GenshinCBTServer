@@ -36,7 +36,7 @@ namespace GenshinCBTServer.Controllers
             PlayerLoginReq req = packet.DecodeBody<PlayerLoginReq>();
 
 
-           
+            
 
             PlayerLoginRsp resp = new PlayerLoginRsp()
             {
@@ -47,9 +47,9 @@ namespace GenshinCBTServer.Controllers
             };
 
             session.SendPacket((uint)CmdType.PlayerLoginRsp, resp);
-            session.InitiateAccount();
+            session.InitiateAccount(req.Token);
 
-            session.TeleportToScene(3);
+            session.TeleportToScene(3); 
         }
         [Server.Handler(CmdType.PingReq)]
         public static void OnPingReq(Client session, CmdType cmdId, Network.Packet packet)

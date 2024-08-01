@@ -1,7 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using HttpServerLite;
-using MongoDB.Bson;
-using MongoDB.Driver;
+using SQLite;
+using SQLiteNetExtensions.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +14,12 @@ namespace GenshinCBTServer
     {
         public class Account()
         {
-            public object _id;
-            public string account;
-            public string md5password;
-            public string token;
+            [Column("account")]
+            public string account { get; set; }
+            [Column("password")]
+            public string md5password { get; set; }
+            [Column("token")]
+            public string token { get; set; }
         }
         public Webserver server;
         public static void Print(string text)
@@ -169,8 +171,8 @@ namespace GenshinCBTServer
             string resp = "{\"retcode\": 2003}";
             try
             {
-                IMongoCollection<Account> accounts = Server.GetDatabase().GetCollection<Account>("accounts");
-                foreach (Account account in accounts.Find(new BsonDocument()).ToList())
+               List<Account> accounts = Server.GetDatabase().GetAllWithChildren<Account>();
+                foreach (Account account in accounts)
                 {
                     if (account.account == ctx.Request.Query.Elements[0] && account.md5password == ctx.Request.Query.Elements[1])
                     {
@@ -192,6 +194,28 @@ namespace GenshinCBTServer
 
             await ctx.Response.SendAsync(resp);
 
+        }
+
+        internal void NewAccount(string name, string password)
+        {
+            Account account = new Account()
+            {
+                account = name,
+                md5password=password,
+                token=RandomString(40)
+            };
+
+            Server.GetDatabase().Insert(account);
+            Print($"New Account created with name: {name}");
+        }
+
+        private static Random random = new Random();
+
+        public static string RandomString(int length)
+        {
+            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
