@@ -39,7 +39,7 @@ namespace GenshinCBTServer.Player
             SceneEntityInfo info = new SceneEntityInfo()
             {
                 EntityType = ProtEntityType.ProtEntityAvatar,
-                EntityId = guid,
+                EntityId = guid+100000000,
                 MotionInfo = motionInfo,
                 LifeState = 1,
                 RendererChangedInfo = new(),

@@ -55,7 +55,7 @@ namespace GenshinCBTServer
         public MapField<uint, uint> openStateMap = new MapField<uint, uint>();
         public uint currentSceneId = 1003;
 
-        public uint[] team = new uint[4] { 10000020, 0, 0, 0 };
+        public uint[] team = new uint[4] { 10000020, 10000021, 10000022, 10000023 };
         public int selectedAvatar = 0;
         public List<Avatar> avatars = new List<Avatar>();
         public uint uid;
@@ -67,7 +67,7 @@ namespace GenshinCBTServer
         public void InitiateAccount(string token)
         {
             OpenStateUpdateNotify openStateNotify = new OpenStateUpdateNotify();
-            List<Profile> profiles = Server.GetDatabase().GetAllWithChildren<Profile>();
+          /*  List<Profile> profiles = Server.GetDatabase().GetAllWithChildren<Profile>();
             
             foreach (Profile profile in profiles)
             {
@@ -85,7 +85,7 @@ namespace GenshinCBTServer
                     SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
                     return;
                 }
-            }
+            }*/
 
             
                 this.token = token;
@@ -97,10 +97,13 @@ namespace GenshinCBTServer
                     openStateNotify.OpenStateMap.Add(state.Key, state.Value);
                 }
                 avatars.Add(new Avatar(this, 10000020));
-
-                SendAllAvatars();
+            avatars.Add(new Avatar(this, 10000021));
+            avatars.Add(new Avatar(this, 10000022));
+            avatars.Add(new Avatar(this, 10000023));
+            selectedAvatar = (int)avatars[0].guid;
+            SendAllAvatars();
                 SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
-
+            
                  Server.GetDatabase().Insert(ToProfile());
 
             
@@ -133,17 +136,33 @@ namespace GenshinCBTServer
 
         public void TeleportToScene(uint scene)
         {
-            SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = scene,TargetUid=uid,PrevPos= new Vector() { X = 200, Y = 500, Z = 200 }, Pos=new Vector() { X=200,Y=500,Z=200},PrevSceneId=0,Type=EnterType.EnterSelf,SceneBeginTime=0,DungeonId=0 });
+            SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = scene,TargetUid=uid,PrevPos= new Vector() { X = 200, Y = 500, Z = 200 }, Pos=new Vector() { X=200,Y=500,Z=200},PrevSceneId=0,Type=EnterType.EnterSelf,SceneBeginTime=12000,DungeonId=0 });
             currentSceneId = scene;
         }
         public uint GetCurrentAvatar()
         {
-            return team[selectedAvatar];
+            return (uint)selectedAvatar;
         }
         public void SendAllAvatars()
         {
             AvatarDataNotify notify = new AvatarDataNotify();
-            notify.AvatarTeamMap.Add(0,new AvatarTeam() { AvatarGuidList = { team[0], team[1], team[2], team[3] } });
+
+            AvatarTeam team = new AvatarTeam();
+
+
+
+            foreach (uint avatarId in this.team)
+            {
+
+                
+                
+                    team.AvatarGuidList.Add(avatars.Find(av => av.id == avatarId).guid);
+                  
+                
+
+            }
+            notify.AvatarTeamMap.Add(1, team);
+          //  notify.AvatarTeamMap.Add(1,new AvatarTeam() { AvatarGuidList = { team[0], team[1], team[2], team[3] } });
             notify.CurAvatarTeamId = 0;
             notify.ChooseAvatarGuid = GetCurrentAvatar();
             foreach(Avatar avatar in avatars)
