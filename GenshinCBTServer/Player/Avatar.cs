@@ -20,15 +20,26 @@ namespace GenshinCBTServer.Player
         public MapField<uint, float> fightprops = new MapField<uint, float>();
         public MapField<uint, PropValue> props = new MapField<uint, PropValue>();
         public float curHp;
-        public uint weaponId { get { return 0; } }
+        public uint weaponId { get { return 11101; } }
         public MotionInfo motionInfo;
         Client client;
         public Avatar(Client client,uint id) {
             this.id = id;
             this.client = client;
+           // this.weaponId = 1000;
             guid = (uint)client.random.Next();
             curHp = Server.getResources().GetAvatarDataById(id).baseHp;
-            motionInfo = new() { Pos = new(), Rot = new(), Speed = new() };
+            motionInfo = new() { Pos = new Vector() { X = 200, Y = 500, Z = 200 }, Rot = new(), Speed = new(),State=MotionState.MotionStandby };
+            weaponGuid = (uint)new Random().Next();
+            PlayerStoreNotify n = new()
+            {
+                StoreType=StoreType.StoreNone,
+                WeightLimit=500000,
+            };
+            n.ItemList.Add(new Item() { ItemId=weaponId,Guid=weaponGuid
+            ,Equip=new Equip() { Weapon=new Weapon() { Level=1,PromoteLevel=0,Exp=0} }
+            });
+            client.SendPacket((uint)CmdType.PlayerStoreNotify, n);
         }
         public void FightPropUpdate(FightPropType key,float value)
         {
@@ -41,7 +52,7 @@ namespace GenshinCBTServer.Player
                 EntityType = ProtEntityType.ProtEntityAvatar,
                 EntityId = guid+100000000,
                 MotionInfo = motionInfo,
-                LifeState = 1,
+                LifeState = curHp > 0 ? (uint)LifeState.LIFE_ALIVE : (uint)LifeState.LIFE_DEAD,
                 RendererChangedInfo = new(),
 
             };
@@ -53,7 +64,7 @@ namespace GenshinCBTServer.Player
                 PeerId = (uint)client.peer,
                 EquipIdList = { 0 },
                 SkillDepotId = Server.getResources().GetAvatarDataById(id).skillDepotId,
-
+                TalentIdList = { 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013, 1014, 1015 },
                 Weapon = new SceneWeaponInfo
                 {
                     EntityId = weaponGuid + weaponId,
@@ -64,6 +75,8 @@ namespace GenshinCBTServer.Player
                     PromoteLevel = 0,
                     AbilityInfo = new()
                 },
+                ReliquaryList = {}
+                
                 
             };
             foreach (KeyValuePair<uint, PropValue> prop in props)
@@ -87,9 +100,15 @@ namespace GenshinCBTServer.Player
                 EquipGuidList = {0,0,0,0,0,0},
                 LifeState=curHp > 0 ? (uint)LifeState.LIFE_ALIVE :(uint) LifeState.LIFE_DEAD,
                 SkillDepotId= Server.getResources().GetAvatarDataById(id).skillDepotId,
+                TalentIdList = { 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013, 1014, 1015 },
+
                 
             };
-            foreach(KeyValuePair<uint, PropValue> prop in props)
+            info.SkillMap.Add(10001, new AvatarSkillInfo() { });
+            info.SkillMap.Add(10002, new AvatarSkillInfo() { });
+            info.SkillMap.Add(10003, new AvatarSkillInfo() { });
+           
+            foreach (KeyValuePair<uint, PropValue> prop in props)
             {
                 info.PropMap.Add(prop.Key,prop.Value);  
 

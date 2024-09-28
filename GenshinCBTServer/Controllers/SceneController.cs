@@ -49,7 +49,7 @@ namespace GenshinCBTServer.Controllers
             EnterSceneDoneReq req = packet.DecodeBody<EnterSceneDoneReq>();
            
             SwitchAvatar(session, session.GetCurrentAvatar());
-            ScenePlayerLocationNotify locNotify = new() { PlayerLocList = { new PlayerLocationInfo() { Uid=session.uid,Pos= new Vector() { X = 200, Y = 500, Z = 200 },Rot=new Vector() } } };
+            ScenePlayerLocationNotify locNotify = new() { PlayerLocList = { new PlayerLocationInfo() { Uid=session.uid,Pos= new Vector() { X = 200, Y = 500, Z = 200 },Rot=new Vector() { X = 200, Y = 500, Z = 200 } } } };
             session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, locNotify);
             session.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode = 0 });
 
@@ -79,29 +79,46 @@ namespace GenshinCBTServer.Controllers
             session.SendPacket((uint)CmdType.ScenePlayerInfoNotify, sceneplayerinfonotify);
 
             SendSceneTeamUpdate(session);
+
+           
             SendEnterSceneInfo(session);
+            //Send GameTime
+            PlayerGameTimeNotify playerGameTimeNotify = new()
+            {
+                GameTime = 5 * 60 * 60,
+                Uid = session.uid,
+            };
+            session.SendPacket((uint)CmdType.PlayerGameTimeNotify, playerGameTimeNotify);
+            //Send SceneTime
+            SceneTimeNotify sceneTimeNotify = new()
+            {
+                SceneId=session.currentSceneId,
+                SceneTime=9000
+            };
+            session.SendPacket((uint)CmdType.SceneTimeNotify, sceneTimeNotify);
+
             HostPlayerNotify hostplayernotify = new() { HostUid = session.uid, HostPeerId = (uint)session.peer };
 
             session.SendPacket((uint)CmdType.HostPlayerNotify, hostplayernotify);
             session.SendPacket((uint)CmdType.SceneInitFinishRsp, new SceneInitFinishRsp() { Retcode = 0});
-           
+            session.SendPacket((uint)CmdType.PlayerSetPauseRsp,new PlayerSetPauseRsp() {});
         }
         public static void SendSceneTeamUpdate(Client session)
         {
 
             AvatarTeamUpdateNotify sceneTeamUpdate = new();
             AvatarTeam team = new AvatarTeam();
-            
-           
-            
+            AvatarTeam eteam = new AvatarTeam();
+
+
             foreach (uint avatarId in session.team)
             {
                
                 if (avatarId == 0)
                 {
                     ulong randomGuid = (ulong)(avatarId + session.random.Next());
-                    team.AvatarGuidList.Add(randomGuid);
-                    sceneTeamUpdate.AvatarEntityIdMap.Add(randomGuid, 0);
+                  //  team.AvatarGuidList.Add(randomGuid);
+                   // sceneTeamUpdate.AvatarEntityIdMap.Add(randomGuid, 0);
                 }
                 else
                 {
@@ -110,9 +127,12 @@ namespace GenshinCBTServer.Controllers
                 }
                 
             }
-            sceneTeamUpdate.AvatarTeamMap.Add(0, team);
+           // sceneTeamUpdate.AvatarTeamMap.Add(0, team);
             sceneTeamUpdate.AvatarTeamMap.Add(1, team);
-            sceneTeamUpdate.AvatarTeamMap.Add(2, team);
+            sceneTeamUpdate.AvatarTeamMap.Add(2, eteam);
+            sceneTeamUpdate.AvatarTeamMap.Add(3, eteam);
+            sceneTeamUpdate.AvatarTeamMap.Add(4, eteam);
+            sceneTeamUpdate.AvatarTeamMap.Add(5, eteam);
             session.SendAllAvatars();
             SetUpAvatarTeamRsp setUpAvatarTeamRsp = new SetUpAvatarTeamRsp()
             {
@@ -145,7 +165,7 @@ namespace GenshinCBTServer.Controllers
                 AppearType = VisionType.VisionReplace
                
             };
-            session.SendPacket((uint)CmdType.SceneEntityDisappearNotify, disappearNotify);
+           if(guid!=prevAv.guid) session.SendPacket((uint)CmdType.SceneEntityDisappearNotify, disappearNotify);
             session.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
         }
 
@@ -156,23 +176,27 @@ namespace GenshinCBTServer.Controllers
                 CurAvatarEntityId = session.avatars.Find(av => av.guid == session.GetCurrentAvatar()).asInfo().EntityId,
                 AvatarEnterInfo =
                 {
-
+                    
                 },
                 TeamEnterInfo = new()
                 {
                     TeamEntityId = 0,
-                    TeamAbilityInfo = new() 
+                    TeamAbilityInfo = new() { IsInited=false} ,
+                    
                 }
             };
             foreach (uint avatarId in session.team)
             {
                 if(avatarId == 0) continue;
+                
                 playerEnterSceneInfoNotify.AvatarEnterInfo.Add(new AvatarEnterSceneInfo()
                 {
                     AvatarEntityId = session.avatars.Find(av => av.id == avatarId).asInfo().EntityId,
                     WeaponEntityId = session.avatars.Find(av => av.id == avatarId).asInfo().Avatar.Weapon.EntityId,
                     AvatarGuid = session.avatars.Find(av => av.id == avatarId   ).asInfo().Avatar.Guid,
                     WeaponGuid = session.avatars.Find(av => av.id == avatarId).asInfo().Avatar.Weapon.Guid,
+                    WeaponAbilityInfo = new() { IsInited = false},
+                    AvatarAbilityInfo = new() { IsInited = false },
                     
                 });
             }

@@ -125,7 +125,7 @@ namespace GenshinCBTServer.Network
 
             if(header_magic != 0x4567)
             {
-                Server.Print($"{header_magic}:{(int)0x4567}");
+               // Server.Print($"{header_magic}:{(int)0x4567}");
                 return null;
             }
             byte[] managedArray = new byte[body_length];

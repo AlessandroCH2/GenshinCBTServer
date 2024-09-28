@@ -19,7 +19,7 @@ namespace GenshinCBTServer.Controllers
            
             GetPlayerTokenRsp resp = new GetPlayerTokenRsp()
             {
-                AccountUid="0",
+                AccountUid="1",
                 AccountType=0,
                 Token=req.AccountToken,
                 Retcode=0,
@@ -36,7 +36,7 @@ namespace GenshinCBTServer.Controllers
             PlayerLoginReq req = packet.DecodeBody<PlayerLoginReq>();
 
 
-            
+            session.InitiateAccount(req.Token);
 
             PlayerLoginRsp resp = new PlayerLoginRsp()
             {
@@ -46,10 +46,11 @@ namespace GenshinCBTServer.Controllers
                 Retcode=0,
             };
 
-            session.SendPacket((uint)CmdType.PlayerLoginRsp, resp);
-            session.InitiateAccount(req.Token);
+           
+            
 
-            session.TeleportToScene(3); 
+            session.TeleportToScene(3);
+            session.SendPacket((uint)CmdType.PlayerLoginRsp, resp);
         }
         [Server.Handler(CmdType.PingReq)]
         public static void OnPingReq(Client session, CmdType cmdId, Network.Packet packet)
