@@ -136,7 +136,7 @@ namespace GenshinCBTServer
 
                 if (enet_host_service(server, out netEvent, 20) > 0)
                 {
-                    Print("Net event " + netEvent.type);
+                   // Print("Net event " + netEvent.type);
                 }
 
 

@@ -52,10 +52,18 @@ namespace GenshinCBTServer
        
         public Random random = new Random();
         public IntPtr peer;
-        public MapField<uint, uint> openStateMap = new MapField<uint, uint>();
+        public MapField<uint, uint> openStateMap = new MapField<uint, uint>()
+        {
+            {(uint)OpenStateType.OPEN_STATE_PAIMON,1 },
+             {(uint)OpenStateType.OPEN_STATE_PAIMON_NAVIGATION,1 },
+             {(uint)OpenStateType.OPEN_STATE_AVATAR_PROMOTE,1 },
+             {(uint)OpenStateType.OPEN_STATE_AVATAR_TALENT,1 },
+
+        };
         public uint currentSceneId = 1003;
 
-        public uint[] team = new uint[4] { 10000020, 0,0,0 };
+        public uint[] team = new uint[4] { 11000038, 0,0,0 };
+        public uint teamEntityId;
         public int selectedAvatar = 0;
         public List<Avatar> avatars = new List<Avatar>();
         public uint uid;
@@ -73,10 +81,22 @@ namespace GenshinCBTServer
             props.Add((uint)PropType.PROP_IS_TRANSFERABLE, new PropValue() { Val = 1 });
             props.Add((uint)PropType.PROP_MAX_STAMINA, new PropValue() { Val = 15000 });
             props.Add((uint)PropType.PROP_CUR_PERSIST_STAMINA, new PropValue() { Val = 15000 });
-            props.Add((uint)PropType.PROP_CUR_TEMPORARY_STAMINA, new PropValue() { Val = 15000 });
-            props.Add((uint)PropType.PROP_PLAYER_LEVEL, new PropValue() { Val = 1 });
-
+            addProp((uint)PropType.PROP_CUR_TEMPORARY_STAMINA, 15000, props);
+            addProp((uint)PropType.PROP_PLAYER_LEVEL, 20, props);
+            addProp((uint)PropType.PROP_PLAYER_EXP, 0, props);
+            addProp((uint)PropType.PROP_PLAYER_HCOIN, 2000, props);
+            addProp((uint)PropType.PROP_PLAYER_SCOIN,10000, props);
+            addProp((uint)PropType.PROP_IS_WORLD_ENTERABLE, 1,props);
             return props;
+        }
+        public void addProp(uint type, int value, MapField<uint, PropValue> map)
+        {
+            PropValue prop = new PropValue();
+            prop.Val = value;
+            prop.Type = type;
+            prop.Ival = value;
+
+            map.Add(type, prop);
         }
         public void InitiateAccount(string token)
         {
@@ -100,7 +120,7 @@ namespace GenshinCBTServer
                       return;
                   }
               }*/
-           
+            this.teamEntityId = (uint)new Random().Next();
 
             this.token = token;
                 name = "Traveler";
@@ -117,15 +137,13 @@ namespace GenshinCBTServer
                 {
                     openStateNotify.OpenStateMap.Add(state.Key, state.Value);
                 }
-                avatars.Add(new Avatar(this, 10000020));
-            avatars.Add(new Avatar(this, 10000021));
-            avatars.Add(new Avatar(this, 10000022));
-            avatars.Add(new Avatar(this, 10000023));
+                avatars.Add(new Avatar(this, 11000038));
+      
             selectedAvatar = (int)avatars[0].guid;
             SendAllAvatars();
                 SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
             
-                 Server.GetDatabase().Insert(ToProfile());
+               //  Server.GetDatabase().Insert(ToProfile());
 
             
             

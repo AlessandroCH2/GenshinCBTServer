@@ -47,15 +47,55 @@ namespace GenshinCBTServer.Controllers
         {
 
             EnterSceneDoneReq req = packet.DecodeBody<EnterSceneDoneReq>();
-           
-            SwitchAvatar(session, session.GetCurrentAvatar());
+            Avatar NewAv = session.avatars.Find(av => av.guid == session.GetCurrentAvatar());
+            SceneEntityAppearNotify appearNotify = new SceneEntityAppearNotify()
+            {
+
+                EntityList = { NewAv.asInfo() },
+                AppearType = VisionType.VisionMeet
+
+            };
             ScenePlayerLocationNotify locNotify = new() { PlayerLocList = { new PlayerLocationInfo() { Uid=session.uid,Pos= new Vector() { X = 200, Y = 500, Z = 200 },Rot=new Vector() { X = 200, Y = 500, Z = 200 } } } };
             session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, locNotify);
             session.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode = 0 });
 
 
         }
+        
+        [Server.Handler(CmdType.GetScenePointReq)]
+        public static void OnGetScenePointReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            GetScenePointReq req = packet.DecodeBody<GetScenePointReq>();
+            GetScenePointRsp rsp = new GetScenePointRsp()
+            {
+                SceneId = req.SceneId,
+                BelongUid = req.BelongUid,
+                
+                Retcode = 0,
 
+            };
+            for (int i = 0; i < 5; i++)
+            {
+                rsp.UnlockAreaList.Add((uint)i);
+            }
+            session.SendPacket((uint)CmdType.GetScenePointRsp, rsp);
+        }
+        [Server.Handler(CmdType.GetSceneAreaReq)]
+        public static void OnGetSceneAreaReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            GetSceneAreaReq req = packet.DecodeBody<GetSceneAreaReq>();
+            GetSceneAreaRsp rsp = new GetSceneAreaRsp()
+            {
+                SceneId = req.SceneId,
+                Retcode = 0,
+
+            };
+            for(int i=0; i < 5; i++)
+            {
+                rsp.AreaIdList.Add((uint)i);
+            }
+            session.SendPacket((uint)CmdType.GetSceneAreaRsp, rsp);
+        }
         [Server.Handler(CmdType.SceneInitFinishReq)]
         public static void OnSceneInitFinishReq(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -78,7 +118,7 @@ namespace GenshinCBTServer.Controllers
 
             session.SendPacket((uint)CmdType.ScenePlayerInfoNotify, sceneplayerinfonotify);
 
-            SendSceneTeamUpdate(session);
+           // SendSceneTeamUpdate(session);
 
            
             SendEnterSceneInfo(session);
@@ -95,13 +135,14 @@ namespace GenshinCBTServer.Controllers
                 SceneId=session.currentSceneId,
                 SceneTime=9000
             };
+           
             session.SendPacket((uint)CmdType.SceneTimeNotify, sceneTimeNotify);
 
             HostPlayerNotify hostplayernotify = new() { HostUid = session.uid, HostPeerId = (uint)session.peer };
 
             session.SendPacket((uint)CmdType.HostPlayerNotify, hostplayernotify);
             session.SendPacket((uint)CmdType.SceneInitFinishRsp, new SceneInitFinishRsp() { Retcode = 0});
-            session.SendPacket((uint)CmdType.PlayerSetPauseRsp,new PlayerSetPauseRsp() {});
+           
         }
         public static void SendSceneTeamUpdate(Client session)
         {
@@ -155,7 +196,7 @@ namespace GenshinCBTServer.Controllers
 
             SceneEntityDisappearNotify disappearNotify = new SceneEntityDisappearNotify()
             {
-                EntityList = {prevAv.guid},
+                EntityList = {prevAv.asInfo().EntityId},
                 DisappearType=VisionType.VisionReplace
             };
             SceneEntityAppearNotify appearNotify = new SceneEntityAppearNotify()
@@ -180,7 +221,7 @@ namespace GenshinCBTServer.Controllers
                 },
                 TeamEnterInfo = new()
                 {
-                    TeamEntityId = 0,
+                    TeamEntityId = session.teamEntityId,
                     TeamAbilityInfo = new() { IsInited=false} ,
                     
                 }
@@ -193,8 +234,8 @@ namespace GenshinCBTServer.Controllers
                 {
                     AvatarEntityId = session.avatars.Find(av => av.id == avatarId).asInfo().EntityId,
                     WeaponEntityId = session.avatars.Find(av => av.id == avatarId).asInfo().Avatar.Weapon.EntityId,
-                    AvatarGuid = session.avatars.Find(av => av.id == avatarId   ).asInfo().Avatar.Guid,
-                    WeaponGuid = session.avatars.Find(av => av.id == avatarId).asInfo().Avatar.Weapon.Guid,
+                    AvatarGuid = session.avatars.Find(av => av.id == avatarId   ).guid,
+                    WeaponGuid = session.avatars.Find(av => av.id == avatarId).weaponGuid,
                     WeaponAbilityInfo = new() { IsInited = false},
                     AvatarAbilityInfo = new() { IsInited = false },
                     

@@ -195,7 +195,36 @@ namespace GenshinCBTServer
             await ctx.Response.SendAsync(resp);
 
         }
+        [StaticRoute(HttpServerLite.HttpMethod.GET, "/sdk/token_login")]
+        public static async Task sdk_token_login(HttpContext ctx)
+        {
+            string resp = "{\"retcode\": 2003}";
+            try
+            {
+                List<Account> accounts = Server.GetDatabase().GetAllWithChildren<Account>();
+                foreach (Account account in accounts)
+                {
+                    if (account.token == ctx.Request.Query.Elements[1])
+                    {
+                        resp = "{\"retcode\": 0,\"data\": { \"uid\": \"1\", \"token\": \"" + account.token + "\",\"email\": \"" + account.account + "\"}}";
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Print(e.Message);
+            }
 
+
+
+
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentLength = resp.Length;
+            ctx.Response.ContentType = "application/json";
+
+            await ctx.Response.SendAsync(resp);
+
+        }
         internal void NewAccount(string name, string password)
         {
             Account account = new Account()

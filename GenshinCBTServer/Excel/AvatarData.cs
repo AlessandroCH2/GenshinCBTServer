@@ -20,5 +20,7 @@ namespace GenshinCBTServer.Excel
         public float baseDef;
         [JsonProperty("Skill Library ID")]
         public uint skillDepotId;
+        [JsonProperty("初始武器")]
+        public uint weaponId;
     }
 }
