@@ -1,10 +1,13 @@
-﻿using GenshinCBTServer.Protocol;
+﻿using GenshinCBTServer.Excel;
+using GenshinCBTServer.Player;
+using GenshinCBTServer.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace GenshinCBTServer.Controllers
 {
@@ -29,6 +32,37 @@ namespace GenshinCBTServer.Controllers
             
             session.SendPacket((uint)CmdType.GetPlayerTokenRsp, resp);
         }
+        [Server.Handler(CmdType.SetPlayerBornDataReq)]
+        public static void OnSetPlayerBornDataReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            SetPlayerBornDataReq req = packet.DecodeBody<SetPlayerBornDataReq>();
+            session.name = req.NickName;
+            session.avatars.Add(new Avatar(session, req.AvatarId));
+          //  session.avatars.Add(new Avatar(session, 10000015));
+           
+            session.selectedAvatar = (int)session.avatars[0].guid;
+            foreach(AvatarData av in Server.getResources().avatarsData)
+            {
+                if(av.id != req.AvatarId) session.avatars.Add(new Avatar(session,av.id));
+            }
+
+            session.team = new uint[] { session.avatars[0].id, session.avatars[1].id };
+            PlayerDataNotify playerDataNotify = new PlayerDataNotify()
+            {
+                NickName = session.name,
+                ServerTime = 0,
+                
+            };
+            playerDataNotify.PropMap.Add(session.GetPlayerProps());
+            session.SendPacket((uint)CmdType.PlayerDataNotify, playerDataNotify);
+           
+            
+            
+            session.TeleportToScene(3);
+            session.SendPacket((uint)CmdType.SetPlayerBornDataRsp, new SetPlayerBornDataRsp() { });
+            session.SendInventory();
+            session.SendAllAvatars();
+        }
         [Server.Handler(CmdType.PlayerLoginReq)]
         public static void OnPlayerLoginReq(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -42,14 +76,25 @@ namespace GenshinCBTServer.Controllers
             {
                 DataVersion= 138541,
                 ResVersion= 138541,
-                TargetUid=1,
+                TargetUid=session.uid,
                 Retcode=0,
             };
 
            
-            
+            if(session.avatars.Count < 1)
+            {
+                DoSetPlayerBornDataNotify start = new()
+                {
 
-            session.TeleportToScene(3);
+                };
+                session.SendPacket((uint)CmdType.DoSetPlayerBornDataNotify, start);
+            }
+            else
+            {
+                session.TeleportToScene(3);
+            }
+
+            
             session.SendPacket((uint)CmdType.PlayerLoginRsp, resp);
         }
         [Server.Handler(CmdType.PingReq)]

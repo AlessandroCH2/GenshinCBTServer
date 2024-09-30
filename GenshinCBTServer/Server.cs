@@ -116,6 +116,26 @@ namespace GenshinCBTServer
                             }
                         }
                     }
+                }else if(command.ToLower() == "endload")
+                {
+                    foreach(Client client in clients)
+                    {
+                        client.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode = 0 });
+                    }
+                }
+                else if (command.ToLower() == "sendinventory")
+                {
+                    foreach (Client client in clients)
+                    {
+                        client.SendInventory();
+                    }
+                }
+                else if (command.ToLower() == "elfie")
+                {
+                    foreach (Client client in clients)
+                    {
+                        client.SpawnElfie();
+                    }
                 }
             }
         }

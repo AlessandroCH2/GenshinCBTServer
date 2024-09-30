@@ -1,0 +1,332 @@
+天赋ID	天赋组ID	等级	升级消耗金币	图标	前置天赋1	前置天赋2	突破等级	角色等级	消耗天赋点类型	消耗天赋点数	[增加属性]1类型	[增加属性]1值	[增加属性]2类型	[增加属性]2值	筛选条件1	筛选条件2	开启天赋配置	是否队长技	Name	Desc
+1000	100	1	23	Talent_S_Ambor_01			0	1	1	1	40	0.05	50	0.06				1	TalentSkillData_Name_1000	TalentSkillData_Desc_1000
+1001	100	2	23	Talent_S_Ambor_01	1000		0	1	1	1	40	0.05	50	0.03				1	TalentSkillData_Name_1001	TalentSkillData_Desc_1001
+1002	100	3	23	Talent_S_Ambor_01	1001		0	1	1	1	40	0.05	50	0.03				1	TalentSkillData_Name_1002	TalentSkillData_Desc_1002
+1003	100	4	23	Talent_S_Ambor_01	1002		0	1	1	1	40	0.05	50	0.03				1	TalentSkillData_Name_1003	TalentSkillData_Desc_1003
+1004	101	1	23	Talent_S_Ambor_02	1000		0	1	1	1							Ambor_FlyChampion1		TalentSkillData_Name_1004	TalentSkillData_Desc_1004
+1005	101	2	23	Talent_S_Ambor_02	1004		0	1	1	1							Ambor_FlyChampion2		TalentSkillData_Name_1005	TalentSkillData_Desc_1005
+1006	101	3	23	Talent_S_Ambor_02	1005		0	1	1	2							Ambor_FlyChampion3		TalentSkillData_Name_1006	TalentSkillData_Desc_1006
+1007	102	1	23	Talent_S_Ambor_03	1000		0	1	1	1							Ambor_Shooter1		TalentSkillData_Name_1007	TalentSkillData_Desc_1007
+1008	102	2	23	Talent_S_Ambor_03	1007		0	1	1	1							Ambor_Shooter2		TalentSkillData_Name_1008	TalentSkillData_Desc_1008
+1009	102	3	23	Talent_S_Ambor_03	1008		0	1	1	2							Ambor_Shooter3		TalentSkillData_Name_1009	TalentSkillData_Desc_1009
+1016	103	1	23	Talent_S_Ambor_04	1000		0	1	1	1							Ambor_SuperDummy1		TalentSkillData_Name_1016	TalentSkillData_Desc_1016
+1017	103	2	23	Talent_S_Ambor_04	1016		0	1	1	1							Ambor_SuperDummy2		TalentSkillData_Name_1017	TalentSkillData_Desc_1017
+1018	103	3	23	Talent_S_Ambor_04	1017		0	1	1	2							Ambor_SuperDummy3		TalentSkillData_Name_1018	TalentSkillData_Desc_1018
+1012	104	1	23	Talent_B_Ambor_03	1000		0	1	2	1							Ambor_SuperArrowRain1		TalentSkillData_Name_1012	TalentSkillData_Desc_1012
+1013	104	2	23	Talent_B_Ambor_03	1012		0	1	2	1							Ambor_SuperArrowRain2		TalentSkillData_Name_1013	TalentSkillData_Desc_1013
+1014	104	3	23	Talent_B_Ambor_03	1013		0	1	2	1							Ambor_SuperArrowRain3		TalentSkillData_Name_1014	TalentSkillData_Desc_1014
+1015	104	4	23	Talent_B_Ambor_03	1014		0	1	2	1							Ambor_SuperArrowRain4		TalentSkillData_Name_1015	TalentSkillData_Desc_1015
+1010	105	1	23	Talent_B_Ambor_01	1000		0	1	2	2							Ambor_ReserveDummy2		TalentSkillData_Name_1010	TalentSkillData_Desc_1010
+1011	105	2	23	Talent_B_Ambor_01	1010		0	1	2	2							Ambor_ReserveDummy1		TalentSkillData_Name_1011	TalentSkillData_Desc_1011
+1019	106	1	23	Talent_B_Ambor_02	1000		0	1	2	1							Ambor_DoubleArrow1		TalentSkillData_Name_1019	TalentSkillData_Desc_1019
+1020	106	2	23	Talent_B_Ambor_02	1019		0	1	2	1							Ambor_DoubleArrow2		TalentSkillData_Name_1020	TalentSkillData_Desc_1020
+1021	106	3	23	Talent_B_Ambor_02	1020		0	1	2	2							Ambor_DoubleArrow3		TalentSkillData_Name_1021	TalentSkillData_Desc_1021
+1022	107	1	23	Talent_B_Ambor_04	1000		0	1	2	1							Ambor_Dexterous1		TalentSkillData_Name_1022	TalentSkillData_Desc_1022
+1023	107	2	23	Talent_B_Ambor_04	1022		0	1	2	1							Ambor_Dexterous2		TalentSkillData_Name_1023	TalentSkillData_Desc_1023
+1024	107	3	23	Talent_B_Ambor_04	1023		0	1	2	2							Ambor_Dexterous3		TalentSkillData_Name_1024	TalentSkillData_Desc_1024
+1100	108	1	23	Talent_S_Lisa_01			0	1	1	1	41	0.05	51	0.06				1	TalentSkillData_Name_1100	TalentSkillData_Desc_1100
+1101	108	2	23	Talent_S_Lisa_01	1100		0	1	1	1	41	0.05	51	0.03				1	TalentSkillData_Name_1101	TalentSkillData_Desc_1101
+1102	108	3	23	Talent_S_Lisa_01	1101		0	1	1	1	41	0.05	51	0.03				1	TalentSkillData_Name_1102	TalentSkillData_Desc_1102
+1103	108	4	23	Talent_S_Lisa_01	1102		0	1	1	1	41	0.05	51	0.03				1	TalentSkillData_Name_1103	TalentSkillData_Desc_1103
+1104	109	1	23	Talent_S_Lisa_04	1100		0	1	1	1							Lisa_ExtraAttack_StaticElecField1		TalentSkillData_Name_1104	TalentSkillData_Desc_1104
+1105	109	2	23	Talent_S_Lisa_04	1104		0	1	1	1							Lisa_ExtraAttack_StaticElecField2		TalentSkillData_Name_1105	TalentSkillData_Desc_1105
+1106	109	3	23	Talent_S_Lisa_04	1105		0	1	1	2							Lisa_ExtraAttack_StaticElecField3		TalentSkillData_Name_1106	TalentSkillData_Desc_1106
+1107	110	1	23	Talent_S_Lisa_03	1100		0	1	1	1							Lisa_ThunderFall_ReviveElemEnergy1		TalentSkillData_Name_1107	TalentSkillData_Desc_1107
+1108	110	2	23	Talent_S_Lisa_03	1107		0	1	1	1							Lisa_ThunderFall_ReviveElemEnergy2		TalentSkillData_Name_1108	TalentSkillData_Desc_1108
+1109	110	3	23	Talent_S_Lisa_03	1108		0	1	1	2							Lisa_ThunderFall_ReviveElemEnergy3		TalentSkillData_Name_1109	TalentSkillData_Desc_1109
+1110	111	1	23	Talent_S_Lisa_02	1100		0	1	2	1							Lisa_Magic_TriStars1		TalentSkillData_Name_1110	TalentSkillData_Desc_1110
+1111	111	2	23	Talent_S_Lisa_02	1110		0	1	2	1							Lisa_Magic_TriStars2		TalentSkillData_Name_1111	TalentSkillData_Desc_1111
+1112	111	3	23	Talent_S_Lisa_02	1111		0	1	2	2							Lisa_Magic_TriStars3		TalentSkillData_Name_1112	TalentSkillData_Desc_1112
+1113	112	1	23	Talent_B_Lisa_01	1100		0	1	2	1							Lisa_ThunderClap1		TalentSkillData_Name_1113	TalentSkillData_Desc_1113
+1114	112	2	23	Talent_B_Lisa_01	1113		0	1	2	1							Lisa_ThunderClap2		TalentSkillData_Name_1114	TalentSkillData_Desc_1114
+1115	112	3	23	Talent_B_Lisa_01	1114		0	1	2	1							Lisa_ThunderClap3		TalentSkillData_Name_1115	TalentSkillData_Desc_1115
+1116	112	4	23	Talent_B_Lisa_01	1115		0	1	2	1							Lisa_ThunderClap4		TalentSkillData_Name_1116	TalentSkillData_Desc_1116
+1117	113	1	23	Talent_B_Lisa_02	1100		0	1	1	1							Lisa_SuperPierceLightning1		TalentSkillData_Name_1117	TalentSkillData_Desc_1117
+1118	113	2	23	Talent_B_Lisa_02	1117		0	1	1	1							Lisa_SuperPierceLightning2		TalentSkillData_Name_1118	TalentSkillData_Desc_1118
+1119	113	3	23	Talent_B_Lisa_02	1118		0	1	1	2							Lisa_SuperPierceLightning3		TalentSkillData_Name_1119	TalentSkillData_Desc_1119
+1120	114	1	23	Talent_B_Lisa_03	1100		0	1	2	1							Lisa_Efficiency_Control1		TalentSkillData_Name_1120	TalentSkillData_Desc_1120
+1121	114	2	23	Talent_B_Lisa_03	1120		0	1	2	1							Lisa_Efficiency_Control2		TalentSkillData_Name_1121	TalentSkillData_Desc_1121
+1122	114	3	23	Talent_B_Lisa_03	1121		0	1	2	1							Lisa_Efficiency_Control3		TalentSkillData_Name_1122	TalentSkillData_Desc_1122
+1123	114	4	23	Talent_B_Lisa_03	1122		0	1	2	1							Lisa_Efficiency_Control4		TalentSkillData_Name_1123	TalentSkillData_Desc_1123
+1124	115	1	23	Talent_B_Lisa_04	1100		0	1	2	2							Lisa_Super_FlickerWave1		TalentSkillData_Name_1124	TalentSkillData_Desc_1124
+1125	115	2	23	Talent_B_Lisa_04	1124		0	1	2	2							Lisa_Super_FlickerWave2		TalentSkillData_Name_1125	TalentSkillData_Desc_1125
+1050	120	1	23	Talent_S_Kaeya_01			0	1	1	1	46	0.05	56	0.06				1	TalentSkillData_Name_1050	TalentSkillData_Desc_1050
+1051	120	2	23	Talent_S_Kaeya_01	1050		0	1	1	1	46	0.05	56	0.03				1	TalentSkillData_Name_1051	TalentSkillData_Desc_1051
+1052	120	3	23	Talent_S_Kaeya_01	1051		0	1	1	1	46	0.05	56	0.03				1	TalentSkillData_Name_1052	TalentSkillData_Desc_1052
+1053	120	4	23	Talent_S_Kaeya_01	1052		0	1	1	1	46	0.05	56	0.03				1	TalentSkillData_Name_1053	TalentSkillData_Desc_1053
+1054	121	1	23	Talent_S_Kaeya_02	1050		0	1	1	1							Keaya_StrongBody1		TalentSkillData_Name_1054	TalentSkillData_Desc_1054
+1055	121	2	23	Talent_S_Kaeya_02	1054		0	1	1	1							Keaya_StrongBody2		TalentSkillData_Name_1055	TalentSkillData_Desc_1055
+1056	121	3	23	Talent_S_Kaeya_02	1055		0	1	1	2							Keaya_StrongBody3		TalentSkillData_Name_1056	TalentSkillData_Desc_1056
+1057	122	1	23	Talent_S_Kaeya_03	1050		0	1	1	1							Keaya_GracefulAttack1		TalentSkillData_Name_1057	TalentSkillData_Desc_1057
+1058	122	2	23	Talent_S_Kaeya_03	1057		0	1	1	1							Keaya_GracefulAttack2		TalentSkillData_Name_1058	TalentSkillData_Desc_1058
+1059	122	3	23	Talent_S_Kaeya_03	1058		0	1	1	2							Keaya_GracefulAttack3		TalentSkillData_Name_1059	TalentSkillData_Desc_1059
+1060	123	1	23	Talent_S_Kaeya_04	1050		0	1	1	1							Kaeya_FrozenHeal1		TalentSkillData_Name_1060	TalentSkillData_Desc_1060
+1061	123	2	23	Talent_S_Kaeya_04	1060		0	1	1	1							Kaeya_FrozenHeal2		TalentSkillData_Name_1061	TalentSkillData_Desc_1061
+1062	123	3	23	Talent_S_Kaeya_04	1061		0	1	1	2							Kaeya_FrozenHeal3		TalentSkillData_Name_1062	TalentSkillData_Desc_1062
+1063	124	1	23	Talent_B_Kaeya_01	1050		0	1	2	1							Keaya_Condensation1		TalentSkillData_Name_1063	TalentSkillData_Desc_1063
+1064	124	2	23	Talent_B_Kaeya_01	1063		0	1	2	1							Keaya_Condensation2		TalentSkillData_Name_1064	TalentSkillData_Desc_1064
+1065	124	3	23	Talent_B_Kaeya_01	1064		0	1	2	1							Keaya_Condensation3		TalentSkillData_Name_1065	TalentSkillData_Desc_1065
+1066	124	4	23	Talent_B_Kaeya_01	1065		0	1	2	1							Keaya_Condensation4		TalentSkillData_Name_1066	TalentSkillData_Desc_1066
+1067	125	1	23	Talent_B_Kaeya_02	1050		0	1	2	1							Keaya_Cunning1		TalentSkillData_Name_1067	TalentSkillData_Desc_1067
+1068	125	2	23	Talent_B_Kaeya_02	1067		0	1	2	1							Keaya_Cunning2		TalentSkillData_Name_1068	TalentSkillData_Desc_1068
+1069	125	3	23	Talent_B_Kaeya_02	1068		0	1	2	2							Keaya_Cunning3		TalentSkillData_Name_1069	TalentSkillData_Desc_1069
+1070	126	1	23	Talent_B_Kaeya_03	1050		0	1	2	1							Keaya_TasteOfCold1		TalentSkillData_Name_1070	TalentSkillData_Desc_1070
+1071	126	2	23	Talent_B_Kaeya_03	1070		0	1	2	1							Keaya_TasteOfCold2		TalentSkillData_Name_1071	TalentSkillData_Desc_1071
+1072	126	3	23	Talent_B_Kaeya_03	1071		0	1	2	2							Keaya_TasteOfCold3		TalentSkillData_Name_1072	TalentSkillData_Desc_1072
+1073	127	1	23	Talent_B_Kaeya_04	1050		0	1	2	1							Keaya_IceHeart1		TalentSkillData_Name_1073	TalentSkillData_Desc_1073
+1074	127	2	23	Talent_B_Kaeya_04	1073		0	1	2	1							Keaya_IceHeart2		TalentSkillData_Name_1074	TalentSkillData_Desc_1074
+1075	127	3	23	Talent_B_Kaeya_04	1074		0	1	2	2							Keaya_IceHeart3		TalentSkillData_Name_1075	TalentSkillData_Desc_1075
+1300	130	1	23	Talent_S_Qin_01			0	1	1	1	3	0.04	20	0.02				1	TalentSkillData_Name_1300	TalentSkillData_Desc_1300
+1301	130	2	23	Talent_S_Qin_01	1300		0	1	1	1	3	0.04	20	0.02				1	TalentSkillData_Name_1301	TalentSkillData_Desc_1301
+1302	130	3	23	Talent_S_Qin_01	1301		0	1	1	1	3	0.04	20	0.02				1	TalentSkillData_Name_1302	TalentSkillData_Desc_1302
+1303	130	4	23	Talent_S_Qin_01	1302		0	1	1	1	3	0.04	20	0.02				1	TalentSkillData_Name_1303	TalentSkillData_Desc_1303
+1310	131	1	23	Talent_S_Qin_02	1300		0	1	1	1							Qin_Talent_1310		TalentSkillData_Name_1310	TalentSkillData_Desc_1310
+1311	131	2	23	Talent_S_Qin_02	1310		0	1	1	1							Qin_Talent_1311		TalentSkillData_Name_1311	TalentSkillData_Desc_1311
+1312	131	3	23	Talent_S_Qin_02	1311		0	1	1	1							Qin_Talent_1312		TalentSkillData_Name_1312	TalentSkillData_Desc_1312
+1313	131	4	23	Talent_S_Qin_02	1312		0	1	1	1							Qin_Talent_1313		TalentSkillData_Name_1313	TalentSkillData_Desc_1313
+1320	132	1	23	Talent_S_Qin_03	1300		0	1	1	1							Qin_Talent_1320		TalentSkillData_Name_1320	TalentSkillData_Desc_1320
+1321	132	2	23	Talent_S_Qin_03	1320		0	1	1	1							Qin_Talent_1321		TalentSkillData_Name_1321	TalentSkillData_Desc_1321
+1322	132	3	23	Talent_S_Qin_03	1321		0	1	1	2							Qin_Talent_1322		TalentSkillData_Name_1322	TalentSkillData_Desc_1322
+1330	133	1	23	Talent_S_Qin_04	1300		0	1	1	1	3	0.02					Qin_Talent_1330		TalentSkillData_Name_1330	TalentSkillData_Desc_1330
+1331	133	2	23	Talent_S_Qin_04	1330		0	1	1	1	3	0.03					Qin_Talent_1331		TalentSkillData_Name_1331	TalentSkillData_Desc_1331
+1332	133	3	23	Talent_S_Qin_04	1331		0	1	1	2	3	0.03					Qin_Talent_1332		TalentSkillData_Name_1332	TalentSkillData_Desc_1332
+1340	134	1	23	Talent_B_Qin_01	1300		0	1	2	1							Qin_Talent_1340		TalentSkillData_Name_1340	TalentSkillData_Desc_1340
+1341	134	2	23	Talent_B_Qin_01	1340		0	1	2	1							Qin_Talent_1341		TalentSkillData_Name_1341	TalentSkillData_Desc_1341
+1342	134	3	23	Talent_B_Qin_01	1341		0	1	2	2							Qin_Talent_1342		TalentSkillData_Name_1342	TalentSkillData_Desc_1342
+1350	135	1	23	Talent_B_Qin_02	1300		0	1	2	1							Qin_Talent_1350		TalentSkillData_Name_1350	TalentSkillData_Desc_1350
+1351	135	2	23	Talent_B_Qin_02	1350		0	1	2	1							Qin_Talent_1351		TalentSkillData_Name_1351	TalentSkillData_Desc_1351
+1352	135	3	23	Talent_B_Qin_02	1351		0	1	2	2							Qin_Talent_1352		TalentSkillData_Name_1352	TalentSkillData_Desc_1352
+1360	136	1	23	Talent_B_Qin_03	1300		0	1	2	1							Qin_Talent_1360		TalentSkillData_Name_1360	TalentSkillData_Desc_1360
+1361	136	2	23	Talent_B_Qin_03	1360		0	1	2	1							Qin_Talent_1361		TalentSkillData_Name_1361	TalentSkillData_Desc_1361
+1362	136	3	23	Talent_B_Qin_03	1361		0	1	2	2							Qin_Talent_1362		TalentSkillData_Name_1362	TalentSkillData_Desc_1362
+1370	137	1	23	Talent_B_Qin_04	1300		0	1	2	1							Qin_Talent_1370		TalentSkillData_Name_1370	TalentSkillData_Desc_1370
+1371	137	2	23	Talent_B_Qin_04	1370		0	1	2	1							Qin_Talent_1371		TalentSkillData_Name_1371	TalentSkillData_Desc_1371
+1372	137	3	23	Talent_B_Qin_04	1371		0	1	2	2							Qin_Talent_1372		TalentSkillData_Name_1372	TalentSkillData_Desc_1372
+1400	140	1	23	Talent_S_Diluc_01			0	1	1	1	6	0.05						1	TalentSkillData_Name_1400	TalentSkillData_Desc_1400
+1401	140	2	23	Talent_S_Diluc_01	1400		0	1	1	1	6	0.05						1	TalentSkillData_Name_1401	TalentSkillData_Desc_1401
+1402	140	3	23	Talent_S_Diluc_01	1401		0	1	1	1	6	0.05						1	TalentSkillData_Name_1402	TalentSkillData_Desc_1402
+1403	140	4	23	Talent_S_Diluc_01	1402		0	1	1	1	6	0.05						1	TalentSkillData_Name_1403	TalentSkillData_Desc_1403
+1410	141	1	23	Talent_S_Diluc_02	1400		0	1	1	1							Diluc_Talent_1410		TalentSkillData_Name_1410	TalentSkillData_Desc_1410
+1411	141	2	23	Talent_S_Diluc_02	1410		0	1	1	1							Diluc_Talent_1411		TalentSkillData_Name_1411	TalentSkillData_Desc_1411
+1412	141	3	23	Talent_S_Diluc_02	1411		0	1	1	2							Diluc_Talent_1412		TalentSkillData_Name_1412	TalentSkillData_Desc_1412
+1420	142	1	23	Talent_S_Diluc_03	1400		0	1	1	1	6	0.03							TalentSkillData_Name_1420	TalentSkillData_Desc_1420
+1421	142	2	23	Talent_S_Diluc_03	1420		0	1	1	1	6	0.03							TalentSkillData_Name_1421	TalentSkillData_Desc_1421
+1422	142	3	23	Talent_S_Diluc_03	1421		0	1	1	2	6	0.04							TalentSkillData_Name_1422	TalentSkillData_Desc_1422
+1430	143	1	23	Talent_B_Diluc_01	1400		0	1	2	1							Diluc_Talent_1430		TalentSkillData_Name_1430	TalentSkillData_Desc_1430
+1431	143	2	23	Talent_B_Diluc_01	1430		0	1	2	1							Diluc_Talent_1431		TalentSkillData_Name_1431	TalentSkillData_Desc_1431
+1432	143	3	23	Talent_B_Diluc_01	1431		0	1	2	2							Diluc_Talent_1432		TalentSkillData_Name_1432	TalentSkillData_Desc_1432
+1440	144	1	23	Talent_S_Diluc_04	1400		0	1	2	1							Diluc_Talent_1440		TalentSkillData_Name_1440	TalentSkillData_Desc_1440
+1441	144	2	23	Talent_S_Diluc_04	1440		0	1	2	1							Diluc_Talent_1441		TalentSkillData_Name_1441	TalentSkillData_Desc_1441
+1442	144	3	23	Talent_S_Diluc_04	1441		0	1	2	1							Diluc_Talent_1442		TalentSkillData_Name_1442	TalentSkillData_Desc_1442
+1443	144	4	23	Talent_S_Diluc_04	1442		0	1	2	1							Diluc_Talent_1443		TalentSkillData_Name_1443	TalentSkillData_Desc_1443
+1450	145	1	23	Talent_B_Diluc_02	1400		0	1	1	1							Diluc_Talent_1450		TalentSkillData_Name_1450	TalentSkillData_Desc_1450
+1451	145	2	23	Talent_B_Diluc_02	1450		0	1	1	1							Diluc_Talent_1451		TalentSkillData_Name_1451	TalentSkillData_Desc_1451
+1452	145	3	23	Talent_B_Diluc_02	1451		0	1	1	2							Diluc_Talent_1452		TalentSkillData_Name_1452	TalentSkillData_Desc_1452
+1460	146	1	23	Talent_B_Diluc_03	1400		0	1	2	1							Diluc_Talent_1460		TalentSkillData_Name_1460	TalentSkillData_Desc_1460
+1461	146	2	23	Talent_B_Diluc_03	1460		0	1	2	1							Diluc_Talent_1461		TalentSkillData_Name_1461	TalentSkillData_Desc_1461
+1462	146	3	23	Talent_B_Diluc_03	1461		0	1	2	2							Diluc_Talent_1462		TalentSkillData_Name_1462	TalentSkillData_Desc_1462
+1470	147	1	23	Talent_B_Diluc_04	1400		0	1	2	1							Diluc_Talent_1470		TalentSkillData_Name_1470	TalentSkillData_Desc_1470
+1471	147	2	23	Talent_B_Diluc_04	1470		0	1	2	1							Diluc_Talent_1471		TalentSkillData_Name_1471	TalentSkillData_Desc_1471
+1472	147	3	23	Talent_B_Diluc_04	1471		0	1	2	2							Diluc_Talent_1472		TalentSkillData_Name_1472	TalentSkillData_Desc_1472
+1481	148	1	23	Talent_S_PlayerWind_01			0	1	1	1	3	0.06	54	0.06				1	TalentSkillData_Name_1481	TalentSkillData_Desc_1481
+1482	148	2	23	Talent_S_PlayerWind_01	1481		0	1	1	1	3	0.03	54	0.03				1	TalentSkillData_Name_1482	TalentSkillData_Desc_1482
+1483	148	3	23	Talent_S_PlayerWind_01	1482		0	1	1	1	3	0.03	54	0.03				1	TalentSkillData_Name_1483	TalentSkillData_Desc_1483
+1484	148	4	23	Talent_S_PlayerWind_01	1483		0	1	1	1	3	0.03	54	0.03				1	TalentSkillData_Name_1484	TalentSkillData_Desc_1484
+1491	149	1	23	Talent_S_PlayerWind_02	1481		0	1	1	1							Player_Wind_WindWalk_1		TalentSkillData_Name_1491	TalentSkillData_Desc_1491
+1492	149	2	23	Talent_S_PlayerWind_02	1491		0	1	1	1							Player_Wind_WindWalk_2		TalentSkillData_Name_1492	TalentSkillData_Desc_1492
+1493	149	3	23	Talent_S_PlayerWind_02	1492		0	1	1	2							Player_Wind_WindWalk_3		TalentSkillData_Name_1493	TalentSkillData_Desc_1493
+1501	150	1	23	Talent_S_PlayerWind_03	1481		0	1	1	1							Player_Wind_Element_Embrace_1		TalentSkillData_Name_1501	TalentSkillData_Desc_1501
+1502	150	2	23	Talent_S_PlayerWind_03	1501		0	1	1	1							Player_Wind_Element_Embrace_2		TalentSkillData_Name_1502	TalentSkillData_Desc_1502
+1503	150	3	23	Talent_S_PlayerWind_03	1502		0	1	1	2							Player_Wind_Element_Embrace_3		TalentSkillData_Name_1503	TalentSkillData_Desc_1503
+1511	151	1	23	Talent_S_PlayerWind_04	1481		0	1	1	1							Player_Wind_StormEye_1		TalentSkillData_Name_1511	TalentSkillData_Desc_1511
+1512	151	2	23	Talent_S_PlayerWind_04	1511		0	1	1	1							Player_Wind_StormEye_2		TalentSkillData_Name_1512	TalentSkillData_Desc_1512
+1513	151	3	23	Talent_S_PlayerWind_04	1512		0	1	1	2							Player_Wind_StormEye_3		TalentSkillData_Name_1513	TalentSkillData_Desc_1513
+1521	152	1	23	Talent_B_PlayerWind_01	1481		0	1	2	1							Player_Wind_Arashi_1		TalentSkillData_Name_1521	TalentSkillData_Desc_1521
+1522	152	2	23	Talent_B_PlayerWind_01	1521		0	1	2	1							Player_Wind_Arashi_2		TalentSkillData_Name_1522	TalentSkillData_Desc_1522
+1523	152	3	23	Talent_B_PlayerWind_01	1522		0	1	2	2							Player_Wind_Arashi_3		TalentSkillData_Name_1523	TalentSkillData_Desc_1523
+1531	153	1	23	Talent_B_PlayerWind_02	1481		0	1	2	1	23	0.16							TalentSkillData_Name_1531	TalentSkillData_Desc_1531
+1532	153	2	23	Talent_B_PlayerWind_02	1531		0	1	2	1	23	0.09							TalentSkillData_Name_1532	TalentSkillData_Desc_1532
+1533	153	3	23	Talent_B_PlayerWind_02	1532		0	1	2	2	23	0.08							TalentSkillData_Name_1533	TalentSkillData_Desc_1533
+1541	154	1	23	Talent_B_PlayerWind_03	1481		0	1	2	1							Player_Wind_SubVacuum_1		TalentSkillData_Name_1541	TalentSkillData_Desc_1541
+1542	154	2	23	Talent_B_PlayerWind_03	1541		0	1	2	1							Player_Wind_SubVacuum_2		TalentSkillData_Name_1542	TalentSkillData_Desc_1542
+1543	154	3	23	Talent_B_PlayerWind_03	1542		0	1	2	2							Player_Wind_SubVacuum_3		TalentSkillData_Name_1543	TalentSkillData_Desc_1543
+1551	155	1	23	Talent_B_PlayerWind_04	1481		0	1	2	1							Player_Wind_HowlingBlade_1		TalentSkillData_Name_1551	TalentSkillData_Desc_1551
+1552	155	2	23	Talent_B_PlayerWind_04	1551		0	1	2	1							Player_Wind_HowlingBlade_2		TalentSkillData_Name_1552	TalentSkillData_Desc_1552
+1553	155	3	23	Talent_B_PlayerWind_04	1552		0	1	2	2							Player_Wind_HowlingBlade_3		TalentSkillData_Name_1553	TalentSkillData_Desc_1553
+1560	156	1	23	Talent_S_Barbara_01			0	1	1	1	27	0.1						1	TalentSkillData_Name_1560	TalentSkillData_Desc_1560
+1561	156	2	23	Talent_S_Barbara_01	1560		0	1	1	1	27	0.1						1	TalentSkillData_Name_1561	TalentSkillData_Desc_1561
+1562	156	3	23	Talent_S_Barbara_01	1561		0	1	1	2	27	0.1						1	TalentSkillData_Name_1562	TalentSkillData_Desc_1562
+1570	157	1	23	Talent_S_Barbara_02	1560		0	1	1	1							Barbara_ExtraAttack_StaminaCost_Reduce1		TalentSkillData_Name_1570	TalentSkillData_Desc_1570
+1571	157	2	23	Talent_S_Barbara_02	1570		0	1	1	1							Barbara_ExtraAttack_StaminaCost_Reduce2		TalentSkillData_Name_1571	TalentSkillData_Desc_1571
+1572	157	3	23	Talent_S_Barbara_02	1571		0	1	1	2							Barbara_ExtraAttack_StaminaCost_Reduce3		TalentSkillData_Name_1572	TalentSkillData_Desc_1572
+1580	158	1	23	Talent_S_Barbara_03	1560		0	1	1	1							Barbara_EnhancedShield1		TalentSkillData_Name_1580	TalentSkillData_Desc_1580
+1581	158	2	23	Talent_S_Barbara_03	1580		0	1	1	1							Barbara_EnhancedShield2		TalentSkillData_Name_1581	TalentSkillData_Desc_1581
+1582	158	3	23	Talent_S_Barbara_03	1581		0	1	1	1							Barbara_EnhancedShield3		TalentSkillData_Name_1582	TalentSkillData_Desc_1582
+1583	158	4	23	Talent_S_Barbara_03	1582		0	1	1	1							Barbara_EnhancedShield4		TalentSkillData_Name_1583	TalentSkillData_Desc_1583
+1590	159	1	23	Talent_B_Barbara_01	1560		0	1	2	1							Barbara_GiantStage1		TalentSkillData_Name_1590	TalentSkillData_Desc_1590
+1591	159	2	23	Talent_B_Barbara_01	1590		0	1	2	1							Barbara_GiantStage2		TalentSkillData_Name_1591	TalentSkillData_Desc_1591
+1592	159	3	23	Talent_B_Barbara_01	1591		0	1	2	2							Barbara_GiantStage3		TalentSkillData_Name_1592	TalentSkillData_Desc_1592
+1600	160	1	23	Talent_B_Barbara_02	1560		0	1	2	1							Barbara_ActivatedShield1		TalentSkillData_Name_1600	TalentSkillData_Desc_1600
+1601	160	2	23	Talent_B_Barbara_02	1600		0	1	2	1							Barbara_ActivatedShield2		TalentSkillData_Name_1601	TalentSkillData_Desc_1601
+1602	160	3	23	Talent_B_Barbara_02	1601		0	1	2	2							Barbara_ActivatedShield3		TalentSkillData_Name_1602	TalentSkillData_Desc_1602
+1610	161	1	23	Talent_B_Barbara_03	1560		0	1	2	1							Barbara_RebornSupport1		TalentSkillData_Name_1610	TalentSkillData_Desc_1610
+1611	161	2	23	Talent_B_Barbara_03	1610		0	1	2	1							Barbara_RebornSupport2		TalentSkillData_Name_1611	TalentSkillData_Desc_1611
+1612	161	3	23	Talent_B_Barbara_03	1611		0	1	2	2							Barbara_RebornSupport3		TalentSkillData_Name_1612	TalentSkillData_Desc_1612
+1620	162	1	23	Talent_S_Barbara_04	1560		0	1	1	1							Barbara_ExpandShield1		TalentSkillData_Name_1620	TalentSkillData_Desc_1620
+1621	162	2	23	Talent_S_Barbara_04	1620		0	1	1	1							Barbara_ExpandShield2		TalentSkillData_Name_1621	TalentSkillData_Desc_1621
+1622	162	3	23	Talent_S_Barbara_04	1621		0	1	1	1							Barbara_ExpandShield3		TalentSkillData_Name_1622	TalentSkillData_Desc_1622
+1623	162	4	23	Talent_S_Barbara_04	1622		0	1	1	1							Barbara_ExpandShield4		TalentSkillData_Name_1623	TalentSkillData_Desc_1623
+1630	163	1	23	Talent_B_Barbara_04	1560		0	1	2	1							Barbara_EnhancedIdolHeal1		TalentSkillData_Name_1630	TalentSkillData_Desc_1630
+1631	163	2	23	Talent_B_Barbara_04	1630		0	1	2	1							Barbara_EnhancedIdolHeal2		TalentSkillData_Name_1631	TalentSkillData_Desc_1631
+1632	163	3	23	Talent_B_Barbara_04	1631		0	1	2	1							Barbara_EnhancedIdolHeal3		TalentSkillData_Name_1632	TalentSkillData_Desc_1632
+1633	163	4	23	Talent_B_Barbara_04	1632		0	1	2	1							Barbara_EnhancedIdolHeal4		TalentSkillData_Name_1633	TalentSkillData_Desc_1633
+1641	164	1	23	Talent_S_PlayerRock_01			0	1	1	1	3	0.06	55	0.1				1	TalentSkillData_Name_1641	TalentSkillData_Desc_1641
+1642	164	2	23	Talent_S_PlayerRock_01	1641		0	1	1	1	3	0.03	55	0.1				1	TalentSkillData_Name_1642	TalentSkillData_Desc_1642
+1643	164	3	23	Talent_S_PlayerRock_01	1642		0	1	1	1	3	0.03	55	0.1				1	TalentSkillData_Name_1643	TalentSkillData_Desc_1643
+1644	164	4	23	Talent_S_PlayerRock_01	1643		0	1	1	1	3	0.03	55	0.1				1	TalentSkillData_Name_1644	TalentSkillData_Desc_1644
+1651	165	1	23	Talent_S_PlayerRock_02	1641		0	1	1	1							Player_Rock_GaeaAnthem_1		TalentSkillData_Name_1651	TalentSkillData_Desc_1651
+1652	165	2	23	Talent_S_PlayerRock_02	1651		0	1	1	1							Player_Rock_GaeaAnthem_2		TalentSkillData_Name_1652	TalentSkillData_Desc_1652
+1653	165	3	23	Talent_S_PlayerRock_02	1652		0	1	1	2							Player_Rock_GaeaAnthem_3		TalentSkillData_Name_1653	TalentSkillData_Desc_1653
+1661	166	1	23	Talent_S_PlayerRock_03	1641		0	1	1	1							Player_Rock_UnstablePrime_1		TalentSkillData_Name_1661	TalentSkillData_Desc_1661
+1662	166	2	23	Talent_S_PlayerRock_03	1661		0	1	1	1							Player_Rock_UnstablePrime_2		TalentSkillData_Name_1662	TalentSkillData_Desc_1662
+1663	166	3	23	Talent_S_PlayerRock_03	1662		0	1	1	2							Player_Rock_UnstablePrime_3		TalentSkillData_Name_1663	TalentSkillData_Desc_1663
+1671	167	1	23	Talent_S_PlayerRock_04	1641		0	1	1	1							Player_Rock_Climber_1		TalentSkillData_Name_1671	TalentSkillData_Desc_1671
+1672	167	2	23	Talent_S_PlayerRock_04	1671		0	1	1	1							Player_Rock_Climber_2		TalentSkillData_Name_1672	TalentSkillData_Desc_1672
+1673	167	3	23	Talent_S_PlayerRock_04	1672		0	1	1	2							Player_Rock_Climber_3		TalentSkillData_Name_1673	TalentSkillData_Desc_1673
+1681	168	1	23	Talent_B_PlayerRock_03	1641		0	1	2	1							Player_Rock_GoldenExprience_1		TalentSkillData_Name_1681	TalentSkillData_Desc_1681
+1682	168	2	23	Talent_B_PlayerRock_03	1681		0	1	2	1							Player_Rock_GoldenExprience_2		TalentSkillData_Name_1682	TalentSkillData_Desc_1682
+1683	168	3	23	Talent_B_PlayerRock_03	1682		0	1	2	2							Player_Rock_GoldenExprience_3		TalentSkillData_Name_1683	TalentSkillData_Desc_1683
+1691	169	1	23	Talent_B_PlayerRock_02	1641		0	1	2	1							Player_Rock_StarDustReturn_1		TalentSkillData_Name_1691	TalentSkillData_Desc_1691
+1692	169	2	23	Talent_B_PlayerRock_02	1691		0	1	2	1							Player_Rock_StarDustReturn_2		TalentSkillData_Name_1692	TalentSkillData_Desc_1692
+1693	169	3	23	Talent_B_PlayerRock_02	1692		0	1	2	2							Player_Rock_StarDustReturn_3		TalentSkillData_Name_1693	TalentSkillData_Desc_1693
+1701	170	1	23	Talent_B_PlayerRock_01	1641		0	1	2	1							Player_Rock_CrystalWall_1		TalentSkillData_Name_1701	TalentSkillData_Desc_1701
+1702	170	2	23	Talent_B_PlayerRock_01	1701		0	1	2	1							Player_Rock_CrystalWall_2		TalentSkillData_Name_1702	TalentSkillData_Desc_1702
+1703	170	3	23	Talent_B_PlayerRock_01	1702		0	1	2	2							Player_Rock_CrystalWall_3		TalentSkillData_Name_1703	TalentSkillData_Desc_1703
+1711	171	1	23	Talent_B_PlayerRock_04	1641		0	1	2	1							Player_Rock_Avalanche_1		TalentSkillData_Name_1711	TalentSkillData_Desc_1711
+1712	171	2	23	Talent_B_PlayerRock_04	1711		0	1	2	1							Player_Rock_Avalanche_2		TalentSkillData_Name_1712	TalentSkillData_Desc_1712
+1713	171	3	23	Talent_B_PlayerRock_04	1712		0	1	2	2							Player_Rock_Avalanche_3		TalentSkillData_Name_1713	TalentSkillData_Desc_1713
+2011	201	1	23	Talent_S_Razor_01			0	1	1	1	41	0.05	51	0.06				1	TalentSkillData_Name_2011	TalentSkillData_Desc_2011
+2012	201	2	23	Talent_S_Razor_01	2011		0	1	1	1	41	0.05	51	0.03				1	TalentSkillData_Name_2012	TalentSkillData_Desc_2012
+2013	201	3	23	Talent_S_Razor_01	2012		0	1	1	1	41	0.05	51	0.03				1	TalentSkillData_Name_2013	TalentSkillData_Desc_2013
+2014	201	4	23	Talent_S_Razor_01	2013		0	1	1	1	41	0.05	51	0.03				1	TalentSkillData_Name_2014	TalentSkillData_Desc_2014
+2021	202	1	23	Talent_S_Razor_02	2011		0	1	1	1							Razor_RunningWild_1		TalentSkillData_Name_2021	TalentSkillData_Desc_2021
+2022	202	2	23	Talent_S_Razor_02	2021		0	1	1	1							Razor_RunningWild_2		TalentSkillData_Name_2022	TalentSkillData_Desc_2022
+2023	202	3	23	Talent_S_Razor_02	2022		0	1	1	2							Razor_RunningWild_3		TalentSkillData_Name_2023	TalentSkillData_Desc_2023
+2031	203	1	23	Talent_S_Razor_03	2011		0	1	1	1							Razor_CombatReadiness_1		TalentSkillData_Name_2031	TalentSkillData_Desc_2031
+2032	203	2	23	Talent_S_Razor_03	2031		0	1	1	1							Razor_CombatReadiness_2		TalentSkillData_Name_2032	TalentSkillData_Desc_2032
+2033	203	3	23	Talent_S_Razor_03	2032		0	1	1	2							Razor_CombatReadiness_3		TalentSkillData_Name_2033	TalentSkillData_Desc_2033
+2041	204	1	23	Talent_S_Razor_04	2011		0	1	1	1							Razor_ChargedBlade_1		TalentSkillData_Name_2041	TalentSkillData_Desc_2041
+2042	204	2	23	Talent_S_Razor_04	2041		0	1	1	1							Razor_ChargedBlade_2		TalentSkillData_Name_2042	TalentSkillData_Desc_2042
+2043	204	3	23	Talent_S_Razor_04	2042		0	1	1	2							Razor_ChargedBlade_3		TalentSkillData_Name_2043	TalentSkillData_Desc_2043
+2051	205	1	23	Talent_B_Razor_01	2011		0	1	2	1							Razor_Capacitor_1		TalentSkillData_Name_2051	TalentSkillData_Desc_2051
+2052	205	2	23	Talent_B_Razor_01	2051		0	1	2	1							Razor_Capacitor_2		TalentSkillData_Name_2052	TalentSkillData_Desc_2052
+2053	205	3	23	Talent_B_Razor_01	2052		0	1	2	2							Razor_Capacitor_3		TalentSkillData_Name_2053	TalentSkillData_Desc_2053
+2061	206	1	23	Talent_B_Razor_02	2011		0	1	2	1							Razor_ArcaneFeast_1		TalentSkillData_Name_2061	TalentSkillData_Desc_2061
+2062	206	2	23	Talent_B_Razor_02	2061		0	1	2	1							Razor_ArcaneFeast_2		TalentSkillData_Name_2062	TalentSkillData_Desc_2062
+2063	206	3	23	Talent_B_Razor_02	2062		0	1	2	2							Razor_ArcaneFeast_3		TalentSkillData_Name_2063	TalentSkillData_Desc_2063
+2071	207	1	23	Talent_B_Razor_03	2011		0	1	2	1							Razor_ElectrifiedScar_1		TalentSkillData_Name_2071	TalentSkillData_Desc_2071
+2072	207	2	23	Talent_B_Razor_03	2071		0	1	2	1							Razor_ElectrifiedScar_2		TalentSkillData_Name_2072	TalentSkillData_Desc_2072
+2073	207	3	23	Talent_B_Razor_03	2072		0	1	2	2							Razor_ElectrifiedScar_3		TalentSkillData_Name_2073	TalentSkillData_Desc_2073
+2081	208	1	23	Talent_B_Razor_04	2011		0	1	2	1							Razor_FlashStrike_1		TalentSkillData_Name_2081	TalentSkillData_Desc_2081
+2082	208	2	23	Talent_B_Razor_04	2081		0	1	2	1							Razor_FlashStrike_2		TalentSkillData_Name_2082	TalentSkillData_Desc_2082
+2083	208	3	23	Talent_B_Razor_04	2082		0	1	2	2							Razor_FlashStrike_3		TalentSkillData_Name_2083	TalentSkillData_Desc_2083
+2211	221	1	23	Talent_S_Venti_01			0	1	1	2	24	0.1			5			1	TalentSkillData_Name_2211	TalentSkillData_Desc_2211
+2212	221	2	23	Talent_S_Venti_01	2211		0	1	1	2	24	0.1			5			1	TalentSkillData_Name_2212	TalentSkillData_Desc_2212
+2221	222	1	23	Talent_S_Venti_02	2211		0	1	1	1							Venti_FlyChampion_1		TalentSkillData_Name_2221	TalentSkillData_Desc_2221
+2222	222	2	23	Talent_S_Venti_02	2221		0	1	1	1							Venti_FlyChampion_2		TalentSkillData_Name_2222	TalentSkillData_Desc_2222
+2223	222	3	23	Talent_S_Venti_02	2222		0	1	1	1							Venti_FlyChampion_3		TalentSkillData_Name_2223	TalentSkillData_Desc_2223
+2224	222	4	23	Talent_S_Venti_02	2223		0	1	1	1							Venti_FlyChampion_4		TalentSkillData_Name_2224	TalentSkillData_Desc_2224
+2231	223	1	23	Talent_S_Venti_03	2211		0	1	1	1							Venti_Shooter_1		TalentSkillData_Name_2231	TalentSkillData_Desc_2231
+2232	223	2	23	Talent_S_Venti_03	2231		0	1	1	1							Venti_Shooter_2		TalentSkillData_Name_2232	TalentSkillData_Desc_2232
+2233	223	3	23	Talent_S_Venti_03	2232		0	1	1	1							Venti_Shooter_3		TalentSkillData_Name_2233	TalentSkillData_Desc_2233
+2234	223	4	23	Talent_S_Venti_03	2233		0	1	1	1							Venti_Shooter_4		TalentSkillData_Name_2234	TalentSkillData_Desc_2234
+2241	224	1	23	Talent_B_Venti_01	2211		0	1	2	1							Venti_KageBunshinShoot_1		TalentSkillData_Name_2241	TalentSkillData_Desc_2241
+2242	224	2	23	Talent_B_Venti_01	2241		0	1	2	1							Venti_KageBunshinShoot_2		TalentSkillData_Name_2242	TalentSkillData_Desc_2242
+2243	224	3	23	Talent_B_Venti_01	2242		0	1	2	2							Venti_KageBunshinShoot_3		TalentSkillData_Name_2243	TalentSkillData_Desc_2243
+2251	225	1	23	Talent_B_Venti_03	2211		0	1	2	1							Venti_Enhanced_WindBlade_1		TalentSkillData_Name_2251	TalentSkillData_Desc_2251
+2252	225	2	23	Talent_B_Venti_03	2251		0	1	2	1							Venti_Enhanced_WindBlade_2		TalentSkillData_Name_2252	TalentSkillData_Desc_2252
+2253	225	3	23	Talent_B_Venti_03	2252		0	1	2	2							Venti_Enhanced_WindBlade_3		TalentSkillData_Name_2253	TalentSkillData_Desc_2253
+2261	226	1	23	Talent_B_Venti_02	2211		0	1	2	1							Venti_Enhanced_Hurricane_1		TalentSkillData_Name_2261	TalentSkillData_Desc_2261
+2262	226	2	23	Talent_B_Venti_02	2261		0	1	2	1							Venti_Enhanced_Hurricane_2		TalentSkillData_Name_2262	TalentSkillData_Desc_2262
+2263	226	3	23	Talent_B_Venti_02	2262		0	1	2	2							Venti_Enhanced_Hurricane_3		TalentSkillData_Name_2263	TalentSkillData_Desc_2263
+2271	227	1	23	Talent_S_Venti_04	2211		0	1	1	1							Venti_Windfury_1		TalentSkillData_Name_2271	TalentSkillData_Desc_2271
+2272	227	2	23	Talent_S_Venti_04	2271		0	1	1	1							Venti_Windfury_2		TalentSkillData_Name_2272	TalentSkillData_Desc_2272
+2273	227	3	23	Talent_S_Venti_04	2272		0	1	1	2							Venti_Windfury_3		TalentSkillData_Name_2273	TalentSkillData_Desc_2273
+2281	228	1	23	Talent_B_Venti_04	2211		0	1	2	1							Venti_Insight_1		TalentSkillData_Name_2281	TalentSkillData_Desc_2281
+2282	228	2	23	Talent_B_Venti_04	2281		0	1	2	1							Venti_Insight_2		TalentSkillData_Name_2282	TalentSkillData_Desc_2282
+2283	228	3	23	Talent_B_Venti_04	2282		0	1	2	2							Venti_Insight_3		TalentSkillData_Name_2283	TalentSkillData_Desc_2283
+2311	231	1	23	Talent_S_Xiangling_01			0	1	1	1	3	0.06	50	0.06				1	TalentSkillData_Name_2311	TalentSkillData_Desc_2311
+2312	231	2	23	Talent_S_Xiangling_01	2311		0	1	1	1	3	0.03	50	0.03				1	TalentSkillData_Name_2312	TalentSkillData_Desc_2312
+2313	231	3	23	Talent_S_Xiangling_01	2312		0	1	1	1	3	0.03	50	0.03				1	TalentSkillData_Name_2313	TalentSkillData_Desc_2313
+2314	231	4	23	Talent_S_Xiangling_01	2313		0	1	1	1	3	0.03	50	0.03				1	TalentSkillData_Name_2314	TalentSkillData_Desc_2314
+2321	232	1	23	Talent_S_Xiangling_05	2311		0	1	1	1							Xiangling_Talent_2321		TalentSkillData_Name_2321	TalentSkillData_Desc_2321
+2322	232	2	23	Talent_S_Xiangling_05	2321		0	1	1	1							Xiangling_Talent_2322		TalentSkillData_Name_2322	TalentSkillData_Desc_2322
+2323	232	3	23	Talent_S_Xiangling_05	2322		0	1	1	2							Xiangling_Talent_2323		TalentSkillData_Name_2323	TalentSkillData_Desc_2323
+2331	233	1	23	Talent_B_Xiangling_03	2311		0	1	1	1							Xiangling_Talent_2331		TalentSkillData_Name_2331	TalentSkillData_Desc_2331
+2332	233	2	23	Talent_B_Xiangling_03	2331		0	1	1	1							Xiangling_Talent_2332		TalentSkillData_Name_2332	TalentSkillData_Desc_2332
+2333	233	3	23	Talent_B_Xiangling_03	2332		0	1	1	2							Xiangling_Talent_2333		TalentSkillData_Name_2333	TalentSkillData_Desc_2333
+2341	234	1	23	Talent_B_Xiangling_02	2311		0	1	1	1							Xiangling_Talent_2341		TalentSkillData_Name_2341	TalentSkillData_Desc_2341
+2342	234	2	23	Talent_B_Xiangling_02	2341		0	1	1	1							Xiangling_Talent_2342		TalentSkillData_Name_2342	TalentSkillData_Desc_2342
+2343	234	3	23	Talent_B_Xiangling_02	2342		0	1	1	2							Xiangling_Talent_2343		TalentSkillData_Name_2343	TalentSkillData_Desc_2343
+2351	235	1	23	Talent_B_Xiangling_04	2311		0	1	2	1							Xiangling_Talent_2351		TalentSkillData_Name_2351	TalentSkillData_Desc_2351
+2352	235	2	23	Talent_B_Xiangling_04	2351		0	1	2	1							Xiangling_Talent_2352		TalentSkillData_Name_2352	TalentSkillData_Desc_2352
+2353	235	3	23	Talent_B_Xiangling_04	2352		0	1	2	2							Xiangling_Talent_2353		TalentSkillData_Name_2353	TalentSkillData_Desc_2353
+2361	236	1	23	Talent_B_Xiangling_01	2311		0	1	2	1							Xiangling_Talent_2361		TalentSkillData_Name_2361	TalentSkillData_Desc_2361
+2362	236	2	23	Talent_B_Xiangling_01	2361		0	1	2	1							Xiangling_Talent_2362		TalentSkillData_Name_2362	TalentSkillData_Desc_2362
+2363	236	3	23	Talent_B_Xiangling_01	2362		0	1	2	2							Xiangling_Talent_2363		TalentSkillData_Name_2363	TalentSkillData_Desc_2363
+2371	237	1	23	Talent_S_Xiangling_02	2311		0	1	2	1							Xiangling_Talent_2371		TalentSkillData_Name_2371	TalentSkillData_Desc_2371
+2372	237	2	23	Talent_S_Xiangling_02	2371		0	1	2	1							Xiangling_Talent_2372		TalentSkillData_Name_2372	TalentSkillData_Desc_2372
+2373	237	3	23	Talent_S_Xiangling_02	2372		0	1	2	2							Xiangling_Talent_2373		TalentSkillData_Name_2373	TalentSkillData_Desc_2373
+2381	238	1	23	Talent_S_Xiangling_04	2311		0	1	2	1							Xiangling_Talent_2381		TalentSkillData_Name_2381	TalentSkillData_Desc_2381
+2382	238	2	23	Talent_S_Xiangling_04	2381		0	1	2	1							Xiangling_Talent_2382		TalentSkillData_Name_2382	TalentSkillData_Desc_2382
+2383	238	3	23	Talent_S_Xiangling_04	2382		0	1	2	2							Xiangling_Talent_2383		TalentSkillData_Name_2383	TalentSkillData_Desc_2383
+211	21	1	23	Talent_S_Ayaka_01			0	1	1	1	46	0.05	56	0.06				1	TalentSkillData_Name_211	TalentSkillData_Desc_211
+212	21	2	23	Talent_S_Ayaka_01	211		0	1	1	1	46	0.05	56	0.03				1	TalentSkillData_Name_212	TalentSkillData_Desc_212
+213	21	3	23	Talent_S_Ayaka_01	212		0	1	1	1	46	0.05	56	0.03				1	TalentSkillData_Name_213	TalentSkillData_Desc_213
+214	21	4	23	Talent_S_Ayaka_01	213		0	1	1	1	46	0.05	56	0.03				1	TalentSkillData_Name_214	TalentSkillData_Desc_214
+221	22	1	23	Talent_S_Ayaka_02	211		0	1	1	1							Ayaka_RinRenka_1		TalentSkillData_Name_221	TalentSkillData_Desc_221
+222	22	2	23	Talent_S_Ayaka_02	221		0	1	1	1							Ayaka_RinRenka_2		TalentSkillData_Name_222	TalentSkillData_Desc_222
+223	22	3	23	Talent_S_Ayaka_02	222		0	1	1	2							Ayaka_RinRenka_3		TalentSkillData_Name_223	TalentSkillData_Desc_223
+231	23	1	23	Talent_S_Ayaka_03	211		0	1	1	1							Ayaka_IceDance_1		TalentSkillData_Name_231	TalentSkillData_Desc_231
+232	23	2	23	Talent_S_Ayaka_03	231		0	1	1	1							Ayaka_IceDance_2		TalentSkillData_Name_232	TalentSkillData_Desc_232
+233	23	3	23	Talent_S_Ayaka_03	232		0	1	1	2							Ayaka_IceDance_3		TalentSkillData_Name_233	TalentSkillData_Desc_233
+241	24	1	23	Talent_S_Ayaka_04	211		0	1	1	1							Ayaka_Oboro_1		TalentSkillData_Name_241	TalentSkillData_Desc_241
+242	24	2	23	Talent_S_Ayaka_04	241		0	1	1	1							Ayaka_Oboro_2		TalentSkillData_Name_242	TalentSkillData_Desc_242
+243	24	3	23	Talent_S_Ayaka_04	242		0	1	1	2							Ayaka_Oboro_3		TalentSkillData_Name_243	TalentSkillData_Desc_243
+251	25	1	23	Talent_B_Ayaka_01	211		0	1	2	1	23	0.16					Ayaka_HyouShin_1		TalentSkillData_Name_251	TalentSkillData_Desc_251
+252	25	2	23	Talent_B_Ayaka_01	251		0	1	2	1	23	0.09					Ayaka_HyouShin_2		TalentSkillData_Name_252	TalentSkillData_Desc_252
+253	25	3	23	Talent_B_Ayaka_01	252		0	1	2	2	23	0.08					Ayaka_HyouShin_3		TalentSkillData_Name_253	TalentSkillData_Desc_253
+261	26	1	23	Talent_B_Ayaka_02	211		0	1	2	1							Ayaka_YayoiKaeshi_1		TalentSkillData_Name_261	TalentSkillData_Desc_261
+262	26	2	23	Talent_B_Ayaka_02	261		0	1	2	1							Ayaka_YayoiKaeshi_2		TalentSkillData_Name_262	TalentSkillData_Desc_262
+263	26	3	23	Talent_B_Ayaka_02	262		0	1	2	2							Ayaka_YayoiKaeshi_3		TalentSkillData_Name_263	TalentSkillData_Desc_263
+271	27	1	23	Talent_B_Ayaka_03	211		0	1	2	1							Ayaka_EarlyWinter_1		TalentSkillData_Name_271	TalentSkillData_Desc_271
+272	27	2	23	Talent_B_Ayaka_03	271		0	1	2	1							Ayaka_EarlyWinter_2		TalentSkillData_Name_272	TalentSkillData_Desc_272
+273	27	3	23	Talent_B_Ayaka_03	272		0	1	2	2							Ayaka_EarlyWinter_3		TalentSkillData_Name_273	TalentSkillData_Desc_273
+281	28	1	23	Talent_B_Ayaka_04	211		0	1	2	1							Ayaka_EbbAndFlow_1		TalentSkillData_Name_281	TalentSkillData_Desc_281
+282	28	2	23	Talent_B_Ayaka_04	281		0	1	2	1							Ayaka_EbbAndFlow_2		TalentSkillData_Name_282	TalentSkillData_Desc_282
+283	28	3	23	Talent_B_Ayaka_04	282		0	1	2	2							Ayaka_EbbAndFlow_3		TalentSkillData_Name_283	TalentSkillData_Desc_283
+2411	241	1	23				0	1	1	1	3	0.06	51	0.05				1	TalentSkillData_Name_2411	TalentSkillData_Desc_2411
+2412	241	2	23		2411		0	1	1	1	3	0.06	51	0.05				1	TalentSkillData_Name_2412	TalentSkillData_Desc_2412
+2413	241	3	23		2412		0	1	1	1	3	0.06	51	0.05				1	TalentSkillData_Name_2413	TalentSkillData_Desc_2413
+2414	241	4	23		2413		0	1	1	1	3	0.06	51	0.05				1	TalentSkillData_Name_2414	TalentSkillData_Desc_2414
+2421	242	1	23		2411		0	1	1	1							Beidou_Talent_2421		TalentSkillData_Name_2421	TalentSkillData_Desc_2421
+2422	242	2	23		2421		0	1	1	1							Beidou_Talent_2422		TalentSkillData_Name_2422	TalentSkillData_Desc_2422
+2423	242	3	23		2422		0	1	1	2							Beidou_Talent_2423		TalentSkillData_Name_2423	TalentSkillData_Desc_2423
+2431	243	1	23		2411		0	1	1	1							Beidou_Talent_2431		TalentSkillData_Name_2431	TalentSkillData_Desc_2431
+2432	243	2	23		2431		0	1	1	1							Beidou_Talent_2432		TalentSkillData_Name_2432	TalentSkillData_Desc_2432
+2433	243	3	23		2432		0	1	1	2							Beidou_Talent_2433		TalentSkillData_Name_2433	TalentSkillData_Desc_2433
+2441	244	1	23		2411		0	1	1	1							Beidou_Talent_2441		TalentSkillData_Name_2441	TalentSkillData_Desc_2441
+2442	244	2	23		2441		0	1	1	1							Beidou_Talent_2442		TalentSkillData_Name_2442	TalentSkillData_Desc_2442
+2443	244	3	23		2442		0	1	1	2							Beidou_Talent_2443		TalentSkillData_Name_2443	TalentSkillData_Desc_2443
+2451	245	1	23		2411		0	1	2	1							Beidou_Talent_2451		TalentSkillData_Name_2451	TalentSkillData_Desc_2451
+2452	245	2	23		2451		0	1	2	1							Beidou_Talent_2452		TalentSkillData_Name_2452	TalentSkillData_Desc_2452
+2453	245	3	23		2452		0	1	2	2							Beidou_Talent_2453		TalentSkillData_Name_2453	TalentSkillData_Desc_2453
+2461	246	1	23		2411		0	1	2	1							Beidou_Talent_2461		TalentSkillData_Name_2461	TalentSkillData_Desc_2461
+2462	246	2	23		2461		0	1	2	1							Beidou_Talent_2462		TalentSkillData_Name_2462	TalentSkillData_Desc_2462
+2463	246	3	23		2462		0	1	2	2							Beidou_Talent_2463		TalentSkillData_Name_2463	TalentSkillData_Desc_2463
+2471	247	1	23		2411		0	1	2	1							Beidou_Talent_2471		TalentSkillData_Name_2471	TalentSkillData_Desc_2471
+2472	247	2	23		2471		0	1	2	1							Beidou_Talent_2472		TalentSkillData_Name_2472	TalentSkillData_Desc_2472
+2473	247	3	23		2472		0	1	2	2							Beidou_Talent_2473		TalentSkillData_Name_2473	TalentSkillData_Desc_2473
+2481	248	1	23		2411		0	1	2	1							Beidou_Talent_2481		TalentSkillData_Name_2481	TalentSkillData_Desc_2481
+2482	248	2	23		2481		0	1	2	1							Beidou_Talent_2482		TalentSkillData_Name_2482	TalentSkillData_Desc_2482
+2483	248	3	23		2482		0	1	2	2							Beidou_Talent_2483		TalentSkillData_Name_2483	TalentSkillData_Desc_2483
