@@ -102,8 +102,8 @@ namespace GenshinCBTServer
             while (true)
             {
                 string cmd = Console.ReadLine();
-                string[] split = cmd.Split(":");
-                string[] args = cmd.Split(":").Skip(1).ToArray();
+                string[] split = cmd.Split(" ");
+                string[] args = cmd.Split(" ").Skip(1).ToArray();
                 string command = split[0];
                 if (command.ToLower() == "dispatch")
                 {

@@ -227,15 +227,23 @@ namespace GenshinCBTServer
         }
         internal void NewAccount(string name, string password)
         {
-            Account account = new Account()
+            try
             {
-                account = name,
-                md5password=password,
-                token=RandomString(40)
-            };
+                Account account = new Account()
+                {
+                    account = name,
+                    md5password = password,
+                    token = RandomString(40)
+                };
 
-            Server.GetDatabase().Insert(account);
-            Print($"New Account created with name: {name}");
+                Server.GetDatabase().Insert(account);
+                Print($"New Account created with name: {name}");
+            }
+            catch(Exception e)
+            {
+                Print(e.Message);
+            }
+           
         }
 
         private static Random random = new Random();
