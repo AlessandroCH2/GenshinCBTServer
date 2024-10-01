@@ -1,0 +1,11 @@
+{
+	"$type": "ConfigLevelRoute",
+	"sceneId": 1011,
+	"routes": [
+		{
+			"$type": "ConfigRoute",
+			"localId": 1011001,
+			"name": "Route_1011001"
+		}
+	]
+}

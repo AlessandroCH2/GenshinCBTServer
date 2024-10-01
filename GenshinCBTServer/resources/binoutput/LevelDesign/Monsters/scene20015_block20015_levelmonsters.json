@@ -1,0 +1,41 @@
+{
+	"$type": "ConfigLevelMonsterData",
+	"sceneId": 20015,
+	"monsters": [
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220015002,
+			"mapInstId": 17,
+			"aiGroupID": 220015002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220015002,
+			"mapInstId": 16,
+			"aiGroupID": 220015002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220015002,
+			"mapInstId": 15,
+			"aiGroupID": 220015002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220015002,
+			"mapInstId": 14,
+			"aiGroupID": 220015002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220015002,
+			"mapInstId": 13,
+			"aiGroupID": 220015002,
+			"aiSensingTemplate": "DefaultTemplate"
+		}
+	]
+}

@@ -1,0 +1,67 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonQuitPoint",
+			"gadgetId": 70010005,
+			"pos": {
+				"$type": "Vector",
+				"x": 42,
+				"y": 11,
+				"z": -2.8
+			},
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			}
+		}
+	},
+	"forces": {
+		"4": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200001,
+			"pos": {
+				"$type": "Vector",
+				"x": -2.444989,
+				"y": 15.51731,
+				"z": 0.2329485
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"scale": 1.5,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"5": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200001,
+			"pos": {
+				"$type": "Vector",
+				"x": 11.50775,
+				"y": 13.05707,
+				"z": 0.8304749
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"6": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200001,
+			"pos": {
+				"$type": "Vector",
+				"x": 31.55962,
+				"y": 10.16954,
+				"z": 1.109572
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"scale": 0.75,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		}
+	}
+}

@@ -1,4 +1,5 @@
-﻿using GenshinCBTServer.Excel;
+﻿using GenshinCBTServer.Controllers;
+using GenshinCBTServer.Excel;
 using GenshinCBTServer.Network;
 using GenshinCBTServer.Player;
 using GenshinCBTServer.Protocol;
@@ -84,6 +85,9 @@ namespace GenshinCBTServer
         public string token;
         //public Vector position = new Vector() { X = 2136.926f, Y = 208, Z = -1172 };
         public MotionInfo motionInfo = new MotionInfo(){ Pos=new Vector() { X = 2136.926f, Y = 208, Z = -1172 }, Rot = new(), Speed = new(), State = MotionState.MotionStandby };
+        public World world;
+        public List<uint> unlockedPoints = new();
+
         public MapField<uint,PropValue> GetPlayerProps()
         {
             MapField<uint, PropValue> props = new MapField<uint, PropValue>();
@@ -127,26 +131,9 @@ namespace GenshinCBTServer
         }
         public void InitiateAccount(string token)
         {
+            world = new World(this);
             OpenStateUpdateNotify openStateNotify = new OpenStateUpdateNotify();
-            /*  List<Profile> profiles = Server.GetDatabase().GetAllWithChildren<Profile>();
-
-              foreach (Profile profile in profiles)
-              {
-                  if(profile.token == token)
-                  {
-
-
-                      ReadProfile(profile);
-
-                      foreach (KeyValuePair<uint, uint> state in openStateMap)
-                      {
-                          openStateNotify.OpenStateMap.Add(state.Key, state.Value);
-                      }
-                      SendAllAvatars();
-                      SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
-                      return;
-                  }
-              }*/
+            //TODO loading account
             this.teamEntityId = ((uint)ProtEntityType.ProtEntityTeam << 24) + (uint)random.Next();
             this.uid = 1;
             this.token = token;
@@ -174,15 +161,8 @@ namespace GenshinCBTServer
             // selectedAvatar = (int)avatars[0].guid;
             SendInventory();
             SendAllAvatars();
-            
-                SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
-
-            //  Server.GetDatabase().Insert(ToProfile());
-
-           
-
-
-
+            QuestController.UpdateQuestForClient(this);
+            SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
         }
         public Profile ToProfile()
         {
@@ -214,6 +194,8 @@ namespace GenshinCBTServer
 
             SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = scene,TargetUid=uid,PrevPos= new Vector() { X = 0, Y = 0, Z = 0 }, Pos=motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterJump,SceneBeginTime=0 });
             currentSceneId = scene;
+            world.LoadNewScene(currentSceneId);
+
         }
         public uint GetCurrentAvatar()
         {
@@ -222,27 +204,14 @@ namespace GenshinCBTServer
         public void SendAllAvatars()
         {
             AvatarDataNotify notify = new AvatarDataNotify();
-
             AvatarTeam team = new AvatarTeam();
-            AvatarTeam eteam = new AvatarTeam();
-
-
             foreach (uint avatarId in this.team)
             {
-
                 Avatar av = avatars.Find(av => av.id == avatarId);
                 if (av == null) continue;
-
-
-                    team.AvatarGuidList.Add(av.guid);
-                  
-                
-
+                team.AvatarGuidList.Add(av.guid);
             } 
-           
             notify.AvatarTeamMap.Add(1, team);
-          
-            //  notify.AvatarTeamMap.Add(1,new AvatarTeam() { AvatarGuidList = { team[0], team[1], team[2], team[3] } });
             notify.CurAvatarTeamId = 1;
             notify.ChooseAvatarGuid = GetCurrentAvatar();
             foreach(Avatar avatar in avatars)
@@ -260,8 +229,6 @@ namespace GenshinCBTServer
         public void SendPacket(uint cmdId,IMessage protoMessage)
         {
             IntPtr packet = Packet.EncodePacket((ushort)cmdId, protoMessage);
-           // Server.Print(""+packet.dataLength);
-            //packet.flags |= (uint)PacketFlags.Reliable;
             if (enet_peer_send(peer, 0, packet) == 0)
             {
                 Server.Print($"[server->client] {((CmdType)cmdId).ToString()} body: {protoMessage.ToString().Pastel(Color.FromArgb(165, 229, 250))}");

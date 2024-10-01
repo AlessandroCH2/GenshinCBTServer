@@ -1,0 +1,129 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"2": {
+			"$type": "DungeonQuitPoint",
+			"gadgetId": 70120004,
+			"pos": {
+				"$type": "Vector",
+				"x": 343.1401,
+				"y": -11.52947,
+				"z": 242.9898
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 5,
+				"y": 5,
+				"z": 5
+			}
+		}
+	},
+	"forces": {
+		"1": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 359.2,
+				"y": -59,
+				"z": 431.3
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"2": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 359.1,
+				"y": -56.6,
+				"z": 422.4
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"3": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 324.4,
+				"y": -56.7,
+				"z": 435
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"4": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 325.7,
+				"y": -53.8,
+				"z": 423.1
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"5": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 351.4,
+				"y": -55.4,
+				"z": 447.2
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"6": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 335.8,
+				"y": -57.1,
+				"z": 445.8427
+			},
+			"unlocked": true,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		}
+	},
+	"entities": {
+		"1": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 355.094,
+				"y": -39.3,
+				"z": 438.8426
+			},
+			"unlocked": true,
+			"triggerFlag": "DeadRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 4.16,
+				"centerType": "Center",
+				"width": 200,
+				"length": 200
+			}
+		}
+	}
+}

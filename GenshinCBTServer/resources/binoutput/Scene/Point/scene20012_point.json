@@ -1,0 +1,136 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": -8.236732,
+				"y": 47.01625,
+				"z": 53.47644
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 38.8,
+				"y": 5,
+				"z": 26.8
+			},
+			"groupIds": [
+				220012003
+			]
+		},
+		"2": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 72.32637,
+				"y": 39.48112,
+				"z": 113.8505
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 13,
+				"y": 20,
+				"z": 30
+			},
+			"groupIds": [
+				220012005
+			]
+		},
+		"3": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 178.6461,
+				"y": 50.51649,
+				"z": 287.3959
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 49.2,
+				"y": 13.39,
+				"z": 47.21
+			},
+			"groupIds": [
+				220012007
+			]
+		},
+		"4": {
+			"$type": "DungeonQuitPoint",
+			"gadgetId": 70120004,
+			"pos": {
+				"$type": "Vector",
+				"x": 191.5102,
+				"y": 59.16,
+				"z": 399.6543
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 5,
+				"y": 5,
+				"z": 5
+			}
+		}
+	},
+	"entities": {
+		"1": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 194.5572,
+				"y": 24.3,
+				"z": 177.7569
+			},
+			"unlocked": true,
+			"triggerFlag": "DeadRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 10,
+				"centerType": "Center",
+				"width": 500,
+				"length": 500
+			}
+		},
+		"2": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 41.4,
+				"y": 45,
+				"z": 41.17198
+			},
+			"unlocked": true,
+			"triggerFlag": "DeadRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 5,
+				"centerType": "Center",
+				"width": 40,
+				"length": 60
+			}
+		}
+	}
+}

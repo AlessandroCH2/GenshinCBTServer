@@ -1,0 +1,22 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonQuitPoint",
+			"gadgetId": 70120004,
+			"pos": {
+				"$type": "Vector",
+				"x": 342.9515,
+				"y": -18.37179,
+				"z": 326.2942
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 5,
+				"y": 5,
+				"z": 5
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"$type": "ConfigLevelRoute",
+	"sceneId": 20016,
+	"routes": [
+		{
+			"$type": "ConfigRoute",
+			"localId": 20016001,
+			"name": "Route_20016001",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 336.7561,
+						"y": -19.27666,
+						"z": 332.189
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 350.5628,
+						"y": -19.27652,
+						"z": 332.071
+					}
+				}
+			]
+		}
+	]
+}

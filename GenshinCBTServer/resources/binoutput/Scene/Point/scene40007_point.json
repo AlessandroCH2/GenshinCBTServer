@@ -1,0 +1,95 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 28.91149,
+				"y": 8.000015,
+				"z": -60.67738
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			}
+		},
+		"2": {
+			"$type": "DungeonQuitPoint",
+			"gadgetId": 70120004,
+			"pos": {
+				"$type": "Vector",
+				"x": 1.811544,
+				"y": 1.086209,
+				"z": -36.19133
+			},
+			"unlocked": true
+		}
+	},
+	"entities": {
+		"1": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 137.6316,
+				"y": 5.50235,
+				"z": -105.5358
+			},
+			"unlocked": true,
+			"triggerFlag": "NoReviveRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 200,
+				"centerType": "Center",
+				"width": 200,
+				"length": 100
+			}
+		},
+		"2": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 168.5167,
+				"y": 19.45439,
+				"z": 58.59709
+			},
+			"unlocked": true,
+			"triggerFlag": "NoReviveRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 200,
+				"centerType": "Center",
+				"width": 200,
+				"length": 100
+			}
+		},
+		"3": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 53.01714,
+				"y": -16.68176,
+				"z": -6.549931
+			},
+			"unlocked": true,
+			"triggerFlag": "NoReviveRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 100,
+				"centerType": "Center",
+				"width": 50,
+				"length": 70
+			}
+		}
+	}
+}

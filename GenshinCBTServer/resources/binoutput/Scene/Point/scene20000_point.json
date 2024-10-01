@@ -1,0 +1,43 @@
+{
+	"$type": "ConfigScene",
+	"forces": {
+		"1": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200001,
+			"pos": {
+				"$type": "Vector",
+				"x": 99.41113,
+				"y": 0.5,
+				"z": -41.82896
+			},
+			"unlocked": true,
+			"velocity": 5,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		}
+	},
+	"entities": {
+		"1": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 90.97411,
+				"y": -4.435606,
+				"z": -111.2329
+			},
+			"unlocked": true,
+			"checkDist": 500,
+			"withGO": true,
+			"triggerFlag": "DeadRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 8.32,
+				"centerType": "Center",
+				"width": 32.56,
+				"length": 1.51
+			}
+		}
+	}
+}

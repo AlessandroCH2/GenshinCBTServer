@@ -137,6 +137,13 @@ namespace GenshinCBTServer
                         client.SpawnElfie();
                     }
                 }
+                else if (command.ToLower() == "sendworld")
+                {
+                    foreach (Client client in clients)
+                    {
+                        client.world.SendAllEntities();
+                    }
+                }
             }
         }
         public void DispatchServer()

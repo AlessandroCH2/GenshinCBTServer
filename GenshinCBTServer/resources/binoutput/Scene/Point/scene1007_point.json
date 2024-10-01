@@ -1,0 +1,117 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": -35.02797,
+				"y": -76.98341,
+				"z": -170.2362
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 20,
+				"y": 10,
+				"z": 10
+			},
+			"groupIds": [
+				0
+			]
+		},
+		"2": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": -46.10493,
+				"y": -46.48351,
+				"z": 21.34031
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 30,
+				"y": 10,
+				"z": 10
+			}
+		},
+		"3": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 36.80139,
+				"y": 36.19444,
+				"z": 170.126
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 20,
+				"y": 20,
+				"z": 30
+			}
+		}
+	},
+	"forces": {
+		"1": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": -37.21126,
+				"y": -85,
+				"z": -100.3998
+			},
+			"velocity": 15,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"2": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": -62.8,
+				"y": -92.5,
+				"z": -53.1
+			},
+			"rot": {
+				"$type": "Vector",
+				"z": -36.6
+			},
+			"velocity": 15,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"3": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 18.5,
+				"y": -74.2,
+				"z": -31.8
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 21.6,
+				"z": 58.7
+			},
+			"velocity": 15,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		}
+	}
+}

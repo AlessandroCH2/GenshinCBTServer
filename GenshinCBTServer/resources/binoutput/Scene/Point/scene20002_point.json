@@ -1,0 +1,22 @@
+{
+	"$type": "ConfigScene",
+	"forces": {
+		"1": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200001,
+			"pos": {
+				"$type": "Vector",
+				"x": 166.1,
+				"z": 68
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 8.1
+			},
+			"unlocked": true,
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		}
+	}
+}

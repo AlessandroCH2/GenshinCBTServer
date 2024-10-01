@@ -1,0 +1,110 @@
+{
+	"$type": "ConfigLevelRoute",
+	"sceneId": 20021,
+	"routes": [
+		{
+			"$type": "ConfigRoute",
+			"localId": 20021001,
+			"name": "Platform_20021001",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 184.4823,
+						"y": 44.1277,
+						"z": -1.180711
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 184.4857,
+						"y": 42.01784,
+						"z": -1.371064
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 189.4942,
+						"y": 41.9901,
+						"z": -1.228431
+					},
+					"targetVelocity": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 20021002,
+			"name": "Platform_20021002",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 184.3909,
+						"y": 44.1277,
+						"z": -4.19361
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 184.3586,
+						"y": 42.29226,
+						"z": -3.92228
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 180.7593,
+						"y": 41.8515,
+						"z": -4.895134
+					},
+					"targetVelocity": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 20021003,
+			"name": "111",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 191.6525,
+						"y": 29.22793,
+						"z": 15.39555
+					},
+					"waitTime": 2,
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 191.7771,
+						"y": 29.1762,
+						"z": 9.512328
+					},
+					"waitTime": 2,
+					"targetVelocity": 3
+				}
+			]
+		}
+	]
+}

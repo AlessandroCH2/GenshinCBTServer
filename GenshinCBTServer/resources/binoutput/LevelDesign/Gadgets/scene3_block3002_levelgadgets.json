@@ -1,0 +1,84 @@
+{
+	"$type": "ConfigLevelGadgetData",
+	"sceneId": 3,
+	"gadgets": [
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002084,
+			"mapInstId": 1047,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002085,
+			"mapInstId": 1048,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002150,
+			"mapInstId": 1422,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002166,
+			"mapInstId": 1450,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002169,
+			"mapInstId": 1484,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002210,
+			"mapInstId": 1556,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002230,
+			"mapInstId": 1991,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002232,
+			"mapInstId": 2021,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002242,
+			"mapInstId": 2104,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002244,
+			"mapInstId": 2111,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002110,
+			"mapInstId": 2120,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002250,
+			"mapInstId": 2121,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133002243,
+			"mapInstId": 2132,
+			"gadgetMisc_UnlockShowCutScene": true
+		}
+	]
+}

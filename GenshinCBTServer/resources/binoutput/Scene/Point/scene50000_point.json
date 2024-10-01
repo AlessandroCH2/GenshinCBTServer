@@ -1,0 +1,29 @@
+{
+	"$type": "ConfigScene",
+	"doors": {
+		"1": {
+			"$type": "ConfigLoadingDoor",
+			"gadgetId": 40100200,
+			"pos": {
+				"$type": "Vector",
+				"x": -9.65,
+				"y": 5.51,
+				"z": -11.36
+			},
+			"room1": 1,
+			"room2": 3
+		},
+		"2": {
+			"$type": "ConfigLoadingDoor",
+			"gadgetId": 40100200,
+			"pos": {
+				"$type": "Vector",
+				"x": 0.34,
+				"y": 5.51,
+				"z": -11.36
+			},
+			"room1": 1,
+			"room2": 2
+		}
+	}
+}

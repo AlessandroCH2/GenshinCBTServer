@@ -1,0 +1,90 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonQuitPoint",
+			"gadgetId": 70110002,
+			"pos": {
+				"$type": "Vector",
+				"x": 306.4708,
+				"y": -99.29001,
+				"z": 117.7236
+			},
+			"unlocked": true
+		},
+		"2": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 21.01986,
+				"y": 20.967,
+				"z": 17.50665
+			},
+			"unlocked": true
+		},
+		"3": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 50.59965,
+				"y": -31,
+				"z": 75.33009
+			},
+			"unlocked": true
+		},
+		"4": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 73.26542,
+				"y": 4.99,
+				"z": 117.0109
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 91.35
+			},
+			"unlocked": true
+		},
+		"5": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 161.7958,
+				"y": 12.8,
+				"z": 117.345
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true
+		}
+	},
+	"entities": {
+		"1": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": -0.8989525,
+				"y": -0.014,
+				"z": -37
+			},
+			"unlocked": true,
+			"triggerFlag": "NoReviveRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 150,
+				"centerType": "Center",
+				"width": 100,
+				"length": 50
+			}
+		}
+	}
+}

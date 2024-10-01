@@ -1,0 +1,64 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 330.5749,
+				"y": -28.98354,
+				"z": 440.0135
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 40,
+				"y": 10,
+				"z": 20
+			}
+		},
+		"2": {
+			"$type": "DungeonQuitPoint",
+			"gadgetId": 70120004,
+			"pos": {
+				"$type": "Vector",
+				"x": 342.6368,
+				"y": -19.27675,
+				"z": 331.2588
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 4,
+				"y": 4,
+				"z": 4
+			}
+		},
+		"3": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 354.2917,
+				"y": -18.85338,
+				"z": 364.0289
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 270
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 20,
+				"y": 10,
+				"z": 40
+			}
+		}
+	}
+}

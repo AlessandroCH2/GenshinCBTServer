@@ -1,0 +1,34 @@
+{
+	"$type": "ConfigLevelGadgetData",
+	"sceneId": 1012,
+	"gadgets": [
+		{
+			"$type": "LevelGadget",
+			"groupId": 201012003,
+			"mapInstId": 5,
+			"followMove_AttachPoint": "FollowMove01",
+			"followMove_targetInstanceId": 4
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 201012004,
+			"mapInstId": 14,
+			"followMove_AttachPoint": "FollowMove01",
+			"followMove_targetInstanceId": 11
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 201012004,
+			"mapInstId": 15,
+			"followMove_AttachPoint": "FollowMove01",
+			"followMove_targetInstanceId": 12
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 201012004,
+			"mapInstId": 16,
+			"followMove_AttachPoint": "FollowMove01",
+			"followMove_targetInstanceId": 13
+		}
+	]
+}

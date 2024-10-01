@@ -1,0 +1,26 @@
+{
+	"$type": "ConfigScene",
+	"entities": {
+		"1": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": -0.4854091,
+				"y": -21.92318,
+				"z": -5.200523
+			},
+			"unlocked": true,
+			"triggerFlag": "LevelAbility",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 10,
+				"centerType": "Center",
+				"width": 240,
+				"length": 240
+			},
+			"stringParam": "Dvalin_S04_DeadRegion"
+		}
+	}
+}

@@ -1,0 +1,83 @@
+{
+	"$type": "ConfigLevelActionPoint",
+	"sceneId": 3,
+	"actionPoints": [
+		{
+			"$type": "ConfigActionPoint",
+			"localId": 3002001,
+			"type": "LandingPoint",
+			"pos": {
+				"$type": "Vector",
+				"x": 1797.423,
+				"y": 235.0648,
+				"z": -915.5524
+			}
+		},
+		{
+			"$type": "ConfigActionPoint",
+			"localId": 3002002,
+			"type": "LandingPoint",
+			"pos": {
+				"$type": "Vector",
+				"x": 1789.332,
+				"y": 236.4186,
+				"z": -910.7392
+			}
+		},
+		{
+			"$type": "ConfigActionPoint",
+			"localId": 3002003,
+			"type": "LandingPoint",
+			"pos": {
+				"$type": "Vector",
+				"x": 1798.069,
+				"y": 237.3709,
+				"z": -949.3763
+			}
+		},
+		{
+			"$type": "ConfigActionPoint",
+			"localId": 3002004,
+			"type": "LandingPoint",
+			"pos": {
+				"$type": "Vector",
+				"x": 1765.204,
+				"y": 250.2936,
+				"z": -861.7416
+			}
+		},
+		{
+			"$type": "ConfigActionPoint",
+			"localId": 3002005,
+			"type": "LandingPoint",
+			"pos": {
+				"$type": "Vector",
+				"x": 1767.852,
+				"y": 250.1877,
+				"z": -856.1664
+			}
+		},
+		{
+			"$type": "ConfigActionPoint",
+			"localId": 3002006,
+			"type": "LandingPoint",
+			"pos": {
+				"$type": "Vector",
+				"x": 1828.858,
+				"y": 235.7605,
+				"z": -945.7825
+			}
+		},
+		{
+			"$type": "ConfigActionPoint",
+			"localId": 3002007,
+			"type": "LandingPoint",
+			"pos": {
+				"$type": "Vector",
+				"x": 1786.93,
+				"y": 250.642,
+				"z": -969.2018
+			}
+		}
+	]
+}

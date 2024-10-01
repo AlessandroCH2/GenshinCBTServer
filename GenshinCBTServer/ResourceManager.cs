@@ -1,7 +1,9 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using GenshinCBTServer.Excel;
+using GenshinCBTServer.Player;
 using Newtonsoft.Json;
+using NLua;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,13 +15,181 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GenshinCBTServer
 {
+    public class SceneExcel
+    {
+        public uint sceneId;
+        public List<SceneBlock> sceneBlocks = new List<SceneBlock>();
+    }
     public class ResourceManager
     {
         public List<AvatarData> avatarsData;
         public List<TalentSkillData> talentSkillData;
         public List<AvatarSkillDepotData> avatarSkillDepotData;
         public List<ItemData> itemData;
-       
+        public List<SceneExcel> scenes = new List<SceneExcel>();
+
+
+        public SceneExcel LoadSceneLua(uint sceneId)
+        {
+            string mainlocation = $"resources/lua/Scene/{sceneId}";
+            string mainLua = mainlocation + $"/scene{sceneId}.lua";
+            SceneExcel scene = new() { sceneId = sceneId };
+            if (File.Exists(mainLua))
+            {
+                string mainLuaString = File.ReadAllText(mainLua) + "\n" + File.ReadAllText("resources/lua/Config/Excel/CommonScriptConfig.lua");
+                using (Lua scenelua = new Lua())
+                {
+
+                    scenelua.DoString(mainLuaString);
+
+
+                    LuaTable blocks = scenelua["blocks"] as LuaTable;  // Cast to LuaTable for tables
+
+                    LuaTable block_rects = scenelua["block_rects"] as LuaTable;
+                    for (int i = 0; i < blocks.Keys.Count; i++)
+                    {
+                        uint blockId = (uint)(long)blocks[i + 1];
+                        SceneBlock block = new SceneBlock() { blockId = blockId };
+                        LoadSceneGroup(block,sceneId);
+
+                        if (block_rects != null)
+                        {
+                            LuaTable rectTable = block_rects[i + 1] as LuaTable;
+                            if (rectTable != null)
+                            {
+                                Vector min = TableToVector2D(rectTable["min"] as LuaTable);
+                                Vector max = TableToVector2D(rectTable["max"] as LuaTable);
+                                block.minPos = min;
+                                block.maxPos = max;
+                            }
+                            
+                        }
+                        
+                        scene.sceneBlocks.Add(block);
+                    }
+
+                }
+            }
+            else
+            {
+                Server.Print($"Cannot load scene {sceneId} lua file (Not found)");
+            }
+            return scene;
+        }
+
+        private Vector TableToVector2D(LuaTable pos)
+        {
+            return new Vector() { X = (float)(double)pos["x"], Z = (float)(double)pos["z"] };
+        }
+
+        private void LoadSceneGroup(SceneBlock block, uint sceneId)
+        {
+            string mainlocation = $"resources/lua/Scene/{sceneId}";
+            string mainLua = mainlocation + $"/scene{sceneId}_block{block.blockId}.lua";
+            if (File.Exists(mainLua))
+            {
+                string mainLuaString = File.ReadAllText(mainLua) + "\n" + File.ReadAllText("resources/lua/Config/Excel/CommonScriptConfig.lua");
+                using (Lua sceneBlock = new Lua())
+                {
+
+                    sceneBlock.DoString(mainLuaString);
+
+
+                    LuaTable groups = sceneBlock["groups"] as LuaTable;  // Cast to LuaTable for tables
+
+
+                    for (int i = 0; i < groups.Keys.Count; i++)
+                    {
+                        LuaTable groupTable = groups[i + 1] as LuaTable;
+                        try
+                        {
+                            SceneGroup group = new SceneGroup()
+                            {
+                                id = (uint)(long)groupTable["id"],
+                                refreshTime = (uint)(long)groupTable["refresh_time"],
+
+                            };
+                            if (groupTable["area"] != null)
+                            {
+                                group.area = (uint)(long)groupTable["area"];
+                            }
+                            LoadSceneGroupLua(group,sceneId);
+                            block.groups.Add(group);
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
+
+
+                    }
+
+                }
+            }
+            else
+            {
+                Server.Print($"Cannot get scene groups from {block.blockId} lua file (Not found)");
+            }
+        }
+        public string getRequiredLuas()
+        {
+            return File.ReadAllText("resources/lua/Config/Json/ConfigEntity.lua") + "\n" + File.ReadAllText("resources/lua/Config/Excel/CommonScriptConfig.lua") + "\n";
+        }
+        private void LoadSceneGroupLua(SceneGroup group, uint sceneId)
+        {
+            string mainlocation = $"resources/lua/Scene/{sceneId}";
+            string mainLua = mainlocation + $"/scene{sceneId}_group{group.id}.lua";
+            if (File.Exists(mainLua))
+            {
+                string mainLuaString = getRequiredLuas() + File.ReadAllText(mainLua);
+                using (Lua sceneGroup = new Lua())
+                {
+
+                    sceneGroup.DoString(mainLuaString);
+
+
+                    LuaTable gadgets = sceneGroup["gadgets"] as LuaTable;  // Cast to LuaTable for tables
+                    LuaTable npcs = sceneGroup["npcs"] as LuaTable;
+                   
+                    for (int i = 0; i < gadgets.Keys.Count; i++)
+                    {
+                        LuaTable gadgetTable = gadgets[i + 1] as LuaTable;
+                        LuaTable pos = gadgetTable["pos"] as LuaTable;
+                        LuaTable rot = gadgetTable["rot"] as LuaTable;
+                        SceneGadget gadget = new()
+                        {
+                            
+                            gadget_id = (uint)(long)gadgetTable["gadget_id"],
+                            config_id = (uint)(long)gadgetTable["config_id"],
+                            pos = new Vector() { X = (float)(double)pos["x"], Y = (float)(double)pos["y"], Z = (float)(double)pos["z"] },
+                            rot = new Vector() { X = (float)(double)rot["x"], Y = (float)(double)rot["y"], Z = (float)(double)rot["z"] }
+                        };
+                        if (gadgetTable["chest_drop_id"] != null) gadget.chest_drop_id = (uint)(long)gadgetTable["chest_drop_id"];
+                        if (gadgetTable["state"] != null) gadget.state = (uint)(long)gadgetTable["state"];
+
+                        group.gadgets.Add(gadget);
+                    }
+                    for (int i = 0; i < npcs.Keys.Count; i++)
+                    {
+                        LuaTable npcTable = npcs[i + 1] as LuaTable;
+                        LuaTable pos = npcTable["pos"] as LuaTable;
+                        LuaTable rot = npcTable["rot"] as LuaTable;
+                        SceneNpc npc = new()
+                        {
+                            npc_id = (uint)(long)npcTable["npc_id"],
+                            config_id = (uint)(long)npcTable["config_id"],
+                            pos = new Vector() { X = (float)(double)pos["x"], Y = (float)(double)pos["y"], Z = (float)(double)pos["z"] },
+                            rot = new Vector() { X = (float)(double)rot["x"], Y = (float)(double)rot["y"], Z = (float)(double)rot["z"] }
+                        };
+                        group.npcs.Add(npc);
+                    }
+                }
+            }
+            else
+            {
+                Server.Print($"Cannot get scene group things because lua file not found");
+            }
+        }
         public void Load()
         {
             avatarsData = JsonConvert.DeserializeObject<List<AvatarData>>(File.ReadAllText("resources/excel/AvatarData.json"));
@@ -27,6 +197,13 @@ namespace GenshinCBTServer
             talentSkillData = LoadTalentSkillData();
             avatarSkillDepotData = LoadAvatarSkillDepotData();
             itemData = LoadWeaponData();
+            Server.Print("Loading all scenes lua");
+            string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
+            foreach(string scene in scenes_)
+            {
+                
+                scenes.Add(LoadSceneLua(uint.Parse(scene.Replace("resources/lua/Scene\\",""))));
+            }
         }
 
         private List<ItemData> LoadWeaponData()

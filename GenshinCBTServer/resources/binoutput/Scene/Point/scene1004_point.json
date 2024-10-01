@@ -1,0 +1,84 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "PersonalSceneJumpPoint",
+			"gadgetId": 70010002,
+			"pos": {
+				"$type": "Vector",
+				"y": 0.2082887,
+				"z": 14.39404
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2243.995,
+				"y": 238.7061,
+				"z": -780.5136
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 161
+			},
+			"unlocked": true,
+			"tranSceneId": 3,
+			"titleTextID": "UI_SCENE_ENTRY_EXIT_KNIGHT",
+			"triggerSize": {
+				"$type": "Vector",
+				"x": 3,
+				"y": 3,
+				"z": 3
+			},
+			"close_time": 24
+		}
+	},
+	"doors": {
+		"1": {
+			"$type": "ConfigLoadingDoor",
+			"gadgetId": 40100201,
+			"pos": {
+				"$type": "Vector",
+				"x": -10.389,
+				"z": -7.537
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true,
+			"room1": 1,
+			"room2": 100401
+		},
+		"2": {
+			"$type": "ConfigLoadingDoor",
+			"gadgetId": 40100201,
+			"pos": {
+				"$type": "Vector",
+				"x": -10.389,
+				"z": 7.502
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true,
+			"room1": 1,
+			"room2": 100401
+		},
+		"3": {
+			"$type": "ConfigLoadingDoor",
+			"gadgetId": 40100201,
+			"pos": {
+				"$type": "Vector",
+				"x": 10.405,
+				"z": 7.502
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"unlocked": true,
+			"room1": 1,
+			"room2": 100402
+		}
+	}
+}

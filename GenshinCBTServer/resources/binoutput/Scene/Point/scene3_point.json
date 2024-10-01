@@ -1,0 +1,2192 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2163.664,
+				"y": 235.3712,
+				"z": -1642.421
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 275.8915
+			},
+			"unlocked": true,
+			"dungeonIds": [
+				4002
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_1",
+			"showLevel": 10
+		},
+		"2": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2155.054,
+				"y": 234.5971,
+				"z": -1638.53
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 3.954665,
+				"y": 321.1449,
+				"z": 359.9206
+			},
+			"unlocked": true,
+			"entryPointId": 1
+		},
+		"3": {
+			"$type": "SceneTransPoint",
+			"type": "TOWER",
+			"gadgetId": 70110001,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 1859.34,
+				"y": 258.0366,
+				"z": -575.6
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 241.793
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1854.052,
+				"y": 258.0366,
+				"z": -578.4359
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": -40
+			},
+			"cutsceneList": [
+				3,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7
+			]
+		},
+		"4": {
+			"$type": "SceneTransPoint",
+			"type": "TOWER",
+			"gadgetId": 70110001,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1928.381,
+				"y": 196.139,
+				"z": -1265.917
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 94.06357
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1934.366,
+				"y": 196.139,
+				"z": -1266.342
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"cutsceneList": [
+				3,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7
+			]
+		},
+		"5": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 1993.73,
+				"y": 212.17,
+				"z": -874.22
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 355.8885,
+				"y": 6.409998,
+				"z": 1.171522
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1992.874,
+				"y": 213.1602,
+				"z": -867.2341
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": -152
+			}
+		},
+		"6": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2679.84,
+				"y": 197.366,
+				"z": -1636.902
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 24.951
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2682.843,
+				"y": 197.606,
+				"z": -1642.159
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": -95.78
+			}
+		},
+		"7": {
+			"$type": "SceneTransPoint",
+			"type": "TOWER",
+			"gadgetId": 70110001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2566.115,
+				"y": 214.0869,
+				"z": -1323.474
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 193.9696
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2564.536,
+				"y": 215.3869,
+				"z": -1329.82
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": -105
+			},
+			"alias": "Goddess_3003",
+			"cutsceneList": [
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
+			]
+		},
+		"8": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2197.455,
+				"y": 214.8022,
+				"z": -1122.173
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2197.455,
+				"y": 215.8522,
+				"z": -1128.173
+			}
+		},
+		"10": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2277.604,
+				"y": 220.23,
+				"z": -876.1065
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 298.7719
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2272.748,
+				"y": 220.23,
+				"z": -873.44
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 217
+			}
+		},
+		"11": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2298.307,
+				"y": 264.8222,
+				"z": -1508.909
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 336.196
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2296.886,
+				"y": 264.8222,
+				"z": -1505.59
+			}
+		},
+		"12": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1975.935,
+				"y": 236.9656,
+				"z": -1531.125
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 150.178
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1978.919,
+				"y": 237.8656,
+				"z": -1536.331
+			}
+		},
+		"13": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1440,
+				"y": 329.5392,
+				"z": -2002.78
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 311.693
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1435.52,
+				"y": 329.5392,
+				"z": -1998.789
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 235
+			}
+		},
+		"14": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1460.956,
+				"y": 258.5012,
+				"z": -1436.578
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 45.64151
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1465.246,
+				"y": 259.5012,
+				"z": -1432.383
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 235
+			}
+		},
+		"15": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 1790.307,
+				"y": 236.2465,
+				"z": -912.9803
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 1.110359,
+				"y": 105.196,
+				"z": 358.4253
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1796.108,
+				"y": 237.1297,
+				"z": -914.5843
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 270
+			}
+		},
+		"20": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2137.997,
+				"y": 207.232,
+				"z": -1174.44
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 0.016,
+				"y": 335.229,
+				"z": 0.239
+			},
+			"unlocked": true,
+			"dungeonIds": [
+				4001
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_20",
+			"showLevel": 8
+		},
+		"21": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010002,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 2120.139,
+				"y": 204.8979,
+				"z": -1157.901
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 250.5867
+			},
+			"unlocked": true,
+			"entryPointId": 20
+		},
+		"22": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1659.013,
+				"y": 258.4189,
+				"z": -1436.901
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 18.08501
+			},
+			"unlocked": true,
+			"dungeonIds": [
+				4003
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_22",
+			"showLevel": 12
+		},
+		"23": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1662.338,
+				"y": 258.6858,
+				"z": -1427.639
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 17.71
+			},
+			"unlocked": true,
+			"entryPointId": 22
+		},
+		"25": {
+			"$type": "SceneTransPoint",
+			"type": "PORTAL",
+			"gadgetId": 70110003,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1558.2,
+				"y": 376.1,
+				"z": -2085.19
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 280.12
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1632.213,
+				"y": 200.5,
+				"z": -2581.11
+			},
+			"unlocked": true
+		},
+		"27": {
+			"$type": "PersonalSceneJumpPoint",
+			"gadgetId": 70010002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2243.504,
+				"y": 238.6902,
+				"z": -778.8833
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 161.32
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 0.2393522,
+				"y": 0.02668158,
+				"z": 12.84647
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"tranSceneId": 1004,
+			"titleTextID": "UI_SCENE_ENTRY_ENTER_KNIGHT",
+			"triggerSize": {
+				"$type": "Vector",
+				"x": 3,
+				"y": 3,
+				"z": 3
+			},
+			"close_time": 24
+		},
+		"28": {
+			"$type": "PersonalSceneJumpPoint",
+			"gadgetId": 70010002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2354.987,
+				"y": 261.0227,
+				"z": -685.584
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 207.1
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"z": 44.49009
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"tranSceneId": 1008,
+			"titleTextID": "UI_SCENE_ENTRY_ENTER_CHURCH",
+			"triggerSize": {
+				"$type": "Vector",
+				"x": 3,
+				"y": 3,
+				"z": 3
+			},
+			"close_time": 24
+		},
+		"29": {
+			"$type": "SceneTransPoint",
+			"type": "TOWER",
+			"gadgetId": 70110001,
+			"areaId": 4,
+			"pos": {
+				"$type": "Vector",
+				"x": 2642.847,
+				"y": 262.116,
+				"z": 176.326
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 76.91731
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2647.717,
+				"y": 262.116,
+				"z": 177.4578
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 20
+			},
+			"cutsceneList": [
+				3,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7
+			]
+		},
+		"30": {
+			"$type": "PersonalSceneJumpPoint",
+			"gadgetId": 70010002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2303.098,
+				"y": 214.0912,
+				"z": -924.1182
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 318.68
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2.859979,
+				"z": 4.280728
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 270
+			},
+			"tranSceneId": 1009,
+			"titleTextID": "UI_SCENE_ENTRY_ENTER_ANGELSHARE",
+			"triggerSize": {
+				"$type": "Vector",
+				"x": 1.5,
+				"y": 1.5,
+				"z": 1.5
+			},
+			"close_time": 24
+		},
+		"31": {
+			"$type": "PersonalSceneJumpPoint",
+			"gadgetId": 70010002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2313.206,
+				"y": 215.1837,
+				"z": -929.7944
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 146.0566
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": -4.78,
+				"y": 0.5,
+				"z": 1.485
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 90
+			},
+			"tranSceneId": 1009,
+			"titleTextID": "UI_SCENE_ENTRY_ENTER_ANGELSHARE",
+			"triggerSize": {
+				"$type": "Vector",
+				"x": 1.5,
+				"y": 1.5,
+				"z": 1.5
+			},
+			"close_time": 24
+		},
+		"32": {
+			"$type": "PersonalSceneJumpPoint",
+			"gadgetId": 70010002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2302.116,
+				"y": 218.9582,
+				"z": -929.348
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 227.264
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"y": 5,
+				"z": 8.77
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"tranSceneId": 1009,
+			"titleTextID": "UI_SCENE_ENTRY_ENTER_ANGELSHARE",
+			"triggerSize": {
+				"$type": "Vector",
+				"x": 1.5,
+				"y": 1.5,
+				"z": 1.5
+			},
+			"close_time": 24
+		},
+		"33": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 4,
+			"pos": {
+				"$type": "Vector",
+				"x": 2651.567,
+				"y": 300.6488,
+				"z": 117.9865
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 72.66981
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2653.476,
+				"y": 301.1488,
+				"z": 118.5823
+			}
+		},
+		"34": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 4,
+			"pos": {
+				"$type": "Vector",
+				"x": 2375.788,
+				"y": 227.2951,
+				"z": 35.11966
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 71.04604
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2381.462,
+				"y": 227.7951,
+				"z": 37.06851
+			}
+		},
+		"35": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 4,
+			"pos": {
+				"$type": "Vector",
+				"x": 2785.732,
+				"y": 216.5132,
+				"z": -88.41602
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 325.0924
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2782.299,
+				"y": 217.0132,
+				"z": -83.49556
+			}
+		},
+		"36": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 4,
+			"pos": {
+				"$type": "Vector",
+				"x": 2920.967,
+				"y": 209.419,
+				"z": 268.4011
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 245.6024
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2915.502,
+				"y": 209.919,
+				"z": 265.9227
+			}
+		},
+		"37": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 4,
+			"pos": {
+				"$type": "Vector",
+				"x": 2580.34,
+				"y": 207.2314,
+				"z": 342.2581
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 158.0842
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2581.833,
+				"y": 207.7314,
+				"z": 338.5472
+			}
+		},
+		"38": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120005,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 2651.928,
+				"y": 300.1629,
+				"z": 131.9534
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 165.4829
+			},
+			"size": {
+				"$type": "Vector",
+				"x": 24,
+				"y": 10,
+				"z": 24
+			},
+			"cutsceneList": [
+				8
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_24",
+			"showLevel": 20
+		},
+		"39": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010002,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 2659.366,
+				"y": 300.8796,
+				"z": 118.1377
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 170.176
+			},
+			"unlocked": true,
+			"entryPointId": 38
+		},
+		"40": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120001,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1325.352,
+				"y": 303.2621,
+				"z": -1870.791
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 54.54968
+			},
+			"dungeonIds": [
+				4005,
+				3004
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_26",
+			"showLevel": 24
+		},
+		"41": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010002,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1331.789,
+				"y": 303.0008,
+				"z": -1867.08
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 237.7463
+			},
+			"unlocked": true,
+			"entryPointId": 40
+		},
+		"42": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120002,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1639.656,
+				"y": 208.0721,
+				"z": -2628.898
+			},
+			"dungeonIds": [
+				4006
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_27",
+			"showLevel": 28
+		},
+		"43": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010002,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1645.458,
+				"y": 204.9128,
+				"z": -2614.543
+			},
+			"entryPointId": 42
+		},
+		"44": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120001,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1678.957,
+				"y": 263.2,
+				"z": -894.3811
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 11.82749
+			},
+			"unlocked": true,
+			"dungeonIds": [
+				4008
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_29",
+			"hideOnMap": true,
+			"showLevel": 16
+		},
+		"45": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120001,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1698.908,
+				"y": 255.8555,
+				"z": -662.4711
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 95.66611
+			},
+			"unlocked": true,
+			"dungeonIds": [
+				4007
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_31",
+			"showLevel": 15
+		},
+		"46": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010001,
+			"pos": {
+				"$type": "Vector",
+				"x": 1680.022,
+				"y": 263.6281,
+				"z": -887.288
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 20.43259
+			},
+			"unlocked": true,
+			"entryPointId": 44
+		},
+		"47": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010001,
+			"pos": {
+				"$type": "Vector",
+				"x": 1707.997,
+				"y": 255.9572,
+				"z": -662.5909
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 48.29493
+			},
+			"unlocked": true,
+			"entryPointId": 45
+		},
+		"48": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2488.915,
+				"y": 263.6277,
+				"z": -1559.558
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 84.238
+			},
+			"unlocked": true,
+			"dungeonIds": [
+				4004
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_35",
+			"showLevel": 13
+		},
+		"49": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2498.344,
+				"y": 263.1947,
+				"z": -1557.985
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 80.17398
+			},
+			"unlocked": true,
+			"entryPointId": 48
+		},
+		"50": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70120002,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 2257.046,
+				"y": 271.3699,
+				"z": -237.541
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 178.544
+			},
+			"dungeonIds": [
+				4009
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			},
+			"cutsceneList": [
+				4
+			],
+			"titleTextID": "UI_DUNGEON_ENTRY_37",
+			"showLevel": 17
+		},
+		"51": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2257.679,
+				"y": 270.7947,
+				"z": -255.1246
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 0.2863706,
+				"y": 176.7491,
+				"z": 5.028954
+			},
+			"unlocked": true,
+			"entryPointId": 50
+		},
+		"52": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70360001,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 1648.186,
+				"y": 200.096,
+				"z": -1549.077
+			},
+			"dungeonIds": [
+				2000
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 5
+			},
+			"titleTextID": "UI_DUNGEON_ENTRY_39",
+			"hideOnMap": true
+		},
+		"53": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1656.698,
+				"y": 197.2588,
+				"z": -1552.092
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 4.845903,
+				"y": 105.8749,
+				"z": 1.376201
+			},
+			"unlocked": true,
+			"entryPointId": 52
+		},
+		"54": {
+			"$type": "SceneBuildingPoint",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2243.029,
+				"y": 238.643,
+				"z": -778.1082
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 344.52
+			},
+			"unlocked": true,
+			"buildingType": "Knights"
+		},
+		"55": {
+			"$type": "SceneBuildingPoint",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2355.06,
+				"y": 261.0227,
+				"z": -684.8734
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 28.29001
+			},
+			"unlocked": true,
+			"buildingType": "Church"
+		},
+		"56": {
+			"$type": "SceneBuildingPoint",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2303.717,
+				"y": 214.0912,
+				"z": -924.984
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 144.9
+			},
+			"unlocked": true,
+			"buildingType": "Pub"
+		},
+		"57": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 2294.153,
+				"y": 254.9882,
+				"z": -384.4636
+			}
+		},
+		"58": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 2178.692,
+				"y": 213.5591,
+				"z": -524.3094
+			}
+		},
+		"59": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2731.88,
+				"y": 253.1043,
+				"z": -1265.036
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2731.88,
+				"y": 253.1043,
+				"z": -1267.036
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 180
+			}
+		},
+		"60": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2832.833,
+				"y": 265.4537,
+				"z": -1627.494
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 343.0999
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2835.021,
+				"y": 265.4537,
+				"z": -1629.052
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 238.2589
+			}
+		},
+		"61": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 3,
+			"pos": {
+				"$type": "Vector",
+				"x": 1890.97,
+				"y": 212.706,
+				"z": -219.735
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 341.3647
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 1890.011,
+				"y": 212.706,
+				"z": -216.8923
+			}
+		},
+		"62": {
+			"$type": "SceneBuildingPoint",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2239.985,
+				"y": 215.99,
+				"z": -888.2343
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 113.28
+			},
+			"unlocked": true,
+			"buildingType": "Restaurant"
+		},
+		"63": {
+			"$type": "SceneBuildingPoint",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2265.456,
+				"y": 217.3449,
+				"z": -895.9293
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 294
+			},
+			"unlocked": true,
+			"buildingType": "GeneralCargo"
+		},
+		"64": {
+			"$type": "SceneBuildingPoint",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2248.53,
+				"y": 213.99,
+				"z": -905.2181
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 297.6
+			},
+			"unlocked": true,
+			"buildingType": "Souvenir"
+		},
+		"65": {
+			"$type": "SceneBuildingPoint",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2232.279,
+				"y": 212.09,
+				"z": -915.7335
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 118.58
+			},
+			"unlocked": true,
+			"buildingType": "Blacksmith"
+		},
+		"66": {
+			"$type": "SceneBuildingPoint",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2240.81,
+				"y": 213.99,
+				"z": -901.2058
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 117.18
+			},
+			"unlocked": true,
+			"buildingType": "TeamArranger"
+		},
+		"67": {
+			"$type": "DungeonEntry",
+			"gadgetId": 70360001,
+			"areaId": 2,
+			"pos": {
+				"$type": "Vector",
+				"x": 2252,
+				"y": 216,
+				"z": -888
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 0.4513215,
+				"y": 103.0598,
+				"z": 358.5033
+			},
+			"dungeonIds": [
+				2004
+			],
+			"size": {
+				"$type": "Vector",
+				"x": 15,
+				"y": 15,
+				"z": 15
+			},
+			"titleTextID": "UI_DUNGEON_ENTRY_39",
+			"hideOnMap": true
+		},
+		"68": {
+			"$type": "DungeonExit",
+			"gadgetId": 70010001,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 2252.12,
+				"y": 216.0024,
+				"z": -887.7283
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 4.845903,
+				"y": 105.8749,
+				"z": 1.376201
+			},
+			"unlocked": true,
+			"entryPointId": 67
+		},
+		"69": {
+			"$type": "SceneTransPoint",
+			"gadgetId": 70110002,
+			"areaId": 4,
+			"pos": {
+				"$type": "Vector",
+				"x": 2582.271,
+				"y": 267.0263,
+				"z": -435.4256
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 27.3906
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2581.437,
+				"y": 266.9893,
+				"z": -439.843
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 221.1149
+			}
+		}
+	},
+	"forces": {
+		"1": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1728.931,
+				"y": 214.3,
+				"z": -1370.667
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 8.1
+			},
+			"alias": "WindField_Vertical_01",
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"2": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1731.3,
+				"y": 265.7,
+				"z": -1361.13
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 8.1
+			},
+			"alias": "WindField_Horizontal_01",
+			"velocity": 10,
+			"scale": 7.5,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"3": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1752.9,
+				"y": 270.5,
+				"z": -1376.3
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 96.5
+			},
+			"alias": "WindField_Horizontal_02",
+			"velocity": 10,
+			"scale": 5.1,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"4": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1726,
+				"y": 282,
+				"z": -1377.3
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 235.3
+			},
+			"alias": "WindField_Horizontal_03",
+			"velocity": 10,
+			"scale": 5.1,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"18": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2194.839,
+				"y": 202.4,
+				"z": -988.509
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"19": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2278.626,
+				"y": 202.4,
+				"z": -1010.948
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"20": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2362.616,
+				"y": 202.4,
+				"z": -966.933
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"21": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2410.173,
+				"y": 202.4,
+				"z": -889.51
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"22": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2452.314,
+				"y": 202.4,
+				"z": -798.0967
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"23": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2477.641,
+				"y": 202.4,
+				"z": -693.6187
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"24": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2404.991,
+				"y": 202.4,
+				"z": -620.095
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"25": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2306.259,
+				"y": 202.4,
+				"z": -652.0713
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"26": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2227.19,
+				"y": 202.4,
+				"z": -710.9395
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"27": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2148.926,
+				"y": 202.4,
+				"z": -776.912
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"28": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2122.785,
+				"y": 202.4,
+				"z": -884.0547
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"29": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 2567.711,
+				"y": 211.9053,
+				"z": -1337.734
+			},
+			"velocity": 10,
+			"scale": 1.25,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"30": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"areaId": 1,
+			"pos": {
+				"$type": "Vector",
+				"x": 1783.641,
+				"y": 244.6151,
+				"z": -1196.591
+			},
+			"velocity": 10,
+			"scale": 1.25,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"31": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2346.922,
+				"y": 260.85,
+				"z": -704.2197
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 349.32,
+				"y": 180,
+				"z": 180
+			},
+			"velocity": 20,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"32": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2348.006,
+				"y": 265.1277,
+				"z": -731.0073
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"velocity": 20,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"33": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2348.006,
+				"y": 264.8754,
+				"z": -756.226
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"velocity": 20,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"34": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2347.642,
+				"y": 263.8998,
+				"z": -781.734
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"velocity": 20,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"35": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2347.341,
+				"y": 264.3246,
+				"z": -808.695
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"velocity": 20,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"36": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 40200002,
+			"pos": {
+				"$type": "Vector",
+				"x": 2350,
+				"y": 260.6,
+				"z": -847.9
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 204.9
+			},
+			"velocity": 20,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"37": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 1543.014,
+				"y": 322.8378,
+				"z": -2079.967
+			},
+			"velocity": 8,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"38": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 1974.854,
+				"y": 228.658,
+				"z": -479.7794
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 355.3463,
+				"y": 5.855083,
+				"z": 44.28775
+			},
+			"velocity": 10,
+			"scale": 0.8,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"39": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610102,
+			"pos": {
+				"$type": "Vector",
+				"x": 1945.465,
+				"y": 230.475,
+				"z": -502.4578
+			},
+			"rot": {
+				"$type": "Vector",
+				"x": 349.4835,
+				"y": 9.098718,
+				"z": 312.3289
+			},
+			"velocity": 10,
+			"scale": 0.8,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"43": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 1484.077,
+				"y": 244.7263,
+				"z": -1911.1
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		},
+		"44": {
+			"$type": "ConfigAirflowField",
+			"gadgetId": 70610101,
+			"pos": {
+				"$type": "Vector",
+				"x": 1483.558,
+				"y": 287.2656,
+				"z": -1912.104
+			},
+			"velocity": 10,
+			"stayEffect": "Eff_Windfield_Stay",
+			"enterEffect": "Eff_Windfield_Enter"
+		}
+	},
+	"entities": {
+		"6": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2734.588,
+				"y": 215.0211,
+				"z": 319.1606
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 20.31586
+			},
+			"unlocked": true,
+			"withGO": true,
+			"triggerFlag": "GlobalValue",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 20,
+				"centerType": "Center",
+				"width": 20,
+				"length": 240
+			},
+			"floatParam": 1,
+			"stringParam": "_IGNORE_STRONG_WIND"
+		},
+		"7": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2497.466,
+				"y": 207.1553,
+				"z": 72.05518
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 69.55109
+			},
+			"unlocked": true,
+			"withGO": true,
+			"triggerFlag": "GlobalValue",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 20,
+				"centerType": "Center",
+				"width": 15,
+				"length": 240
+			},
+			"floatParam": 1,
+			"stringParam": "_IGNORE_STRONG_WIND"
+		},
+		"8": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2606.746,
+				"y": 193.8161,
+				"z": 393.5706
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 66.15045
+			},
+			"unlocked": true,
+			"withGO": true,
+			"triggerFlag": "GlobalValue",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 20,
+				"centerType": "Center",
+				"width": 80,
+				"length": 280
+			},
+			"floatParam": 1,
+			"stringParam": "_IGNORE_STRONG_WIND"
+		},
+		"9": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2803.47,
+				"y": 207.5661,
+				"z": 97.72485
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 5.69833
+			},
+			"unlocked": true,
+			"withGO": true,
+			"triggerFlag": "GlobalValue",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 20,
+				"centerType": "Center",
+				"width": 30,
+				"length": 70
+			},
+			"floatParam": 1,
+			"stringParam": "_IGNORE_STRONG_WIND"
+		},
+		"10": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2492.179,
+				"y": 206.4437,
+				"z": 182.1543
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 5.69833
+			},
+			"unlocked": true,
+			"withGO": true,
+			"triggerFlag": "GlobalValue",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 20,
+				"centerType": "Center",
+				"width": 20,
+				"length": 20
+			},
+			"floatParam": 1,
+			"stringParam": "_IGNORE_STRONG_WIND"
+		},
+		"11": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2521.557,
+				"y": 215.9268,
+				"z": 259.5298
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 320.5526
+			},
+			"unlocked": true,
+			"withGO": true,
+			"triggerFlag": "GlobalValue",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 20,
+				"centerType": "Center",
+				"width": 20,
+				"length": 60
+			},
+			"floatParam": 1,
+			"stringParam": "_IGNORE_STRONG_WIND"
+		},
+		"12": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2631.005,
+				"y": 206.8251,
+				"z": 302.8325
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 304.4666
+			},
+			"unlocked": true,
+			"withGO": true,
+			"triggerFlag": "GlobalValue",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 20,
+				"centerType": "Center",
+				"width": 20,
+				"length": 50
+			},
+			"floatParam": 1,
+			"stringParam": "_IGNORE_STRONG_WIND"
+		},
+		"13": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2651,
+				"y": 221,
+				"z": 133
+			},
+			"unlocked": true,
+			"checkDist": 500,
+			"withGO": true,
+			"triggerFlag": "Teleport",
+			"shape": {
+				"$type": "ConfigShapeCircle",
+				"useHeight": true,
+				"height": 60,
+				"radius": 38
+			},
+			"vectorParam": {
+				"$type": "Vector",
+				"x": 2649.2,
+				"y": 262.6,
+				"z": 172.5
+			},
+			"floatParam": 180
+		},
+		"15": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2405.483,
+				"y": 283.9447,
+				"z": -1713.971
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 336.3307
+			},
+			"unlocked": true,
+			"triggerFlag": "ReturnRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 10,
+				"centerType": "Center",
+				"width": 12,
+				"length": 20
+			},
+			"floatParam": 5,
+			"stringParam": "1033003 "
+		},
+		"16": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2405.633,
+				"y": 284.1091,
+				"z": -1757.948
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 22.05035
+			},
+			"unlocked": true,
+			"triggerFlag": "ReturnRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 10,
+				"centerType": "Center",
+				"width": 12,
+				"length": 20
+			},
+			"floatParam": 5,
+			"stringParam": "1033003 "
+		},
+		"17": {
+			"$type": "ConfigLocalTrigger",
+			"gadgetId": 70010006,
+			"pos": {
+				"$type": "Vector",
+				"x": 2374.415,
+				"y": 283.9953,
+				"z": -1679.368
+			},
+			"rot": {
+				"$type": "Vector",
+				"y": 22.05035
+			},
+			"unlocked": true,
+			"triggerFlag": "ReturnRegion",
+			"shape": {
+				"$type": "ConfigShapeRect",
+				"useHeight": true,
+				"height": 10,
+				"centerType": "Center",
+				"width": 12,
+				"length": 20
+			},
+			"floatParam": 5,
+			"stringParam": "1033003 "
+		}
+	}
+}

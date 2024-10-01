@@ -1,0 +1,18 @@
+{
+	"$type": "ConfigLevelGadgetData",
+	"sceneId": 3,
+	"gadgets": [
+		{
+			"$type": "LevelGadget",
+			"groupId": 133004032,
+			"mapInstId": 181,
+			"billboard_HideUIBarDis": 101.72
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133004032,
+			"mapInstId": 204,
+			"billboard_HideUIBarDis": 101.72
+		}
+	]
+}

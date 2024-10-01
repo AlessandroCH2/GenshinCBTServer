@@ -1,0 +1,48 @@
+{
+	"$type": "ConfigLevelGadgetData",
+	"sceneId": 3,
+	"gadgets": [
+		{
+			"$type": "LevelGadget",
+			"groupId": 133001034,
+			"mapInstId": 528,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133001102,
+			"mapInstId": 1753,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133001073,
+			"mapInstId": 1761,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133001094,
+			"mapInstId": 1766,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133001160,
+			"mapInstId": 2268,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133001233,
+			"mapInstId": 2658,
+			"billboard_HideUIBarDis": 104.64
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133001254,
+			"mapInstId": 2948,
+			"gadgetMisc_UnlockShowCutScene": true
+		}
+	]
+}

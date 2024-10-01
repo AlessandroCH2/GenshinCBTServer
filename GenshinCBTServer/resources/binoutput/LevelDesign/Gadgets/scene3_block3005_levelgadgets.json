@@ -1,0 +1,12 @@
+{
+	"$type": "ConfigLevelGadgetData",
+	"sceneId": 3,
+	"gadgets": [
+		{
+			"$type": "LevelGadget",
+			"groupId": 133005011,
+			"mapInstId": 26,
+			"gadgetMisc_UnlockShowCutScene": true
+		}
+	]
+}

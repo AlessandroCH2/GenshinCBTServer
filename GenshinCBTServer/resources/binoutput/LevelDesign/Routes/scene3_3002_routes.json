@@ -1,0 +1,5101 @@
+{
+	"$type": "ConfigLevelRoute",
+	"sceneId": 3,
+	"routes": [
+		{
+			"$type": "ConfigRoute",
+			"localId": 10,
+			"name": "DefaultRouteName",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1821.317,
+						"y": 233.2,
+						"z": -922.8076
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1804.771,
+						"y": 233.2,
+						"z": -906.443
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1783.362,
+						"y": 233.2,
+						"z": -902.216
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1770.475,
+						"y": 233.2,
+						"z": -900.0366
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 11,
+			"name": "DefaultRouteName",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1813.313,
+						"y": 234.7949,
+						"z": -887.187
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1800.741,
+						"y": 233.2,
+						"z": -900.58
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1820.923,
+						"y": 233.2,
+						"z": -908.7007
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1798.24,
+						"y": 233.2,
+						"z": -937.6563
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1772.545,
+						"y": 233.2,
+						"z": -919.3486
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 12,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1744.818,
+						"y": 261.9081,
+						"z": -1009.487
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1747.026,
+						"y": 260.264,
+						"z": -1005.049
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1758.651,
+						"y": 256.3691,
+						"z": -1007.88
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 13,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1785.706,
+						"y": 233.2,
+						"z": -881.0605
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1804.194,
+						"y": 233.2,
+						"z": -898.248
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1775.622,
+						"y": 233.2,
+						"z": -906.0513
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1781.144,
+						"y": 233.2,
+						"z": -929.143
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 14,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1757.779,
+						"y": 259.3188,
+						"z": -1020.095
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1754.818,
+						"y": 258.6844,
+						"z": -1013.298
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1760.319,
+						"y": 255.927,
+						"z": -1008.646
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 15,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1749.831,
+						"y": 256.8883,
+						"z": -994.8213
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1749.056,
+						"y": 258.7998,
+						"z": -1001.118
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1761.097,
+						"y": 255.6696,
+						"z": -1007.777
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 16,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1657.648,
+						"y": 259.4875,
+						"z": -636.383
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1652.529,
+						"y": 263.4629,
+						"z": -664.364
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 17,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1641.065,
+						"y": 265.361,
+						"z": -638.294
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1643.653,
+						"y": 267.8782,
+						"z": -652.609
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 18,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1637.696,
+						"y": 265.334,
+						"z": -642.897
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1639.015,
+						"y": 267.2252,
+						"z": -657.934
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 19,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1670.847,
+						"y": 266.9517,
+						"z": -663.1445
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1656.637,
+						"y": 264.1083,
+						"z": -669.1787
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 20,
+			"name": "DefaultRouteName",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1533.133,
+						"y": 248.4479,
+						"z": -620.702
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1540.341,
+						"y": 244.1537,
+						"z": -576.765
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1574.356,
+						"y": 242.9388,
+						"z": -569.772
+					},
+					"waitTime": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1596.775,
+						"y": 241.2025,
+						"z": -616.545
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1546.307,
+						"y": 248.1174,
+						"z": -627.389
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 24,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1721.903,
+						"y": 256.1328,
+						"z": -704.588
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1714.157,
+						"y": 256.0116,
+						"z": -704.3423
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1717.502,
+						"y": 254.3215,
+						"z": -677.314
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 25,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1941.394,
+						"y": 206.139,
+						"z": -793.8594
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1960.314,
+						"y": 202.5053,
+						"z": -789.5513
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 26,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1968.031,
+						"y": 206.9167,
+						"z": -769.9053
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1966.069,
+						"y": 206.4052,
+						"z": -778.5723
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 27,
+			"name": "DefaultRouteName",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1954.823,
+						"y": 207.1051,
+						"z": -758.538
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1960.537,
+						"y": 207.5297,
+						"z": -773.8667
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 28,
+			"name": "Route_028",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1738.324,
+						"y": 237.2242,
+						"z": -648.5137
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1739.151,
+						"y": 238.1635,
+						"z": -653.6455
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1743.254,
+						"y": 238.8123,
+						"z": -658.026
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 29,
+			"name": "Route_029",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1707.711,
+						"y": 237.7012,
+						"z": -637.6255
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1705.056,
+						"y": 238.6177,
+						"z": -643.863
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1702.655,
+						"y": 239.2738,
+						"z": -644.6504
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 30,
+			"name": "Route_030",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1720.424,
+						"y": 244.4094,
+						"z": -692.7688
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1716.837,
+						"y": 240.8502,
+						"z": -676.9446
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1727.715,
+						"y": 231.34,
+						"z": -636.4695
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 31,
+			"name": "Route_031",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1730.503,
+						"y": 233.8294,
+						"z": -647.862
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1733.372,
+						"y": 237.7671,
+						"z": -670.3994
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 32,
+			"name": "Route_032",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1719.378,
+						"y": 234.1012,
+						"z": -647.482
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1716.077,
+						"y": 236.4302,
+						"z": -653.472
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 33,
+			"name": "Route_033",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1818.236,
+						"y": 247.1909,
+						"z": -634.3022
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1831.994,
+						"y": 247.5479,
+						"z": -625.2407
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1814.08,
+						"y": 245.1332,
+						"z": -601.217
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1797.954,
+						"y": 247.0978,
+						"z": -616.656
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1817.402,
+						"y": 246.8842,
+						"z": -633.645
+					},
+					"waitTime": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 34,
+			"name": "Route_034",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1823.524,
+						"y": 250.0816,
+						"z": -636.1597
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1828.052,
+						"y": 249.8494,
+						"z": -638.468
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 35,
+			"name": "Route_035",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1824.815,
+						"y": 245.9857,
+						"z": -621.1973
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1833.286,
+						"y": 246.9124,
+						"z": -617.572
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 36,
+			"name": "Route_036",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1901.67,
+						"y": 247.2702,
+						"z": -452.82
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1907.606,
+						"y": 248.1727,
+						"z": -457.416
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1909.339,
+						"y": 249.1028,
+						"z": -464.308
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1901.445,
+						"y": 248.3788,
+						"z": -470.7393
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1892.632,
+						"y": 247.9041,
+						"z": -459.7593
+					},
+					"waitTime": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1899.275,
+						"y": 246.9736,
+						"z": -452.859
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 37,
+			"name": "Route_037",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1904.307,
+						"y": 247.1255,
+						"z": -457.119
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1921.015,
+						"y": 249.5052,
+						"z": -448.2783
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 38,
+			"name": "Route_038",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1902.716,
+						"y": 247.0374,
+						"z": -456.116
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1907.716,
+						"y": 245.4174,
+						"z": -430.791
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 39,
+			"name": "Route_039",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1898.716,
+						"y": 247.078,
+						"z": -456.554
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1890.701,
+						"y": 245.1198,
+						"z": -437.6035
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 43,
+			"name": "Route_043",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1748.026,
+						"y": 259.6929,
+						"z": -761.7747
+					},
+					"waitTime": 10,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1727.56,
+						"y": 257.6537,
+						"z": -752.6998
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1713.659,
+						"y": 257.0087,
+						"z": -760.0963
+					},
+					"waitTime": 5,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 44,
+			"name": "Route_044",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1705.709,
+						"y": 255.312,
+						"z": -792.585
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1703.001,
+						"y": 254.9575,
+						"z": -768.7405
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 45,
+			"name": "Route_045",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1712.201,
+						"y": 254.1267,
+						"z": -769.7063
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1713.715,
+						"y": 254.2302,
+						"z": -786.314
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 46,
+			"name": "Route_046",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1683.204,
+						"y": 259.4533,
+						"z": -747.6151
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1702.831,
+						"y": 255.7973,
+						"z": -746.9081
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1708.17,
+						"y": 253.7335,
+						"z": -778.5705
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 47,
+			"name": "Route_047",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1650.113,
+						"y": 267.11,
+						"z": -787.1337
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1656.055,
+						"y": 265.564,
+						"z": -815.865
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1683.885,
+						"y": 260.4778,
+						"z": -819.558
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1700.595,
+						"y": 256.8035,
+						"z": -798.0251
+					},
+					"waitTime": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 48,
+			"name": "Route_048",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1639.083,
+						"y": 267.11,
+						"z": -744.3465
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1651.571,
+						"y": 267.11,
+						"z": -781.0397
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 49,
+			"name": "Route_049",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1627.98,
+						"y": 267.11,
+						"z": -779.4573
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1644.752,
+						"y": 267.1155,
+						"z": -776.8661
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 50,
+			"name": "Route_050",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1690.703,
+						"y": 256.2253,
+						"z": -747.7928
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1707.594,
+						"y": 255.0184,
+						"z": -762.9474
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1699.608,
+						"y": 256.1493,
+						"z": -798.6755
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1680.304,
+						"y": 259.0098,
+						"z": -821.4409
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1655.165,
+						"y": 262.2935,
+						"z": -816.4753
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1648.839,
+						"y": 265.1537,
+						"z": -777.338
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 51,
+			"name": "Route_051",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1775.807,
+						"y": 241.1607,
+						"z": -763.4741
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1789.398,
+						"y": 238.3992,
+						"z": -755.553
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1800.637,
+						"y": 237.2092,
+						"z": -760.8164
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 52,
+			"name": "Route_052",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1769.232,
+						"y": 245.9717,
+						"z": -749.1234
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1777.026,
+						"y": 246.275,
+						"z": -754.1714
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 66,
+			"name": "Route_066",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2025.759,
+						"y": 205.0983,
+						"z": -838.5977
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2025.747,
+						"y": 204.733,
+						"z": -840.893
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2016.119,
+						"y": 203.6999,
+						"z": -852.87
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 67,
+			"name": "Route_067",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2000.971,
+						"y": 204.2042,
+						"z": -847.1323
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2003.078,
+						"y": 203.7099,
+						"z": -850.955
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2014.37,
+						"y": 203.6841,
+						"z": -854.0444
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 68,
+			"name": "Route_068",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2033.272,
+						"y": 205.045,
+						"z": -857.9067
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2024.643,
+						"y": 205.2471,
+						"z": -858.432
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 69,
+			"name": "Route_069",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1985.115,
+						"y": 203.649,
+						"z": -817.1143
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1976.618,
+						"y": 203.8144,
+						"z": -824.21
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1971.986,
+						"y": 204.413,
+						"z": -825.048
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1966.156,
+						"y": 208.3551,
+						"z": -827.133
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1956.78,
+						"y": 208.1301,
+						"z": -821.2373
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1929.481,
+						"y": 205.2909,
+						"z": -776.7046
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 71,
+			"name": "Route_071",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1711.927,
+						"y": 267.9574,
+						"z": -859.6807
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1718.149,
+						"y": 270.8864,
+						"z": -877.9556
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1720.326,
+						"y": 272.451,
+						"z": -885.484
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1723.266,
+						"y": 274.768,
+						"z": -896.7876
+					},
+					"waitTime": 10
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 83,
+			"name": "Route_083",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1735.376,
+						"y": 265.7063,
+						"z": -906.5701
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1740.203,
+						"y": 265.5828,
+						"z": -899.0375
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1741.326,
+						"y": 265.7824,
+						"z": -893.4506
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 84,
+			"name": "Route_084",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1775.771,
+						"y": 237.3204,
+						"z": -914.4847
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1752.479,
+						"y": 237.4521,
+						"z": -890.8549
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 85,
+			"name": "Route_085",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1736.759,
+						"y": 252.0291,
+						"z": -916.0459
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1739.866,
+						"y": 256.2485,
+						"z": -907.4346
+					},
+					"waitTime": 3,
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1735.937,
+						"y": 265.4994,
+						"z": -906.4676
+					},
+					"targetVelocity": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 86,
+			"name": "Route_086",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1730.98,
+						"y": 269.6414,
+						"z": -948.0432
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1748.425,
+						"y": 272.4146,
+						"z": -918.241
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 87,
+			"name": "Route_087",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1928.563,
+						"y": 255.867,
+						"z": -845.825
+					},
+					"waitTime": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1926.323,
+						"y": 255.7589,
+						"z": -840.9063
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1930.802,
+						"y": 256.5337,
+						"z": -835.285
+					},
+					"waitTime": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 92,
+			"name": "Route_092",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1994.916,
+						"y": 203.9763,
+						"z": -841.887
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1984.503,
+						"y": 207.4416,
+						"z": -865.9151
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 93,
+			"name": "Route_093",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1996.538,
+						"y": 268.3881,
+						"z": -547.8795
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1991.452,
+						"y": 268.5146,
+						"z": -545.7581
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1992.776,
+						"y": 267.9973,
+						"z": -538.7813
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 94,
+			"name": "Route_094",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1842.129,
+						"y": 248.8517,
+						"z": -602.3147
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1819.086,
+						"y": 245.5387,
+						"z": -595.1312
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1807.432,
+						"y": 245.2831,
+						"z": -580.0211
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1826.55,
+						"y": 247.4937,
+						"z": -572.2345
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1845.594,
+						"y": 252.7508,
+						"z": -572.5867
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 95,
+			"name": "Route_095",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2012.782,
+						"y": 215.5259,
+						"z": -1000.599
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2022.973,
+						"y": 212.7353,
+						"z": -996.5159
+					},
+					"waitTime": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2005.015,
+						"y": 213.7135,
+						"z": -982.8953
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2007.278,
+						"y": 211.1141,
+						"z": -967.9687
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1995.019,
+						"y": 213.7338,
+						"z": -959.7652
+					},
+					"waitTime": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1991.781,
+						"y": 216.6421,
+						"z": -968.7376
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1999.551,
+						"y": 214.4359,
+						"z": -978.979
+					},
+					"waitTime": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 96,
+			"name": "Route_096",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1768.958,
+						"y": 233.2,
+						"z": -936.9749
+					},
+					"waitTime": 10
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1756.693,
+						"y": 237.861,
+						"z": -948.6075
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1765.501,
+						"y": 237.7025,
+						"z": -957.0159
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 97,
+			"name": "Route_097",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1730.836,
+						"y": 266.8471,
+						"z": -901.7879
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1712.585,
+						"y": 268.7428,
+						"z": -905.1021
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 99,
+			"name": "Route_099",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1826.115,
+						"y": 236.3578,
+						"z": -826.4409
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1833.824,
+						"y": 236.7029,
+						"z": -832.1769
+					},
+					"waitTime": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1823.211,
+						"y": 236.5392,
+						"z": -831.8186
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1833.802,
+						"y": 236.9225,
+						"z": -829.8422
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 101,
+			"name": "Route_101",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1773.714,
+						"y": 241.5014,
+						"z": -763.44
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1785.541,
+						"y": 239.2083,
+						"z": -757.6309
+					},
+					"waitTime": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 113,
+			"name": "Route_113",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1776.12,
+						"y": 216.6486,
+						"z": -362.5446
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1790.103,
+						"y": 216.4323,
+						"z": -362.0073
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1798.13,
+						"y": 216.7951,
+						"z": -363.006
+					},
+					"waitTime": 4,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1806.175,
+						"y": 217.3181,
+						"z": -369.7962
+					},
+					"waitTime": 5,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 114,
+			"name": "Route_114",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1768.938,
+						"y": 216.2941,
+						"z": -349.1061
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1790.076,
+						"y": 215.5359,
+						"z": -349.1462
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 115,
+			"name": "Route_115",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1814.565,
+						"y": 216.4168,
+						"z": -362.2218
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1804.981,
+						"y": 216.2983,
+						"z": -356.6337
+					},
+					"waitTime": 2,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1812.648,
+						"y": 216.7859,
+						"z": -353.8984
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1813.475,
+						"y": 216.2349,
+						"z": -358.8878
+					},
+					"waitTime": 2,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1818.518,
+						"y": 216.5503,
+						"z": -357.1663
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1820.594,
+						"y": 216.1417,
+						"z": -361.1835
+					},
+					"waitTime": 2,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 116,
+			"name": "Route_116",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1795.134,
+						"y": 215.6736,
+						"z": -354.2228
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1798.951,
+						"y": 212.0021,
+						"z": -336.9711
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1791.451,
+						"y": 212.2406,
+						"z": -335.8075
+					},
+					"waitTime": 4,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 117,
+			"name": "Route_117",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1806.903,
+						"y": 217.3378,
+						"z": -375.5896
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1814.221,
+						"y": 217.3869,
+						"z": -377.9698
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1798.698,
+						"y": 217.3467,
+						"z": -369.7742
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1775.751,
+						"y": 217.4317,
+						"z": -366.3969
+					},
+					"waitTime": 4,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 118,
+			"name": "Route_118",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1771.114,
+						"y": 210.9636,
+						"z": -330.9596
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1774.148,
+						"y": 211.3938,
+						"z": -330.6808
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1773.585,
+						"y": 213.5389,
+						"z": -341.4196
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1780.255,
+						"y": 215.5568,
+						"z": -345.9269
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1788.485,
+						"y": 214.056,
+						"z": -340.9017
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1799.077,
+						"y": 216.0564,
+						"z": -355.5383
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1787.354,
+						"y": 215.4749,
+						"z": -352.5196
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1789.424,
+						"y": 216.2592,
+						"z": -359.6901
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1778.649,
+						"y": 216.9949,
+						"z": -365.4278
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 119,
+			"name": "Route_119",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1800.143,
+						"y": 216.1763,
+						"z": -357.0739
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1788.371,
+						"y": 215.7889,
+						"z": -354.2434
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1779.274,
+						"y": 216.2415,
+						"z": -355.3853
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1779.573,
+						"y": 216.0519,
+						"z": -351.8133
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1773.158,
+						"y": 215.9808,
+						"z": -351.5444
+					},
+					"waitTime": 3,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 120,
+			"name": "Route_120",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1902.892,
+						"y": 212.1672,
+						"z": -721.2649
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1919.987,
+						"y": 208.073,
+						"z": -722.7914
+					},
+					"waitTime": 10,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 121,
+			"name": "Route_121",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2009.269,
+						"y": 210.6149,
+						"z": -970.2166
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2014.125,
+						"y": 210.8206,
+						"z": -943.6494
+					},
+					"waitTime": 5,
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1995.374,
+						"y": 212.7275,
+						"z": -954.239
+					},
+					"waitTime": 2,
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 128,
+			"name": "Route_128",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1734.869,
+						"y": 235.7517,
+						"z": -535.2087
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1734.481,
+						"y": 234.3986,
+						"z": -532.7379
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1735.787,
+						"y": 234.36,
+						"z": -533.4144
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1735.988,
+						"y": 234.454,
+						"z": -535.6179
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 129,
+			"name": "Route_129",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1733.449,
+						"y": 234.0036,
+						"z": -531.6824
+					},
+					"targetVelocity": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1751.681,
+						"y": 217.6904,
+						"z": -518.1332
+					},
+					"waitTime": 4,
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1717.093,
+						"y": 219.5457,
+						"z": -500.0186
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 130,
+			"name": "Route_130",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1717.32,
+						"y": 216.5438,
+						"z": -495.712
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1690.659,
+						"y": 204.7838,
+						"z": -472.1734
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002131,
+			"name": "Platform_3002131",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1734.757,
+						"y": 266.4427,
+						"z": -905.2691
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1722.501,
+						"y": 267.8744,
+						"z": -905.5529
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1712.831,
+						"y": 268.6169,
+						"z": -905.3847
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002132,
+			"name": "Platform_3002132",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1711.608,
+						"y": 269.3282,
+						"z": -903.6103
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1699.744,
+						"y": 269.6696,
+						"z": -885.2155
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1684.945,
+						"y": 264.9679,
+						"z": -866.6512
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002133,
+			"name": "Platform_3002133",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1569.599,
+						"y": 288.9017,
+						"z": -821.4558
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1565.424,
+						"y": 288.8956,
+						"z": -824.001
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1563.618,
+						"y": 288.6726,
+						"z": -820.884
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002134,
+			"name": "Platform_3002134",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1562.395,
+						"y": 288.72,
+						"z": -818.2638
+					},
+					"targetVelocity": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1555.339,
+						"y": 287.7523,
+						"z": -811.6989
+					},
+					"targetVelocity": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002135,
+			"name": "Platform_3002135",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1555.184,
+						"y": 286.9942,
+						"z": -805.2891
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1573.675,
+						"y": 289.8659,
+						"z": -805.7566
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002136,
+			"name": "Route_3002136",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2007.641,
+						"y": 257.0992,
+						"z": -291.8806
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2009.189,
+						"y": 257.0992,
+						"z": -295.4988
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2008.032,
+						"y": 257.0992,
+						"z": -298.3973
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2004.051,
+						"y": 257.0992,
+						"z": -300.1494
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2000.125,
+						"y": 257.0992,
+						"z": -299.1147
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1998.988,
+						"y": 257.0992,
+						"z": -295.4151
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2000.298,
+						"y": 257.0992,
+						"z": -292.1474
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2004.046,
+						"y": 257.0992,
+						"z": -290.515
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002137,
+			"name": "Route_3002137",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2003.955,
+						"y": 256.8255,
+						"z": -298.0345
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2001.871,
+						"y": 255.68,
+						"z": -297.6069
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2000.75,
+						"y": 255.68,
+						"z": -295.6018
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2001.77,
+						"y": 255.68,
+						"z": -293.543
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2003.855,
+						"y": 255.68,
+						"z": -292.6186
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2005.6,
+						"y": 255.2031,
+						"z": -293.3074
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2006.825,
+						"y": 255.6167,
+						"z": -295.3911
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2005.812,
+						"y": 255.68,
+						"z": -297.4621
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002138,
+			"name": "Platform_3002138",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1956.824,
+						"y": 224.8554,
+						"z": -958.869
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1957.117,
+						"y": 224.1539,
+						"z": -956.3373
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1953.488,
+						"y": 224.2644,
+						"z": -956.2892
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1953.076,
+						"y": 224.7371,
+						"z": -959.0881
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002139,
+			"name": "Platform_3002139",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1957.374,
+						"y": 224.3898,
+						"z": -956.153
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1960.548,
+						"y": 225.7589,
+						"z": -940.1809
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002140,
+			"name": "Platform_3002140",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1960.7,
+						"y": 225.9995,
+						"z": -939.9699
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1963.669,
+						"y": 227.8776,
+						"z": -935.111
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1974.249,
+						"y": 215.3796,
+						"z": -906.5649
+					},
+					"targetVelocity": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002141,
+			"name": "Platform_3002141",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1974.061,
+						"y": 215.4492,
+						"z": -906.5466
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1951.6,
+						"y": 212.7324,
+						"z": -906.1819
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002142,
+			"name": "Platform_3002142",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1905.023,
+						"y": 233.6757,
+						"z": -870.2698
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1905.419,
+						"y": 232.6818,
+						"z": -873.2167
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1909.229,
+						"y": 233.0798,
+						"z": -872.5652
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1908.76,
+						"y": 233.781,
+						"z": -869.3394
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002143,
+			"name": "Platform_3002143",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1910.717,
+						"y": 234.2366,
+						"z": -873.652
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1923.676,
+						"y": 230.3178,
+						"z": -882.5023
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002144,
+			"name": "Platform_3002144",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1924.815,
+						"y": 230.4275,
+						"z": -881.986
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1943.157,
+						"y": 228.5434,
+						"z": -907.8743
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002145,
+			"name": "Platform_3002145",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1944.079,
+						"y": 229.129,
+						"z": -906.6242
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1947.159,
+						"y": 227.2914,
+						"z": -900.2121
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1955.272,
+						"y": 212.403,
+						"z": -896.5587
+					},
+					"targetVelocity": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002146,
+			"name": "Platform_3002146",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1751.576,
+						"y": 237.2963,
+						"z": -891.5614
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1742.19,
+						"y": 241.2043,
+						"z": -895.8325
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1740.052,
+						"y": 245.2093,
+						"z": -914.8472
+					},
+					"waitTime": 5,
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1740.583,
+						"y": 252.1816,
+						"z": -914.2351
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1738.986,
+						"y": 252.3683,
+						"z": -915.287
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002147,
+			"name": "Platform_3002147",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1806.227,
+						"y": 233.9147,
+						"z": -846.943
+					},
+					"waitTime": 20
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002148,
+			"name": "Platform_3002148",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1888.682,
+						"y": 212.4351,
+						"z": -119.326
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1889.238,
+						"y": 213.1838,
+						"z": -124.447
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1888.401,
+						"y": 213.2968,
+						"z": -128.9857
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1890.511,
+						"y": 213.3876,
+						"z": -124.9699
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1889.53,
+						"y": 213.089,
+						"z": -116.6059
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002149,
+			"name": "Platform_3002149",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1889.952,
+						"y": 214.3747,
+						"z": -120.3717
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1881.074,
+						"y": 205.4858,
+						"z": -117.5078
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002150,
+			"name": "Platform_3002150",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1828.688,
+						"y": 204.5023,
+						"z": -96.8217
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1828.351,
+						"y": 203.9205,
+						"z": -98.04411
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1829.857,
+						"y": 203.6222,
+						"z": -98.25903
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1830.059,
+						"y": 203.834,
+						"z": -96.95168
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002151,
+			"name": "Platform_3002151",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1820.932,
+						"y": 201,
+						"z": -110.0551
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1827.2,
+						"y": 201.4461,
+						"z": -122.9862
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1828.683,
+						"y": 201.1581,
+						"z": -121.4191
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1829.343,
+						"y": 201.4632,
+						"z": -123.2246
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1827.789,
+						"y": 201.396,
+						"z": -124.3368
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1826.909,
+						"y": 201.4247,
+						"z": -123.3059
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1828.085,
+						"y": 201,
+						"z": -121.2817
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1828.624,
+						"y": 201,
+						"z": -122.7398
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1829.09,
+						"y": 201.3289,
+						"z": -124.3491
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1827.299,
+						"y": 201,
+						"z": -124.589
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1828.143,
+						"y": 201.3368,
+						"z": -122.7886
+					},
+					"targetVelocity": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002152,
+			"name": "Platform_3002152",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1830.242,
+						"y": 201.4005,
+						"z": -123.2416
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1867.332,
+						"y": 206.2698,
+						"z": -115.5507
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1871.457,
+						"y": 205.2641,
+						"z": -113.6624
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002153,
+			"name": "Platform_3002153",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1889.954,
+						"y": 214.8,
+						"z": -216.4306
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1887.813,
+						"y": 214.8,
+						"z": -218.6839
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1889.042,
+						"y": 214.8,
+						"z": -222.8762
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1891.781,
+						"y": 214.8,
+						"z": -222.8799
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1893.591,
+						"y": 214.8,
+						"z": -218.832
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1891.245,
+						"y": 214.8,
+						"z": -216.245
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002154,
+			"name": "Platform_3002154",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1888.449,
+						"y": 215,
+						"z": -213.1961
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1861.648,
+						"y": 202.8,
+						"z": -172.6599
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1863.908,
+						"y": 202.8,
+						"z": -172.1414
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1860.281,
+						"y": 202.8,
+						"z": -175.0622
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1859.351,
+						"y": 202.8,
+						"z": -173.4735
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1862.47,
+						"y": 202.8,
+						"z": -170.7912
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1863.405,
+						"y": 202.8,
+						"z": -173.7167
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1860.623,
+						"y": 202.8,
+						"z": -175.7654
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1860.396,
+						"y": 202.8,
+						"z": -171.1138
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1864.858,
+						"y": 202.8,
+						"z": -172.9617
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1861.15,
+						"y": 202.8,
+						"z": -173.0007
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002155,
+			"name": "Platform_3002155",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1872.226,
+						"y": 203,
+						"z": -174.0546
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1876.911,
+						"y": 202.3,
+						"z": -158.2389
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002156,
+			"name": "Platform_3002156",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1876.322,
+						"y": 202.7,
+						"z": -154.6302
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1875.226,
+						"y": 204.8505,
+						"z": -123.2469
+					},
+					"targetVelocity": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002157,
+			"name": "Platform_3002157",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1997.691,
+						"y": 260.4109,
+						"z": -255.0978
+					},
+					"targetVelocity": 1
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1999.295,
+						"y": 260.5332,
+						"z": -254.9851
+					},
+					"targetVelocity": 1
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1999.466,
+						"y": 260.2915,
+						"z": -256.7034
+					},
+					"targetVelocity": 1
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1998.004,
+						"y": 260.1833,
+						"z": -256.7939
+					},
+					"targetVelocity": 1
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002158,
+			"name": "Platform_3002158",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2000.231,
+						"y": 259.277,
+						"z": -257.3751
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2014.391,
+						"y": 257.7499,
+						"z": -274.151
+					},
+					"targetVelocity": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002159,
+			"name": "Platform_3002159",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2015.29,
+						"y": 257.7232,
+						"z": -275.3613
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2021.543,
+						"y": 257.965,
+						"z": -291.8936
+					},
+					"targetVelocity": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002160,
+			"name": "Platform_3002160",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2022.59,
+						"y": 257.3221,
+						"z": -293.4742
+					},
+					"targetVelocity": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2018.724,
+						"y": 260.8214,
+						"z": -301.6887
+					},
+					"targetVelocity": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002161,
+			"name": "Platform_3002161",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1812.618,
+						"y": 240.1077,
+						"z": -490.2765
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1811.626,
+						"y": 243.7833,
+						"z": -489.0722
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002162,
+			"name": "Platform_3002162",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1814.913,
+						"y": 240.7167,
+						"z": -487.8566
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1818.412,
+						"y": 240.5694,
+						"z": -486.3503
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002163,
+			"name": "Platform_3002163",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1819.105,
+						"y": 241.3027,
+						"z": -486.6375
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1820.417,
+						"y": 241.7257,
+						"z": -486.082
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1821.354,
+						"y": 241.3611,
+						"z": -485.63
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1821.688,
+						"y": 240.2653,
+						"z": -485.3389
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1821.623,
+						"y": 238.9533,
+						"z": -486.1349
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1819.282,
+						"y": 238.949,
+						"z": -486.6703
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1818.916,
+						"y": 240.3282,
+						"z": -486.8546
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002164,
+			"name": "Platform_3002164",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1822.986,
+						"y": 238.3059,
+						"z": -484.9451
+					},
+					"targetVelocity": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1824.57,
+						"y": 240.6761,
+						"z": -483.9675
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1822.688,
+						"y": 242.2955,
+						"z": -484.9654
+					},
+					"targetVelocity": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1824.679,
+						"y": 244.2311,
+						"z": -484.1156
+					},
+					"targetVelocity": 4
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002165,
+			"name": "Route_3002165",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1819.652,
+						"y": 217.8086,
+						"z": -386.51
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1821.148,
+						"y": 218.0106,
+						"z": -389.3604
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1820.187,
+						"y": 218.0943,
+						"z": -390.6808
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1818.471,
+						"y": 218.1518,
+						"z": -390.8101
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002166,
+			"name": "Route_3002166",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1904.667,
+						"y": 242.3282,
+						"z": -638.0583
+					},
+					"waitTime": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1905.02,
+						"y": 242.0348,
+						"z": -641.215
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1902.484,
+						"y": 241.5624,
+						"z": -642.4902
+					},
+					"waitTime": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002167,
+			"name": "Route_3002167",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1824.903,
+						"y": 217.939,
+						"z": -386.0032
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1823.581,
+						"y": 218.1006,
+						"z": -388.5681
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1822.014,
+						"y": 217.3444,
+						"z": -388.2177
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1821.51,
+						"y": 218.1963,
+						"z": -391.2084
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002168,
+			"name": "Route_3002168",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1822.894,
+						"y": 218.5523,
+						"z": -394.9076
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1821.398,
+						"y": 218.3416,
+						"z": -393.9825
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1820.279,
+						"y": 218.2897,
+						"z": -394.8539
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1818.837,
+						"y": 218.3488,
+						"z": -393.8274
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002169,
+			"name": "Route_3002169",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1813.558,
+						"y": 218.1203,
+						"z": -420.1256
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1813.615,
+						"y": 218.1455,
+						"z": -416.8497
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1816.602,
+						"y": 218.3335,
+						"z": -414.8116
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002170,
+			"name": "Route_3002170",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1812.764,
+						"y": 218.4315,
+						"z": -409.4096
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1814.652,
+						"y": 218.1865,
+						"z": -408.0092
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1815.37,
+						"y": 218.1705,
+						"z": -411.2572
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1817.907,
+						"y": 218.2128,
+						"z": -410.6524
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002171,
+			"name": "Route_3002171",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1807.862,
+						"y": 219.178,
+						"z": -415.7151
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1810.484,
+						"y": 218.2441,
+						"z": -418.2881
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1814.373,
+						"y": 218.0585,
+						"z": -416.1055
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002172,
+			"name": "Platform_3002172",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2004.809,
+						"y": 257.3363,
+						"z": -261.6745
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2010.201,
+						"y": 257.0165,
+						"z": -273.8985
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2018.309,
+						"y": 257.259,
+						"z": -296.3986
+					},
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2018.679,
+						"y": 260.8349,
+						"z": -301.5837
+					},
+					"targetVelocity": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002173,
+			"name": "Route_3002173",
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2045.959,
+						"y": 247.1054,
+						"z": -447.1239
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2050.824,
+						"y": 247.9471,
+						"z": -440.8008
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2058.522,
+						"y": 248.1442,
+						"z": -441.0441
+					},
+					"waitTime": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2072.323,
+						"y": 249.4464,
+						"z": -443.8264
+					},
+					"waitTime": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2064.879,
+						"y": 248.2901,
+						"z": -454.3973
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2050.027,
+						"y": 247.4858,
+						"z": -454.5629
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002174,
+			"name": "Route_3002174",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2072.069,
+						"y": 238.7663,
+						"z": -573.7211
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2038.793,
+						"y": 242.2395,
+						"z": -543.046
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2018.322,
+						"y": 245.995,
+						"z": -506.0352
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2021.744,
+						"y": 246.7846,
+						"z": -494.4929
+					},
+					"waitTime": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002175,
+			"name": "Route_3002175",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2070.427,
+						"y": 238.5533,
+						"z": -575.3912
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2036.685,
+						"y": 242.6263,
+						"z": -544.6663
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2015.865,
+						"y": 246.4005,
+						"z": -505.8066
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2019.948,
+						"y": 247.0348,
+						"z": -494.4371
+					},
+					"waitTime": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002176,
+			"name": "Route_3002176",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2018.757,
+						"y": 245.5137,
+						"z": -582.8679
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2027.046,
+						"y": 247.2099,
+						"z": -579.5499
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2035.155,
+						"y": 247.6311,
+						"z": -577.0822
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002177,
+			"name": "Route_3002177",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2036.483,
+						"y": 210.2399,
+						"z": -1011.66
+					},
+					"waitTime": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2037.08,
+						"y": 209.9548,
+						"z": -1010.387
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2039.733,
+						"y": 209.703,
+						"z": -1012.675
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2039.246,
+						"y": 209.9775,
+						"z": -1015.462
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2037.99,
+						"y": 210.3127,
+						"z": -1015.285
+					},
+					"waitTime": 3
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002178,
+			"name": "Route_3002178",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2040.113,
+						"y": 207.7307,
+						"z": -995.4714
+					},
+					"speedLevel": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 2041.158,
+						"y": 209.4124,
+						"z": -1012.08
+					},
+					"speedLevel": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002179,
+			"name": "Route_3002179",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1773.449,
+						"y": 265.4207,
+						"z": -1024.652
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1781.128,
+						"y": 260.1549,
+						"z": -1033.992
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1789.391,
+						"y": 258.5633,
+						"z": -1033.974
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1790.196,
+						"y": 259.0784,
+						"z": -1030.975
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1787.506,
+						"y": 259.6002,
+						"z": -1030.387
+					},
+					"waitTime": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002180,
+			"name": "Route_3002180",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1769.034,
+						"y": 245.9671,
+						"z": -1079.323
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1768.213,
+						"y": 246.4428,
+						"z": -1078.625
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1776.343,
+						"y": 245.7499,
+						"z": -1074.965
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1781.7,
+						"y": 244.8683,
+						"z": -1074.151
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1782.639,
+						"y": 244.0804,
+						"z": -1075.848
+					},
+					"waitTime": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002181,
+			"name": "Route_3002181",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1775.575,
+						"y": 251.679,
+						"z": -970.5931
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1775.387,
+						"y": 251.2471,
+						"z": -973.7211
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1766.084,
+						"y": 252.782,
+						"z": -973.7746
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1765.958,
+						"y": 252.6552,
+						"z": -971.7137
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1763.279,
+						"y": 252.1054,
+						"z": -974.2606
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1755.539,
+						"y": 252.8412,
+						"z": -968.889
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1756.79,
+						"y": 252.9493,
+						"z": -967.3181
+					},
+					"waitTime": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002182,
+			"name": "Route_3002182",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1970.678,
+						"y": 221.1321,
+						"z": -574.4464
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1969.516,
+						"y": 221.0997,
+						"z": -574.4744
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1969.135,
+						"y": 221.0895,
+						"z": -577.0914
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1971.506,
+						"y": 221.2407,
+						"z": -577.3571
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1967.064,
+						"y": 220.9881,
+						"z": -579.004
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1966.528,
+						"y": 220.9257,
+						"z": -581.2158
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1967.848,
+						"y": 220.9908,
+						"z": -581.497
+					},
+					"waitTime": 2
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3002183,
+			"name": "Route_3002183",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1945.816,
+						"y": 219.7726,
+						"z": -570.2547
+					},
+					"waitTime": 2
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1947.52,
+						"y": 219.8652,
+						"z": -569.3159
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1948,
+						"y": 220.0319,
+						"z": -568.1023
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1946.423,
+						"y": 219.7322,
+						"z": -567.0563
+					},
+					"waitTime": 5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1948.602,
+						"y": 219.769,
+						"z": -566.4763
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1950.036,
+						"y": 219.6344,
+						"z": -565.0547
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1950.1,
+						"y": 219.8032,
+						"z": -562.2305
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1948.557,
+						"y": 220.0646,
+						"z": -561.0444
+					},
+					"waitTime": 3
+				}
+			]
+		}
+	]
+}

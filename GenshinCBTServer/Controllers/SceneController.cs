@@ -11,7 +11,33 @@ namespace GenshinCBTServer.Controllers
 {
     public class SceneController
     {
+       
+        [Server.Handler(CmdType.UnlockTransPointReq)]
+        public static void OnUnlockTransPointReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
 
+            UnlockTransPointReq req = packet.DecodeBody<UnlockTransPointReq>();
+            session.unlockedPoints.Add(req.PointId);
+            UnlockTransPointRsp rsp_ = new() { Retcode = 0 };
+            GetScenePointRsp rsp = new GetScenePointRsp()
+            {
+                SceneId = req.SceneId,
+                BelongUid = session.uid,
+
+                Retcode = 0,
+
+            };
+            for (int i = 0; i < 5; i++)
+            {
+                rsp.UnlockAreaList.Add((uint)i);
+            }
+            rsp.UnlockedPointList.Add(session.unlockedPoints);
+            session.SendPacket((uint)CmdType.GetScenePointRsp, rsp);
+            session.SendPacket((uint)CmdType.UnlockTransPointRsp, rsp_);
+
+
+
+        }
         [Server.Handler(CmdType.EnterSceneReadyReq)]
         public static void OnEnterSceneReadyReq(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -41,7 +67,18 @@ namespace GenshinCBTServer.Controllers
             Avatar avatar = session.avatars.Find(av=>av.entityId==req.EntityId);
             if(avatar != null)
             {
-                session.motionInfo = req.MotionInfo;
+               
+                if(req.MotionInfo.Pos.X == 0 && req.MotionInfo.Pos.Y==0 && req.MotionInfo.Pos.Z == 0)
+                {
+
+                }
+                else
+                {
+                    session.motionInfo = req.MotionInfo;
+                    session.world.UpdateBlocks();
+                }
+                Server.Print($"Client Pos: {session.motionInfo.Pos.X}, {session.motionInfo.Pos.Y}, {session.motionInfo.Pos.Z}");
+              
             }
             else
             {
@@ -62,6 +99,26 @@ namespace GenshinCBTServer.Controllers
             session.SendPacket((uint)CmdType.ChangeAvatarRsp, rsp);
 
         }
+        [Server.Handler(CmdType.GadgetInteractReq)]
+        public static void OnGadgetInteractReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            GadgetInteractReq req = packet.DecodeBody<GadgetInteractReq>();
+            GameEntity entity = session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
+            if(entity != null)
+            {
+                if (entity.chest_drop > 0)
+                {
+                    session.world.KillEntities(new List<GameEntity>(){entity},VisionType.VisionNone);
+                    session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0,GadgetEntityId=req.GadgetEntityId,GadgetId=entity.id,InteractType=InteractType.InteractOpenChest,OpType=InterOpType.InterOpStart });
+                   
+                }
+            }
+            else
+            {
+                session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)Retcode.RetGadgetNotExist });
+
+            }
+        }
         [Server.Handler(CmdType.EnterSceneDoneReq)]
         public static void OnEnterSceneDoneReq(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -79,6 +136,8 @@ namespace GenshinCBTServer.Controllers
             session.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
             ScenePlayerLocationNotify locNotify = new() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } };
             session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, locNotify);
+            session.world.UpdateBlocks();
+            session.world.SendAllEntities();
             session.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode =0 });
 
 
@@ -94,12 +153,13 @@ namespace GenshinCBTServer.Controllers
                 BelongUid = req.BelongUid,
                 
                 Retcode = 0,
-
+                
             };
             for (int i = 0; i < 5; i++)
             {
                 rsp.UnlockAreaList.Add((uint)i);
             }
+            rsp.UnlockedPointList.Add(session.unlockedPoints);
             session.SendPacket((uint)CmdType.GetScenePointRsp, rsp);
         }
         [Server.Handler(CmdType.GetSceneAreaReq)]

@@ -1,0 +1,65 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "PersonalSceneJumpPoint",
+			"gadgetId": 70010002,
+			"pos": {
+				"$type": "Vector",
+				"x": 1.207703,
+				"y": 0.1395227,
+				"z": -18.21259
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": -4.25,
+				"y": -0.3,
+				"z": 46.14
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 180
+			},
+			"tranSceneId": 1005,
+			"titleTextID": "UI_SCENE_ENTRY_ENTER_BASEMENT",
+			"triggerSize": {
+				"$type": "Vector",
+				"x": 3,
+				"y": 3,
+				"z": 3
+			},
+			"open_time": 18,
+			"close_time": 6
+		},
+		"2": {
+			"$type": "PersonalSceneJumpPoint",
+			"gadgetId": 70010002,
+			"pos": {
+				"$type": "Vector",
+				"x": -0.09163284,
+				"y": 0.025,
+				"z": 46.4256
+			},
+			"tranPos": {
+				"$type": "Vector",
+				"x": 2354.252,
+				"y": 260.4276,
+				"z": -687.0654
+			},
+			"tranRot": {
+				"$type": "Vector",
+				"y": 206
+			},
+			"unlocked": true,
+			"tranSceneId": 3,
+			"titleTextID": "UI_SCENE_ENTRY_EXIT_CHURCH",
+			"triggerSize": {
+				"$type": "Vector",
+				"x": 2,
+				"y": 2,
+				"z": 2
+			},
+			"close_time": 24
+		}
+	}
+}

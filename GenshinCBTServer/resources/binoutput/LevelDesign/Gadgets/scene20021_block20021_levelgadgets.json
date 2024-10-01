@@ -1,0 +1,13 @@
+{
+	"$type": "ConfigLevelGadgetData",
+	"sceneId": 20021,
+	"gadgets": [
+		{
+			"$type": "LevelGadget",
+			"groupId": 220021001,
+			"mapInstId": 9,
+			"followMove_AttachPoint": "FollowMove03",
+			"followMove_targetInstanceId": 13
+		}
+	]
+}

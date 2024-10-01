@@ -1,0 +1,36 @@
+{
+	"$type": "ConfigLevelGadgetData",
+	"sceneId": 3,
+	"gadgets": [
+		{
+			"$type": "LevelGadget",
+			"groupId": 133007221,
+			"mapInstId": 363,
+			"billboard_HasUIBar": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133007178,
+			"mapInstId": 470,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133007181,
+			"mapInstId": 504,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133007179,
+			"mapInstId": 515,
+			"gadgetMisc_UnlockShowCutScene": true
+		},
+		{
+			"$type": "LevelGadget",
+			"groupId": 133007168,
+			"mapInstId": 827,
+			"gadgetMisc_UnlockShowCutScene": true
+		}
+	]
+}

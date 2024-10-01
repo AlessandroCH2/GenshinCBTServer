@@ -1,0 +1,24 @@
+{
+	"$type": "ConfigLevelMonsterData",
+	"sceneId": 20007,
+	"monsters": [
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220007001,
+			"mapInstId": 1,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220007001,
+			"mapInstId": 2,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220007001,
+			"mapInstId": 3,
+			"aiSensingTemplate": "DefaultTemplate"
+		}
+	]
+}

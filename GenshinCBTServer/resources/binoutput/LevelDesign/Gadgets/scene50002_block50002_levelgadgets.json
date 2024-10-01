@@ -1,0 +1,12 @@
+{
+	"$type": "ConfigLevelGadgetData",
+	"sceneId": 50002,
+	"gadgets": [
+		{
+			"$type": "LevelGadget",
+			"groupId": 250002001,
+			"mapInstId": 53,
+			"billboard_HasUIBar": true
+		}
+	]
+}

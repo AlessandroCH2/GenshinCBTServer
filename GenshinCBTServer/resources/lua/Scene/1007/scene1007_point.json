@@ -1,0 +1,146 @@
+{
+  "radius": 10.0,
+  "points": {
+    "1": {
+      "type": "NORMAL",
+      "$type": "DungeonWayPoint",
+      "gadgetId": 70120003,
+      "pos": {
+        "x": -35.0279732,
+        "y": -76.9834061,
+        "z": -170.23616
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "areaId": 0,
+      "unlocked": true,
+      "cutsceneList": [],
+      "worktopGroupId": 201007001,
+      "size": {
+        "x": 20.0,
+        "y": 10.0,
+        "z": 10.0
+      },
+      "isBoss": false,
+      "groupIds": [
+        0
+      ]
+    },
+    "2": {
+      "type": "NORMAL",
+      "$type": "DungeonWayPoint",
+      "gadgetId": 70120003,
+      "pos": {
+        "x": -46.1049347,
+        "y": -46.48351,
+        "z": 21.3403072
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      },
+      "areaId": 0,
+      "unlocked": true,
+      "cutsceneList": [],
+      "worktopGroupId": 201007003,
+      "size": {
+        "x": 30.0,
+        "y": 10.0,
+        "z": 10.0
+      },
+      "isBoss": false,
+      "groupIds": []
+    },
+    "3": {
+      "type": "NORMAL",
+      "$type": "DungeonWayPoint",
+      "gadgetId": 70120003,
+      "pos": {
+        "x": 36.8013878,
+        "y": 36.1944351,
+        "z": 170.126
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      },
+      "areaId": 0,
+      "unlocked": true,
+      "cutsceneList": [],
+      "worktopGroupId": 201007005,
+      "size": {
+        "x": 20.0,
+        "y": 20.0,
+        "z": 30.0
+      },
+      "isBoss": false,
+      "groupIds": []
+    }
+  },
+  "areas": {},
+  "forces": {
+    "1": {
+      "$type": "ConfigAirflowField",
+      "pos": {
+        "x": -37.2112579,
+        "y": -85.0,
+        "z": -100.3998
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "areaId": 0,
+      "unlocked": false,
+      "gadgetId": 70610102,
+      "up": false,
+      "scale": 1.0,
+      "velocity": 15.0
+    },
+    "2": {
+      "$type": "ConfigAirflowField",
+      "pos": {
+        "x": -62.8,
+        "y": -92.5,
+        "z": -53.1
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -36.6
+      },
+      "areaId": 0,
+      "unlocked": false,
+      "gadgetId": 70610102,
+      "up": false,
+      "scale": 1.0,
+      "velocity": 15.0
+    },
+    "3": {
+      "$type": "ConfigAirflowField",
+      "pos": {
+        "x": 18.5,
+        "y": -74.2,
+        "z": -31.8
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 21.6,
+        "z": 58.7
+      },
+      "areaId": 0,
+      "unlocked": false,
+      "gadgetId": 70610102,
+      "up": false,
+      "scale": 1.0,
+      "velocity": 15.0
+    }
+  },
+  "entities": {}
+}

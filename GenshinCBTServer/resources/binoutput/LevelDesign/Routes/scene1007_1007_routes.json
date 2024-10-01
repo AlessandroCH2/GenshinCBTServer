@@ -1,0 +1,58 @@
+{
+	"$type": "ConfigLevelRoute",
+	"sceneId": 1007,
+	"routes": [
+		{
+			"$type": "ConfigRoute",
+			"localId": 1,
+			"name": "DefaultRouteName",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -149.0261,
+						"y": -15.48329,
+						"z": 147.7662
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -134.6232,
+						"y": -15.48329,
+						"z": 147.8052
+					}
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 2,
+			"name": "DefaultRouteName",
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -135.5907,
+						"y": -15.4833,
+						"z": 142.6897
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -149.3492,
+						"y": -15.48328,
+						"z": 142.9072
+					}
+				}
+			]
+		}
+	]
+}

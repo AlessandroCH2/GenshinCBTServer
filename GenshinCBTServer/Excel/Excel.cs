@@ -42,7 +42,7 @@ namespace GenshinCBTServer.Excel
       //  [Index(0)]
        // public EquipType equipType { get; set; } // 圣遗物类别 for ReliquaryData, implicit for others
 
-        // The equivalent of empty structs can just be ignored or represented minimally if needed
+      
 
         public WeaponData Weapon { get; set; } = new WeaponData();
 

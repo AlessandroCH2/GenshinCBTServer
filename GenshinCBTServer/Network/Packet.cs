@@ -108,7 +108,7 @@ namespace GenshinCBTServer.Network
                 }
             }
            
-            IntPtr enet_packet = enet_packet_create(dataPtr, (uint)data.Length, 0);
+            IntPtr enet_packet = enet_packet_create(dataPtr, (uint)data.Length, 0 | 1);
 
             return enet_packet;
         }

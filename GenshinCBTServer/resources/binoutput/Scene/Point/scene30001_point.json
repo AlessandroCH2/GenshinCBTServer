@@ -1,0 +1,39 @@
+{
+	"$type": "ConfigScene",
+	"points": {
+		"1": {
+			"$type": "DungeonQuitPoint",
+			"gadgetId": 70110002,
+			"pos": {
+				"$type": "Vector",
+				"x": -5.211,
+				"y": 8.516427,
+				"z": 3962.15
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 10,
+				"y": 10,
+				"z": 10
+			}
+		},
+		"2": {
+			"$type": "DungeonWayPoint",
+			"gadgetId": 70120003,
+			"pos": {
+				"$type": "Vector",
+				"x": 0.5262328,
+				"y": 0.01655902,
+				"z": 4086.962
+			},
+			"unlocked": true,
+			"size": {
+				"$type": "Vector",
+				"x": 36.08,
+				"y": 12.85,
+				"z": 6.23
+			}
+		}
+	}
+}

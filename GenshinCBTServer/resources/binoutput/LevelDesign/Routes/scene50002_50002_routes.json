@@ -1,0 +1,49 @@
+{
+	"$type": "ConfigLevelRoute",
+	"sceneId": 50002,
+	"routes": [
+		{
+			"$type": "ConfigRoute",
+			"localId": 50002001,
+			"name": "Route_50002001",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1606.148,
+						"y": 287.5008,
+						"z": -979.9935
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1631.126,
+						"y": 288.4562,
+						"z": -1009.944
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1675.957,
+						"y": 283.4662,
+						"z": -972.9835
+					}
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 1689.818,
+						"y": 283.1,
+						"z": -955.1419
+					}
+				}
+			]
+		}
+	]
+}

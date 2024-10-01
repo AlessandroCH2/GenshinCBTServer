@@ -1,0 +1,110 @@
+{
+	"$type": "ConfigLevelRoute",
+	"sceneId": 1001,
+	"routes": [
+		{
+			"$type": "ConfigRoute",
+			"localId": 1,
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 10,
+						"z": 10
+					},
+					"waitTime": 3,
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -10,
+						"z": 10
+					},
+					"waitTime": 3,
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"z": -10
+					},
+					"waitTime": 3,
+					"targetVelocity": 5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 2,
+			"type": "Reciprocate",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -7,
+						"z": 5
+					},
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -7
+					},
+					"targetVelocity": 1.5
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -7,
+						"y": 5
+					},
+					"targetVelocity": 1.5
+				}
+			]
+		},
+		{
+			"$type": "ConfigRoute",
+			"localId": 3,
+			"type": "Loop",
+			"points": [
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": 10,
+						"z": 10
+					},
+					"waitTime": 3,
+					"targetVelocity": 3
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"x": -10,
+						"z": 10
+					},
+					"waitTime": 3,
+					"targetVelocity": 4
+				},
+				{
+					"$type": "ConfigWaypoint",
+					"pos": {
+						"$type": "Vector",
+						"z": -10
+					},
+					"waitTime": 3,
+					"targetVelocity": 5
+				}
+			]
+		}
+	]
+}

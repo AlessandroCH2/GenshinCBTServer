@@ -1,0 +1,11 @@
+{
+  "sceneId": 1011,
+  "routes": [
+    {
+      "localId": 1011001,
+      "name": "Route_1011001",
+      "type": "OneWay",
+      "points": []
+    }
+  ]
+}

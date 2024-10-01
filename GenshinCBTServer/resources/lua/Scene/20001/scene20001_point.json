@@ -1,0 +1,76 @@
+{
+  "radius": 100.0,
+  "points": {
+  "1": {
+      "$type": "DungeonQuitPoint",
+      "gadgetId": 70010005,
+      "pos": {
+        "x": 42,
+        "y": 11,
+        "z": -2.8,
+      },
+    "size": {
+        "x": 10,
+        "y": 10,
+        "z": 10
+      },
+    }
+  },
+  "areas": {},
+  "forces": {
+    "4": {
+      "$type": "ConfigAirflowField",
+      "pos": {
+        "x": -2.44498873,
+        "y": 15.5173073,
+        "z": 0.232948542
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "unlocked": true,
+      "gadgetId": 40200001,
+      "up": true,
+      "scale": 1.5,
+      "velocity": 10.0
+    },
+    "5": {
+      "$type": "ConfigAirflowField",
+      "pos": {
+        "x": 11.5077486,
+        "y": 13.057066,
+        "z": 0.830474854
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "unlocked": true,
+      "gadgetId": 40200001,
+      "up": true,
+      "velocity": 10.0
+    },
+    "6": {
+      "$type": "ConfigAirflowField",
+      "pos": {
+        "x": 31.5596218,
+        "y": 10.16954,
+        "z": 1.10957181
+      },
+      "rot": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "unlocked": true,
+      "gadgetId": 40200001,
+      "up": true,
+      "scale": 0.75,
+      "velocity": 10.0
+    }
+  },
+  "entities": {}
+}

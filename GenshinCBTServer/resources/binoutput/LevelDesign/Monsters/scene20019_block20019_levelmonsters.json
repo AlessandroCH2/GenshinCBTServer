@@ -1,0 +1,102 @@
+{
+	"$type": "ConfigLevelMonsterData",
+	"sceneId": 20019,
+	"monsters": [
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019001,
+			"mapInstId": 1,
+			"aiGroupID": 220019001,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019001,
+			"mapInstId": 2,
+			"aiGroupID": 220019001,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019001,
+			"mapInstId": 5,
+			"aiGroupID": 220019001,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019001,
+			"mapInstId": 6,
+			"aiGroupID": 220019001,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019001,
+			"mapInstId": 7,
+			"aiGroupID": 220019001,
+			"aiSensingTemplate": "DefaultTemplate",
+			"disableWander": true,
+			"billboard_HasUIBar": true,
+			"billboard_UIBarNeedEnterCombat": true
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019002,
+			"mapInstId": 8,
+			"aiGroupID": 220019002,
+			"aiSensingTemplate": "HighAlertTemplate",
+			"disableWander": true
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019002,
+			"mapInstId": 9,
+			"aiGroupID": 220019002,
+			"aiSensingTemplate": "HighAlertTemplate",
+			"disableWander": true
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019002,
+			"mapInstId": 10,
+			"aiGroupID": 220019002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019002,
+			"mapInstId": 11,
+			"aiGroupID": 220019002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019002,
+			"mapInstId": 12,
+			"aiGroupID": 220019002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019002,
+			"mapInstId": 13,
+			"aiGroupID": 220019002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019002,
+			"mapInstId": 14,
+			"aiGroupID": 220019002,
+			"aiSensingTemplate": "DefaultTemplate"
+		},
+		{
+			"$type": "ConfigLevelMonsterUnit",
+			"groupId": 220019002,
+			"mapInstId": 15,
+			"aiGroupID": 220019002,
+			"aiSensingTemplate": "DefaultTemplate"
+		}
+	]
+}
