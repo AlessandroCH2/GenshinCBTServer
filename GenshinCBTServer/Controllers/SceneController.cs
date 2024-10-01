@@ -130,7 +130,7 @@ namespace GenshinCBTServer.Controllers
             {
                 Param= NewAv.asInfo().EntityId,
                 EntityList = { NewAv.asInfo() },
-                AppearType = VisionType.VisionMeet
+                AppearType = VisionType.VisionNone
 
             };
             session.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
@@ -142,7 +142,47 @@ namespace GenshinCBTServer.Controllers
 
 
         }
-        
+
+        [Server.Handler(CmdType.PlayerSetPauseReq)]
+        public static void OnPlayerSetPauseReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            // later should implement the pause on server side (for specific props, countdowns etc)
+            PlayerSetPauseReq req = packet.DecodeBody<PlayerSetPauseReq>();
+            PlayerSetPauseRsp rsp = new PlayerSetPauseRsp() { Retcode = 0 };
+            session.SendPacket((uint)CmdType.PlayerSetPauseRsp, rsp);
+
+        }
+
+        [Server.Handler(CmdType.SetOpenStateReq)]
+        public static void OnSetOpenStateReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            // later should implement the pause on server side (for specific props, countdowns etc)
+            SetOpenStateReq req = packet.DecodeBody<SetOpenStateReq>();
+            SetOpenStateRsp rsp = new SetOpenStateRsp() { Key = req.Key, Value = req.Value, Retcode = 0 };
+            session.SendPacket((uint)CmdType.SetOpenStateRsp, rsp);
+
+        }
+
+        [Server.Handler(CmdType.EnterWorldAreaReq)]
+        public static void OnEnterWorldAreaReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            // later should implement the pause on server side (for specific props, countdowns etc)
+            EnterWorldAreaReq req = packet.DecodeBody<EnterWorldAreaReq>();
+            EnterWorldAreaRsp rsp = new EnterWorldAreaRsp() { AreaId = req.AreaId, AreaType = req.AreaType, Retcode = 0 };
+            session.SendPacket((uint)CmdType.EnterWorldAreaRsp, rsp);
+
+        }
+
+        [Server.Handler(CmdType.SceneGetAreaExplorePercentReq)]
+        public static void OnSceneGetAreaExplorePercentReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            // later should implement the pause on server side (for specific props, countdowns etc)
+            SceneGetAreaExplorePercentReq req = packet.DecodeBody<SceneGetAreaExplorePercentReq>();
+            SceneGetAreaExplorePercentRsp rsp = new SceneGetAreaExplorePercentRsp() { AreaId = req.AreaId, ExplorePercent = 1f, Retcode = 0 };
+            session.SendPacket((uint)CmdType.SceneGetAreaExplorePercentRsp, rsp);
+
+        }
+
         [Server.Handler(CmdType.GetScenePointReq)]
         public static void OnGetScenePointReq(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -155,9 +195,10 @@ namespace GenshinCBTServer.Controllers
                 Retcode = 0,
                 
             };
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 200; i++) // todo: get from scene{player.pos.scenepoint}_point.json
             {
                 rsp.UnlockAreaList.Add((uint)i);
+                rsp.UnlockedPointList.Add((uint)i);
             }
             rsp.UnlockedPointList.Add(session.unlockedPoints);
             session.SendPacket((uint)CmdType.GetScenePointRsp, rsp);
@@ -172,10 +213,16 @@ namespace GenshinCBTServer.Controllers
                 Retcode = 0,
 
             };
-            for(int i=0; i < 5; i++)
+            for(int i=0; i < 200; i++) // 200 just in case, the client will ignore the extra areas
             {
                 rsp.AreaIdList.Add((uint)i);
             }
+            rsp.CityInfoList.Add(new CityInfo()
+            {
+                CityId = 1,
+                Level = 10,
+                CrystalNum = 10
+            });
             session.SendPacket((uint)CmdType.GetSceneAreaRsp, rsp);
         }
         [Server.Handler(CmdType.SceneInitFinishReq)]
