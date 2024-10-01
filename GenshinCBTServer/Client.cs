@@ -65,14 +65,7 @@ namespace GenshinCBTServer
         public GuidRandomizer random = new GuidRandomizer();
         public IntPtr peer;
         public int gamePeer = 0;
-        public MapField<uint, uint> openStateMap = new MapField<uint, uint>()
-        {
-            {(uint)OpenStateType.OPEN_STATE_PAIMON,1 },
-             {(uint)OpenStateType.OPEN_STATE_PAIMON_NAVIGATION,1 },
-             {(uint)OpenStateType.OPEN_STATE_AVATAR_PROMOTE,1 },
-             {(uint)OpenStateType.OPEN_STATE_AVATAR_TALENT,1 },
-
-        };
+        public MapField<uint, uint> openStateMap = new MapField<uint, uint>();
         public uint currentSceneId = 3;
 
         public uint[] team = { 10000015 };
@@ -145,6 +138,12 @@ namespace GenshinCBTServer
                 
             };
             playerDataNotify.PropMap.Add(GetPlayerProps());
+
+            foreach (OpenStateType state in Enum.GetValues(typeof(OpenStateType)))
+            {
+                openStateMap[(uint)state] = 1;
+            }
+
             SendPacket((uint)CmdType.PlayerDataNotify, playerDataNotify);
                 
                 foreach (KeyValuePair<uint, uint> state in openStateMap)
