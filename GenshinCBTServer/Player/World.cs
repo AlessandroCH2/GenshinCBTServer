@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using NLua;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -19,7 +20,7 @@ namespace GenshinCBTServer.Player
         public Client client;
 
         public List<GameEntity> entities = new List<GameEntity>();
-
+        public List<uint> mobEntitiesNear = new List<uint>();
 
       
 
@@ -41,7 +42,7 @@ namespace GenshinCBTServer.Player
         }
         public void ResetScene()
         {
-           
+            mobEntitiesNear.Clear();
             KillEntities(entities);
             entities.Clear();
             currentBlock = null;
@@ -73,6 +74,7 @@ namespace GenshinCBTServer.Player
                 }
             }
             KillEntities(toKill);
+            mobEntitiesNear.Clear();
         }
         public void UpdateBlocks()
         {
@@ -95,6 +97,43 @@ namespace GenshinCBTServer.Player
                 if(currentBlock!=null)
                 {
                     Load();
+                }
+            }
+            UpdateMobs();
+        }
+        public void UpdateMobs()
+        {
+            foreach (GameEntity entity in entities)
+            {
+                if(entity is GameEntityMonster)
+                {
+                    GameEntityMonster monster = (GameEntityMonster)entity;
+                    if (mobEntitiesNear.Contains(monster.entityId))
+                    {
+                        if (DistanceTo(monster.motionInfo.Pos, client.motionInfo.Pos) > 50)
+                        {
+                            mobEntitiesNear.Remove(monster.entityId);
+                            SceneEntityDisappearNotify notify = new() { EntityList = {monster.entityId } };
+                            LifeStateChangeNotify ln = new() { EntityId= entity.entityId,LifeState=(uint)LifeState.LIFE_DEAD,DieType=PlayerDieType.PlayerDieNone };
+                            client.SendPacket((uint)CmdType.LifeStateChangeNotify, ln);
+                            client.SendPacket((uint)CmdType.SceneEntityDisappearNotify, notify);
+                        }
+                    }
+                    else
+                    {
+                        if(DistanceTo(monster.motionInfo.Pos,client.motionInfo.Pos) < 50)
+                        {
+                            mobEntitiesNear.Add(monster.entityId);
+                            SceneEntityAppearNotify appearNotify = new SceneEntityAppearNotify()
+                            {
+
+                                EntityList = { monster.asInfo() },
+                                AppearType = VisionType.VisionNone
+
+                            };
+                            client.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
+                        }
+                    }
                 }
             }
         }
@@ -142,7 +181,31 @@ namespace GenshinCBTServer.Player
                         entity.state = gadget.state;
                         SpawnEntity(entity);
                     }
-                    foreach(SceneNpc npc in group.npcs)
+                foreach (SceneMonster monster in group.monsters)
+                {
+                    //   Server.Print("gadget id " + gadget.gadget_id);
+                    uint entityId = ((uint)ProtEntityType.ProtEntityMonster << 24) + (uint)client.random.Next();
+                    GameEntityMonster entity = new GameEntityMonster(
+
+                        entityId,
+                        monster.monster_id,
+                        new MotionInfo()
+                        {
+                            Pos = monster.pos,
+                            Rot = monster.rot,
+                            State = MotionState.MotionFallOnGround,
+                            Speed = new Vector(),
+                        }
+                        );
+                    entity.configId = monster.config_id;
+                    entity.groupId = group.id;
+                    entity.owner = (uint)client.gamePeer;
+                    entity.level = monster.level;
+                    entity.drop_id = monster.drop_id;
+                    entity.pose_id = monster.pose_id;
+                    SpawnEntity(entity);
+                }
+                foreach (SceneNpc npc in group.npcs)
                     {
                         uint entityId = ((uint)ProtEntityType.ProtEntityNpc << 24) + (uint)client.random.Next();
                        GameEntity entity = new GameEntity(
@@ -196,7 +259,7 @@ namespace GenshinCBTServer.Player
                     AppearType = VisionType.VisionMeet
 
                 };
-                client.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
+               if(entity is not GameEntityMonster) client.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
             }
           //  client.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
         }
@@ -226,7 +289,7 @@ namespace GenshinCBTServer.Player
 
         public List<SceneGadget> gadgets = new List<SceneGadget>();
         public List<SceneNpc> npcs = new List<SceneNpc>();
-
+        public List<SceneMonster> monsters = new List<SceneMonster>();
     }
     public class SceneGadget
     {
@@ -234,6 +297,15 @@ namespace GenshinCBTServer.Player
         public uint config_id;
         public uint chest_drop_id;
         public uint gadget_id;
+        public Vector pos;
+        public Vector rot;
+    }
+    public class SceneMonster
+    {
+        public uint level;
+        public uint config_id;
+        public uint drop_id, pose_id;
+        public uint monster_id;
         public Vector pos;
         public Vector rot;
     }

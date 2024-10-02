@@ -125,7 +125,7 @@ namespace GenshinCBTServer.Controllers
         public static void OnSceneTransToPointReq(Client session, CmdType cmdId, Network.Packet packet)
         {
             SceneTransToPointReq req = packet.DecodeBody<SceneTransToPointReq>();
-            ScenePointRow pointRow = Server.getResources().scenePointDict[session.currentSceneId];
+            ScenePointRow pointRow = Server.getResources().scenePointDict[3];
             if (pointRow == null) {
                 Server.Print($"Point {req.PointId} not found");
                 session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { Retcode = (int)Retcode.RetFail });
@@ -161,10 +161,10 @@ namespace GenshinCBTServer.Controllers
                     return;
             }
             Server.Print($"Teleporting to {req.PointId} at {session.motionInfo.Pos.X},{session.motionInfo.Pos.Y},{session.motionInfo.Pos.Z}");
-            session.TeleportToScene(req.SceneId,newMotion.Pos,newMotion.Rot,EnterType.EnterGoto);
+            session.TeleportToScene(3,newMotion.Pos,newMotion.Rot,EnterType.EnterGoto);
             // session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos= prevPos, Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterGoto,SceneBeginTime=0 });
             // session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });
-             session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { PointId = req.PointId, SceneId = session.currentSceneId, Retcode = 0 });
+             session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { PointId = req.PointId, SceneId = 3, Retcode = 0 });
             // session.world.UpdateBlocks();
         }
 
@@ -185,10 +185,10 @@ namespace GenshinCBTServer.Controllers
             session.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
             ScenePlayerLocationNotify locNotify = new() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } };
             session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, locNotify);
+            
+            session.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode =0 });
             session.world.UpdateBlocks();
             session.world.SendAllEntities();
-            session.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode =0 });
-
 
         }
 

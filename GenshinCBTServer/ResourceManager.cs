@@ -248,7 +248,7 @@ namespace GenshinCBTServer
 
                     LuaTable gadgets = sceneGroup["gadgets"] as LuaTable;  // Cast to LuaTable for tables
                     LuaTable npcs = sceneGroup["npcs"] as LuaTable;
-                   
+                    LuaTable monsters = sceneGroup["monsters"] as LuaTable;
                     for (int i = 0; i < gadgets.Keys.Count; i++)
                     {
                         LuaTable gadgetTable = gadgets[i + 1] as LuaTable;
@@ -267,6 +267,26 @@ namespace GenshinCBTServer
 
                         group.gadgets.Add(gadget);
                     }
+
+                    for (int i = 0; i < monsters.Keys.Count; i++)
+                    {
+                        LuaTable monsterTable = monsters[i + 1] as LuaTable;
+                        LuaTable pos = monsterTable["pos"] as LuaTable;
+                        LuaTable rot = monsterTable["rot"] as LuaTable;
+                        SceneMonster monster = new()
+                        {
+
+                            monster_id = (uint)(long)monsterTable["monster_id"],
+                            config_id = (uint)(long)monsterTable["config_id"],
+                            pos = new Vector() { X = (float)(double)pos["x"], Y = (float)(double)pos["y"], Z = (float)(double)pos["z"] },
+                            rot = new Vector() { X = (float)(double)rot["x"], Y = (float)(double)rot["y"], Z = (float)(double)rot["z"] }
+                        };
+                        if (monsterTable["level"] != null) monster.level = (uint)(long)monsterTable["level"];
+                        if (monsterTable["drop_id"] != null) monster.drop_id = (uint)(long)monsterTable["drop_id"];
+                        if (monsterTable["pose_id"] != null) monster.pose_id = (uint)(long)monsterTable["pose_id"];
+                        group.monsters.Add(monster);
+                    }
+
                     for (int i = 0; i < npcs.Keys.Count; i++)
                     {
                         LuaTable npcTable = npcs[i + 1] as LuaTable;
