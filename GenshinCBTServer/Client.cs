@@ -88,12 +88,14 @@ namespace GenshinCBTServer
             addProp((uint)PropType.PROP_IS_FLYABLE, 1, props);
             props.Add((uint)PropType.PROP_IS_WEATHER_LOCKED, new PropValue() { Val = 0 });
             props.Add((uint)PropType.PROP_IS_GAME_TIME_LOCKED, new PropValue() { Val = 0 });
-            props.Add((uint)PropType.PROP_IS_TRANSFERABLE, new PropValue() { Val = 1 });
+            addProp((uint)PropType.PROP_IS_TRANSFERABLE, 1, props);
             props.Add((uint)PropType.PROP_MAX_STAMINA, new PropValue() { Val = 15000 });
             props.Add((uint)PropType.PROP_CUR_PERSIST_STAMINA, new PropValue() { Val = 15000 });
             addProp((uint)PropType.PROP_CUR_TEMPORARY_STAMINA, 15000, props);
             addProp((uint)PropType.PROP_PLAYER_LEVEL, 20, props);
             addProp((uint)PropType.PROP_PLAYER_EXP, 0, props);
+            addProp((uint)PropType.PROP_IS_SPRING_AUTO_USE, 1, props);
+            addProp((uint)PropType.PROP_SPRING_AUTO_USE_PERCENT, 50, props);
             addProp((uint)PropType.PROP_PLAYER_HCOIN, 2000, props);
             addProp((uint)PropType.PROP_PLAYER_SCOIN,10000, props);
             addProp((uint)PropType.PROP_IS_WORLD_ENTERABLE, 1,props);

@@ -20,6 +20,32 @@ namespace GenshinCBTServer
         public uint sceneId;
         public List<SceneBlock> sceneBlocks = new List<SceneBlock>();
     }
+
+    public class ScenePoint
+    {
+        required public string JsonObjType;
+        public uint gadgetId;
+        public uint areaId;
+        public string type = "";
+        required public Vector pos;
+        required public Vector rot;
+
+        // those 2 only when SceneTransPoint
+        public Vector tranPos = new Vector();
+        public Vector tranRot = new Vector();
+
+        public bool unlocked;
+        public List<uint> dungeonIds = new List<uint>();
+        public Vector size = new Vector();
+        public List<uint> cutsceneList = new List<uint>();
+    }
+
+    public class ScenePointRow
+    {
+        public string JsonObjType = "";
+        public Dictionary<uint, ScenePoint> points = new Dictionary<uint, ScenePoint>();
+    }
+
     public class ResourceManager
     {
         public List<AvatarData> avatarsData;
@@ -27,6 +53,7 @@ namespace GenshinCBTServer
         public List<AvatarSkillDepotData> avatarSkillDepotData;
         public List<ItemData> itemData;
         public List<SceneExcel> scenes = new List<SceneExcel>();
+        public Dictionary<uint, ScenePointRow> scenePointDict = new Dictionary<uint, ScenePointRow>();
 
 
         public SceneExcel LoadSceneLua(uint sceneId)
@@ -201,9 +228,25 @@ namespace GenshinCBTServer
             string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
             foreach(string scene in scenes_)
             {
-                
-                scenes.Add(LoadSceneLua(uint.Parse(scene.Replace("resources/lua/Scene\\",""))));
+                uint sceneid = uint.Parse(scene.Replace("resources/lua/Scene\\",""));
+                scenes.Add(LoadSceneLua(sceneid));
+                scenePointDict[sceneid] = LoadScenePointData(sceneid);
             }
+        }
+
+        private ScenePointRow LoadScenePointData(uint sceneId)
+        {
+            string path = $"resources/binoutput/Scene/Point/scene{sceneId}_point.json";
+            FileInfo file = new(path);
+            if (!file.Exists)
+            {
+                Server.Print($"Cannot load scene point data for scene {sceneId} (Not found)");
+                return new ScenePointRow();
+            }
+            using var reader = file.OpenRead();
+            using StreamReader reader2 = new(reader);
+            var text = reader2.ReadToEnd().Replace("$type", "JsonObjType");
+            return JsonConvert.DeserializeObject<ScenePointRow>(text);
         }
 
         private List<ItemData> LoadWeaponData()

@@ -4,6 +4,7 @@ using GenshinCBTServer.Protocol;
 using Google.Protobuf;
 
 
+using Newtonsoft.Json;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -105,44 +106,54 @@ namespace GenshinCBTServer
                 string[] split = cmd.Split(" ");
                 string[] args = cmd.Split(" ").Skip(1).ToArray();
                 string command = split[0];
-                if (command.ToLower() == "dispatch")
+                switch(command.ToLower())
                 {
-                    if(args.Length > 0)
-                    {
-                        if (args[0].ToLower() == "new")
+                    case "dispatch":
+                        if(args.Length > 0)
                         {
-                            if (args.Length > 1) {
-                                dispatch.NewAccount(args[1], args[2]);
+                            if (args[0].ToLower() == "new")
+                            {
+                                if (args.Length > 1) {
+                                    dispatch.NewAccount(args[1], args[2]);
+                                }
                             }
                         }
-                    }
-                }else if(command.ToLower() == "endload")
-                {
-                    foreach(Client client in clients)
-                    {
-                        client.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode = 0 });
-                    }
-                }
-                else if (command.ToLower() == "sendinventory")
-                {
-                    foreach (Client client in clients)
-                    {
-                        client.SendInventory();
-                    }
-                }
-                else if (command.ToLower() == "elfie")
-                {
-                    foreach (Client client in clients)
-                    {
-                        client.SpawnElfie();
-                    }
-                }
-                else if (command.ToLower() == "sendworld")
-                {
-                    foreach (Client client in clients)
-                    {
-                        client.world.SendAllEntities();
-                    }
+                        break;
+                    case "endload":
+                        foreach (Client client in clients)
+                        {
+                            client.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode = 0 });
+                        }
+                        break;
+                    case "sendinventory":
+                        foreach (Client client in clients)
+                        {
+                            client.SendInventory();
+                        }
+                        break;
+                    case "elfie":
+                        foreach (Client client in clients)
+                        {
+                            client.SpawnElfie();
+                        }
+                        break;
+                    case "sendworld":
+                        foreach (Client client in clients)
+                        {
+                            client.world.SendAllEntities();
+                        }
+                        break;
+                    case "scene":
+                        if (args.Length > 0)
+                        {
+                            uint scene = uint.Parse(args[0]);
+                            var points = getResources().scenePointDict[scene];
+                            Print($"{JsonConvert.SerializeObject(points)}");
+                        }
+                        break;
+                    default:
+                        // Print("Unknown command");
+                        break;
                 }
             }
         }
