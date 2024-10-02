@@ -143,14 +143,6 @@ namespace GenshinCBTServer
                             client.world.SendAllEntities();
                         }
                         break;
-                    case "scene":
-                        if (args.Length > 0)
-                        {
-                            uint scene = uint.Parse(args[0]);
-                            var points = getResources().scenePointDict[scene];
-                            Print($"{JsonConvert.SerializeObject(points)}");
-                        }
-                        break;
                     default:
                         // Print("Unknown command");
                         break;

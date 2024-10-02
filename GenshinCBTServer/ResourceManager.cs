@@ -18,6 +18,8 @@ namespace GenshinCBTServer
     public class SceneExcel
     {
         public uint sceneId;
+        public Vector bornPos = new Vector();
+        public Vector bornRot = new Vector();
         public List<SceneBlock> sceneBlocks = new List<SceneBlock>();
     }
 
@@ -46,6 +48,37 @@ namespace GenshinCBTServer
         public Dictionary<uint, ScenePoint> points = new Dictionary<uint, ScenePoint>();
     }
 
+    public class CostItems
+    {
+        public uint id;
+        public uint count;
+    }
+
+    public class ShopGoodsData
+    {
+        public uint goodsId;
+        public uint itemId;
+        public uint itemCount;
+        public uint costScoin;
+        public uint costHcoin;
+        public List<CostItems> costItems = new List<CostItems>();
+    }
+
+    public class DungeonData
+    {
+        public uint id;
+        public uint type;
+        public uint playType;
+        public uint sceneId;
+        public uint blockId;
+        public uint firstDropPreview;
+        public uint dropPreview;
+        public uint firstPassRewardId;
+        public uint passRewardId;
+        public uint settleCountdownTime;
+        public bool forbiddenRestart;
+    }
+
     public class ResourceManager
     {
         public List<AvatarData> avatarsData;
@@ -53,7 +86,9 @@ namespace GenshinCBTServer
         public List<AvatarSkillDepotData> avatarSkillDepotData;
         public List<ItemData> itemData;
         public List<SceneExcel> scenes = new List<SceneExcel>();
+        public Dictionary<uint, ShopGoodsData> shopGoodsDict = new Dictionary<uint, ShopGoodsData>();
         public Dictionary<uint, ScenePointRow> scenePointDict = new Dictionary<uint, ScenePointRow>();
+        public Dictionary<uint, DungeonData> dungeonDataDict = new Dictionary<uint, DungeonData>();
 
 
         public SceneExcel LoadSceneLua(uint sceneId)
@@ -71,6 +106,9 @@ namespace GenshinCBTServer
 
 
                     LuaTable blocks = scenelua["blocks"] as LuaTable;  // Cast to LuaTable for tables
+                    LuaTable scene_config = scenelua["scene_config"] as LuaTable;
+                    scene.bornPos = TableToVector2D(scene_config["born_pos"] as LuaTable);
+                    scene.bornRot = TableToVector2D(scene_config["born_rot"] as LuaTable);
 
                     LuaTable block_rects = scenelua["block_rects"] as LuaTable;
                     for (int i = 0; i < blocks.Keys.Count; i++)
@@ -106,7 +144,12 @@ namespace GenshinCBTServer
 
         private Vector TableToVector2D(LuaTable pos)
         {
-            return new Vector() { X = (float)(double)pos["x"], Z = (float)(double)pos["z"] };
+            if (pos["y"] != null)
+            {
+                return new Vector() { X = Convert.ToSingle(pos["x"]), Y = Convert.ToSingle(pos["y"]), Z = Convert.ToSingle(pos["z"]) };
+            } else {
+                return new Vector() { X = (float)(double)pos["x"], Z = (float)(double)pos["z"] };
+            }
         }
 
         private void LoadSceneGroup(SceneBlock block, uint sceneId)
@@ -220,6 +263,8 @@ namespace GenshinCBTServer
         public void Load()
         {
             avatarsData = JsonConvert.DeserializeObject<List<AvatarData>>(File.ReadAllText("resources/excel/AvatarData.json"));
+            shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/excel/ShopGoodsExcelConfigData.json"));
+            dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"));
 
             talentSkillData = LoadTalentSkillData();
             avatarSkillDepotData = LoadAvatarSkillDepotData();

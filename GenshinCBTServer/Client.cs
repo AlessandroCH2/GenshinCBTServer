@@ -67,6 +67,7 @@ namespace GenshinCBTServer
         public int gamePeer = 0;
         public MapField<uint, uint> openStateMap = new MapField<uint, uint>();
         public uint currentSceneId = 3;
+        public uint returnPointId = 1;
 
         public uint[] team = { 10000015 };
         public uint teamEntityId;

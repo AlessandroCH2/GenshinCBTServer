@@ -161,6 +161,7 @@ namespace GenshinCBTServer.Controllers
             }
             Server.Print($"Teleporting to {req.PointId} at {session.motionInfo.Pos.X},{session.motionInfo.Pos.Y},{session.motionInfo.Pos.Z}");
             session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos= prevPos, Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterGoto,SceneBeginTime=0 });
+            session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });
             session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { PointId = req.PointId, SceneId = session.currentSceneId, Retcode = 0 });
             session.world.UpdateBlocks();
         }
