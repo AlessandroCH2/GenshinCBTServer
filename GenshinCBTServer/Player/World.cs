@@ -229,7 +229,7 @@ namespace GenshinCBTServer.Player
                 }
             SendAllEntities();
         }
-        public void SpawnEntity(GameEntity entity, bool notify=false)
+        public void SpawnEntity(GameEntity entity, bool notify=false, VisionType vision = VisionType.VisionMeet)
         {
             entities.Add(entity);
             //Send spawn packet
@@ -239,7 +239,7 @@ namespace GenshinCBTServer.Player
                 {
                    
                     EntityList = { entity.asInfo() },
-                    AppearType = VisionType.VisionMeet
+                    AppearType = vision
 
                 };
                 client.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);

@@ -11,6 +11,16 @@ using System.Threading.Tasks;
 namespace GenshinCBTServer.Excel
 {
   
+    public class GadgetProp
+    {
+        public uint id;
+        public float hp;
+        public int hpCurve;
+        public float attack;
+        public int attackCurve;
+        public float defense;
+        public int defenseCurve;
+    }
     public class TalentSkillData
     {
         [Index(0)]
@@ -303,6 +313,7 @@ namespace GenshinCBTServer.Excel
     public class ItemData
     {
         public uint id;
+        public uint gadgetId;
         public ItemType itemType;
         public EquipType equipType;
         public List<WeaponPropValue> weaponProp;
@@ -325,5 +336,18 @@ namespace GenshinCBTServer.Excel
             return itemType;
         }
     }
-
+    public class DropData
+    {
+        public uint drop_id;
+        public string comment;
+        public uint child_drop_id;
+        public int child_drop_id_weight; //idk how to use that for now
+    }
+    public class ChildDrop
+    {
+        public uint child_drop_id;
+        public uint item_drop_id;
+       // public string item_drop_quantity_range;
+        public int item_drop_weight;
+    }
 }

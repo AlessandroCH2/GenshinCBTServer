@@ -104,6 +104,35 @@ namespace GenshinCBTServer
         public Dictionary<uint, ReliquaryCurve> reliquaryCurves = new Dictionary<uint, ReliquaryCurve>();
         public Dictionary<uint, LevelCurve> weaponCurves = new Dictionary<uint, LevelCurve>();
         public Dictionary<uint, PromoteInfo>  weaponsPromote = new Dictionary<uint, PromoteInfo>();
+        public Dictionary<uint, GadgetProp> gadgetProps = new Dictionary<uint, GadgetProp>();
+        public List<DropData> dropData = new List<DropData>();
+        public List<ChildDrop> childDropData = new List<ChildDrop>();
+
+        public class DropList
+        {
+            public List<GameEntity> entities = new();
+        }
+        public DropList GetRandomDrops(Client session,uint id, MotionInfo motion)
+        {
+            DropList dropList = new DropList();
+            DropData data = dropData.Find(d=>d.drop_id== id);  
+            if (data!= null)
+            {
+                List<ChildDrop> childDrops = childDropData.FindAll(c=>c.child_drop_id==data.child_drop_id);
+                int size = new Random().Next(1, childDrops.Count);
+                for(int i=0; i<size; i++) { 
+                    ChildDrop drop = childDrops[i];
+                    ItemData itemD = itemData[drop.item_drop_id];
+                    uint entityId = ((uint)ProtEntityType.ProtEntityGadget << 24) + (uint)session.random.Next();
+                    GameEntityItem gadgetItem = new(entityId, itemD.gadgetId, motion,new GameItem(session,itemD.id));
+                    gadgetItem.item.amount= new Random().Next(1, 10);
+                    dropList.entities.Add(gadgetItem);
+                }
+
+            }
+
+            return dropList;
+        }
         public void Load()
         {
             avatarsData = JsonConvert.DeserializeObject<List<AvatarData>>(File.ReadAllText("resources/excel/AvatarData.json"));
@@ -116,9 +145,11 @@ namespace GenshinCBTServer
             itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/MaterialExcelConfigData.json")));
             itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/ReliquaryExcelConfigData.json")));
             weaponCurves = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/excel/WeaponCurveExcelConfigData.json"));
+            gadgetProps = JsonConvert.DeserializeObject<Dictionary<uint, GadgetProp>>(File.ReadAllText("resources/excel/GadgetPropExcelConfigData.json"));
 
-          
             weaponsPromote = JsonConvert.DeserializeObject<Dictionary<uint, PromoteInfo>>(File.ReadAllText("resources/excel/WeaponPromoteExcelConfigData.json"));
+            dropData = JsonConvert.DeserializeObject<List<DropData>>(File.ReadAllText("resources/excel/DropTreeData.json"));
+            childDropData = JsonConvert.DeserializeObject<List<ChildDrop>>(File.ReadAllText("resources/excel/DropLeafData.json"));
             Server.Print("Loading all scenes lua");
             string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
             foreach (string scene in scenes_)
@@ -401,7 +432,11 @@ namespace GenshinCBTServer
         }
         public GadgetData GetGadgetData(uint id)
         {
-            return gadgetDataDict[id];
+            if (gadgetDataDict.ContainsKey(id))
+            {
+                return gadgetDataDict[id];
+            }
+            return gadgetDataDict.Values.First();
         }
         public AvatarData GetAvatarDataById(uint id)
         {

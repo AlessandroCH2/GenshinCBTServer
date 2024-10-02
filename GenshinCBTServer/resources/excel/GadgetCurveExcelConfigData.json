@@ -1,0 +1,2252 @@
+{
+  "1": {
+    "level": 1,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 1
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 1
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 1
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1
+      }
+    ]
+  },
+  "2": {
+    "level": 2,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 1.28
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 1.19
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 1.21
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.004
+      }
+    ]
+  },
+  "3": {
+    "level": 3,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 1.6
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 1.4
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 1.4
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.008
+      }
+    ]
+  },
+  "4": {
+    "level": 4,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 1.95
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 1.6
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 1.62
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.012
+      }
+    ]
+  },
+  "5": {
+    "level": 5,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 2.79
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 1.81
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 1.81
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.016
+      }
+    ]
+  },
+  "6": {
+    "level": 6,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 3.49
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 2.02
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 2.02
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.02
+      }
+    ]
+  },
+  "7": {
+    "level": 7,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 4.41
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 2.23
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 2.21
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.024
+      }
+    ]
+  },
+  "8": {
+    "level": 8,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 5.16
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 2.45
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 2.43
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.028
+      }
+    ]
+  },
+  "9": {
+    "level": 9,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 5.95
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 2.69
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 2.62
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.032
+      }
+    ]
+  },
+  "10": {
+    "level": 10,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 6.76
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 2.93
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 2.83
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.036
+      }
+    ]
+  },
+  "11": {
+    "level": 11,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 7.53
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 3.19
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 3.02
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.04
+      }
+    ]
+  },
+  "12": {
+    "level": 12,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 8.55
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 3.45
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 3.24
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.044
+      }
+    ]
+  },
+  "13": {
+    "level": 13,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 9.61
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 3.73
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 3.43
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.048
+      }
+    ]
+  },
+  "14": {
+    "level": 14,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 10.73
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 4.03
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 3.64
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.052
+      }
+    ]
+  },
+  "15": {
+    "level": 15,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 11.83
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 4.33
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 3.83
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.056
+      }
+    ]
+  },
+  "16": {
+    "level": 16,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 13.45
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 4.62
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 4.05
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.06
+      }
+    ]
+  },
+  "17": {
+    "level": 17,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 14.03
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 4.94
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 4.24
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.064
+      }
+    ]
+  },
+  "18": {
+    "level": 18,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 14.6
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 5.27
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 4.45
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.068
+      }
+    ]
+  },
+  "19": {
+    "level": 19,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 15.64
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 5.6
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 4.64
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.072
+      }
+    ]
+  },
+  "20": {
+    "level": 20,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 17.14
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 5.93
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 4.86
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.076
+      }
+    ]
+  },
+  "21": {
+    "level": 21,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 18.78
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 6.31
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 5.05
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.08
+      }
+    ]
+  },
+  "22": {
+    "level": 22,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 21.05
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 6.86
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 5.27
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.084
+      }
+    ]
+  },
+  "23": {
+    "level": 23,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 23.62
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 7.59
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 5.45
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.088
+      }
+    ]
+  },
+  "24": {
+    "level": 24,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 25.85
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 8.33
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 5.67
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.092
+      }
+    ]
+  },
+  "25": {
+    "level": 25,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 27.37
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 8.76
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 5.86
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.096
+      }
+    ]
+  },
+  "26": {
+    "level": 26,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 28.23
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 9
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 6.08
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.1
+      }
+    ]
+  },
+  "27": {
+    "level": 27,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 29.06
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 9.25
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 6.27
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.104
+      }
+    ]
+  },
+  "28": {
+    "level": 28,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 29.88
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 9.5
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 6.48
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.108
+      }
+    ]
+  },
+  "29": {
+    "level": 29,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 30.71
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 9.76
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 6.67
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.112
+      }
+    ]
+  },
+  "30": {
+    "level": 30,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 31.55
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 10.01
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 6.89
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.116
+      }
+    ]
+  },
+  "31": {
+    "level": 31,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 32.39
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 10.27
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 7.08
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.12
+      }
+    ]
+  },
+  "32": {
+    "level": 32,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 33.25
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 10.54
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 7.29
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.124
+      }
+    ]
+  },
+  "33": {
+    "level": 33,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 34.11
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 10.8
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 7.48
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.128
+      }
+    ]
+  },
+  "34": {
+    "level": 34,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 34.97
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 11.07
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 7.7
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.132
+      }
+    ]
+  },
+  "35": {
+    "level": 35,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 35.85
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 11.35
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 7.89
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.136
+      }
+    ]
+  },
+  "36": {
+    "level": 36,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 36.73
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 11.62
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 8.1
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.14
+      }
+    ]
+  },
+  "37": {
+    "level": 37,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 38.09
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 12.1
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 8.29
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.144
+      }
+    ]
+  },
+  "38": {
+    "level": 38,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 39.46
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 12.57
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 8.51
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.148
+      }
+    ]
+  },
+  "39": {
+    "level": 39,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 40.84
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 13.05
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 8.7
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.152
+      }
+    ]
+  },
+  "40": {
+    "level": 40,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 42.23
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 13.54
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 8.91
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.156
+      }
+    ]
+  },
+  "41": {
+    "level": 41,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 43.63
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 14.03
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 9.1
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.16
+      }
+    ]
+  },
+  "42": {
+    "level": 42,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 45.04
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 14.52
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 9.32
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.164
+      }
+    ]
+  },
+  "43": {
+    "level": 43,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 46.46
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 15.02
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 9.51
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.168
+      }
+    ]
+  },
+  "44": {
+    "level": 44,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 47.89
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 15.52
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 9.72
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.172
+      }
+    ]
+  },
+  "45": {
+    "level": 45,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 49.34
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 16.03
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 9.91
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.176
+      }
+    ]
+  },
+  "46": {
+    "level": 46,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 50.31
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 16.34
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 10.13
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.18
+      }
+    ]
+  },
+  "47": {
+    "level": 47,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 51.28
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 16.66
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 10.32
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.184
+      }
+    ]
+  },
+  "48": {
+    "level": 48,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 52.27
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 16.98
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 10.54
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.188
+      }
+    ]
+  },
+  "49": {
+    "level": 49,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 53.26
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 17.31
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 10.72
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.192
+      }
+    ]
+  },
+  "50": {
+    "level": 50,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 54.27
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 17.63
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 10.94
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.196
+      }
+    ]
+  },
+  "51": {
+    "level": 51,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 55.28
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 17.96
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 11.13
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.2
+      }
+    ]
+  },
+  "52": {
+    "level": 52,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 56.3
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 18.3
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 11.35
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.204
+      }
+    ]
+  },
+  "53": {
+    "level": 53,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 57.33
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 18.64
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 11.54
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.208
+      }
+    ]
+  },
+  "54": {
+    "level": 54,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 58.37
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 18.99
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 11.75
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.212
+      }
+    ]
+  },
+  "55": {
+    "level": 55,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 59.42
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 19.34
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 11.94
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.216
+      }
+    ]
+  },
+  "56": {
+    "level": 56,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 60.48
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 19.69
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 12.16
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.22
+      }
+    ]
+  },
+  "57": {
+    "level": 57,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 62.36
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 20.37
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 12.35
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.224
+      }
+    ]
+  },
+  "58": {
+    "level": 58,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 64.26
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 21.06
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 12.56
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.228
+      }
+    ]
+  },
+  "59": {
+    "level": 59,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 66.18
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 21.75
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 12.75
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.232
+      }
+    ]
+  },
+  "60": {
+    "level": 60,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 68.12
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 22.44
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 12.97
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.236
+      }
+    ]
+  },
+  "61": {
+    "level": 61,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 70.08
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 23.15
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 13.16
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.24
+      }
+    ]
+  },
+  "62": {
+    "level": 62,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 72.06
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 23.86
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 13.37
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.244
+      }
+    ]
+  },
+  "63": {
+    "level": 63,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 74.06
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 24.58
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 13.56
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.248
+      }
+    ]
+  },
+  "64": {
+    "level": 64,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 76.08
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 25.31
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 13.78
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.252
+      }
+    ]
+  },
+  "65": {
+    "level": 65,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 78.12
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 26.04
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 13.97
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.256
+      }
+    ]
+  },
+  "66": {
+    "level": 66,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 79.31
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 26.45
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 14.18
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.26
+      }
+    ]
+  },
+  "67": {
+    "level": 67,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 80.51
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 26.86
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 14.37
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.264
+      }
+    ]
+  },
+  "68": {
+    "level": 68,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 81.71
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 27.28
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 14.59
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.268
+      }
+    ]
+  },
+  "69": {
+    "level": 69,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 82.94
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 27.69
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 14.78
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.272
+      }
+    ]
+  },
+  "70": {
+    "level": 70,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 84.17
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 28.12
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 15
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.276
+      }
+    ]
+  },
+  "71": {
+    "level": 71,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 85.41
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 28.56
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 15.18
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.28
+      }
+    ]
+  },
+  "72": {
+    "level": 72,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 86.67
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 29
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 15.4
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.284
+      }
+    ]
+  },
+  "73": {
+    "level": 73,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 87.94
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 29.44
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 15.59
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.288
+      }
+    ]
+  },
+  "74": {
+    "level": 74,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 89.22
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 29.89
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 15.81
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.292
+      }
+    ]
+  },
+  "75": {
+    "level": 75,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 90.51
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 30.35
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 16
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.296
+      }
+    ]
+  },
+  "76": {
+    "level": 76,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 91.82
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 30.81
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 16.21
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.3
+      }
+    ]
+  },
+  "77": {
+    "level": 77,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 94.46
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 31.79
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 16.4
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.304
+      }
+    ]
+  },
+  "78": {
+    "level": 78,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 97.15
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 32.77
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 16.62
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.308
+      }
+    ]
+  },
+  "79": {
+    "level": 79,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 99.86
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 33.77
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 16.81
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.312
+      }
+    ]
+  },
+  "80": {
+    "level": 80,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 102.61
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 34.78
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 17.02
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.316
+      }
+    ]
+  },
+  "81": {
+    "level": 81,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 105.39
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 35.8
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 17.21
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.312
+      }
+    ]
+  },
+  "82": {
+    "level": 82,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 108.2
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 36.83
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 17.43
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.316
+      }
+    ]
+  },
+  "83": {
+    "level": 83,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 111.05
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 37.87
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 17.62
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.312
+      }
+    ]
+  },
+  "84": {
+    "level": 84,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 113.93
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 38.92
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 17.83
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.316
+      }
+    ]
+  },
+  "85": {
+    "level": 85,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 116.85
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 39.99
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 18.02
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.312
+      }
+    ]
+  },
+  "86": {
+    "level": 86,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 118.33
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 40.52
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 18.24
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.316
+      }
+    ]
+  },
+  "87": {
+    "level": 87,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 119.77
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 41.04
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 18.43
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.312
+      }
+    ]
+  },
+  "88": {
+    "level": 88,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 121.27
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 41.58
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 18.64
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.316
+      }
+    ]
+  },
+  "89": {
+    "level": 89,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 122.79
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 42.13
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 18.83
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.312
+      }
+    ]
+  },
+  "90": {
+    "level": 90,
+    "curveInfos": [
+      {
+        "type": 1,
+        "arith": 2,
+        "value": 124.32
+      },
+      {
+        "type": 2,
+        "arith": 2,
+        "value": 42.69
+      },
+      {
+        "type": 12,
+        "arith": 2,
+        "value": 19.05
+      },
+      {
+        "type": 13,
+        "arith": 2,
+        "value": 1.316
+      }
+    ]
+  }
+}

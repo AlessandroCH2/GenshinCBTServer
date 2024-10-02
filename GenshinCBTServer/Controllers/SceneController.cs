@@ -8,12 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Metadata.Ecma335;
+using static GenshinCBTServer.ResourceManager;
 
 namespace GenshinCBTServer.Controllers
 {
     public class SceneController
     {
-       
+        [Server.Handler(CmdType.SceneEntityDrownReq)]
+        public static void OnSceneEntityDrownReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            SceneEntityDrownReq req = packet.DecodeBody<SceneEntityDrownReq>();
+        }
         [Server.Handler(CmdType.UnlockTransPointReq)]
         public static void OnUnlockTransPointReq(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -116,6 +121,13 @@ namespace GenshinCBTServer.Controllers
                 if (entity.chest_drop > 0)
                 {
                     session.world.KillEntities(new List<GameEntity>(){entity},VisionType.VisionNone);
+
+                    DropList dropList = Server.getResources().GetRandomDrops(session, entity.chest_drop, entity.motionInfo);
+                    foreach(GameEntity en in dropList.entities)
+                    {
+                        session.world.SpawnEntity(en,true,VisionType.VisionReborn);
+                    }
+
                     session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0,GadgetEntityId=req.GadgetEntityId,GadgetId=entity.id,InteractType=InteractType.InteractOpenChest,OpType=InterOpType.InterOpStart });
                    
                 }

@@ -22,10 +22,26 @@ namespace GenshinCBTServer.Controllers
             GameEntity entity = session.world.entities.Find(entity=>entity.entityId==req.AttackResult.DefenseId);
             if(entity != null )
             {
-                float dmg = GetDamage(session,req.AttackResult);
+                float dmg = req.AttackResult.Damage;
                 float curHp = entity.GetFightProp(FightPropType.FIGHT_PROP_CUR_HP)-dmg;
+                if(entity is GameEntityGadget)
+                {
+                    GameEntityGadget gadget = (GameEntityGadget)entity;
+                    if(gadget.GetGadgetExcel().type> 0 )
+                    {
 
-                entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
+                    }
+                    else
+                    {
+                        entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
+                    }
+                  //  gadget.GetGadgetExcel().isInteractive
+                }
+                else
+                {
+                    entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
+                }
+                
                 entity.SendUpdatedProps();
                 if(curHp < 0)
                 {

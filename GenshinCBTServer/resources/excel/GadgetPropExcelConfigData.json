@@ -1,0 +1,281 @@
+{
+  "70220001": {
+    "id": 70220001,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 24.7,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70220002": {
+    "id": 70220002,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 24.7,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70220003": {
+    "id": 70220003,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 4.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70220004": {
+    "id": 70220004,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 37,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70220005": {
+    "id": 70220005,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 37,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70220007": {
+    "id": 70220007,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 4.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70220023": {
+    "id": 70220023,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 24.7,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70310001": {
+    "id": 70310001,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 24.7,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70310002": {
+    "id": 70310002,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 24.7,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70310003": {
+    "id": 70310003,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 24.7,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70310004": {
+    "id": 70310004,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 24.7,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70320001": {
+    "id": 70320001,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 24.7,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70320002": {
+    "id": 70320002,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 49.3,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900006": {
+    "id": 70900006,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900007": {
+    "id": 70900007,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900008": {
+    "id": 70900008,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900009": {
+    "id": 70900009,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900010": {
+    "id": 70900010,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900011": {
+    "id": 70900011,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900012": {
+    "id": 70900012,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900013": {
+    "id": 70900013,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900020": {
+    "id": 70900020,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70900021": {
+    "id": 70900021,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70510001": {
+    "id": 70510001,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 9.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70510002": {
+    "id": 70510002,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 9.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70510003": {
+    "id": 70510003,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 9.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70510004": {
+    "id": 70510004,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 9.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70510005": {
+    "id": 70510005,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 9.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70510006": {
+    "id": 70510006,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 9.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70510007": {
+    "id": 70510007,
+    "hp": 2960,
+    "hpCurve": 1,
+    "attack": 9.9,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  },
+  "70300055": {
+    "id": 70300055,
+    "hp": 100,
+    "hpCurve": 1,
+    "attack": 0,
+    "attackCurve": 2,
+    "defense": 37,
+    "defenseCurve": 12
+  }
+}

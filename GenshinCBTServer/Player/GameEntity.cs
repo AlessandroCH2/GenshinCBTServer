@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GenshinCBTServer.ResourceManager;
 
 namespace GenshinCBTServer.Player
 {
@@ -16,7 +17,10 @@ namespace GenshinCBTServer.Player
         public MotionInfo motionInfo;
         public MapField<uint, float> fightprops = new MapField<uint, float>();
         public MapField<uint, PropValue> props = new MapField<uint, PropValue>();
-        public uint configId, groupId,owner,state;
+        public uint configId, groupId,owner,state,drop_id;
+        public int amount;
+        
+        
         public GameEntity(uint entityId, uint id, MotionInfo motionInfo, ProtEntityType entityType = ProtEntityType.ProtEntityNone)
         {
             EntityType = entityType;
@@ -54,6 +58,12 @@ namespace GenshinCBTServer.Player
             
             Task.Delay(TimeSpan.FromSeconds(2.5));
             client.world.KillEntities(new() { this }, VisionType.VisionDie);
+
+            DropList dropList = Server.getResources().GetRandomDrops(GetClientOwner(), this.drop_id, motionInfo);
+            foreach (GameEntity en in dropList.entities)
+            {
+                GetClientOwner().world.SpawnEntity(en, true, VisionType.VisionReborn);
+            }
         }
         public virtual void InitProps()
         {

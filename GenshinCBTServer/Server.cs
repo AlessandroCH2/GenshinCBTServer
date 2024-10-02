@@ -154,6 +154,8 @@ namespace GenshinCBTServer
             dispatch = new Dispatch();
             dispatch.Start();
         }
+        public static CmdType[] hideLog = [CmdType.SceneEntityDrownReq, CmdType.SceneEntityMoveReq, CmdType.SceneEntityMoveRsp, CmdType.PingReq, CmdType.AbilityInvocationsNotify, CmdType.AbilityInvocationFixedNotify
+            ,CmdType.EvtAnimatorParameterNotify,CmdType.ClientAbilityInitFinishNotify,CmdType.PingRsp];
         public void PeerHandle()
         {
 
@@ -199,7 +201,12 @@ namespace GenshinCBTServer
                           //  Print("Packet received from - ID: " + netEvent.peer + ", IP: " + netEvent.peer + ", Channel ID: " + netEvent.channelID + ", Data length: " + enetPacket.data);
                             Packet genshinPacket = Packet.Read(enetPacket);
                            // Print($"Received from client: {genshinPacket.cmdId} ({((CmdType)genshinPacket.cmdId).ToString()})");
-                         Server.Print($"[client->server] {((CmdType)genshinPacket.cmdId).ToString()}");
+                         
+                        CmdType cmd = (CmdType)genshinPacket.cmdId;
+                        if (!hideLog.Contains(cmd))
+                        {
+                            Server.Print($"[client->server] {cmd.ToString()}");
+                        }
                         NotifyManager.Notify(clients.Find(client => client.peer == netEvent.peer), (CmdType)genshinPacket.cmdId, genshinPacket);
                        
 

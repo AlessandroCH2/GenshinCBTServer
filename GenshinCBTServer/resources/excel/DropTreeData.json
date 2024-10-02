@@ -1,0 +1,3810 @@
+﻿[
+  {
+    "drop_id": 100010,
+    "comment": "根-普通小怪击杀-3点全元素-50%概率6点",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1000100,
+    "child_drop_id_weight": 5000
+  },
+  {
+    "drop_id": 100011,
+    "comment": "根-火小怪击杀-6点火元素-66%概率9点",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1000110,
+    "child_drop_id_weight": 6667
+  },
+  {
+    "drop_id": 100012,
+    "comment": "根-水小怪击杀-6点水元素-66%概率9点",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1000120,
+    "child_drop_id_weight": 6667
+  },
+  {
+    "drop_id": 100013,
+    "comment": "根-草小怪击杀-6点草元素-66%概率9点",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1000130,
+    "child_drop_id_weight": 6667
+  },
+  {
+    "drop_id": 100014,
+    "comment": "根-电小怪击杀-6点电元素-66%概率9点",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1000140,
+    "child_drop_id_weight": 6667
+  },
+  {
+    "drop_id": 100015,
+    "comment": "根-风小怪击杀-6点风元素-66%概率9点",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1000150,
+    "child_drop_id_weight": 6667
+  },
+  {
+    "drop_id": 100016,
+    "comment": "根-冰小怪击杀-6点冰元素-66%概率9点",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1000160,
+    "child_drop_id_weight": 6667
+  },
+  {
+    "drop_id": 100017,
+    "comment": "根-岩小怪击杀-6点岩元素-66%概率9点",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1000170,
+    "child_drop_id_weight": 6667
+  },
+  {
+    "drop_id": 100020,
+    "comment": "根-无属性大怪击杀-6点全元素",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000200,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 100021,
+    "comment": "根-火属性大怪击杀-12点火元素",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 100022,
+    "comment": "根-水属性大怪击杀-12点水",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000220,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 100023,
+    "comment": "根-草属性大怪击杀-12点草",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000230,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 100024,
+    "comment": "根-电属性大怪击杀-12点电",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000240,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 100025,
+    "comment": "根-风属性大怪击杀-12点风",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000250,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 100026,
+    "comment": "根-冰属性大怪击杀-12点冰",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000260,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 100027,
+    "comment": "根-岩属性大怪击杀-12点岩",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000270,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 100030,
+    "comment": "根-无属性超大怪击杀-15点全元素-遗迹守卫专用-6+6+3",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1000300,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101010,
+    "comment": "根-普通小怪阶段掉落-2点全",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010100,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101011,
+    "comment": "根-火小怪阶段掉落-4点火",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010110,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101012,
+    "comment": "根-水小怪阶段掉落-4点水",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010120,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101013,
+    "comment": "根-草小怪阶段掉落-4点草",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010130,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101014,
+    "comment": "根-电小怪阶段掉落-4点电",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010140,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101015,
+    "comment": "根-风小怪阶段掉落-4点风",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010150,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101016,
+    "comment": "根-冰小怪阶段掉落-4点冰",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010160,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101017,
+    "comment": "根-岩小怪阶段掉落-4点岩",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010170,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101020,
+    "comment": "根-普通大怪阶段掉落-4点全",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010200,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101021,
+    "comment": "根-火大怪阶段掉落-8点火",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101022,
+    "comment": "根-水大怪阶段掉落-8点水",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010220,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101023,
+    "comment": "根-草大怪阶段掉落-8点草",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010230,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101024,
+    "comment": "根-电大怪阶段掉落-8点电",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010240,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101025,
+    "comment": "根-风大怪阶段掉落-8点风",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010250,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101026,
+    "comment": "根-冰大怪阶段掉落-8点冰",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010260,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101027,
+    "comment": "根-岩大怪阶段掉落-8点岩",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010270,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101030,
+    "comment": "根-普通超大怪阶段掉落-15点全-遗迹守卫专用",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010300,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101031,
+    "comment": "根-火超大怪阶段掉落-12点火",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010310,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101032,
+    "comment": "根-水超大怪阶段掉落-12点水",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010320,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101033,
+    "comment": "根-草超大怪阶段掉落-12点草",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010330,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101034,
+    "comment": "根-电超大怪阶段掉落-12点电",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010340,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101035,
+    "comment": "根-风超大怪阶段掉落-12点风",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010350,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101036,
+    "comment": "根-冰超大怪阶段掉落-12点冰",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010360,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 101037,
+    "comment": "根-岩超大怪阶段掉落-12点岩",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1010370,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 105020,
+    "comment": "根-无属性大怪50%",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1050200,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 105021,
+    "comment": "根-火属性大怪50%",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1050210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 105022,
+    "comment": "根-水属性大怪50%",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1050220,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 105023,
+    "comment": "根-草属性大怪50%",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1050230,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 105024,
+    "comment": "根-电属性大怪50%",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1050240,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 105025,
+    "comment": "根-风属性大怪50%",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1050250,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 105026,
+    "comment": "根-冰属性大怪50%",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1050260,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 105027,
+    "comment": "根-岩属性大怪50%",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1050270,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 110010,
+    "comment": "小动物兽肉（小）掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1100100,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 110011,
+    "comment": "小动物兽肉（大）掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1100110,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 110020,
+    "comment": "小动物禽肉（小）掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1100200,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 110021,
+    "comment": "小动物禽肉（大）掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1100210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 180001,
+    "comment": "主线1级怪物",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1800010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 180002,
+    "comment": "主线2级怪物",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1800020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 181001,
+    "comment": "1-5级普通挑战（大型宝箱）宝箱产物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 181001,
+    "comment": "1-5级普通挑战（大型宝箱）宝箱产物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032211,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 181001,
+    "comment": "1-5级普通挑战（大型宝箱）宝箱产物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1810010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 181002,
+    "comment": "1-5级中级营地（大型宝箱）宝箱产物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 181002,
+    "comment": "1-5级中级营地（大型宝箱）宝箱产物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031211,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 181002,
+    "comment": "1-5级中级营地（大型宝箱）宝箱产物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 1810010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 190001,
+    "comment": "烹饪任务掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1900010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 190002,
+    "comment": "凯亚支线任务掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 1900020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 200601,
+    "comment": "怪物掉落-风元素结晶",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 200601,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 200701,
+    "comment": "时间碎片掉落-普通宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 200701,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 200702,
+    "comment": "时间碎片掉落-营地宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 200702,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 200703,
+    "comment": "时间碎片掉落-黄金宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 200703,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 200704,
+    "comment": "时间碎片掉落-普通怪",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 200704,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 200705,
+    "comment": "时间碎片掉落-精英怪",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 200705,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201000,
+    "comment": "测试掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201001,
+    "comment": "根-兽类动物",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201002,
+    "comment": "根-丘丘王任务掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201002,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201003,
+    "comment": "根-无属性球掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201003,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201004,
+    "comment": "根-火属性球掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201004,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201005,
+    "comment": "丘丘圣山测试掉落1",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201005,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201006,
+    "comment": "丘丘圣山测试掉落2",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201006,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201007,
+    "comment": "丘丘圣山测试掉落3",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201007,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 201008,
+    "comment": "根-鸟类动物",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 201008,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 210101,
+    "comment": "铁矿石",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2101010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 210201,
+    "comment": "锡矿石",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2102010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 210301,
+    "comment": "秘银矿",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2103010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 210401,
+    "comment": "水晶矿",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2104010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 211001,
+    "comment": "木棉花果实",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2110010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 211101,
+    "comment": "电气岩结晶",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2111010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 211201,
+    "comment": "烈焰花掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2112010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 211301,
+    "comment": "冰雾花掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2113010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 212101,
+    "comment": "元素密虫-火受击",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2121010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 212201,
+    "comment": "元素密虫-水受击",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2122010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 212301,
+    "comment": "元素密虫-冰受击",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2123010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 212401,
+    "comment": "元素密虫-电受击",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2124010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 212501,
+    "comment": "元素密虫-草受击",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2125010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 212601,
+    "comment": "元素密虫-岩受击",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2126010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 212701,
+    "comment": "元素密虫-风受击",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 2127010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303101,
+    "comment": "1-5级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303102,
+    "comment": "6-10级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303103,
+    "comment": "11-15级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031030,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303104,
+    "comment": "16-18级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303105,
+    "comment": "20-23级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031050,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303121,
+    "comment": "1-5级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303122,
+    "comment": "6-10级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031220,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303123,
+    "comment": "11-15级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031230,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303124,
+    "comment": "16-18级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031240,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303125,
+    "comment": "20-23级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031250,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303141,
+    "comment": "1-5级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031410,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303142,
+    "comment": "6-10级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031420,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303143,
+    "comment": "11-15级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031430,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303144,
+    "comment": "16-18级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031440,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303145,
+    "comment": "20-23级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031450,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303101,
+    "comment": "1-5级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4103,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 303102,
+    "comment": "6-10级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4103,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 303103,
+    "comment": "11-15级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 303104,
+    "comment": "16-18级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 303105,
+    "comment": "20-23级据点精英级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 303121,
+    "comment": "1-5级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4103,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303122,
+    "comment": "6-10级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4103,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303123,
+    "comment": "11-15级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303124,
+    "comment": "16-18级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303125,
+    "comment": "20-23级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303141,
+    "comment": "1-5级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4103,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303142,
+    "comment": "6-10级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4103,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303143,
+    "comment": "11-15级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303144,
+    "comment": "16-18级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303145,
+    "comment": "20-23级创生精英怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 303001,
+    "comment": "1-5级据点小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303002,
+    "comment": "6-10级据点小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303003,
+    "comment": "11-15级据点小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030030,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303004,
+    "comment": "16-18级据点小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303005,
+    "comment": "20-23级据点小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030050,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303041,
+    "comment": "1-5级创生小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030410,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303042,
+    "comment": "6-10级创生小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030420,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303043,
+    "comment": "11-15级创生小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030430,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303044,
+    "comment": "16-18级创生小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030440,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303045,
+    "comment": "20-23级创生小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030450,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 400001,
+    "comment": "灌木掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 4000010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 400002,
+    "comment": "草堆掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 4000020,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 400101,
+    "comment": "搜刮宝箱掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 4001010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 400102,
+    "comment": "丘丘人木桶掉落-循环",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001020,
+    "child_drop_id_weight": 1500
+  },
+  {
+    "drop_id": 400102,
+    "comment": "丘丘人木桶掉落-循环",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4011,
+    "child_drop_id_weight": 4200
+  },
+  {
+    "drop_id": 400103,
+    "comment": "丘丘人木桶掉落-循环",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001030,
+    "child_drop_id_weight": 1500
+  },
+  {
+    "drop_id": 400103,
+    "comment": "丘丘人木桶掉落-循环",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4011,
+    "child_drop_id_weight": 4200
+  },
+  {
+    "drop_id": 400104,
+    "comment": "丘丘人木桶掉落-循环",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001040,
+    "child_drop_id_weight": 1500
+  },
+  {
+    "drop_id": 400104,
+    "comment": "丘丘人木桶掉落-循环",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4011,
+    "child_drop_id_weight": 4200
+  },
+  {
+    "drop_id": 403020,
+    "comment": "神殿旧址-风龙泪滴宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4030200,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403021,
+    "comment": "丘丘圣山-风龙泪滴宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4030210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403022,
+    "comment": "风龙地城-风龙泪滴宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4030220,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403020,
+    "comment": "神殿旧址-风龙泪滴宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4030201,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403021,
+    "comment": "丘丘圣山-风龙泪滴宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4030211,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403022,
+    "comment": "风龙地城-风龙泪滴宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2003,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 500001,
+    "comment": "临时角色卡扭蛋掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 5000010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 946201,
+    "comment": "凯亚寻宝任务掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 9462010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 937501,
+    "comment": "教堂地下室任务宝箱-可循环",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 9375010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 937501,
+    "comment": "教堂地下室任务宝箱-可循环",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4011,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 1000701,
+    "comment": "芭芭拉任务地城普通宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 10007010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1000702,
+    "comment": "芭芭拉任务地城通关宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 10007020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100201,
+    "comment": "丽莎任务地城普通宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 11002010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100202,
+    "comment": "丽莎任务地城通关宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 11002020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300101,
+    "comment": "迷雾迷宫地城普通宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 13001010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300102,
+    "comment": "迷雾迷宫地城黄金宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 13001020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300201,
+    "comment": "英雄试炼地城通关宝箱",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 13002010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1000100,
+    "comment": "凯亚教学地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10001000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100100,
+    "comment": "安柏教学地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11001000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100300,
+    "comment": "丽莎教学地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1001000,
+    "comment": "风龙泪滴副本通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10010000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400100,
+    "comment": "安柏常驻地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14001000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400200,
+    "comment": "凯亚常驻地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14002000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400300,
+    "comment": "丽莎常驻地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14003000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400400,
+    "comment": "神殿旧址地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14004000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400700,
+    "comment": "酒庄地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14007000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400800,
+    "comment": "清泉镇地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14008000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400900,
+    "comment": "奔狼岭地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14009000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400600,
+    "comment": "远岛地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14006000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400500,
+    "comment": "丘丘圣山地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14005000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1200000,
+    "comment": "凯亚支线地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 12000000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1000104,
+    "comment": "凯亚教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10001040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100304,
+    "comment": "丽莎教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1001004,
+    "comment": "风龙泪滴副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10010040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400604,
+    "comment": "远岛地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14006040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1000102,
+    "comment": "凯亚教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10001020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100102,
+    "comment": "安柏教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11001020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100302,
+    "comment": "丽莎教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1001002,
+    "comment": "风龙泪滴副本中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10010020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400302,
+    "comment": "丽莎常驻地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14003020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400402,
+    "comment": "神殿旧址地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14004020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400702,
+    "comment": "酒庄地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14007020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400602,
+    "comment": "远岛地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14006020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400502,
+    "comment": "丘丘圣山地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14005020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1200002,
+    "comment": "凯亚支线地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 12000020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100301,
+    "comment": "丽莎教学地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1001001,
+    "comment": "风龙泪滴副本小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10010010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400201,
+    "comment": "凯亚常驻地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14002010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400301,
+    "comment": "丽莎常驻地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14003010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400401,
+    "comment": "神殿旧址地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14004010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400901,
+    "comment": "奔狼岭地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14009010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400601,
+    "comment": "远岛地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14006010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1200001,
+    "comment": "凯亚支线地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 12000010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100100,
+    "comment": "安柏教学地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11001001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100300,
+    "comment": "丽莎教学地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1001000,
+    "comment": "风龙泪滴副本通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2003,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400100,
+    "comment": "安柏常驻地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14001001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400200,
+    "comment": "凯亚常驻地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14002001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400700,
+    "comment": "酒庄地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14007001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400800,
+    "comment": "清泉镇地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14008001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400300,
+    "comment": "丽莎常驻地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2101,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400400,
+    "comment": "神殿旧址地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2102,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400900,
+    "comment": "奔狼岭地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2103,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400600,
+    "comment": "远岛地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2104,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400500,
+    "comment": "丘丘圣山地城通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2105,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1000104,
+    "comment": "凯亚教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10001041,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100304,
+    "comment": "丽莎教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003041,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1001004,
+    "comment": "风龙泪滴副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10010041,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400604,
+    "comment": "远岛地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14006041,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1000102,
+    "comment": "凯亚教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10001021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100102,
+    "comment": "安柏教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11001021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100302,
+    "comment": "丽莎教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1001002,
+    "comment": "风龙泪滴副本中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10010021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400302,
+    "comment": "丽莎常驻地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14003021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400402,
+    "comment": "神殿旧址地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14004021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400702,
+    "comment": "酒庄地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14007021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400602,
+    "comment": "远岛地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14006021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1400502,
+    "comment": "丘丘圣山地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14005021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1200002,
+    "comment": "凯亚支线地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 12000021,
+    "child_drop_id_weight": 7000
+  },
+  {
+    "drop_id": 1100301,
+    "comment": "丽莎教学地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003011,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1001001,
+    "comment": "风龙泪滴副本小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10010011,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400201,
+    "comment": "凯亚常驻地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14002011,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400301,
+    "comment": "丽莎常驻地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14003011,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400401,
+    "comment": "神殿旧址地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14004011,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400901,
+    "comment": "奔狼岭地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14009011,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400601,
+    "comment": "远岛地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 14006011,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1200001,
+    "comment": "凯亚支线地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 12000011,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1000104,
+    "comment": "凯亚教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4002,
+    "child_drop_id_weight": 1000
+  },
+  {
+    "drop_id": 1100304,
+    "comment": "丽莎教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4002,
+    "child_drop_id_weight": 1000
+  },
+  {
+    "drop_id": 1001004,
+    "comment": "风龙泪滴副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4002,
+    "child_drop_id_weight": 1000
+  },
+  {
+    "drop_id": 1400604,
+    "comment": "远岛地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4002,
+    "child_drop_id_weight": 1000
+  },
+  {
+    "drop_id": 1000102,
+    "comment": "凯亚教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1100102,
+    "comment": "安柏教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1100302,
+    "comment": "丽莎教学地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1001002,
+    "comment": "风龙泪滴副本中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400302,
+    "comment": "丽莎常驻地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400402,
+    "comment": "神殿旧址地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400702,
+    "comment": "酒庄地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400602,
+    "comment": "远岛地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400502,
+    "comment": "丘丘圣山地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1200002,
+    "comment": "凯亚支线地城中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1100301,
+    "comment": "丽莎教学地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1001001,
+    "comment": "风龙泪滴副本小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400201,
+    "comment": "凯亚常驻地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400301,
+    "comment": "丽莎常驻地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400401,
+    "comment": "神殿旧址地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400901,
+    "comment": "奔狼岭地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1400601,
+    "comment": "远岛地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1200001,
+    "comment": "凯亚支线地城小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1000104,
+    "comment": "凯亚教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2001,
+    "child_drop_id_weight": 667
+  },
+  {
+    "drop_id": 1100304,
+    "comment": "丽莎教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2001,
+    "child_drop_id_weight": 667
+  },
+  {
+    "drop_id": 1001004,
+    "comment": "风龙泪滴副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2001,
+    "child_drop_id_weight": 667
+  },
+  {
+    "drop_id": 1400604,
+    "comment": "远岛地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2001,
+    "child_drop_id_weight": 667
+  },
+  {
+    "drop_id": 1000104,
+    "comment": "凯亚教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2003,
+    "child_drop_id_weight": 333
+  },
+  {
+    "drop_id": 1100304,
+    "comment": "丽莎教学地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2003,
+    "child_drop_id_weight": 333
+  },
+  {
+    "drop_id": 1001004,
+    "comment": "风龙泪滴副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2003,
+    "child_drop_id_weight": 333
+  },
+  {
+    "drop_id": 1400604,
+    "comment": "远岛地城精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2003,
+    "child_drop_id_weight": 333
+  },
+  {
+    "drop_id": 1000109,
+    "comment": "凯亚教学地城元素能量",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 10001090,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100109,
+    "comment": "安柏教学地城元素能量",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11001090,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1100309,
+    "comment": "丽莎教学地城元素能量",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 11003090,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1200009,
+    "comment": "凯亚支线地城元素能量",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 12000090,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403100,
+    "comment": "新手低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403101,
+    "comment": "1-5低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403102,
+    "comment": "6-8低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403103,
+    "comment": "11-15低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031030,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403104,
+    "comment": "16-18低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403105,
+    "comment": "20-23低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031050,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403120,
+    "comment": "新手中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031200,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403121,
+    "comment": "1-5中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403122,
+    "comment": "6-8中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031220,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403123,
+    "comment": "11-15中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031230,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403124,
+    "comment": "16-18中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031240,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403125,
+    "comment": "20-23中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031250,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403140,
+    "comment": "新手高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031400,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403141,
+    "comment": "1-5高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031410,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403142,
+    "comment": "6-8高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031420,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403143,
+    "comment": "11-15高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031430,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403144,
+    "comment": "16-18高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031440,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403145,
+    "comment": "20-23高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031450,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403220,
+    "comment": "新手普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032200,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403221,
+    "comment": "1-5普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403222,
+    "comment": "6-8普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032220,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403223,
+    "comment": "11-15普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032230,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403224,
+    "comment": "16-18普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032240,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403225,
+    "comment": "20-23普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032250,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403240,
+    "comment": "新手精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032400,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403241,
+    "comment": "1-5精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032410,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403242,
+    "comment": "6-8精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032420,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403243,
+    "comment": "11-15精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032430,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403244,
+    "comment": "16-18精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032440,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403245,
+    "comment": "20-23精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032450,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403300,
+    "comment": "新手普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403301,
+    "comment": "1-5普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403302,
+    "comment": "6-8普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403303,
+    "comment": "11-15普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033030,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403304,
+    "comment": "16-18普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403305,
+    "comment": "20-23普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033050,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403320,
+    "comment": "新手品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033200,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403321,
+    "comment": "1-5品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033210,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403322,
+    "comment": "6-8品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033220,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403323,
+    "comment": "11-15品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033230,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403324,
+    "comment": "16-18品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033240,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403325,
+    "comment": "20-23品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033250,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403340,
+    "comment": "新手封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033400,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403341,
+    "comment": "1-5封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033410,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403342,
+    "comment": "6-8封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033420,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403343,
+    "comment": "11-15封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033430,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403344,
+    "comment": "16-18封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033440,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403345,
+    "comment": "20-23封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033450,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403100,
+    "comment": "新手低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403101,
+    "comment": "1-5低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031011,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403102,
+    "comment": "6-8低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403103,
+    "comment": "11-15低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031031,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403104,
+    "comment": "16-18低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031041,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403105,
+    "comment": "20-23低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031051,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403120,
+    "comment": "新手中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031201,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403121,
+    "comment": "1-5中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031211,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403122,
+    "comment": "6-8中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031221,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403123,
+    "comment": "11-15中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031231,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403124,
+    "comment": "16-18中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031241,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403125,
+    "comment": "20-23中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031251,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403140,
+    "comment": "新手高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031401,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403141,
+    "comment": "1-5高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031411,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403142,
+    "comment": "6-8高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031421,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403143,
+    "comment": "11-15高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031431,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403144,
+    "comment": "16-18高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031441,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403145,
+    "comment": "20-23高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031451,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403220,
+    "comment": "新手普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032201,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403221,
+    "comment": "1-5普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032211,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403222,
+    "comment": "6-8普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032221,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403223,
+    "comment": "11-15普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032231,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403224,
+    "comment": "16-18普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032241,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403225,
+    "comment": "20-23普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032251,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403240,
+    "comment": "新手精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032401,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403241,
+    "comment": "1-5精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032411,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403242,
+    "comment": "6-8精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032421,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403243,
+    "comment": "11-15精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032431,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403244,
+    "comment": "16-18精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032441,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403245,
+    "comment": "20-23精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032451,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403300,
+    "comment": "新手普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033001,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403301,
+    "comment": "1-5普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033011,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403302,
+    "comment": "6-8普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403303,
+    "comment": "11-15普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033031,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403304,
+    "comment": "16-18普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033041,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403305,
+    "comment": "20-23普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033051,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403320,
+    "comment": "新手品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033201,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403321,
+    "comment": "1-5品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033211,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403322,
+    "comment": "6-8品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033221,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403323,
+    "comment": "11-15品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033231,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403324,
+    "comment": "16-18品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033241,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403325,
+    "comment": "20-23品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033251,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403340,
+    "comment": "新手封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033401,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403341,
+    "comment": "1-5封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033411,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403342,
+    "comment": "6-8封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033421,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403343,
+    "comment": "11-15封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033431,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403344,
+    "comment": "16-18封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033441,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403345,
+    "comment": "20-23封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033451,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403102,
+    "comment": "6-8低级营地圣遗物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2000,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403103,
+    "comment": "11-15低级营地圣遗物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2011,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403104,
+    "comment": "16-18低级营地圣遗物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2012,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403105,
+    "comment": "20-23低级营地圣遗物",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2012,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403122,
+    "comment": "6-8中级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2000,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 403123,
+    "comment": "11-15中级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2021,
+    "child_drop_id_weight": 6000
+  },
+  {
+    "drop_id": 403124,
+    "comment": "16-18中级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2022,
+    "child_drop_id_weight": 6000
+  },
+  {
+    "drop_id": 403125,
+    "comment": "20-23中级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2022,
+    "child_drop_id_weight": 6000
+  },
+  {
+    "drop_id": 403142,
+    "comment": "6-8高级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2000,
+    "child_drop_id_weight": 5000
+  },
+  {
+    "drop_id": 403143,
+    "comment": "11-15高级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2031,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403144,
+    "comment": "16-18高级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2032,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403145,
+    "comment": "20-23高级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2032,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403222,
+    "comment": "6-8普通挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2000,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403223,
+    "comment": "11-15普通挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2011,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403224,
+    "comment": "16-18普通挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2012,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403225,
+    "comment": "20-23普通挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2012,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403242,
+    "comment": "6-8精英挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2000,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 403243,
+    "comment": "11-15精英挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2021,
+    "child_drop_id_weight": 6000
+  },
+  {
+    "drop_id": 403244,
+    "comment": "16-18精英挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2022,
+    "child_drop_id_weight": 6000
+  },
+  {
+    "drop_id": 403245,
+    "comment": "20-23精英挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2022,
+    "child_drop_id_weight": 6000
+  },
+  {
+    "drop_id": 403342,
+    "comment": "6-8封印宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2000,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403343,
+    "comment": "11-15封印宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2011,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403344,
+    "comment": "16-18封印宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2012,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403345,
+    "comment": "20-23封印宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2012,
+    "child_drop_id_weight": 4000
+  },
+  {
+    "drop_id": 403102,
+    "comment": "6-8低级营地武器",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403103,
+    "comment": "11-15低级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403104,
+    "comment": "16-18低级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403105,
+    "comment": "20-23低级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403122,
+    "comment": "6-8中级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403123,
+    "comment": "11-15中级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403124,
+    "comment": "16-18中级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403125,
+    "comment": "20-23中级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403142,
+    "comment": "6-8高级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403143,
+    "comment": "11-15高级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403144,
+    "comment": "16-18高级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403145,
+    "comment": "20-23高级营地随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403222,
+    "comment": "6-8普通挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403223,
+    "comment": "11-15普通挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403224,
+    "comment": "16-18普通挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403225,
+    "comment": "20-23普通挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403242,
+    "comment": "6-8精英挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403243,
+    "comment": "11-15精英挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403244,
+    "comment": "16-18精英挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403245,
+    "comment": "20-23精英挑战随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403322,
+    "comment": "6-8品质宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 1500
+  },
+  {
+    "drop_id": 403323,
+    "comment": "11-15品质宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 1500
+  },
+  {
+    "drop_id": 403324,
+    "comment": "16-18品质宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 1500
+  },
+  {
+    "drop_id": 403325,
+    "comment": "20-23品质宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 1500
+  },
+  {
+    "drop_id": 403342,
+    "comment": "6-8封印宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4101,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403343,
+    "comment": "11-15封印宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403344,
+    "comment": "16-18封印宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 403345,
+    "comment": "20-23封印宝箱随机包",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 2000
+  },
+  {
+    "drop_id": 303000,
+    "comment": "1-5级新手据点小怪死亡掉落",
+    "随机策略": "",
+    "随机次数": "",
+    "child_drop_id": 3030010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403101,
+    "comment": "1-5低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031012,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403102,
+    "comment": "6-8低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031022,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403103,
+    "comment": "11-15低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031032,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403104,
+    "comment": "16-18低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031042,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403105,
+    "comment": "20-23低级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031052,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403121,
+    "comment": "1-5中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031212,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403122,
+    "comment": "6-8中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031222,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403123,
+    "comment": "11-15中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031232,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403124,
+    "comment": "16-18中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031242,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403125,
+    "comment": "20-23中级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031252,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403141,
+    "comment": "1-5高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031412,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403142,
+    "comment": "6-8高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031422,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403143,
+    "comment": "11-15高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031432,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403144,
+    "comment": "16-18高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031442,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403145,
+    "comment": "20-23高级营地",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4031452,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403221,
+    "comment": "1-5普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032212,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403222,
+    "comment": "6-8普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032222,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403223,
+    "comment": "11-15普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032232,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403224,
+    "comment": "16-18普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032242,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403225,
+    "comment": "20-23普通挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032252,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403241,
+    "comment": "1-5精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032412,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403242,
+    "comment": "6-8精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032422,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403243,
+    "comment": "11-15精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032432,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403244,
+    "comment": "16-18精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032442,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403245,
+    "comment": "20-23精英挑战",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032452,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403301,
+    "comment": "1-5普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033012,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403302,
+    "comment": "6-8普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033022,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403303,
+    "comment": "11-15普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033032,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403304,
+    "comment": "16-18普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033042,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403305,
+    "comment": "20-23普通宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033052,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403321,
+    "comment": "1-5品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033212,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403322,
+    "comment": "6-8品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033222,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403323,
+    "comment": "11-15品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033232,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403324,
+    "comment": "16-18品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033242,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403325,
+    "comment": "20-23品质宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033252,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403341,
+    "comment": "1-5封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033412,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403342,
+    "comment": "6-8封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033422,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403343,
+    "comment": "11-15封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033432,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403344,
+    "comment": "16-18封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033442,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403345,
+    "comment": "20-23封印宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4033452,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403263,
+    "comment": "酒庄特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032630,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403264,
+    "comment": "丘丘圣山特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032640,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403265,
+    "comment": "风龙特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032650,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403263,
+    "comment": "酒庄特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032631,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403264,
+    "comment": "丘丘圣山特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032641,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403265,
+    "comment": "风龙特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032651,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403263,
+    "comment": "酒庄特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032632,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403264,
+    "comment": "丘丘圣山特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032642,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403265,
+    "comment": "风龙特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032652,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 403283,
+    "comment": "剑冢特殊宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4032830,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300400,
+    "comment": "联机副本通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 13004000,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300401,
+    "comment": "联机副本小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 13004010,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300402,
+    "comment": "联机副本中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 13004020,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300404,
+    "comment": "联机副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 13004040,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300400,
+    "comment": "联机副本通关宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2331,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300401,
+    "comment": "联机副本小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 13004011,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300402,
+    "comment": "联机副本中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 13004021,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300404,
+    "comment": "联机副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 13004041,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 1300401,
+    "comment": "联机副本小宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1300402,
+    "comment": "联机副本中宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4001,
+    "child_drop_id_weight": 3000
+  },
+  {
+    "drop_id": 1300404,
+    "comment": "联机副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4002,
+    "child_drop_id_weight": 1000
+  },
+  {
+    "drop_id": 1300404,
+    "comment": "联机副本精致宝箱",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 2003,
+    "child_drop_id_weight": 1000
+  },
+  {
+    "drop_id": 303126,
+    "comment": "30级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 3031260,
+    "child_drop_id_weight": 10000
+  },
+  {
+    "drop_id": 303126,
+    "comment": "30级据点boss级怪物死亡掉落",
+    "随机策略": 2,
+    "随机次数": "",
+    "child_drop_id": 4102,
+    "child_drop_id_weight": 4000
+  }
+]
