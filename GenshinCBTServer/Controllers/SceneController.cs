@@ -2,6 +2,7 @@
 using GenshinCBTServer.Player;
 using GenshinCBTServer.Protocol;
 using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -119,6 +120,52 @@ namespace GenshinCBTServer.Controllers
 
             }
         }
+
+        [Server.Handler(CmdType.SceneTransToPointReq)]
+        public static void OnSceneTransToPointReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            SceneTransToPointReq req = packet.DecodeBody<SceneTransToPointReq>();
+            ScenePointRow pointRow = Server.getResources().scenePointDict[session.currentSceneId];
+            if (pointRow == null) {
+                Server.Print($"Point {req.PointId} not found");
+                session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { Retcode = (int)Retcode.RetFail });
+                return;
+            }
+            Dictionary<uint,ScenePoint> points = pointRow.points;
+            ScenePoint point = points[req.PointId];
+            Vector prevPos = session.motionInfo.Pos;
+            switch (point.JsonObjType) {
+                case "DungeonEntry":
+                case "DungeonExit":
+                    session.motionInfo = new MotionInfo()
+                    {
+                        Pos=new Vector() { X=point.pos.X,Y=point.pos.Y,Z=point.pos.Z},
+                        Rot=point.rot,
+                        State=MotionState.MotionFallOnGround,
+                        Speed = new Vector(),
+                    };
+                    break;
+                case "SceneTransPoint":
+                    session.motionInfo = new MotionInfo()
+                    {
+                        Pos=new Vector() { X=point.tranPos.X,Y=point.tranPos.Y,Z=point.tranPos.Z},
+                        Rot=point.tranRot,
+                        State=MotionState.MotionFallOnGround,
+                        Speed = new Vector(),
+                    };
+                    break;
+                default:
+                    Server.Print($"Unhandled ScenePoint type {point.JsonObjType} for scene point {req.PointId}");
+                    session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { Retcode = (int)Retcode.RetFail });
+                    return;
+            }
+            Server.Print($"Teleporting to {req.PointId} at {session.motionInfo.Pos.X},{session.motionInfo.Pos.Y},{session.motionInfo.Pos.Z}");
+            session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos= prevPos, Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterGoto,SceneBeginTime=0 });
+            session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });
+            session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { PointId = req.PointId, SceneId = session.currentSceneId, Retcode = 0 });
+            session.world.UpdateBlocks();
+        }
+
         [Server.Handler(CmdType.EnterSceneDoneReq)]
         public static void OnEnterSceneDoneReq(Client session, CmdType cmdId, Network.Packet packet)
         {

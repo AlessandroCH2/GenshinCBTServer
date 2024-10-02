@@ -18,8 +18,67 @@ namespace GenshinCBTServer
     public class SceneExcel
     {
         public uint sceneId;
+        public Vector bornPos = new Vector();
+        public Vector bornRot = new Vector();
         public List<SceneBlock> sceneBlocks = new List<SceneBlock>();
     }
+
+    public class ScenePoint
+    {
+        required public string JsonObjType;
+        public uint gadgetId;
+        public uint areaId;
+        public string type = "";
+        required public Vector pos;
+        required public Vector rot;
+
+        // those 2 only when SceneTransPoint
+        public Vector tranPos = new Vector();
+        public Vector tranRot = new Vector();
+
+        public bool unlocked;
+        public List<uint> dungeonIds = new List<uint>();
+        public Vector size = new Vector();
+        public List<uint> cutsceneList = new List<uint>();
+    }
+
+    public class ScenePointRow
+    {
+        public string JsonObjType = "";
+        public Dictionary<uint, ScenePoint> points = new Dictionary<uint, ScenePoint>();
+    }
+
+    public class CostItems
+    {
+        public uint id;
+        public uint count;
+    }
+
+    public class ShopGoodsData
+    {
+        public uint goodsId;
+        public uint itemId;
+        public uint itemCount;
+        public uint costScoin;
+        public uint costHcoin;
+        public List<CostItems> costItems = new List<CostItems>();
+    }
+
+    public class DungeonData
+    {
+        public uint id;
+        public uint type;
+        public uint playType;
+        public uint sceneId;
+        public uint blockId;
+        public uint firstDropPreview;
+        public uint dropPreview;
+        public uint firstPassRewardId;
+        public uint passRewardId;
+        public uint settleCountdownTime;
+        public bool forbiddenRestart;
+    }
+
     public class ResourceManager
     {
         public List<AvatarData> avatarsData;
@@ -27,6 +86,9 @@ namespace GenshinCBTServer
         public List<AvatarSkillDepotData> avatarSkillDepotData;
         public List<ItemData> itemData;
         public List<SceneExcel> scenes = new List<SceneExcel>();
+        public Dictionary<uint, ShopGoodsData> shopGoodsDict = new Dictionary<uint, ShopGoodsData>();
+        public Dictionary<uint, ScenePointRow> scenePointDict = new Dictionary<uint, ScenePointRow>();
+        public Dictionary<uint, DungeonData> dungeonDataDict = new Dictionary<uint, DungeonData>();
 
 
         public SceneExcel LoadSceneLua(uint sceneId)
@@ -44,6 +106,9 @@ namespace GenshinCBTServer
 
 
                     LuaTable blocks = scenelua["blocks"] as LuaTable;  // Cast to LuaTable for tables
+                    LuaTable scene_config = scenelua["scene_config"] as LuaTable;
+                    scene.bornPos = TableToVector2D(scene_config["born_pos"] as LuaTable);
+                    scene.bornRot = TableToVector2D(scene_config["born_rot"] as LuaTable);
 
                     LuaTable block_rects = scenelua["block_rects"] as LuaTable;
                     for (int i = 0; i < blocks.Keys.Count; i++)
@@ -79,7 +144,12 @@ namespace GenshinCBTServer
 
         private Vector TableToVector2D(LuaTable pos)
         {
-            return new Vector() { X = (float)(double)pos["x"], Z = (float)(double)pos["z"] };
+            if (pos["y"] != null)
+            {
+                return new Vector() { X = Convert.ToSingle(pos["x"]), Y = Convert.ToSingle(pos["y"]), Z = Convert.ToSingle(pos["z"]) };
+            } else {
+                return new Vector() { X = (float)(double)pos["x"], Z = (float)(double)pos["z"] };
+            }
         }
 
         private void LoadSceneGroup(SceneBlock block, uint sceneId)
@@ -193,6 +263,8 @@ namespace GenshinCBTServer
         public void Load()
         {
             avatarsData = JsonConvert.DeserializeObject<List<AvatarData>>(File.ReadAllText("resources/excel/AvatarData.json"));
+            shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/excel/ShopGoodsExcelConfigData.json"));
+            dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"));
 
             talentSkillData = LoadTalentSkillData();
             avatarSkillDepotData = LoadAvatarSkillDepotData();
@@ -201,9 +273,25 @@ namespace GenshinCBTServer
             string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
             foreach(string scene in scenes_)
             {
-                
-                scenes.Add(LoadSceneLua(uint.Parse(scene.Replace("resources/lua/Scene\\",""))));
+                uint sceneid = uint.Parse(scene.Replace("resources/lua/Scene\\",""));
+                scenes.Add(LoadSceneLua(sceneid));
+                scenePointDict[sceneid] = LoadScenePointData(sceneid);
             }
+        }
+
+        private ScenePointRow LoadScenePointData(uint sceneId)
+        {
+            string path = $"resources/binoutput/Scene/Point/scene{sceneId}_point.json";
+            FileInfo file = new(path);
+            if (!file.Exists)
+            {
+                Server.Print($"Cannot load scene point data for scene {sceneId} (Not found)");
+                return new ScenePointRow();
+            }
+            using var reader = file.OpenRead();
+            using StreamReader reader2 = new(reader);
+            var text = reader2.ReadToEnd().Replace("$type", "JsonObjType");
+            return JsonConvert.DeserializeObject<ScenePointRow>(text);
         }
 
         private List<ItemData> LoadWeaponData()

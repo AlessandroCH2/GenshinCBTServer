@@ -10,5 +10,8 @@ Commands:
 
 Features:
 - Load in scene
+- Enter dungeons
+- Working CBT shop
+- Teleport to scene points
 - Avatar switch
 - Weapon switch (no stats)
