@@ -37,6 +37,15 @@
     <None Update="resources\excel\AvatarSkillDepotData.tsv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="resources\excel\DungeonExcelConfigData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\excel\GadgetExcelConfigData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\excel\ShopGoodsExcelConfigData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="resources\excel\TalentSkillData.tsv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

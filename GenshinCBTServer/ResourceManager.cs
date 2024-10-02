@@ -78,6 +78,17 @@ namespace GenshinCBTServer
         public uint settleCountdownTime;
         public bool forbiddenRestart;
     }
+    public class GadgetData
+    {
+        public uint id;
+        public uint type;
+        public string jsonName;
+        public bool hasMove;
+        public bool hasAudio;
+        public bool isInteractive;
+        public int campID;
+
+    }
 
     public class ResourceManager
     {
@@ -89,8 +100,25 @@ namespace GenshinCBTServer
         public Dictionary<uint, ShopGoodsData> shopGoodsDict = new Dictionary<uint, ShopGoodsData>();
         public Dictionary<uint, ScenePointRow> scenePointDict = new Dictionary<uint, ScenePointRow>();
         public Dictionary<uint, DungeonData> dungeonDataDict = new Dictionary<uint, DungeonData>();
-
-
+        public Dictionary<uint, GadgetData> gadgetDataDict = new Dictionary<uint, GadgetData>();
+        public void Load()
+        {
+            avatarsData = JsonConvert.DeserializeObject<List<AvatarData>>(File.ReadAllText("resources/excel/AvatarData.json"));
+            shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/excel/ShopGoodsExcelConfigData.json"));
+            dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"));
+            gadgetDataDict = JsonConvert.DeserializeObject<Dictionary<uint, GadgetData>>(File.ReadAllText("resources/excel/GadgetExcelConfigData.json"));
+            talentSkillData = LoadTalentSkillData();
+            avatarSkillDepotData = LoadAvatarSkillDepotData();
+            itemData = LoadWeaponData();
+            Server.Print("Loading all scenes lua");
+            string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
+            foreach (string scene in scenes_)
+            {
+                uint sceneid = uint.Parse(scene.Replace("resources/lua/Scene\\", ""));
+                scenes.Add(LoadSceneLua(sceneid));
+                scenePointDict[sceneid] = LoadScenePointData(sceneid);
+            }
+        }
         public SceneExcel LoadSceneLua(uint sceneId)
         {
             string mainlocation = $"resources/lua/Scene/{sceneId}";
@@ -260,24 +288,7 @@ namespace GenshinCBTServer
                 Server.Print($"Cannot get scene group things because lua file not found");
             }
         }
-        public void Load()
-        {
-            avatarsData = JsonConvert.DeserializeObject<List<AvatarData>>(File.ReadAllText("resources/excel/AvatarData.json"));
-            shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/excel/ShopGoodsExcelConfigData.json"));
-            dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"));
-
-            talentSkillData = LoadTalentSkillData();
-            avatarSkillDepotData = LoadAvatarSkillDepotData();
-            itemData = LoadWeaponData();
-            Server.Print("Loading all scenes lua");
-            string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
-            foreach(string scene in scenes_)
-            {
-                uint sceneid = uint.Parse(scene.Replace("resources/lua/Scene\\",""));
-                scenes.Add(LoadSceneLua(sceneid));
-                scenePointDict[sceneid] = LoadScenePointData(sceneid);
-            }
-        }
+        
 
         private ScenePointRow LoadScenePointData(uint sceneId)
         {
@@ -369,7 +380,10 @@ namespace GenshinCBTServer
             }
             
         }
-
+        public GadgetData GetGadgetData(uint id)
+        {
+            return gadgetDataDict[id];
+        }
         public AvatarData GetAvatarDataById(uint id)
         {
             return avatarsData.Find(av => av.id == id);

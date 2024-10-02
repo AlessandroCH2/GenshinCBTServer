@@ -104,7 +104,7 @@ namespace GenshinCBTServer.Controllers
         public static void OnGadgetInteractReq(Client session, CmdType cmdId, Network.Packet packet)
         {
             GadgetInteractReq req = packet.DecodeBody<GadgetInteractReq>();
-            GameEntity entity = session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
+            GameEntityGadget entity = (GameEntityGadget)session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
             if(entity != null)
             {
                 if (entity.chest_drop > 0)
@@ -131,13 +131,14 @@ namespace GenshinCBTServer.Controllers
                 session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { Retcode = (int)Retcode.RetFail });
                 return;
             }
+            MotionInfo newMotion;
             Dictionary<uint,ScenePoint> points = pointRow.points;
             ScenePoint point = points[req.PointId];
             Vector prevPos = session.motionInfo.Pos;
             switch (point.JsonObjType) {
                 case "DungeonEntry":
                 case "DungeonExit":
-                    session.motionInfo = new MotionInfo()
+                    newMotion = new MotionInfo()
                     {
                         Pos=new Vector() { X=point.pos.X,Y=point.pos.Y,Z=point.pos.Z},
                         Rot=point.rot,
@@ -146,7 +147,7 @@ namespace GenshinCBTServer.Controllers
                     };
                     break;
                 case "SceneTransPoint":
-                    session.motionInfo = new MotionInfo()
+                    newMotion = new MotionInfo()
                     {
                         Pos=new Vector() { X=point.tranPos.X,Y=point.tranPos.Y,Z=point.tranPos.Z},
                         Rot=point.tranRot,
@@ -160,10 +161,11 @@ namespace GenshinCBTServer.Controllers
                     return;
             }
             Server.Print($"Teleporting to {req.PointId} at {session.motionInfo.Pos.X},{session.motionInfo.Pos.Y},{session.motionInfo.Pos.Z}");
-            session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos= prevPos, Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterGoto,SceneBeginTime=0 });
-            session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });
-            session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { PointId = req.PointId, SceneId = session.currentSceneId, Retcode = 0 });
-            session.world.UpdateBlocks();
+            session.TeleportToScene(req.SceneId,newMotion.Pos,newMotion.Rot,EnterType.EnterGoto);
+            // session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos= prevPos, Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterGoto,SceneBeginTime=0 });
+            // session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });
+             session.SendPacket((uint)CmdType.SceneTransToPointRsp, new SceneTransToPointRsp() { PointId = req.PointId, SceneId = session.currentSceneId, Retcode = 0 });
+            // session.world.UpdateBlocks();
         }
 
         [Server.Handler(CmdType.EnterSceneDoneReq)]
@@ -203,7 +205,7 @@ namespace GenshinCBTServer.Controllers
         [Server.Handler(CmdType.SetOpenStateReq)]
         public static void OnSetOpenStateReq(Client session, CmdType cmdId, Network.Packet packet)
         {
-            // later should implement the pause on server side (for specific props, countdowns etc)
+           
             SetOpenStateReq req = packet.DecodeBody<SetOpenStateReq>();
             SetOpenStateRsp rsp = new SetOpenStateRsp() { Key = req.Key, Value = req.Value, Retcode = 0 };
             session.SendPacket((uint)CmdType.SetOpenStateRsp, rsp);
@@ -213,7 +215,7 @@ namespace GenshinCBTServer.Controllers
         [Server.Handler(CmdType.EnterWorldAreaReq)]
         public static void OnEnterWorldAreaReq(Client session, CmdType cmdId, Network.Packet packet)
         {
-            // later should implement the pause on server side (for specific props, countdowns etc)
+         
             EnterWorldAreaReq req = packet.DecodeBody<EnterWorldAreaReq>();
             EnterWorldAreaRsp rsp = new EnterWorldAreaRsp() { AreaId = req.AreaId, AreaType = req.AreaType, Retcode = 0 };
             session.SendPacket((uint)CmdType.EnterWorldAreaRsp, rsp);
@@ -223,7 +225,7 @@ namespace GenshinCBTServer.Controllers
         [Server.Handler(CmdType.SceneGetAreaExplorePercentReq)]
         public static void OnSceneGetAreaExplorePercentReq(Client session, CmdType cmdId, Network.Packet packet)
         {
-            // later should implement the pause on server side (for specific props, countdowns etc)
+           
             SceneGetAreaExplorePercentReq req = packet.DecodeBody<SceneGetAreaExplorePercentReq>();
             SceneGetAreaExplorePercentRsp rsp = new SceneGetAreaExplorePercentRsp() { AreaId = req.AreaId, ExplorePercent = 1f, Retcode = 0 };
             session.SendPacket((uint)CmdType.SceneGetAreaExplorePercentRsp, rsp);

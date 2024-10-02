@@ -11,13 +11,11 @@ namespace GenshinCBTServer.Player
     {
         public ProtEntityType EntityType = ProtEntityType.ProtEntityNone;
         public uint entityId;
-
         public uint id;
-        public uint chest_drop;
         public MotionInfo motionInfo;
 
         public uint configId, groupId,owner,state;
-        public GameEntity(ProtEntityType entityType, uint entityId, uint id, MotionInfo motionInfo)
+        public GameEntity(uint entityId, uint id, MotionInfo motionInfo, ProtEntityType entityType = ProtEntityType.ProtEntityNone)
         {
             EntityType = entityType;
             this.entityId = entityId;
@@ -25,7 +23,7 @@ namespace GenshinCBTServer.Player
             this.motionInfo = motionInfo;
         }
 
-        public SceneEntityInfo asInfo()
+        public virtual SceneEntityInfo asInfo()
         {
             SceneEntityInfo info = new SceneEntityInfo()
             {
@@ -36,23 +34,6 @@ namespace GenshinCBTServer.Player
 
                // EntityCase = SceneEntityInfo.EntityOneofCase.Gadget
             };
-            if(EntityType == ProtEntityType.ProtEntityGadget)
-            {
-                info.Gadget = new SceneGadgetInfo()
-                {
-                  
-                   GadgetId=id,
-                     ConfigId=configId,
-                     GroupId=groupId,
-                      BornType=GadgetBornType.GadgetBornGadget,
-                      GadgetState = state,
-                    //  GadgetType = 1
-
-
-
-                };
-                if (chest_drop > 0) info.Gadget.GadgetType = 1;
-            }
             if (EntityType == ProtEntityType.ProtEntityNpc)
             {
                 info.Npc = new SceneNpcInfo()

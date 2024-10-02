@@ -41,8 +41,10 @@ namespace GenshinCBTServer.Player
         }
         public void ResetScene()
         {
-           entities.Clear();
-           currentBlock = null;
+           
+            KillEntities(entities);
+            entities.Clear();
+            currentBlock = null;
            
         }
         public void KillEntities(List<GameEntity> tokill,VisionType disType = VisionType.VisionNone)
@@ -50,8 +52,10 @@ namespace GenshinCBTServer.Player
             SceneEntityDisappearNotify notify = new();
             foreach(GameEntity entity in tokill)
             {
-                entities.Remove(entity);
+                if(tokill != entities)entities.Remove(entity);
                 notify.EntityList.Add(entity.entityId);
+                LifeStateChangeNotify notify1 = new LifeStateChangeNotify() { EntityId=entity.entityId,LifeState=(int)LifeState.LIFE_DEAD,DieType=PlayerDieType.PlayerDieNone};
+                client.SendPacket((uint)CmdType.LifeStateChangeNotify, notify1);
             }
             notify.DisappearType = disType;
             client.SendPacket((uint)CmdType.SceneEntityDisappearNotify, notify);
@@ -61,7 +65,7 @@ namespace GenshinCBTServer.Player
             List<GameEntity> toKill = new List<GameEntity>();
             foreach (GameEntity entity in entities)
             {
-                if (currentBlock.insideRegion(entity.motionInfo.Pos) && currentBlock.groups.Find(gr=>gr.id==entity.groupId) != null)
+                if (currentBlock.insideRegion(entity.motionInfo.Pos))
                 {
                    
                     toKill.Add(entity);
@@ -119,8 +123,8 @@ namespace GenshinCBTServer.Player
                     {
                      //   Server.Print("gadget id " + gadget.gadget_id);
                         uint entityId = ((uint)ProtEntityType.ProtEntityGadget << 24) + (uint)client.random.Next();
-                        GameEntity entity = new GameEntity(
-                            ProtEntityType.ProtEntityGadget,
+                        GameEntityGadget entity = new GameEntityGadget(
+                            
                             entityId,
                             gadget.gadget_id,
                             new MotionInfo()
@@ -136,13 +140,13 @@ namespace GenshinCBTServer.Player
                         entity.owner = (uint)client.gamePeer;
                         entity.chest_drop = gadget.chest_drop_id;
                         entity.state = gadget.state;
-                        if(entity.chest_drop > 0) SpawnEntity(entity);
+                        SpawnEntity(entity);
                     }
                     foreach(SceneNpc npc in group.npcs)
                     {
                         uint entityId = ((uint)ProtEntityType.ProtEntityNpc << 24) + (uint)client.random.Next();
-                    GameEntity entity = new GameEntity(
-                       ProtEntityType.ProtEntityNpc,
+                       GameEntity entity = new GameEntity(
+                       
                        entityId,
                        npc.npc_id,
                        new MotionInfo()
@@ -152,7 +156,7 @@ namespace GenshinCBTServer.Player
                            Speed = new Vector(),
 
                            State = MotionState.MotionNone
-                       }
+                       }, ProtEntityType.ProtEntityNpc
                        ) ;
                         entity.configId = npc.config_id;
                         entity.groupId = group.id;

@@ -67,6 +67,7 @@ namespace GenshinCBTServer
         public int gamePeer = 0;
         public MapField<uint, uint> openStateMap = new MapField<uint, uint>();
         public uint currentSceneId = 3;
+        public uint prevSceneId = 0;
         public uint returnPointId = 1;
 
         public uint[] team = { 10000015 };
@@ -77,7 +78,7 @@ namespace GenshinCBTServer
         public uint uid;
         public string name;
         public string token;
-        //public Vector position = new Vector() { X = 2136.926f, Y = 208, Z = -1172 };
+       
         public MotionInfo motionInfo = new MotionInfo(){ Pos=new Vector() { X = 2136.926f, Y = 208, Z = -1172 }, Rot = new(), Speed = new(), State = MotionState.MotionStandby };
         public World world;
         public List<uint> unlockedPoints = new();
@@ -90,8 +91,8 @@ namespace GenshinCBTServer
             props.Add((uint)PropType.PROP_IS_WEATHER_LOCKED, new PropValue() { Val = 0 });
             props.Add((uint)PropType.PROP_IS_GAME_TIME_LOCKED, new PropValue() { Val = 0 });
             addProp((uint)PropType.PROP_IS_TRANSFERABLE, 1, props);
-            props.Add((uint)PropType.PROP_MAX_STAMINA, new PropValue() { Val = 15000 });
-            props.Add((uint)PropType.PROP_CUR_PERSIST_STAMINA, new PropValue() { Val = 15000 });
+            addProp((uint)PropType.PROP_MAX_STAMINA,  15000, props);
+            addProp((uint)PropType.PROP_CUR_PERSIST_STAMINA,  15000, props);
             addProp((uint)PropType.PROP_CUR_TEMPORARY_STAMINA, 15000, props);
             addProp((uint)PropType.PROP_PLAYER_LEVEL, 20, props);
             addProp((uint)PropType.PROP_PLAYER_EXP, 0, props);
@@ -158,14 +159,16 @@ namespace GenshinCBTServer
             {
                 inventory.Add(new GameItem(this, (uint)itemData.id));
             }
-            //  avatars.Add(new Avatar(this, 10000015));
+            //For testing fast
+              avatars.Add(new Avatar(this, 10000015));
 
-            // selectedAvatar = (int)avatars[0].guid;
+             selectedAvatar = (int)avatars[0].guid;
             SendInventory();
             SendAllAvatars();
             QuestController.UpdateQuestForClient(this);
             SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
         }
+        //Need to be remade completely
         public Profile ToProfile()
         {
             Profile profile = new Profile()
@@ -191,12 +194,25 @@ namespace GenshinCBTServer
            
         }
 
-        public void TeleportToScene(uint scene)
+        public void TeleportToScene(uint scene,Vector newPos = null,Vector newRot = null, EnterType enterType = EnterType.EnterJump)
         {
-
-            SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = scene,TargetUid=uid,PrevPos= new Vector() { X = 0, Y = 0, Z = 0 }, Pos=motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterJump,SceneBeginTime=0 });
-            currentSceneId = scene;
+            prevSceneId = currentSceneId;
+            Vector prevPos = motionInfo.Pos;
+            if (newPos != null)
+            {
+                motionInfo.Pos = newPos;
+                if (newRot != null) motionInfo.Rot = newRot;
+            }
+            else
+            {
+                SceneExcel sceneEx = Server.getResources().LoadSceneLua(scene);
+                motionInfo.Pos = sceneEx.bornPos;
+                motionInfo.Rot=sceneEx.bornRot;
+            }
             world.LoadNewScene(currentSceneId);
+            SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = scene,TargetUid=uid,PrevPos= prevPos, Pos=motionInfo.Pos,PrevSceneId= prevSceneId, Type=enterType,SceneBeginTime=0 });
+            currentSceneId = scene;
+            
 
         }
         public uint GetCurrentAvatar()

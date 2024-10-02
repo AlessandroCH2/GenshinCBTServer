@@ -18,7 +18,7 @@ namespace GenshinCBTServer.Excel
         [Index(2)]
         public int rank { get; set; }
     };
-
+    
     public class AvatarSkillDepotData
     {
         [Index(0)]

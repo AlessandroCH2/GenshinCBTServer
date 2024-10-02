@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace GenshinCBTServer.Controllers
 {
@@ -17,6 +18,7 @@ namespace GenshinCBTServer.Controllers
         public static void OnDungeonEntryInfoReq(Client session, CmdType cmdId, Network.Packet packet)
         {
             DungeonEntryInfoReq req = packet.DecodeBody<DungeonEntryInfoReq>();
+            
             DungeonEntryInfoRsp rsp = new DungeonEntryInfoRsp()
             {
                 PointId = req.PointId,
@@ -54,13 +56,15 @@ namespace GenshinCBTServer.Controllers
             session.returnPointId = req.PointId;
             DungeonData dungeonData = Server.getResources().dungeonDataDict[req.DungeonId];
             SceneExcel scene = Server.getResources().LoadSceneLua(dungeonData.sceneId);
-            session.currentSceneId = scene.sceneId;
-            session.motionInfo.Pos = scene.bornPos;
-            session.motionInfo.Rot = scene.bornRot;
-            session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos = new Vector(), Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterDungeon,SceneBeginTime=0 });
+
+            session.TeleportToScene(scene.sceneId, scene.bornPos, scene.bornRot, EnterType.EnterDungeon);
+            //session.currentSceneId = scene.sceneId;
+            //session.motionInfo.Pos = scene.bornPos;
+            //session.motionInfo.Rot = scene.bornRot;
+            // session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos = new Vector(), Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterDungeon,SceneBeginTime=0 });
             // session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });
             session.SendPacket((uint)CmdType.PlayerEnterDungeonRsp, rsp);
-            session.world.UpdateBlocks();
+            //session.world.UpdateBlocks();
         }
 
         [Server.Handler(CmdType.PlayerQuitDungeonReq)]
@@ -72,16 +76,17 @@ namespace GenshinCBTServer.Controllers
                 PointId = req.PointId,
                 Retcode = 0,
             };
-            uint destSceneId = 3; // again, it's 5am and idk what i'm doing
+            uint destSceneId = session.prevSceneId; // again, it's 5am and idk what i'm doing
             ScenePointRow scenePoint = Server.getResources().scenePointDict[destSceneId];
             ScenePoint point = req.PointId > 0 ? scenePoint.points[req.PointId] : scenePoint.points[session.returnPointId];
-            session.currentSceneId = destSceneId;
+            session.TeleportToScene(destSceneId,point.pos,point.rot,EnterType.EnterJump);
+          /*  session.currentSceneId = destSceneId;
             session.motionInfo.Pos = point.pos;
             session.motionInfo.Rot = point.rot;
             session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos = new Vector(), Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterJump,SceneBeginTime=0 });
-            // session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });
+            // session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });*/
             session.SendPacket((uint)CmdType.PlayerQuitDungeonRsp, rsp);
-            session.world.UpdateBlocks();
+            //session.world.UpdateBlocks(); //Not needed, new scene blocks get loaded in scene controller when scene initialize is almost finished
         }
     }
 }
