@@ -95,12 +95,15 @@ namespace GenshinCBTServer
         public List<AvatarData> avatarsData;
         public List<TalentSkillData> talentSkillData;
         public List<AvatarSkillDepotData> avatarSkillDepotData;
-        public List<ItemData> itemData;
+        public Dictionary<uint, ItemData> itemData = new Dictionary<uint, ItemData>();
         public List<SceneExcel> scenes = new List<SceneExcel>();
         public Dictionary<uint, ShopGoodsData> shopGoodsDict = new Dictionary<uint, ShopGoodsData>();
         public Dictionary<uint, ScenePointRow> scenePointDict = new Dictionary<uint, ScenePointRow>();
         public Dictionary<uint, DungeonData> dungeonDataDict = new Dictionary<uint, DungeonData>();
         public Dictionary<uint, GadgetData> gadgetDataDict = new Dictionary<uint, GadgetData>();
+        public Dictionary<uint, ReliquaryCurve> reliquaryCurves = new Dictionary<uint, ReliquaryCurve>();
+        public Dictionary<uint, LevelCurve> weaponCurves = new Dictionary<uint, LevelCurve>();
+        public Dictionary<uint, PromoteInfo>  weaponsPromote = new Dictionary<uint, PromoteInfo>();
         public void Load()
         {
             avatarsData = JsonConvert.DeserializeObject<List<AvatarData>>(File.ReadAllText("resources/excel/AvatarData.json"));
@@ -109,7 +112,13 @@ namespace GenshinCBTServer
             gadgetDataDict = JsonConvert.DeserializeObject<Dictionary<uint, GadgetData>>(File.ReadAllText("resources/excel/GadgetExcelConfigData.json"));
             talentSkillData = LoadTalentSkillData();
             avatarSkillDepotData = LoadAvatarSkillDepotData();
-            itemData = LoadWeaponData();
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/WeaponExcelConfigData.json")));
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/MaterialExcelConfigData.json")));
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/ReliquaryExcelConfigData.json")));
+            weaponCurves = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/excel/WeaponCurveExcelConfigData.json"));
+
+          
+            weaponsPromote = JsonConvert.DeserializeObject<Dictionary<uint, PromoteInfo>>(File.ReadAllText("resources/excel/WeaponPromoteExcelConfigData.json"));
             Server.Print("Loading all scenes lua");
             string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
             foreach (string scene in scenes_)
@@ -118,6 +127,10 @@ namespace GenshinCBTServer
                 scenes.Add(LoadSceneLua(sceneid));
                 scenePointDict[sceneid] = LoadScenePointData(sceneid);
             }
+        }
+        public Dictionary<uint,ItemData> AddItemDataDic(Dictionary<uint,ItemData> data)
+        {
+            return itemData.Union(data).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
         }
         public SceneExcel LoadSceneLua(uint sceneId)
         {
@@ -325,21 +338,7 @@ namespace GenshinCBTServer
             return JsonConvert.DeserializeObject<ScenePointRow>(text);
         }
 
-        private List<ItemData> LoadWeaponData()
-        {
-            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
-            {
-                Delimiter = "\t",
-                HasHeaderRecord = true,
-
-            };
-            using (var reader = new StreamReader("resources/excel/WeaponData.tsv"))
-            using (var csv = new CsvReader(reader, configuration))
-            {
-                var records = csv.GetRecords<ItemData>().ToList();
-                return records;
-            }
-        }
+       
 
         private List<AvatarSkillDepotData> LoadAvatarSkillDepotData()
         {

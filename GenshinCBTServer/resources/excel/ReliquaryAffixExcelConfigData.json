@@ -1,0 +1,1346 @@
+{
+  "101021": {
+    "id": 101021,
+    "depot_id": 101,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 18,
+    "weight": 1000
+  },
+  "101022": {
+    "id": 101022,
+    "depot_id": 101,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 28,
+    "weight": 800
+  },
+  "201021": {
+    "id": 201021,
+    "depot_id": 201,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 32,
+    "weight": 1000
+  },
+  "201022": {
+    "id": 201022,
+    "depot_id": 201,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 48,
+    "weight": 800
+  },
+  "201023": {
+    "id": 201023,
+    "depot_id": 201,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 64,
+    "weight": 600
+  },
+  "301021": {
+    "id": 301021,
+    "depot_id": 301,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 61,
+    "weight": 1000
+  },
+  "301022": {
+    "id": 301022,
+    "depot_id": 301,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 82,
+    "weight": 800
+  },
+  "301023": {
+    "id": 301023,
+    "depot_id": 301,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 102,
+    "weight": 600
+  },
+  "301024": {
+    "id": 301024,
+    "depot_id": 301,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 122,
+    "weight": 400
+  },
+  "401021": {
+    "id": 401021,
+    "depot_id": 401,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 106,
+    "weight": 1000
+  },
+  "401022": {
+    "id": 401022,
+    "depot_id": 401,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 141,
+    "weight": 800
+  },
+  "401023": {
+    "id": 401023,
+    "depot_id": 401,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 177,
+    "weight": 600
+  },
+  "401024": {
+    "id": 401024,
+    "depot_id": 401,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 211,
+    "weight": 400
+  },
+  "501021": {
+    "id": 501021,
+    "depot_id": 501,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 135,
+    "weight": 1000
+  },
+  "501022": {
+    "id": 501022,
+    "depot_id": 501,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 181,
+    "weight": 800
+  },
+  "501023": {
+    "id": 501023,
+    "depot_id": 501,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 227,
+    "weight": 600
+  },
+  "501024": {
+    "id": 501024,
+    "depot_id": 501,
+    "group_id": 2,
+    "propType": 2,
+    "propValue": 270,
+    "weight": 400
+  },
+  "101031": {
+    "id": 101031,
+    "depot_id": 101,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "101032": {
+    "id": 101032,
+    "depot_id": 101,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201031": {
+    "id": 201031,
+    "depot_id": 201,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "201032": {
+    "id": 201032,
+    "depot_id": 201,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.02,
+    "weight": 800
+  },
+  "201033": {
+    "id": 201033,
+    "depot_id": 201,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.02,
+    "weight": 600
+  },
+  "301031": {
+    "id": 301031,
+    "depot_id": 301,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.02,
+    "weight": 1000
+  },
+  "301032": {
+    "id": 301032,
+    "depot_id": 301,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "301033": {
+    "id": 301033,
+    "depot_id": 301,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.03,
+    "weight": 600
+  },
+  "301034": {
+    "id": 301034,
+    "depot_id": 301,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.04,
+    "weight": 400
+  },
+  "401031": {
+    "id": 401031,
+    "depot_id": 401,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.03,
+    "weight": 1000
+  },
+  "401032": {
+    "id": 401032,
+    "depot_id": 401,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.04,
+    "weight": 800
+  },
+  "401033": {
+    "id": 401033,
+    "depot_id": 401,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.05,
+    "weight": 600
+  },
+  "401034": {
+    "id": 401034,
+    "depot_id": 401,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.06,
+    "weight": 400
+  },
+  "501031": {
+    "id": 501031,
+    "depot_id": 501,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.04,
+    "weight": 1000
+  },
+  "501032": {
+    "id": 501032,
+    "depot_id": 501,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.05,
+    "weight": 800
+  },
+  "501033": {
+    "id": 501033,
+    "depot_id": 501,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.07,
+    "weight": 600
+  },
+  "501034": {
+    "id": 501034,
+    "depot_id": 501,
+    "group_id": 3,
+    "propType": 3,
+    "propValue": 0.08,
+    "weight": 400
+  },
+  "101051": {
+    "id": 101051,
+    "depot_id": 101,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 1,
+    "weight": 1000
+  },
+  "101052": {
+    "id": 101052,
+    "depot_id": 101,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 2,
+    "weight": 800
+  },
+  "201051": {
+    "id": 201051,
+    "depot_id": 201,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 2,
+    "weight": 1000
+  },
+  "201052": {
+    "id": 201052,
+    "depot_id": 201,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 3,
+    "weight": 800
+  },
+  "201053": {
+    "id": 201053,
+    "depot_id": 201,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 4,
+    "weight": 600
+  },
+  "301051": {
+    "id": 301051,
+    "depot_id": 301,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 5,
+    "weight": 1000
+  },
+  "301052": {
+    "id": 301052,
+    "depot_id": 301,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 6,
+    "weight": 800
+  },
+  "301053": {
+    "id": 301053,
+    "depot_id": 301,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 8,
+    "weight": 600
+  },
+  "301054": {
+    "id": 301054,
+    "depot_id": 301,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 9,
+    "weight": 400
+  },
+  "401051": {
+    "id": 401051,
+    "depot_id": 401,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 8,
+    "weight": 1000
+  },
+  "401052": {
+    "id": 401052,
+    "depot_id": 401,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 10,
+    "weight": 800
+  },
+  "401053": {
+    "id": 401053,
+    "depot_id": 401,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 13,
+    "weight": 600
+  },
+  "401054": {
+    "id": 401054,
+    "depot_id": 401,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 15,
+    "weight": 400
+  },
+  "501051": {
+    "id": 501051,
+    "depot_id": 501,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 10,
+    "weight": 1000
+  },
+  "501052": {
+    "id": 501052,
+    "depot_id": 501,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 13,
+    "weight": 800
+  },
+  "501053": {
+    "id": 501053,
+    "depot_id": 501,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 16,
+    "weight": 600
+  },
+  "501054": {
+    "id": 501054,
+    "depot_id": 501,
+    "group_id": 5,
+    "propType": 5,
+    "propValue": 19,
+    "weight": 400
+  },
+  "101061": {
+    "id": 101061,
+    "depot_id": 101,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "101062": {
+    "id": 101062,
+    "depot_id": 101,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201061": {
+    "id": 201061,
+    "depot_id": 201,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "201062": {
+    "id": 201062,
+    "depot_id": 201,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.02,
+    "weight": 800
+  },
+  "201063": {
+    "id": 201063,
+    "depot_id": 201,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.02,
+    "weight": 600
+  },
+  "301061": {
+    "id": 301061,
+    "depot_id": 301,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.02,
+    "weight": 1000
+  },
+  "301062": {
+    "id": 301062,
+    "depot_id": 301,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "301063": {
+    "id": 301063,
+    "depot_id": 301,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.03,
+    "weight": 600
+  },
+  "301064": {
+    "id": 301064,
+    "depot_id": 301,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.04,
+    "weight": 400
+  },
+  "401061": {
+    "id": 401061,
+    "depot_id": 401,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.03,
+    "weight": 1000
+  },
+  "401062": {
+    "id": 401062,
+    "depot_id": 401,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.04,
+    "weight": 800
+  },
+  "401063": {
+    "id": 401063,
+    "depot_id": 401,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.05,
+    "weight": 600
+  },
+  "401064": {
+    "id": 401064,
+    "depot_id": 401,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.06,
+    "weight": 400
+  },
+  "501061": {
+    "id": 501061,
+    "depot_id": 501,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.04,
+    "weight": 1000
+  },
+  "501062": {
+    "id": 501062,
+    "depot_id": 501,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.05,
+    "weight": 800
+  },
+  "501063": {
+    "id": 501063,
+    "depot_id": 501,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.07,
+    "weight": 600
+  },
+  "501064": {
+    "id": 501064,
+    "depot_id": 501,
+    "group_id": 6,
+    "propType": 6,
+    "propValue": 0.08,
+    "weight": 400
+  },
+  "101081": {
+    "id": 101081,
+    "depot_id": 101,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 1,
+    "weight": 1000
+  },
+  "101082": {
+    "id": 101082,
+    "depot_id": 101,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 1,
+    "weight": 800
+  },
+  "201081": {
+    "id": 201081,
+    "depot_id": 201,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 2,
+    "weight": 1000
+  },
+  "201082": {
+    "id": 201082,
+    "depot_id": 201,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 2,
+    "weight": 800
+  },
+  "201083": {
+    "id": 201083,
+    "depot_id": 201,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 3,
+    "weight": 600
+  },
+  "301081": {
+    "id": 301081,
+    "depot_id": 301,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 3,
+    "weight": 1000
+  },
+  "301082": {
+    "id": 301082,
+    "depot_id": 301,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 3,
+    "weight": 800
+  },
+  "301083": {
+    "id": 301083,
+    "depot_id": 301,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 4,
+    "weight": 600
+  },
+  "301084": {
+    "id": 301084,
+    "depot_id": 301,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 5,
+    "weight": 400
+  },
+  "401081": {
+    "id": 401081,
+    "depot_id": 401,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 5,
+    "weight": 1000
+  },
+  "401082": {
+    "id": 401082,
+    "depot_id": 401,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 6,
+    "weight": 800
+  },
+  "401083": {
+    "id": 401083,
+    "depot_id": 401,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 8,
+    "weight": 600
+  },
+  "401084": {
+    "id": 401084,
+    "depot_id": 401,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 9,
+    "weight": 400
+  },
+  "501081": {
+    "id": 501081,
+    "depot_id": 501,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 6,
+    "weight": 1000
+  },
+  "501082": {
+    "id": 501082,
+    "depot_id": 501,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 7,
+    "weight": 800
+  },
+  "501083": {
+    "id": 501083,
+    "depot_id": 501,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 9,
+    "weight": 600
+  },
+  "501084": {
+    "id": 501084,
+    "depot_id": 501,
+    "group_id": 8,
+    "propType": 8,
+    "propValue": 11,
+    "weight": 400
+  },
+  "101091": {
+    "id": 101091,
+    "depot_id": 101,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "101092": {
+    "id": 101092,
+    "depot_id": 101,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201091": {
+    "id": 201091,
+    "depot_id": 201,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "201092": {
+    "id": 201092,
+    "depot_id": 201,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.02,
+    "weight": 800
+  },
+  "201093": {
+    "id": 201093,
+    "depot_id": 201,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.02,
+    "weight": 600
+  },
+  "301091": {
+    "id": 301091,
+    "depot_id": 301,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.02,
+    "weight": 1000
+  },
+  "301092": {
+    "id": 301092,
+    "depot_id": 301,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "301093": {
+    "id": 301093,
+    "depot_id": 301,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.03,
+    "weight": 600
+  },
+  "301094": {
+    "id": 301094,
+    "depot_id": 301,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.04,
+    "weight": 400
+  },
+  "401091": {
+    "id": 401091,
+    "depot_id": 401,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.03,
+    "weight": 1000
+  },
+  "401092": {
+    "id": 401092,
+    "depot_id": 401,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.04,
+    "weight": 800
+  },
+  "401093": {
+    "id": 401093,
+    "depot_id": 401,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.05,
+    "weight": 600
+  },
+  "401094": {
+    "id": 401094,
+    "depot_id": 401,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.06,
+    "weight": 400
+  },
+  "501091": {
+    "id": 501091,
+    "depot_id": 501,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.04,
+    "weight": 1000
+  },
+  "501092": {
+    "id": 501092,
+    "depot_id": 501,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.05,
+    "weight": 800
+  },
+  "501093": {
+    "id": 501093,
+    "depot_id": 501,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.07,
+    "weight": 600
+  },
+  "501094": {
+    "id": 501094,
+    "depot_id": 501,
+    "group_id": 9,
+    "propType": 9,
+    "propValue": 0.08,
+    "weight": 400
+  },
+  "201231": {
+    "id": 201231,
+    "depot_id": 201,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "201232": {
+    "id": 201232,
+    "depot_id": 201,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201233": {
+    "id": 201233,
+    "depot_id": 201,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.01,
+    "weight": 600
+  },
+  "301231": {
+    "id": 301231,
+    "depot_id": 301,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "301232": {
+    "id": 301232,
+    "depot_id": 301,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "301233": {
+    "id": 301233,
+    "depot_id": 301,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.02,
+    "weight": 600
+  },
+  "301234": {
+    "id": 301234,
+    "depot_id": 301,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.02,
+    "weight": 400
+  },
+  "401231": {
+    "id": 401231,
+    "depot_id": 401,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.02,
+    "weight": 1000
+  },
+  "401232": {
+    "id": 401232,
+    "depot_id": 401,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "401233": {
+    "id": 401233,
+    "depot_id": 401,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.03,
+    "weight": 600
+  },
+  "401234": {
+    "id": 401234,
+    "depot_id": 401,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.04,
+    "weight": 400
+  },
+  "501231": {
+    "id": 501231,
+    "depot_id": 501,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.03,
+    "weight": 1000
+  },
+  "501232": {
+    "id": 501232,
+    "depot_id": 501,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "501233": {
+    "id": 501233,
+    "depot_id": 501,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.04,
+    "weight": 600
+  },
+  "501234": {
+    "id": 501234,
+    "depot_id": 501,
+    "group_id": 23,
+    "propType": 23,
+    "propValue": 0.05,
+    "weight": 400
+  },
+  "201261": {
+    "id": 201261,
+    "depot_id": 201,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "201262": {
+    "id": 201262,
+    "depot_id": 201,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201263": {
+    "id": 201263,
+    "depot_id": 201,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.01,
+    "weight": 600
+  },
+  "301261": {
+    "id": 301261,
+    "depot_id": 301,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "301262": {
+    "id": 301262,
+    "depot_id": 301,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "301263": {
+    "id": 301263,
+    "depot_id": 301,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.02,
+    "weight": 600
+  },
+  "301264": {
+    "id": 301264,
+    "depot_id": 301,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.02,
+    "weight": 400
+  },
+  "401261": {
+    "id": 401261,
+    "depot_id": 401,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.02,
+    "weight": 1000
+  },
+  "401262": {
+    "id": 401262,
+    "depot_id": 401,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "401263": {
+    "id": 401263,
+    "depot_id": 401,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.03,
+    "weight": 600
+  },
+  "401264": {
+    "id": 401264,
+    "depot_id": 401,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.04,
+    "weight": 400
+  },
+  "501261": {
+    "id": 501261,
+    "depot_id": 501,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.03,
+    "weight": 1000
+  },
+  "501262": {
+    "id": 501262,
+    "depot_id": 501,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "501263": {
+    "id": 501263,
+    "depot_id": 501,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.04,
+    "weight": 600
+  },
+  "501264": {
+    "id": 501264,
+    "depot_id": 501,
+    "group_id": 26,
+    "propType": 26,
+    "propValue": 0.05,
+    "weight": 400
+  },
+  "101201": {
+    "id": 101201,
+    "depot_id": 101,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "101202": {
+    "id": 101202,
+    "depot_id": 101,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201201": {
+    "id": 201201,
+    "depot_id": 201,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "201202": {
+    "id": 201202,
+    "depot_id": 201,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201203": {
+    "id": 201203,
+    "depot_id": 201,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.01,
+    "weight": 600
+  },
+  "301201": {
+    "id": 301201,
+    "depot_id": 301,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "301202": {
+    "id": 301202,
+    "depot_id": 301,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "301203": {
+    "id": 301203,
+    "depot_id": 301,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.02,
+    "weight": 600
+  },
+  "301204": {
+    "id": 301204,
+    "depot_id": 301,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.02,
+    "weight": 400
+  },
+  "401201": {
+    "id": 401201,
+    "depot_id": 401,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.02,
+    "weight": 1000
+  },
+  "401202": {
+    "id": 401202,
+    "depot_id": 401,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "401203": {
+    "id": 401203,
+    "depot_id": 401,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.03,
+    "weight": 600
+  },
+  "401204": {
+    "id": 401204,
+    "depot_id": 401,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.04,
+    "weight": 400
+  },
+  "501201": {
+    "id": 501201,
+    "depot_id": 501,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.03,
+    "weight": 1000
+  },
+  "501202": {
+    "id": 501202,
+    "depot_id": 501,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "501203": {
+    "id": 501203,
+    "depot_id": 501,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.04,
+    "weight": 600
+  },
+  "501204": {
+    "id": 501204,
+    "depot_id": 501,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 0.05,
+    "weight": 400
+  },
+  "101221": {
+    "id": 101221,
+    "depot_id": 101,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "101222": {
+    "id": 101222,
+    "depot_id": 101,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201221": {
+    "id": 201221,
+    "depot_id": 201,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.01,
+    "weight": 1000
+  },
+  "201222": {
+    "id": 201222,
+    "depot_id": 201,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.01,
+    "weight": 800
+  },
+  "201223": {
+    "id": 201223,
+    "depot_id": 201,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.01,
+    "weight": 600
+  },
+  "301221": {
+    "id": 301221,
+    "depot_id": 301,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.02,
+    "weight": 1000
+  },
+  "301222": {
+    "id": 301222,
+    "depot_id": 301,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.02,
+    "weight": 800
+  },
+  "301223": {
+    "id": 301223,
+    "depot_id": 301,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.03,
+    "weight": 600
+  },
+  "301224": {
+    "id": 301224,
+    "depot_id": 301,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.03,
+    "weight": 400
+  },
+  "401221": {
+    "id": 401221,
+    "depot_id": 401,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.03,
+    "weight": 1000
+  },
+  "401222": {
+    "id": 401222,
+    "depot_id": 401,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.03,
+    "weight": 800
+  },
+  "401223": {
+    "id": 401223,
+    "depot_id": 401,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.04,
+    "weight": 600
+  },
+  "401224": {
+    "id": 401224,
+    "depot_id": 401,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.05,
+    "weight": 400
+  },
+  "501221": {
+    "id": 501221,
+    "depot_id": 501,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.03,
+    "weight": 1000
+  },
+  "501222": {
+    "id": 501222,
+    "depot_id": 501,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.04,
+    "weight": 800
+  },
+  "501223": {
+    "id": 501223,
+    "depot_id": 501,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.05,
+    "weight": 600
+  },
+  "501224": {
+    "id": 501224,
+    "depot_id": 501,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.06,
+    "weight": 400
+  },
+  "999001": {
+    "id": 999001,
+    "depot_id": 999,
+    "group_id": 22,
+    "propType": 22,
+    "propValue": 0.5,
+    "weight": 1000
+  },
+  "999002": {
+    "id": 999002,
+    "depot_id": 999,
+    "group_id": 20,
+    "propType": 20,
+    "propValue": 1,
+    "weight": 1000
+  }
+}

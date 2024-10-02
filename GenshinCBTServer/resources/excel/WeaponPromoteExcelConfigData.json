@@ -1,0 +1,132 @@
+{
+  "0": {
+    "promoteLevel": 0,
+    "foodPromoteLevel": 0,
+    "foodCost": 0,
+    "coinCost": 0,
+    "addProps": [
+      {
+        "propType": 4,
+        "value": 0
+      },
+      {
+        "propType": 20,
+        "value": 0
+      },
+      {
+        "propType": 22,
+        "value": 0
+      },
+      {
+        "propType": 23,
+        "value": 0
+      }
+    ],
+    "unlockMaxLevel": 20,
+    "playerExp": 0
+  },
+  "1": {
+    "promoteLevel": 1,
+    "foodPromoteLevel": 0,
+    "foodCost": 1,
+    "coinCost": 10000,
+    "addProps": [
+      {
+        "propType": 4,
+        "value": 25
+      },
+      {
+        "propType": 20,
+        "value": 0.02
+      },
+      {
+        "propType": 22,
+        "value": 0.02
+      },
+      {
+        "propType": 23,
+        "value": 0.01
+      }
+    ],
+    "unlockMaxLevel": 40,
+    "playerExp": 0
+  },
+  "2": {
+    "promoteLevel": 2,
+    "foodPromoteLevel": 1,
+    "foodCost": 2,
+    "coinCost": 30000,
+    "addProps": [
+      {
+        "propType": 4,
+        "value": 52
+      },
+      {
+        "propType": 20,
+        "value": 0.03
+      },
+      {
+        "propType": 22,
+        "value": 0.04
+      },
+      {
+        "propType": 23,
+        "value": 0.03
+      }
+    ],
+    "unlockMaxLevel": 60,
+    "playerExp": 0
+  },
+  "3": {
+    "promoteLevel": 3,
+    "foodPromoteLevel": 2,
+    "foodCost": 3,
+    "coinCost": 100000,
+    "addProps": [
+      {
+        "propType": 4,
+        "value": 93
+      },
+      {
+        "propType": 20,
+        "value": 0.06
+      },
+      {
+        "propType": 22,
+        "value": 0.08
+      },
+      {
+        "propType": 23,
+        "value": 0.05
+      }
+    ],
+    "unlockMaxLevel": 80,
+    "playerExp": 0
+  },
+  "4": {
+    "promoteLevel": 4,
+    "foodPromoteLevel": 3,
+    "foodCost": 4,
+    "coinCost": 400000,
+    "addProps": [
+      {
+        "propType": 4,
+        "value": 155
+      },
+      {
+        "propType": 20,
+        "value": 0.1
+      },
+      {
+        "propType": 22,
+        "value": 0.13
+      },
+      {
+        "propType": 23,
+        "value": 0.08
+      }
+    ],
+    "unlockMaxLevel": 90,
+    "playerExp": 0
+  }
+}

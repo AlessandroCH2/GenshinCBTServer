@@ -39,43 +39,5 @@ namespace GenshinCBTServer
         OPEN_STATE_GUIDE_RELIC = 28,
         OPEN_STATE_GUIDE_RELIC_PROM = 29
     }
-    public enum EquipType
-    {
-        EQUIP_NONE = 0,
-        // artifact slots
-        EQUIP_BRACER = 1, // flower
-        EQUIP_DRESS = 2, // circlet
-        EQUIP_SHOES = 3, // sands
-        EQUIP_RING = 4, // goblet
-        EQUIP_NECKLACE = 5, // feather
-                            // weapon
-        EQUIP_WEAPON = 6
-    }
-
-    public enum WeaponType
-    {
-        WEAPON_NONE = 0,
-        WEAPON_SWORD_ONE_HAND = 1,
-        WEAPON_CROSSBOW = 2,
-        WEAPON_STAFF = 3,
-        WEAPON_DOUBLE_DAGGER = 4,
-        WEAPON_KATANA = 5,
-        WEAPON_SHURIKEN = 6,
-        WEAPON_STICK = 7,
-        WEAPON_SPEAR = 8,
-        WEAPON_SHIELD_SMALL = 9,
-        WEAPON_CATALYST = 10,
-        WEAPON_CLAYMORE = 11,
-        WEAPON_BOW = 12,
-        WEAPON_POLE = 13
-    }
-
-    public enum ItemType
-    {
-        ITEM_NONE = 0,
-        ITEM_VIRTUAL = 1,
-        ITEM_MATERIAL = 2,
-        ITEM_RELIQUARY = 3,
-        ITEM_WEAPON = 4
-    }
+   
 }

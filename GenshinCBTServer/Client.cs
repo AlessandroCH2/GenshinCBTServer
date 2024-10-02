@@ -155,14 +155,22 @@ namespace GenshinCBTServer
                     openStateNotify.OpenStateMap.Add(state.Key, state.Value);
                 }
 
-            foreach(ItemData itemData in Server.getResources().itemData)
+            foreach(ItemData itemData in Server.getResources().itemData.Values)
             {
-                inventory.Add(new GameItem(this, (uint)itemData.id));
+
+                if(itemData.itemType == ItemType.ITEM_MATERIAL || itemData.itemType == ItemType.ITEM_WEAPON)
+                {
+                    GameItem it = new GameItem(this, (uint)itemData.id);
+                    it.level = 20;
+                    it.promoteLevel = 0;
+                    inventory.Add(it);
+                }
+               
             }
             //For testing fast
-              avatars.Add(new Avatar(this, 10000015));
+              //avatars.Add(new Avatar(this, 10000015));
 
-             selectedAvatar = (int)avatars[0].guid;
+            // selectedAvatar = (int)avatars[0].guid;
             SendInventory();
             SendAllAvatars();
             QuestController.UpdateQuestForClient(this);
@@ -278,6 +286,7 @@ namespace GenshinCBTServer
         public Client(IntPtr iD)
         {
             this.peer = iD;
+           // this.gamePeer = (int)peer;
         }
     }
 }

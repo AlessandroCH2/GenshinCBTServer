@@ -38,6 +38,7 @@ namespace GenshinCBTServer.Controllers
                 {
                     oldAvatar.weaponGuid = avatar.weaponGuid;
                     avatar.weaponGuid = (uint)req.EquipGuid;
+                    oldAvatar.SendUpdatedProps();
                 }
                 else
                 {
@@ -52,8 +53,11 @@ namespace GenshinCBTServer.Controllers
                     Retcode = 0,
                 };
 
-                session.SendPacket((uint)CmdType.WearEquipRsp, resp);
+                
+                avatar.SendUpdatedProps();
+                
                 session.SendAllAvatars();
+                session.SendPacket((uint)CmdType.WearEquipRsp, resp);
             }
             else
             {

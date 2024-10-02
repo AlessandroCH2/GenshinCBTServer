@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Metadata.Ecma335;
 
 namespace GenshinCBTServer.Controllers
 {
@@ -71,19 +72,23 @@ namespace GenshinCBTServer.Controllers
                
                 if(req.MotionInfo.Pos.X == 0 && req.MotionInfo.Pos.Y==0 && req.MotionInfo.Pos.Z == 0)
                 {
-
+                    //Client bug when jump
                 }
                 else
                 {
                     session.motionInfo = req.MotionInfo;
                     session.world.UpdateBlocks();
                 }
-                Server.Print($"Client Pos: {session.motionInfo.Pos.X}, {session.motionInfo.Pos.Y}, {session.motionInfo.Pos.Z}");
+               // Server.Print($"Client Pos: {session.motionInfo.Pos.X}, {session.motionInfo.Pos.Y}, {session.motionInfo.Pos.Z}");
               
             }
             else
             {
-
+                GameEntity entity = session.world.entities.Find(entity=>entity.entityId==req.EntityId);
+                if(entity is GameEntityMonster)
+                {
+                    entity.MoveEntity(req.MotionInfo);
+                }
             }
             session.SendPacket((uint)CmdType.SceneEntityMoveRsp, new SceneEntityMoveRsp() { Retcode = 0,EntityId=req.EntityId,FailMotion=req.MotionInfo,SceneTime=req.SceneTime,ReliableSeq=req.ReliableSeq });
 
@@ -104,6 +109,7 @@ namespace GenshinCBTServer.Controllers
         public static void OnGadgetInteractReq(Client session, CmdType cmdId, Network.Packet packet)
         {
             GadgetInteractReq req = packet.DecodeBody<GadgetInteractReq>();
+            if (session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId) is not GameEntityGadget) return;
             GameEntityGadget entity = (GameEntityGadget)session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
             if(entity != null)
             {

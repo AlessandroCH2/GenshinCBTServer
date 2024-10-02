@@ -143,18 +143,85 @@ namespace GenshinCBTServer.Player
 
             return ids;
         }
+        public float GetFightProp(FightPropType propType)
+        {
+           return fightprops[(uint)propType];
+        }
+        public float calculateAttack()
+        {
+            float attack = GetFightProp(FightPropType.FIGHT_PROP_BASE_ATTACK);
+            float perc = 1;
+            if (getEquippedWeapon() != null)
+            {
+                GameItem weapon = getEquippedWeapon();
 
+                perc += weapon.GetWeaponAttack().atkperc;
+            }
+            float flatAtk = 0;
+           /* if (Player.playerInstance.GetInventoryItem(RELIQ1) != null)
+            {
+                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ1);
+                ItemStats stats = reliq.GetReliquaryStats();
+                perc += stats.atkperc;
+                flatAtk += stats.attack;
+            }
+            if (Player.playerInstance.GetInventoryItem(RELIQ2) != null)
+            {
+                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ2);
+                ItemStats stats = reliq.GetReliquaryStats();
+                perc += stats.atkperc;
+                flatAtk += stats.attack;
+            }
+            if (Player.playerInstance.GetInventoryItem(RELIQ3) != null)
+            {
+                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ3);
+                ItemStats stats = reliq.GetReliquaryStats();
+                perc += stats.atkperc;
+                flatAtk += stats.attack;
+            }
+            if (Player.playerInstance.GetInventoryItem(RELIQ4) != null)
+            {
+                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ4);
+                ItemStats stats = reliq.GetReliquaryStats();
+                perc += stats.atkperc;
+                flatAtk += stats.attack;
+            }
+            if (Player.playerInstance.GetInventoryItem(RELIQ5) != null)
+            {
+                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ5);
+                ItemStats stats = reliq.GetReliquaryStats();
+                perc += stats.atkperc;
+                flatAtk += stats.attack;
+            }*/
+            //Need to add reliquary stats
+            return (attack * perc) + flatAtk; //need to add reliquary flat atk
+        }
+        public void SendUpdatedProps()
+        {
+            UpdateProps();
+            client.SendPacket((uint)CmdType.AvatarFightPropUpdateNotify, new AvatarFightPropUpdateNotify()
+            {
+                AvatarGuid=guid,
+                FightPropMap = {fightprops}
+            });
+            client.SendPacket((uint)CmdType.AvatarFightPropNotify, new AvatarFightPropNotify()
+            {
+                AvatarGuid = guid,
+                FightPropMap = { fightprops }
+            });
+        }
         public void UpdateProps()
         {
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, Server.getResources().GetAvatarDataById(id).baseHp); 
+            ItemStats weaponStats = getEquippedWeapon().GetWeaponAttack();
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, Server.getResources().GetAvatarDataById(id).baseHp+ weaponStats.hpFlat); 
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, Server.getResources().GetAvatarDataById(id).baseDef);
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, Server.getResources().GetAvatarDataById(id).baseAtk);
-            FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, Server.getResources().GetAvatarDataById(id).baseAtk);
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ATTACK, Server.getResources().GetAvatarDataById(id).baseAtk); //TODO calculate total attack
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, Server.getResources().GetAvatarDataById(id).baseAtk+ weaponStats.attack);
+            FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, calculateAttack());
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ATTACK, calculateAttack()); //TODO calculate total attack
             FightPropUpdate(FightPropType.FIGHT_PROP_HP, curHp);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, Server.getResources().GetAvatarDataById(id).baseHp); //TODO calculate total hp
-            FightPropUpdate(FightPropType.FIGHT_PROP_HP_PERCENT,0);
+            FightPropUpdate(FightPropType.FIGHT_PROP_HP_PERCENT, weaponStats.hpPerc);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, 123456.0f );
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_SPEED, 0.0f );
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_FIRE_ENERGY, 100.0f );
@@ -171,9 +238,12 @@ namespace GenshinCBTServer.Player
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_WIND_ENERGY, 100.0f );
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ICE_ENERGY, 100.0f );
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ROCK_ENERGY, 100.0f );
+            FightPropUpdate(FightPropType.FIGHT_PROP_CRITICAL_HURT, 0.5f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CRITICAL, 0.05f);
             props[(uint)PropType.PROP_EXP] = new PropValue() { Ival = 1,Val = 1,Type= (uint)PropType.PROP_EXP };
             props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival=level,Val = (long)level, Type = (uint)PropType.PROP_LEVEL };
             props[(uint)PropType.PROP_BREAK_LEVEL] = new PropValue() { Ival=promoteLevel,Val = (long)promoteLevel, Type = (uint)PropType.PROP_BREAK_LEVEL };
+            Server.Print("Avatar total attack: " + GetFightProp(FightPropType.FIGHT_PROP_ATTACK));
         }
     }
 }

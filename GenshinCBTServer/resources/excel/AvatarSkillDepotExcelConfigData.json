@@ -1,0 +1,1355 @@
+{
+  "101": {
+    "id": 101,
+    "energySkill": 10014,
+    "talentSkill": 0,
+    "skills": [
+      10011,
+      10012,
+      0,
+      0
+    ],
+    "subSkills": [
+      10300,
+      10101,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "201": {
+    "id": 201,
+    "energySkill": 10019,
+    "talentSkill": 0,
+    "skills": [
+      10024,
+      10018,
+      10013,
+      0
+    ],
+    "subSkills": [
+      10020,
+      10021,
+      10052,
+      10053,
+      10111,
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 211,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Ayaka"
+  },
+  "301": {
+    "id": 301,
+    "energySkill": 10034,
+    "talentSkill": 0,
+    "skills": [
+      10031,
+      10033,
+      0,
+      0
+    ],
+    "subSkills": [
+      10311,
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1300,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Qin"
+  },
+  "501": {
+    "id": 501,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10035,
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "502": {
+    "id": 502,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerBoy_Fire"
+  },
+  "503": {
+    "id": 503,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerBoy_Water"
+  },
+  "504": {
+    "id": 504,
+    "energySkill": 10068,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      10067,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102,
+      10006
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1481,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerBoy_Wind"
+  },
+  "505": {
+    "id": 505,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerBoy_Ice"
+  },
+  "506": {
+    "id": 506,
+    "energySkill": 10078,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      10077,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1641,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerBoy_Rock"
+  },
+  "507": {
+    "id": 507,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerBoy_Electric"
+  },
+  "508": {
+    "id": 508,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerBoy_Grass"
+  },
+  "601": {
+    "id": 601,
+    "energySkill": 10062,
+    "talentSkill": 0,
+    "skills": [
+      10060,
+      10061,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10102,
+      10003
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1100,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Lisa"
+  },
+  "701": {
+    "id": 701,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10035,
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "702": {
+    "id": 702,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerGirl_Fire"
+  },
+  "703": {
+    "id": 703,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerGirl_Water"
+  },
+  "704": {
+    "id": 704,
+    "energySkill": 10068,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      10067,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102,
+      10006
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1481,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerGirl_Wind"
+  },
+  "705": {
+    "id": 705,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerGirl_Ice"
+  },
+  "706": {
+    "id": 706,
+    "energySkill": 10078,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      10077,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1641,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerGirl_Rock"
+  },
+  "707": {
+    "id": 707,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerGirl_Electric"
+  },
+  "708": {
+    "id": 708,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      10054,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_PlayerGirl_Grass"
+  },
+  "801": {
+    "id": 801,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "901": {
+    "id": 901,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "1001": {
+    "id": 1001,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "1201": {
+    "id": 1201,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "1301": {
+    "id": 1301,
+    "energySkill": 0,
+    "talentSkill": 0,
+    "skills": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "subSkills": [],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "1401": {
+    "id": 1401,
+    "energySkill": 10072,
+    "talentSkill": 0,
+    "skills": [
+      10070,
+      10071,
+      0,
+      0
+    ],
+    "subSkills": [
+      10076,
+      10079,
+      10080,
+      10101,
+      10102,
+      10003
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1560,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Barbara"
+  },
+  "1501": {
+    "id": 1501,
+    "energySkill": 10075,
+    "talentSkill": 0,
+    "skills": [
+      10073,
+      10074,
+      0,
+      0
+    ],
+    "subSkills": [
+      10081,
+      10101,
+      10001,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1050,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Kaeya"
+  },
+  "1601": {
+    "id": 1601,
+    "energySkill": 10165,
+    "talentSkill": 0,
+    "skills": [
+      10160,
+      10161,
+      0,
+      0
+    ],
+    "subSkills": [
+      10162,
+      10163,
+      10101,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 1400,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Diluc"
+  },
+  "2001": {
+    "id": 2001,
+    "energySkill": 10203,
+    "talentSkill": 0,
+    "skills": [
+      10201,
+      10202,
+      0,
+      0
+    ],
+    "subSkills": [
+      10204,
+      10101,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 2011,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Razor"
+  },
+  "2101": {
+    "id": 2101,
+    "energySkill": 10017,
+    "talentSkill": 0,
+    "skills": [
+      10041,
+      10032,
+      0,
+      0
+    ],
+    "subSkills": [
+      10042,
+      10043,
+      10211,
+      10101,
+      10102
+    ],
+    "attackModeSkill": 20000,
+    "leaderTalent": 1000,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Ambor"
+  },
+  "2201": {
+    "id": 2201,
+    "energySkill": 10225,
+    "talentSkill": 0,
+    "skills": [
+      10221,
+      10224,
+      0,
+      0
+    ],
+    "subSkills": [
+      10222,
+      10223,
+      10101,
+      10102
+    ],
+    "attackModeSkill": 20000,
+    "leaderTalent": 2211,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Venti"
+  },
+  "2301": {
+    "id": 2301,
+    "energySkill": 10235,
+    "talentSkill": 0,
+    "skills": [
+      10231,
+      10232,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10002,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 2311,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      231,
+      232,
+      233,
+      234,
+      235,
+      236,
+      237,
+      238,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Xiangling"
+  },
+  "2401": {
+    "id": 2401,
+    "energySkill": 10245,
+    "talentSkill": 0,
+    "skills": [
+      10241,
+      10242,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "2501": {
+    "id": 2501,
+    "energySkill": 10255,
+    "talentSkill": 0,
+    "skills": [
+      10251,
+      10362,
+      0,
+      0
+    ],
+    "subSkills": [
+      10252,
+      10253,
+      10101,
+      10102
+    ],
+    "attackModeSkill": 20000,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "2801": {
+    "id": 2801,
+    "energySkill": 10283,
+    "talentSkill": 0,
+    "skills": [
+      10281,
+      10282,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "2901": {
+    "id": 2901,
+    "energySkill": 10295,
+    "talentSkill": 0,
+    "skills": [
+      10070,
+      10292,
+      0,
+      0
+    ],
+    "subSkills": [
+      10300,
+      10101,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": ""
+  },
+  "3701": {
+    "id": 3701,
+    "energySkill": 10373,
+    "talentSkill": 0,
+    "skills": [
+      10371,
+      10372,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Test_NoStar"
+  },
+  "3801": {
+    "id": 3801,
+    "energySkill": 10383,
+    "talentSkill": 0,
+    "skills": [
+      10381,
+      10382,
+      0,
+      0
+    ],
+    "subSkills": [
+      10101,
+      10102
+    ],
+    "attackModeSkill": 0,
+    "leaderTalent": 0,
+    "extraAbilities": [
+      "",
+      "",
+      ""
+    ],
+    "talentGroup": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "talentStarName": "Talent_Test_NoStar"
+  }
+}

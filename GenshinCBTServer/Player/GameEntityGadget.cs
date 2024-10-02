@@ -11,14 +11,13 @@ namespace GenshinCBTServer.Player
     public class GameEntityGadget : GameEntity
     {
         public uint chest_drop;
-        public MapField<uint, float> fightprops = new MapField<uint, float>();
-        public MapField<uint, PropValue> props = new MapField<uint, PropValue>();
+       
 
         public GadgetData GetGadgetExcel()
         {
             return Server.getResources().GetGadgetData(id);
         }
-        public void UpdateProps()
+        public override void InitProps()
         {
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, 1);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, 1);
@@ -51,8 +50,8 @@ namespace GenshinCBTServer.Player
         }
         public GameEntityGadget(uint entityId, uint id, MotionInfo motionInfo) : base(entityId, id,motionInfo,ProtEntityType.ProtEntityGadget)
         {
-           
-            UpdateProps();
+
+            InitProps();
             this.entityId = entityId;
             this.id = id;
             this.motionInfo = motionInfo;
