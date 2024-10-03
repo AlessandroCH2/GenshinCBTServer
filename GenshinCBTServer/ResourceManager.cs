@@ -403,7 +403,7 @@ namespace GenshinCBTServer
         }
         public string getRequiredLuas()
         {
-            return File.ReadAllText("resources/lua/Config/Json/ConfigEntity.lua") + "\n" + File.ReadAllText("resources/lua/Config/Excel/CommonScriptConfig.lua") + "\n";
+            return File.ReadAllText("resources/lua/Config/Json/ConfigEntityType.lua") + "\n" + File.ReadAllText("resources/lua/Config/Json/ConfigEntity.lua") + "\n" + File.ReadAllText("resources/lua/Config/Excel/CommonScriptConfig.lua") + "\n";
         }
         private void LoadSceneGroupLua(SceneGroup group, uint sceneId)
         {

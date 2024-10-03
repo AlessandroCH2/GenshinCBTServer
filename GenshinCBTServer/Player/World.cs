@@ -105,6 +105,7 @@ namespace GenshinCBTServer.Player
         }
         public void UpdateRegions()
         {
+            if(currentBlock != null)
             foreach(SceneGroup group in currentBlock.groups)
             {
                 foreach (SceneRegion region in group.regions)
@@ -325,6 +326,11 @@ namespace GenshinCBTServer.Player
                if(entity is not GameEntityMonster) client.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
             }
           //  client.SendPacket((uint)CmdType.SceneEntityAppearNotify, appearNotify);
+        }
+
+        public void onClientExecuteRequest(GameEntityGadget gadget, int param1, int param2, int param3)
+        {
+            LuaManager.executeClientTriggerLua(client, currentBlock.groups.Find(g => g.id == gadget.groupId), new ScriptArgs((int)gadget.groupId, (int)EventType.EVENT_CLIENT_EXECUTE) { source_eid = (int)gadget.entityId,param1=param1,param2=param2,param3=param3 });
         }
     }
 

@@ -18,9 +18,31 @@ namespace GenshinCBTServer.Controllers
         {
             return client.world.entities.FindAll(e => e.groupId == currentGroupId && e is GameEntityMonster).Count;
         }
+        public int GetGadgetConfigId(int entityId)
+        {
+            GameEntity en = curClient.world.entities.Find(e=>e.entityId == entityId);
+            if(en != null)
+            {
+                return (int)en.configId;
+            }
+            return 0;
+        }
         public int GetGroupMonsterCountByGroupId(Client client, int groupId)
         {
             return client.world.entities.FindAll(e=>e.groupId == groupId && e is GameEntityMonster).Count;
+        }
+        public int SetGroupGadgetStateByConfigId(Client client,int groupId, int configId, int gadgetState)
+        {
+            Server.Print($"[LUA] CallSetGroupGadgetStateByConfigId with {configId},{gadgetState}");
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId && e.groupId==groupId);
+            if (entity == null) return 1;
+            if (!(entity is GameEntityGadget))
+            {
+                return 1;
+            }
+            GameEntityGadget gadget = (GameEntityGadget)entity;
+            gadget.ChangeState((GadgetState)gadgetState);
+            return 0;
         }
         public int SetGadgetStateByConfigId(Client client, int configId, int gadgetState)
         {
@@ -42,14 +64,19 @@ namespace GenshinCBTServer.Controllers
             curClient.world.KillEntities(entities);
             return 1;
         }
-        public int GetRegionEntityCount(LuaTable table)
+        public int GetRegionEntityCount(Client client,LuaTable table)
         {
            // logger.debug("[LUA] Call GetRegionEntityCount with {}", printTable(table));
             int regionId = (int)(long)table["region_eid"];
-            var entityType = (int)(long)table["entity_type"];
+
+            int entityType = 0;
+            if (table["entity_type"] != null)
+            {
+                entityType = (int)(long)table["entity_type"];
+            }
             if (entityType == (int)EntityType.Avatar)
             {
-                if(curClient.inRegions.Contains((uint)regionId))
+                if(client.inRegions.Contains((uint)regionId))
                 {
                     return 1;
                 }
@@ -60,7 +87,7 @@ namespace GenshinCBTServer.Controllers
             }
             else
             {
-                return curClient.world.entities.FindAll(e => e.inRegions.Contains((uint)regionId)).Count;
+                return client.world.entities.FindAll(e => e.inRegions.Contains((uint)regionId)).Count;
             }
             
         }
@@ -99,6 +126,48 @@ namespace GenshinCBTServer.Controllers
     public class LuaManager
     {
         public static List<GroupTrigger> errorTriggers = new();
+        public static void executeClientTriggerLua(Client client, SceneGroup group, ScriptArgs args)
+        {
+            if (group == null) return;
+            GameEntity en = client.world.entities.Find(e => e.entityId == args.source_eid);
+            if(en == null) return;
+            List<GroupTrigger> triggers = group.triggers.FindAll(t => t.eventType == (int)args.type);
+
+            if (triggers.Count > 0)
+            {
+                using (Lua groupLua = new Lua())
+                {
+                    ScriptLib scriptLib = new();
+                    scriptLib.curClient = client;
+                    scriptLib.currentGroupId = (int)group.id;
+                    groupLua["ScriptLib"] = scriptLib;
+                    groupLua["context_"] = client;
+                    groupLua["evt_"] = args;
+                    groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
+
+                    foreach (GroupTrigger trigger in triggers)
+                    {
+                        string luaScript = @$"
+                               
+                                {trigger.actionLua}(context_, evt_)
+                            
+                        ";
+                        try
+                        {
+                            groupLua.DoString(luaScript);
+                            Server.Print("Executed successfully LUA");
+                        }
+                        catch (Exception ex)
+                        {
+                            Server.Print("Error occured in LUA " + ex.Message);
+                           
+                        }
+                        // Execute the Lua script
+                    }
+                }
+
+            }
+        }
         public static void executeTriggerLua(Client client,SceneGroup group,ScriptArgs args)
         {
             if (group == null) return;
