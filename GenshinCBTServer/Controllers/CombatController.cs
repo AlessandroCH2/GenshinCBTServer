@@ -34,6 +34,7 @@ namespace GenshinCBTServer.Controllers
                         isDamageable = false;
                     }
                     entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
+
                 }
                 else
                 {

@@ -98,11 +98,11 @@ namespace GenshinCBTServer.Controllers
     }
     public class LuaManager
     {
-
+        public static List<GroupTrigger> errorTriggers = new();
         public static void executeTriggerLua(Client client,SceneGroup group,ScriptArgs args)
         {
             if (group == null) return;
-            List<GroupTrigger> triggers = group.triggers.FindAll(t => t.eventType == (int)args.type);
+            List<GroupTrigger> triggers = group.triggers.FindAll(t => t.eventType == (int)args.type && !errorTriggers.Contains(t));
 
             if(triggers.Count > 0)
             {
@@ -130,6 +130,7 @@ namespace GenshinCBTServer.Controllers
                         catch(Exception ex)
                         {
                             Server.Print("Error occured in LUA "+ex.Message);
+                            errorTriggers.Add(trigger);
                         }
                         // Execute the Lua script
                     }
