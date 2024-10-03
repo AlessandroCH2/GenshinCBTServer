@@ -83,12 +83,71 @@ namespace GenshinCBTServer
     {
         public uint id;
         public uint type;
-        public string jsonName;
+        public string jsonName = "";
         public bool hasMove;
         public bool hasAudio;
         public bool isInteractive;
         public int campID;
 
+    }
+
+    public class ConfigEntityCommon
+    {
+        public string JsonObjType = "ConfigEntityCommon";
+        // ConfigEffectAttachShape effectAttachShape = new ConfigEffectAttachShape();
+    }
+
+    public class ConfigCombatProperty
+    {
+        public string JsonObjType = "ConfigCombatProperty";
+        public float HP;
+        public float attack;
+        public float defense;
+        public float weight;
+        public bool isInvincible = false;
+        public bool isLockHP = false;
+
+    }
+
+    public class ConfigCombat
+    {
+        public string JsonObjType = "ConfigCombat";
+        public ConfigCombatProperty property = new ConfigCombatProperty();
+        // ConfigSummon summon = new ConfigSummon();
+    }
+
+    public class ConfigEntityAbilityEntry
+    {
+        public string JsonObjType = "ConfigEntityAbilityEntry";
+        public string abilityID = "";
+        public string abilityName = "";
+    }
+
+    public class ConfigTimer
+    {
+        public string JsonObjType = "ConfigTimer";
+        public bool lifeInfinite = false;
+        public float startCheckTime;
+        public float checkInterval;
+        public float lifeTime;
+    }
+
+    public class ConfigLinerBulletMove
+    {
+        public string JsonObjType = "ConfigLinerBulletMove";
+        public float speed;
+        public bool canBornInWater = false;
+    }
+
+    public class GadgetConfigRow // todo: add all objects
+    {
+        public string JsonObjType = "ConfigGadget";
+        public ConfigEntityCommon Common = new ConfigEntityCommon();
+        public ConfigCombat Combat = new ConfigCombat();
+        public List<ConfigEntityAbilityEntry> Abilities = new List<ConfigEntityAbilityEntry>();
+        public ConfigTimer Timer = new ConfigTimer();
+        public ConfigLinerBulletMove Move = new ConfigLinerBulletMove();
+        // public ConfigBulletPattern Gadget = new ConfigBulletPattern();
     }
 
     public class ResourceManager
@@ -107,6 +166,7 @@ namespace GenshinCBTServer
         public Dictionary<uint, PromoteInfo>  weaponsPromote = new Dictionary<uint, PromoteInfo>();
         public Dictionary<uint, GadgetProp> gadgetProps = new Dictionary<uint, GadgetProp>();
         public Dictionary<uint, MonsterData> monsterDataDict = new Dictionary<uint, MonsterData>();
+        public Dictionary<string, GadgetConfigRow> configGadgetDict = new Dictionary<string, GadgetConfigRow>();
         public List<DropData> dropData = new List<DropData>();
         public List<ChildDrop> childDropData = new List<ChildDrop>();
 
@@ -142,6 +202,7 @@ namespace GenshinCBTServer
             dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"));
             gadgetDataDict = JsonConvert.DeserializeObject<Dictionary<uint, GadgetData>>(File.ReadAllText("resources/excel/GadgetExcelConfigData.json"));
             monsterDataDict = JsonConvert.DeserializeObject<Dictionary<uint, MonsterData>>(File.ReadAllText("resources/excel/MonsterExcelConfigData.json"));
+            configGadgetDict = LoadConfigGadget();
             talentSkillData = LoadTalentSkillData();
             avatarSkillDepotData = LoadAvatarSkillDepotData();
             itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/WeaponExcelConfigData.json")));
@@ -225,6 +286,28 @@ namespace GenshinCBTServer
             } else {
                 return new Vector() { X = (float)(double)pos["x"], Z = (float)(double)pos["z"] };
             }
+        }
+
+        public Dictionary<string, GadgetConfigRow> LoadConfigGadget()
+        {
+            string mainlocation = $"resources/binoutput/gadget";
+            string[] files = Directory.GetFiles(mainlocation);
+            Dictionary<string, GadgetConfigRow> configGadgetDict = new();
+            foreach (string file in files)
+            {
+                FileInfo fileInfo = new(file);
+                if (fileInfo.Extension == ".json")
+                {
+                    string text = File.ReadAllText(file);
+                    Dictionary<string, GadgetConfigRow> config = JsonConvert.DeserializeObject<Dictionary<string, GadgetConfigRow>>(text);
+                    foreach (var entry in config)
+                    {
+                        configGadgetDict[entry.Key] = entry.Value;
+                    }
+                }
+            }
+            Server.Print($"Loaded {configGadgetDict.Count} gadget configs");
+            return configGadgetDict;
         }
 
         private void LoadSceneGroup(SceneBlock block, uint sceneId)
