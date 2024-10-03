@@ -19,23 +19,20 @@ namespace GenshinCBTServer.Controllers
         {
 
             EvtBeingHitNotify req = packet.DecodeBody<EvtBeingHitNotify>();
-            GameEntity entity = session.world.entities.Find(entity=>entity.entityId==req.AttackResult.DefenseId);
+            GameEntity? entity = session.world.entities.Find(entity=>entity.entityId==req.AttackResult.DefenseId);
             if(entity != null )
             {
                 float dmg = req.AttackResult.Damage;
                 float curHp = entity.GetFightProp(FightPropType.FIGHT_PROP_CUR_HP)-dmg;
+                bool isDamageable = true;
                 if(entity is GameEntityGadget)
                 {
                     GameEntityGadget gadget = (GameEntityGadget)entity;
-                    if(gadget.GetGadgetExcel().type> 0 )
-                    {
-
-                    }
-                    else
-                    {
+                    if(!gadget.GetGadgetConfigRow().Combat.property.isInvincible && !gadget.GetGadgetConfigRow().Combat.property.isLockHP && gadget.GetGadgetExcel().type != 26) {
                         entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
+                    } else {
+                        isDamageable = false;
                     }
-                  //  gadget.GetGadgetExcel().isInteractive
                 }
                 else
                 {
@@ -43,7 +40,7 @@ namespace GenshinCBTServer.Controllers
                 }
                 
                 entity.SendUpdatedProps();
-                if(curHp < 0)
+                if(curHp < 0 && isDamageable)
                 {
                     entity.Die();
                 }

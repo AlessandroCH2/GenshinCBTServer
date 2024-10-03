@@ -34,9 +34,14 @@ namespace GenshinCBTServer.Player
         {
             return Server.getResources().gadgetProps.Values.ToList().Find(e=>e.id==id);
         }
+        public GadgetConfigRow GetGadgetConfigRow()
+        {
+            return Server.getResources().configGadgetDict[GetGadgetExcel().jsonName];
+        }
         public override void InitProps()
         {
             GadgetProp prop = GetGadgetPropExcel();
+            GadgetData gadgetData = GetGadgetExcel();
            
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, 1f);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, 1);
@@ -75,7 +80,15 @@ namespace GenshinCBTServer.Player
                 FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, prop.defense);
                 FightPropUpdate(FightPropType.FIGHT_PROP_DEFENSE, prop.defense);
                 FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, prop.defense);
-               
+            }
+
+            if (gadgetData.jsonName != "" && Server.getResources().configGadgetDict.ContainsKey(gadgetData.jsonName))
+            {
+                GadgetConfigRow row = Server.getResources().configGadgetDict[gadgetData.jsonName];
+                ConfigCombatProperty property = row.Combat.property;
+                if (property.HP > 0) FightPropUpdate(FightPropType.FIGHT_PROP_HP, property.HP);
+                if (property.attack > 0) FightPropUpdate(FightPropType.FIGHT_PROP_DEFENSE, property.attack);
+                if (property.defense > 0) FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, property.defense);
             }
         }
         public GameEntityGadget(uint entityId, uint id, MotionInfo motionInfo) : base(entityId, id,motionInfo,ProtEntityType.ProtEntityGadget)
