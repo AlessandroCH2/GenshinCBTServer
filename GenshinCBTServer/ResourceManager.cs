@@ -511,6 +511,7 @@ namespace GenshinCBTServer
                         trigger.name = (string)triggerTable["name"];
                         trigger.actionLua = (string)triggerTable["action"];
                         trigger.conditionLua = (string)triggerTable["condition"];
+                        trigger.groupId = (int)group.id;
                         if (triggerTable["event"] != null) trigger.eventType = (int)(long)triggerTable["event"];
                         group.triggers.Add(trigger);
                        // Server.Print($"Trigger: " + trigger.name + " added");

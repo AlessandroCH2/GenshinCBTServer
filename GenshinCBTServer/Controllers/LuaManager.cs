@@ -126,6 +126,42 @@ namespace GenshinCBTServer.Controllers
     public class LuaManager
     {
         public static List<GroupTrigger> errorTriggers = new();
+
+        public static void executeTrigger(Client client, GroupTrigger trigger, ScriptArgs args)
+        {
+            SceneGroup group = client.world.currentBlock.groups.Find(g=>g.id==args.group_id);
+            if (group!=null)
+            {
+                using (Lua groupLua = new Lua())
+                {
+                    ScriptLib scriptLib = new();
+                    scriptLib.curClient = client;
+                    scriptLib.currentGroupId = (int)group.id;
+                    groupLua["ScriptLib"] = scriptLib;
+                    groupLua["context_"] = client;
+                    groupLua["evt_"] = args;
+                    groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
+
+                    string luaScript = @$"
+                               
+                                {trigger.actionLua}(context_, evt_)
+                            
+                        ";
+                    try
+                    {
+                        groupLua.DoString(luaScript);
+                        Server.Print("Executed successfully LUA");
+                    }
+                    catch (Exception ex)
+                    {
+                        Server.Print("Error occured in executing Trigger Lua " + ex.Message);
+
+                    }
+                }
+            }
+            
+
+        }
         public static void executeClientTriggerLua(Client client, SceneGroup group, ScriptArgs args)
         {
             if (group == null) return;

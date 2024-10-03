@@ -332,6 +332,27 @@ namespace GenshinCBTServer.Player
         {
             LuaManager.executeClientTriggerLua(client, currentBlock.groups.Find(g => g.id == gadget.groupId), new ScriptArgs((int)gadget.groupId, (int)EventType.EVENT_CLIENT_EXECUTE) { source_eid = (int)gadget.entityId,param1=param1,param2=param2,param3=param3 });
         }
+
+        public void callEvent(ScriptArgs args)
+        {
+            List<GroupTrigger> triggers = getTriggersByEvent(args.type).FindAll(t=>t.groupId==args.group_id || args.group_id == 0);
+
+            foreach(GroupTrigger trigger in triggers)
+            {
+                LuaManager.executeTriggerLua(this.client, currentBlock.groups.Find(g => g.id == trigger.groupId), args);
+            }
+
+        }
+        public List<GroupTrigger> getTriggersByEvent(int type)
+        {
+            List<GroupTrigger> triggers = new();
+            if(currentBlock!=null)
+            foreach(SceneGroup group in currentBlock.groups)
+            {
+                    triggers.AddRange(group.triggers.FindAll(t => t.eventType == type));
+            }
+            return triggers;
+        }
     }
 
     public class SceneBlock
@@ -355,6 +376,8 @@ namespace GenshinCBTServer.Player
         public int eventType;
         public string conditionLua;
         public string actionLua;
+
+        public int groupId;
 
     }
     public class SceneGroup

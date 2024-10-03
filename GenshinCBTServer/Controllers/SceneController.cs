@@ -14,6 +14,18 @@ namespace GenshinCBTServer.Controllers
 {
     public class SceneController
     {
+
+        [Server.Handler(CmdType.MonsterAlertChangeNotify)]
+        public static void OnMonsterAlertChangeNotify(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            MonsterAlertChangeNotify req = packet.DecodeBody<MonsterAlertChangeNotify>();
+
+            foreach(GameEntity entity in session.world.entities.FindAll(e => req.MonsterEntityList.Contains(e.entityId)))
+            {
+                ScriptArgs args = new ScriptArgs((int)entity.groupId, (int)EventType.EVENT_MONSTER_BATTLE, (int)entity.configId);
+                session.world.callEvent(args);
+            }
+        }
         [Server.Handler(CmdType.ExecuteGadgetLuaReq)]
         public static void OnExecuteGadgetLuaReq(Client session, CmdType cmdId, Network.Packet packet)
         {
