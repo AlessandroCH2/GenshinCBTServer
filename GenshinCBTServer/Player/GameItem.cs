@@ -82,34 +82,28 @@ namespace GenshinCBTServer.Player
             if (data.weaponProp.Count > 1)
             {
                 CurveInfo sub = Server.getResources().weaponCurves[level].getCurveValue(data.weaponProp[1].type);
-                if (data.weaponProp[1].propType == FightPropType.FIGHT_PROP_ATTACK_PERCENT)
-                {
-                    stats.atkperc += data.weaponProp[1].initValue * sub.value; //Perc value * level curve value
-                }
-                /*else if (data.weaponProp[1].propType == FightPropType.FIGHT_PROP_ELEMENT_MASTERY)
-                {
-                    Idk the name on CBT
-                    stats.elementaryMastery = data.weaponProp[1].initValue * sub.value; //Perc value * level curve value
-                }*/
-                else if (data.weaponProp[1].propType == FightPropType.FIGHT_PROP_HP_PERCENT)
-                {
-                    stats.hpPerc = data.weaponProp[1].initValue * sub.value; //Perc value * level curve value
-                }
-                else if (data.weaponProp[1].propType == FightPropType.FIGHT_PROP_DEFENSE)
-                {
-                    stats.defense += data.weaponProp[1].initValue * sub.value;
-                }
-                else if (data.weaponProp[1].propType == FightPropType.FIGHT_PROP_DEFENSE_PERCENT)
-                {
-                    stats.defPerc += data.weaponProp[1].initValue * sub.value;
-                }
-                else if (data.weaponProp[1].propType == FightPropType.FIGHT_PROP_CRITICAL)
-                {
-                    stats.critrate += data.weaponProp[1].initValue * sub.value;
-                }
-                else if (data.weaponProp[1].propType == FightPropType.FIGHT_PROP_CRITICAL_HURT)
-                {
-                    stats.critdmg += data.weaponProp[1].initValue * sub.value;
+                switch (data.weaponProp[1].propType) {
+                    case FightPropType.FIGHT_PROP_ATTACK:
+                        stats.attack += data.weaponProp[1].initValue * sub.value;
+                        break;
+                    case FightPropType.FIGHT_PROP_ATTACK_PERCENT:
+                        stats.atkperc += data.weaponProp[1].initValue * sub.value;
+                        break;
+                    case FightPropType.FIGHT_PROP_HP_PERCENT:
+                        stats.hpPerc = data.weaponProp[1].initValue * sub.value;
+                        break;
+                    case FightPropType.FIGHT_PROP_DEFENSE:
+                        stats.defense += data.weaponProp[1].initValue * sub.value;
+                        break;
+                    case FightPropType.FIGHT_PROP_DEFENSE_PERCENT:
+                        stats.defPerc += data.weaponProp[1].initValue * sub.value;
+                        break;
+                    case FightPropType.FIGHT_PROP_CRITICAL:
+                        stats.critrate += data.weaponProp[1].initValue * sub.value;
+                        break;
+                    case FightPropType.FIGHT_PROP_CRITICAL_HURT:
+                        stats.critdmg += data.weaponProp[1].initValue * sub.value;
+                        break;
                 }
             }
 
@@ -143,54 +137,48 @@ namespace GenshinCBTServer.Player
         {
             GameItem gameItem = this;
             ItemType itemType = GetExcel().itemType;
-            if (itemType == ItemType.ITEM_VIRTUAL)
-            {
-                return new Item()
-                {
-
-                    Material = new Material()
+            switch (itemType) {
+                case ItemType.ITEM_VIRTUAL:
+                    return new Item()
                     {
-                        Count = (uint)gameItem.amount,
-
-                    },
-
-                    Guid = gameItem.guid,
-                    ItemId = gameItem.id
-
-                };
-            }
-            else if (itemType == ItemType.ITEM_MATERIAL)
-            {
-                return new Item()
-                {
-                    Material = new Material()
-                    {
-                        Count = (uint)gameItem.amount
-                    },
-                    Guid = gameItem.guid,
-                    ItemId = gameItem.id
-
-                };
-            }
-            else if (itemType == ItemType.ITEM_WEAPON)
-            {
-                return new Item()
-                {
-                    Equip = new Equip()
-                    {
-                        Weapon = new Weapon()
+                        Material = new Material()
                         {
-                            Exp = gameItem.xp,
-                            Level = gameItem.level,
-                            PromoteLevel = gameItem.promoteLevel,
+                            Count = (uint)gameItem.amount,
 
                         },
-                      
-                    },
-                    Guid = gameItem.guid,
-                    ItemId = gameItem.id
 
-                };
+                        Guid = gameItem.guid,
+                        ItemId = gameItem.id
+
+                    };
+                case ItemType.ITEM_MATERIAL:
+                    return new Item()
+                    {
+                        Material = new Material()
+                        {
+                            Count = (uint)gameItem.amount
+                        },
+                        Guid = gameItem.guid,
+                        ItemId = gameItem.id
+
+                    };
+                case ItemType.ITEM_WEAPON:
+                    return new Item()
+                    {
+                        Equip = new Equip()
+                        {
+                            Weapon = new Weapon()
+                            {
+                                Exp = gameItem.xp,
+                                Level = gameItem.level,
+                                PromoteLevel = gameItem.promoteLevel,
+
+                            },
+                        },
+                        Guid = gameItem.guid,
+                        ItemId = gameItem.id
+
+                    };
             }
            
             return new Item()

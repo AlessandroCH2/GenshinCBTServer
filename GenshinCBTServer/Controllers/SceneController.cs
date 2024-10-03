@@ -162,54 +162,33 @@ namespace GenshinCBTServer.Controllers
             GadgetInteractReq req = packet.DecodeBody<GadgetInteractReq>();
             GameEntity entity_ = session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
             if(entity_ != null)
-            if (entity_ is GameEntityGadget)
-            {
-
-                GameEntityGadget entity = (GameEntityGadget)session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
+            switch(entity_) {
+                case GameEntityGadget entity:
+                {
                     Server.Print("Type: " + entity.gadgetType);
                     if (entity.chest_drop > 0)
                     {
-
                         entity.ChangeState(GadgetState.ChestOpened);
                         session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
-
                         DropList dropList = Server.getResources().GetRandomDrops(session, entity.chest_drop, entity.motionInfo);
                         foreach (GameEntity en in dropList.entities)
                         {
                             session.world.SpawnEntity(en, true, VisionType.VisionReborn);
                         }
-
                         session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractOpenChest, OpType = InterOpType.InterOpFinish });
-
                     }
-                
-               
-
-            }else if (entity_ is GameEntityItem)
-                {
-
-                    GameEntityItem entity = (GameEntityItem)entity_;
-
-                    
-                        session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
-
-                        session.AddItem(entity.item);
-
-                        session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractPickItem, OpType = InterOpType.InterOpStart });
-
-                    
-
-
-
+                    break;
                 }
-                else if (entity_ is GameEntityMonster)
+                case GameEntityItem entity:
                 {
-
-                    GameEntityMonster entity = (GameEntityMonster)entity_;
-
-
                     session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
-
+                    session.AddItem(entity.item);
+                    session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractPickItem, OpType = InterOpType.InterOpStart });
+                    break;
+                }
+                case GameEntityMonster entity:
+                {
+                    session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
                     DropList dropList = Server.getResources().GetRandomDrops(session, entity.drop_id, entity.motionInfo);
                     foreach (GameEntity en in dropList.entities)
                     {
@@ -220,14 +199,10 @@ namespace GenshinCBTServer.Controllers
                         }
                         
                     }
-
                     session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractGather, OpType = InterOpType.InterOpStart });
-
-
-
-
-
                 }
+                break;
+            }
         }
 
         [Server.Handler(CmdType.SceneTransToPointReq)]
@@ -308,6 +283,24 @@ namespace GenshinCBTServer.Controllers
             PlayerSetPauseReq req = packet.DecodeBody<PlayerSetPauseReq>();
             PlayerSetPauseRsp rsp = new PlayerSetPauseRsp() { Retcode = 0 };
             session.SendPacket((uint)CmdType.PlayerSetPauseRsp, rsp);
+
+        }
+
+        [Server.Handler(CmdType.EvtDestroyGadgetNotify)]
+        public static void OnEvtDestroyGadgetNotify(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            EvtDestroyGadgetNotify req = packet.DecodeBody<EvtDestroyGadgetNotify>();
+            GameEntity? entity = session.world.entities.Find(entity=>entity.entityId==req.EntityId);
+            if(entity != null )
+            {
+                session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
+            }
+        }
+
+        [Server.Handler(CmdType.EvtCreateGadgetNotify)]
+        public static void OnEvtCreateGadgetNotify(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            EvtCreateGadgetNotify req = packet.DecodeBody<EvtCreateGadgetNotify>();
 
         }
 

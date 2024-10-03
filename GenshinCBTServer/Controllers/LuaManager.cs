@@ -31,6 +31,24 @@ namespace GenshinCBTServer.Controllers
         {
             return client.world.entities.FindAll(e=>e.groupId == groupId && e is GameEntityMonster).Count;
         }
+
+        public int ChangeGroupGadget(Client client, LuaTable parameters)
+        {
+            int configId = (int)(long)parameters["config_id"];
+            GadgetState state = (GadgetState)(int)(long)parameters["state"];
+
+            Server.Print($"[LUA] Call GetGroupMonsterCountByGroupId with {configId},{state}");
+            GameEntity entity = client.world.entities.First(e => e.configId == configId && e is GameEntityGadget);
+            if (entity == null)
+            {
+                Server.Print($"[LUA] Entity not found with configId {configId}");
+                return 0;
+            }
+            Server.Print($"[LUA] Entity found with configId {configId}");
+            GameEntityGadget gadget = (GameEntityGadget)entity;
+            gadget.ChangeState(state);
+            return 1;
+
         public int SetGroupGadgetStateByConfigId(Client client,int groupId, int configId, int gadgetState)
         {
             Server.Print($"[LUA] CallSetGroupGadgetStateByConfigId with {configId},{gadgetState}");
@@ -43,6 +61,7 @@ namespace GenshinCBTServer.Controllers
             GameEntityGadget gadget = (GameEntityGadget)entity;
             gadget.ChangeState((GadgetState)gadgetState);
             return 0;
+
         }
         public int SetGadgetStateByConfigId(Client client, int configId, int gadgetState)
         {

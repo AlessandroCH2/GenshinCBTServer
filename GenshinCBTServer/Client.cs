@@ -169,6 +169,7 @@ namespace GenshinCBTServer
         {
             world = new World(this);
             OpenStateUpdateNotify openStateNotify = new OpenStateUpdateNotify();
+            AllSeenMonsterNotify allSeenMonsterNotify = new AllSeenMonsterNotify();
             //TODO loading account
             this.teamEntityId = ((uint)ProtEntityType.ProtEntityTeam << 24) + (uint)random.Next();
             this.uid = 1;
@@ -206,6 +207,10 @@ namespace GenshinCBTServer
                 }
                
             }
+            foreach (uint monsterId in Server.getResources().monsterDataDict.Keys)
+            {
+                allSeenMonsterNotify.MonsterIdList.Add(monsterId);
+            }
             //For testing fast
               // avatars.Add(new Avatar(this, 10000016));
             
@@ -223,6 +228,7 @@ namespace GenshinCBTServer
             SendAllAvatars();
             QuestController.UpdateQuestForClient(this);
             SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
+            SendPacket((uint)CmdType.AllSeenMonsterNotify, allSeenMonsterNotify);
         }
         //Need to be remade completely
         public Profile ToProfile()
