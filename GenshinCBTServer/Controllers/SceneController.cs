@@ -238,6 +238,11 @@ namespace GenshinCBTServer.Controllers
                         State=MotionState.MotionFallOnGround,
                         Speed = new Vector(),
                     };
+                    if (point.tranPos == null || point.tranPos.X == 0 && point.tranPos.Y == 0 && point.tranPos.Z == 0)
+                    {
+                        Server.Print($"Point {req.PointId} has no tranPos, using pos instead");
+                        newMotion.Pos = new Vector() { X = point.pos.X, Y = point.pos.Y, Z = point.pos.Z };
+                    }
                     break;
                 default:
                     Server.Print($"Unhandled ScenePoint type {point.JsonObjType} for scene point {req.PointId}");
@@ -245,6 +250,7 @@ namespace GenshinCBTServer.Controllers
                     return;
             }
             Server.Print($"Teleporting to {req.PointId} at {session.motionInfo.Pos.X},{session.motionInfo.Pos.Y},{session.motionInfo.Pos.Z}");
+            Server.Print($"Teleporting to {req.PointId} at {newMotion.Pos.X},{newMotion.Pos.Y},{newMotion.Pos.Z}");
             session.TeleportToScene(3,newMotion.Pos,newMotion.Rot,EnterType.EnterGoto);
             // session.SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = session.currentSceneId,PrevPos= prevPos, Pos=session.motionInfo.Pos,PrevSceneId= 0, Type=EnterType.EnterGoto,SceneBeginTime=0 });
             // session.SendPacket((uint)CmdType.ScenePlayerLocationNotify, new ScenePlayerLocationNotify() { PlayerLocList = { new PlayerLocationInfo() { Uid = session.uid, Pos = session.motionInfo.Pos, Rot = session.motionInfo.Rot } } });

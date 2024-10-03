@@ -1,12 +1,7 @@
 ﻿using GenshinCBTServer.Player;
 
 using NLua;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using GenshinCBTServer.Protocol;
 
 namespace GenshinCBTServer.Controllers
 {
@@ -49,6 +44,33 @@ namespace GenshinCBTServer.Controllers
             gadget.ChangeState(state);
             return 1;
         }
+
+        // ScriptLib.BeginCameraSceneLook(context, { look_pos = pos, duration = 2, is_force = true, is_broadcast = false })
+        public int BeginCameraSceneLook(Client client, LuaTable parameters)
+        {
+            LuaTable lookPos = (LuaTable)parameters["look_pos"];
+            float x = (float)(double)lookPos["x"];
+            float y = (float)(double)lookPos["y"];
+            float z = (float)(double)lookPos["z"];
+            float duration = (float)(double)parameters["duration"];
+            bool isForce = (bool)parameters["is_force"];
+            bool isBroadcast = (bool)parameters["is_broadcast"];
+            Server.Print($"[LUA] Call BeginCameraSceneLook with {x},{y},{z},{duration},{isForce},{isBroadcast}");
+            BeginCameraSceneLookNotify ntf = new BeginCameraSceneLookNotify()
+            {
+                LookPos = new Vector()
+                {
+                    X = x,
+                    Y = y,
+                    Z = z
+                },
+                Duration = duration,
+                IsForce = isForce
+            };
+            client.SendPacket((uint)CmdType.BeginCameraSceneLookNotify, ntf);
+            return 1;
+        }
+
         public int SetGroupGadgetStateByConfigId(Client client,int groupId, int configId, int gadgetState)
         {
             Server.Print($"[LUA] CallSetGroupGadgetStateByConfigId with {configId},{gadgetState}");
