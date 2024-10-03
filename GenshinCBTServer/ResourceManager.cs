@@ -299,6 +299,17 @@ namespace GenshinCBTServer
                 {
 
                     sceneGroup.DoString(mainLuaString);
+
+                    sceneGroup.DoString(@"
+                        function GetEnumName(enumTable, value)
+                            for k, v in pairs(enumTable) do
+                                if v == value then
+                                    return k
+                                end
+                            end
+                            return nil
+                        end
+                    ");
                    
                     
 
@@ -319,15 +330,25 @@ namespace GenshinCBTServer
                             rot = new Vector() { X = (float)(double)rot["x"], Y = (float)(double)rot["y"], Z = (float)(double)rot["z"] }
                         };
                         if (gadgetTable["chest_drop_id"] != null) gadget.chest_drop_id = (uint)(long)gadgetTable["chest_drop_id"];
-                        if (gadgetTable["state"] != null) gadget.state = (int)(long)gadgetTable["state"];
+                        if (gadgetTable["state"] != null) {
+                            gadget.state = (int)(long)gadgetTable["state"];
+                            string stateName = sceneGroup.GetFunction("GetEnumName").Call(sceneGroup["GadgetState"], gadget.state)[0].ToString();
+                            if (Enum.TryParse(typeof(GadgetState), stateName, out var parsedState) && parsedState is GadgetState gadgetState)
+                            {
+                                gadget.state = (int)gadgetState;
+                            }
+                        }
                         if (gadgetTable["route_id"] != null) gadget.route_id = (uint)(long)gadgetTable["route_id"];
                         if (gadgetTable["type"] != null) gadget.type = (uint)(long)gadgetTable["type"];
                         if (gadgetTable["showcutscene"] != null) gadget.showcutscene = (bool)gadgetTable["showcutscene"];
-
+                        
+                        /*
                         if(gadget.type > 0)
                         {
-                            Server.Print($" type: {((GadgetType)gadget.type).ToString()} & state {gadgetTable["state"]} & config id {gadget.config_id}");
+                            Server.Print($" type: {((GadgetType)gadget.type).ToString()} & state {gadget.state} & config id {gadget.config_id}");
                         }
+                        */
+                        
                         group.gadgets.Add(gadget);
                     }
 

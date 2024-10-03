@@ -71,7 +71,7 @@ namespace GenshinCBTServer
         public uint prevSceneId = 0;
         public uint returnPointId = 1;
 
-        public uint[] team = { 10000015 };
+        public uint[] team = { 10000016, 10000015, 10000002, 10000022 };
         public uint teamEntityId;
         public int selectedAvatar = 0;
         public List<Avatar> avatars = new List<Avatar>();
@@ -207,9 +207,18 @@ namespace GenshinCBTServer
                
             }
             //For testing fast
-              avatars.Add(new Avatar(this, 10000015));
-
-             selectedAvatar = (int)avatars[0].guid;
+              // avatars.Add(new Avatar(this, 10000016));
+            
+            foreach (var avatar in Server.getResources().avatarsData) {
+                if (avatar.id == 10000005 || avatar.id == 10000007 || avatar.id >= 11000000) {
+                    continue;
+                }
+                avatars.Add(new Avatar(this, avatar.id));
+            }
+            
+            // Find the avatar with the id of the first avatar in the team, and get its guid
+            selectedAvatar = (int)avatars.FirstOrDefault((avatar) => avatar.id == team.First()).guid;
+            // selectedAvatar = (int)avatars[0].guid;
             SendInventory();
             SendAllAvatars();
             QuestController.UpdateQuestForClient(this);

@@ -16,42 +16,27 @@ namespace GenshinCBTServer
 
         GADGET_DUNGEON_PASS_CHEST = 3,
     }
-    public enum GadgetState // TypeDefIndex: 10045
+
+    public enum GadgetState
     {
         Default = 0,
-
-        ChestLocked = 1, 
-
-        GearStart = 2,
-
-        GearStop = 3, 
-
-        CrystalResonate1 = 4, 
-
-        CrystalResonate2 = 5, 
-
-        CrystalExplode = 6, 
-
-        CrystalDrain = 7, 
-
-        /*    Default = 0,
-            GatherDrop = 1,
-            ChestLocked = 101,
-            ChestOpened = 102,
-            ChestTrap = 103,
-            ChestBramble = 104,
-            ChestFrozen = 105,
-            GearStart = 201,
-            GearStop = 202,
-            GearAction1 = 203,
-            GearAction2 = 204,
-            CrystalResonate1 = 301,
-            CrystalResonate2 = 302,
-            CrystalExplode = 303,
-            CrystalDrain = 304,
-            Action01 = 901,
-            Action02 = 902,
-            Action03 = 903,*/
+        GatherDrop = 1,
+        ChestLocked = 101,
+        ChestOpened = 102,
+        ChestTrap = 103,
+        ChestBramble = 104,
+        ChestFrozen = 105,
+        GearStart = 201,
+        GearStop = 202,
+        GearAction1 = 203,
+        GearAction2 = 204,
+        CrystalResonate1 = 301,
+        CrystalResonate2 = 302,
+        CrystalExplode = 303,
+        CrystalDrain = 304,
+        Action01 = 901,
+        Action02 = 902,
+        Action03 = 903,
     }
 public enum OpenStateType
     {

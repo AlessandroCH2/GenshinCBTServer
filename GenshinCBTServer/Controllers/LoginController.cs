@@ -38,7 +38,7 @@ namespace GenshinCBTServer.Controllers
             SetPlayerBornDataReq req = packet.DecodeBody<SetPlayerBornDataReq>();
             session.name = req.NickName;
             session.avatars.Add(new Avatar(session, req.AvatarId));
-          //  session.avatars.Add(new Avatar(session, 10000015));
+          //  session.avatars.Add(new Avatar(session, 10000016));
            
             session.selectedAvatar = (int)session.avatars[0].guid;
             foreach(AvatarData av in Server.getResources().avatarsData)
@@ -46,7 +46,7 @@ namespace GenshinCBTServer.Controllers
                 if(av.id != req.AvatarId) session.avatars.Add(new Avatar(session,av.id));
             }
 
-            session.team = new uint[] { session.avatars[0].id, session.avatars[1].id };
+            // session.team = new uint[] { session.avatars[0].id, session.avatars[1].id };
             PlayerDataNotify playerDataNotify = new PlayerDataNotify()
             {
                 NickName = session.name,
