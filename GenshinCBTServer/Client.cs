@@ -107,7 +107,7 @@ namespace GenshinCBTServer
 
         public void AddItem(GameItem item)
         {
-            inventory.Add(item);
+           
            
             if(item.GetExcel().itemType==ItemType.ITEM_MATERIAL)
             {
@@ -256,10 +256,10 @@ namespace GenshinCBTServer
                 motionInfo.Pos = sceneEx.bornPos;
                 motionInfo.Rot=sceneEx.bornRot;
             }
-            world.LoadNewScene(currentSceneId);
+            
             SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = scene,TargetUid=uid,PrevPos= prevPos, Pos=motionInfo.Pos,PrevSceneId= prevSceneId, Type=enterType,SceneBeginTime=0 });
             currentSceneId = scene;
-            
+            world.LoadNewScene(currentSceneId);
 
         }
         public uint GetCurrentAvatar()

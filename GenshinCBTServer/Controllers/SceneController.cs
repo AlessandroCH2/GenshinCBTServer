@@ -19,6 +19,24 @@ namespace GenshinCBTServer.Controllers
         {
             SceneEntityDrownReq req = packet.DecodeBody<SceneEntityDrownReq>();
         }
+        [Server.Handler(CmdType.PersonalSceneJumpReq)]
+        public static void OnPersonalSceneJumpReq(Client session, CmdType cmdId, Packet packet)
+        {
+            PersonalSceneJumpReq req = packet.DecodeBody<PersonalSceneJumpReq>();
+            ScenePointRow pointRow = Server.getResources().scenePointDict[session.currentSceneId];
+            if (pointRow.points.ContainsKey(req.PointId)){
+                session.TeleportToScene(pointRow.points[req.PointId].tranSceneId, pointRow.points[req.PointId].tranPos, pointRow.points[req.PointId].tranRot, EnterType.EnterJump);
+                PersonalSceneJumpRsp rsp = new()
+                {
+                    DestPos = pointRow.points[req.PointId].tranPos,
+                    DestSceneId = pointRow.points[req.PointId].tranSceneId,
+                    Retcode = 0
+                };
+
+                session.SendPacket((uint)CmdType.PersonalSceneJumpRsp, rsp);
+            }
+           
+        }
         [Server.Handler(CmdType.UnlockTransPointReq)]
         public static void OnUnlockTransPointReq(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -249,7 +267,7 @@ namespace GenshinCBTServer.Controllers
             
             session.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode =0 });
             session.world.UpdateBlocks();
-            session.world.SendAllEntities();
+            //session.world.SendAllEntities();
 
         }
 

@@ -35,6 +35,7 @@ namespace GenshinCBTServer
         // those 2 only when SceneTransPoint
         public Vector tranPos = new Vector();
         public Vector tranRot = new Vector();
+        public uint tranSceneId;
 
         public bool unlocked;
         public List<uint> dungeonIds = new List<uint>();

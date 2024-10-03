@@ -114,8 +114,13 @@ namespace GenshinCBTServer.Player
                     IsStarted = true,
                     RouteId = route_id,
                     StartIndex = 0,
-                    StartPos = GetClientOwner().world.currentBlock.routeData.routes.Find(route=>route.localId== route_id).points[0].pos,
+                   // StartPos = GetClientOwner().world.currentBlock.routeData.routes.Find(route=>route.localId== route_id).points[0].pos,
                 };
+                RouteData route = GetClientOwner().world.currentBlock.routeData.routes.Find(route => route.localId == route_id);
+                if (route != null)
+                {
+                    info.Gadget.Platform.StartPos = route.points[0].pos;
+                }
             }
           //  if(GetGadgetExcel().hasMove )
                // if (chest_drop > 0) info.Gadget.GadgetType = 1;
