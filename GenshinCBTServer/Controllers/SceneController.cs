@@ -14,6 +14,33 @@ namespace GenshinCBTServer.Controllers
 {
     public class SceneController
     {
+
+        [Server.Handler(CmdType.MonsterAlertChangeNotify)]
+        public static void OnMonsterAlertChangeNotify(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            MonsterAlertChangeNotify req = packet.DecodeBody<MonsterAlertChangeNotify>();
+
+            foreach(GameEntity entity in session.world.entities.FindAll(e => req.MonsterEntityList.Contains(e.entityId)))
+            {
+                ScriptArgs args = new ScriptArgs((int)entity.groupId, (int)EventType.EVENT_MONSTER_BATTLE, (int)entity.configId);
+                session.world.callEvent(args);
+            }
+        }
+        [Server.Handler(CmdType.ExecuteGadgetLuaReq)]
+        public static void OnExecuteGadgetLuaReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            ExecuteGadgetLuaReq req = packet.DecodeBody<ExecuteGadgetLuaReq>();
+           GameEntity entity = session.world.entities.Find(e=>e.entityId==req.SourceEntityId);
+            if(entity != null)
+            {
+                if(entity is GameEntityGadget) 
+                {
+                    GameEntityGadget gadget = (GameEntityGadget)entity;
+                  //  session.world.onClientExecuteRequest(gadget, req.Param1, req.Param2, req.Param3);
+                    session.SendPacket((uint)CmdType.ExecuteGadgetLuaRsp, new ExecuteGadgetLuaRsp() { Retcode = 0 });
+                }
+            }
+        }
         [Server.Handler(CmdType.SceneEntityDrownReq)]
         public static void OnSceneEntityDrownReq(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -82,6 +109,7 @@ namespace GenshinCBTServer.Controllers
 
 
         }
+
        
         [Server.Handler(CmdType.SceneEntityMoveReq)]
         public static void OnSceneEntityMoveReq(Client session, CmdType cmdId, Network.Packet packet)
