@@ -305,7 +305,7 @@ namespace GenshinCBTServer
             IntPtr packet = Packet.EncodePacket((ushort)cmdId, protoMessage);
             if (enet_peer_send(peer, 0, packet) == 0)
             {
-                if (!Server.hideLog.Contains((CmdType)cmdId))
+                if (!Server.hideLog.Contains((CmdType)cmdId) && Server.showLogs == true)
                 {
                     Server.Print($"[server->client] {((CmdType)cmdId).ToString()} body: {protoMessage.ToString().Pastel(Color.FromArgb(165, 229, 250))}");
                 }

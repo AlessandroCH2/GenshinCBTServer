@@ -28,12 +28,13 @@ namespace GenshinCBTServer.Controllers
                 if(entity is GameEntityGadget)
                 {
                     GameEntityGadget gadget = (GameEntityGadget)entity;
-                    if(!gadget.GetGadgetConfigRow().Combat.property.isInvincible && !gadget.GetGadgetConfigRow().Combat.property.isLockHP && gadget.GetGadgetExcel().type != 26) {
-                        entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
-                    } else {
+                    if(gadget.GetGadgetConfigRow().Combat.property.isInvincible  || gadget.GetGadgetExcel().type == 26) {
+                        Server.Print($"Gadget {gadget.id} ({gadget.GetGadgetExcel().id} {gadget.GetGadgetExcel().jsonName} is invincible");
+                        Server.Print($"isInvincible {gadget.GetGadgetConfigRow().Combat.property.isInvincible}, type {gadget.GetGadgetExcel().type}");
                         isDamageable = false;
                     }
-                    gadget.GetGadgetConfigRow().Combat.property.
+                    entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
+
                 }
                 else
                 {

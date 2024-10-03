@@ -37,6 +37,7 @@ namespace GenshinCBTServer
         }
         public static List<Client> clients = new List<Client>();
         public IntPtr server;
+        public  static bool showLogs = true;
       
         public static SQLiteConnection _db;
         public static Dispatch dispatch;
@@ -49,7 +50,7 @@ namespace GenshinCBTServer
         {
             return resourceManager;
         }
-        public void Start()
+        public void Start(bool hideLogs = false)
         {
            {
                 Assembly assembly = Assembly.GetExecutingAssembly();
@@ -64,6 +65,9 @@ namespace GenshinCBTServer
 
                 NotifyManager.Init();
             }
+            
+            showLogs = !hideLogs;
+            Print($"Logs are {(showLogs ? "enabled" : "disabled")}");
 
             enet_initialize();
 
@@ -203,7 +207,7 @@ namespace GenshinCBTServer
                            // Print($"Received from client: {genshinPacket.cmdId} ({((CmdType)genshinPacket.cmdId).ToString()})");
                          
                         CmdType cmd = (CmdType)genshinPacket.cmdId;
-                        if (!hideLog.Contains(cmd))
+                        if (!hideLog.Contains(cmd) && showLogs == true)
                         {
                             Server.Print($"[client->server] {cmd.ToString()}");
                         }
