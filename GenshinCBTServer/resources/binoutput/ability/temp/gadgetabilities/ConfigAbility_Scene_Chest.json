@@ -1,0 +1,404 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Chest_Bramble_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Chest_Default"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 104,
+          "modifierName": "Chest_Bramble"
+        }
+      ],
+      "modifiers": {
+        "Chest_Default": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "EnableGadgetIntee",
+              "enable": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "ChestState",
+              "value": 1
+            }
+          ]
+        },
+        "Chest_Bramble": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "GrassMaterial"
+            },
+            {
+              "$type": "EnableGadgetIntee"
+            }
+          ]
+        },
+        "GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 30,
+          "onRemoved": [
+            {
+              "$type": "ExecuteGadgetLua"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Chest_Frozen_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMutexMixin",
+          "gadgetStates": [
+            0,
+            105
+          ],
+          "modifierNames": [
+            [
+              "Chest_Default"
+            ],
+            [
+              "Chest_Frozen"
+            ]
+          ]
+        }
+      ],
+      "modifiers": {
+        "Chest_Default": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "EnableGadgetIntee",
+              "enable": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "ChestState",
+              "value": 1
+            }
+          ]
+        },
+        "Chest_Frozen": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "IceMaterial"
+            },
+            {
+              "$type": "EnableGadgetIntee"
+            }
+          ]
+        },
+        "IceMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Ice",
+          "elementDurability": 30,
+          "onRemoved": [
+            {
+              "$type": "ExecuteGadgetLua"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Chest_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "000_Default"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 101,
+          "modifierName": "101_LockState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 103,
+          "modifierName": "103_TrapState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 104,
+          "modifierName": "104_BrambleState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 105,
+          "modifierName": "105_FrozenState"
+        }
+      ],
+      "modifiers": {
+        "000_Default": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState"
+            },
+            {
+              "$type": "EnableGadgetIntee",
+              "enable": true
+            }
+          ]
+        },
+        "101_LockState": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "value": 101
+            },
+            {
+              "$type": "EnableGadgetIntee"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Chest_Lock"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Chest_Unlock"
+            }
+          ]
+        },
+        "103_TrapState": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "value": 103
+            }
+          ]
+        },
+        "104_BrambleState": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "ElementGrass"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "value": 104
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ElementGrass"
+            }
+          ]
+        },
+        "ElementGrass": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 25,
+          "onRemoved": [
+            {
+              "$type": "ExecuteGadgetLua"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "WoodenObject_BurnOut",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              }
+            }
+          ]
+        },
+        "105_FrozenState": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "ElementIce"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "value": 105
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ElementIce"
+            }
+          ]
+        },
+        "ElementIce": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Ice",
+          "elementDurability": 25,
+          "onRemoved": [
+            {
+              "$type": "ExecuteGadgetLua"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "WoodenObject_BurnOut",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Chest_Born"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Fountain_Frozen",
+      "modifiers": {
+        "Fountain": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onBeingHit": [
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Ice"
+                }
+              ],
+              "modifierName": "Frozen_State"
+            }
+          ]
+        },
+        "Frozen_State": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementType": "Ice",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "Frozen",
+              "value": 1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "Frozen"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Fountain"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Chest_Drop",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "LockState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "CanOpen"
+        }
+      ],
+      "modifiers": {
+        "LockState": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "EnableGadgetIntee"
+            }
+          ]
+        },
+        "CanOpen": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "Drop"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnableGadgetIntee",
+              "enable": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Chest_Born"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "ExecuteGadgetLua"
+        }
+      ]
+    }
+  }
+]

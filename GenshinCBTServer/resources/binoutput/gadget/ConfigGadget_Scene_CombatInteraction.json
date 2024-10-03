@@ -1,0 +1,86 @@
+{
+  "SceneObj_CombatInteraction_PumpkinBomb": {
+    "$type": "ConfigGadget",
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 35,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.5,
+        "combatPri": 0.8
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.1,
+        "dieForceDisappearTime": 0.1
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "PumpkinBomb_Interact",
+        "abilityName": "SceneObj_CombatInteraction_Test_PumpkinBomb"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "concernType": "AllAvatars",
+      "shape": "CircleR0_5",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.75,
+      "overwriteCampType": true,
+      "campType": "All"
+    }
+  },
+  "SceneObj_CombatInteraction_BombBox": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "mass": 200
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 8000,
+        "attack": 80,
+        "lockShape": "CircleLockEnemy",
+        "weight": 80,
+        "denyLockOn": true,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.1,
+        "dieForceDisappearTime": 0.2
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "BOMB_BOX",
+        "abilityName": "SceneObj_CombatInteraction_Test_BombBox"
+      }
+    ]
+  }
+}

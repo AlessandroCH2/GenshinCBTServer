@@ -1,0 +1,20 @@
+{
+  "$type": "ConfigIPhoneXData",
+  "baseCanvansAction": {
+    "$type": "ConfigIPhoneXAction",
+    "paths": [
+      "Pages",
+      "Dialogs",
+      "SpecialDialogs",
+      "SuspendBars"
+    ],
+    "indent": 60
+  },
+  "basePageAction": {
+    "$type": "ConfigIPhoneXAction",
+    "paths": [
+      "BG"
+    ],
+    "scale": 1.085
+  }
+}

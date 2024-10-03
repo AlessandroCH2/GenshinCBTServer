@@ -1,0 +1,22 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigUITriggerInterAction",
+        "type": "UI_TRIGGER",
+        "contextName": "SpringUsePage"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "cameraPosType": "EXIT",
+        "camTargetType": "TO_INTEE",
+        "lerpRatio": 5
+      }
+    ]
+  ]
+}

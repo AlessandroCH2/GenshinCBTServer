@@ -1,0 +1,1042 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Klee_ExtraAttack",
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "skillID": 10241,
+          "chargeTime": 0.15,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 1
+            }
+          ],
+          "OnBeginCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 6
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "EndHoldTrigger"
+            }
+          ],
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "EndHoldTrigger"
+            }
+          ],
+          "chargeStateIDs": [
+            "Attack01_BS",
+            "Attack01",
+            "Attack02",
+            "Attack03",
+            "Attack04",
+            "ExtraAttack_BS",
+            "ExtraAttack",
+            "ExtraAttack1"
+          ]
+        },
+        {
+          "$type": "AvatarSteerByCameraMixin",
+          "stateIDs": [
+            "ExtraAttack1"
+          ],
+          "angularSpeed": 120
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack1",
+            "ExtraAttack2",
+            "ExtraAttack3"
+          ],
+          "modifierName": "Camera"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack1"
+          ],
+          "modifierName": "Cost"
+        }
+      ],
+      "modifiers": {
+        "Camera": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ]
+        },
+        "Cost": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "CostStaminaMixin",
+              "costStaminaDelta": 40,
+              "onStaminaEmpty": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "triggerID": "EndHoldTrigger"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Klee_MeteorShawor",
+      "modifiers": {
+        "Meteor_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.5,
+          "elementDurability": 100,
+          "thinkInterval": 1.2,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Avatar_Klee_MeteorAlert"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "AlertToCastTimer"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Avatar_Klee_MeteorLastAlert"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "AlertToCastTimerLast"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Avatar_Klee_MeteorAlert"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "AlertToCastTimer"
+            }
+          ]
+        },
+        "AlertToCastTimer": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleRefresh",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 1.2,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Avatar_Klee_MeteorDamage"
+            }
+          ]
+        },
+        "AlertToCastTimerLast": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleRefresh",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 1.2,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Avatar_Klee_MeteorLastDamage"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Meteor_Handler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Klee_MeteorAlert",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor1",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": -2
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor2",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": 1.5,
+              "z": 1.2
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor3",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": -1.5,
+              "z": 1.2
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor4",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 3.5
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1.5
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor5",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": 3.03,
+              "z": -1.75
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1.5
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor6",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": -3.03,
+              "z": -1.75
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1.5
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor1"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor2"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor3"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor4"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor5"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor6"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Klee_MeteorLastAlert",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor1",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": -2
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor2",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": 1.5,
+              "z": 1.2
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor3",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": -1.5,
+              "z": 1.2
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor4",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 3.5
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1.5
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor5",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": 3.03,
+              "z": -1.75
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1.5
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "PosMeteor6",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": -3.03,
+              "z": -1.75
+            },
+            "minRandomRange": 0,
+            "maxRandomRange": 1.5
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle_1",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor1"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle_1",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor2"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle_1",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor3"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle_1",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor4"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle_1",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor5"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "effectPattern": "Eff_WhiteBox_Ambor_AlertCircle_1",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor6"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Klee_MeteorDamage",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor1"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor2"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor3"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor4"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor5"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor6"
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor1"
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 2,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 25
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor2"
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 25
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor3"
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 25
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor4"
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 2,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 25
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor5"
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 25
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor6"
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 25
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.12,
+                "shakeTime": 0.2
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Klee_MeteorLastDamage",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor1"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor2"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor3"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor4"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor5"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Ambor_ArrowRain_Down",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "PosMeteor6"
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor1"
+              },
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 2,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 480,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor2"
+              },
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 480,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor3"
+              },
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 480,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor4"
+              },
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 2,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 480,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor5"
+              },
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 480,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByGlobalValue",
+                "positionKey": "PosMeteor6"
+              },
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 12,
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 480,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.2,
+                "shakeTime": 0.4
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  }
+]

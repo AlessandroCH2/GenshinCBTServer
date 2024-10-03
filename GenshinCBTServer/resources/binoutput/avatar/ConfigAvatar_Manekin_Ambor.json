@@ -1,0 +1,143 @@
+{
+  "$type": "ConfigAvatar",
+  "common": {
+    "$type": "ConfigEntityCommon",
+    "effectAttachShape": {
+      "$type": "ConfigEffectAttachSkinnedMesh",
+      "mesh": "EffectMesh"
+    },
+    "mass": 10
+  },
+  "headControl": {
+    "$type": "ConfigHeadControl",
+    "useHeadControl": true,
+    "useWhiteAnimStates": false
+  },
+  "equipController": {
+    "$type": "ConfigEquipController",
+    "attachPoints": {
+      "equip01": "WeaponR",
+      "equip02": "WeaponL",
+      "equip00": "WeaponBackPut"
+    },
+    "sheathPoint": "WeaponBackPut",
+    "dissolveSheathFadeDelay": 0.075,
+    "dissolveSheathFadeTime": 0.35
+  },
+  "stateLayers": {
+    "defaultLayer": {
+      "$type": "ConfigNormalStateLayer",
+      "stateIDs": {
+        "ShowWeapon_BS": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowWeapon_BS": [
+              "Girl_Bow_ShowWeapon_BS"
+            ]
+          },
+          "setAnimatorBoolean": [
+            {
+              "$type": "ConfigAnimatorBoolean",
+              "name": "&GotoAnyState"
+            }
+          ],
+          "sheatheOnStart": true
+        },
+        "ShowRelic_BS": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowRelic_BS": [
+              "Emo_Avatar_Common_Manekin_RelicShowBS"
+            ]
+          },
+          "setAnimatorBoolean": [
+            {
+              "$type": "ConfigAnimatorBoolean",
+              "name": "&GotoAnyState"
+            }
+          ],
+          "sheatheOnStart": true
+        },
+        "ShowWeapon": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowWeapon": [],
+            "ShowWeapon_AS": [
+              "Girl_Bow_ShowWeapon_AS"
+            ]
+          },
+          "battouOnStart": true
+        },
+        "ShowRelic": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowRelic": [
+              "Emo_Avatar_Common_Manekin_RelicShowLoop"
+            ],
+            "ShowRelic_AS": [
+              "Emo_Avatar_Common_Manekin_RelicShowAS"
+            ]
+          },
+          "sheatheOnStart": true
+        },
+        "ShowCharacter": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowCharacter": [],
+            "Show01": [
+              "Emo_Avatar_Ambor_Show01",
+              "Audio_Girl_StandbyShow_01_Ambor"
+            ],
+            "Show02": [
+              "Emo_Avatar_Ambor_Show02",
+              "Audio_Girl_StandbyShow_02_Ambor"
+            ]
+          },
+          "setAnimatorBoolean": [
+            {
+              "$type": "ConfigAnimatorBoolean",
+              "name": "&GotoAnyState"
+            }
+          ],
+          "sheatheOnStart": true
+        }
+      }
+    }
+  },
+  "audio": {
+    "$type": "ConfigAvatarAudio",
+    "animAudio": {
+      "$type": "ConfigAnimationAudio",
+      "onTransitionIn": [
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "ShowWeapon_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_ui_menu_weapon_show_ambor"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "ShowRelic_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_ui_menu_relic_show"
+          }
+        }
+      ],
+      "onTransitionOut": [
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "ShowWeapon_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_ui_menu_weapon_show_putAway_appear_short"
+          }
+        }
+      ]
+    },
+    "listenerLiftup": 1.5,
+    "surfaceProberLiftup": 1.5
+  }
+}

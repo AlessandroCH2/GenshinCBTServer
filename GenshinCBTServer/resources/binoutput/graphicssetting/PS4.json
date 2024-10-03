@@ -1,0 +1,38 @@
+{
+  "$type": "ConfigPlatformGrahpicsSetting",
+  "volatileSettings": {
+    "Default": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Fantastic",
+      "shadowGrade": "High",
+      "useHalfShadows": false
+    },
+    "High": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Fantastic",
+      "shadowGrade": "VeryHigh",
+      "useHalfShadows": false
+    },
+    "Middle": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Fantastic",
+      "shadowGrade": "High",
+      "useHalfShadows": false
+    }
+  },
+  "deviceSettings": {
+    "Default": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "resolutionQuality": "High",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "PCDefault",
+      "lightOnLevel": "High"
+    }
+  },
+  "antialiasingMethod": "SMAA",
+  "smaaQuality": "High"
+}

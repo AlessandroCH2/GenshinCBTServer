@@ -1,0 +1,176 @@
+{
+  "$type": "ConfigAvatar",
+  "common": {
+    "$type": "ConfigEntityCommon",
+    "effectAttachShape": {
+      "$type": "ConfigEffectAttachSkinnedMesh",
+      "mesh": "EffectMesh"
+    },
+    "mass": 10
+  },
+  "headControl": {
+    "$type": "ConfigHeadControl",
+    "useHeadControl": true,
+    "useWhiteAnimStates": false
+  },
+  "equipController": {
+    "$type": "ConfigEquipController",
+    "attachPoints": {
+      "equip01": "WeaponR",
+      "equip02": "WeaponL"
+    },
+    "sheathPoint": "WeaponBackPut",
+    "dissolveSheathFadeTime": 0.45,
+    "triggerToStates": [
+      {
+        "$type": "TriggerToStates",
+        "trigger": "Close"
+      },
+      {
+        "$type": "TriggerToStates",
+        "trigger": "Close",
+        "states": [
+          "ShowWeapon_AS"
+        ]
+      },
+      {
+        "$type": "TriggerToStates",
+        "trigger": "Open",
+        "states": [
+          "ShowWeapon",
+          "ShowWeapon_BS"
+        ]
+      }
+    ]
+  },
+  "stateLayers": {
+    "defaultLayer": {
+      "$type": "ConfigNormalStateLayer",
+      "stateIDs": {
+        "ShowWeapon_BS": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowWeapon_BS": [
+              "Girl_Catalyst_ShowWeapon_BS"
+            ]
+          },
+          "setAnimatorBoolean": [
+            {
+              "$type": "ConfigAnimatorBoolean",
+              "name": "&GotoAnyState"
+            }
+          ],
+          "sheatheOnStart": true
+        },
+        "ShowRelic_BS": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowRelic_BS": [
+              "Emo_Avatar_Common_Manekin_RelicShowBS"
+            ]
+          },
+          "setAnimatorBoolean": [
+            {
+              "$type": "ConfigAnimatorBoolean",
+              "name": "&GotoAnyState"
+            }
+          ],
+          "sheatheOnStart": true
+        },
+        "ShowWeapon": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowWeapon": [],
+            "ShowWeapon_AS": [
+              "Girl_Catalyst_ShowWeapon_AS"
+            ]
+          },
+          "battouOnStart": true
+        },
+        "ShowRelic": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowRelic": [
+              "Emo_Avatar_Common_Manekin_RelicShowLoop"
+            ],
+            "ShowRelic_AS": [
+              "Emo_Avatar_Common_Manekin_RelicShowAS"
+            ]
+          },
+          "sheatheOnStart": true
+        },
+        "ShowCharacter": {
+          "$type": "ConfigAvatarStateIDInfo",
+          "animatorStates": {
+            "ShowCharacter": [],
+            "Show01": [
+              "Manekin_Barbara_Show01",
+              "Emo_Avatar_Barbara_Show_01",
+              "Audio_Girl_StandbyShow_Barbara"
+            ],
+            "Show02": []
+          },
+          "setAnimatorBoolean": [
+            {
+              "$type": "ConfigAnimatorBoolean",
+              "name": "&GotoAnyState"
+            }
+          ],
+          "sheatheOnStart": true
+        }
+      }
+    }
+  },
+  "audio": {
+    "$type": "ConfigAvatarAudio",
+    "animAudio": {
+      "$type": "ConfigAnimationAudio",
+      "onTransitionIn": [
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "ShowWeapon_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_ui_menu_weapon_show_barbara"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "ShowRelic_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_ui_menu_relic_show"
+          }
+        }
+      ],
+      "onTransitionOut": [
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "ShowWeapon_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_ui_menu_weapon_show_putAway_appear_long"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "ShowWeapon",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_ui_menu_weapon_show_foley_catalyst_close"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Show01",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_standbyShow_vo_barbara_sing"
+          }
+        }
+      ]
+    },
+    "listenerLiftup": 1.5,
+    "surfaceProberLiftup": 1.5
+  }
+}

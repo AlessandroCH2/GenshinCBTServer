@@ -1,0 +1,420 @@
+{
+  "CircleR0": {
+    "$type": "ConfigShapeCircle"
+  },
+  "CircleR0_5": {
+    "$type": "ConfigShapeCircle",
+    "radius": 0.5
+  },
+  "CircleR1": {
+    "$type": "ConfigShapeCircle",
+    "radius": 1
+  },
+  "CircleR1.5": {
+    "$type": "ConfigShapeCircle",
+    "radius": 1.5
+  },
+  "CircleR2": {
+    "$type": "ConfigShapeCircle",
+    "radius": 2
+  },
+  "CircleR3": {
+    "$type": "ConfigShapeCircle",
+    "radius": 3
+  },
+  "CircleR4": {
+    "$type": "ConfigShapeCircle",
+    "radius": 4
+  },
+  "CircleR5": {
+    "$type": "ConfigShapeCircle",
+    "radius": 5
+  },
+  "CircleR6": {
+    "$type": "ConfigShapeCircle",
+    "radius": 6
+  },
+  "CircleR7": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 7,
+    "radius": 7
+  },
+  "CircleR7NoHeight": {
+    "$type": "ConfigShapeCircle",
+    "radius": 7
+  },
+  "CircleR8": {
+    "$type": "ConfigShapeCircle",
+    "radius": 8
+  },
+  "CircleR10": {
+    "$type": "ConfigShapeCircle",
+    "radius": 10
+  },
+  "CircleR10H40": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 40,
+    "radius": 10
+  },
+  "CircleR6H40": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 40,
+    "radius": 6
+  },
+  "CircleR5H20": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 20,
+    "radius": 5
+  },
+  "CircleR13": {
+    "$type": "ConfigShapeCircle",
+    "radius": 13
+  },
+  "CircleR14": {
+    "$type": "ConfigShapeCircle",
+    "radius": 14
+  },
+  "CircleR15": {
+    "$type": "ConfigShapeCircle",
+    "radius": 15
+  },
+  "CircleR18": {
+    "$type": "ConfigShapeCircle",
+    "radius": 18
+  },
+  "CircleR20": {
+    "$type": "ConfigShapeCircle",
+    "radius": 20
+  },
+  "CircleR25": {
+    "$type": "ConfigShapeCircle",
+    "radius": 25
+  },
+  "CircleR50": {
+    "$type": "ConfigShapeCircle",
+    "radius": 50
+  },
+  "CircleR62": {
+    "$type": "ConfigShapeCircle",
+    "radius": 62
+  },
+  "CircleR75": {
+    "$type": "ConfigShapeCircle",
+    "radius": 75
+  },
+  "CircleR100": {
+    "$type": "ConfigShapeCircle",
+    "radius": 100
+  },
+  "CircleR140": {
+    "$type": "ConfigShapeCircle",
+    "radius": 140
+  },
+  "CircleR150": {
+    "$type": "ConfigShapeCircle",
+    "radius": 150
+  },
+  "CircleR200": {
+    "$type": "ConfigShapeCircle",
+    "radius": 200
+  },
+  "CircleR225": {
+    "$type": "ConfigShapeCircle",
+    "radius": 225
+  },
+  "CircleR300": {
+    "$type": "ConfigShapeCircle",
+    "radius": 300
+  },
+  "CircleR350": {
+    "$type": "ConfigShapeCircle",
+    "radius": 350
+  },
+  "CircleR450": {
+    "$type": "ConfigShapeCircle",
+    "radius": 450
+  },
+  "CircleR1000": {
+    "$type": "ConfigShapeCircle",
+    "radius": 1000
+  },
+  "CircleR2000": {
+    "$type": "ConfigShapeCircle",
+    "radius": 2000
+  },
+  "CircleR10000": {
+    "$type": "ConfigShapeCircle",
+    "radius": 10000
+  },
+  "CircleRWindDragon": {
+    "$type": "ConfigShapeCircle",
+    "radius": 400
+  },
+  "CircleR20H60": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 60,
+    "radius": 20
+  },
+  "CircleR20H40": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 40,
+    "radius": 20
+  },
+  "CircleR40H40": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 40,
+    "radius": 40
+  },
+  "CircleR30H5": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 5,
+    "radius": 30
+  },
+  "SectorR3D135": {
+    "$type": "ConfigShapeSector",
+    "radius": 3,
+    "fullDegree": 135
+  },
+  "SectorR8D50": {
+    "$type": "ConfigShapeSector",
+    "radius": 8,
+    "fullDegree": 50
+  },
+  "RectBCW2L4": {
+    "$type": "ConfigShapeRect",
+    "height": 2,
+    "width": 2,
+    "length": 4
+  },
+  "RectBCW3L4": {
+    "$type": "ConfigShapeRect",
+    "height": 2,
+    "width": 3,
+    "length": 4
+  },
+  "RectW2L4": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 2,
+    "centerType": "Center",
+    "width": 2,
+    "length": 4
+  },
+  "RectW3L3H7": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 7,
+    "centerType": "Center",
+    "width": 3,
+    "length": 3
+  },
+  "RectW3L5": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 3,
+    "centerType": "Center",
+    "width": 3,
+    "length": 5
+  },
+  "RectW10L10H30": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 30,
+    "centerType": "Center",
+    "width": 10,
+    "length": 10
+  },
+  "RectW10L10": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 75,
+    "centerType": "Center",
+    "width": 10,
+    "length": 10
+  },
+  "RectW20L20": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 75,
+    "centerType": "Center",
+    "width": 20,
+    "length": 20
+  },
+  "RectW15L42": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 75,
+    "centerType": "Center",
+    "width": 15,
+    "length": 42
+  },
+  "RectW70L63": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 80,
+    "centerType": "Center",
+    "width": 70,
+    "length": 63
+  },
+  "RectW100L83": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 80,
+    "centerType": "Center",
+    "width": 100,
+    "length": 83
+  },
+  "RectW58L130": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 60,
+    "centerType": "Center",
+    "width": 58,
+    "length": 130
+  },
+  "CircleLockEnemyR3Low": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 2.5,
+    "radius": 3
+  },
+  "CircleLockEnemy": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 5,
+    "radius": 5
+  },
+  "CircleLockEnemyLow": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 2.5,
+    "radius": 5
+  },
+  "CircleLockEnemyR8": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 7,
+    "radius": 8
+  },
+  "CircleLockEnemyR10": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 7,
+    "radius": 10
+  },
+  "CircleLockEnemyR13": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 7,
+    "radius": 13
+  },
+  "CircleLockEnemyWindBlade": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 14,
+    "radius": 13
+  },
+  "CircleLockEnemyR13Low": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 5,
+    "radius": 13
+  },
+  "CircleLockEnemyR15": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 10,
+    "radius": 15
+  },
+  "CircleLockEnemyR25": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 10,
+    "radius": 25
+  },
+  "CircleLockBoss": {
+    "$type": "ConfigShapeCircle",
+    "radius": 15
+  },
+  "RectRiseField01": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 20,
+    "centerType": "Center",
+    "width": 10,
+    "length": 10
+  },
+  "RockTide_Barrier": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 2.1,
+    "width": 8,
+    "length": 1.2
+  },
+  "CircleTransPoint": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 2,
+    "radius": 5
+  },
+  "RectPortal": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 7,
+    "centerType": "Center",
+    "width": 7,
+    "length": 5
+  },
+  "RectSneakAI": {
+    "$type": "ConfigShapeRect",
+    "useHeight": true,
+    "height": 2,
+    "centerType": "Center",
+    "width": 1,
+    "length": 1
+  },
+  "CircleLockEnemyClose": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 6,
+    "radius": 5
+  },
+  "CircleLockEnemyFar": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 10,
+    "radius": 15
+  },
+  "CircleLockEnemyR5H6HC": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 6,
+    "radius": 5
+  },
+  "CircleLockEnemyR8H6HC": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 6,
+    "radius": 8
+  },
+  "CircleLockEnemyR10H6HC": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 6,
+    "radius": 10
+  },
+  "CircleLockEnemyR15H10HC": {
+    "$type": "ConfigShapeCircle",
+    "useHeight": true,
+    "height": 10,
+    "radius": 15
+  }
+}

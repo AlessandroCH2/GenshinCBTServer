@@ -1,0 +1,316 @@
+{
+  "Weapon_Catalyst_Zephyrus_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Catalyst_Zephyrus"
+    }
+  ],
+  "Weapon_Catalyst_Zephyrus_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_Zephyrus",
+      "paramSpecial": "shieldHP",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Catalyst_Zephyrus_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_Zephyrus",
+      "paramSpecial": "shieldHP",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Catalyst_Zephyrus_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_Zephyrus",
+      "paramSpecial": "shieldHP",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Catalyst_Zephyrus_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_Zephyrus",
+      "paramSpecial": "shieldHP",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Catalyst_OnKilledAttackUp_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Catalyst_OnKilledAttackUp"
+    }
+  ],
+  "Weapon_Catalyst_OnKilledAttackUp_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_OnKilledAttackUp",
+      "paramSpecial": "AttackUp",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Catalyst_OnKilledAttackUp_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_OnKilledAttackUp",
+      "paramSpecial": "AttackUp",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Catalyst_OnKilledAttackUp_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_OnKilledAttackUp",
+      "paramSpecial": "AttackUp",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Catalyst_OnKilledAttackUp_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_OnKilledAttackUp",
+      "paramSpecial": "AttackUp",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Catalyst_EnergyMaxElementDamageUp_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Catalyst_EnergyMaxElementDamageUp"
+    }
+  ],
+  "Weapon_Catalyst_EnergyMaxElementDamageUp_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_EnergyMaxElementDamageUp",
+      "paramSpecial": "ElementDamageUp",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Catalyst_EnergyMaxElementDamageUp_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_EnergyMaxElementDamageUp",
+      "paramSpecial": "ElementDamageUp",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Catalyst_EnergyMaxElementDamageUp_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_EnergyMaxElementDamageUp",
+      "paramSpecial": "ElementDamageUp",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Catalyst_EnergyMaxElementDamageUp_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_EnergyMaxElementDamageUp",
+      "paramSpecial": "ElementDamageUp",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Catalyst_OnGainEnergyHealHP_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Catalyst_OnGainEnergyHealHP"
+    }
+  ],
+  "Weapon_Catalyst_OnGainEnergyHealHP_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_OnGainEnergyHealHP",
+      "paramSpecial": "HealHP",
+      "paramDelta": 10
+    }
+  ],
+  "Weapon_Catalyst_OnGainEnergyHealHP_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_OnGainEnergyHealHP",
+      "paramSpecial": "HealHP",
+      "paramDelta": 10
+    }
+  ],
+  "Weapon_Catalyst_OnGainEnergyHealHP_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_OnGainEnergyHealHP",
+      "paramSpecial": "HealHP",
+      "paramDelta": 10
+    }
+  ],
+  "Weapon_Catalyst_OnGainEnergyHealHP_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_OnGainEnergyHealHP",
+      "paramSpecial": "HealHP",
+      "paramDelta": 10
+    }
+  ],
+  "Weapon_Catalyst_RandomBuff_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff"
+    }
+  ],
+  "Weapon_Catalyst_RandomBuff_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "AttackUp",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "Actor_CriticalRatio",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "Actor_ElementAddDelta",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Catalyst_RandomBuff_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "AttackUp",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "Actor_CriticalRatio",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "Actor_ElementAddDelta",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Catalyst_RandomBuff_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "AttackUp",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "Actor_CriticalRatio",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "Actor_ElementAddDelta",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Catalyst_RandomBuff_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "AttackUp",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "Actor_CriticalRatio",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_RandomBuff",
+      "paramSpecial": "Actor_ElementAddDelta",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Catalyst_ResetCDWhenSkillHit_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Catalyst_ResetCDWhenSkillHit"
+    }
+  ],
+  "Weapon_Catalyst_ResetCDWhenSkillHit_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_ResetCDWhenSkillHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Catalyst_ResetCDWhenSkillHit_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_ResetCDWhenSkillHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Catalyst_ResetCDWhenSkillHit_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_ResetCDWhenSkillHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Catalyst_ResetCDWhenSkillHit_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_ResetCDWhenSkillHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Catalyst_ChanceBoltWhenNormalAttack_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Catalyst_ChanceBoltWhenNormalAttack"
+    }
+  ],
+  "Weapon_Catalyst_ChanceBoltWhenNormalAttack_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_Arcane_Arrow_Material",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Catalyst_ChanceBoltWhenNormalAttack_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_Arcane_Arrow_Material",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Catalyst_ChanceBoltWhenNormalAttack_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_Arcane_Arrow_Material",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Catalyst_ChanceBoltWhenNormalAttack_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Catalyst_Arcane_Arrow_Material",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ]
+}

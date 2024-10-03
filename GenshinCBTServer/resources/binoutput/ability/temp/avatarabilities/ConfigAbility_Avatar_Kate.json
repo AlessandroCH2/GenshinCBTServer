@@ -1,0 +1,1461 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kate_RisingBladeNE",
+      "abilityMixins": [
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "skillID": 10011,
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "endHoldTrigger": "EndHoldTrigger",
+          "beforeStateIDs": [
+            "Attack01"
+          ],
+          "chargeLoopStateIDs": [
+            "RisingBladeNE_Charge1",
+            "RisingBladeNE_Charge2"
+          ],
+          "chargeLoopDurations": [
+            1
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "RisingBladeNE_Charge1"
+          ],
+          "modifierName": "Charge1"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "RisingBladeNE_Charge2"
+          ],
+          "modifierName": "Charge2"
+        }
+      ],
+      "modifiers": {
+        "Charge1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "RisingBladeNE_Charge"
+            }
+          ]
+        },
+        "Charge2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "RisingBladeNE_Charge"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kate_TriggerAbility",
+      "abilityMixins": [
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "skillID": 10012,
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "endHoldTrigger": "EndHoldTrigger",
+          "beforeStateIDs": [
+            "FlickerWave_BS"
+          ],
+          "chargeLoopStateIDs": [
+            "FlickerWave_BS2",
+            "ThunderFall_Ready",
+            "ThunderFall_Strike1"
+          ],
+          "chargeLoopDurations": [
+            1.5,
+            3
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ThunderFall_Ready"
+          ],
+          "modifierName": "Charge1"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FlickerWave_BS2"
+          ],
+          "modifierName": "Charge2"
+        }
+      ],
+      "modifiers": {
+        "Charge1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "ThunderFall_Area"
+            }
+          ]
+        },
+        "Charge2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "RisingBladeNE_Charge2"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kate_FlickerWave",
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10012,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006007,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_FlickerWaveDamage",
+      "modifiers": {
+        "StaticElec_Pre": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.2,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "TriggerAbility",
+              "target": "Owner",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ],
+                  "useEventSource": true
+                }
+              ],
+              "abilityName": "Test_StaticElecField"
+            },
+            {
+              "$type": "KillSelf",
+              "doOffStage": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "FlickerWave_Bul"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "StaticElec_Pre"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "doOffStage": true,
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.8
+                }
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementDurability": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_StaticElecField",
+      "modifiers": {
+        "FlickerWave_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FlickerWave_Buff"
+            }
+          ]
+        },
+        "StaticElec": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleRefreshNoRemove",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 15,
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 0
+                }
+              ],
+              "modifierName": "StaticElec"
+            }
+          ]
+        },
+        "UNIQUE_StaticElec_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_StaticElec_COUNT",
+              "defaultGlobalValueOnCreate": 0,
+              "valueSteps": [
+                -1,
+                0.5,
+                1.5,
+                2.5,
+                3.5
+              ],
+              "modifierNameSteps": [
+                "StaticElec_effect_0",
+                "StaticElec_effect_1",
+                "StaticElec_effect_2",
+                "StaticElec_effect_3"
+              ]
+            }
+          ]
+        },
+        "StaticElec_effect_0": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_1"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_3"
+            }
+          ]
+        },
+        "StaticElec_effect_1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "StaticElec_effect_1"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_0"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_2"
+            }
+          ]
+        },
+        "StaticElec_effect_2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "StaticElec_effect_2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_1"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_3"
+            }
+          ]
+        },
+        "StaticElec_effect_3": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "StaticElec_effect_3"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_2"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR3",
+            "centerBasedOn": "Target",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "modifierName": "StaticElec"
+        },
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR3",
+            "centerBasedOn": "Target",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "modifierName": "UNIQUE_StaticElec_Effect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "modifierName": "FlickerWave_Effect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kate_ThunderFall",
+      "modifiers": {
+        "SelectNearModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 3,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 50
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "default",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 2
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 4.5,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 80
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "default",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 3
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 100
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "default",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1
+                }
+              ],
+              "modifierName": "ThunderFall_1"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 2
+                }
+              ],
+              "modifierName": "ThunderFall_2"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 3
+                }
+              ],
+              "modifierName": "ThunderFall_3"
+            }
+          ]
+        },
+        "ThunderFall_1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "ThunderFall_1"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ]
+        },
+        "ThunderFall_2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "ThunderFall_2"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -2,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ]
+        },
+        "ThunderFall_3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "ThunderFall_3"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -3,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Paralysis"
+            }
+          ]
+        },
+        "Paralysis": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 4,
+          "elementDurability": 100,
+          "state": "Paralyze",
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Paralysis"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10012,
+          "cdRatio": 8,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SelectNearModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kate_PierceLightning",
+      "modifiers": {
+        "SelectNearModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "modifierName": "PierceLightning"
+            }
+          ]
+        },
+        "PierceLightning": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 8,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_DamageTakeRatio": 0.15
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "DefenseFall"
+            }
+          ]
+        },
+        "PierceLightning_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "PierceLightning"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10014,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SelectNearModifier"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "PierceLightning_Effect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kate_ThrowingBomb",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "AimAttack",
+            "Throw"
+          ],
+          "modifierName": "SkillChange"
+        }
+      ],
+      "modifiers": {
+        "SkillChange": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "fromSkillID": 10011,
+              "toSkillID": 10300
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kate_JumpingBomb",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "target": "Target",
+          "bulletID": 40000174,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.2,
+              "z": 1
+            }
+          }
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 2,
+          "key": "_ABILITY_Jump_COUNT",
+          "useLimitRange": true,
+          "maxValue": 4,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Jumping_Drug_Explode",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 30,
+                "strikeType": "Blunt"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 400,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.12,
+                "shakeTime": 0.12
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Explode"
+        },
+        {
+          "$type": "SetSelfAttackTarget",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR10",
+            "campTargetType": "Enemy",
+            "topLimit": 1,
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ]
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 40000175,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.2
+            },
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngle": 360
+            }
+          }
+        },
+        {
+          "$type": "KillSelf"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Jumping_Drug_Explode2",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 30,
+                "strikeType": "Blunt"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 400,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.12,
+                "shakeTime": 0.12
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Explode"
+        },
+        {
+          "$type": "SetSelfAttackTarget",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR6",
+            "campTargetType": "Enemy",
+            "topLimit": 1,
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ]
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 40000176,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.2
+            },
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngle": 360
+            }
+          }
+        },
+        {
+          "$type": "KillSelf"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Jumping_Drug_Explode3",
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobalValue",
+          "target": "Caster",
+          "value": -1,
+          "key": "_ABILITY_Jump_COUNT",
+          "useLimitRange": true,
+          "maxValue": 4,
+          "minValue": 0
+        },
+        {
+          "$type": "KillSelf"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 30,
+                "strikeType": "Blunt"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 400,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.12,
+                "shakeTime": 0.12
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Explode"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kate_JumpingBomb2",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 40000139,
+          "campID": 1001,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 4
+            }
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "target": "Target",
+          "bulletID": 40000177,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.2,
+              "z": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Jumping_Drug_Explode4",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 30,
+                "strikeType": "Blunt"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 200,
+                "hitImpulseY": 400,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.12,
+                "shakeTime": 0.12
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_WhiteBox_Explode"
+        },
+        {
+          "$type": "KillSelf"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Venti_WindBlade_Test",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "WindBlade"
+          ],
+          "modifierName": "TriggerAttack"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "WindBlade_Land"
+          ],
+          "modifierName": "TriggerAttack_Land"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "WindBlade_Rise_Charge"
+          ],
+          "modifierName": "WindBlade_Rise_Charge_Timer"
+        },
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "skillID": 10224,
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "endHoldTrigger": "EndHoldTrigger",
+          "beforeStateIDs": [
+            "WindBlade_Rise_BS"
+          ],
+          "chargeLoopStateIDs": [
+            "WindBlade_Rise_Charge",
+            "WindBlade_RiseUp"
+          ],
+          "chargeLoopDurations": [
+            0.3
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "WindBlade_Rise_Charge",
+            "WindBlade_RiseUp",
+            "WindBlade",
+            "WindBlade_Land"
+          ],
+          "modifierName": "Eff_Venti_Harp"
+        }
+      ],
+      "modifiers": {
+        "WindBlade_Trap": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "properties": {
+            "Animator_OverallSpeedRatioMultiplied": 0.1
+          }
+        },
+        "TriggerAttack": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ],
+              "gadgetID": 41022003,
+              "campID": 1001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.5
+                },
+                "onGround": true
+              }
+            },
+            {
+              "$type": "CreateGadget",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHasAttackTarget"
+                    }
+                  ]
+                }
+              ],
+              "gadgetID": 41022003,
+              "campID": 1001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 6
+                },
+                "onGround": true,
+                "alongGround": true
+              }
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10224,
+              "cdRatio": 0.8,
+              "costStaminaRatio": 1
+            }
+          ]
+        },
+        "TriggerAttack_Land": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ],
+              "gadgetID": 41022003,
+              "campID": 1001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.5,
+                  "z": 0.5
+                },
+                "onGround": true
+              }
+            },
+            {
+              "$type": "CreateGadget",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHasAttackTarget"
+                    }
+                  ]
+                }
+              ],
+              "gadgetID": 41022003,
+              "campID": 1001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 6
+                },
+                "onGround": true,
+                "alongGround": true
+              }
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10224,
+              "cdRatio": 0.3,
+              "costStaminaRatio": 1
+            }
+          ]
+        },
+        "WindBlade_Rise_Charge_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHasAttackTarget"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "SetCamera"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_Avatar_Boy_Bow_Venti_Rise_Up"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR15",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "modifierName": "WindBlade_Trap"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  },
+                  "radius": 10
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Avatar_Venti_WindBlade",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementDurability": 100
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Air",
+                    "hitImpulseX": 700,
+                    "hitImpulseY": 0,
+                    "hitHaltTime": 1,
+                    "hitHaltTimeScale": 1
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "SetCamera": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarEnterCameraShot",
+              "cameraMoveCfgPath": "Camera_Venti_WindBlade"
+            }
+          ]
+        },
+        "Eff_Venti_Harp": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Avatar_Boy_Bow_Venti_Harp",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.3,
+                  "z": 0.3
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+]

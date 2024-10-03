@@ -1,0 +1,16 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigCutsceneInterAction",
+        "type": "CUTSCENE",
+        "cutsceneCfg": {
+          "$type": "ConfigTimeline",
+          "type": "TIME_LINE_PREFAB",
+          "resPath": "ART/CameraAni/Quest/Ca_Quest_MQ354_ShowSlime"
+        }
+      }
+    ]
+  ]
+}

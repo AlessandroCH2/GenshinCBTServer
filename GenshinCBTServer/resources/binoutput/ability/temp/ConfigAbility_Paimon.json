@@ -1,0 +1,96 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Gadget_Guide_Paimon_Disappear",
+      "onAbilityStart": [
+        {
+          "$type": "GuidePaimonDisappearEnd"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Gadget_Guide_Paimon_Eff",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Born"
+          ],
+          "modifierName": "Appear_Eff"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Disappear"
+          ],
+          "modifierName": "Disappear_Eff"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "NormalMove",
+            "Show",
+            "Anger",
+            "Guide",
+            "Hope",
+            "Wave"
+          ],
+          "modifierName": "Move_Eff"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Domagic"
+          ],
+          "modifierName": "Domagic_Eff"
+        }
+      ],
+      "modifiers": {
+        "Appear_Eff": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Paimon_Appear"
+            }
+          ]
+        },
+        "Disappear_Eff": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Paimon_Disappear"
+            }
+          ]
+        },
+        "Move_Eff": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Paimon_Move"
+            }
+          ]
+        },
+        "Domagic_Eff": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Paimon_Domagic"
+            }
+          ]
+        }
+      }
+    }
+  }
+]

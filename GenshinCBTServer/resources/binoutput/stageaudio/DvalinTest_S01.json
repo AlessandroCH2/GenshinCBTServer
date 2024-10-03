@@ -1,0 +1,45 @@
+{
+  "$type": "ConfigAudioStageEvents",
+  "id": 13,
+  "stageProgressEvents": [
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.3
+    },
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.68,
+      "events": [
+        "Play_amb_dvalin_s01_baseWind",
+        "Set_State_State_Dvalin_S01",
+        "Stop_Music_DragonNest",
+        "Play_Music_DvalinS01"
+      ]
+    },
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.7
+    },
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.8
+    },
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.97
+    },
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.98
+    },
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 1
+    }
+  ],
+  "stageExitEvents": [
+    "Stop_amb_dvalin_s01_baseWind",
+    "Set_State_State_NotDvalin",
+    "Stop_Music_DvalinS01"
+  ]
+}

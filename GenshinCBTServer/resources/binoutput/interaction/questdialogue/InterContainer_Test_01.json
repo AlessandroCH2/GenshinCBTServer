@@ -1,0 +1,141 @@
+{
+  "$type": "ConfigInterContainer",
+  "actors": [
+    {
+      "$type": "ConfigInterActor",
+      "configID": 21,
+      "alias": "�",
+      "visible": true,
+      "bornPointName": "Test01"
+    },
+    {
+      "$type": "ConfigInterActor",
+      "configID": 1005,
+      "alias": "�",
+      "visible": true,
+      "bornPointName": "Test02"
+    },
+    {
+      "$type": "ConfigInterActor",
+      "configID": 1002,
+      "alias": "�",
+      "visible": true,
+      "bornPointName": "Test03"
+    }
+  ],
+  "group": [
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "21_�"
+        ],
+        "dialogID": 3100101
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "aliasList": [
+          "21_�"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 184.4678,
+          "y": 209.2155,
+          "z": 66.95137
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 183.7991,
+          "y": 209.2155,
+          "z": 66.20776
+        }
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005_�"
+        ]
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "aliasList": [
+          "1005_�"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 184.1508,
+          "y": 209.1759,
+          "z": 65.35108
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 183.7633,
+          "y": 209.1759,
+          "z": 66.27294
+        }
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1002_�"
+        ]
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "aliasList": [
+          "1002_�"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 180.9118,
+          "y": 209.3597,
+          "z": 65.98649
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 181.8917,
+          "y": 209.3597,
+          "z": 66.18568
+        }
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "21_�"
+        ]
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "aliasList": [
+          "21_�"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 184.4678,
+          "y": 209.2155,
+          "z": 66.95137
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 183.7991,
+          "y": 209.2155,
+          "z": 66.20776
+        }
+      }
+    ]
+  ]
+}

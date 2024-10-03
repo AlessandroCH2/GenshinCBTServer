@@ -1,0 +1,2220 @@
+{
+  "$type": "ConfigInterContainer",
+  "startFade": {
+    "$type": "ConfigInterFade"
+  },
+  "actors": [
+    {
+      "$type": "ConfigInterActor",
+      "alias": "Avatar",
+      "visible": true,
+      "bornPointName": "Q37803Player"
+    },
+    {
+      "$type": "ConfigInterActor",
+      "configID": 1008,
+      "alias": "1008",
+      "visible": true,
+      "bornPointName": "Q378Babara"
+    },
+    {
+      "$type": "ConfigInterActor",
+      "configID": 1006,
+      "alias": "1006",
+      "visible": true,
+      "bornPointName": "Q378Qin2"
+    },
+    {
+      "$type": "ConfigInterActor",
+      "configID": 1005,
+      "alias": "1005",
+      "visible": true,
+      "bornPointName": "Q37803Paimon"
+    }
+  ],
+  "group": [
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2394.77,
+          "y": 261.4235,
+          "z": -614.0213
+        },
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": -10
+        },
+        "headTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780301
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1008"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2395.914,
+          "y": 261.2189,
+          "z": -614.8233
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2395.102,
+          "y": 261.129,
+          "z": -614.2462
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1008"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": 10
+        },
+        "enableBody": true,
+        "bodyAngle": 5,
+        "headTurnTime": 0.3,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1130
+      },
+      {
+        "$type": "ConfigEmoSyncInterAction",
+        "type": "EMO_SYNC",
+        "aliasList": [
+          "1008"
+        ],
+        "dataPath": "Cs_Emo_Avatar_Simple_Common_Set/Cs_Emo_Avatar_Barbara_VO_MDAQ054_Barbara_01"
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1006"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2394.77,
+          "y": 261.4235,
+          "z": -614.0213
+        },
+        "headTurnTime": 0.2
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2394.77,
+          "y": 261.4235,
+          "z": -614.0213
+        },
+        "headTurnTime": 0.2
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1008"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2396.996,
+          "y": 261.5829,
+          "z": -614.5585
+        },
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": -10
+        },
+        "headTurnTime": 0.3,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780302
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 2,
+        "aliasList": [
+          "1006"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2398.423,
+          "y": 261.7575,
+          "z": -615.8986
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2397.569,
+          "y": 261.4937,
+          "z": -615.4491
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1060
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780303
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1130
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780304
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780305
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1006"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2397.521,
+          "y": 260.794,
+          "z": -611.32
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2397.054,
+          "y": 260.8389,
+          "z": -612.203
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1170
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1060
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "delayTime": 0.3,
+        "aliasList": [
+          "1008"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": 40
+        },
+        "enableBody": true,
+        "bodyAngle": 25,
+        "headTurnTime": 0.2
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780306
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1006"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": -40
+        },
+        "enableBody": true,
+        "bodyAngle": -25,
+        "headTurnTime": 0.3,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1130
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "aliasList": [
+          "1005"
+        ],
+        "useAngle": true,
+        "steerAngle": 20
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780307
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1130
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1170
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1130
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780308
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1006"
+        ],
+        "enableHead": true,
+        "enableBody": true,
+        "headTurnTime": 0.45,
+        "bodyTurnTime": 0.4
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1190
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780309
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1008"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2395.914,
+          "y": 261.2189,
+          "z": -614.8233
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2395.102,
+          "y": 261.129,
+          "z": -614.2462
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1008"
+        ],
+        "enableHead": true,
+        "enableBody": true,
+        "headTurnTime": 0.35,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1170
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780310
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3780311
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1005"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2394.25,
+          "y": 261.5355,
+          "z": -611.8228
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2394.698,
+          "y": 261.3476,
+          "z": -612.6964
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1050
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "aliasList": [
+          "1005"
+        ],
+        "steerType": "RETURN"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1170
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780312
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1130
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBlackScreenAction",
+        "type": "BLACK_SCREEN",
+        "duration": 1,
+        "aliasList": [
+          "Avatar"
+        ],
+        "blackScreenType": "TO_BLACK",
+        "durationToBlack": 1
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG_CLEAR",
+        "aliasList": [
+          "Avatar"
+        ],
+        "dialogID": 3780312
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBlackScreenAction",
+        "type": "BLACK_SCREEN",
+        "duration": 2,
+        "aliasList": [
+          "Avatar"
+        ],
+        "blackScreenType": "KEEP_BLACK",
+        "durationKeepBlack": 2
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1050
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG_CLEAR",
+        "aliasList": [
+          "Avatar"
+        ],
+        "dialogID": 3780313
+      },
+      {
+        "$type": "ConfigBlackScreenAction",
+        "type": "BLACK_SCREEN",
+        "duration": 1,
+        "aliasList": [
+          "Avatar"
+        ],
+        "blackScreenType": "FROM_BLACK",
+        "durationFromBlack": 1
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780313
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780314
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1130
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780315
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1008"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2395.914,
+          "y": 261.2189,
+          "z": -614.8233
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2395.102,
+          "y": 261.129,
+          "z": -614.2462
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1180
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780316
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780317
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1180
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780318
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "aliasList": [
+          "1006"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2394.25,
+          "y": 261.5355,
+          "z": -611.8228
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2394.698,
+          "y": 261.3476,
+          "z": -612.6964
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1190
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780319
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1110
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780320
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1110
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780321
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780322
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": 50
+        },
+        "enableBody": true,
+        "bodyAngle": 10,
+        "headTurnTime": 0.3,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1008"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": 30
+        },
+        "enableBody": true,
+        "bodyAngle": 10,
+        "headTurnTime": 0.35,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1006"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": -50
+        },
+        "enableBody": true,
+        "bodyAngle": -30,
+        "headTurnTime": 0.35,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1130
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3780323
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1005"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2397.521,
+          "y": 260.794,
+          "z": -611.32
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2397.054,
+          "y": 260.8389,
+          "z": -612.203
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1190
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "aliasList": [
+          "1005"
+        ],
+        "useAngle": true,
+        "steerAngle": 30
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2396.996,
+          "y": 261.5829,
+          "z": -614.5585
+        },
+        "headTurnTime": 0.2
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogSelectAction",
+        "type": "DIALOG_SELECT",
+        "delayTime": 0.4,
+        "aliasList": [
+          "Avatar"
+        ],
+        "dialogIDList": [
+          3780325,
+          3780329
+        ],
+        "grpIDList": [
+          3114156879,
+          3114156903
+        ],
+        "useGrpId": true
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1190
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3780324
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780326
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1230
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780327
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1090
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3780328
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 351
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 2,
+        "aliasList": [
+          "1005"
+        ],
+        "steerType": "ABSOLUTE",
+        "steerDir": {
+          "$type": "Vector",
+          "x": 2394.77,
+          "y": 261.4235,
+          "z": -614.0213
+        }
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2394.77,
+          "y": 261.4235,
+          "z": -614.0213
+        },
+        "headTurnTime": 0.2
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3780330
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 351
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "aliasList": [
+          "1005"
+        ],
+        "steerType": "ABSOLUTE",
+        "steerDir": {
+          "$type": "Vector",
+          "x": 2396.097,
+          "y": 261.3286,
+          "z": -615.6067
+        }
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2396.097,
+          "y": 261.3286,
+          "z": -615.6067
+        },
+        "headTurnTime": 0.3
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2394.77,
+          "y": 261.4235,
+          "z": -614.0213
+        },
+        "enableBody": true,
+        "headTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780331
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1230
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "aliasList": [
+          "1005"
+        ],
+        "steerType": "RETURN"
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2394.77,
+          "y": 261.4235,
+          "z": -614.0213
+        },
+        "headTurnTime": 0.2
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1008"
+        ],
+        "enableHead": true,
+        "enableBody": true,
+        "headTurnTime": 0.45,
+        "bodyTurnTime": 0.4
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1090
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780332
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "aliasList": [
+          "1006"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2398.423,
+          "y": 261.7575,
+          "z": -615.8986
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2397.569,
+          "y": 261.4937,
+          "z": -615.4491
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1006"
+        ],
+        "enableHead": true,
+        "enableBody": true,
+        "headTurnTime": 0.35,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1130
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 351
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "aliasList": [
+          "1005"
+        ],
+        "steerType": "RETURN"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780333
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1120
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780334
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1120
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3780335
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1040
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780336
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1008"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2395.914,
+          "y": 261.2189,
+          "z": -614.8233
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2395.102,
+          "y": 261.129,
+          "z": -614.2462
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1130
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780337
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1040
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780338
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1130
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780339
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1006"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2394.25,
+          "y": 261.5355,
+          "z": -611.8228
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2394.698,
+          "y": 261.3476,
+          "z": -612.6964
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1120
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3780340
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1230
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780341
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780342
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1120
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1230
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780343
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1008"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2397.521,
+          "y": 260.794,
+          "z": -611.32
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2397.054,
+          "y": 260.8389,
+          "z": -612.203
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1008"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "y": 10
+        },
+        "headTurnTime": 0.3
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": 40
+        },
+        "enableBody": true,
+        "bodyAngle": 25,
+        "headTurnTime": 0.3,
+        "bodyTurnTime": 0.25
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780344
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1006"
+        ],
+        "bodyLangParam": 1130
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "aliasList": [
+          "1005"
+        ],
+        "steerDir": {
+          "$type": "Vector",
+          "x": 100,
+          "z": 150
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1190
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2396.996,
+          "y": 261.5829,
+          "z": -614.5585
+        },
+        "headTurnTime": 0.3
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780345
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1090
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ],
+        "enableHead": true,
+        "enableBody": true,
+        "headTurnTime": 0.3,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780346
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 2,
+        "aliasList": [
+          "1005"
+        ],
+        "steerType": "RETURN"
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1190
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2394.77,
+          "y": 261.4235,
+          "z": -614.0213
+        },
+        "headTurnTime": 0.3
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1090
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1008"
+        ],
+        "enableHead": true,
+        "useTargetPos": true,
+        "enableAbsolute": true,
+        "targetPosition": {
+          "$type": "Vector",
+          "x": 2396.996,
+          "y": 261.5829,
+          "z": -614.5585
+        },
+        "headTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780347
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1006"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2398.423,
+          "y": 261.7575,
+          "z": -615.8986
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2397.569,
+          "y": 261.4937,
+          "z": -615.4491
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780348
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1230
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780349
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1006"
+        ],
+        "dialogID": 3780350
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780351
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "aliasList": [
+          "1008"
+        ],
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2395.914,
+          "y": 261.2189,
+          "z": -614.8233
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2395.102,
+          "y": 261.129,
+          "z": -614.2462
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1008"
+        ],
+        "bodyLangParam": 1130
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1008"
+        ],
+        "dialogID": 3780352
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ]
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1008"
+        ]
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1006"
+        ]
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ]
+      }
+    ]
+  ],
+  "groupId": [
+    {
+      "$type": "ConfigInterGrpId",
+      "grpId": 1485929992,
+      "nextGrpId": 1485929993
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 1,
+      "grpId": 1485929993,
+      "nextGrpId": 1485929994
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 2,
+      "grpId": 1485929994,
+      "nextGrpId": 1485929995
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 3,
+      "grpId": 1485929995,
+      "nextGrpId": 1485929996
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 4,
+      "grpId": 1485929996,
+      "nextGrpId": 1485929997
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 5,
+      "grpId": 1485929997,
+      "nextGrpId": 1485929998
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 6,
+      "grpId": 1485929998,
+      "nextGrpId": 1485929999
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 7,
+      "grpId": 1485929999,
+      "nextGrpId": 1485930000
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 8,
+      "grpId": 1485930000,
+      "nextGrpId": 3114156840
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 9,
+      "grpId": 3114156840,
+      "nextGrpId": 3114156841
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 10,
+      "grpId": 3114156841,
+      "nextGrpId": 3114156842
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 11,
+      "grpId": 3114156842,
+      "nextGrpId": 3114156843
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 12,
+      "grpId": 3114156843,
+      "nextGrpId": 3114156844
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 13,
+      "grpId": 3114156844,
+      "nextGrpId": 3114156845
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 14,
+      "grpId": 3114156845,
+      "nextGrpId": 3114156846
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 15,
+      "grpId": 3114156846,
+      "nextGrpId": 3114156847
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 16,
+      "grpId": 3114156847,
+      "nextGrpId": 3114156848
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 17,
+      "grpId": 3114156848,
+      "nextGrpId": 3114156849
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 18,
+      "grpId": 3114156849,
+      "nextGrpId": 3114156871
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 19,
+      "grpId": 3114156871,
+      "nextGrpId": 3114156872
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 20,
+      "grpId": 3114156872,
+      "nextGrpId": 3114156873
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 21,
+      "grpId": 3114156873,
+      "nextGrpId": 3114156874
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 22,
+      "grpId": 3114156874,
+      "nextGrpId": 3114156875
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 23,
+      "grpId": 3114156875,
+      "nextGrpId": 3114156876
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 24,
+      "grpId": 3114156876,
+      "nextGrpId": 3114156877
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 25,
+      "grpId": 3114156877,
+      "nextGrpId": 3114156878
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 26,
+      "grpId": 3114156878,
+      "nextGrpId": 3114156879
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 27,
+      "grpId": 3114156879,
+      "nextGrpId": 3114156880
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 28,
+      "grpId": 3114156880,
+      "nextGrpId": 3114156902
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 29,
+      "grpId": 3114156902,
+      "nextGrpId": 3114156904
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 30,
+      "grpId": 3114156903,
+      "nextGrpId": 3114156904
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 31,
+      "grpId": 3114156904,
+      "nextGrpId": 3114156905
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 32,
+      "grpId": 3114156905,
+      "nextGrpId": 3114156906
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 33,
+      "grpId": 3114156906,
+      "nextGrpId": 3114156907
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 34,
+      "grpId": 3114156907,
+      "nextGrpId": 3114156908
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 35,
+      "grpId": 3114156908,
+      "nextGrpId": 3114156909
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 36,
+      "grpId": 3114156909,
+      "nextGrpId": 3114156910
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 37,
+      "grpId": 3114156910,
+      "nextGrpId": 3114156911
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 38,
+      "grpId": 3114156911,
+      "nextGrpId": 3114156933
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 39,
+      "grpId": 3114156933,
+      "nextGrpId": 3114156934
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 40,
+      "grpId": 3114156934,
+      "nextGrpId": 3114156935
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 41,
+      "grpId": 3114156935,
+      "nextGrpId": 3114156936
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 42,
+      "grpId": 3114156936,
+      "nextGrpId": 3114156937
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 43,
+      "grpId": 3114156937,
+      "nextGrpId": 3114156938
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 44,
+      "grpId": 3114156938,
+      "nextGrpId": 3114156939
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 45,
+      "grpId": 3114156939,
+      "nextGrpId": 3114156940
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 46,
+      "grpId": 3114156940,
+      "nextGrpId": 3114156941
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 47,
+      "grpId": 3114156941,
+      "nextGrpId": 3114156942
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 48,
+      "grpId": 3114156942,
+      "nextGrpId": 3114156964
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 49,
+      "grpId": 3114156964,
+      "nextGrpId": 3114156965
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 50,
+      "grpId": 3114156965,
+      "nextGrpId": 3114156966
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 51,
+      "grpId": 3114156966,
+      "nextGrpId": 3114156967
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 52,
+      "grpId": 3114156967,
+      "nextGrpId": 3114156968
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 53,
+      "grpId": 3114156968,
+      "nextGrpId": 3114156969
+    }
+  ]
+}

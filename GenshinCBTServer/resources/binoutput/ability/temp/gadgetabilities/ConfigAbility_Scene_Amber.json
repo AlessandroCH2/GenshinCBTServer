@@ -1,0 +1,177 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Amber_RockAmberBroken",
+      "modifiers": {
+        "RockAmberBuff": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 60,
+          "elementType": "Rock",
+          "elementDurability": 10,
+          "properties": {
+            "Entity_WeightRatio": 2
+          }
+        },
+        "Broken": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "All",
+                "sizeRatio": 1
+              },
+              "modifierName": "RockAmberBuff"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Amber_Rock_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.3
+                }
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitDamage",
+                  "damage": 1
+                }
+              ],
+              "modifierName": "Broken"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Broken"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Amber_WaterAmberBroken",
+      "modifiers": {
+        "Broken": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 70270002,
+              "campID": 1001,
+              "campTargetType": "All",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Amber_Water_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.3
+                }
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitDamage",
+                  "damage": 1
+                }
+              ],
+              "modifierName": "Broken"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Broken"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Amber_WindAmberBroken",
+      "modifiers": {
+        "Broken": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 70270003,
+              "campID": 1001,
+              "campTargetType": "All",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Amber_Wind_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.3
+                }
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitDamage",
+                  "damage": 1
+                }
+              ],
+              "modifierName": "Broken"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Broken"
+        }
+      ]
+    }
+  }
+]

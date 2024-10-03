@@ -1,0 +1,18 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigCutsceneInterAction",
+        "type": "CUTSCENE",
+        "cutsceneCfg": {
+          "$type": "ConfigTimeline",
+          "type": "TIME_LINE_PREFAB",
+          "resPath": "ART/Cutscene/Cs_MDAQ071_DvalinCombat2_Convert",
+          "needYEuler": true,
+          "fadeInDuration": 0
+        }
+      }
+    ]
+  ]
+}

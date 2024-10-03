@@ -1,0 +1,30 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "steerType": "TO_LOCAL_AVATAR"
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2563.976,
+          "y": 212.6708,
+          "z": -1338.585
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "y": 148.7628
+        },
+        "lerpRatio": 15,
+        "storyDither": true
+      }
+    ]
+  ]
+}

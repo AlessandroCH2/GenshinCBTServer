@@ -1,0 +1,150 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Relic_FighterAttackUp_Lv5",
+      "abilitySpecials": {
+        "AttackRatio": 0.12
+      },
+      "modifiers": {
+        "UNIQUE_Relic_FighterAttackUp_Lv5": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": "AttackRatio"
+          },
+          "isLimitedProperties": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "ByAvatarWeaponType",
+              "weaponTypes": [
+                "WEAPON_SWORD_ONE_HAND",
+                "WEAPON_CLAYMORE",
+                "WEAPON_POLE"
+              ]
+            }
+          ],
+          "modifierName": "UNIQUE_Relic_FighterAttackUp_Lv5"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Relic_RangerAttackUp_Lv5",
+      "abilitySpecials": {
+        "AttackRatio": 0.12
+      },
+      "modifiers": {
+        "UNIQUE_Relic_RangerAttackUp_Lv5": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": "AttackRatio"
+          },
+          "isLimitedProperties": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "ByAvatarWeaponType",
+              "weaponTypes": [
+                "WEAPON_CATALYST",
+                "WEAPON_BOW"
+              ]
+            }
+          ],
+          "modifierName": "UNIQUE_Relic_RangerAttackUp_Lv5"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Relic_ElementDamageUpWhenChangeChar_Lv5",
+      "abilitySpecials": {
+        "ElementDamageUp": 0.2
+      },
+      "modifiers": {
+        "UNIQUE_Relic_ElementDamageUpWhenChangeChar_Lv5": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 10,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_FireAddHurtDelta": "ElementDamageUp",
+            "Actor_WaterAddHurtDelta": "ElementDamageUp",
+            "Actor_GrassAddHurtDelta": "ElementDamageUp",
+            "Actor_IceAddHurtDelta": "ElementDamageUp",
+            "Actor_RockAddHurtDelta": "ElementDamageUp",
+            "Actor_ElecAddHurtDelta": "ElementDamageUp",
+            "Actor_WindAddHurtDelta": "ElementDamageUp"
+          },
+          "state": "AttackUp",
+          "isLimitedProperties": true
+        }
+      },
+      "onAvatarIn": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Relic_ElementDamageUpWhenChangeChar_Lv5"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Relic_AttackUpAfterElementBall_Lv5",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByEnergyChangeMixin",
+          "elementTypes": [
+            "Electric",
+            "Fire",
+            "Water",
+            "Grass",
+            "Ice",
+            "Wind",
+            "Rock"
+          ],
+          "doWhenEnergyMax": true,
+          "onGainEnergyByBall": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "UNIQUE_Relic_AttackUpAfterElementBall_Lv5"
+            }
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "AttackRatio": 0.2
+      },
+      "modifiers": {
+        "UNIQUE_Relic_AttackUpAfterElementBall_Lv5": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 10,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": "AttackRatio"
+          },
+          "state": "AttackUp",
+          "isLimitedProperties": true
+        }
+      }
+    }
+  }
+]

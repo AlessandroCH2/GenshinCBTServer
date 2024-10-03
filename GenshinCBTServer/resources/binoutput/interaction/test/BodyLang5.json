@@ -1,0 +1,12 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "isContinue": true
+      }
+    ]
+  ]
+}

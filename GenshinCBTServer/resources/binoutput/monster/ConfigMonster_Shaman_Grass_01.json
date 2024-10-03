@@ -1,0 +1,745 @@
+{
+  "$type": "ConfigMonster",
+  "common": {
+    "$type": "ConfigEntityCommon",
+    "effectAttachShape": {
+      "$type": "ConfigEffectAttachSkinnedMesh",
+      "mesh": "EffectMesh"
+    },
+    "mass": 30,
+    "affectedByWorld": true,
+    "checkInSurface": true,
+    "useGrassDisplacement": true
+  },
+  "headControl": {
+    "$type": "ConfigHeadControl"
+  },
+  "model": {
+    "$type": "ConfigModel",
+    "bornEffect": "Monster_Common_Born"
+  },
+  "combat": {
+    "$type": "ConfigCombat",
+    "property": {
+      "$type": "ConfigCombatProperty",
+      "endureType": "Monster_Minion",
+      "lockShape": "CircleLockEnemy",
+      "weight": 75
+    },
+    "beHit": {
+      "$type": "ConfigCombatBeHit"
+    },
+    "die": {
+      "$type": "ConfigDie",
+      "hasAnimatorDie": true,
+      "dieEndTime": 1,
+      "dieForceDisappearTime": 4,
+      "dieDisappearEffect": "Death_Common",
+      "dieDisappearEffectDelay": 1,
+      "dieShaderData": "MonsterDie",
+      "useRagDoll": true,
+      "ragDollDieEndTimeDelay": 1.25
+    },
+    "animEvents": {
+      "Shaman_Grass_MeleeAttack": {
+        "$type": "ConfigAttackEvent",
+        "attackPattern": {
+          "$type": "ConfigAttackCircle",
+          "triggerType": "TriggerNoRepeat",
+          "scale": 1,
+          "fanAngle": 150,
+          "radius": 3
+        },
+        "attackInfo": {
+          "$type": "ConfigAttackInfo",
+          "attackProperty": {
+            "$type": "ConfigAttackProperty",
+            "damagePercentage": 2,
+            "damagePercentageRatio": 0,
+            "elementDurability": 100,
+            "strikeType": "Blunt",
+            "enBreak": 100,
+            "attackType": "Melee"
+          },
+          "hitPattern": {
+            "$type": "ConfigHitPattern",
+            "onHitEffectName": "default",
+            "hitLevel": "Air",
+            "hitImpulseX": 480,
+            "hitImpulseY": 600
+          },
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "HitVector",
+            "shakeRange": 0.2,
+            "shakeTime": 0.15,
+            "shakeDistance": 25,
+            "shakeDir": {
+              "$type": "Vector",
+              "x": -1,
+              "y": -0.3
+            }
+          }
+        }
+      }
+    }
+  },
+  "equipController": {
+    "$type": "ConfigEquipController",
+    "attachPoints": {
+      "equip01": "WeaponR"
+    }
+  },
+  "abilities": [
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Monster_Shaman_Grass_CreateGrassFeild",
+      "abilityName": "Monster_Shaman_Grass_CreateGrassFeild"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Monster_Shaman_Grass_CreateGrassWall",
+      "abilityName": "Monster_Shaman_Grass_CreateGrassWall"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Monster_Shaman_Grass_AnimationSteer",
+      "abilityName": "Monster_Shaman_Grass_AnimationSteer"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Monster_Shaman_Grass_EscapeState",
+      "abilityName": "Monster_Shaman_Grass_EscapeState"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Monster_Shaman_Grass_DistanceCharge",
+      "abilityName": "Monster_Shaman_Grass_DistanceCharge"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Monster_Shaman_Grass_WeaponElementEffect",
+      "abilityName": "Monster_Shaman_Grass_WeaponElementEffect"
+    }
+  ],
+  "stateLayers": {
+    "defaultLayer": {
+      "$type": "ConfigNormalStateLayer",
+      "stateIDs": {
+        "NormalIdle": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Standby": [],
+            "WalkToStandby": [],
+            "Born": []
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "NormalMove": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Walk": [
+              "Audio_Shaman_Water_Walk",
+              "Audio_Shaman_Grass_Walk_Vo"
+            ],
+            "Run": [
+              "Audio_Shaman_Water_Run",
+              "Audio_Shaman_Grass_Run_Vo"
+            ],
+            "Escape": [
+              "Audio_Shaman_Water_Run",
+              "Audio_Shaman_Grass_Escape_Vo"
+            ]
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ],
+          "canSteer": true
+        },
+        "Turn": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Turn_Left": [
+              "Audio_Shaman_Water_Turn"
+            ],
+            "Turn_Right": [
+              "Audio_Shaman_Water_Turn"
+            ]
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ],
+          "canSteer": true
+        },
+        "BeHit": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Hit_L": [
+              "Audio_Shaman_Grass_Hit_L_Vo"
+            ],
+            "Hit_H": [
+              "Audio_Shaman_Water_Hit_H",
+              "Audio_Shaman_Grass_Hit_H_Vo"
+            ]
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "BeHitThrow": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "HitThrow": [],
+            "HitThrowDrop": [],
+            "HitThrowToGround": [
+              "Audio_Shaman_Water_HitThrowToGround",
+              "Audio_Shaman_Grass_Hit_ThrowToGround_Vo"
+            ]
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit",
+            "HitAir2HitDrop"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "Struggle": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Struggle": []
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit",
+            "HitAir2HitDrop"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "Die": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "SwimDie": [
+              "Monster_Shaman_Die"
+            ],
+            "SwimDie_AS": []
+          }
+        },
+        "Die_Ragdoll": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Die": [
+              "Monster_Shaman_Die"
+            ],
+            "AirDie": [
+              "Monster_Shaman_Die"
+            ]
+          },
+          "enableRagDoll": true
+        },
+        "Life_Alert": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Alert": [
+              "Monster_Shaman_Alert",
+              "Audio_Shaman_Water_Alert",
+              "Audio_Shaman_Grass_Alert_Vo"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ],
+          "canSteer": true,
+          "autoSteer": true
+        },
+        "MeleeAttack": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "MeleeAttack": [
+              "Monster_Shaman_Grass_MeleeAttack",
+              "Audio_Shaman_Water_MeleeAttack",
+              "Audio_Shaman_Grass_MeleeAttack_Vo"
+            ]
+          },
+          "addEndure": 0.4,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "SupportAttack": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "SupportAttack": [
+              "Audio_Shaman_Water_SupportAttack",
+              "Audio_Shaman_Grass_SupportAttack_Vo"
+            ],
+            "SupportAttack_AS": [
+              "Audio_Shaman_Water_SupportAttack_AS",
+              "Audio_Shaman_Grass_SupportAttack_AS_Vo"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnEnter": [
+            "SupportAttackExit"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "SupportAttack2": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "SupportAttack2": [
+              "Audio_Shaman_Water_SupportAttack",
+              "Audio_Shaman_Grass_SupportAttack_Vo"
+            ],
+            "SupportAttack2_AS": [
+              "Audio_Shaman_Water_SupportAttack_AS",
+              "Audio_Shaman_Grass_SupportAttack_AS_Vo"
+            ]
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "SupportAttackExit2"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "SupportAttack_BS": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "SupportAttack_BS": [
+              "Audio_Shaman_Grass_SupportAttack_BS",
+              "Audio_Shaman_Grass_SupportAttack_BS_Vo"
+            ],
+            "SupportAttack2_BS": [
+              "Audio_Shaman_Grass_SupportAttack_BS",
+              "Audio_Shaman_Grass_SupportAttack_BS_Vo"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "NormalAttack_AS": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "NormalAttack_AS": [
+              "Audio_Shaman_Grass_NormalAttack_AS_Vo"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "NormalAttack_BS": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "NormalAttack_BS": [
+              "Audio_Shaman_Grass_NormalAttack_BS",
+              "Audio_Shaman_Grass_NormalAttack_BS_Vo"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ],
+          "canSteer": true
+        }
+      }
+    }
+  },
+  "billboard": {
+    "$type": "ConfigCombatBillboard",
+    "attachPoint": "BillboardAttach",
+    "offset": {
+      "$type": "Vector",
+      "y": 0.5
+    },
+    "depthOffset": 0.3,
+    "showHPBar": true
+  },
+  "aibeta": {
+    "$type": "ConfigAIBeta",
+    "enable": true,
+    "sensing": {
+      "$type": "ConfigAISensing",
+      "settings": {
+        "DefaultSetting": {
+          "$type": "ConfigAISensingSetting",
+          "feelRange": 8
+        },
+        "HighAlert": {
+          "$type": "ConfigAISensingSetting",
+          "viewRange": 40,
+          "feelRange": 10
+        }
+      },
+      "templates": {
+        "DefaultTemplate": {
+          "DefaultPoses": "DefaultSetting"
+        },
+        "HighAlertTemplate": {
+          "DefaultPoses": "HighAlert"
+        }
+      }
+    },
+    "threat": {
+      "$type": "ConfigAIThreatSetting",
+      "clearThreatTargetDistance": 30,
+      "clearThreatEdgeDistance": 0,
+      "viewAttenuation": [
+        {
+          "$type": "AIPoint",
+          "x": 10,
+          "y": 2
+        },
+        {
+          "$type": "AIPoint",
+          "x": 15,
+          "y": 0.8
+        },
+        {
+          "$type": "AIPoint",
+          "x": 20,
+          "y": 0.5
+        },
+        {
+          "$type": "AIPoint",
+          "x": 25,
+          "y": 0.3
+        },
+        {
+          "$type": "AIPoint",
+          "x": 30,
+          "y": 0.2
+        }
+      ]
+    },
+    "defendArea": {
+      "$type": "ConfigAIDefendArea"
+    },
+    "skills": {
+      "100": {
+        "$type": "ConfigAISkill",
+        "name": "OnAlert",
+        "skillType": "OnAlert",
+        "faceTarget": true,
+        "triggerGCD": false,
+        "stateIDs": [
+          "Life_Alert"
+        ],
+        "skillQueryingTime": 3
+      },
+      "101": {
+        "$type": "ConfigAISkill",
+        "name": "SupportAttack",
+        "cd": 5,
+        "triggerGCD": false,
+        "enableSkillPrepare": true,
+        "skillPrepareTimeout": 2,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1000
+          ],
+          "pickRangeMin": 12,
+          "pickRangeMax": 30,
+          "castRangeMin": 12,
+          "castRangeMax": 25
+        },
+        "stateIDs": [
+          "SupportAttack_BS",
+          "SupportAttack"
+        ]
+      },
+      "102": {
+        "$type": "ConfigAISkill",
+        "name": "SupportAttack2",
+        "priority": 2,
+        "cd": 5,
+        "enableSkillPrepare": true,
+        "skillPrepareTimeout": 1.5,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1000
+          ],
+          "pickRangeMin": 3.5,
+          "pickRangeMax": 12,
+          "castRangeMin": 3.5,
+          "castRangeMax": 12
+        },
+        "stateIDs": [
+          "SupportAttack2_BS",
+          "SupportAttack2"
+        ]
+      },
+      "111": {
+        "$type": "ConfigAISkill",
+        "name": "SupportAttack",
+        "isUnreachableSkill": true,
+        "cd": 5,
+        "triggerGCD": false,
+        "enableSkillPrepare": true,
+        "skillPrepareTimeout": 2,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1000
+          ],
+          "pickRangeMin": 3.5,
+          "pickRangeMax": 30,
+          "castRangeMin": 3.5,
+          "castRangeMax": 25
+        },
+        "stateIDs": [
+          "SupportAttack_BS",
+          "SupportAttack"
+        ]
+      },
+      "112": {
+        "$type": "ConfigAISkill",
+        "name": "SupportAttack",
+        "isOutOfZoneSkill": true,
+        "cd": 5,
+        "triggerGCD": false,
+        "enableSkillPrepare": true,
+        "skillPrepareTimeout": 2,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1000
+          ],
+          "pickRangeMin": 3.5,
+          "pickRangeMax": 30,
+          "castRangeMin": 3.5,
+          "castRangeMax": 25
+        },
+        "stateIDs": [
+          "SupportAttack_BS",
+          "SupportAttack"
+        ]
+      },
+      "113": {
+        "$type": "ConfigAISkill",
+        "name": "SupportAttack",
+        "isOutOfZoneSkill": true,
+        "isUnreachableSkill": true,
+        "cd": 5,
+        "triggerGCD": false,
+        "enableSkillPrepare": true,
+        "skillPrepareTimeout": 2,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1000
+          ],
+          "pickRangeMin": 3.5,
+          "pickRangeMax": 30,
+          "castRangeMin": 3.5,
+          "castRangeMax": 25
+        },
+        "stateIDs": [
+          "SupportAttack_BS",
+          "SupportAttack"
+        ]
+      },
+      "201": {
+        "$type": "ConfigAISkill",
+        "name": "NormalAttack",
+        "priority": 1,
+        "cd": 8,
+        "enableSkillPrepare": true,
+        "skillPrepareTimeout": 2,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1000
+          ],
+          "pickRangeMin": 3.5,
+          "pickRangeMax": 12,
+          "castRangeMin": 3.5,
+          "castRangeMax": 12
+        },
+        "stateIDs": [
+          "NormalAttack_BS",
+          "NormalAttack_AS"
+        ]
+      },
+      "301": {
+        "$type": "ConfigAISkill",
+        "name": "MeleeAttack",
+        "cd": 3.5,
+        "ignoreGCD": true,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1000
+          ],
+          "pickRangeMax": 3.5
+        },
+        "stateIDs": [
+          "MeleeAttack"
+        ]
+      }
+    },
+    "returnToBornTactic": {
+      "$type": "ConfigAIReturnToBornPosSetting",
+      "enable": true,
+      "defaultSetting": {
+        "$type": "ConfigAIReturnToBornPosData"
+      }
+    },
+    "wanderTactic": {
+      "$type": "ConfigAIWanderSetting",
+      "enable": true,
+      "defaultSetting": {
+        "$type": "ConfigAIWanderData",
+        "cdMax": 5,
+        "cdMin": 3,
+        "distanceFromBorn": 20,
+        "distanceFromCurrentMin": 7.5
+      }
+    },
+    "meleeChargeTactic": {
+      "$type": "ConfigAIMeleeChargeSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          1000,
+          1001
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAIMeleeChargeData",
+        "startDistanceMin": 20,
+        "startDistanceMax": 99,
+        "stopDistance": 20,
+        "innerDistance": 0
+      }
+    },
+    "fleeTactic": {
+      "$type": "ConfigAIFleeSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          1100
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAIFleeData",
+        "cd": 0,
+        "triggerDistance": 3.5,
+        "fleeDistanceMin": 5,
+        "fleeDistanceMax": 6
+      }
+    }
+  },
+  "inputKeys": [
+    {
+      "$type": "ConfigKeyInput",
+      "keyID": 1,
+      "inputKeyCode": 256
+    },
+    {
+      "$type": "ConfigKeyInput",
+      "keyID": 101,
+      "inputKeyCode": 257
+    },
+    {
+      "$type": "ConfigKeyInput",
+      "keyID": 201,
+      "inputKeyCode": 258
+    },
+    {
+      "$type": "ConfigKeyInput",
+      "keyID": 301,
+      "inputKeyCode": 259
+    }
+  ],
+  "audio": {
+    "$type": "ConfigMonsterAudio",
+    "animAudio": {
+      "$type": "ConfigAnimationAudio",
+      "onTransitionOut": [
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "SupportAttack_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_shaman_water_healRain_cast"
+          },
+          "otherStateNames": [
+            "SupportAttack"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "NormalAttack_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_shaman_water_waterSpout_cast"
+          },
+          "otherStateNames": [
+            "NormalAttack"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "MeleeAttack",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_shaman_water_meleeAttack"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "MeleeAttack",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_vo_monster_shaman_meleeAttack"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "SupportAttack",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_vo_monster_shaman_grass_supportAttack"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "SupportAttack2",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_vo_monster_shaman_grass_supportAttack"
+          }
+        }
+      ]
+    }
+  }
+}

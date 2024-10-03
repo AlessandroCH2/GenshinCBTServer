@@ -1,0 +1,220 @@
+{
+  "DropLight": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 20,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.01
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "DropLight_Interact",
+        "abilityName": "DropLight_Interact"
+      }
+    ],
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "gear": {
+        "$type": "ConfigGear",
+        "startElemType": "Fire"
+      }
+    }
+  },
+  "DropLight_Bullet": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox"
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "defense": 99999,
+        "weight": 1,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "DropLight_Bullet"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_02",
+        "abilityName": "DropLight_Crash"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 5
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "velocityForce": {
+        "$type": "ConfigMoveVelocityForce",
+        "excludeForces": [
+          "WindZoneType",
+          "AirflowType",
+          "RiseType",
+          "SpeedupType",
+          "AirflowAccType"
+        ]
+      },
+      "speed": 1,
+      "acceleration": 10
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "DropLight_Crash"
+        }
+      ]
+    }
+  },
+  "DropLight_Bullet02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox"
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "defense": 99999,
+        "weight": 1,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "DropLight_Crash02"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 5
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "velocityForce": {
+        "$type": "ConfigMoveVelocityForce",
+        "excludeForces": [
+          "WindZoneType",
+          "AirflowType",
+          "RiseType",
+          "SpeedupType",
+          "AirflowAccType"
+        ]
+      },
+      "speed": 1,
+      "acceleration": 10
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "DropLight_Crash02"
+        }
+      ]
+    }
+  },
+  "GearWater": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 20,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "GearWater_Interact",
+        "abilityName": "GearWater_Interact"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "shape": "CircleR2",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5,
+      "overwriteCampType": true,
+      "campType": "All"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "gear": {
+        "$type": "ConfigGear",
+        "startElemType": "Water"
+      }
+    }
+  }
+}

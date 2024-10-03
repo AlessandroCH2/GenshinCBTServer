@@ -1,0 +1,21 @@
+{
+  "$type": "ConfigInterContainer",
+  "attackModeRecover": false,
+  "group": [
+    [
+      {
+        "$type": "ConfigCutsceneInterAction",
+        "type": "CUTSCENE",
+        "cutsceneCfg": {
+          "$type": "ConfigTimeline",
+          "type": "TIME_LINE_PREFAB",
+          "resPath": "ART/CameraAni/Quest/Ca_Quest_ShowTreasureBox1",
+          "startPosType": "RELATIVE_TO_INTEE",
+          "needYEuler": true,
+          "attackModeRecover": false,
+          "fadeInDuration": 0
+        }
+      }
+    ]
+  ]
+}

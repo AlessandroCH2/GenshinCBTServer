@@ -1,0 +1,58 @@
+{
+  "Boar_RushAtk": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityName": "Boar_RushAtk_Attack"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 5
+    },
+    "move": {
+      "$type": "ConfigSurroundBulletMove",
+      "speed": 13.5,
+      "canBornInWater": true,
+      "clockwise": true,
+      "radius": 0.01,
+      "traceOnYAxis": true,
+      "destroyWhenTargetDie": true
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy",
+        "ignoreScene": true
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Boar_RushAtk_Attack"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,485 @@
+{
+  "$type": "ConfigMonster",
+  "common": {
+    "$type": "ConfigEntityCommon",
+    "effectAttachShape": {
+      "$type": "ConfigEffectAttachSkinnedMesh",
+      "mesh": "EffectMesh"
+    },
+    "mass": 45,
+    "height": 1,
+    "affectedByWorld": true,
+    "checkInSurface": true,
+    "scale": 1.2,
+    "canTriggerElementReactionText": false,
+    "useGrassDisplacement": true
+  },
+  "dither": {
+    "$type": "ConfigDither",
+    "showDitherDuration": 1
+  },
+  "combat": {
+    "$type": "ConfigCombat",
+    "property": {
+      "$type": "ConfigCombatProperty",
+      "endureType": "Monster_Minion",
+      "lockShape": "CircleLockEnemy",
+      "weight": 50,
+      "rangeScale": 0.5,
+      "normalPri": 0.5,
+      "combatPri": 0
+    },
+    "beHit": {
+      "$type": "ConfigCombatBeHit"
+    },
+    "die": {
+      "$type": "ConfigDie",
+      "dieEndTime": 2,
+      "dieForceDisappearTime": 10
+    }
+  },
+  "abilities": [
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "CommonInitial",
+      "abilityName": "Animal_Common_Initial"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "AIStateInitial",
+      "abilityName": "Animal_Fox_AIStateInitial"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Random",
+      "abilityName": "Animal_Fox_Random"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "GetUp",
+      "abilityName": "Animal_Fox_GetUp"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "GetDown",
+      "abilityName": "Animal_Fox_GetDown"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Disappear",
+      "abilityName": "Animal_Fox_Disappear"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Animal_Fox_AwareTigger",
+      "abilityName": "Animal_Fox_AwareTigger"
+    }
+  ],
+  "stateLayers": {
+    "defaultLayer": {
+      "$type": "ConfigNormalStateLayer",
+      "stateIDs": {
+        "Born": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Born": [
+              "Audio_Fox_Born"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "NormalIdle": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Standby": [],
+            "Standby_Alert": [],
+            "Standby_Prone": []
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "NormalMove": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Walk": [
+              "Audio_Fox_Walk"
+            ],
+            "Run": [
+              "Audio_Fox_Run"
+            ],
+            "Disappear": [
+              "Audio_Fox_Run"
+            ]
+          },
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ],
+          "canSteer": true
+        },
+        "BeHit": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Hit_L": [
+              "Audio_Fox_Hit_L"
+            ]
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "Die": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Die": [
+              "Animal_Fox_Die",
+              "Audio_Fox_Die"
+            ],
+            "Die_Disappear": [
+              "Animal_Fox_Disappear",
+              "Audio_Fox_Run"
+            ]
+          }
+        },
+        "GetUp": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "GetUp": [
+              "Animal_Fox_GetUp",
+              "Audio_Fox_GetUp"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "GetDown": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "GetDown": [
+              "Animal_Fox_GetDown",
+              "Audio_Fox_GetDown"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Aware": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Aware_GetUp": [
+              "Audio_Fox_Personality_102"
+            ],
+            "Aware": [
+              "Audio_Fox_Aware"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill",
+            "AwareTrigger"
+          ]
+        },
+        "Alert": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Alert": [
+              "Audio_Fox_Walk"
+            ],
+            "Alert_Scared": [
+              "Animal_Fox_Alert_Scared",
+              "Audio_Fox_Alert_Scared"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Personality_101": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Personality_101": [
+              "Audio_Fox_Personality_102"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Personality_102": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Personality_102": [
+              "Audio_Fox_Personality_102"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Personality_103": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Personality_103": [
+              "Audio_Fox_Personality_103"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        }
+      }
+    }
+  },
+  "aibeta": {
+    "$type": "ConfigAIBeta",
+    "enable": true,
+    "friendliness": 1,
+    "sensing": {
+      "$type": "ConfigAISensing",
+      "settings": {
+        "DefaultSetting": {
+          "$type": "ConfigAISensingSetting",
+          "viewRange": 15,
+          "horizontalFov": 90,
+          "verticalFov": 30,
+          "feelRange": 9
+        }
+      }
+    },
+    "neurons": [
+      "HIT"
+    ],
+    "threat": {
+      "$type": "ConfigAIThreatSetting",
+      "threatDecreaseSpeed": 500,
+      "viewAttenuation": [
+        {
+          "$type": "AIPoint",
+          "x": 7,
+          "y": 2.5
+        },
+        {
+          "$type": "AIPoint",
+          "x": 9,
+          "y": 2
+        },
+        {
+          "$type": "AIPoint",
+          "x": 11,
+          "y": 1.5
+        },
+        {
+          "$type": "AIPoint",
+          "x": 11,
+          "y": 1
+        },
+        {
+          "$type": "AIPoint",
+          "x": 15,
+          "y": 0.5
+        }
+      ]
+    },
+    "defendArea": {
+      "$type": "ConfigAIDefendArea",
+      "defendRange": 100
+    },
+    "skills": {
+      "1": {
+        "$type": "ConfigAISkill",
+        "name": "OnAware_Prone",
+        "skillType": "OnAware",
+        "triggerGCD": false,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            2
+          ]
+        },
+        "stateIDs": [
+          "Aware"
+        ],
+        "skillQueryingTime": 3
+      },
+      "2": {
+        "$type": "ConfigAISkill",
+        "name": "OnAware",
+        "skillType": "OnAware",
+        "triggerGCD": false,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1
+          ]
+        },
+        "stateIDs": [
+          "Aware"
+        ],
+        "skillQueryingTime": 3
+      },
+      "3": {
+        "$type": "ConfigAISkill",
+        "name": "OnAlert",
+        "skillType": "OnAlert",
+        "triggerGCD": false,
+        "stateIDs": [
+          "Alert"
+        ],
+        "skillQueryingTime": 3
+      },
+      "101": {
+        "$type": "ConfigAISkill",
+        "name": "Personality_101",
+        "skillType": "Free",
+        "cd": 15,
+        "cdUpperRange": 45,
+        "initialCD": 5,
+        "initialCDUpperRange": 55,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            2
+          ]
+        },
+        "stateIDs": [
+          "Personality_101"
+        ]
+      },
+      "102": {
+        "$type": "ConfigAISkill",
+        "name": "Personality_102",
+        "skillType": "Free",
+        "cd": 15,
+        "cdUpperRange": 45,
+        "initialCD": 5,
+        "initialCDUpperRange": 55,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            2
+          ]
+        },
+        "stateIDs": [
+          "Personality_102"
+        ]
+      },
+      "103": {
+        "$type": "ConfigAISkill",
+        "name": "Personality_103",
+        "skillType": "Free",
+        "cd": 15,
+        "cdUpperRange": 45,
+        "initialCD": 5,
+        "initialCDUpperRange": 25,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1
+          ]
+        },
+        "stateIDs": [
+          "Personality_103"
+        ]
+      },
+      "201": {
+        "$type": "ConfigAISkill",
+        "name": "GetUp",
+        "skillType": "Free",
+        "priority": 1,
+        "cd": 10,
+        "initialCD": 60,
+        "initialCDUpperRange": 120,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            2
+          ]
+        },
+        "stateIDs": [
+          "GetUp"
+        ]
+      },
+      "202": {
+        "$type": "ConfigAISkill",
+        "name": "GetDown",
+        "skillType": "Free",
+        "priority": 1,
+        "cd": 10,
+        "initialCD": 10,
+        "initialCDUpperRange": 90,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1
+          ]
+        },
+        "stateIDs": [
+          "GetDown"
+        ]
+      }
+    },
+    "skillGCD": 5,
+    "returnToBornTactic": {
+      "$type": "ConfigAIReturnToBornPosSetting",
+      "enable": true
+    },
+    "wanderTactic": {
+      "$type": "ConfigAIWanderSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          1
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAIWanderData",
+        "turnSpeedOverride": 0.25,
+        "cdMax": 5,
+        "cdMin": 2.5,
+        "distanceFromBorn": 15,
+        "distanceFromCurrentMin": 5,
+        "distanceFromCurrentMax": 7.5
+      }
+    },
+    "fleeTactic": {
+      "$type": "ConfigAIFleeSetting",
+      "enable": true,
+      "nerveTrigger": [
+        "HIT"
+      ],
+      "defaultSetting": {
+        "$type": "ConfigAIFleeData",
+        "turnSpeedOverride": 5,
+        "cd": 0,
+        "triggerDistance": 200,
+        "fleeNumberMin": 10,
+        "fleeNumberMax": 10,
+        "fleeDistanceMin": 4.5,
+        "fleeDistanceMax": 5.5
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WaterMaterial_PoisonAttack",
+      "modifiers": {
+        "poison": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0,
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "doOffStage": true,
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "checkHitLayerType": "Both",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "attackPoint"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 20,
+                    "y": 60,
+                    "z": 1
+                  },
+                  "muteHitBehindScene": true
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.25,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Grass",
+                    "elementDurability": 50,
+                    "strikeType": "Default"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.25
+                  }
+                }
+              },
+              "targetType": "All"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "poison"
+        }
+      ]
+    }
+  }
+]

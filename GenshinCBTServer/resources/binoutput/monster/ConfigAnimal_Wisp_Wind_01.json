@@ -1,0 +1,212 @@
+{
+  "$type": "ConfigMonster",
+  "common": {
+    "$type": "ConfigEntityCommon",
+    "effectAttachShape": {
+      "$type": "ConfigEffectAttachSkinnedMesh",
+      "mesh": "EffectMesh"
+    },
+    "mass": 10,
+    "height": 0.5,
+    "affectedByWorld": true,
+    "checkInSurface": true,
+    "canTriggerElementReactionText": false
+  },
+  "combat": {
+    "$type": "ConfigCombat",
+    "property": {
+      "$type": "ConfigCombatProperty",
+      "endureType": "Monster_Minion",
+      "lockShape": "CircleLockEnemy",
+      "weight": 20,
+      "rangeScale": 0.5,
+      "normalPri": 0.5,
+      "combatPri": 0
+    },
+    "beHit": {
+      "$type": "ConfigCombatBeHit"
+    },
+    "die": {
+      "$type": "ConfigDie",
+      "fallWhenAirDie": false,
+      "dieEndTime": 4,
+      "dieForceDisappearTime": 10
+    }
+  },
+  "stateLayers": {
+    "defaultLayer": {
+      "$type": "ConfigNormalStateLayer",
+      "stateIDs": {
+        "Born": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Born": [
+              "Animal_Wisp_Born",
+              "Audio_Wisp_Wind_Standby"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "NormalIdle": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Standby": [
+              "Audio_Wisp_Wind_Standby"
+            ]
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "NormalMove": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Walk": [
+              "Audio_Wisp_Wind_Walk"
+            ],
+            "Run": [
+              "Audio_Wisp_Wind_Walk"
+            ],
+            "Disappear": [
+              "Animal_Wisp_Disappear",
+              "Audio_Wisp_Wind_Walk"
+            ]
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ],
+          "canSteer": true
+        },
+        "BeHit": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Hit_L": [
+              "Audio_Wisp_Wind_Die"
+            ]
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "Die": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Die": [
+              "Animal_Wisp_Die",
+              "Audio_Wisp_Wind_Die"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "aibeta": {
+    "$type": "ConfigAIBeta",
+    "enable": true,
+    "friendliness": 1,
+    "moveSetting": {
+      "$type": "ConfigAIMove",
+      "useNavMesh": false,
+      "navMeshAgentName": "Undead01"
+    },
+    "sensing": {
+      "$type": "ConfigAISensing",
+      "settings": {
+        "DefaultSetting": {
+          "$type": "ConfigAISensingSetting",
+          "enableVision": false
+        }
+      }
+    },
+    "neurons": [
+      "HIT"
+    ],
+    "threat": {
+      "$type": "ConfigAIThreatSetting",
+      "feelThreatGrow": 1000,
+      "threatBroadcastRange": 5
+    },
+    "defendArea": {
+      "$type": "ConfigAIDefendArea",
+      "defendRange": 100
+    },
+    "fly": {
+      "$type": "ConfigAIFlySetting",
+      "enable": true,
+      "floatingPoses": [
+        201
+      ]
+    },
+    "spacialProbeTactic": {
+      "$type": "ConfigAISpacialProbeSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          201
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAISpacialProbeData",
+        "turnSpeedOverride": 0.3,
+        "terrainOffsetMin": 1,
+        "terrainOffsetMax": 3,
+        "distanceFromBorn": 30,
+        "distanceFromCurrentMin": 3,
+        "distanceFromCurrentMax": 5
+      }
+    },
+    "spacialAdjustTactic": {
+      "$type": "ConfigAISpacialAdjustSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          201
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAISpacialAdjustData",
+        "yLow": 1,
+        "yHigh": 3
+      }
+    },
+    "extractionTactic": {
+      "$type": "ConfigAIExtractionSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          201
+        ]
+      },
+      "nerveTrigger": [
+        "HIT"
+      ],
+      "defaultSetting": {
+        "$type": "ConfigAIExtractionData"
+      }
+    }
+  },
+  "move": {
+    "$type": "ConfigAnimatorMove",
+    "velocityForce": {
+      "$type": "ConfigMoveVelocityForce",
+      "excludeForces": [
+        "RetreatType",
+        "RetreatAirType",
+        "WindZoneType",
+        "AirflowType"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Other_AreaGuardian",
+      "modifiers": {
+        "GuardianStart": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onBeingHit": [
+            {
+              "$type": "ExecuteGroupTrigger",
+              "sourceName": "GuardianStart"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "GuardianStart"
+        }
+      ]
+    }
+  }
+]

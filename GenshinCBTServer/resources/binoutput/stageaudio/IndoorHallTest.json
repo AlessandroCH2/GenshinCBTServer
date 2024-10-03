@@ -1,0 +1,11 @@
+{
+  "$type": "ConfigAudioStageEvents",
+  "id": 17,
+  "stageCreateEvents": [
+    "Play_amb_Dungeon"
+  ],
+  "stageExitEvents": [
+    "Stop_Music_Dungeon",
+    "Stop_amb_dungeon"
+  ]
+}

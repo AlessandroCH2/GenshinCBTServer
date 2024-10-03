@@ -1,0 +1,3132 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_DebugAbility",
+      "abilityMixins": [
+        {
+          "$type": "DebugMixin"
+        }
+      ],
+      "onAdded": [
+        {
+          "$type": "DebugLog",
+          "content": "Temp_DebugAbility On Added"
+        },
+        {
+          "$type": "TriggerAbility",
+          "abilityID": "demo2"
+        }
+      ]
+    },
+    "TestOverrideAvatar": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_DebugAbility",
+      "abilityMixins": [
+        {
+          "$type": "DebugMixin"
+        }
+      ],
+      "onAdded": [
+        {
+          "$type": "DebugLog",
+          "content": "Temp_DebugAbility Avatar!!!!!!!!!!!!!! On Added"
+        },
+        {
+          "$type": "TriggerAbility",
+          "abilityID": "demo2"
+        }
+      ]
+    },
+    "TestOverrideMonster": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_DebugAbility",
+      "abilityMixins": [
+        {
+          "$type": "DebugMixin"
+        }
+      ],
+      "onAdded": [
+        {
+          "$type": "DebugLog",
+          "content": "Temp_DebugAbility Monster!!!!!!!!!!!!!! On Added"
+        },
+        {
+          "$type": "TriggerAbility",
+          "abilityID": "demo2"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_TestModifier",
+      "modifiers": {
+        "TestModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 50000,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onBeingHit": [
+            {
+              "$type": "DebugLog",
+              "content": "TestModifier modifier beinghit"
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "DebugLog",
+              "content": "TestModifier modifier attacklanded"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "DebugLog",
+              "content": "TestModifier modifier kill"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "DebugLog",
+          "content": "Temp_TestModifier ablity On Added"
+        }
+      ],
+      "onRemoved": [
+        {
+          "$type": "DebugLog",
+          "content": "Temp_TestModifier AbilitiOnRemoved"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "content": "Temp_TestModifier ability On ability start"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Caster",
+          "modifierName": "TestModifier"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "DebugLog",
+          "content": "Temp_TestModifier AbilityOnKill"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_ModifyProperty",
+      "modifiers": {
+        "TestModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AddedAttackRatio": 1,
+            "Actor_DefenceRatio": -0.5
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "modifierName": "TestModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_denylockon",
+      "modifiers": {
+        "TestModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "DenyLockOn"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "modifierName": "TestModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_isGhostToEnemy",
+      "modifiers": {
+        "TestModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "IsGhostToEnemy"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "modifierName": "TestModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_isGhostToAllied",
+      "modifiers": {
+        "TestModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "IsGhostToAllied"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "modifierName": "TestModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_ModifyProperty2",
+      "modifiers": {
+        "TestModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AddedAttackRatio": 0.5,
+            "Actor_DefenceRatio": -0.25
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "modifierName": "TestModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_SetTrigger",
+      "modifiers": {
+        "SetTriggerModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "MoveJumpLeft",
+              "value": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 1
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "ClimbVer",
+              "value": 0.5
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "MoveJumpLeft"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 2
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "ClimbVer",
+              "value": 0.3
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR3",
+            "centerBasedOn": "SelfAttackTarget",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1
+          },
+          "modifierName": "SetTriggerModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_FireEffect",
+      "modifiers": {
+        "FireEffectModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Obj_RedBoom"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "FireEffectModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_AttachEffect",
+      "abilitySpecials": {
+        "HPRatio": 0.7
+      },
+      "modifiers": {
+        "AttachEffectModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Obj_RedBoom"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "predicates": [
+            {
+              "$type": "ByTargetHPRatio",
+              "logic": "LesserOrEqual",
+              "HPRatio": "HPRatio"
+            }
+          ],
+          "modifierName": "AttachEffectModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_HealHP",
+      "abilitySpecials": {
+        "HPRatio": 0.5,
+        "healHPRatio": 0.1
+      },
+      "modifiers": {
+        "Test_HealHP": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 500,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "doOffStage": true,
+              "amountByCasterMaxHPRatio": "healHPRatio"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "predicates": [
+            {
+              "$type": "ByTargetHPRatio",
+              "logic": "LesserOrEqual",
+              "HPRatio": "HPRatio"
+            }
+          ],
+          "modifierName": "Test_HealHP"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_TimeScale",
+      "onAbilityStart": [
+        {
+          "$type": "ActTimeSlow",
+          "timeSlow": {
+            "$type": "ConfigTimeSlow",
+            "duration": 10,
+            "slowRatio": 0.5
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_TriggerBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 1,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_CreateGadget",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 70900029,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 5
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_AttachFire",
+      "modifiers": {
+        "AttachFireModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementType": "Fire",
+          "elementDurability": 100,
+          "forceTriggerBurning": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "AttachFireModifier"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "FireAssault_Charge"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Hit_FireDefault_Small",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 360,
+                "hitImpulseY": 360,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.1,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 50
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_AttachIce",
+      "modifiers": {
+        "AttachIceModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementType": "Ice",
+          "elementDurability": 100
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "AttachIceModifier"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "FireAssault_Charge"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_AttachGrassEnemy",
+      "passOn": true,
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41003002,
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_FireShield",
+      "passOn": true,
+      "modifiers": {
+        "FireShieldModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementType": "Fire",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FireShield"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "FireShieldModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_AttachGrassSelf",
+      "modifiers": {
+        "AttachGrassModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 20,
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "GrassHeal_Heal"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "GrassHeal_Charge"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "AttachGrassModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_CreateSteamBang",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 40000001,
+          "campID": 1001,
+          "campTargetType": "All",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_CreateWoodSpike",
+      "modifiers": {
+        "AlterChargeHold": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "oldPatterns": [
+                "ChargedAttack_AS",
+                "ChargedAttack_AS2"
+              ],
+              "newPatterns": [
+                "WoodSpike_Strike",
+                "WoodSpike_Strike"
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByTargetElement",
+              "elementType": "Grass"
+            }
+          ],
+          "modifierName": "AlterChargeHold"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41003001,
+          "campID": 1001,
+          "campTargetType": "All",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 2
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_SupportWoodSpike_CD",
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10016,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10017,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_CreateGrassDart",
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "skillID": 10033,
+          "chargeTime": 1,
+          "OnReleaseUncharged": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000003,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            }
+          ],
+          "OnBeginCharged": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "FireAssault_Charge"
+            }
+          ],
+          "OnReleaseCharged": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000003,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriDart"
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "TriDart": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.6,
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000003,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_GrassDartLoop",
+      "modifiers": {
+        "GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 100
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "GrassDart"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrassMaterial"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_SteamBangLoop",
+      "modifiers": {
+        "SteamBangLoop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR3",
+                "campTargetType": "All",
+                "sizeRatio": 1
+              },
+              "modifierName": "SteamBangWet"
+            }
+          ]
+        },
+        "SteamBangWet": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3,
+          "elementType": "Water",
+          "elementDurability": 20
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SteamBangLoop"
+        },
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "SteamBang_Loop"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_HealingSealLoop",
+      "modifiers": {
+        "HealingSealLoop": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "thinkInterval": 2,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR3",
+                "sizeRatio": 1
+              },
+              "amount": 35
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "GrassHeal_Area"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "HealingSealLoop"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "GrassHeal_Area"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_CreateSharkTorpedo",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 40000004,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 0.3
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_CreateSharkTorpedoSpurt",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "SharkTorpedo_fish"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Water"
+                }
+              ]
+            }
+          ],
+          "gadgetID": 40000005,
+          "campID": 1001,
+          "campTargetType": "All",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": -0.3
+            }
+          }
+        },
+        {
+          "$type": "CreateGadget",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Water"
+            }
+          ],
+          "gadgetID": 40000006,
+          "campID": 1001,
+          "campTargetType": "All",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": -0.3
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_SharkTorpedoSpurtDamage",
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "SharkTorpedo_spurt"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.8
+                }
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 2,
+                "damagePercentageRatio": 0,
+                "elementType": "Ice",
+                "elementDurability": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Hit_WaterDefault_Small",
+                "hitLevel": "Air",
+                "hitImpulseX": 0,
+                "hitImpulseY": 600,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.36,
+                "shakeTime": 0.48
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_SharkTorpedoSpurtDamage_2",
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "SharkTorpedo_spurt_2"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.8
+                }
+              },
+              "radius": 3
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 4,
+                "damagePercentageRatio": 0,
+                "elementType": "Water",
+                "elementDurability": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Hit_WaterDefault_Small",
+                "hitLevel": "Air",
+                "hitImpulseX": 0,
+                "hitImpulseY": 1800,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.64,
+                "shakeTime": 0.56
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_CreateThunderFist",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 40000002,
+          "campID": 1001,
+          "campTargetType": "All",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_ThunderFistLoop",
+      "modifiers": {
+        "ThunderFistLoop": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.1,
+                      "z": 1.5
+                    }
+                  },
+                  "radius": 1
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.25,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Electric",
+                    "elementDurability": 50
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "Hit_LightningDefault_Small",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ThunderFistLoop"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "ThunderFist"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_AttachElectric",
+      "modifiers": {
+        "AttachElectricModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 500,
+          "elementType": "Electric",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Obj_RedBoom"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "AttachElectricModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_DropHPHeal",
+      "onFieldEnter": [
+        {
+          "$type": "HealHP",
+          "target": "Target",
+          "amountByTargetMaxHPRatio": 0.25
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_BurningBlade",
+      "modifiers": {
+        "BurningBladeModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "RelyOnElementMixin",
+              "elementType": "Fire"
+            },
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "oldPatterns": [
+                "Ani_Blade_Attack_01"
+              ],
+              "newPatterns": [
+                "Ani_Blade_Attack_01_Fire"
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BurningBladeModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_TriggerAttackEvent",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "x": 0.1
+                }
+              },
+              "radius": 5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.1,
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementDurability": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Hit_LightningDefault_Small",
+                "hitImpulseX": 160,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.12,
+                "shakeTime": 0.12
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_DragonFeather",
+      "modifiers": {
+        "DragonFeatherLoop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "DragonFeather_Broken"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.36,
+                    "shakeTime": 0.36
+                  }
+                }
+              },
+              "targetType": "All"
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "DragonFeatherLoop"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DragonFeatherLoop"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_DragonFeather_HP",
+      "modifiers": {
+        "DragonFeatherLoop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "DragonFeather_Broken"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.36,
+                    "shakeTime": 0.36
+                  }
+                }
+              },
+              "targetType": "All"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DragonFeatherLoop"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "TransparentHitSphere_Interact",
+      "modifiers": {
+        "KillSelf": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onBeingHit": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "KillSelf"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_HoldAttack",
+      "abilityMixins": [
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "skillID": 10012,
+          "endHoldTrigger": "EndHoldTrigger",
+          "beforeStateIDs": [
+            "RisingSlash_BS"
+          ],
+          "chargeLoopStateIDs": [
+            "RisingSlash_Loop"
+          ]
+        },
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "skillID": 10011,
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "endHoldTrigger": "EndHoldTrigger",
+          "beforeStateIDs": [
+            "ATK01"
+          ],
+          "chargeLoopStateIDs": [
+            "ChargedAttack_Loop",
+            "ChargedAttack_Loop2"
+          ],
+          "chargeLoopDurations": [
+            1
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "RisingSlash_Loop",
+            "ChargedAttack_Loop",
+            "ChargedShoot_Loop"
+          ],
+          "modifierName": "RisingSlashLoopModifier"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ChargedAttack_Loop2",
+            "SupportRisingSlash_BS"
+          ],
+          "modifierName": "RisingSlashLoop2Modifier"
+        }
+      ],
+      "modifiers": {
+        "RisingSlashLoopModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "RisingSlash_Charge"
+            }
+          ]
+        },
+        "RisingSlashLoop2Modifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "RisingSlash_Charge"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_RisingSlash_CD",
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10012,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_FireAssault_Loop",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireAssault_Loop"
+          ],
+          "modifierName": "FireAssault_Loop"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "SupportFireAssault_Loop"
+          ],
+          "modifierName": "SupportFireAssault_Loop"
+        },
+        {
+          "$type": "AvatarSteerByCameraMixin",
+          "stateIDs": [
+            "FireAssault_Loop"
+          ],
+          "angularSpeed": 720
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "SupportWoodSpike_Move"
+          ],
+          "endNormalizedTime": 0.5,
+          "angularSpeed": 360,
+          "attackTrigger": "NextSkillTrigger",
+          "attackDistance": 4
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "SupportFireAssault_Loop"
+          ],
+          "angularSpeed": 540
+        }
+      ],
+      "modifiers": {
+        "Test_TriggerTypeSupport_Grass": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "TriggerBeHitSupportMixin",
+              "duration": 2,
+              "hitLevel": "Air"
+            }
+          ]
+        },
+        "Test_TriggerTypeSupport_Fire": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "TriggerElementSupportMixin",
+              "duration": 2,
+              "elementType": "Grass"
+            }
+          ]
+        },
+        "FireAssault_Loop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10013,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FireAssault_Dust"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": 1
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "radius": 2
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.8,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 20
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "Hit_FireDefault_Small",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 360,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": 1
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "radius": 2
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 20
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "SupportFireAssault_Loop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10014,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10015,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FireAssault_Dust"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": 1
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "radius": 2
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.8,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 20
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "Hit_FireDefault_Small",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 360,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": 1
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "radius": 2
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 20
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "doOffStage": true,
+          "predicates": [
+            {
+              "$type": "ByTargetElement",
+              "elementType": "Grass"
+            }
+          ],
+          "modifierName": "Test_TriggerTypeSupport_Grass"
+        },
+        {
+          "$type": "ApplyModifier",
+          "doOffStage": true,
+          "predicates": [
+            {
+              "$type": "ByTargetElement",
+              "elementType": "Fire"
+            }
+          ],
+          "modifierName": "Test_TriggerTypeSupport_Fire"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_FireAssault_CD",
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10013,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Temp_HealingBarrel",
+      "modifiers": {
+        "HealingNearModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR3",
+                "campTargetType": "All",
+                "sizeRatio": 1
+              },
+              "modifierName": "SelectNearModifier"
+            }
+          ]
+        },
+        "SelectNearModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "HealingModifier"
+            }
+          ]
+        },
+        "HealingModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "HealHP",
+              "doOffStage": true,
+              "amountByTargetMaxHPRatio": 0.1
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "HealingNearModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningBolt",
+      "modifiers": {
+        "LightningBloodline_effect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_LIGHTNINGBLOODLINE_COUNT",
+              "defaultGlobalValueOnCreate": 0,
+              "valueSteps": [
+                -1,
+                0.5,
+                1.5,
+                2.5,
+                3.5,
+                4.5,
+                5.5
+              ],
+              "modifierNameSteps": [
+                "LightningBloodline_effect_0",
+                "LightningBloodline_effect_1",
+                "LightningBloodline_effect_2",
+                "LightningBloodline_effect_3",
+                "LightningBloodline_effect_4",
+                "LightningBloodline_effect_5"
+              ]
+            }
+          ]
+        },
+        "LightningBloodline_effect_0": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_1"
+            }
+          ]
+        },
+        "LightningBloodline_effect_1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "LightningBloodline_effect_1"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_0"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_2"
+            }
+          ]
+        },
+        "LightningBloodline_effect_2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "LightningBloodline_effect_2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_1"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_3"
+            }
+          ]
+        },
+        "LightningBloodline_effect_3": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "LightningBloodline_effect_3"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_4"
+            }
+          ]
+        },
+        "LightningBloodline_effect_4": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "LightningBloodline_effect_4"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_3"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_5"
+            }
+          ]
+        },
+        "LightningBloodline_effect_5": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "LightningBloodline_effect_5"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LightningBloodline_effect_4"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006002,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1
+            }
+          }
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Caster",
+          "modifierName": "LightningBloodline_effect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningBoltDamage",
+      "modifiers": {
+        "LightningBloodline_Pre": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.2,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Owner",
+              "doOffStage": true,
+              "modifierName": "LightningBloodline_Trigger"
+            },
+            {
+              "$type": "KillSelf",
+              "doOffStage": true
+            }
+          ]
+        },
+        "LightningBloodline_Trigger": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Test_LightningBloodline"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "LightningBolt"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "LightningBloodline_Pre"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "doOffStage": true,
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.8
+                }
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 2,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Hit_WaterDefault_Small",
+                "hitLevel": "Shake",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningBloodline",
+      "modifiers": {
+        "LightningBloodline": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleRefreshNoRemove",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 5
+          },
+          "duration": 30,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_LIGHTNINGBLOODLINE_COUNT",
+              "useLimitRange": true,
+              "maxValue": 5,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_LIGHTNINGBLOODLINE_COUNT",
+              "useLimitRange": true,
+              "maxValue": 5,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "LightningBloodline"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpear",
+      "modifiers": {
+        "Test_LightningSpear_1H": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Test_LightningSpear_1H",
+              "forceUseSelfCurrentAttackTarget": true
+            }
+          ]
+        },
+        "Test_LightningSpear_2H": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Test_LightningSpear_2H",
+              "forceUseSelfCurrentAttackTarget": true
+            }
+          ]
+        },
+        "Test_LightningSpear_3H": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Test_LightningSpear_3H",
+              "forceUseSelfCurrentAttackTarget": true
+            }
+          ]
+        },
+        "Test_LightningSpear_4H": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Test_LightningSpear_4H",
+              "forceUseSelfCurrentAttackTarget": true
+            }
+          ]
+        },
+        "Test_LightningSpear_5H": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Test_LightningSpear_5H",
+              "forceUseSelfCurrentAttackTarget": true
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006003,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1
+            }
+          }
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Caster",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_LIGHTNINGBLOODLINE_COUNT",
+              "value": 1
+            }
+          ],
+          "modifierName": "Test_LightningSpear_1H"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Caster",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_LIGHTNINGBLOODLINE_COUNT",
+              "value": 2
+            }
+          ],
+          "modifierName": "Test_LightningSpear_2H"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Caster",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_LIGHTNINGBLOODLINE_COUNT",
+              "value": 3
+            }
+          ],
+          "modifierName": "Test_LightningSpear_3H"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Caster",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_LIGHTNINGBLOODLINE_COUNT",
+              "value": 4
+            }
+          ],
+          "modifierName": "Test_LightningSpear_4H"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Caster",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_LIGHTNINGBLOODLINE_COUNT",
+              "value": 5
+            }
+          ],
+          "modifierName": "Test_LightningSpear_5H"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpearDamage",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "LightningSpear"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "doOffStage": true,
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.8
+                }
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Hit_WaterDefault_Small",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpear_1H",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.2
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpear_2H",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": 1,
+              "y": 0.55
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": -1,
+              "y": 0.55
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpear_3H",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.3,
+              "z": 0.3
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": -1.2,
+              "y": 0.5,
+              "z": -0.3
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": 1.2,
+              "y": 0.5,
+              "z": -0.3
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpear_4H",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": -0.6,
+              "y": 1,
+              "z": 0.25
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": 0.6,
+              "y": 1,
+              "z": -0.25
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": 1.1,
+              "y": 0.2,
+              "z": 0.3
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": -1.1,
+              "y": 0.2,
+              "z": -0.3
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpearDamage_1",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "LightningSpear"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "doOffStage": true,
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.8
+                }
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Hit_WaterDefault_Small",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpear_5H",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006005,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.5
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006005,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": -0.8,
+              "z": 0.2
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006005,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": 0.8,
+              "z": -0.2
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006005,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": 1.2,
+              "y": 0.8,
+              "z": 0.2
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006005,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": -1.2,
+              "y": 0.8,
+              "z": -0.2
+            },
+            "attachPointName": "UnshakeRootNode"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_LightningSpearDamage_2",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "LightningSpear"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "doOffStage": true,
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.8
+                }
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Hit_WaterDefault_Small",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_ConductiveFiled",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41006006,
+          "campID": 1001,
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_ConductiveFiled_Buff",
+      "modifiers": {
+        "ConductiveFiled_Buff": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "ACTOR_ADDED_ATTACK_RATIO": 0.25
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "ConductiveFiled_Buff"
+            }
+          ]
+        }
+      },
+      "onFieldEnter": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ConductiveFiled_Buff"
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "ConductiveFiled_Buff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_ThrowBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101001,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1
+            },
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_ThrowBulletFire",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101004,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1
+            },
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_AnimatorSpeed",
+      "modifiers": {
+        "TestModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Animator_OverallSpeedRatio": 0.5,
+            "Animator_OverallSpeedRatioMultiplied": 0.5
+          }
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "target": "Caster",
+          "modifierName": "TestModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_Bomb_Born",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 42101003,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_Bomb_Explode",
+      "modifiers": {
+        "ExplodeModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 2,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 0.8
+                    }
+                  },
+                  "radius": 3
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 2,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 50
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Air",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 1200,
+                    "hitHaltTimeScale": 0.05
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.36,
+                    "shakeTime": 0.36
+                  }
+                }
+              },
+              "targetType": "All"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_Arrow_Hit_Explode"
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ExplodeModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_Arrow_Explode",
+      "modifiers": {
+        "ExplodeModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Element_Explode"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 0.8
+                    }
+                  },
+                  "radius": 3
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 1,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 50
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Air",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 1200,
+                    "hitHaltTimeScale": 0.05
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.36,
+                    "shakeTime": 0.36
+                  }
+                }
+              },
+              "targetType": "All"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ExplodeModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_WindAbility",
+      "abilityMixins": [
+        {
+          "$type": "WindZoneMixin",
+          "shapeName": "CircleR5",
+          "strength": 2,
+          "attenuation": 0,
+          "innerRadius": 0,
+          "targetType": "Enemy",
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_WindZone",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 42101005,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_RockImpactDamage",
+      "modifiers": {
+        "slowdown": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "properties": {
+            "Animator_MoveSpeedRatio": -0.5
+          }
+        },
+        "slowdown_self": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "properties": {
+            "Animator_MoveSpeedRatio": -0.9
+          }
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR1",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1
+          },
+          "modifierName": "slowdown"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kevin_RockImpact_FireEffect",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "predicates": [
+            {
+              "$type": "BySceneSurfaceType",
+              "filters": [
+                "Water"
+              ],
+              "include": false
+            }
+          ],
+          "effectPattern": "Kevin_RockImpact"
+        },
+        {
+          "$type": "AttachEffect",
+          "predicates": [
+            {
+              "$type": "BySceneSurfaceType",
+              "filters": [
+                "Water"
+              ]
+            }
+          ],
+          "effectPattern": "LiquidStrike_Spray"
+        },
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 40000120,
+          "campID": 1001,
+          "campTargetType": "All",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "slowdowntrap",
+      "abilityMixins": [
+        {
+          "$type": "ChangeFieldMixin"
+        }
+      ],
+      "modifiers": {
+        "trapslowdown": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "properties": {
+            "Animator_MoveSpeedRatio": -0.5
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FrozenWindmill_Missile"
+            }
+          ]
+        }
+      },
+      "onFieldEnter": [
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "modifierName": "trapslowdown"
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "RemoveModifier",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "modifierName": "trapslowdown"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_CreateDummyTrigger",
+      "onAdded": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 40000119,
+          "campID": 1001,
+          "campTargetType": "All",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_ModifiedTrigger",
+      "abilityMixins": [
+        {
+          "$type": "ChangeFieldMixin"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Obj_RedBoom"
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Element_Explode"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ElementVisualEffect",
+      "modifiers": {
+        "Footprint_Wind_Modifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Wind",
+          "elementDurability": 50
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Element_Footprint_Wind"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Footprint_Wind_Modifier"
+        }
+      ]
+    }
+  }
+]

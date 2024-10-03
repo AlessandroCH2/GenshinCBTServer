@@ -1,0 +1,1116 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_None_Shield_TurnToSit",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "predicates": [
+            {
+              "$type": "ByAnimatorFloat",
+              "logic": "Equal",
+              "value": 401,
+              "parameter": "PoseID"
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_IS_CLUB_02",
+              "value": 1,
+              "forceByCaster": true
+            }
+          ],
+          "modifierName": "SitState"
+        }
+      ],
+      "modifiers": {
+        "SitState": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Entity_MassRatio": 9999,
+            "Entity_WeightRatio": 5
+          },
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "place": true,
+              "equipPartName": "equip02",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": -2.25
+                },
+                "minRandomRange": 0,
+                "maxRandomRange": 0.25,
+                "onGround": true,
+                "alongGround": true
+              }
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "equipPartName": "equip02"
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Sit"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "equipPartName": "equip02"
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sit",
+          "value": true
+        },
+        {
+          "$type": "ResetAISkillInitialCD",
+          "skillIDs": [
+            123
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_None_Shield_Turn",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            201,
+            202,
+            211,
+            212
+          ],
+          "modifierName": "Shield_Steer"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            101,
+            111
+          ],
+          "modifierName": "NoWeapon_Steer"
+        }
+      ],
+      "modifiers": {
+        "Shield_Steer": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "SteerAttackMixin",
+              "steerStateIDs": [
+                "TurnRight"
+              ],
+              "startNormalizedTime": 0.27,
+              "endNormalizedTime": 0.78,
+              "angularSpeed": 150,
+              "attackDistance": 2
+            },
+            {
+              "$type": "SteerAttackMixin",
+              "steerStateIDs": [
+                "TurnLeft"
+              ],
+              "startNormalizedTime": 0.15,
+              "endNormalizedTime": 0.71,
+              "angularSpeed": 150,
+              "attackDistance": 2
+            }
+          ]
+        },
+        "NoWeapon_Steer": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "SteerAttackMixin",
+              "steerStateIDs": [
+                "TurnRight"
+              ],
+              "endNormalizedTime": 0.8,
+              "angularSpeed": 180,
+              "attackDistance": 2
+            },
+            {
+              "$type": "SteerAttackMixin",
+              "steerStateIDs": [
+                "TurnLeft"
+              ],
+              "endNormalizedTime": 0.8,
+              "angularSpeed": 180,
+              "attackDistance": 2
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_Defend",
+      "modifiers": {
+        "UNIQUE_Brute_Shield_GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ElementShieldMixin",
+              "elementType": "Grass",
+              "shieldAngle": 360,
+              "shieldHPRatio": 1,
+              "damageRatio": 0.2
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Monster_Brute_Shield_ShieldBroken"
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "NormalDefend": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "stateIDs": [
+                "NormalIdle",
+                "NormalMove",
+                "TurnLeft",
+                "TurnRight",
+                "ShieldSmash",
+                "Defend",
+                "Defend_AS",
+                "ShieldFlap"
+              ],
+              "defendTriggerID": "DefendTrigger",
+              "defendAngle": 90,
+              "defendProbability": 1,
+              "defendProbabilityDelta": 0,
+              "defendTimeInterval": 0,
+              "defendCountInterval": 0,
+              "onDefendSucceded": [
+                {
+                  "$type": "FireEffect",
+                  "effectPattern": "Monster_Brute_Shield_Defend",
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.5,
+                      "z": 1.2
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0.65
+          },
+          "onAdded": [
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushColliderShield",
+                "PushColliderShieldExtra"
+              ],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushColliderShield",
+                "PushColliderShieldExtra"
+              ]
+            }
+          ]
+        },
+        "ForceDefend": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "stateIDs": [
+                "BeHit",
+                "BeHitThrow"
+              ],
+              "defendTriggerID": "DefendTrigger",
+              "defendProbability": 1,
+              "defendProbabilityDelta": 0,
+              "defendTimeInterval": 2,
+              "alwaysRecover": false,
+              "defendCountInterval": 0
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0.65
+          }
+        },
+        "DetectFire": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToPredicateMixin",
+              "predicates": [
+                {
+                  "$type": "ByHasAbilityState",
+                  "abilityState": "ElementBurning"
+                }
+              ],
+              "modifierName": "ShieldOnFire"
+            }
+          ]
+        },
+        "ShieldOnFire": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "target": "Owner",
+              "boolID": "ShieldOnFire",
+              "value": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetPoseBool",
+              "target": "Owner",
+              "boolID": "ShieldOnFire"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Brute_Shield_GrassMaterial"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Owner",
+          "modifierName": "NormalDefend"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Owner",
+          "modifierName": "ForceDefend"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DetectFire"
+        },
+        {
+          "$type": "EnableHeadControl",
+          "target": "Owner"
+        }
+      ],
+      "onAttach": [
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "modifierName": "NormalDefend"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "modifierName": "ForceDefend"
+        },
+        {
+          "$type": "EnableHeadControl",
+          "target": "Target"
+        }
+      ],
+      "onDetach": [
+        {
+          "$type": "RemoveModifier",
+          "target": "Target",
+          "modifierName": "NormalDefend"
+        },
+        {
+          "$type": "RemoveModifier",
+          "target": "Target",
+          "modifierName": "ForceDefend"
+        },
+        {
+          "$type": "EnableHeadControl",
+          "target": "Target",
+          "enable": true
+        },
+        {
+          "$type": "ResetAISkillInitialCD",
+          "target": "Target",
+          "skillIDs": [
+            251
+          ]
+        },
+        {
+          "$type": "ResetAISkillInitialCD",
+          "target": "Target",
+          "skillIDs": [
+            252
+          ]
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 0,
+              "damagePercentageRatio": 0,
+              "elementDurability": 100,
+              "strikeType": "Default",
+              "enBreak": 1000
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "onHitEffectName": "default",
+              "hitLevel": "Heavy",
+              "hitImpulseX": 800,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.05
+            }
+          }
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.2,
+            "shakeTime": 0.15,
+            "shakeDistance": 25,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": 1,
+              "z": 0.5
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_PutOutFire",
+      "modifiers": {
+        "PutOutFire": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementType": "AntiFire",
+          "elementDurability": 100
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": [
+              "equip02"
+            ]
+          },
+          "modifierName": "PutOutFire"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_None_Shield_Smash",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Monster_Brute_None_Shield_Smash",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.8,
+              "z": 0.5
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "$type": "Vector",
+                "y": 180
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_ShieldRush",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "ShieldRush_BS"
+          ],
+          "startNormalizedTime": 0.75,
+          "angularSpeed": 180,
+          "attackDistance": 2
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ShieldRush_BS",
+            "ShieldRush_Loop"
+          ],
+          "modifierName": "Rush_Start"
+        },
+        {
+          "$type": "AttackHittingSceneMixin",
+          "onHittingScene": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "CrashTrigger"
+            }
+          ],
+          "animEventIDs": [
+            "ShieldRush_HitScene"
+          ]
+        }
+      ],
+      "modifiers": {
+        "Rush_Start": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ShieldRush_Loop_Effect_Start"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ShieldRush_Loop_Effect_Start"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ShieldRush_Loop_Effect"
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ],
+                  "useEventSource": true
+                }
+              ],
+              "triggerID": "NextSkillTrigger"
+            }
+          ]
+        },
+        "ShieldRush_Loop_Effect_Start": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.9,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ShieldRush_Loop_Effect"
+            }
+          ]
+        },
+        "ShieldRush_Loop_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Monster_Brute_None_ShieldRush_Loop",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": -1.3,
+                  "z": -0.6
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.16,
+            "shakeTime": 0.09,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": -1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_PickUpAndThrow",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "PickUp",
+            "Throw"
+          ],
+          "modifierName": "HoldSlime"
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Throw"
+          ],
+          "endNormalizedTime": 0.1,
+          "angularSpeed": 360,
+          "attackDistance": 2
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Throw"
+          ],
+          "startNormalizedTime": 0.2,
+          "endNormalizedTime": 0.25,
+          "angularSpeed": 360,
+          "attackDistance": 2
+        }
+      ],
+      "modifiers": {
+        "PickUp_Shake_Manager": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.9,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ActCameraShake",
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.04,
+                "shakeTime": 0.09,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": -1
+                }
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ActCameraShake",
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.04,
+                "shakeTime": 0.09,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Brute_Shield_GrassSlimeInHandR"
+            }
+          ]
+        },
+        "UNIQUE_Brute_Shield_GrassSlimeInHandR": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Monster_Brute_Shield_GrassSlimeInHandR"
+            }
+          ]
+        },
+        "HoldSlime": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "PickUp_Shake_Manager"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Brute_Shield_GrassSlimeInHandR"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "PickUp_Shake_Manager"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_ThrowGrassSlime",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Brute_Shield_GrassSlimeInHandR"
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42102005,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 2,
+              "z": 2
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_GrassSlime_Explode",
+      "modifiers": {
+        "Trail": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Monster_Brute_GrassSlimeThrow_Trail"
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Other",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "modifierName": "Poison"
+            }
+          ]
+        },
+        "Poison": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Slime_Grass_Poison_Dot"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.2,
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "strikeType": "Default",
+                  "enBreak": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Trail"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementDurability": 50,
+                "strikeType": "Blunt",
+                "enBreak": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitLevel": "Air",
+                "hitImpulseX": 480,
+                "hitImpulseY": 600,
+                "hitHaltTimeScale": 0.05
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.2,
+                "shakeTime": 0.3,
+                "shakeDistance": 25,
+                "extension": {
+                  "$type": "ConfigCameraShakeExt",
+                  "rangeAttenuation": 0.9
+                }
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Monster_Brute_GrassSlimeExplode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_PickUpAndCreate",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "CreateShield"
+          ],
+          "modifierName": "HoldSlime"
+        }
+      ],
+      "modifiers": {
+        "PickUp_Shake_Manager": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.63,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ActCameraShake",
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.04,
+                "shakeTime": 0.09,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": -1
+                }
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ActCameraShake",
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.04,
+                "shakeTime": 0.09,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Brute_NoWeapon_GrassSlimeInHandL"
+            }
+          ]
+        },
+        "UNIQUE_Brute_NoWeapon_GrassSlimeInHandL": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Monster_Brute_Shield_GrassSlimeInHandL"
+            }
+          ]
+        },
+        "HoldSlime": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Brute_NoWeapon_GrassSlimeInHandL"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "PickUp_Shake_Manager"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_RemoveGrassSlime",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Brute_NoWeapon_GrassSlimeInHandL"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_CrashSlime",
+      "modifiers": {
+        "CrashSlime_ShakeManager": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.775,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ActCameraShake",
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.12,
+                "shakeTime": 0.15,
+                "shakeDistance": 25,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": 0.5
+                }
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ActCameraShake",
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.2,
+                "shakeTime": 0.3,
+                "shakeDistance": 25,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": 0.5
+                },
+                "extension": {
+                  "$type": "ConfigCameraShakeExt",
+                  "rangeAttenuation": 0.9
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CrashSlime_ShakeManager"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Brute_Shield_CreateGrassShield",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerCreateGadgetToEquipPart",
+          "gadgetID": 50004012,
+          "equipPart": "equip02"
+        }
+      ]
+    }
+  }
+]

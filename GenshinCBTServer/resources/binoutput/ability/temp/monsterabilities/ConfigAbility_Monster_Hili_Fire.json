@@ -1,0 +1,1256 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_FireRush",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "FireRush_BS1",
+            "FireRush_BS2",
+            "FireRush_Rush_Loop1"
+          ],
+          "startNormalizedTime": 0.6,
+          "angularSpeed": 70,
+          "attackDistance": 3.25
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "FireRush_Rush_Loop2"
+          ],
+          "angularSpeed": 70,
+          "attackTrigger": "NextSkillTrigger",
+          "attackDistance": 3.25
+        },
+        {
+          "$type": "AttackHittingSceneMixin",
+          "onHittingScene": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "CrashTrigger"
+            }
+          ],
+          "animEventIDs": [
+            "FireRush_HitScene"
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireRush_BS1",
+            "FireRush_BS2",
+            "FireRush_Rush_Loop1",
+            "FireRush_Rush_Loop2",
+            "FireRush_AS"
+          ],
+          "modifierName": "RushAtkEffect"
+        }
+      ],
+      "modifiers": {
+        "RushAtkEffect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Hili_Fire_RushAtk",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR"
+              }
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Hili_Fire_RushAtk_Smoke",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "onGround": true
+              }
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_EQUIP_IS_ONFIRE",
+                  "value": 0
+                }
+              ],
+              "modifierName": "RushAtkEffect"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_EQUIP_IS_ONFIRE",
+                  "value": 1
+                }
+              ],
+              "modifierName": "RushAtkEffect"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Torch_FireState_OnFire",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "poseIDs": [
+            402
+          ],
+          "enterActions": [
+            {
+              "$type": "ResetAISkillInitialCD",
+              "skillIDs": [
+                451
+              ]
+            }
+          ]
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "equip01_FireState",
+          "value": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Torch_FireState_OffFire",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "equip01_FireState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Torch_EventPattern",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            401
+          ],
+          "modifierName": "UNIQUE_Hili_Fire_OnFireEventPattern"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            402
+          ],
+          "modifierName": "UNIQUE_Hili_Fire_OffFireEventPattern"
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_Hili_Fire_OnFireEventPattern": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "oldPatterns": [
+                "Monster_Hili_Fire_FireRush_Rush",
+                "Monster_Hili_Fire_FireRush_AS",
+                "Monster_Hili_Fire_NormalAttack",
+                "Monster_Hili_Fire_FireRush_BS"
+              ],
+              "newPatterns": [
+                "Monster_Hili_Fire_FireRush_Rush_Fire",
+                "Monster_Hili_Fire_FireRush_AS_Fire",
+                "Monster_Hili_Fire_NormalAttack_Fire",
+                "Monster_Hili_Fire_FireRush_BS_Fire"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 10,
+              "key": "_EQUIP_IS_ONFIRE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "UNIQUE_Hili_Fire_OffFireEventPattern": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "oldPatterns": [
+                "Monster_Hili_Fire_FireRush_Rush_Fire",
+                "Monster_Hili_Fire_FireRush_AS_Fire",
+                "Monster_Hili_Fire_NormalAttack_Fire",
+                "Monster_Hili_Fire_FireRush_BS_Fire"
+              ],
+              "newPatterns": [
+                "Monster_Hili_Fire_FireRush_Rush",
+                "Monster_Hili_Fire_FireRush_AS",
+                "Monster_Hili_Fire_NormalAttack",
+                "Monster_Hili_Fire_FireRush_BS"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_EQUIP_IS_ONFIRE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Torch_FireUp",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAbility",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": [
+              "equip01"
+            ]
+          },
+          "abilityName": "MonEquip_Torch_FireState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_ShootArrow_WithRandom",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Aim"
+          ],
+          "angularSpeed": 120,
+          "attackDistance": 3.75
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Aim"
+          ],
+          "modifierName": "ShowAimingEffect"
+        }
+      ],
+      "modifiers": {
+        "ShowAimingEffect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Hili_Fire_FireArrow_Aiming",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR"
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101003,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": 0.2,
+              "z": 0.1
+            },
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "randomAngleHor": 0.3,
+              "randomAngleVer": 0.5,
+              "maxAngle": 60
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Hili_Fire_FireArrow_AimAS"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_Arrow_Damage",
+      "modifiers": {
+        "FireEffectModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Fire",
+          "elementDurability": 50,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Hili_Fire_FireArrow_Arrow"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Hili_Fire_FireArrow_Arrow_Trail"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "FireEffectModifier"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Fire"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "checkHitLayerType": "Both",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.75
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 50,
+                "strikeType": "Pierce",
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitLevel": "Light",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.01
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.06,
+                "shakeTime": 0.09
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Fire"
+                }
+              ]
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "triggerType": "TriggerNoRepeat",
+              "checkHitLayerType": "Both",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "z": -0.5
+                }
+              },
+              "size": {
+                "$type": "DynamicFloatVector",
+                "x": 0.1,
+                "y": 0.1,
+                "z": 1
+              }
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Pierce"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Shake",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.01
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Fire"
+            }
+          ],
+          "effectPattern": "Hili_Fire_FireArrow_Arrow_Hit",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "$type": "Vector",
+              "z": 0.35
+            }
+          }
+        },
+        {
+          "$type": "FireHitEffect",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Fire"
+            }
+          ],
+          "hitScene": {
+            "$type": "ConfigHitScene",
+            "defaultEffect": "Hili_Fire_FireArrow_Arrow_Hit",
+            "surfaceEffect": {
+              "Water": "Eff_Arrow_Fire_Hit_Water"
+            }
+          }
+        },
+        {
+          "$type": "FireHitEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Fire"
+                }
+              ]
+            }
+          ],
+          "hitEntity": "Eff_Arrow_Hit_Monster",
+          "hitScene": {
+            "$type": "ConfigHitScene",
+            "defaultEffect": "Eff_Arrow_Hit_Earth",
+            "surfaceEffect": {
+              "Water": "Eff_Arrow_Hit_Water"
+            }
+          }
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "FireEffectModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_BombCreate",
+      "abilitySpecials": {
+        "RandomHoldTime": 0
+      },
+      "modifiers": {
+        "BombHoldTimer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "RandomHoldTime",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "BombRun",
+              "value": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "BombThrowTrigger"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -5,
+              "key": "_ABILITY_RANDOM_HOLDTIME",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "BombRun"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 0,
+          "key": "_ABILITY_RANDOM_HOLDTIME",
+          "useLimitRange": true,
+          "randomInRange": true,
+          "maxValue": 4,
+          "minValue": 3
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "_ABILITY_RANDOM_HOLDTIME",
+          "overrideMapKey": "RandomHoldTime"
+        },
+        {
+          "$type": "TriggerCreateGadgetToEquipPart",
+          "gadgetID": 42101012,
+          "equipPart": "equip03"
+        },
+        {
+          "$type": "SetPoseInt",
+          "intID": "equip03",
+          "value": 1
+        },
+        {
+          "$type": "TriggerHideWeapon",
+          "partNames": [
+            "equip01"
+          ]
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BombHoldTimer"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "BombHoldTimer"
+        },
+        {
+          "$type": "ResetAnimatorTrigger",
+          "triggerID": "BombThrowTrigger"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_BombCreate_Effect",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "BombCreate"
+          ],
+          "modifierName": "BombCreate_Effect_Timer"
+        }
+      ],
+      "modifiers": {
+        "BombCreate_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "BySceneSurfaceType",
+                  "filters": [
+                    "Water"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachEffect",
+                  "effectPattern": "Hili_Fire_CreateBomb_Water",
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  }
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "AttachEffect",
+                  "effectPattern": "Hili_Fire_CreateBomb",
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BombCreate_Effect_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "BombCreate_Effect"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BombCreate_Effect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_BombThrow",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerThrowEquipPart",
+          "equipPart": "equip03",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngleType": "Horizontal",
+              "maxAngle": 30
+            }
+          }
+        },
+        {
+          "$type": "TriggerAbility",
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 42101012,
+            "type": "Last"
+          },
+          "abilityName": "Hili_Fire_SlimeThrow_BulletTriggerOpen"
+        },
+        {
+          "$type": "SetPoseInt",
+          "intID": "equip03"
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "BombRun"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_EquipAppear",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerHideWeapon",
+          "visible": true,
+          "partNames": [
+            "equip01"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_BombOnHand",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "BombCreate",
+            "BombThrow",
+            "NormalIdle",
+            "NormalMove",
+            "Turn_Bomb"
+          ],
+          "modifierName": "OnHand"
+        }
+      ],
+      "modifiers": {
+        "OnHand": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "TriggerDropEquipParts",
+              "equipParts": [
+                "equip03"
+              ]
+            },
+            {
+              "$type": "SetPoseInt",
+              "intID": "equip03"
+            },
+            {
+              "$type": "TriggerHideWeapon",
+              "visible": true,
+              "partNames": [
+                "equip01"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_BombCreateFail",
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorTrigger",
+          "predicates": [
+            {
+              "$type": "BySceneSurfaceType",
+              "filters": [
+                "Water"
+              ]
+            }
+          ],
+          "triggerID": "BombCreateFail"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_SlimeShaderTrigger",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAbility",
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 42101012,
+            "type": "Last"
+          },
+          "abilityName": "Hili_Fire_SlimeThrow_LightUpShader"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_SlimeThrow_BulletTriggerClose",
+      "onAdded": [
+        {
+          "$type": "EnableBulletCollisionPluginTrigger"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_SlimeThrow_BulletTriggerOpen",
+      "modifiers": {
+        "UNIQUE_Bomb_LoopEffect": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Fire"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachEffect",
+                  "effectPattern": "Hili_Fire_Bomb_Trail"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "AttachEffect",
+                  "effectPattern": "Hili_Fire_Bomb_Trail_NoElem"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "EnableBulletCollisionPluginTrigger",
+          "setEnable": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Bomb_LoopEffect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_SlimeThrow_Element",
+      "abilitySpecials": {
+        "ShaderTime": 1
+      },
+      "modifiers": {
+        "DieAnimatorTimerModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Fire"
+                }
+              ],
+              "effectPattern": "Monster_Slime_Fire_SelfExplosion_BS_02"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DieTrigger"
+            }
+          ]
+        },
+        "TimerModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 11.75,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Hili_Fire_SlimeThrow_Explode"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "TriggerAbility",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Fire"
+                }
+              ],
+              "abilityName": "Hili_Fire_SlimeThrow_Explode"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DieAnimatorTimerModifier"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "TimerModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_SlimeThrow_Explode",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Bomb_LoopEffect"
+        },
+        {
+          "$type": "KillSelf"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "BySceneSurfaceType",
+              "filters": [
+                "Water"
+              ]
+            }
+          ],
+          "effectPattern": "Monster_Brute_FireSlimeExplode_None",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "BySceneSurfaceType",
+              "filters": [
+                "Water"
+              ]
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Blunt",
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.01
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.2,
+                "shakeTime": 0.3,
+                "shakeDistance": 25,
+                "extension": {
+                  "$type": "ConfigCameraShakeExt",
+                  "rangeAttenuation": 0.9
+                }
+              }
+            }
+          },
+          "targetType": "All"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Fire"
+                }
+              ]
+            },
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "BySceneSurfaceType",
+                  "filters": [
+                    "Water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectPattern": "Monster_Brute_FireSlimeExplode_None",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Fire"
+                }
+              ]
+            },
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "BySceneSurfaceType",
+                  "filters": [
+                    "Water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Blunt",
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.01
+              }
+            }
+          },
+          "targetType": "All"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Fire"
+            },
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "BySceneSurfaceType",
+                  "filters": [
+                    "Water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectPattern": "Monster_Brute_FireSlimeExplode_Fire",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Fire"
+            },
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "BySceneSurfaceType",
+                  "filters": [
+                    "Water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 2,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 50,
+                "strikeType": "Blunt",
+                "enBreak": 200
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 480,
+                "hitImpulseY": 600,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.2,
+                "shakeTime": 0.15,
+                "shakeDistance": 35
+              }
+            }
+          },
+          "targetType": "All"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_SlimeThrow_HitScene",
+      "onAbilityStart": [
+        {
+          "$type": "FireHitEffect",
+          "hitScene": {
+            "$type": "ConfigHitScene",
+            "defaultEffect": "Hili_Fire_Bomb_DropToGround",
+            "surfaceEffect": {
+              "Water": "Hili_Fire_Slime_Hit_Water"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_SlimeThrow_LightUpShader",
+      "modifiers": {
+        "ElementModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Fire",
+          "elementDurability": 25,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "FireState"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorBool",
+          "boolID": "FireState",
+          "value": true
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ElementModifier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_BombTurn",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Turn_Bomb"
+          ],
+          "angularSpeed": 120,
+          "attackDistance": 12
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "BombThrow"
+          ],
+          "endNormalizedTime": 0.5,
+          "angularSpeed": 120,
+          "attackDistance": 12
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_Rush_Turn",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Turn"
+          ],
+          "angularSpeed": 120,
+          "attackDistance": 12
+        }
+      ]
+    }
+  }
+]

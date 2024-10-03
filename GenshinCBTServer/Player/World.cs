@@ -1,4 +1,5 @@
-﻿using GenshinCBTServer.Excel;
+﻿using GenshinCBTServer.Controllers;
+using GenshinCBTServer.Excel;
 using GenshinCBTServer.Protocol;
 using Newtonsoft.Json;
 using NLua;
@@ -21,7 +22,7 @@ namespace GenshinCBTServer.Player
 
         public List<GameEntity> entities = new List<GameEntity>();
         public List<uint> mobEntitiesNear = new List<uint>();
-
+        
       
 
         public List<SceneBlock> loadedBlocks = new List<SceneBlock>();
@@ -100,6 +101,65 @@ namespace GenshinCBTServer.Player
                 }
             }
             UpdateMobs();
+            UpdateRegions();
+        }
+        public void UpdateRegions()
+        {
+            foreach(SceneGroup group in currentBlock.groups)
+            {
+                foreach (SceneRegion region in group.regions)
+                {
+                    foreach (GameEntity entity in entities)
+                    {
+                        if (mobEntitiesNear.Contains(entity.entityId))
+                        {
+                            if (region.Inside(entity.motionInfo.Pos))
+                            {
+                                if (!entity.inRegions.Contains(region.config_id))
+                                {
+                                    entity.inRegions.Add(region.config_id);
+                                    ScriptArgs args = new((int)group.id, (int)EventType.EVENT_ENTER_REGION, (int)region.config_id);
+                                    args.target_eid = (int)entity.entityId;
+                                    args.source_eid = (int)region.config_id;
+                                    LuaManager.executeTriggerLua(client, group, args);
+                                }
+
+
+                            }
+                            else
+                            {
+                                if (entity.inRegions.Contains(region.config_id))
+                                {
+                                    entity.inRegions.Remove(region.config_id);
+
+                                }
+                            }
+                        }
+                       
+                    }
+                    //Check avatar
+                    if (region.Inside(client.motionInfo.Pos))
+                    {
+                        if (!client.inRegions.Contains(region.config_id))
+                        {
+                            client.inRegions.Add(region.config_id);
+                            ScriptArgs args = new((int)group.id, (int)EventType.EVENT_ENTER_REGION, (int)region.config_id);
+                            args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
+                            args.source_eid = (int)region.config_id;
+                            LuaManager.executeTriggerLua(client, group, args);
+                        }
+                    }
+                    else
+                    {
+                        if (client.inRegions.Contains(region.config_id))
+                        {
+                            client.inRegions.Remove(region.config_id);
+
+                        }
+                    }
+                }
+            }
+            
         }
         public void UpdateMobs()
         {
@@ -303,6 +363,34 @@ namespace GenshinCBTServer.Player
         public List<SceneNpc> npcs = new List<SceneNpc>();
         public List<SceneMonster> monsters = new List<SceneMonster>();
         public List<GroupTrigger> triggers = new List<GroupTrigger>();
+        public List<SceneRegion> regions = new List<SceneRegion>();
+    }
+    public class SceneRegion
+    {
+        public uint config_id;
+        public uint shape;
+        public float radius;
+        public Vector pos;
+        public Vector size;
+
+        public bool Inside(Vector pos)
+        {
+           if(size == null)
+            {
+                if(World.DistanceTo(this.pos,pos) < radius)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
     public class SceneGadget
     {

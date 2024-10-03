@@ -1,0 +1,111 @@
+{
+  "Element_Crystal": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 150,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "isGhostToAllied": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "crystal": {
+        "$type": "ConfigCrystal",
+        "gainSpeed": 3,
+        "drainSpeed": 1,
+        "resonateLevels": [
+          6,
+          10
+        ],
+        "burstResonate": 15,
+        "burstTime": 5,
+        "respawnTime": 5
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "Burst_Skill": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Scene_Crystal_Burst_Skill": [
+                "Crystal_Burst_Skill_Wind"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "aibeta": {
+      "$type": "ConfigAIBeta",
+      "enable": true,
+      "moveSetting": {
+        "$type": "ConfigAIMove",
+        "enable": false,
+        "navMeshAgentName": "Undead01"
+      },
+      "sensing": {
+        "$type": "ConfigAISensing",
+        "enable": false
+      },
+      "defendArea": {
+        "$type": "ConfigAIDefendArea",
+        "enable": false
+      }
+    }
+  },
+  "SearchPoint": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest"
+      }
+    }
+  }
+}

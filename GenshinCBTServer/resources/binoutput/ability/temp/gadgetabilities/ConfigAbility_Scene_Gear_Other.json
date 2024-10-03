@@ -1,0 +1,905 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Test_MoveGear_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "GearStart"
+        }
+      ],
+      "modifiers": {
+        "GearStart": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Gear_ElectricBall_Shoot",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 10,
+              "key": "_Connect_To_StayGear",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_Connect_To_StayGear",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Test_StayGear_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Default"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "GearStart"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "GearStop"
+        }
+      ],
+      "modifiers": {
+        "Default": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "PoseID"
+            }
+          ]
+        },
+        "GearStop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "PoseID",
+              "value": 202
+            }
+          ]
+        },
+        "GearStart": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "PoseID",
+              "value": 201
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Gear_ElectricBall_Shoot",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "All",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 10
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Connect_To_StayGear",
+                  "value": 1
+                }
+              ],
+              "modifierName": "ConnectSelf"
+            }
+          ]
+        },
+        "ConnectSelf": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "PoseID"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Caster"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Test_Gravity",
+      "modifiers": {
+        "WeightEnough": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 2,
+          "onThinkInterval": [
+            {
+              "$type": "DebugLog",
+              "content": "### Interval 5 ###"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_WeightCount",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "effectPattern": "BombBox_Explode"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WeightEnough"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetWeight",
+              "logic": "GreaterOrEqual",
+              "weight": 100
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "value": 1,
+              "key": "_WeightCount",
+              "useLimitRange": true,
+              "maxValue": 20,
+              "minValue": 0
+            }
+          ]
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetWeight",
+              "logic": "GreaterOrEqual",
+              "weight": 100
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "value": -1,
+              "key": "_WeightCount",
+              "useLimitRange": true,
+              "maxValue": 20,
+              "minValue": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Test_Sculpture_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "GS_0"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "GS_201"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "GS_202"
+        }
+      ],
+      "modifiers": {
+        "Sculpture_WaterSpray": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Sculpture_WaterSpray",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget"
+                },
+                "attachPointName": "FollowMove"
+              }
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 0.5,
+                      "z": 10
+                    }
+                  },
+                  "radius": 0.75
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.2,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Water",
+                    "elementDurability": 20
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Shake",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "GS_0": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState"
+            }
+          ]
+        },
+        "GS_201": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "value": 201
+            }
+          ]
+        },
+        "GS_202": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "value": 202
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Sculpture_WaterSpray"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_PowerCharge",
+      "modifiers": {
+        "ChargeOn": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FireBasin"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "CanCharge",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Charging": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "thinkInterval": 0.6,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Gear_ElectricBall_Shoot",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ChargeOff"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ChargeOn"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR3",
+                "campTargetType": "All",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "modifierName": "EnergyRegain"
+            }
+          ]
+        },
+        "ChargeOff": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "CanCharge",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ChargeOn"
+            }
+          ]
+        },
+        "EnergyRegain": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ReviveElemEnergyMixin",
+              "period": 0.4,
+              "baseEnergy": 1,
+              "ratio": 1
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ChargeOn"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "CanCharge",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "CanCharge",
+              "value": 1
+            }
+          ],
+          "modifierName": "Charging"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Bullet_ShoterGear_Electric_Material",
+      "modifiers": {
+        "Laser_Light": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "LightningBolt"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Laser_Light"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Bullet_ShoterGear_Electric_Burst",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementDurability": 100,
+                "strikeType": "Blunt"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 795,
+                "hitImpulseY": 900,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.36,
+                "shakeTime": 0.36
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Bullet_ShoterGear_Fire_Material",
+      "modifiers": {
+        "Laser_Light": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Laser_Light"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Laser_Light"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Bullet_ShoterGear_Fire_Burst",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 100,
+                "strikeType": "Blunt"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 795,
+                "hitImpulseY": 900,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.36,
+                "shakeTime": 0.36
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_SpeedUper",
+      "modifiers": {
+        "SpeedUp": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "properties": {
+            "Animator_MoveSpeedRatio": 0.25
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Avatar_Properties_Speed_Up"
+            }
+          ]
+        }
+      },
+      "onFieldEnter": [
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "doOffStage": true,
+          "modifierName": "SpeedUp"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_WarmArea",
+      "onFieldEnter": [
+        {
+          "$type": "AddGlobalValue",
+          "target": "Target",
+          "doOffStage": true,
+          "value": 1,
+          "key": "_ABILITY_Avatar_Cold_WhiteBox_Temperature_Lock",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "AddGlobalValue",
+          "target": "Target",
+          "doOffStage": true,
+          "value": -1,
+          "key": "_ABILITY_Avatar_Cold_WhiteBox_Temperature_Lock",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_LaserSwitch",
+      "modifiers": {
+        "Start": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onBeingHit": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Active"
+            },
+            {
+              "$type": "ExecuteGroupTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_FIRST_BE_HIT",
+                  "value": 0
+                }
+              ],
+              "sourceName": "LaserSwitch_Hit"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 10,
+              "key": "_FIRST_BE_HIT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Active": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.8,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ExecuteGroupTrigger",
+              "sourceName": "LaserSwitch_Un_Hit"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_FIRST_BE_HIT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Start"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -10,
+          "key": "_FIRST_BE_HIT",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Bullet_ShoterGear_None_Burst",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.1,
+                "damagePercentageRatio": 0,
+                "elementDurability": 0,
+                "strikeType": "Blunt"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 795,
+                "hitImpulseY": 900,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Other_Electric_Switch",
+      "modifiers": {
+        "Start": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onBeingHit": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "ElectricPlieDamage"
+                  ]
+                }
+              ],
+              "modifierName": "Active"
+            },
+            {
+              "$type": "ExecuteGroupTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_FIRST_BE_HIT",
+                  "value": 0
+                }
+              ],
+              "sourceName": "ElectricSwitch_Hit"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 10,
+              "key": "_FIRST_BE_HIT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Active": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Element_Shock_Loop"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ExecuteGroupTrigger",
+              "sourceName": "ElectricSwitch_Unhit"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_FIRST_BE_HIT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Start"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -10,
+          "key": "_FIRST_BE_HIT",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "Is_Electric_Pile",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        }
+      ]
+    }
+  }
+]

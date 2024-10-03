@@ -1,0 +1,3656 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_ExtraAttack",
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "skillID": 10060,
+          "chargeTime": 0.1,
+          "secondChargeTime": 0.1,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorInt",
+                  "logic": "Equal",
+                  "value": 0,
+                  "parameter": "ComboCount"
+                }
+              ],
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorInt",
+                  "logic": "Equal",
+                  "value": 0,
+                  "parameter": "ComboCount"
+                }
+              ],
+              "intID": "SkillID",
+              "value": 99
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            }
+          ],
+          "OnReleaseUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 1
+            }
+          ],
+          "OnBeginCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging",
+              "value": true
+            }
+          ],
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 1
+            }
+          ],
+          "OnBeginSecondCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByLocalAvatarStamina",
+                  "logic": "GreaterOrEqual",
+                  "stamina": "ExtraAttack_Catalyst_Stamina_Cost"
+                }
+              ],
+              "intID": "SkillID",
+              "value": 6
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByLocalAvatarStamina",
+                  "logic": "Lesser",
+                  "stamina": "ExtraAttack_Catalyst_Stamina_Cost"
+                }
+              ],
+              "intID": "SkillID",
+              "value": 1
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            }
+          ],
+          "chargeStateIDs": [
+            "Lisa_Attack01",
+            "Lisa_Attack02",
+            "Lisa_Attack03",
+            "ExtraAttack_BS",
+            "ExtraAttack_Charge",
+            "ExtraAttack",
+            "ExtraAttack_AS"
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack_Charge"
+          ],
+          "modifierName": "ExtraAttack_StaminaCost"
+        }
+      ],
+      "abilitySpecials": {
+        "ExtraAttack_Catalyst_Stamina_Cost": 48
+      },
+      "modifiers": {
+        "ExtraAttack_StaminaCost": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10003,
+              "costStaminaRatio": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_ExtraAttack_Damage",
+      "abilitySpecials": {
+        "Lisa_ExtraAttack_Damage": 1
+      },
+      "modifiers": {
+        "ExtraAttack_GenerateElemBall": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "ExtraAttack"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "modifierName": "ExtraAttack_Ball"
+                }
+              ]
+            }
+          ]
+        },
+        "ExtraAttack_Ball": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 0.5,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2020,
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  },
+                  "ratio": 1,
+                  "baseEnergy": 3
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ExtraAttack_GenerateElemBall"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 5,
+              "scale": 1,
+              "centerYOffset": -3,
+              "offsetZ": 1,
+              "fanAngle": 40,
+              "radius": 10,
+              "detectDirection": "Clockwise"
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "ExtraAttack",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "Lisa_ExtraAttack_Damage",
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementRank": 1.5,
+                "elementDurability": 25,
+                "strikeType": "Default",
+                "enBreak": 15
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.3,
+                "shakeTime": 0.12,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": -1
+                }
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Lisa_ExtraAttack_Material"
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Lisa_ExtraAttack_WhiteBox_FX",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack_Charge",
+            "ExtraAttack",
+            "ExtraAttack_AS"
+          ],
+          "modifierName": "Lisa_ExtraAttack_FX"
+        }
+      ],
+      "modifiers": {
+        "Lisa_ExtraAttack_FX": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Lisa_ExtraAttack_Lightning",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "onGround": true,
+                "alongGround": true
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41006020,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "onGround": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_NormalAttack04_Blink",
+      "modifiers": {
+        "Blink": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.3,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_Lisa_Attack_HideSpark"
+            },
+            {
+              "$type": "TriggerSetVisible"
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushCollider"
+              ]
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushColliderExtra"
+              ],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TurnDirection",
+              "turnMode": "OnlyTarget"
+            },
+            {
+              "$type": "TriggerSetVisible",
+              "doOffStage": true,
+              "visible": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "doOffStage": true,
+              "pushColliderNames": [
+                "PushCollider"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "doOffStage": true,
+              "pushColliderNames": [
+                "PushColliderExtra"
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_Lisa_Attack_ShowSpark"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "triggerID": "Attack"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Blink"
+        },
+        {
+          "$type": "AvatarDoBlink",
+          "Distance": -1.4
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_TriggerAbility2",
+      "abilityMixins": [
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "skillID": 10061,
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "endHoldTrigger": "EndHoldTrigger",
+          "beforeStateIDs": [
+            "Lisa_FlickerWave_BS"
+          ],
+          "chargeLoopStateIDs": [
+            "Lisa_ThunderFall_Charge",
+            "Lisa_ThunderFall_Ready",
+            "Lisa_ThunderFall_AS"
+          ],
+          "chargeLoopDurations": [
+            0.05,
+            4
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Lisa_ThunderFall_Charge",
+            "Lisa_ThunderFall_Ready"
+          ],
+          "modifierName": "Charge1"
+        }
+      ],
+      "modifiers": {
+        "Charge1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Lisa_ThunderFall_Area"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_Weather_Trigger",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Lisa_ThunderFall_Charge",
+            "Lisa_ThunderFall_Ready",
+            "Lisa_ThunderFall_AS"
+          ],
+          "modifierName": "ThunderFall_Mark"
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_TriggerWeather": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 5,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "weatherPattern": "Lisa_ThunderFall",
+              "transDuration": 1.5,
+              "duration": 5
+            }
+          ]
+        },
+        "ThunderFall_Mark": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_TriggerWeather"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_TriggerWeather"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_Weather_Remove",
+      "modifiers": {
+        "UNIQUE_TriggerWeather": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 5,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "weatherPattern": "Lisa_ThunderFall",
+              "transDuration": 1.5,
+              "duration": 5
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_TriggerWeather"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_Attack01",
+      "abilitySpecials": {
+        "Damage01": 0.45
+      },
+      "modifiers": {
+        "Lisa_Lightning_Attack01": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR",
+                "attachPointTargetType": "Caster"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Lisa_NormalAttack_Burst01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "TriggerAudio",
+              "responder": "FreeAgent",
+              "operation": {
+                "$type": "ConfigAudioPositionedEventOp",
+                "operation": {
+                  "$type": "ConfigWwiseString",
+                  "text": "Play_sfx_char_lisa_catalyst_electric_attackElect"
+                },
+                "positioning": 0.5,
+                "duration": 5
+              }
+            },
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "value": -1,
+              "key": "_Lisa_Attack01_Count",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ]
+            }
+          ],
+          "effectPattern": "Eff_Ani_Lisa_NormalAttack_Lightning_Right"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "SelfAttackTarget",
+          "modifierName": "Lisa_Lightning_Attack01"
+        },
+        {
+          "$type": "Randomed",
+          "chance": 0.5,
+          "successActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Magic_TriStars"
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_01",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "enBreak": 60
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_01",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage01",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 10,
+                  "strikeType": "Default",
+                  "enBreak": 6.75,
+                  "attackType": "Range"
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Magic_TriStars"
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_01",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "enBreak": 60
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_01",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage01",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0,
+                  "strikeType": "Default",
+                  "enBreak": 6.75,
+                  "attackType": "Melee"
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Bullet_Lightning_Material",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Lisa_Bullet_Lightning"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_Attack02",
+      "abilitySpecials": {
+        "Damage02": 0.4
+      },
+      "modifiers": {
+        "Lisa_Lightning_Attack02": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR",
+                "attachPointTargetType": "Caster"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Lisa_NormalAttack_Burst01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "TriggerAudio",
+              "responder": "FreeAgent",
+              "operation": {
+                "$type": "ConfigAudioPositionedEventOp",
+                "operation": {
+                  "$type": "ConfigWwiseString",
+                  "text": "Play_sfx_char_lisa_catalyst_electric_attackElect"
+                },
+                "positioning": 0.5,
+                "duration": 5
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ]
+            }
+          ],
+          "effectPattern": "Eff_Ani_Lisa_NormalAttack_Lightning_Left"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "SelfAttackTarget",
+          "modifierName": "Lisa_Lightning_Attack02"
+        },
+        {
+          "$type": "Randomed",
+          "chance": 0.25,
+          "successActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Magic_TriStars"
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_02",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "enBreak": 60
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_02",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage02",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 10,
+                  "strikeType": "Default",
+                  "enBreak": 6
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Magic_TriStars"
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_02",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "enBreak": 60
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_02",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage02",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0,
+                  "strikeType": "Default",
+                  "enBreak": 6
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_Attack03",
+      "abilitySpecials": {
+        "Damage03": 0.49
+      },
+      "modifiers": {
+        "Lisa_Lightning_Attack03": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_03",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR",
+                "attachPointTargetType": "Caster"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_04",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR",
+                "attachPointTargetType": "Caster"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Lisa_NormalAttack_Burst02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "TriggerAudio",
+              "responder": "FreeAgent",
+              "operation": {
+                "$type": "ConfigAudioPositionedEventOp",
+                "operation": {
+                  "$type": "ConfigWwiseString",
+                  "text": "Play_sfx_char_lisa_catalyst_electric_attackElect"
+                },
+                "positioning": 0.5,
+                "duration": 5
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ]
+            }
+          ],
+          "effectPattern": "Eff_Ani_Lisa_NormalAttack_Lightning_Right"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "SelfAttackTarget",
+          "modifierName": "Lisa_Lightning_Attack03"
+        },
+        {
+          "$type": "Randomed",
+          "chance": 0.5,
+          "successActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Magic_TriStars"
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_03",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "enBreak": 60
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_03",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage03",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 10,
+                  "strikeType": "Default",
+                  "enBreak": 7.35
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_03",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "enBreak": 60
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_03",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage03",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0,
+                  "strikeType": "Default",
+                  "enBreak": 7.35
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_Attack04",
+      "abilitySpecials": {
+        "Damage04": 0.58
+      },
+      "modifiers": {
+        "Lisa_Lightning_Attack04": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_03",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR",
+                "attachPointTargetType": "Caster"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_04",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR",
+                "attachPointTargetType": "Caster"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Lisa_NormalAttack_Burst02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "TriggerAudio",
+              "responder": "FreeAgent",
+              "operation": {
+                "$type": "ConfigAudioPositionedEventOp",
+                "operation": {
+                  "$type": "ConfigWwiseString",
+                  "text": "Play_sfx_char_lisa_catalyst_electric_attackElect"
+                },
+                "positioning": 0.5,
+                "duration": 5
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ]
+            }
+          ],
+          "effectPattern": "Eff_Ani_Lisa_NormalAttack_Lightning_Left"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "SelfAttackTarget",
+          "modifierName": "Lisa_Lightning_Attack04"
+        },
+        {
+          "$type": "Randomed",
+          "chance": 0.5,
+          "successActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Magic_TriStars"
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_04",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "enBreak": 60
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_04",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage04",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 10,
+                  "strikeType": "Default",
+                  "enBreak": 8.7
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Magic_TriStars"
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_04",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 100,
+                  "enBreak": 60
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "SelfAttackTarget",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "NormalAttack_04",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage04",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0,
+                  "strikeType": "Default",
+                  "enBreak": 8.7
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                },
+                "cameraShake": {
+                  "$type": "ConfigCameraShake",
+                  "shakeRange": 0.24,
+                  "shakeTime": 0.08,
+                  "shakeDistance": 30,
+                  "shakeDir": {
+                    "$type": "Vector",
+                    "y": -1
+                  },
+                  "extension": {
+                    "$type": "ConfigCameraShakeExt",
+                    "baseOnCamera": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_NormalAttack_Burst",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Lisa_NormalAttack_Burst01"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_NormalAttack_Hit_Fx",
+      "onAbilityStart": [
+        {
+          "$type": "FireHitEffect",
+          "hitScene": {
+            "$type": "ConfigHitScene",
+            "defaultEffect": "Lisa_NormalAttack_Burst01"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_FlickerWave_Burst",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Lisa_FlickerWave_Burst"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_FlickerWave_Hit_Fx",
+      "onAbilityStart": [
+        {
+          "$type": "FireHitEffect",
+          "hitScene": {
+            "$type": "ConfigHitScene",
+            "defaultEffect": "Lisa_FlickerWave_Burst"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_FlickerWave",
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10061,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41006009,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity"
+            },
+            "attachPointName": "WeaponR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_FlickerWaveDamage",
+      "abilitySpecials": {
+        "Damage": 1.2
+      },
+      "modifiers": {
+        "StaticElec_Pre": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.2,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "TriggerAbility",
+              "target": "Owner",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ],
+                  "useEventSource": true
+                }
+              ],
+              "abilityName": "Avatar_Lisa_StaticElecField"
+            },
+            {
+              "$type": "KillSelf",
+              "doOffStage": true
+            }
+          ]
+        },
+        "FlickerWaveElementBall": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Elemental_Art"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "Ball"
+                }
+              ]
+            }
+          ]
+        },
+        "Ball": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 0.5,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2020,
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  },
+                  "ratio": 1,
+                  "baseEnergy": 3
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Lisa_FlickerWave_Bul"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "StaticElec_Pre"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "FlickerWaveElementBall"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "doOffStage": true,
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "Damage",
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementRank": 1.5,
+                "elementDurability": 20,
+                "strikeType": "Default",
+                "enBreak": 18
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Lisa_FlickerWave_Burst",
+                "hitLevel": "Light",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_StaticElecField",
+      "abilitySpecials": {
+        "Square": 1,
+        "chance": 0.2,
+        "Lisa_Talent_ExtraAttack_StaticElecField_Chance": 0.3
+      },
+      "modifiers": {
+        "FlickerWave_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Lisa_FlickerWave_Buff"
+            }
+          ]
+        },
+        "FlickerWave_Talent_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Lisa_FlickerWave_Talent_Buff"
+            }
+          ]
+        },
+        "StaticElec": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleRefreshNoRemove",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 15,
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 0
+                }
+              ],
+              "modifierName": "StaticElec"
+            }
+          ]
+        },
+        "UNIQUE_StaticElec_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_StaticElec_COUNT",
+              "defaultGlobalValueOnCreate": 0,
+              "valueSteps": [
+                -1,
+                0.5,
+                1.5,
+                2.5,
+                3.5
+              ],
+              "modifierNameSteps": [
+                "StaticElec_effect_0",
+                "StaticElec_effect_1",
+                "StaticElec_effect_2",
+                "StaticElec_effect_3"
+              ],
+              "actionQueues": [
+                [],
+                [
+                  {
+                    "$type": "RemoveModifier",
+                    "modifierName": "StaticElec_effect_2"
+                  }
+                ],
+                [
+                  {
+                    "$type": "RemoveModifier",
+                    "modifierName": "StaticElec_effect_3"
+                  }
+                ],
+                []
+              ],
+              "removeAppliedModifier": false
+            }
+          ]
+        },
+        "StaticElec_effect_0": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_1"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_3"
+            }
+          ]
+        },
+        "StaticElec_effect_1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "StaticElec_Number1"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_0"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_3"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_1"
+            }
+          ]
+        },
+        "StaticElec_effect_2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "StaticElec_Number2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_3"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_1"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_2"
+            }
+          ]
+        },
+        "StaticElec_effect_3": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "StaticElec_Number3"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_1"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "StaticElec_effect_3"
+            }
+          ]
+        },
+        "Lisa_Talent_ExtraAttack_StaticElecField_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Randomed",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "ExtraAttack"
+                  ]
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Lisa_ExtraAttack_StaticElecField"
+                }
+              ],
+              "chance": "Lisa_Talent_ExtraAttack_StaticElecField_Chance",
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": [
+                        "Monster"
+                      ]
+                    }
+                  ],
+                  "modifierName": "StaticElec"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": [
+                        "Monster"
+                      ]
+                    }
+                  ],
+                  "modifierName": "UNIQUE_StaticElec_Effect"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Lisa_Talent_ExtraAttack_StaticElecField_Handler"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR2",
+            "centerBasedOn": "Target",
+            "campTargetType": "Enemy",
+            "sizeRatio": "Square"
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "modifierName": "StaticElec"
+        },
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR3",
+            "centerBasedOn": "Target",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "modifierName": "UNIQUE_StaticElec_Effect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            },
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Lisa_Super_FlickerWave2"
+                }
+              ]
+            }
+          ],
+          "modifierName": "FlickerWave_Effect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            },
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Lisa_Super_FlickerWave2"
+            }
+          ],
+          "modifierName": "FlickerWave_Talent_Effect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_ThunderFall",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Lisa_ThunderFall_Charge"
+          ],
+          "modifierName": "Eff_Lisa_ThunderFall_1"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Lisa_ThunderFall_AS"
+          ],
+          "modifierName": "Eff_Lisa_ThunderFall_3"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Lisa_ThunderFall_Charge",
+            "Lisa_ThunderFall_Ready",
+            "Lisa_ThunderFall_AS"
+          ],
+          "modifierName": "CountBall"
+        }
+      ],
+      "abilitySpecials": {
+        "Damage_0": 4.5,
+        "Damage_1": 5.9,
+        "Damage_2": 7.2,
+        "Damage_3": 9,
+        "Time": 6,
+        "ThunderFall_Talent_ReviveElemEnergy": 2
+      },
+      "modifiers": {
+        "CountBall": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 3,
+              "key": "_Ball_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -3,
+              "key": "_Ball_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ]
+        },
+        "Eff_Lisa_ThunderFall_1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Lisa_ThunderFall_1"
+            }
+          ]
+        },
+        "Eff_Lisa_ThunderFall_3": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Lisa_ThunderFall_3"
+            }
+          ]
+        },
+        "SelectNearModifier": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "doPredicatesForEach": true,
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Ball_COUNT",
+                  "value": 3,
+                  "forceByCaster": true
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_GenerateElemBall_Recently",
+                      "value": 1
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "ThunderFall_ElementBall_1"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "doPredicatesForEach": true,
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Ball_COUNT",
+                  "value": 2,
+                  "forceByCaster": true
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_GenerateElemBall_Recently",
+                      "value": 1
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "ThunderFall_ElementBall_2"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "doPredicatesForEach": true,
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Ball_COUNT",
+                  "value": 1,
+                  "forceByCaster": true
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_GenerateElemBall_Recently",
+                      "value": 1
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "ThunderFall_ElementBall_3"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_StaticElec_COUNT",
+                      "value": 1
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_StaticElec_COUNT",
+                      "value": 2
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_StaticElec_COUNT",
+                      "value": 3
+                    }
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Art",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage_0",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementRank": 1.5,
+                  "elementDurability": 40,
+                  "enBreak": 150
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "default",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Art",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage_1",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementRank": 1.5,
+                  "elementDurability": 50,
+                  "enBreak": 195
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "default",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 2
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Art",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage_2",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementRank": 1.5,
+                  "elementDurability": 60,
+                  "enBreak": 240
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "default",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 3
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Art",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage_3",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementRank": 1.5,
+                  "elementDurability": 70,
+                  "enBreak": 300
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "default",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "AttachEffect",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "effectPattern": "Eff_Lisa_ThunderFall_0"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 1
+                }
+              ],
+              "modifierName": "ThunderFall_1"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 2
+                }
+              ],
+              "modifierName": "ThunderFall_2"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR10",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_StaticElec_COUNT",
+                  "value": 3
+                }
+              ],
+              "modifierName": "ThunderFall_3"
+            }
+          ]
+        },
+        "ThunderFall_1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Lisa_ThunderFall_1"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ]
+        },
+        "ThunderFall_2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Lisa_ThunderFall_2"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -2,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ]
+        },
+        "ThunderFall_3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Lisa_ThunderFall_3"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -3,
+              "key": "_ABILITY_StaticElec_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            }
+          ]
+        },
+        "ThunderFall_ElementBall_1": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 1,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2020,
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  },
+                  "ratio": 1,
+                  "baseEnergy": 15
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "value": -1,
+                  "key": "_Ball_COUNT",
+                  "useLimitRange": true,
+                  "maxValue": 3,
+                  "minValue": 0
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "value": 1,
+                  "key": "_GenerateElemBall_Recently",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_GenerateElemBall_Recently",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "ThunderFall_ElementBall_2": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2020,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "ratio": 1,
+              "baseEnergy": 3
+            },
+            {
+              "$type": "Randomed",
+              "chance": 0.25,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2020,
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  },
+                  "ratio": 1,
+                  "baseEnergy": 3
+                }
+              ]
+            },
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "value": -1,
+              "key": "_Ball_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_GenerateElemBall_Recently",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_GenerateElemBall_Recently",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "ThunderFall_ElementBall_3": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2020,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "ratio": 1,
+              "baseEnergy": 3
+            },
+            {
+              "$type": "Randomed",
+              "chance": 0.25,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2020,
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  },
+                  "ratio": 1,
+                  "baseEnergy": 3
+                }
+              ]
+            },
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "value": -1,
+              "key": "_Ball_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_GenerateElemBall_Recently",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_GenerateElemBall_Recently",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Lisa_ThunderFall_Talent_ReviveElemEnergy_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Elemental_Art"
+                  ]
+                }
+              ],
+              "value": 1,
+              "key": "_ABILITY_Lisa_ThunderFall_Talent_ReviveElemEnergy_COUNT",
+              "useLimitRange": true,
+              "maxValue": 5,
+              "minValue": 0
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "_ABILITY_Lisa_ThunderFall_Talent_ReviveElemEnergy_COUNT",
+              "overrideMapKey": "Lisa_ThunderFall_Talent_ReviveElemEnergy_Number"
+            },
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Elemental_Art"
+                  ]
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Lisa_ThunderFall_Talent_ReviveElemEnergy"
+                }
+              ],
+              "modifierName": "ThunderFall_Talent_ReviveElemEnergy_Trigger"
+            }
+          ]
+        },
+        "ThunderFall_Talent_ReviveElemEnergy_Trigger": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.4,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ReviveElemEnergyMixin",
+              "period": 0.2,
+              "baseEnergy": "ThunderFall_Talent_ReviveElemEnergy",
+              "ratio": "Lisa_ThunderFall_Talent_ReviveElemEnergy_Number"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Razor_ClawMark_Restore_2"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -5,
+              "key": "_ABILITY_Lisa_ThunderFall_Talent_ReviveElemEnergy_COUNT",
+              "useLimitRange": true,
+              "maxValue": 5,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Lisa_ThunderFall_Talent_ReviveElemEnergy_Handler"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10061,
+          "cdRatio": 16,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SelectNearModifier"
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.5,
+            "shakeTime": 0.12,
+            "shakeDistance": 30,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": -1
+            },
+            "extension": {
+              "$type": "ConfigCameraShakeExt",
+              "baseOnCamera": true,
+              "baseCycle": 0.08,
+              "cycleDamping": -0.04
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Lisa_ThunderFall_FX_WithOutMonster",
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobalValue",
+          "value": -1,
+          "key": "_ABILITY_Lisa_ThunderFall_Monster_COUNT",
+          "useLimitRange": true,
+          "maxValue": 0,
+          "minValue": -1
+        },
+        {
+          "$type": "Predicated",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR10",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1
+          },
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_Lisa_ThunderFall_Monster_COUNT",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": -1
+            }
+          ]
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "ThunderFall_WithOutMonster_Pos_1",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 3.5
+            },
+            "minRandomRange": 3,
+            "maxRandomRange": 3
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "ThunderFall_WithOutMonster_Pos_2",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": -3.5
+            },
+            "minRandomRange": 3,
+            "maxRandomRange": 3
+          }
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "ThunderFall_WithOutMonster_Pos_3",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": 3.5
+            },
+            "minRandomRange": 3,
+            "maxRandomRange": 3
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Lisa_ThunderFall_Monster_COUNT",
+              "value": -1
+            }
+          ],
+          "effectPattern": "Eff_Lisa_ThunderFall_0",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "ThunderFall_WithOutMonster_Pos_1"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Lisa_ThunderFall_Monster_COUNT",
+              "value": -1
+            }
+          ],
+          "effectPattern": "Eff_Lisa_ThunderFall_0",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "ThunderFall_WithOutMonster_Pos_2"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Lisa_ThunderFall_Monster_COUNT",
+              "value": -1
+            }
+          ],
+          "effectPattern": "Eff_Lisa_ThunderFall_0",
+          "born": {
+            "$type": "ConfigBornByGlobalValue",
+            "positionKey": "ThunderFall_WithOutMonster_Pos_3"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_ConductiveField",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41006006,
+          "campID": 1001,
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_ConductiveField_Buff",
+      "modifiers": {
+        "ConductiveField_Buff": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "properties": {
+            "ACTOR_ADDED_ATTACK_RATIO": 0.25
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Lisa_ConductiveField_Buff"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Lisa_ConductiveField"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ConductiveField_Buff"
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "ConductiveField_Buff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_PierceLightning",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "PierceLightning"
+          ],
+          "modifierName": "Eff_Ani_PierceLightning"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "PierceLightning"
+          ],
+          "modifierName": "Elemental_Burst_IsGhostToEnemy"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "PierceLightning"
+          ],
+          "modifierName": "Elemental_Burst_Invincible"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "PierceLightning"
+          ],
+          "modifierName": "PierceLightning_Hit_Pre"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "PierceLightning"
+          ],
+          "modifierName": "Camera_Remover_Handler"
+        }
+      ],
+      "abilitySpecials": {
+        "DamageTakeRatio": -0.3,
+        "Time": 6
+      },
+      "modifiers": {
+        "Camera_Remover_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "lockParam": true,
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0.1
+              }
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0
+              }
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "lockParam": true,
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0.1
+              }
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0
+              }
+            }
+          ]
+        },
+        "Elemental_Burst_Invincible": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.2,
+          "elementDurability": 100,
+          "state": "Invincible"
+        },
+        "Elemental_Burst_IsGhostToEnemy": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceBuffDebuffs": [
+                "ElementFreeze",
+                "ElementBurning",
+                "ElementWet",
+                "ElementFrozen",
+                "ElementShock",
+                "Struggle",
+                "ElementIce",
+                "DefenseDown",
+                "SpeedDown"
+              ]
+            }
+          ]
+        },
+        "Eff_Ani_PierceLightning": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.17,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Ani_PierceLightning_LHand"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Ani_PierceLightning_RHand"
+            }
+          ]
+        },
+        "PierceLightning_Hit_Pre": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Lisa_SuperPierceLightning1"
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Elemental_Burst"
+                  ]
+                }
+              ],
+              "modifierName": "PierceLightning"
+            }
+          ]
+        },
+        "PierceLightning": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "Time",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_SubHurtDelta": "DamageTakeRatio"
+          },
+          "state": "DefenseDown"
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraRadialBlur",
+          "cameraRadialBlur": {
+            "$type": "ConfigCameraRadialBlur",
+            "power": 1,
+            "blurTime": 0.2,
+            "fadeTime": 0.1
+          }
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10062,
+          "cdRatio": 4,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Lisa_PierceLightning",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 0.36
+            }
+          },
+          "ownedByLevel": true
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "scale": 1,
+              "fanAngle": 360,
+              "radius": 7
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.1,
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementRank": 1.5,
+                "elementDurability": 0,
+                "strikeType": "Default",
+                "enBreak": 10
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 800,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake"
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_PierceLightning_Ball",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41006013,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 2
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_PierceLightning_Ball_Attack",
+      "abilitySpecials": {
+        "Damage": 0.509
+      },
+      "modifiers": {
+        "ALESystem": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 15,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "doPredicatesForEach": true,
+                "shapeName": "CircleR7NoHeight",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1,
+                "random": true
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Ball_Attack_COUNT",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "modifierName": "PierceLightning_Ball_Attack_FX"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "PierceLightning_Ball_Timer"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "CountAttack"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Attack",
+              "effectPattern": "Lisa_PierceLightning_Ball"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ],
+              "effectPattern": "Eff_PierceLightning_Ball_Attack"
+            }
+          ]
+        },
+        "PierceLightning_Ball_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR7NoHeight",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Ball_Attack_Flag",
+                  "value": 1
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": "Damage",
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementRank": 1.5,
+                  "elementDurability": 6.25,
+                  "enBreak": 10
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 200,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        },
+        "CountAttack": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.4,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_Ball_Attack_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_Ball_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "PierceLightning_Ball_Attack_FX": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_PierceLightning_Ball_Lightning",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.15
+                },
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Caster"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_PierceLightning_Ball_Petal",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_Ball_Attack_Flag",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "value": -1,
+              "key": "_Ball_Attack_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_Ball_Attack_Flag",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ALESystem"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_PierceLightning_Ball_FX",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Lisa_PierceLightning_Ball"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "PierceLightning_Ball_Bullet_Material",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Eff_PierceLightning_Ball_Lightning_Trail"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Lisa_Captain",
+      "abilitySpecials": {
+        "PickRadius": 1.2
+      },
+      "modifiers": {
+        "PickRadius": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AdsorbatePickRadiusDelta": "PickRadius"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "doOffStage": true,
+          "modifierName": "PickRadius"
+        }
+      ]
+    }
+  }
+]

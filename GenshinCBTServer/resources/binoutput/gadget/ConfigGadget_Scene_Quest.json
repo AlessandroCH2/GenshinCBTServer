@@ -1,0 +1,39 @@
+{
+  "SceneObj_Quest_Clue01": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isInvincible": true,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "hasAnimatorDie": true,
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 2
+      }
+    },
+    "field": {
+      "$type": "ConfigTrigger",
+      "concernType": "LocalAvatar",
+      "shape": "CircleR2",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5,
+      "overwriteCampType": true,
+      "campType": "SelfCamp"
+    }
+  }
+}

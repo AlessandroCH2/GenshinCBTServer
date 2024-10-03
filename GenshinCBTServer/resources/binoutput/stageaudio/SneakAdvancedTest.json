@@ -1,0 +1,10 @@
+{
+  "$type": "ConfigAudioStageEvents",
+  "id": 50,
+  "stageCreateEvents": [
+    "Play_amb_scene_church_steal"
+  ],
+  "stageExitEvents": [
+    "Stop_amb_scene_church_steal"
+  ]
+}

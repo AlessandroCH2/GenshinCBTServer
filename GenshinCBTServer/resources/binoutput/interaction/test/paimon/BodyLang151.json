@@ -1,0 +1,12 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "bodyLangParam": 1130
+      }
+    ]
+  ]
+}

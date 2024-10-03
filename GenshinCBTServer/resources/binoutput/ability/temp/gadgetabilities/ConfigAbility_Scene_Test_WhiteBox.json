@@ -1,0 +1,367 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Chest_DropTest_WhiteBox",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 102,
+          "modifierName": "CurveTest"
+        }
+      ],
+      "modifiers": {
+        "CurveTest": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ExecuteGadgetLua",
+              "param1": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Test_WhiteBox_ThornWall_Attack",
+      "modifiers": {
+        "AvatarCheck": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ThornWall_Attack",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "modifierName": "Thorn_Attack"
+            }
+          ]
+        },
+        "Thorn_Attack": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.3,
+          "onAdded": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "filterByFrame": true,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 5,
+                    "y": 5,
+                    "z": 1.5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementDurability": 100,
+                    "strikeType": "Pierce",
+                    "ignoreLevelDiff": true
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 500,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "AllExceptSelf"
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ThornWall_Attack",
+              "useLimitRange": true,
+              "maxValue": 5,
+              "minValue": 0
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Thorn_Attack"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "filterByFrame": true,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 5,
+                    "y": 5,
+                    "z": 1.5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementDurability": 100,
+                    "strikeType": "Pierce",
+                    "ignoreLevelDiff": true
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "AllExceptSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "AvatarCheck"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 5,
+          "key": "_ThornWall_Attack",
+          "useLimitRange": true,
+          "maxValue": 5,
+          "minValue": 0
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "AddGlobalValue",
+          "value": -5,
+          "key": "_ThornWall_Attack",
+          "useLimitRange": true,
+          "maxValue": 5,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_WhiteBox_ElectricWater_Interact",
+      "modifiers": {
+        "ApplyElec": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Element_Shock_Loop_Water"
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                }
+              ],
+              "modifierName": "Electric"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "checkHitLayerType": "Both",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "attackPoint"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 2,
+                    "y": 2,
+                    "z": 0.5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "ElectricWaterCheck",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Electric",
+                    "elementDurability": 0,
+                    "strikeType": "Default"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none"
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Electric": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementType": "Electric",
+          "elementDurability": 80
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ApplyElec"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_WhiteBox_Airflow_Grass_Interact",
+      "modifiers": {
+        "Burning_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Element_Burning"
+            }
+          ]
+        },
+        "GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "isElementDurabilityMutable": false
+        },
+        "Burning_Grass": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "RejectAttackMixin",
+              "attackTag": "BurningDamage"
+            },
+            {
+              "$type": "DoActionByEventMixin",
+              "type": "Current",
+              "onAbilityStateAdded": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "CreateGadget",
+                      "gadgetID": 70900047,
+                      "born": {
+                        "$type": "ConfigBornByTarget"
+                      }
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "modifierName": "Burning_Effect"
+                    }
+                  ]
+                }
+              ],
+              "onAbilityStateRemoved": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "KillGadget",
+                      "gadgetInfo": {
+                        "$type": "SelectTargetsByChildren",
+                        "configID": 70900047,
+                        "type": "Nearest"
+                      }
+                    },
+                    {
+                      "$type": "RemoveModifier",
+                      "modifierName": "Burning_Effect"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 2,
+          "key": "_CUSTOM_ATTACK_SHAPE_TYPE",
+          "useLimitRange": true,
+          "maxValue": 2,
+          "minValue": 2
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Burning_Grass"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrassMaterial"
+        }
+      ]
+    }
+  }
+]

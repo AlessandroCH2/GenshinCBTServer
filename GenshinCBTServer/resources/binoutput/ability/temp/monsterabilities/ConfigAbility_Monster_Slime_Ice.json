@@ -1,0 +1,904 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_02_IceState",
+      "abilityMixins": [
+        {
+          "$type": "IceFloorMixin",
+          "width": 0.75,
+          "height": 0.75,
+          "doAction": {
+            "$type": "AttachModifier",
+            "modifierName": "UNIQUE_IceSurface"
+          }
+        }
+      ],
+      "modifiers": {
+        "IceState": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Frozen",
+          "elementDurability": 50,
+          "isElementDurabilityMutable": false,
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceBuffDebuffs": [
+                "ElementFreeze"
+              ]
+            }
+          ]
+        },
+        "UNIQUE_IceSurface": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementType": "Ice",
+          "elementDurability": 80
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "IceState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_03_IceState",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_JUMPATTACK_FLAG",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            0,
+            0.9
+          ],
+          "modifierNameSteps": [
+            "IceFloor_Trigger"
+          ]
+        }
+      ],
+      "modifiers": {
+        "IceState": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Frozen",
+          "elementDurability": 50,
+          "isElementDurabilityMutable": false
+        },
+        "IceFloor_Trigger": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "IceFloorMixin",
+              "width": 1.5,
+              "height": 1.5,
+              "doAction": {
+                "$type": "AttachModifier",
+                "modifierName": "UNIQUE_IceSurface"
+              }
+            }
+          ]
+        },
+        "UNIQUE_IceSurface": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 1,
+          "elementType": "Ice",
+          "elementDurability": 80
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "IceState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_03_Shield",
+      "modifiers": {
+        "UNIQUE_Shield": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementType": "Frozen",
+          "elementDurability": 300,
+          "modifierMixins": [
+            {
+              "$type": "ElementShieldMixin",
+              "elementType": "Ice",
+              "shieldAngle": 360,
+              "shieldHPRatio": 1,
+              "damageRatio": 0.2
+            },
+            {
+              "$type": "AttachModifierToElementDurabilityMixin",
+              "valueSteps": [
+                0.5,
+                100,
+                200,
+                300.5
+              ],
+              "modifierNameSteps": [
+                "Shield_Stage03",
+                "Shield_Stage02",
+                "Shield_Stage01"
+              ]
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0.4
+          },
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "ShieldState",
+              "value": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": [
+                "HitBoxShield"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": [
+                "HitBox"
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": [
+                "HitBoxShield"
+              ]
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "ShieldState"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ShieldReborn"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Slime_Ice_ShieldHit"
+            },
+            {
+              "$type": "FireAudio"
+            }
+          ]
+        },
+        "ShieldReborn": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 15,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "RebornGCD",
+              "value": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "RebornGCD"
+            }
+          ]
+        },
+        "Shield_Stage01": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": [
+                "Ice01"
+              ],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": [
+                "Ice01"
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Slime_Ice_ShieldDestroy_Stage01"
+            }
+          ]
+        },
+        "Shield_Stage02": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": [
+                "Ice02"
+              ],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": [
+                "Ice02"
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Slime_Ice_ShieldDestroy_Stage02"
+            }
+          ]
+        },
+        "Shield_Stage03": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": [
+                "Ice03"
+              ],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": [
+                "Ice03"
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Slime_Ice_ShieldDestroy_Stage03"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Shield"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Shield"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_TestTool_ShieldDestroy",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Shield"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_JumpGround_castShadow",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerSetCastShadow"
+        },
+        {
+          "$type": "EnablePushColliderName",
+          "pushColliderNames": [
+            "PushCollider"
+          ]
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_JUMPATTACK_FLAG",
+          "maxValue": 0,
+          "minValue": 0
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.06,
+            "shakeTime": 0.15,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_JumpGround_Alert",
+      "modifiers": {
+        "JumpGround_Alert": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Slime_Fire_JumpGround_Alert",
+              "born": {
+                "$type": "ConfigBornByRushToPoint"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetCastShadow",
+              "castShadow": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushCollider"
+              ],
+              "setEnable": true
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "JumpGround_Alert"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_JumpGround_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 1.5,
+              "scale": 1,
+              "fanAngle": 360,
+              "radius": 2
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 3,
+                "damagePercentageRatio": 0,
+                "elementType": "Ice",
+                "elementDurability": 50,
+                "strikeType": "Blunt",
+                "enBreak": 200
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 480,
+                "hitImpulseY": 600,
+                "hitHaltTimeScale": 0.01
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.12,
+                "shakeTime": 0.15,
+                "shakeDistance": 25,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": -1
+                }
+              }
+            }
+          },
+          "targetType": "AllExceptSelf"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -1,
+          "key": "_JUMPATTACK_FLAG",
+          "maxValue": 0,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_ThrowAtk",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ThrowAttack_BS_01",
+            "ThrowAttack_BS_02",
+            "ThrowAttack_BS_03"
+          ],
+          "modifierName": "ThrowAttack_BS_01"
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ThrowAttack_BS_02",
+            "ThrowAttack_BS_03"
+          ],
+          "modifierName": "ThrowAttack_BS_02"
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ThrowAttack_BS_03"
+          ],
+          "modifierName": "ThrowAttack_BS_03"
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ThrowAttack_BS",
+            "ThrowAttack_BS_01",
+            "ThrowAttack_BS_02",
+            "ThrowAttack_BS_03"
+          ],
+          "modifierName": "ThrowAttack_BS"
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ThrowAttack_AS"
+          ],
+          "modifierName": "SetAimPoint"
+        }
+      ],
+      "modifiers": {
+        "SetAimPoint": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "target": "SelfAttackTarget",
+              "gadgetID": 42001001,
+              "campID": 4001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "onGround": true
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ResetAIAttackTarget"
+            }
+          ]
+        },
+        "ThrowAttack_BS_01": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Slime_Ice_Cone_BS",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "IceCone_01"
+              }
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Slime_Ice_Cone_Missile_BS",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "IceCone_01"
+              }
+            }
+          ]
+        },
+        "ThrowAttack_BS_02": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Slime_Ice_Cone_BS",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "IceCone_02"
+              }
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Slime_Ice_Cone_Missile_BS",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "IceCone_02"
+              }
+            }
+          ]
+        },
+        "ThrowAttack_BS_03": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Slime_Ice_Cone_BS",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "IceCone_03"
+              }
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Slime_Ice_Cone_Missile_BS",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "IceCone_03"
+              }
+            }
+          ]
+        },
+        "ThrowAttack_BS": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ThrowAttack_BS_01"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ThrowAttack_BS_02"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ThrowAttack_BS_03"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetSelfAttackTarget",
+          "otherTargets": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 42001001,
+            "type": "Last"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42001004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget"
+            },
+            "attachPointName": "IceCone_01"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42001004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget"
+            },
+            "attachPointName": "IceCone_02"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42001004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget"
+            },
+            "attachPointName": "IceCone_03"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_Cone_Loop",
+      "modifiers": {
+        "UNIQUE_IceCone_Loop": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementType": "Frozen",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Slime_Ice_Cone_Missile"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_IceCone_Loop"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_Cone_Explode",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Slime_Ice_Cone_AS",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint"
+          }
+        },
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_IceCone_Loop"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.25
+                }
+              },
+              "radius": 1
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Ice",
+                "elementDurability": 25,
+                "strikeType": "Blunt",
+                "enBreak": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.06,
+                "shakeTime": 0.09
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_BlowAtk",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 42001005,
+          "campID": 4001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 4
+            },
+            "onGround": true,
+            "alongGround": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_Fog",
+      "modifiers": {
+        "Ice_Fog": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Slime_Ice_Fog"
+            },
+            {
+              "$type": "SetPoseBool",
+              "target": "Owner",
+              "boolID": "Protected",
+              "value": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetPoseBool",
+              "target": "Owner",
+              "boolID": "Protected"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 3
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.3,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementDurability": 25,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "hitLevel": "Light",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Ice_Fog"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_02_AnimationSteer",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "NormalAttack"
+          ],
+          "endNormalizedTime": 0.25,
+          "angularSpeed": 360,
+          "attackDistance": 12
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Slime_Ice_03_AnimationSteer",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Turn"
+          ],
+          "endNormalizedTime": 0.54,
+          "angularSpeed": 180,
+          "attackDistance": 12
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "JumpAttack"
+          ],
+          "endNormalizedTime": 0.2,
+          "angularSpeed": 120,
+          "attackDistance": 12
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "ThrowAttack"
+          ],
+          "endNormalizedTime": 0.56,
+          "angularSpeed": 360,
+          "attackDistance": 12
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "BlowAttack"
+          ],
+          "endNormalizedTime": 0.24,
+          "angularSpeed": 360,
+          "attackDistance": 12
+        }
+      ]
+    }
+  }
+]

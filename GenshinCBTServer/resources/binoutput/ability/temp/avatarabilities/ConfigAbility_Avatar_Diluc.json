@@ -1,0 +1,2262 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_ExtraAttack",
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "skillID": 10160,
+          "chargeTime": 0.25,
+          "secondChargeTime": 5,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 1
+            }
+          ],
+          "OnBeginCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 6
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "EndHoldTrigger"
+            }
+          ],
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "EndHoldTrigger"
+            }
+          ],
+          "OnBeginSecondCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "EndHoldTrigger"
+            }
+          ],
+          "chargeStateIDs": [
+            "Attack01_BS",
+            "Attack01",
+            "Attack02",
+            "Attack03",
+            "Attack04",
+            "ExtraAttack",
+            "ExtraAttack1"
+          ]
+        },
+        {
+          "$type": "AvatarSteerByCameraMixin",
+          "stateIDs": [
+            "ExtraAttack1"
+          ],
+          "angularSpeed": 120
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack1"
+          ],
+          "modifierName": "Cost"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack",
+            "ExtraAttack1",
+            "ExtraAttack2",
+            "ExtraAttack3"
+          ],
+          "modifierName": "Camera"
+        }
+      ],
+      "modifiers": {
+        "Camera": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ]
+        },
+        "Cost": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "CostStaminaMixin",
+              "costStaminaDelta": 40,
+              "onStaminaEmpty": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "triggerID": "EndHoldTrigger"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_ExtraAttack_CycleEffect",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack1",
+            "ExtraAttack2",
+            "ExtraAttack3"
+          ],
+          "modifierName": "RemoveCycle"
+        }
+      ],
+      "modifiers": {
+        "Eff_Diluc_ExtraAttack_Cycle": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Multiple",
+          "duration": 2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_ExtraAttack_Cycle"
+            }
+          ]
+        },
+        "RemoveCycle": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Eff_Diluc_ExtraAttack_Cycle"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Eff_Diluc_ExtraAttack_Cycle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_NormalAttackCameraShake",
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeRange": 0.12,
+            "shakeTime": 0.14,
+            "shakeDistance": 10
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_NormalAttackCameraShake_01",
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeRange": 0.15,
+            "shakeTime": 0.2,
+            "shakeDistance": 10
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_NormalAttackCameraShake_02",
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeRange": 0.2,
+            "shakeTime": 0.3,
+            "shakeDistance": 10
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_Fire_Blade",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "FireBlade1",
+          "modifierName": "ResetTrigger1",
+          "normalizeEnd": 0.69
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "FireBlade2",
+          "modifierName": "ResetTrigger2",
+          "normalizeEnd": 0.657
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "FireBlade3",
+          "modifierName": "ResetTrigger3",
+          "normalizeEnd": 0.7
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireBlade1",
+            "FireBlade2",
+            "FireBlade3"
+          ],
+          "modifierName": "GenerateElemBall_FireBlade"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_DilucFireBlade_COUNT",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -1.5,
+            0.5,
+            1.5,
+            2.5,
+            3.5
+          ],
+          "modifierNameSteps": [
+            "Blank",
+            "Switch1To2",
+            "2To3",
+            "Switch3To0"
+          ],
+          "removeAppliedModifier": false
+        }
+      ],
+      "abilitySpecials": {
+        "GetElementRatio": 1
+      },
+      "modifiers": {
+        "ResetTrigger1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            }
+          ]
+        },
+        "ResetTrigger2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            }
+          ]
+        },
+        "ResetTrigger3": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            }
+          ]
+        },
+        "Blank": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100
+        },
+        "Switch1To2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 4,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "fromSkillID": 10161,
+              "toSkillID": 10162
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10161,
+              "costStaminaRatio": 1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": -4,
+              "key": "_ABILITY_DilucFireBlade_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": -1
+            }
+          ]
+        },
+        "2To3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Switch1To2"
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10162,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Switch2To3"
+            }
+          ]
+        },
+        "Switch2To3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 4,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "fromSkillID": 10161,
+              "toSkillID": 10163
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": -4,
+              "key": "_ABILITY_DilucFireBlade_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": -1
+            }
+          ]
+        },
+        "Switch3To0": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Switch2To3"
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10163,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -4,
+              "key": "_ABILITY_DilucFireBlade_COUNT",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": -1
+            }
+          ]
+        },
+        "GenerateElemBall_FireBlade": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "Ball"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "Ball_Extra"
+                }
+              ]
+            }
+          ]
+        },
+        "Ball": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 0.8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2017,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 1
+                }
+              },
+              "ratio": "GetElementRatio",
+              "baseEnergy": 3
+            }
+          ]
+        },
+        "Ball_Extra": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Multiple",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 0.8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 0.33,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2017,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": 1
+                    }
+                  },
+                  "ratio": "GetElementRatio",
+                  "baseEnergy": 3
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_Fire_BladeSet1",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireBlade1",
+            "FireBlade1A"
+          ],
+          "modifierName": "Eff_Diluc_FireBlade_Weapon_01"
+        }
+      ],
+      "modifiers": {
+        "Eff_Diluc_FireBlade_Weapon_01": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_FireBlade_Weapon_01"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 3,
+          "key": "_ABILITY_DilucFireBlade_COUNT",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "TriggerAbility",
+          "abilityName": "Avatar_Diluc_AfterFireBlade"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_Fire_BladeSet2",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireBlade2",
+            "FireBlade2A"
+          ],
+          "modifierName": "Eff_Diluc_FireBlade_Weapon_02"
+        }
+      ],
+      "modifiers": {
+        "Eff_Diluc_FireBlade_Weapon_02": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_FireBlade_Weapon_02"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 3,
+          "key": "_ABILITY_DilucFireBlade_COUNT",
+          "useLimitRange": true,
+          "maxValue": 2,
+          "minValue": 0
+        },
+        {
+          "$type": "TriggerAbility",
+          "abilityName": "Avatar_Diluc_AfterFireBlade"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_Fire_BladeSet3",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireBlade3",
+            "FireBlade3A"
+          ],
+          "modifierName": "Eff_Diluc_FireBlade_Weapon_03"
+        }
+      ],
+      "modifiers": {
+        "Eff_Diluc_FireBlade_Weapon_03": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_FireBlade_Weapon_03"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_FireBlade_Weapon_03_01"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 4,
+          "key": "_ABILITY_DilucFireBlade_COUNT",
+          "useLimitRange": true,
+          "maxValue": 3,
+          "minValue": 0
+        },
+        {
+          "$type": "TriggerAbility",
+          "abilityName": "Avatar_Diluc_AfterFireBlade"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_Fire_Enhancement",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireCross",
+            "FireCross_AS"
+          ],
+          "modifierName": "Fire_Enhancement_State"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireCross",
+            "FireCross_AS"
+          ],
+          "modifierName": "WeatherChange"
+        }
+      ],
+      "abilitySpecials": {
+        "Dura": 2.2,
+        "ElementDurability": 20,
+        "FireUp": 0.12
+      },
+      "modifiers": {
+        "WeatherChange": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "type": "Skill",
+              "weatherPattern": "SkillPattern_Diluc_FireCross",
+              "transDuration": 1,
+              "duration": 2
+            }
+          ]
+        },
+        "Fire_Enhancement_State": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01",
+                  "sheathPoint"
+                ]
+              },
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByUnlockTalentParam",
+                      "talentParam": "Diluc_Fire_Enhancement"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "Fire_Enhancement_Weapon_Remove"
+            },
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Diluc_Fire_Enhancement"
+                }
+              ],
+              "modifierName": "Fire_Enhancement_Diluc"
+            }
+          ]
+        },
+        "Fire_Enhancement_Weapon_Remove": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Eff_Weapon_01"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Fire_Enhancement_Weapon"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "doOffStage": true,
+              "modifierName": "Eff_Weapon_01"
+            },
+            {
+              "$type": "RemoveModifier",
+              "doOffStage": true,
+              "modifierName": "Fire_Enhancement_Weapon"
+            }
+          ]
+        },
+        "Eff_Weapon_01": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 4,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_FireCross_Weapon_01"
+            }
+          ]
+        },
+        "Fire_Enhancement_Weapon": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": "Dura",
+          "elementType": "Fire",
+          "elementDurability": "ElementDurability",
+          "overrideWeaponElement": true,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_FireCross_Weapon_02"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Eff_Weapon_03"
+            }
+          ]
+        },
+        "Eff_Weapon_03": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_Diluc_FireCross_Weapon_03"
+            }
+          ]
+        },
+        "Fire_Enhancement_Diluc": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "Dura",
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "properties": {
+            "Actor_FireAddHurtDelta": "FireUp"
+          },
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01",
+                  "sheathPoint"
+                ]
+              },
+              "modifierName": "Fire_Enhancement_Weapon_Remove"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01",
+                  "sheathPoint"
+                ]
+              },
+              "modifierName": "Fire_Enhancement_Weapon"
+            }
+          ],
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": [
+              "equip01",
+              "sheathPoint"
+            ]
+          },
+          "modifierName": "Fire_Enhancement_Weapon"
+        },
+        {
+          "$type": "ApplyModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": [
+              "equip01",
+              "sheathPoint"
+            ]
+          },
+          "modifierName": "Eff_Weapon_01"
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10165,
+          "costStaminaRatio": 1
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "ApplyModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": [
+              "equip01",
+              "sheathPoint"
+            ]
+          },
+          "modifierName": "Fire_Enhancement_Weapon_Remove"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_FireCrossCamera",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireCross"
+          ],
+          "modifierName": "isGhost"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireCross"
+          ],
+          "modifierName": "invincible"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FireCross",
+            "FireCross_AS"
+          ],
+          "modifierName": "camera"
+        }
+      ],
+      "modifiers": {
+        "isGhost": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceBuffDebuffs": [
+                "ElementFreeze",
+                "ElementBurning",
+                "ElementWet",
+                "ElementFrozen",
+                "ElementShock",
+                "Struggle",
+                "ElementIce",
+                "DefenseDown",
+                "SpeedDown"
+              ]
+            }
+          ]
+        },
+        "invincible": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "Invincible"
+        },
+        "camera": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ControlEmotion",
+              "toggleEmoSync": false,
+              "toggleBlink": false,
+              "toggleEyeKey": false
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            },
+            {
+              "$type": "ControlEmotion",
+              "doOffStage": true
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AvatarEnterCameraShot",
+          "predicates": [
+            {
+              "$type": "ByAttackNotHitScene",
+              "attackPattern": {
+                "$type": "ConfigAttackCircle",
+                "triggerType": "TriggerNoRepeat",
+                "height": 0.2,
+                "scale": 1,
+                "centerYOffset": 1.5,
+                "fanAngle": 30,
+                "radius": 1.4
+              }
+            }
+          ],
+          "cameraMoveCfgPath": "Camera_Diluc_FireCross"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Push1",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_Diluc_FireCross_Aoe",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "alongGround": true
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "ignoreMassive": true,
+              "scale": 1,
+              "fanAngle": 360,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0,
+                "damagePercentageRatio": 0,
+                "elementDurability": 1,
+                "enBreak": 0,
+                "attackType": "None"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.01
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraRadialBlur",
+          "cameraRadialBlur": {
+            "$type": "ConfigCameraRadialBlur",
+            "power": 0.8,
+            "blurTime": 0.25,
+            "fadeTime": 0.3
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Eff_Diluc_FireCross_Aoe1"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "triggerType": "TriggerNoRepeat",
+              "filterByFrame": true,
+              "ignoreMassive": true,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": -1
+                }
+              },
+              "size": {
+                "$type": "DynamicFloatVector",
+                "x": 16,
+                "y": 4,
+                "z": 6
+              }
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 2.4,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 20,
+                "strikeType": "Blunt",
+                "enBreak": 88,
+                "attackType": "Melee"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Eff_Diluc_FireBlade_Hit_01",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTime": 0.09,
+                "hitHaltTimeScale": 0.01,
+                "canBeDefenceHalt": true
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "filterByFrame": true,
+              "ignoreMassive": true,
+              "scale": 1,
+              "fanAngle": 360,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0,
+                "damagePercentageRatio": 0,
+                "elementDurability": 1,
+                "enBreak": 0,
+                "attackType": "None"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Eff_Diluc_FireBlade_Hit_01",
+                "hitLevel": "Air",
+                "hitImpulseX": 480,
+                "hitImpulseY": 600,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.01
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_FireCross",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41016001,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.6,
+              "z": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Material",
+      "abilitySpecials": {
+        "Time": 0,
+        "damage": 1.2,
+        "Interval": 0.2
+      },
+      "modifiers": {
+        "Attack_Box": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": "Interval",
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "ignoreMassive": true,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": -5
+                    }
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 16,
+                    "y": 4,
+                    "z": 8
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Burst",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "damage",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementRank": 3,
+                    "elementDurability": 10,
+                    "strikeType": "Default",
+                    "enBreak": 44,
+                    "attackType": "Range"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 800,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.01
+                  },
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.09,
+                    "shakeTime": 0.06,
+                    "shakeDistance": 30
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Fire_Box": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.6,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": -1.5,
+                      "z": -6
+                    }
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 2.5,
+                    "y": 1,
+                    "z": 6
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Burst",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementRank": 3,
+                    "elementDurability": 36,
+                    "strikeType": "Default",
+                    "enBreak": 0,
+                    "attackType": "None"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.01
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Attack_Box"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Fire_Box"
+        },
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Eff_Diluc_FireCross_01"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Explode",
+      "abilitySpecials": {
+        "damage": 1.2
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "triggerType": "TriggerNoRepeat",
+              "filterByFrame": true,
+              "ignoreMassive": true,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": -1,
+                  "z": -6
+                }
+              },
+              "size": {
+                "$type": "DynamicFloatVector",
+                "x": 16,
+                "y": 6,
+                "z": 10
+              }
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Burst",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%damage*2",
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 3,
+                "elementDurability": 10,
+                "strikeType": "Default",
+                "enBreak": 88,
+                "attackType": "Range"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "Eff_Diluc_FireBlade_Hit_01",
+                "hitLevel": "Air",
+                "hitImpulseX": 795,
+                "hitImpulseY": 900,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.01
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.12,
+                "shakeTime": 0.09
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_SecondWind",
+      "abilitySpecials": {
+        "HealRatio": 0.03,
+        "HpRatio": 0.5
+      },
+      "modifiers": {
+        "HpHeal": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 10,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "predicates": [
+                {
+                  "$type": "ByTargetHPRatio",
+                  "target": "Self",
+                  "logic": "Lesser",
+                  "HPRatio": "HpRatio"
+                }
+              ],
+              "amountByTargetMaxHPRatio": "HealRatio",
+              "muteHealEffect": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "HpHeal"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_FireHowl",
+      "abilitySpecials": {
+        "AttackRate": 0.08,
+        "SpeedRate": 0.02,
+        "maxStackCount": 2,
+        "stack_num": 0
+      },
+      "modifiers": {
+        "HowlCheck": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_DilucTalentHowl_COUNT",
+              "defaultGlobalValueOnCreate": 0,
+              "valueSteps": [
+                -0.5,
+                0.5,
+                1.5,
+                2.5,
+                3.5,
+                4.5
+              ],
+              "modifierNameSteps": [
+                "Blank",
+                "AttackUp1",
+                "AttackUp2",
+                "AttackUp3",
+                "AttackUp4"
+              ]
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Fire"
+                }
+              ],
+              "modifierName": "Howl"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -4,
+              "key": "_ABILITY_DilucTalentHowl_COUNT",
+              "useLimitRange": true,
+              "maxValue": "maxStackCount",
+              "minValue": 0
+            }
+          ]
+        },
+        "Howl": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Buff_Time"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_DilucTalentHowl_COUNT",
+              "useLimitRange": true,
+              "maxValue": "maxStackCount",
+              "minValue": 0
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "_ABILITY_DilucTalentHowl_COUNT",
+              "overrideMapKey": "stack_num"
+            }
+          ]
+        },
+        "Buff_Time": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Attack01_BS",
+                "Attack01",
+                "Attack02",
+                "Attack03",
+                "Attack04"
+              ],
+              "modifierName": "AttackSpeedUp"
+            }
+          ],
+          "state": "AttackUp",
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": -4,
+              "key": "_ABILITY_DilucTalentHowl_COUNT",
+              "useLimitRange": true,
+              "maxValue": "maxStackCount",
+              "minValue": 0
+            }
+          ]
+        },
+        "Blank": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "AttackUp1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": "AttackRate"
+          },
+          "isLimitedProperties": true
+        },
+        "AttackUp2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": "%AttackRate*2"
+          },
+          "isLimitedProperties": true
+        },
+        "AttackUp3": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": "%AttackRate*3"
+          },
+          "isLimitedProperties": true
+        },
+        "AttackUp4": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": "%AttackRate*4"
+          },
+          "isLimitedProperties": true
+        },
+        "AttackSpeedUp": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Animator_OverallSpeedRatio": "%SpeedRate*%stack_num"
+          },
+          "isLimitedProperties": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "HowlCheck"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_DilucTalentCritTime_COUNT",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -1,
+            0.5,
+            4.5
+          ],
+          "modifierNameSteps": [
+            "BlankCritUp",
+            "NormalCritUp"
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "Dura": 10,
+        "AtkPercent1": 0.15,
+        "AtkPercent2": 0.15,
+        "AtkPercent3": 0.15,
+        "AtkPercent4": 0.15
+      },
+      "modifiers": {
+        "BlankCritUp": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "NormalCritUp": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "Dura",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "ATK01",
+              "damagePercentageRatio": "AtkPercent1"
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "ATK02",
+              "damagePercentageRatio": "AtkPercent2"
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "ATK03",
+              "damagePercentageRatio": "AtkPercent3"
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "ATK04",
+              "damagePercentageRatio": "AtkPercent4"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_AfterFireBlade"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": -4,
+              "key": "_ABILITY_DilucTalentCritTime_COUNT",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "NormalCritUp"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 2,
+          "key": "_ABILITY_DilucTalentCritTime_COUNT",
+          "useLimitRange": true,
+          "maxValue": 4,
+          "minValue": 0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "NormalCritUp"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBladeCountDown",
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobalValue",
+          "value": -1,
+          "key": "_ABILITY_DilucTalentCritTime_COUNT",
+          "useLimitRange": true,
+          "maxValue": 4,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_NextFireBlade1",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_DilucFireBlade_COUNT",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5,
+            2.5,
+            3.5
+          ],
+          "modifierNameSteps": [
+            "T",
+            "T",
+            "T",
+            "T"
+          ],
+          "actionQueues": [
+            [],
+            [],
+            [
+              {
+                "$type": "RemoveModifier",
+                "modifierName": "Timer2"
+              }
+            ],
+            [
+              {
+                "$type": "RemoveModifier",
+                "modifierName": "Timer2"
+              }
+            ]
+          ],
+          "removeAppliedModifier": false
+        }
+      ],
+      "abilitySpecials": {
+        "Rate2": 0.4
+      },
+      "modifiers": {
+        "T": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "Timer2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.6,
+          "elementDurability": 100,
+          "thinkInterval": 2,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "NextFireBlade2"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_Talent_NextFireBlade"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Timer2"
+            }
+          ]
+        },
+        "NextFireBlade2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 4,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "FB02",
+              "damagePercentageRatio": "Rate2"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Timer2"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_NextFireBlade2",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_DilucFireBlade_COUNT",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5,
+            2.5,
+            3.5
+          ],
+          "modifierNameSteps": [
+            "T",
+            "T",
+            "T",
+            "T"
+          ],
+          "actionQueues": [
+            [],
+            [
+              {
+                "$type": "RemoveModifier",
+                "modifierName": "Timer3"
+              }
+            ],
+            [],
+            [
+              {
+                "$type": "RemoveModifier",
+                "modifierName": "Timer3"
+              }
+            ]
+          ],
+          "removeAppliedModifier": false
+        }
+      ],
+      "abilitySpecials": {
+        "Rate3": 0.4
+      },
+      "modifiers": {
+        "T": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "Timer3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.6,
+          "elementDurability": 100,
+          "thinkInterval": 2,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "NextFireBlade3"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Diluc_Talent_NextFireBlade"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Timer3"
+            }
+          ]
+        },
+        "NextFireBlade3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 4,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "FB03",
+              "damagePercentageRatio": "Rate3"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Timer3"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Diluc_EnterSkill",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_TeamTalent_CoolDown_Trigger",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "modifierNameSteps": [
+            "Blank",
+            "TeamTalent_CoolDown_Trigger"
+          ]
+        }
+      ],
+      "modifiers": {
+        "Diluc_EnterSkill_Detect_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 2,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_Is_Diluc",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurTeamAvatars",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Is_Diluc",
+                      "value": 1,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "Diluc_EnterSkill_Detect"
+            }
+          ]
+        },
+        "Diluc_EnterSkill_Detect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 2.1,
+          "elementDurability": 100,
+          "thinkInterval": 0.3,
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_Diluc_MONSTER_COUNT",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": -1
+            },
+            {
+              "$type": "Predicated",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "doPredicatesForEach": true,
+                "shapeName": "CircleR10",
+                "campTargetType": "All",
+                "sizeRatio": 1
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster",
+                    "MonsterEquip",
+                    "Gear"
+                  ]
+                },
+                {
+                  "$type": "ByHasElement",
+                  "element": "Grass"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "value": 1,
+                  "key": "_ABILITY_Diluc_MONSTER_COUNT",
+                  "useLimitRange": true,
+                  "maxValue": 0,
+                  "minValue": -1
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Diluc_MONSTER_COUNT",
+                  "value": 0,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByIsCombat"
+                },
+                {
+                  "$type": "BySkillReady",
+                  "skillID": 10102
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Caster",
+                  "predicates": [
+                    {
+                      "$type": "ByIsCombat"
+                    },
+                    {
+                      "$type": "BySkillReady",
+                      "skillID": 10102
+                    }
+                  ],
+                  "modifierName": "Diluc_EnterSkill_Switch"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "predicates": [
+                    {
+                      "$type": "ByIsCombat"
+                    },
+                    {
+                      "$type": "BySkillReady",
+                      "skillID": 10102
+                    }
+                  ],
+                  "modifierName": "Diluc_EnterSkill_Mark"
+                }
+              ]
+            }
+          ]
+        },
+        "Diluc_EnterSkill_Switch": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": 1,
+              "key": "_ABILITY_Diluc_EnterSkill_Switch",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": -1,
+              "key": "_ABILITY_Diluc_EnterSkill_Switch",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Diluc_EnterSkill_Mark": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_WhiteBox_TeamTalent_Fire"
+            }
+          ]
+        },
+        "EnterSKill_Start": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1.6,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_WhiteBox_EnterSKill_Fire"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Diluc_TeamTalent_Actor_CriticalDelta_Timer"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "ignoreMassive": true,
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 2.5
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "EnterSkill",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 1,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 50,
+                    "enBreak": 115
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "Hit_Fire_Default_Small",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 800,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.02
+                  },
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.15,
+                    "shakeTime": 0.06
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "ignoreMassive": true,
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 2.5
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "EnterSkill",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 1,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 50,
+                    "enBreak": 115
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "Hit_Fire_Default_Small",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 800,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.02
+                  },
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.15,
+                    "shakeTime": 0.06
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "TeamTalent_CoolDown_Trigger": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "doOffStage": true,
+              "skillID": 10102,
+              "cdRatio": 3,
+              "costStaminaRatio": 1
+            }
+          ]
+        },
+        "Blank": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "Diluc_TeamTalent_Actor_CriticalDelta_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.6,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "doOffStage": true,
+              "modifierName": "Diluc_TeamTalent_Actor_CriticalDelta"
+            }
+          ]
+        },
+        "Diluc_TeamTalent_Actor_CriticalDelta": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 15,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": 0.3
+          },
+          "state": "AttackUp"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "doOffStage": true,
+          "modifierName": "Diluc_EnterSkill_Detect_Handler"
+        }
+      ],
+      "onAvatarIn": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Diluc_EnterSkill_Switch",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            },
+            {
+              "$type": "ByIsCombat"
+            },
+            {
+              "$type": "BySkillReady",
+              "skillID": 10102
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "EnterSKill_Start"
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "Team",
+              "doOffStage": true,
+              "abilityName": "TeamTalent_CoolDown_Trigger"
+            },
+            {
+              "$type": "RemoveModifier",
+              "target": "CurTeamAvatars",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByIsCombat"
+                },
+                {
+                  "$type": "BySkillReady",
+                  "skillID": 10102
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Diluc_EnterSkill_Switch",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "modifierName": "Diluc_EnterSkill_Mark"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByIsCombat"
+                },
+                {
+                  "$type": "BySkillReady",
+                  "skillID": 10102
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Diluc_EnterSkill_Switch",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "value": -1,
+              "key": "_ABILITY_Diluc_EnterSkill_Switch",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

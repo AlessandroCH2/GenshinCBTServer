@@ -1,0 +1,203 @@
+{
+  "SceneObj_Environment_GrassMaterial_LeaveStacks": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      },
+      "viewSize": 1.5,
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 20,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isInvincible": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.3,
+        "dieForceDisappearTime": 0.35
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Environment_GrassMaterial_LeaveStacks_Interact",
+        "abilityName": "SceneObj_Environment_GrassMaterial_LeaveStacks_Interact"
+      }
+    ]
+  },
+  "SceneObj_Environment_GrassMaterial_LeafBlanket": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2.5,
+      "affectedByWorld": true
+    },
+    "customAttackShape": {
+      "$type": "ConfigCustomAttackShape",
+      "box": {
+        "$type": "ConfigCustomAttackBox",
+        "customAttackBox_Size_X": 2,
+        "customAttackBox_Size_Y": 2,
+        "customAttackBox_Size_Z": 0.2
+      }
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 50,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.3,
+        "dieForceDisappearTime": 0.35
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Environment_GrassMaterial_LeafBlanket_Interact",
+        "abilityName": "SceneObj_Environment_GrassMaterial_LeafBlanket_Interact"
+      }
+    ]
+  },
+  "SceneObj_Environment_GrassMaterial_GrassStacks": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2.5,
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 20,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isInvincible": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.3,
+        "dieForceDisappearTime": 0.35
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Environment_GrassMaterial_GrassStacks_Interact",
+        "abilityName": "SceneObj_Environment_GrassMaterial_GrassStacks_Interact"
+      }
+    ]
+  },
+  "SceneObj_Environment_GrassMaterial_LeafBlanket02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 6,
+        "scaleY": 6,
+        "scaleZ": 0.2
+      },
+      "viewSize": 2.5,
+      "affectedByWorld": true
+    },
+    "customAttackShape": {
+      "$type": "ConfigCustomAttackShape",
+      "box": {
+        "$type": "ConfigCustomAttackBox",
+        "customAttackBox_Size_X": 6,
+        "customAttackBox_Size_Y": 6,
+        "customAttackBox_Size_Z": 0.2
+      }
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 500,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.3,
+        "dieForceDisappearTime": 0.35
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Environment_GrassMaterial_LeafBlanket_Interact",
+        "abilityName": "SceneObj_Environment_GrassMaterial_LeafBlanket02_Interact"
+      }
+    ]
+  }
+}

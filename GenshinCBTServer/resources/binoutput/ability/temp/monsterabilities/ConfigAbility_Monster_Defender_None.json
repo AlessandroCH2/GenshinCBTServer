@@ -1,0 +1,1800 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Born",
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 0,
+          "key": "_ABILITY_DEFENDER_NONE_WEAKNESSPROTECT",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "TriggerAbility",
+          "predicates": [
+            {
+              "$type": "ByAnimatorFloat",
+              "logic": "Equal",
+              "value": 100,
+              "parameter": "PoseID"
+            }
+          ],
+          "abilityName": "Defender_None_Weakness"
+        },
+        {
+          "$type": "TriggerAbility",
+          "predicates": [
+            {
+              "$type": "ByAnimatorFloat",
+              "logic": "Equal",
+              "value": 101,
+              "parameter": "PoseID"
+            }
+          ],
+          "abilityName": "Defender_None_PowerOff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_PowerOff",
+      "modifiers": {
+        "UNIQUE_Defender_PowerOff": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "properties": {
+            "Entity_MassRatio": 1000,
+            "Entity_WeightRatio": 5,
+            "Actor_EndureDelta": 0
+          },
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "PowerOff_Invincible"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "PowerOff_IsGhostToAllied"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "PowerOff_IsGhostToEnemy"
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "hide": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "PowerOff",
+              "value": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "HideUIBillBoard"
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "PowerOff"
+            }
+          ]
+        },
+        "PowerOff_Invincible": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "Invincible"
+        },
+        "PowerOff_IsGhostToAllied": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "IsGhostToAllied"
+        },
+        "PowerOff_IsGhostToEnemy": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "IsGhostToEnemy"
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Defender_PowerOff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_PowerOff_WakeUp",
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorTrigger",
+          "triggerID": "WakeUpTrigger"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_PowerOff_Remove",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "PowerOff_Warning"
+          ],
+          "modifierName": "EyeEffect_PowerOffEnd"
+        }
+      ],
+      "modifiers": {
+        "EyeEffect_PowerOffEnd": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Eye_02"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "EyeEffect_PowerOffEnd"
+        },
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Defender_PowerOff"
+        },
+        {
+          "$type": "TriggerAbility",
+          "abilityName": "Defender_None_Weakness"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Weakness",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Break"
+          ],
+          "modifierName": "UNIQUE_Defender_BreakState"
+        }
+      ],
+      "abilitySpecials": {
+        "WeaknessDurability": 150
+      },
+      "modifiers": {
+        "UNIQUE_Defender_Weakness": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": "WeaknessDurability",
+          "properties": {
+            "Actor_EndureDelta": 1
+          },
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "EnergyState",
+              "value": 1
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Eye"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Active_Back"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_BackSmoke"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": [
+                "HeadBox",
+                "BackBox"
+              ],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "WeakStartTrigger"
+            },
+            {
+              "$type": "SetPoseInt",
+              "intID": "EnergyState"
+            },
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Defender_None_Weak"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Defender_None_Eye_03"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Defender_None_Active_Back_02"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": [
+                "HeadBox",
+                "BackBox"
+              ]
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHitBoxName",
+                  "hitBoxNames": [
+                    "HeadBox",
+                    "BackBox"
+                  ]
+                },
+                {
+                  "$type": "ByHitEnBreak",
+                  "logic": "GreaterOrEqual",
+                  "enBreak": 80
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_DEFENDER_NONE_WEAKNESSPROTECT",
+                  "value": 0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "triggerID": "BreakTrigger"
+                },
+                {
+                  "$type": "FireEffect",
+                  "predicates": [
+                    {
+                      "$type": "ByHitBoxName",
+                      "hitBoxNames": [
+                        "HeadBox"
+                      ]
+                    }
+                  ],
+                  "effectPattern": "Defender_None_Weakness_BeHit",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "AimingPoint"
+                  }
+                },
+                {
+                  "$type": "FireEffect",
+                  "predicates": [
+                    {
+                      "$type": "ByHitBoxName",
+                      "hitBoxNames": [
+                        "BackBox"
+                      ]
+                    }
+                  ],
+                  "effectPattern": "Defender_None_Weakness_BeHit",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "BackPoint"
+                  }
+                },
+                {
+                  "$type": "AddElementDurability",
+                  "value": -50,
+                  "modifierName": "UNIQUE_Defender_Weakness",
+                  "useLimitRange": true,
+                  "maxValue": 9999,
+                  "minValue": 0
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Defender_BreakState": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_WeakStart"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHitBoxName",
+                  "hitBoxNames": [
+                    "HeadBox",
+                    "BackBox"
+                  ]
+                },
+                {
+                  "$type": "ByHitEnBreak",
+                  "logic": "GreaterOrEqual",
+                  "enBreak": 80
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_DEFENDER_NONE_WEAKNESSPROTECT",
+                  "value": 0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "predicates": [
+                    {
+                      "$type": "ByHitBoxName",
+                      "hitBoxNames": [
+                        "HeadBox"
+                      ]
+                    }
+                  ],
+                  "effectPattern": "Defender_None_Weakness_BeHit",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "AimingPoint"
+                  }
+                },
+                {
+                  "$type": "FireEffect",
+                  "predicates": [
+                    {
+                      "$type": "ByHitBoxName",
+                      "hitBoxNames": [
+                        "BackBox"
+                      ]
+                    }
+                  ],
+                  "effectPattern": "Defender_None_Weakness_BeHit",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "BackPoint"
+                  }
+                },
+                {
+                  "$type": "AddElementDurability",
+                  "value": -100,
+                  "modifierName": "UNIQUE_Defender_Weakness",
+                  "useLimitRange": true,
+                  "maxValue": 9999,
+                  "minValue": 0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Defender_Weakness"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Weakness_Remove",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Defender_Weakness"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Break_Remove",
+      "abilitySpecials": {
+        "BreakProtectTime": 7.5,
+        "BreakProtectTimeDelta": 1.5
+      },
+      "modifiers": {
+        "BreakProtect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "BreakProtectTime",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_DEFENDER_NONE_WEAKNESSPROTECT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "BreakProtectEffect"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_DEFENDER_NONE_WEAKNESSPROTECT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "EffectTrigger",
+              "effectPattern": "Defender_None_Shield_Eye"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "EffectTrigger",
+              "effectPattern": "Defender_None_Shield_Back"
+            }
+          ]
+        },
+        "BreakProtectEffect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "%BreakProtectTime+%BreakProtectTimeDelta",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Shield_Eye"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Shield_Back"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Defender_BreakState"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BreakProtect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Weak",
+      "modifiers": {
+        "UNIQUE_WeakTimer": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 15,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "WeakLocked",
+              "value": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "WeakLocked"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_WeakTimer"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Weak_Effect",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            202,
+            203
+          ],
+          "modifierName": "WeakEffect"
+        }
+      ],
+      "modifiers": {
+        "WeakEffect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_WeakStart"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "WeakEffect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Weak_Ground",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_WeakDust"
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.2,
+            "shakeTime": 0.15,
+            "shakeDistance": 25,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": -1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Weak_End",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Weak_End"
+          ],
+          "modifierName": "EyeEffect_WeakEnd"
+        }
+      ],
+      "abilitySpecials": {
+        "WeakProtectTime": 15,
+        "WeakProtectTimeDelta": 1.5
+      },
+      "modifiers": {
+        "EyeEffect_WeakEnd": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Eye_02"
+            }
+          ]
+        },
+        "WeakProtect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "WeakProtectTime",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_DEFENDER_NONE_WEAKNESSPROTECT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "WeakProtectEffect"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_DEFENDER_NONE_WEAKNESSPROTECT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "EffectTrigger",
+              "effectPattern": "Defender_None_Shield_Eye"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "EffectTrigger",
+              "effectPattern": "Defender_None_Shield_Back"
+            }
+          ]
+        },
+        "WeakProtectEffect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "%WeakProtectTime+%WeakProtectTimeDelta",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Shield_Eye"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Shield_Back"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "EyeEffect_WeakEnd"
+        },
+        {
+          "$type": "TriggerAbility",
+          "abilityName": "Defender_None_Weakness"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WeakProtect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Whirl",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Whirl_BS",
+            "Whirl_Loop",
+            "Whirl_AS"
+          ],
+          "startNormalizedTime": 0.8,
+          "endNormalizedTime": 0.25,
+          "angularSpeed": 90
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Whirl_BS",
+            "Whirl_Loop"
+          ],
+          "modifierName": "Whirl_State"
+        }
+      ],
+      "modifiers": {
+        "Whirl_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_WhirlLoop"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ActCameraShake",
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.16,
+                "shakeTime": 0.2,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": 1
+                },
+                "extension": {
+                  "$type": "ConfigCameraShakeExt",
+                  "baseCycle": 0.2,
+                  "cycleDamping": 0,
+                  "rangeAttenuation": 1
+                }
+              }
+            }
+          ]
+        },
+        "Whirl_State": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Whirl_Effect"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Whirl_Effect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Laser_BS",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Laser_BS"
+          ],
+          "endNormalizedTime": 0.08,
+          "angularSpeed": 240
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Step",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "LeftHand"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Step",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "RightHand"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Laser",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Laser_Aim"
+          ],
+          "modifierName": "Laser_Aim"
+        }
+      ],
+      "modifiers": {
+        "Laser_Aim": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Laser_Aim"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Laser_Line"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42304001,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "z": -0.4
+            },
+            "attachPointName": "LaserControl"
+          }
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "Laser_Aim"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Laser_Light",
+      "modifiers": {
+        "Laser_Light": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Defender_None_Laser_Light"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Laser_Light"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Laser_Explode",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "BombBox_Explode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint"
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 3
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementDurability": 100,
+                "strikeType": "Blunt",
+                "enBreak": 200
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 795,
+                "hitImpulseY": 900,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.64,
+                "shakeTime": 0.3,
+                "shakeDistance": 35,
+                "extension": {
+                  "$type": "ConfigCameraShakeExt",
+                  "rangeAttenuation": 0.9
+                }
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Turn",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Turn"
+          ],
+          "startNormalizedTime": 0.1,
+          "endNormalizedTime": 0.3,
+          "angularSpeed": 180
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Turn"
+          ],
+          "startNormalizedTime": 0.3,
+          "endNormalizedTime": 0.6,
+          "angularSpeed": 360
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Smash_Turn",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Smash"
+          ],
+          "startNormalizedTime": 0.185,
+          "endNormalizedTime": 0.215,
+          "angularSpeed": 120
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Smash"
+          ],
+          "startNormalizedTime": 0.32,
+          "endNormalizedTime": 0.35,
+          "angularSpeed": 270
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Smash"
+          ],
+          "startNormalizedTime": 0.46,
+          "endNormalizedTime": 0.47,
+          "angularSpeed": 900
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Smash_Atk01",
+      "modifiers": {
+        "Smash_Atk01_Detect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Defender_None_Smash_Atk01"
+                  ]
+                }
+              ],
+              "effectPattern": "Defender_None_Smash_01"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Smash_01_Miss"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "scale": 1,
+              "offsetZ": 1,
+              "fanAngle": 180,
+              "radius": 2.75
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Defender_None_Smash_Atk01",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Blunt",
+                "enBreak": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 655,
+                "hitImpulseY": 800,
+                "hitHaltTime": 0.05,
+                "hitHaltTimeScale": 0.01
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "HitVector",
+                "shakeRange": 0.3,
+                "shakeTime": 0.24,
+                "shakeDistance": 30,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "x": -1,
+                  "y": -1
+                }
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Smash_Atk01_Detect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Smash_Atk02",
+      "modifiers": {
+        "Smash_Atk02_Detect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Defender_None_Smash_Atk02"
+                  ]
+                }
+              ],
+              "effectPattern": "Defender_None_Smash_02"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Smash_02_Miss"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "scale": 1,
+              "offsetZ": 2,
+              "fanAngle": 360,
+              "radius": 3
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Defender_None_Smash_Atk02",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Blunt",
+                "enBreak": 100
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 655,
+                "hitImpulseY": 800,
+                "hitHaltTime": 0.05,
+                "hitHaltTimeScale": 0.01
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "HitVector",
+                "shakeRange": 0.3,
+                "shakeTime": 0.24,
+                "shakeDistance": 30,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "x": -1,
+                  "y": -1
+                }
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Smash_Atk02_Detect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Smash_Alert",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Smash",
+          "modifierName": "Smash_Atk03_Collider",
+          "normalizeStart": 0.468,
+          "normalizeEnd": 0.55
+        }
+      ],
+      "modifiers": {
+        "Smash_Atk03_Collider": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushCollider"
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushCollider"
+              ],
+              "setEnable": true
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Smash_Alert",
+          "born": {
+            "$type": "ConfigBornByRushToPoint",
+            "offset": {
+              "$type": "Vector",
+              "z": 3.5
+            }
+          }
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.12,
+            "shakeTime": 0.15,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Smash_Atk03",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "scale": 1,
+              "offsetZ": 3,
+              "fanAngle": 360,
+              "radius": 4
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Blunt",
+                "enBreak": 200
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 795,
+                "hitImpulseY": 900
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.36,
+                "shakeTime": 0.36,
+                "shakeDistance": 30,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "y": -1
+                }
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Smash_03"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Stamp",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Stamp"
+          ],
+          "startNormalizedTime": 0.15,
+          "endNormalizedTime": 0.35,
+          "angularSpeed": 120
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Swipe"
+          ],
+          "endNormalizedTime": 0.12,
+          "angularSpeed": 180
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "SelfAttackTarget",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetPositionToSelfPosition",
+              "logic": "Lesser",
+              "value": 5.5
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "SwipeTrigger"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Swipe_Arm_01",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Arm",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "ArmL02"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Arm",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "ArmR02"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Swipe_Arm_02",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Arm",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "ArmL03"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Arm",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "ArmR03"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Swipe_Arm_03",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Arm",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "ArmL04"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Arm",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "ArmR04"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Swipe_Arm_04",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Arm",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "ArmL05"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Arm",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "ArmR05"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Die",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Die"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Die_Ground",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_WeakDust",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 3.75
+            }
+          }
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.36,
+            "shakeTime": 0.36,
+            "shakeDistance": 30,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": -1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_WeakDie_Ground",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_WeakDust",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Step_Left",
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraShake",
+          "predicates": [
+            {
+              "$type": "ByAnimatorInt",
+              "logic": "Equal",
+              "value": 0,
+              "parameter": "SkillID"
+            }
+          ],
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.06,
+            "shakeTime": 0.09,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": -1
+            }
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Step",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "LeftFoot"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_Step_Right",
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraShake",
+          "predicates": [
+            {
+              "$type": "ByAnimatorInt",
+              "logic": "Equal",
+              "value": 0,
+              "parameter": "SkillID"
+            }
+          ],
+          "cameraShake": {
+            "$type": "ConfigCameraShake",
+            "shakeType": "CustomVector",
+            "shakeRange": 0.06,
+            "shakeTime": 0.09,
+            "shakeDir": {
+              "$type": "Vector",
+              "y": -1
+            }
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Defender_None_Step",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "RightFoot"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_ReturnToBorn",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            902,
+            903
+          ],
+          "modifierName": "ReturnToBorn_State"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            902
+          ],
+          "modifierName": "ReturnToBorn_Disappear"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            903
+          ],
+          "modifierName": "ReturnToBorn_Appear"
+        }
+      ],
+      "modifiers": {
+        "ReturnToBorn_Disappear": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "StartDither",
+              "duration": 2
+            }
+          ]
+        },
+        "ReturnToBorn_Appear": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "StartDither",
+              "duration": 0.2,
+              "reverse": true
+            }
+          ]
+        },
+        "ReturnToBorn_State": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Defender_Weakness"
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "WeakStartTrigger"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "ReturnToBorn_Invincible"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "ReturnToBorn_DenyLockOn"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_WeakTimer"
+            },
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Defender_None_Weakness"
+            }
+          ]
+        },
+        "ReturnToBorn_Invincible": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "Invincible"
+        },
+        "ReturnToBorn_DenyLockOn": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "DenyLockOn"
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_GearControl",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Weak_Start",
+            "BeHit",
+            "NormalIdle_PowerOff",
+            "NormalIdle_WeakLoop",
+            "PowerOff_WakeUp",
+            "Born"
+          ],
+          "modifierName": "GearControl_Stop"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Weak_End",
+            "PowerOff_Warning"
+          ],
+          "modifierName": "GearControl_Active"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Smash",
+            "Stamp",
+            "Swipe",
+            "Whirl_BS",
+            "Whirl_Loop",
+            "Laser_BS",
+            "Laser_Aim"
+          ],
+          "modifierName": "GearControl_Skill"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "NormalIdle",
+            "Turn",
+            "NormalMove",
+            "Whirl_AS",
+            "Laser_Shoot"
+          ],
+          "modifierName": "GearControl_Normal"
+        }
+      ],
+      "modifiers": {
+        "GearControl_Stop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "GearSpeed",
+              "value": 0
+            }
+          ]
+        },
+        "GearControl_Normal": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "GearSpeed",
+              "value": 1
+            }
+          ]
+        },
+        "GearControl_Active": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "GearSpeed",
+              "value": 3
+            }
+          ]
+        },
+        "GearControl_Skill": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "GearSpeed",
+              "value": 2
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorFloat",
+          "floatID": "GearSpeed",
+          "value": 0
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "SetAnimatorFloat",
+          "floatID": "GearSpeed",
+          "value": 0.5
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Defender_None_HeadControl",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "NormalIdle_PowerOff",
+            "PowerOff_WakeUp",
+            "Weak_Start",
+            "BeHit",
+            "Break",
+            "Whirl_BS",
+            "Whirl_Loop",
+            "Whirl_AS"
+          ],
+          "modifierName": "HeadControl_Disable"
+        }
+      ],
+      "modifiers": {
+        "HeadControl_Disable": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "EnableHeadControl"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnableHeadControl",
+              "enable": true
+            }
+          ]
+        }
+      }
+    }
+  }
+]

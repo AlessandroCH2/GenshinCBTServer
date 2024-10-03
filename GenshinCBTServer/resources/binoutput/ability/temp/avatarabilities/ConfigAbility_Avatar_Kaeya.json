@@ -1,0 +1,2038 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kaeya_ExtraAttack",
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "skillID": 10073,
+          "chargeTime": 0.12,
+          "secondChargeTime": 0.2,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "logic": "Equal",
+                      "value": 0,
+                      "parameter": "ComboCount"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "logic": "Equal",
+                      "value": 5,
+                      "parameter": "ComboCount"
+                    }
+                  ]
+                }
+              ],
+              "intID": "SkillID",
+              "value": 99
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            }
+          ],
+          "OnReleaseUncharged": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 1
+            }
+          ],
+          "OnBeginCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging",
+              "value": true
+            }
+          ],
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 1
+            }
+          ],
+          "OnBeginSecondCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByLocalAvatarStamina",
+                  "logic": "GreaterOrEqual",
+                  "stamina": "ExtraAttack_Sword_Stamina_Cost"
+                }
+              ],
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByLocalAvatarStamina",
+                  "logic": "GreaterOrEqual",
+                  "stamina": "ExtraAttack_Sword_Stamina_Cost"
+                }
+              ],
+              "intID": "SkillID",
+              "value": 6
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            }
+          ],
+          "chargeStateIDs": [
+            "Attack01",
+            "Attack02",
+            "Attack03",
+            "Attack04",
+            "Run"
+          ]
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ExtraAttack_AS",
+          "modifierName": "ExtraAttack_AS_Effect",
+          "normalizeStart": 0.21
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack"
+          ],
+          "modifierName": "ExtraAttack_StaminaCost"
+        }
+      ],
+      "abilitySpecials": {
+        "ExtraAttack_Sword_Stamina_Cost": 18
+      },
+      "modifiers": {
+        "ExtraAttack_StaminaCost": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10001,
+              "costStaminaRatio": 1
+            }
+          ]
+        },
+        "ExtraAttack_AS_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "ExtraAttack_SwordAS"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_IceShield_Impact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "IceShield_AS",
+          "modifierName": "IceShield_AS_Effect",
+          "normalizeStart": 0.15
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "IceShield"
+          ],
+          "modifierName": "GenerateElemBall_IceShield"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "IceShield"
+          ],
+          "modifierName": "TasteOfCold",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "TasteOfCold"
+            }
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "damage": 3.15,
+        "GetElementRatio": 1,
+        "TasteOfCold": 0.4
+      },
+      "modifiers": {
+        "IceShield_AS_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Kaeya_IceShield_AS"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Kaeya_IceShield_AS1"
+            }
+          ]
+        },
+        "TasteOfCold": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Elemental_Art"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "HealHP",
+                  "amountByCasterAttackRatio": "TasteOfCold"
+                }
+              ]
+            }
+          ]
+        },
+        "GenerateElemBall_IceShield": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Elemental_Art"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "ElementBall"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "ElementBall_Extra"
+                }
+              ]
+            }
+          ]
+        },
+        "ElementBall": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2022,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 1
+                }
+              },
+              "ratio": "GetElementRatio",
+              "baseEnergy": 6
+            }
+          ]
+        },
+        "ElementBall_Extra": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleRefreshNoRemove",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 0.67,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2022,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": 1
+                    }
+                  },
+                  "ratio": "GetElementRatio",
+                  "baseEnergy": 3
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10074,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "IceShield_Impact"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": -0.2
+                }
+              },
+              "size": {
+                "$type": "DynamicFloatVector",
+                "x": 4,
+                "y": 1.8,
+                "z": 8
+              }
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "damage",
+                "damagePercentageRatio": 0,
+                "elementType": "Ice",
+                "elementRank": 1.5,
+                "elementDurability": 50,
+                "strikeType": "Default",
+                "enBreak": 140
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 800,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.02
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.36,
+                "shakeTime": 0.12,
+                "shakeDistance": 30
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenTrap_BS",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FrozenTrap"
+          ],
+          "modifierName": "FrozenTrap_State"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FrozenTrap",
+            "FrozenTrap_AS"
+          ],
+          "modifierName": "FrozenTrap_Camera_Remover_Handler"
+        }
+      ],
+      "modifiers": {
+        "FrozenTrap_State": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "Invincible",
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceBuffDebuffs": [
+                "ElementFreeze",
+                "ElementBurning",
+                "ElementWet",
+                "ElementFrozen",
+                "ElementShock",
+                "Struggle",
+                "ElementIce",
+                "DefenseDown",
+                "SpeedDown"
+              ]
+            }
+          ]
+        },
+        "FrozenTrap_Camera_Remover_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "lockParam": true,
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0
+              }
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "doOffStage": true,
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0.1
+              }
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "lockParam": true,
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6
+              }
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "doOffStage": true,
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0.1
+              }
+            }
+          ]
+        },
+        "FrozenTrap_Camera_Remover": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100
+        },
+        "UNIQUE_FrozenTrap_Weather_Controller": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 1,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "type": "Skill",
+              "weatherPattern": "Kaeya_FrozenTrap",
+              "transDuration": 0.2,
+              "duration": 0.5
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraRadialBlur",
+          "cameraRadialBlur": {
+            "$type": "ConfigCameraRadialBlur",
+            "power": 1,
+            "blurTime": 0.4,
+            "fadeTime": 0.2
+          }
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10075,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "scale": 1,
+              "fanAngle": 360,
+              "radius": 4
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 800,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41015004,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "$type": "Vector",
+                "y": 60
+              }
+            },
+            "attachPointName": "RootNode",
+            "attachPointTargetType": "Caster"
+          }
+        },
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41015004,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "$type": "Vector",
+                "y": 180
+              }
+            },
+            "attachPointName": "RootNode",
+            "attachPointTargetType": "Caster"
+          }
+        },
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41015004,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "$type": "Vector",
+                "y": 300
+              }
+            },
+            "attachPointName": "RootNode",
+            "attachPointTargetType": "Caster"
+          }
+        },
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41015005,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity"
+            },
+            "attachPointName": "RootNode",
+            "attachPointTargetType": "Caster"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenTrap_Clear",
+      "onAbilityStart": [
+        {
+          "$type": "KillGadget",
+          "gadgetInfo": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 41015004
+          }
+        },
+        {
+          "$type": "KillGadget",
+          "gadgetInfo": {
+            "$type": "SelectTargetsByChildren",
+            "configID": 41015005
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenTrap1",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5,
+            2.5
+          ],
+          "modifierNameSteps": [
+            "Blank",
+            "Blank",
+            "Blank"
+          ],
+          "actionQueues": [
+            [],
+            [
+              {
+                "$type": "ApplyModifier",
+                "modifierName": "FrozenTrap_BoomInterval_Bullet"
+              }
+            ],
+            [
+              {
+                "$type": "ApplyModifier",
+                "modifierName": "FrozenTrap_BoomInterval_IceReact"
+              }
+            ]
+          ],
+          "removeAppliedModifier": false
+        }
+      ],
+      "abilitySpecials": {
+        "duration": 8
+      },
+      "modifiers": {
+        "Blank": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100
+        },
+        "FrozenTrap_BoomInterval_Bullet": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41015007,
+              "campID": 1001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                }
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -2,
+              "key": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+              "useLimitRange": true,
+              "maxValue": 2,
+              "minValue": 0
+            }
+          ]
+        },
+        "FrozenTrap_BoomInterval_IceReact": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41015007,
+              "campID": 1001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                },
+                "attachPointName": "BulletPos"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -2,
+              "key": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+              "useLimitRange": true,
+              "maxValue": 2,
+              "minValue": 0
+            }
+          ]
+        },
+        "FrozenTrap_IceReact": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": "duration",
+          "elementDurability": "duration",
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "FrozenTrap_IceReact_Handler"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41015007,
+              "campID": 1001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                },
+                "attachPointName": "BulletPos"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 0.2
+                    },
+                    "direction": {
+                      "$type": "ConfigDirectionByEntity"
+                    },
+                    "attachPointName": "BulletPos"
+                  },
+                  "radius": 0.3
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "FrozenTrap_IceReact",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementDurability": 0,
+                    "strikeType": "Default",
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.02
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "FrozenTrap_IceReact_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 11,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "FrozenTrap_IceReact"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Water",
+                    "Grass"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+                      "value": 0,
+                      "forceByCaster": true
+                    }
+                  ],
+                  "value": 2,
+                  "key": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+                  "useLimitRange": true,
+                  "maxValue": 2,
+                  "minValue": 0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "FrozenTrap"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "FrozenTrap_IceReact"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenTrap1_Trigger",
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster",
+                "Gadget",
+                "Gear"
+              ]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+                  "value": 0,
+                  "forceByCaster": true
+                }
+              ],
+              "value": 1,
+              "key": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+              "useLimitRange": true,
+              "maxValue": 2,
+              "minValue": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenTrap_TriggerDamage",
+      "abilitySpecials": {
+        "Damage": 1.11
+      },
+      "onAdded": [
+        {
+          "$type": "DamageByAttackValue",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR2",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            }
+          ],
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackTag": "Elemental_Burst",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": "Damage",
+              "damagePercentageRatio": 0,
+              "elementType": "Ice",
+              "elementRank": 3,
+              "elementDurability": 25,
+              "strikeType": "Default",
+              "enBreak": 25
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "onHitEffectName": "none",
+              "hitLevel": "Light",
+              "hitImpulseX": 200,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.02
+            }
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Owner",
+              "key": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+              "value": 1
+            }
+          ],
+          "effectPattern": "FrozenTrap_AS_Icicle"
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR2",
+            "campTargetType": "Enemy",
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ]
+            }
+          ],
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackTag": "Elemental_Burst",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": "Damage",
+              "damagePercentageRatio": 0,
+              "elementType": "Ice",
+              "elementRank": 3,
+              "elementDurability": 50,
+              "strikeType": "Default",
+              "enBreak": 25
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "onHitEffectName": "none",
+              "hitLevel": "Light",
+              "hitImpulseX": 200,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.02
+            }
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Owner",
+                  "key": "_ABILITY_Kaeya_FrozenTrap_BoomInterval",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "effectPattern": "FrozenTrap_AS"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenTrap_TriggerEffect_AS",
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "FrozenTrap_AS"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenTrap_TriggerEffect_Icicle",
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "FrozenTrap_AS_Icicle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_StrongBody",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "SprintBS",
+            "Sprint"
+          ],
+          "modifierName": "StaminaReduce"
+        }
+      ],
+      "abilitySpecials": {
+        "StaminaReduce": -0.1
+      },
+      "modifiers": {
+        "StaminaReduce": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_CostStaminaRatio": "StaminaReduce"
+          }
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_GracefulAttack",
+      "abilityMixins": [
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "Keaya_Attack01",
+          "damagePercentageRatio": "damage",
+          "bonusCritical": "critical"
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "Keaya_Attack02",
+          "damagePercentageRatio": "damage",
+          "bonusCritical": "critical"
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "Keaya_Attack03",
+          "damagePercentageRatio": "damage",
+          "bonusCritical": "critical"
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "Keaya_Attack04",
+          "damagePercentageRatio": "damage",
+          "bonusCritical": "critical"
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "Keaya_Attack05",
+          "damagePercentageRatio": "damage",
+          "bonusCritical": "critical"
+        }
+      ],
+      "abilitySpecials": {
+        "damage": 0.04,
+        "critical": 0
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Kaeya_FrozenHeal",
+      "abilitySpecials": {
+        "FrozenHeal_TeamHealRatio": 0.03
+      },
+      "modifiers": {
+        "FrozenHeal_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "ExtraAttack"
+                  ]
+                },
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByHasAbilityState",
+                      "abilityState": "ElementFreeze"
+                    },
+                    {
+                      "$type": "ByHasAbilityState",
+                      "abilityState": "ElementIce"
+                    }
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "HealHP",
+                  "target": "CurTeamAvatars",
+                  "amountByCasterAttackRatio": "FrozenHeal_TeamHealRatio"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "doOffStage": true,
+          "modifierName": "FrozenHeal_Handler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_IceHeartTrigger",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByEventMixin",
+          "type": "Current",
+          "onEvent": "HP",
+          "actions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "IceHeartTrigger"
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "IceHeartTrigger": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "EntityDoSkill",
+              "predicates": [
+                {
+                  "$type": "ByTargetHPRatio",
+                  "target": "Self",
+                  "logic": "Lesser",
+                  "HPRatio": 0.2
+                }
+              ],
+              "skillID": 10081
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_IceShield",
+      "abilitySpecials": {
+        "shieldHP": 0.15
+      },
+      "modifiers": {
+        "UNIQUE_IceShieldWithHeal": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 20,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "EliteShieldMixin",
+              "shieldType": "default",
+              "shieldAngle": 360,
+              "shieldHPRatio": "shieldHP",
+              "showDamageText": "INFO_ELITE_DEFENCE",
+              "onShieldBroken": [
+                {
+                  "$type": "RemoveUniqueModifier"
+                }
+              ],
+              "amountByGetDamage": 1
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "IceShield"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "IceShield_AS"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalDir",
+                  "target": "Target",
+                  "key": "_ABILITY_KAEYA_ICESHIELD_HIT",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "$type": "ConfigDirectionByLookAtEntity"
+                    }
+                  },
+                  "setTarget": false
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobalDir",
+                  "target": "TargetOriginOwner",
+                  "key": "_ABILITY_KAEYA_ICESHIELD_HIT",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "$type": "ConfigDirectionByLookAtEntity"
+                    }
+                  },
+                  "setTarget": false
+                }
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "IceShield_Hit",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "$type": "ConfigDirectionByGlobalValue",
+                  "directionKey": "_ABILITY_KAEYA_ICESHIELD_HIT"
+                }
+              }
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ShieldHit",
+              "effectPattern": "IceShield"
+            }
+          ]
+        },
+        "UNIQUE_IceShieldWithoutHeal": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 20,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "EliteShieldMixin",
+              "shieldType": "default",
+              "shieldAngle": 360,
+              "shieldHPRatio": "shieldHP",
+              "showDamageText": "INFO_ELITE_DEFENCE",
+              "onShieldBroken": [
+                {
+                  "$type": "RemoveUniqueModifier"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "IceShield"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "IceShield_AS"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalDir",
+                  "target": "Target",
+                  "key": "_ABILITY_KAEYA_ICESHIELD_HIT",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "$type": "ConfigDirectionByLookAtEntity"
+                    }
+                  },
+                  "setTarget": false
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobalDir",
+                  "target": "TargetOriginOwner",
+                  "key": "_ABILITY_KAEYA_ICESHIELD_HIT",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "$type": "ConfigDirectionByLookAtEntity"
+                    }
+                  },
+                  "setTarget": false
+                }
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "IceShield_Hit",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "$type": "ConfigDirectionByGlobalValue",
+                  "directionKey": "_ABILITY_KAEYA_ICESHIELD_HIT"
+                }
+              }
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ShieldHit",
+              "effectPattern": "IceShield"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Keaya_IceShieldHeal"
+            }
+          ],
+          "modifierName": "UNIQUE_IceShieldWithHeal"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Keaya_IceShieldHeal"
+                }
+              ]
+            }
+          ],
+          "modifierName": "UNIQUE_IceShieldWithoutHeal"
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10081,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_KeayaAttack_Blink",
+      "modifiers": {
+        "Blink": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.35,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible"
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushCollider"
+              ]
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": [
+                "PushColliderExtra"
+              ],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetVisible",
+              "doOffStage": true,
+              "visible": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "doOffStage": true,
+              "pushColliderNames": [
+                "PushCollider"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "doOffStage": true,
+              "pushColliderNames": [
+                "PushColliderExtra"
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Blink"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenField_Handler",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_TeamTalent_CoolDown_Trigger",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -0.5,
+            0.5,
+            1.5
+          ],
+          "modifierNameSteps": [
+            "Blank",
+            "TeamTalent_CoolDown_Trigger"
+          ]
+        }
+      ],
+      "modifiers": {
+        "Keaya_FrozenField_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 2,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_Is_Kaeya",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurTeamAvatars",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_Is_Kaeya",
+                      "value": 1,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "Keaya_TeamTalent_Detect"
+            }
+          ]
+        },
+        "Keaya_TeamTalent_Detect": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 2.1,
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetHPRatio",
+                  "logic": "LesserOrEqual",
+                  "HPRatio": 0.4
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "value": 1,
+                  "key": "_ABILITY_Kaeya_MONSTER_COUNT",
+                  "useLimitRange": true,
+                  "maxValue": 0,
+                  "minValue": -1
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Kaeya_MONSTER_COUNT",
+                  "value": 0,
+                  "compareType": "MoreThanAndEqual"
+                },
+                {
+                  "$type": "ByIsCombat"
+                },
+                {
+                  "$type": "BySkillReady",
+                  "skillID": 10102
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Caster",
+                  "predicates": [
+                    {
+                      "$type": "ByIsCombat"
+                    },
+                    {
+                      "$type": "BySkillReady",
+                      "skillID": 10102
+                    }
+                  ],
+                  "modifierName": "Keaya_FrozenField_Switch"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "predicates": [
+                    {
+                      "$type": "ByIsCombat"
+                    },
+                    {
+                      "$type": "BySkillReady",
+                      "target": "Applier",
+                      "skillID": 10102
+                    }
+                  ],
+                  "modifierName": "Keaya_FrozenField_Switch_Mark"
+                }
+              ]
+            }
+          ]
+        },
+        "Keaya_FrozenField_Switch": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": 1,
+              "key": "_ABILITY_Keaya_FrozenField_Switch",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": -1,
+              "key": "_ABILITY_Keaya_FrozenField_Switch",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Keaya_FrozenField_Switch_Mark": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_WhiteBox_TeamTalent_Ice"
+            }
+          ]
+        },
+        "UNIQUE_Kaeya_EnterSkill_Trigger": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 1.6,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_WhiteBox_EnterSKill_Ice"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Kaeya_TeamTalent_Actor_SubHurtDelta_Timer"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 2.5
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "EnterSkill",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 1,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementDurability": 50,
+                    "enBreak": 90
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "Hit_Ice_Default_Small",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 800,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.02
+                  },
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.15,
+                    "shakeTime": 0.06,
+                    "shakeDistance": 30,
+                    "shakeDir": {
+                      "$type": "Vector",
+                      "x": 1
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 2.5
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "EnterSkill",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 1,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementDurability": 50,
+                    "enBreak": 90
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "Hit_Ice_Default_Small",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 800,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.02
+                  },
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.15,
+                    "shakeTime": 0.06,
+                    "shakeDistance": 30,
+                    "shakeDir": {
+                      "$type": "Vector",
+                      "x": 1
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "TeamTalent_CoolDown_Trigger": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "doOffStage": true,
+              "skillID": 10102,
+              "cdRatio": 3,
+              "costStaminaRatio": 1
+            }
+          ]
+        },
+        "Blank": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "Kaeya_TeamTalent_Actor_SubHurtDelta_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.6,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "doOffStage": true,
+              "modifierName": "Kaeya_TeamTalent_Actor_SubHurtDelta"
+            }
+          ]
+        },
+        "Kaeya_TeamTalent_Actor_SubHurtDelta": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 15,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_SubHurtDelta": 0.5
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Avatar_Properties_Defense_Up"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "doOffStage": true,
+          "modifierName": "Keaya_FrozenField_Handler"
+        }
+      ],
+      "onAvatarIn": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Keaya_FrozenField_Switch",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            },
+            {
+              "$type": "ByIsCombat"
+            },
+            {
+              "$type": "BySkillReady",
+              "skillID": 10102
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Kaeya_EnterSkill_Trigger"
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "Team",
+              "doOffStage": true,
+              "abilityName": "TeamTalent_CoolDown_Trigger"
+            },
+            {
+              "$type": "RemoveModifier",
+              "target": "CurTeamAvatars",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByIsCombat"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Keaya_FrozenField_Switch",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "modifierName": "Keaya_FrozenField_Switch_Mark"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByIsCombat"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Keaya_FrozenField_Switch",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "value": -1,
+              "key": "_ABILITY_Keaya_FrozenField_Switch",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Keaya_FrozenField",
+      "modifiers": {
+        "UNIQUE_FrozenField_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 10,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "CurTeamAvatars",
+              "doOffStage": true,
+              "value": -1,
+              "key": "_ABILITY_Keaya_FrozenField_Mark",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "ByTagetForwardAndSelfPosition",
+                  "value": 120
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "CurTeamAvatars",
+                  "doOffStage": true,
+                  "modifierName": "Avatar_Kaeya_FrozenField_Heal"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_05"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "CurTeamAvatars",
+                  "doOffStage": true,
+                  "modifierName": "Avatar_Kaeya_FrozenField_Heal"
+                }
+              ]
+            }
+          ]
+        },
+        "Avatar_Kaeya_FrozenField_Heal": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "HealHP",
+              "doOffStage": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Keaya_FrozenField_Mark",
+                  "value": 1
+                }
+              ],
+              "amountByTargetMaxHPRatio": 0.1
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_FrozenField_Handler"
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10081,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,427 @@
+{
+  "Default_Weapon": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "lockYmove": true,
+        "suspendHeight": 0.3,
+        "rotateSpeed": -45,
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 3,
+          "y": 3,
+          "z": 10
+        }
+      }
+    }
+  },
+  "Lv1_Weapon": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Lv1",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv2_Weapon": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Lv2",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv3_Weapon": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Lv3",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv4_Weapon": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Lv4",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv5_Weapon": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Lv5",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv1_Catalyst": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Catalyst_Lv1",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv2_Catalyst": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Catalyst_Lv2",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv3_Catalyst": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Catalyst_Lv3",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv4_Catalyst": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Catalyst_Lv4",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Lv5_Catalyst": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropPointMaxYaw": 60,
+        "dropPointMinSpeed": 3,
+        "dropPointMaxSpeed": 4,
+        "bornEffect": "DropItem_Trail",
+        "dropEffect": "DropWeapon_Catalyst_Lv5",
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 5,
+          "y": 5,
+          "z": -3
+        }
+      }
+    }
+  },
+  "Default_Item": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropEffect": "Item_Hint_Small"
+      }
+    }
+  },
+  "Lv1_Item": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "DropItem_Trail"
+    },
+    "hasModel": true,
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropEffect": "DropWeapon_Lv1",
+        "lockYmove": true,
+        "suspendHeight": 1,
+        "suspendSpeed": 40,
+        "rotateSpeed": -60
+      }
+    }
+  },
+  "Lv2_Item": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "DropItem_Trail"
+    },
+    "hasModel": true,
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropEffect": "DropWeapon_Lv2",
+        "lockYmove": true,
+        "suspendHeight": 1,
+        "suspendSpeed": 40,
+        "rotateSpeed": -60
+      }
+    }
+  },
+  "Lv3_Item": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "DropItem_Trail"
+    },
+    "hasModel": true,
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropEffect": "DropWeapon_Lv3",
+        "lockYmove": true,
+        "suspendHeight": 1,
+        "suspendSpeed": 40,
+        "rotateSpeed": -60
+      }
+    }
+  },
+  "Lv4_Item": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "DropItem_Trail"
+    },
+    "hasModel": true,
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropEffect": "DropWeapon_Lv4",
+        "lockYmove": true,
+        "suspendHeight": 1,
+        "suspendSpeed": 40,
+        "rotateSpeed": -60
+      }
+    }
+  },
+  "Lv5_Item": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "DropItem_Trail"
+    },
+    "hasModel": true,
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "dropEffect": "DropWeapon_Lv5",
+        "lockYmove": true,
+        "suspendHeight": 1,
+        "suspendSpeed": 40,
+        "rotateSpeed": -60
+      }
+    }
+  },
+  "Default_NoDrop_Item": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Select",
+        "isStatic": true
+      }
+    }
+  },
+  "Default_Task_Item": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Attract",
+        "dirVec": {
+          "$type": "Vector",
+          "x": 2,
+          "y": 6
+        }
+      }
+    }
+  },
+  "Default_MonsterWeapon": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Monster"
+      }
+    }
+  },
+  "Default_UncarvedGem": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Attract",
+        "dropEffect": "Gear_IceController",
+        "dirVec": {
+          "$type": "Vector",
+          "x": 2,
+          "y": 6
+        }
+      }
+    }
+  },
+  "Default_Mora": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "GroupAuto",
+        "suspendHeight": 0.07,
+        "rotateVec": {
+          "$type": "Vector",
+          "x": 3,
+          "y": 3,
+          "z": 10
+        },
+        "attractDelayTime": 3,
+        "multi": {
+          "$type": "ConfigPickupMulti",
+          "dirMinVec": {
+            "$type": "Vector",
+            "x": 0.8,
+            "y": 5
+          },
+          "dirMaxVec": {
+            "$type": "Vector",
+            "x": 1,
+            "y": 6
+          },
+          "maxNum": 8,
+          "minNum": 4
+        }
+      }
+    }
+  }
+}

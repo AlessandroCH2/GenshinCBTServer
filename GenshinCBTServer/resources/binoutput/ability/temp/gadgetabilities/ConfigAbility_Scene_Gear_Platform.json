@@ -1,0 +1,365 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Platform_IceElf",
+      "modifiers": {
+        "ElementIce": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Ice",
+          "elementDurability": 50,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "IceFlower01_Idle"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 1.5
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementDurability": 10,
+                    "strikeType": "Default"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "IceFlower02_Base"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ElementIce"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ElementIce"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Platform_FireElf",
+      "modifiers": {
+        "ElementFire": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Fire",
+          "elementDurability": 50,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FireBasin"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 1.5
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 10,
+                    "strikeType": "Default"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "FireBasin_Smoke",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ElementFire"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ElementFire"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Gear_Platform_ElecElf",
+      "modifiers": {
+        "UNIQUE_Shocking_Modifier": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementType": "Electric",
+          "elementDurability": 50,
+          "isElementDurabilityMutable": false,
+          "thinkInterval": 1.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Element_Shock_Loop"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Electric_Plie_Shock_Recently_Shocked"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "Enemy",
+                "topLimit": 5,
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Electric_Plie_Shock_Rencently_Shocked",
+                  "value": 0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "ConductShock"
+            },
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "Enemy",
+                "topLimit": 5,
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Is_Electric_Pile",
+                  "value": 1
+                },
+                {
+                  "$type": "ByTargetIsSelf",
+                  "isSelf": false
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Electric_Plie_Shock_Rencently_Shocked",
+                  "value": 0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "ConductShock"
+            }
+          ]
+        },
+        "ConductShock": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Element_Conduct_Lightning",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Applier"
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "ElectricPlieDamage",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 1,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementRank": 1.5,
+                  "elementDurability": 25,
+                  "strikeType": "Default"
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Element_Shock_Damage",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Electric_Plie_Shock_Recently_Shocked"
+            }
+          ]
+        },
+        "UNIQUE_Electric_Plie_Shock_Recently_Shocked": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "Electric_Plie_Shock_Rencently_Shocked",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "Electric_Plie_Shock_Rencently_Shocked",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Shocking_Modifier"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "Is_Electric_Pile",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 0,
+              "damagePercentageRatio": 0,
+              "elementType": "Electric",
+              "elementDurability": 50,
+              "ignoreAttackerProperty": true
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "onHitEffectName": "none",
+              "hitImpulseX": 0,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.05
+            }
+          }
+        }
+      ]
+    }
+  }
+]

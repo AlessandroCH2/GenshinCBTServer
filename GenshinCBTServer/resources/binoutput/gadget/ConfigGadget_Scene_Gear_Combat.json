@@ -1,0 +1,1307 @@
+{
+  "SceneObj_Gear_Combat_Spray_Fire_Rotating": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "isGhostToAllied": true,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "FireSpray",
+        "abilityName": "SceneObj_Gear_Combat_Spray_Fire_Rotating"
+      }
+    ],
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "Stop": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_End": [
+                "Audio_Gear_Spray_Ice_End",
+                "Audio_Gear_Spray_Ice_Loop_End"
+              ],
+              "Ani_Gear_Spray_Rest": []
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Start": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Active": [
+                "Audio_Gear_Spray_Ice_Loop"
+              ]
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Idle": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Start": [
+                "Audio_Gear_Spray_Ice_Start"
+              ]
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Combat_Spray_Fire": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "ignorePurgeRate": true,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "FireSpray",
+        "abilityName": "SceneObj_Gear_Combat_Spray_Fire"
+      }
+    ],
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "Stop": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_End": [
+                "Audio_Gear_Spray_Ice_End",
+                "Audio_Gear_Spray_Ice_Loop_End"
+              ],
+              "Ani_Gear_Spray_Rest": []
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Start": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Active": [
+                "Audio_Gear_Spray_Ice_Loop"
+              ]
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Idle": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Start": [
+                "Audio_Gear_Spray_Ice_Start"
+              ]
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Combat_Shooter_Elec": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "headControl": {
+      "$type": "ConfigHeadControl",
+      "useHeadControl": true,
+      "maxYawDegree": 60,
+      "maxPitchDegree": 15
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 150,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_Shoot",
+        "abilityName": "SceneObj_Gear_Combat_Shoot_Elec_test"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_DenyLockOn",
+        "abilityName": "SceneObj_Gear_Combat_Shoot_Denylockon"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_Charging",
+        "abilityName": "SceneObj_Gear_Combat_Shoot_Charging"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_Warning",
+        "abilityName": "SceneObj_Gear_Combat_Shoot_Warning"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_Aiming",
+        "abilityName": "SceneObj_Gear_Combat_Shoot_Aiming"
+      }
+    ],
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "gear": {
+        "$type": "ConfigGear",
+        "gearType": "Ray",
+        "startElemType": "Electric",
+        "startLastTime": 16,
+        "stopLastTime": 8
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "Born": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Born": []
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Normal": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Sleep": []
+            },
+            "canDoSkill": true,
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Active": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Activing": []
+            },
+            "canDoSkill": true,
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Charge": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Charge": []
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Shoot": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Shoot": [
+                "Gear_Shooter_Elec"
+              ]
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          }
+        }
+      }
+    },
+    "aibeta": {
+      "$type": "ConfigAIBeta",
+      "enable": true,
+      "moveSetting": {
+        "$type": "ConfigAIMove",
+        "enable": false,
+        "navMeshAgentName": "Undead01"
+      },
+      "sensing": {
+        "$type": "ConfigAISensing",
+        "settings": {
+          "DefaultSetting": {
+            "$type": "ConfigAISensingSetting",
+            "viewRange": 15,
+            "horizontalFov": 180,
+            "verticalFov": 30,
+            "feelRange": 2
+          }
+        }
+      },
+      "threat": {
+        "$type": "ConfigAIThreatSetting",
+        "clearThreatTargetDistance": 15,
+        "clearThreatEdgeDistance": 0,
+        "clearThreatTimerByDistance": 0.1,
+        "viewThreatGrow": 20,
+        "feelThreatGrow": 20,
+        "threatDecreaseSpeed": 10
+      },
+      "defendArea": {
+        "$type": "ConfigAIDefendArea",
+        "defendRange": 15
+      },
+      "skills": {
+        "1": {
+          "$type": "ConfigAISkill",
+          "name": "Shoot",
+          "cd": 5,
+          "cdUpperRange": 5,
+          "castCondition": {
+            "$type": "ConfigAISkillCastCondition",
+            "pose": [
+              3
+            ],
+            "targetAngleXZ": 50,
+            "pickRangeMax": 20
+          },
+          "stateIDs": [
+            "Active"
+          ]
+        }
+      }
+    }
+  },
+  "SceneObj_Gear_Combat_Test_FM03": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Gear_Combat_Spray_Ice_Rotating"
+      }
+    ],
+    "move": {
+      "$type": "ConfigFollowMove",
+      "target": "GroupGadgetEntity",
+      "attachPoint": "FollowMove02",
+      "followRotation": true
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc"
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "Attack": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_End": [
+                "Audio_Gear_Spray_Ice_End",
+                "Audio_Gear_Spray_Ice_Loop_End"
+              ]
+            }
+          },
+          "Idle": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Start": [
+                "Audio_Gear_Spray_Ice_Start"
+              ]
+            }
+          },
+          "Reset": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Rest": []
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Gear_Combat_Test_FM01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "FireSpray",
+        "abilityName": "SceneObj_Gear_Combat_Spray_Fire_Rotating"
+      }
+    ],
+    "move": {
+      "$type": "ConfigFollowMove",
+      "target": "GroupGadgetEntity",
+      "attachPoint": "FollowMove02",
+      "followRotation": true
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "gear": {
+        "$type": "ConfigGear",
+        "gearType": "Spray",
+        "startElemType": "Fire",
+        "startLastTime": 16,
+        "stopElemType": "Ice",
+        "stopValue": 1,
+        "stopLastTime": 8
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "Stop": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_End": [
+                "Audio_Gear_Spray_Ice_End",
+                "Audio_Gear_Spray_Ice_Loop_End"
+              ],
+              "Ani_Gear_Spray_Rest": []
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Start": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Active": [
+                "Audio_Gear_Spray_Ice_Loop"
+              ]
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          },
+          "Idle": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Start": [
+                "Audio_Gear_Spray_Ice_Start"
+              ]
+            },
+            "resetAnimatorTriggerOnExit": [
+              "DoSkill"
+            ]
+          }
+        }
+      }
+    },
+    "aibeta": {
+      "$type": "ConfigAIBeta",
+      "enable": true,
+      "moveSetting": {
+        "$type": "ConfigAIMove",
+        "enable": false,
+        "navMeshAgentName": "Undead01"
+      },
+      "sensing": {
+        "$type": "ConfigAISensing",
+        "enable": false
+      },
+      "defendArea": {
+        "$type": "ConfigAIDefendArea",
+        "enable": false
+      }
+    }
+  },
+  "SceneObj_Gear_Combat_SpikeTrap": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 100,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 75,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "ATK",
+        "abilityName": "SceneObj_Gear_Combat_Test_FieldExplode"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "shape": "CircleR3",
+      "lifeInfinite": true,
+      "checkInterval": 0.5,
+      "triggerCount": 1
+    }
+  },
+  "SceneObj_Gear_Combat_Spray_Fire_Reform": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "ignorePurgeRate": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Gear_Combat_Spray_Fire"
+      }
+    ],
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "Stop": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_End": [
+                "Audio_Gear_Spray_Ice_End",
+                "Audio_Gear_Spray_Ice_Loop_End"
+              ],
+              "Ani_Gear_Spray_Rest": []
+            }
+          },
+          "Start": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Active": [
+                "Audio_Gear_Spray_Ice_Loop"
+              ]
+            }
+          },
+          "Idle": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Spray_Start": [
+                "Audio_Gear_Spray_Ice_Start"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Combat_ElemCore_Reform": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2,
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "ignorePurgeRate": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Gear_Combat_ElemCore_Reform_Interact"
+      }
+    ],
+    "move": {
+      "$type": "ConfigFollowMove",
+      "target": "GroupGadgetEntity",
+      "attachPoint": "ElemCore",
+      "followRotation": true
+    },
+    "billboard": {
+      "$type": "ConfigCombatBillboard",
+      "attachPoint": "BillboardAttach",
+      "offset": {
+        "$type": "Vector",
+        "y": 2.1
+      },
+      "depthOffset": 1,
+      "showDistance": 0,
+      "showHPBar": true,
+      "shieldBarOnly": true
+    }
+  },
+  "SceneObj_Gear_Combat_GroupTrigger": {
+    "$type": "ConfigGadget"
+  },
+  "SceneObj_Gear_Combat_WindCreate_Gear": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 10000
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "defense": 99999,
+        "weight": 1,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "hasAnimatorDie": true,
+        "dieEndTime": 3,
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Gear_Combat_WindCreate_Gear",
+        "abilityName": "SceneObj_Gear_Combat_WindCreate_Gear"
+      }
+    ]
+  },
+  "SceneObj_Environment_DungeonWindField_Controller": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_DungeonWindField_Controller"
+      }
+    ],
+    "keepModifierOutSight": false
+  },
+  "SceneObj_Gear_Combat_Power_Charge": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Gear_Combat_Power_Charge",
+        "abilityName": "SceneObj_Gear_Combat_Power_Charge"
+      }
+    ],
+    "misc": {
+      "$type": "ConfigGadgetMisc"
+    },
+    "billboard": {
+      "$type": "ConfigCombatBillboard",
+      "attachPoint": "BillboardAttach",
+      "offset": {
+        "$type": "Vector",
+        "y": 1.5
+      },
+      "depthOffset": 1,
+      "showHPBar": true,
+      "shieldBarOnly": true
+    }
+  },
+  "SceneObj_Gear_Combat_Electric_Pile02": {
+    "$type": "ConfigGadget",
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Gear_Combat_Electric_Pile02",
+        "abilityName": "SceneObj_Gear_Combat_Electric_Pile02"
+      }
+    ],
+    "billboard": {
+      "$type": "ConfigCombatBillboard",
+      "attachPoint": "BillboardAttach",
+      "offset": {
+        "$type": "Vector",
+        "y": 1.5
+      },
+      "depthOffset": 1,
+      "showHPBar": true,
+      "shieldBarOnly": true
+    }
+  },
+  "SceneObj_Gear_Combat_Shooter_Laser": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 150,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_State",
+        "abilityName": "SceneObj_Gear_Combat_Laser_State"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_Charging",
+        "abilityName": "SceneObj_Gear_Combat_Laser_Charging"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_Shooting",
+        "abilityName": "SceneObj_Gear_Combat_Laser_Shooting"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_Aiming",
+        "abilityName": "SceneObj_Gear_Combat_Laser_Aiming"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "shape": "CircleR10",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc"
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "Born": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Born": []
+            }
+          },
+          "Normal": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Sleep": []
+            },
+            "canDoSkill": true
+          },
+          "Active": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Activing": []
+            },
+            "canDoSkill": true
+          },
+          "Charge": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Charge": []
+            },
+            "resetAnimatorTriggerOnExit": [
+              "Fire"
+            ]
+          },
+          "Shoot": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Ani_Gear_Shooter_Shoot": [
+                "Gear_Shooter_Elec"
+              ]
+            },
+            "resetAnimatorTriggerOnExit": [
+              "Fire"
+            ]
+          }
+        }
+      }
+    },
+    "aibeta": {
+      "$type": "ConfigAIBeta",
+      "enable": true,
+      "moveSetting": {
+        "$type": "ConfigAIMove",
+        "navMeshAgentName": "Undead01"
+      },
+      "sensing": {
+        "$type": "ConfigAISensing",
+        "settings": {
+          "DefaultSetting": {
+            "$type": "ConfigAISensingSetting",
+            "viewRange": 15,
+            "horizontalFov": 180,
+            "verticalFov": 30,
+            "feelRange": 2
+          }
+        }
+      },
+      "threat": {
+        "$type": "ConfigAIThreatSetting",
+        "clearThreatTargetDistance": 15,
+        "clearThreatEdgeDistance": 0,
+        "clearThreatTimerByDistance": 0.1,
+        "viewThreatGrow": 20,
+        "feelThreatGrow": 20,
+        "threatDecreaseSpeed": 10
+      },
+      "defendArea": {
+        "$type": "ConfigAIDefendArea",
+        "defendRange": 20
+      }
+    },
+    "partControl": {
+      "$type": "ConfigPartController",
+      "parts": [
+        {
+          "$type": "ConfigControlPart",
+          "angularSpeed": 60,
+          "partRootName": "LaserControl",
+          "limitHorizontal": 100,
+          "limitVertical": 180
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Combat_DropIce": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 20,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.01
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Gear_Combat_DropIce",
+        "abilityName": "SceneObj_Gear_Combat_DropIce"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "shape": "RectW10L10H30",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "gear": {
+        "$type": "ConfigGear",
+        "startElemType": "Ice"
+      }
+    }
+  },
+  "SceneObj_Gear_Combat_DropIce_Bullet": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox"
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "defense": 99999,
+        "weight": 1,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Gear_Combat_DropIce_Crash"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 5
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "velocityForce": {
+        "$type": "ConfigMoveVelocityForce",
+        "excludeForces": [
+          "WindZoneType",
+          "AirflowType",
+          "RiseType",
+          "SpeedupType",
+          "AirflowAccType"
+        ]
+      },
+      "speed": 1,
+      "acceleration": 10
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "SceneObj_Gear_Combat_DropIce_Crash"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Combat_DropedIce": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 20,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.01
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Gear_Combat_DropedIce",
+        "abilityName": "SceneObj_Gear_Combat_DropedIce"
+      }
+    ],
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "gear": {
+        "$type": "ConfigGear",
+        "startElemType": "Ice"
+      }
+    }
+  },
+  "SceneObj_Gear_Combat_Shooter_Laser_Stable": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 150,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_State",
+        "abilityName": "SceneObj_Gear_Combat_Laser_Stable_State"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "shape": "CircleR10",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5
+    }
+  },
+  "SceneObj_Gear_Combat_Shooter_Laser_Moveable": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 150,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shooter_State",
+        "abilityName": "SceneObj_Gear_Combat_Shooter_Laser_Moveable"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "shape": "CircleR10",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5
+    }
+  }
+}

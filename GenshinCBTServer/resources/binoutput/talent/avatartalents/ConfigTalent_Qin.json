@@ -1,0 +1,221 @@
+{
+  "Qin_Talent_1310": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Qin_Stamina_Recover"
+    }
+  ],
+  "Qin_Talent_1311": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_Stamina_Recover",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.07
+    }
+  ],
+  "Qin_Talent_1312": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_Stamina_Recover",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.08
+    }
+  ],
+  "Qin_Talent_1313": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_Stamina_Recover",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Qin_Talent_1320": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "DMG",
+      "paramRatio": 0.08
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "Strength",
+      "paramRatio": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "Attenuation",
+      "paramRatio": -0.15
+    }
+  ],
+  "Qin_Talent_1321": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "DMG",
+      "paramRatio": 0.06
+    },
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "talentParam": "Stronger_VortexSmash"
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "Strength",
+      "paramRatio": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "Attenuation",
+      "paramRatio": -0.15
+    }
+  ],
+  "Qin_Talent_1322": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "DMG",
+      "paramRatio": 0.06
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "Strength",
+      "paramRatio": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_VortexSmash",
+      "paramSpecial": "Attenuation",
+      "paramRatio": -0.15
+    }
+  ],
+  "Qin_Talent_1330": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Qin_GreaterSelfHeal"
+    }
+  ],
+  "Qin_Talent_1331": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_GreaterSelfHeal",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Qin_Talent_1332": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_GreaterSelfHeal",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Qin_Talent_1340": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Qin_AttackCritic"
+    }
+  ],
+  "Qin_Talent_1341": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_AttackCritic",
+      "paramSpecial": "BonusCritical",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_AttackCritic",
+      "paramSpecial": "HealByattack",
+      "paramDelta": 0.05
+    }
+  ],
+  "Qin_Talent_1342": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_AttackCritic",
+      "paramSpecial": "BonusCritical",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_AttackCritic",
+      "paramSpecial": "HealByattack",
+      "paramDelta": 0.05
+    }
+  ],
+  "Qin_Talent_1350": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Qin_TeamSpeedWhenGetElementBall"
+    }
+  ],
+  "Qin_Talent_1351": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_TeamSpeedWhenGetElementBall",
+      "paramSpecial": "Speed",
+      "paramDelta": 0.05
+    }
+  ],
+  "Qin_Talent_1352": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_TeamSpeedWhenGetElementBall",
+      "paramSpecial": "Speed",
+      "paramDelta": 0.05
+    }
+  ],
+  "Qin_Talent_1360": [
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Qin_DandelionWind_Heal",
+      "talentParam": "WindPressure"
+    }
+  ],
+  "Qin_Talent_1361": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_DandelionWind_Heal",
+      "paramSpecial": "WindHurt",
+      "paramDelta": -0.2
+    }
+  ],
+  "Qin_Talent_1362": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_DandelionWind_Heal",
+      "paramSpecial": "WindHurt",
+      "paramDelta": -0.2
+    }
+  ],
+  "Qin_Talent_1370": [
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Qin_DandelionWind_Heal",
+      "talentParam": "WindShield"
+    }
+  ],
+  "Qin_Talent_1371": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_DandelionWind_Heal",
+      "paramSpecial": "LessHurt",
+      "paramDelta": 0.12
+    }
+  ],
+  "Qin_Talent_1372": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Qin_DandelionWind_Heal",
+      "paramSpecial": "LessHurt",
+      "paramDelta": 0.12
+    }
+  ]
+}

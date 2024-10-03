@@ -1,0 +1,358 @@
+{
+  "Sword_Norse_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_Norse"
+    }
+  ],
+  "Sword_Norse_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Norse",
+      "paramSpecial": "HealHP",
+      "paramDelta": 100
+    }
+  ],
+  "Sword_Norse_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Norse",
+      "paramSpecial": "HealHP",
+      "paramDelta": 100
+    }
+  ],
+  "Sword_Norse_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Norse",
+      "paramSpecial": "HealHP",
+      "paramDelta": 100
+    }
+  ],
+  "Sword_Norse_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Norse",
+      "paramSpecial": "HealHP",
+      "paramDelta": 100
+    }
+  ],
+  "Weapon_Sword_Zephyrus_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_Zephyrus"
+    }
+  ],
+  "Weapon_Sword_Zephyrus_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Zephyrus",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_Zephyrus_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Zephyrus",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_Zephyrus_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Zephyrus",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_Zephyrus_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Zephyrus",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.02
+    }
+  ],
+  "Sword_Dvalin_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_Dvalin"
+    }
+  ],
+  "Sword_Dvalin_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Dvalin",
+      "paramSpecial": "AttackRatio",
+      "paramDelta": 0.1
+    }
+  ],
+  "Sword_Dvalin_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Dvalin",
+      "paramSpecial": "AttackRatio",
+      "paramDelta": 0.1
+    }
+  ],
+  "Sword_Dvalin_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Dvalin",
+      "paramSpecial": "AttackRatio",
+      "paramDelta": 0.1
+    }
+  ],
+  "Sword_Dvalin_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Dvalin",
+      "paramSpecial": "AttackRatio",
+      "paramDelta": 0.1
+    }
+  ],
+  "Sword_Test_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_Test"
+    }
+  ],
+  "Sword_Test_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_Test",
+      "paramSpecial": "AttackRatio",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Sword_FullHPCriticUp_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_FullHPCriticUp"
+    }
+  ],
+  "Weapon_Sword_FullHPCriticUp_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_FullHPCriticUp",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_FullHPCriticUp_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_FullHPCriticUp",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_FullHPCriticUp_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_FullHPCriticUp",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_FullHPCriticUp_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_FullHPCriticUp",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_MoveSpeedAfterULT_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_MoveSpeedAfterULT"
+    }
+  ],
+  "Weapon_Sword_MoveSpeedAfterULT_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_MoveSpeedAfterULT",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.025
+    }
+  ],
+  "Weapon_Sword_MoveSpeedAfterULT_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_MoveSpeedAfterULT",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.025
+    }
+  ],
+  "Weapon_Sword_MoveSpeedAfterULT_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_MoveSpeedAfterULT",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.025
+    }
+  ],
+  "Weapon_Sword_MoveSpeedAfterULT_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_MoveSpeedAfterULT",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.025
+    }
+  ],
+  "Weapon_Sword_GenerateBallWhenCritic_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_GenerateBallWhenCritic"
+    }
+  ],
+  "Weapon_Sword_GenerateBallWhenCritic_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_GenerateBallWhenCritic",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Sword_GenerateBallWhenCritic_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_GenerateBallWhenCritic",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Sword_GenerateBallWhenCritic_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_GenerateBallWhenCritic",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Sword_GenerateBallWhenCritic_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_GenerateBallWhenCritic",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Sword_MusicBlast_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_MusicBlast"
+    }
+  ],
+  "Weapon_Sword_MusicBlast_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_MusicBlast",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Sword_MusicBlast_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_MusicBlast",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Sword_MusicBlast_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_MusicBlast",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Sword_MusicBlast_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_MusicBlast",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Sword_GetShieldBeingHit_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_GetShieldBeingHit"
+    }
+  ],
+  "Weapon_Sword_GetShieldBeingHit_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_GetShieldBeingHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_GetShieldBeingHit_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_GetShieldBeingHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_GetShieldBeingHit_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_GetShieldBeingHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_GetShieldBeingHit_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_GetShieldBeingHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Sword_CritUpWhenHitNoCrit_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Sword_CritUpWhenHitNoCrit"
+    }
+  ],
+  "Weapon_Sword_CritUpWhenHitNoCrit_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_CritUpWhenHitNoCrit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Weapon_Sword_CritUpWhenHitNoCrit_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_CritUpWhenHitNoCrit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Weapon_Sword_CritUpWhenHitNoCrit_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_CritUpWhenHitNoCrit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Weapon_Sword_CritUpWhenHitNoCrit_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Sword_CritUpWhenHitNoCrit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.01
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "SceneObj_Gear_Platform_NormalPlatform": {
+    "$type": "ConfigGadget",
+    "move": {
+      "$type": "ConfigPlatformMove"
+    }
+  },
+  "SceneObj_Gear_Platform_MovingTarget": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "attack": 80,
+        "lockShape": "CircleLockEnemy",
+        "weight": 80,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "hasAnimatorDie": true,
+        "dieForceDisappearTime": 1
+      }
+    },
+    "move": {
+      "$type": "ConfigPlatformMove"
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateFireEffect",
+          "gadgetState": "Action01",
+          "effectPattern": "Platform_WindSlime_Die"
+        },
+        {
+          "$type": "ConfigGadgetStateFireEffect",
+          "gadgetState": "Action01",
+          "effectPattern": "Platform_WindSlime_Die_Trail"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Platform_IceElf": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Gear_Platform_IceElf",
+        "abilityName": "SceneObj_Gear_Platform_IceElf"
+      }
+    ],
+    "move": {
+      "$type": "ConfigPlatformMove"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc"
+    }
+  },
+  "SceneObj_Gear_Platform_FireElf": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Gear_Platform_FireElf",
+        "abilityName": "SceneObj_Gear_Platform_FireElf"
+      }
+    ],
+    "move": {
+      "$type": "ConfigPlatformMove"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc"
+    }
+  },
+  "SceneObj_Gear_Platform_ElecElf": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "SceneObj_Gear_Platform_ElecElf",
+        "abilityName": "SceneObj_Gear_Platform_ElecElf"
+      }
+    ],
+    "move": {
+      "$type": "ConfigPlatformMove"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc"
+    }
+  }
+}

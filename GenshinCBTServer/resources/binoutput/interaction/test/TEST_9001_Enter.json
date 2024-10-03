@@ -1,0 +1,21 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigCutsceneInterAction",
+        "type": "CUTSCENE",
+        "cutsceneCfg": {
+          "$type": "ConfigTimeline",
+          "type": "TIME_LINE_PREFAB",
+          "resPath": "ART/Cutscene/Cs_UnlockCityCutScene",
+          "startPosType": "RELATIVE_TO_LOCAL_AVATAR",
+          "startOffset": {
+            "$type": "Vector",
+            "y": 3
+          }
+        }
+      }
+    ]
+  ]
+}

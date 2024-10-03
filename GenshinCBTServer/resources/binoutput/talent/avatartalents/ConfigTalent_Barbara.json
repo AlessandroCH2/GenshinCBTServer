@@ -1,0 +1,322 @@
+{
+  "Barbara_ExtraAttack_StaminaCost_Reduce1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_ExtraAttack",
+      "paramSpecial": "Barbara_ExtraAttack_StaminaCost",
+      "paramDelta": -0.2
+    }
+  ],
+  "Barbara_ExtraAttack_StaminaCost_Reduce2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_ExtraAttack",
+      "paramSpecial": "Barbara_ExtraAttack_StaminaCost",
+      "paramDelta": -0.1
+    }
+  ],
+  "Barbara_ExtraAttack_StaminaCost_Reduce3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_ExtraAttack",
+      "paramSpecial": "Barbara_ExtraAttack_StaminaCost",
+      "paramDelta": -0.1
+    }
+  ],
+  "Barbara_EnhancedShield1": [
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "talentParam": "WetShiled_Stamina"
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "HealHP",
+      "paramRatio": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "HealHPOnAdded",
+      "paramRatio": 0.05
+    }
+  ],
+  "Barbara_EnhancedShield2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "HealHP",
+      "paramRatio": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "HealHPOnAdded",
+      "paramRatio": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Barbara_CostStaminaDelta",
+      "paramDelta": -0.05
+    }
+  ],
+  "Barbara_EnhancedShield3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "HealHP",
+      "paramRatio": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "HealHPOnAdded",
+      "paramRatio": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Barbara_CostStaminaDelta",
+      "paramDelta": -0.05
+    }
+  ],
+  "Barbara_EnhancedShield4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "HealHP",
+      "paramRatio": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "HealHPOnAdded",
+      "paramRatio": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Barbara_CostStaminaDelta",
+      "paramDelta": -0.05
+    }
+  ],
+  "Barbara_GiantStage1": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Barbara_ReviveElemEnergy"
+    },
+    {
+      "$type": "ModifySkillCD",
+      "skillID": 10072,
+      "cdRatio": -0.05
+    }
+  ],
+  "Barbara_GiantStage2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_ReviveElemEnergy",
+      "paramSpecial": "Barbara_ReviveElemEnergy_Ratio",
+      "paramDelta": 1
+    },
+    {
+      "$type": "ModifySkillCD",
+      "skillID": 10072,
+      "cdRatio": -0.05
+    }
+  ],
+  "Barbara_GiantStage3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_ReviveElemEnergy",
+      "paramSpecial": "Barbara_ReviveElemEnergy_Ratio",
+      "paramDelta": 2
+    },
+    {
+      "$type": "ModifySkillCD",
+      "skillID": 10072,
+      "cdRatio": -0.05
+    }
+  ],
+  "Barbara_ActivatedShield1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Square",
+      "paramRatio": 2.5
+    },
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "talentParam": "Barbara_WetShiled_MaxHPDelta"
+    }
+  ],
+  "Barbara_ActivatedShield2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Square",
+      "paramRatio": 5
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Barbara_Element_Art_MaxHPRatio",
+      "paramDelta": 0.02
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Barbara_WetShiled_MaxHP_Heal",
+      "paramDelta": 0.02
+    }
+  ],
+  "Barbara_ActivatedShield3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Square",
+      "paramRatio": 10
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Barbara_Element_Art_MaxHPRatio",
+      "paramDelta": 0.02
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_WetShiled_Heal",
+      "paramSpecial": "Barbara_WetShiled_MaxHP_Heal",
+      "paramDelta": 0.02
+    }
+  ],
+  "Barbara_RebornSupport1": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Barbara_ReBorn_Pre"
+    },
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Barbara_ReBorn"
+    },
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Barbara_ReBornEffect_01"
+    },
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Barbara_ReBornEffect_02"
+    }
+  ],
+  "Barbara_RebornSupport2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_ReBorn",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.2
+    }
+  ],
+  "Barbara_RebornSupport3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_ReBorn",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.2
+    }
+  ],
+  "Barbara_ExpandShield1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Barbara_Eff_WetShiled",
+      "paramSpecial": "Delta",
+      "paramDelta": 0.5
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Barbara_Eff_WetShiled",
+      "paramSpecial": "Max",
+      "paramDelta": 2
+    },
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Barbara_WetShiled",
+      "talentParam": "Barbara_ExpandShield"
+    }
+  ],
+  "Barbara_ExpandShield2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Barbara_Eff_WetShiled",
+      "paramSpecial": "Delta",
+      "paramDelta": 0.5
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Barbara_Eff_WetShiled",
+      "paramSpecial": "Max",
+      "paramDelta": 2
+    }
+  ],
+  "Barbara_ExpandShield3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Barbara_Eff_WetShiled",
+      "paramSpecial": "Delta",
+      "paramDelta": 0.5
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Barbara_Eff_WetShiled",
+      "paramSpecial": "Max",
+      "paramDelta": 2
+    }
+  ],
+  "Barbara_ExpandShield4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Barbara_Eff_WetShiled",
+      "paramSpecial": "Delta",
+      "paramDelta": 0.5
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Barbara_Eff_WetShiled",
+      "paramSpecial": "Max",
+      "paramDelta": 2
+    }
+  ],
+  "Barbara_EnhancedIdolHeal1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_IdolHeal",
+      "paramSpecial": "HealHP",
+      "paramRatio": 0.08
+    }
+  ],
+  "Barbara_EnhancedIdolHeal2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_IdolHeal",
+      "paramSpecial": "HealHP",
+      "paramRatio": 0.08
+    }
+  ],
+  "Barbara_EnhancedIdolHeal3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_IdolHeal",
+      "paramSpecial": "HealHP",
+      "paramRatio": 0.08
+    }
+  ],
+  "Barbara_EnhancedIdolHeal4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Barbara_IdolHeal",
+      "paramSpecial": "HealHP",
+      "paramRatio": 0.08
+    }
+  ]
+}

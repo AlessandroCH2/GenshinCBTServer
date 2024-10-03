@@ -1,0 +1,306 @@
+{
+  "Weapon_Claymore_Zephyrus_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Claymore_Zephyrus"
+    }
+  ],
+  "Weapon_Claymore_Zephyrus_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_Zephyrus",
+      "paramSpecial": "GetElementRatio",
+      "paramDelta": 1
+    }
+  ],
+  "Weapon_Claymore_Zephyrus_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_Zephyrus",
+      "paramSpecial": "GetElementRatio",
+      "paramDelta": 1
+    }
+  ],
+  "Weapon_Claymore_Zephyrus_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_Zephyrus",
+      "paramSpecial": "GetElementRatio",
+      "paramDelta": 1
+    }
+  ],
+  "Weapon_Claymore_Zephyrus_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_Zephyrus",
+      "paramSpecial": "GetElementRatio",
+      "paramDelta": 1
+    }
+  ],
+  "Weapon_Claymore_ExtraPhyDamagePerHit_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Claymore_ExtraPhyDamagePerHit"
+    }
+  ],
+  "Weapon_Claymore_ExtraPhyDamagePerHit_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_ExtraPhyDamagePerHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 2
+    }
+  ],
+  "Weapon_Claymore_ExtraPhyDamagePerHit_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_ExtraPhyDamagePerHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 2
+    }
+  ],
+  "Weapon_Claymore_ExtraPhyDamagePerHit_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_ExtraPhyDamagePerHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 2
+    }
+  ],
+  "Weapon_Claymore_ExtraPhyDamagePerHit_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_ExtraPhyDamagePerHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 2
+    }
+  ],
+  "Weapon_Claymore_LowHPAddExtraAttackEndura_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Claymore_LowHPAddExtraAttackEndura"
+    }
+  ],
+  "Weapon_Claymore_LowHPAddExtraAttackEndura_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_LowHPAddExtraAttackEndura",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Claymore_LowHPAddExtraAttackEndura_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_LowHPAddExtraAttackEndura",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Claymore_LowHPAddExtraAttackEndura_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_LowHPAddExtraAttackEndura",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Claymore_LowHPAddExtraAttackEndura_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_LowHPAddExtraAttackEndura",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Claymore_GenerateBallWhenCritic_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Claymore_GenerateBallWhenCritic"
+    }
+  ],
+  "Weapon_Claymore_GenerateBallWhenCritic_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_GenerateBallWhenCritic",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Claymore_GenerateBallWhenCritic_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_GenerateBallWhenCritic",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Claymore_GenerateBallWhenCritic_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_GenerateBallWhenCritic",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Claymore_GenerateBallWhenCritic_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_GenerateBallWhenCritic",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Claymore_GetShieldBeingHit_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Claymore_GetShieldBeingHit"
+    }
+  ],
+  "Weapon_Claymore_GetShieldBeingHit_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_GetShieldBeingHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Claymore_GetShieldBeingHit_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_GetShieldBeingHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Claymore_GetShieldBeingHit_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_GetShieldBeingHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Claymore_GetShieldBeingHit_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_GetShieldBeingHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Weapon_Claymore_ResetCDWhenSkillHit_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Claymore_ResetCDWhenSkillHit"
+    }
+  ],
+  "Weapon_Claymore_ResetCDWhenSkillHit_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_ResetCDWhenSkillHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Claymore_ResetCDWhenSkillHit_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_ResetCDWhenSkillHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Claymore_ResetCDWhenSkillHit_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_ResetCDWhenSkillHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Claymore_ResetCDWhenSkillHit_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_ResetCDWhenSkillHit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Claymore_CritUpWhenHitNoCrit_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Claymore_CritUpWhenHitNoCrit"
+    }
+  ],
+  "Weapon_Claymore_CritUpWhenHitNoCrit_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_CritUpWhenHitNoCrit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Weapon_Claymore_CritUpWhenHitNoCrit_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_CritUpWhenHitNoCrit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Weapon_Claymore_CritUpWhenHitNoCrit_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_CritUpWhenHitNoCrit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Weapon_Claymore_CritUpWhenHitNoCrit_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_CritUpWhenHitNoCrit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Weapon_Claymore_AtkDefUpWhenExtraAttack_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Claymore_AtkDefUpWhenExtraAttack"
+    }
+  ],
+  "Weapon_Claymore_AtkDefUpWhenExtraAttack_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_AtkDefUpWhenExtraAttack",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Claymore_AtkDefUpWhenExtraAttack_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_AtkDefUpWhenExtraAttack",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Claymore_AtkDefUpWhenExtraAttack_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_AtkDefUpWhenExtraAttack",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Claymore_AtkDefUpWhenExtraAttack_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Claymore_AtkDefUpWhenExtraAttack",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "steerType": "RETURN",
+        "steerDir": {
+          "$type": "Vector",
+          "z": 1
+        }
+      }
+    ]
+  ]
+}

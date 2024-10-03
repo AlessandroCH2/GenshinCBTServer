@@ -1,0 +1,36 @@
+{
+  "$type": "ConfigAudioStageEvents",
+  "id": 33,
+  "stageProgressEvents": [
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.68,
+      "events": [
+        "Play_amb_PFDungeon_base",
+        "Play_Music_Dungeon"
+      ]
+    }
+  ],
+  "stageTeleportEvents": [
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "events": [
+        "Stop_amb_PFDungeon_base",
+        "Stop_Music_Dungeon"
+      ]
+    },
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.68,
+      "events": [
+        "Play_amb_Dungeon",
+        "Play_Music_Dungeon"
+      ]
+    }
+  ],
+  "stageExitEvents": [
+    "Stop_Music_Dungeon",
+    "Stop_amb_PFDungeon_base"
+  ],
+  "stateValue": "State_Dungeon_DragonTear"
+}

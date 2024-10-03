@@ -1,0 +1,37 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigBlackScreenAction",
+        "type": "BLACK_SCREEN",
+        "durationToBlack": 1,
+        "durationKeepBlack": 1,
+        "durationFromBlack": 1,
+        "changeToInteePos": true,
+        "inteePos": "Q308LisaWay"
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "delayTime": 1.2,
+        "duration": 0.01,
+        "cameraPosType": "EXIT",
+        "camTargetType": "TO_INTEE",
+        "lerpRatio": 30,
+        "lerpPattern": 5
+      },
+      {
+        "$type": "ConfigShowMessageAction",
+        "type": "SHOW_MESSAGE",
+        "delayTime": 1.8,
+        "txtMapStr": "INFO_GET_TRIAL_AVATAR"
+      },
+      {
+        "$type": "ConfigVisibleInterAction",
+        "type": "VISIBLE",
+        "delayTime": 1
+      }
+    ]
+  ]
+}

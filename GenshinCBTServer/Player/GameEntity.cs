@@ -20,8 +20,8 @@ namespace GenshinCBTServer.Player
         public MapField<uint, PropValue> props = new MapField<uint, PropValue>();
         public uint configId, groupId,owner,state,drop_id;
         public int amount;
-        
-        
+        public List<uint> inRegions = new List<uint>();
+
         public GameEntity(uint entityId, uint id, MotionInfo motionInfo, ProtEntityType entityType = ProtEntityType.ProtEntityNone)
         {
             EntityType = entityType;
@@ -41,7 +41,9 @@ namespace GenshinCBTServer.Player
                 died = true;
                 new Thread(new ThreadStart(dieStart)).Start();
             }
-            LuaManager.executeTriggerLua(GetClientOwner(), GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId), EventType.EVENT_ANY_MONSTER_DIE);
+            LuaManager.executeTriggerLua(GetClientOwner(), GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId),
+                new ScriptArgs((int)groupId, (int)EventType.EVENT_ANY_MONSTER_DIE)
+                );
         }
         private void dieStart()
         {

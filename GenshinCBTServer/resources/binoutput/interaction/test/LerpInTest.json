@@ -1,0 +1,13 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigSteerInterAction"
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction"
+      }
+    ]
+  ]
+}

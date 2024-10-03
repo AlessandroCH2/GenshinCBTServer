@@ -1,0 +1,71 @@
+{
+  "Dvalin_Tower_Seal_Ring": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4,
+        "dieForceDisappearTime": 4
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "DungeonEntry_Dvalin": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Entry_Lock": [],
+              "Entry_Unlock": []
+            }
+          }
+        }
+      }
+    }
+  }
+}
