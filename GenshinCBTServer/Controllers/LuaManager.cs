@@ -5,10 +5,30 @@ using GenshinCBTServer.Protocol;
 
 namespace GenshinCBTServer.Controllers
 {
+    public static class LuaTableExtensions
+    {
+        public static int[] ToIntArray(this LuaTable table)
+        {
+            if (table == null) return new int[0];
+            // Create an integer array from the LuaTable
+            int[] result = new int[table.Values.Count];
+            int i = 0;
+
+            // Iterate through LuaTable and convert values to integers
+            foreach (var value in table.Values)
+            {
+                result[i++] = Convert.ToInt32(value);
+            }
+
+            return result;
+        }
+    }
     public class ScriptLib
     {
         public int currentGroupId;
         public Client curClient;
+
+       
         public int GetGroupMonsterCount(Client client)
         {
             return client.world.entities.FindAll(e => e.groupId == currentGroupId && e is GameEntityMonster).Count;
@@ -32,13 +52,15 @@ namespace GenshinCBTServer.Controllers
             int configId = (int)(long)parameters["config_id"];
             GadgetState state = (GadgetState)(int)(long)parameters["state"];
 
-            Server.Print($"[LUA] Call GetGroupMonsterCountByGroupId with {configId},{state}");
-            GameEntity entity = client.world.entities.First(e => e.configId == configId && e is GameEntityGadget);
+            Server.Print($"[LUA] Call ChangeGroupGadget with {configId},{state}");
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId);
             if (entity == null)
             {
+                
                 Server.Print($"[LUA] Entity not found with configId {configId}");
                 return 0;
             }
+            if (entity is not GameEntityGadget) return 0;
             Server.Print($"[LUA] Entity found with configId {configId}");
             GameEntityGadget gadget = (GameEntityGadget)entity;
             gadget.ChangeState(state);
@@ -96,13 +118,13 @@ namespace GenshinCBTServer.Controllers
             gadget.ChangeState((GadgetState)gadgetState);
             return 0;
         }
-        public int KillGroupEntity(LuaTable table)
+        public int KillGroupEntity(Client client,LuaTable table)
         {
             uint groupId = (uint)(long)table["group_id"];
-            int[] gadgets = (int[])table["gadgets"];
-
-            List<GameEntity> entities = curClient.world.entities.FindAll(e=>e.groupId==groupId && gadgets.Contains((int)e.configId));
-            curClient.world.KillEntities(entities);
+            int[] gadgets = (table["gadgets"] as LuaTable).ToIntArray();
+            int[] monsters = (table["monsters"] as LuaTable).ToIntArray();
+            List<GameEntity> entities = client.world.entities.FindAll(e=>e.groupId==groupId && gadgets.Contains((int)e.configId) || monsters.Contains((int)e.configId));
+            client.world.KillEntities(entities);
             return 1;
         }
         public int GetRegionEntityCount(Client client,LuaTable table)
