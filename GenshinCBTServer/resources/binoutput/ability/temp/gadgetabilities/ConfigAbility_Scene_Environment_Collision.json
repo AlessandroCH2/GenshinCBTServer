@@ -1,0 +1,182 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Collision_World_Barrier_Interact",
+      "modifiers": {
+        "Eff_Barrier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "World_Barrier"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Eff_Barrier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Collision_World_Barrier_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "World_Barrier_Hit"
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 0,
+              "damagePercentageRatio": 0,
+              "elementDurability": 0,
+              "strikeType": "Default",
+              "enBreak": 200,
+              "ignoreLevelDiff": true
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "hitLevel": "Air",
+              "hitImpulseX": 200,
+              "hitImpulseY": 500,
+              "hitHaltTimeScale": 0.01,
+              "muteHitText": true
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Collision_World_Barrier_M_Interact",
+      "modifiers": {
+        "Eff_Barrier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "World_Barrier_M"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Eff_Barrier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Collision_World_Barrier_M_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "World_Barrier_M_Hit"
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 0,
+              "damagePercentageRatio": 0,
+              "elementDurability": 0,
+              "strikeType": "Default",
+              "enBreak": 200,
+              "ignoreLevelDiff": true
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "hitLevel": "Air",
+              "hitImpulseX": 200,
+              "hitImpulseY": 500,
+              "hitHaltTimeScale": 0.01,
+              "muteHitText": true
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Collision_World_Barrier_S_Interact",
+      "modifiers": {
+        "Eff_Barrier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "World_Barrier_S"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Eff_Barrier"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Collision_World_Barrier_S_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "World_Barrier_S_Hit"
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 0,
+              "damagePercentageRatio": 0,
+              "elementDurability": 0,
+              "strikeType": "Default",
+              "enBreak": 200,
+              "ignoreLevelDiff": true
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "hitLevel": "Air",
+              "hitImpulseX": 200,
+              "hitImpulseY": 500,
+              "hitHaltTimeScale": 0.01,
+              "muteHitText": true
+            }
+          }
+        }
+      ]
+    }
+  }
+]

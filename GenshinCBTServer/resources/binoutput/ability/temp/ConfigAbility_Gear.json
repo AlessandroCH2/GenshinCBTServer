@@ -1,0 +1,257 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_Rotation_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Rotation_201"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "Rotation_202"
+        }
+      ],
+      "modifiers": {
+        "Rotation_201": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Rotate",
+              "value": true
+            }
+          ]
+        },
+        "Rotation_202": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Glow",
+              "value": true
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Gear_ElectricBall_Shoot",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Reset",
+              "value": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Glow"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Rotate"
+            }
+          ]
+        },
+        "DoubleAttack": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "thinkInterval": 0.75,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "doOffStage": true,
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": -1.5,
+                      "z": -2.5
+                    }
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 5,
+                    "y": 1,
+                    "z": 5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 1,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Grass",
+                    "elementDurability": 10,
+                    "strikeType": "Pierce",
+                    "enBreak": 9999999
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_Rotation_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "doOffStage": true,
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": -1.5,
+                  "z": -2.5
+                }
+              },
+              "size": {
+                "$type": "DynamicFloatVector",
+                "x": 5,
+                "y": 1,
+                "z": 5
+              }
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Grass",
+                "elementDurability": 10,
+                "strikeType": "Pierce",
+                "enBreak": 9999999
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_Rotation02_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Rotation_0"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Rotation_201"
+        }
+      ],
+      "modifiers": {
+        "Rotation_0": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState"
+            }
+          ]
+        },
+        "Rotation_201": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "value": 201
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "WindDevice01_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Device_Inactive"
+        }
+      ],
+      "modifiers": {
+        "Device_Inactive": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "AirFlow_Start"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "CutScene_Delay"
+            }
+          ]
+        },
+        "CutScene_Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.8,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "AirFlow_Start",
+              "value": true
+            }
+          ]
+        }
+      }
+    }
+  }
+]

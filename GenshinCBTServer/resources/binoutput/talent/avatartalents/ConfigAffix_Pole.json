@@ -1,0 +1,154 @@
+{
+  "Weapon_Pole_Zephyrus_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Pole_Zephyrus"
+    }
+  ],
+  "Weapon_Pole_Zephyrus_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_Zephyrus",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_Zephyrus_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_Zephyrus",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_Zephyrus_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_Zephyrus",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_Zephyrus_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_Zephyrus",
+      "paramSpecial": "HealHP",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_NormalAttackUpUnlessBeinghit_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Pole_NormalAttackUpUnlessBeinghit"
+    }
+  ],
+  "Weapon_Pole_NormalAttackUpUnlessBeinghit_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_NormalAttackUpUnlessBeinghit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_NormalAttackUpUnlessBeinghit_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_NormalAttackUpUnlessBeinghit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_NormalAttackUpUnlessBeinghit_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_NormalAttackUpUnlessBeinghit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_NormalAttackUpUnlessBeinghit_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_NormalAttackUpUnlessBeinghit",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_ExtraDamageWhenCDReady_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Pole_ExtraDamageWhenCDReady"
+    }
+  ],
+  "Weapon_Pole_ExtraDamageWhenCDReady_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_ExtraDamageWhenCDReady",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Pole_ExtraDamageWhenCDReady_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_ExtraDamageWhenCDReady",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Pole_ExtraDamageWhenCDReady_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_ExtraDamageWhenCDReady",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Pole_ExtraDamageWhenCDReady_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_ExtraDamageWhenCDReady",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.2
+    }
+  ],
+  "Weapon_Pole_DamageUpToWaterEnemy_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Pole_DamageUpToWaterEnemy"
+    }
+  ],
+  "Weapon_Pole_DamageUpToWaterEnemy_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_DamageUpToWaterEnemy",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_DamageUpToWaterEnemy_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_DamageUpToWaterEnemy",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_DamageUpToWaterEnemy_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_DamageUpToWaterEnemy",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ],
+  "Weapon_Pole_DamageUpToWaterEnemy_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Pole_DamageUpToWaterEnemy",
+      "paramSpecial": "Rate",
+      "paramDelta": 0.03
+    }
+  ]
+}

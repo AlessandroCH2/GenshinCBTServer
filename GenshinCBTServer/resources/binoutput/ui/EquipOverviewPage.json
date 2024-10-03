@@ -1,0 +1,22 @@
+{
+  "$type":"ConfigUI",
+  "context":{
+    "EquipOverviewPage":{
+      "$type":"ConfigBaseContext",
+      "stateActions":{
+        "0":{
+          "$type":"DeviceAction",
+          "keyboardTouch":"TabMenu",
+          "keyboardMouse":"TabMenu",
+          "joypad":"TabMenu"
+        },
+        "1":{
+          "$type":"DeviceAction",
+          "keyboardTouch":"TabMenu",
+          "keyboardMouse":"TabMenu",
+          "joypad":"TabMenu"
+        }
+      }
+    }
+  }
+}

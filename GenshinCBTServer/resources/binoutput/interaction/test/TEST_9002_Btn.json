@@ -1,0 +1,78 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "steerType": "TO_LOCAL_AVATAR"
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_FOCUS",
+        "duration": 1,
+        "cameraPosType": "RELATIVE_POS_TO_INTEE",
+        "camPosOffset": {
+          "$type": "Vector",
+          "y": 1.7,
+          "z": 1.5
+        },
+        "camTargetType": "TO_INTEE",
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "y": 1.3
+        },
+        "lerpRatio": 5,
+        "storyDither": true,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition",
+          "enable": true,
+          "duration": 3
+        }
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "dialogID": 9991501
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "dialogID": 9991601
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "dialogID": 9991701
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG_FINISH"
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 0.5,
+        "steerType": "RETURN"
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 3.5,
+        "cameraPosType": "EXIT",
+        "camTargetType": "TO_INTEE",
+        "lerpRatio": 5,
+        "lerpPattern": 9
+      }
+    ]
+  ]
+}

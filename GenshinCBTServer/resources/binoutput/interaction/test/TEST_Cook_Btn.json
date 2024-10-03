@@ -1,0 +1,12 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigUITriggerInterAction",
+        "type": "UI_TRIGGER",
+        "contextName": "CookingPage"
+      }
+    ]
+  ]
+}

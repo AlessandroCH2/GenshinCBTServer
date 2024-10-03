@@ -1,0 +1,989 @@
+{
+  "$type": "ConfigMonster",
+  "common": {
+    "$type": "ConfigEntityCommon",
+    "effectAttachShape": {
+      "$type": "ConfigEffectAttachSkinnedMesh",
+      "mesh": "Body"
+    },
+    "mass": 100,
+    "height": 3,
+    "viewSize": 1.75,
+    "affectedByWorld": true,
+    "checkInSurface": true
+  },
+  "dither": {
+    "$type": "ConfigDither",
+    "showDitherDuration": 2
+  },
+  "combat": {
+    "$type": "ConfigCombat",
+    "property": {
+      "$type": "ConfigCombatProperty",
+      "endureType": "Monster_Demiboss_Other",
+      "lockShape": "CircleLockEnemy",
+      "weight": 150
+    },
+    "beHit": {
+      "$type": "ConfigCombatBeHit",
+      "hitAutoRedirect": false
+    },
+    "die": {
+      "$type": "ConfigDie",
+      "hasAnimatorDie": true,
+      "dieEndTime": 1,
+      "dieForceDisappearTime": 4,
+      "dieDisappearEffect": "Death_Common",
+      "dieDisappearEffectDelay": 1,
+      "dieShaderData": "MonsterDie"
+    }
+  },
+  "equipController": {
+    "$type": "ConfigEquipController",
+    "attachPoints": {
+      "equip01": "WeaponR",
+      "equip02": "WeaponL"
+    }
+  },
+  "abilities": [
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "ResistStruggle",
+      "abilityName": "AbilityResistStruggle"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "WindEffect",
+      "abilityName": "Elemental_Wind_WindEffect"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "RandomWalk",
+      "abilityName": "Elemental_Wind_RandomWalk"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "FlyState",
+      "abilityName": "Elemental_Wind_FlyState"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Die",
+      "abilityName": "Elemental_Wind_Die"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "WeakStart",
+      "abilityName": "Elemental_Wind_WeakStart"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "WeakTimer",
+      "abilityName": "Elemental_Wind_WeakTimer"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "HurricaneRush_Drop",
+      "abilityName": "Elemental_Wind_HurricaneRush_Drop"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "HurricaneRush",
+      "abilityName": "Elemental_Wind_HurricaneRush"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Shock_BS",
+      "abilityName": "Elemental_Wind_Shock_BS"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Shock_AS",
+      "abilityName": "Elemental_Wind_Shock_AS"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "EarthWrath_BS",
+      "abilityName": "Elemental_Wind_EarthWrath_BS"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "EarthWrath_Over",
+      "abilityName": "Elemental_Wind_EarthWrath_Over"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "EarthWrath_Burst",
+      "abilityName": "Elemental_Wind_EarthWrath_Burst"
+    }
+  ],
+  "stateLayers": {
+    "defaultLayer": {
+      "$type": "ConfigNormalStateLayer",
+      "stateIDs": {
+        "Born": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Born": [
+              "Monster_Elemental_Wind_Born"
+            ]
+          },
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "NormalIdle": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Standby": []
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "Turn": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Turn": []
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ],
+          "canSteer": true,
+          "autoSteer": true
+        },
+        "NormalMove": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Walk": [],
+            "Run": []
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ],
+          "canSteer": true
+        },
+        "BeHit": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Hit_L": [],
+            "Hit_H": [
+              "Audio_Element_Wind_Hit_H"
+            ]
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "BeHitThrow": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "HitThrow": [],
+            "HitThrowDrop": [],
+            "HitThrowToGround": []
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit",
+            "HitAir2HitDrop"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "Struggle": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Struggle": []
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit",
+            "HitAir2HitDrop"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "Die": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Die": [
+              "Monster_Elemental_Wind_Die",
+              "Audio_Element_Wind_Die"
+            ],
+            "SwimDie": []
+          }
+        },
+        "Warning": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Warning": []
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "HurricaneRush_Drop": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "HurricaneRush_Drop": []
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "HitAir2HitDrop"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "HurricaneRush_BS": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "HurricaneRush_BS": [
+              "Monster_Elemental_Wind_HurricaneRush_BS"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "HurricaneRush_Loop": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "HurricaneRush_Loop": [
+              "Monster_Elemental_Wind_HurricaneRush_Loop"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "HurricaneRush_AS": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "HurricaneRush_AS": []
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Shock_BS": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Shock_BS": []
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "HitAir2HitDrop"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Shock_Fall": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Shock_Drop": [],
+            "Shock_Fall": []
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Shock_AS": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Shock_AS": [
+              "Monster_Elemental_Wind_Shock_AS"
+            ],
+            "Shock_OnGround": []
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Shock_Up": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Shock_Up": [
+              "Monster_Elemental_Wind_Shock_Up"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "EarthWrath_BS": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "EarthWrath_BS": [
+              "Monster_Elemental_Wind_EarthWrath_BS"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "EarthWrath_Burst": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "EarthWrath_Burst": [
+              "Monster_Elemental_Wind_EarthWrath_Burst"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "RandomWalk": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "RandomWalk_Left": [],
+            "RandomWalk_Right": [],
+            "RandomWalk_Back": []
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Weak_Start": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Weak_Start": [
+              "Monster_Elemental_Wind_Weak_Start"
+            ]
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "HitAir2HitDrop"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Weak_Drop": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Weak_Drop": []
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Weak_ToGround": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Weak_ToGround": [
+              "Monster_Elemental_Wind_Weak_ToGround"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "WeakEnd": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "WeakEnd": [
+              "Monster_Elemental_Wind_WeakEnd"
+            ]
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        }
+      }
+    }
+  },
+  "billboard": {
+    "$type": "ConfigCombatBillboard",
+    "attachPoint": "BillboardAttach",
+    "offset": {
+      "$type": "Vector",
+      "y": 1.5
+    },
+    "depthOffset": 1,
+    "enableSelfAdapt": true,
+    "showHPBar": true,
+    "size": "Big"
+  },
+  "aibeta": {
+    "$type": "ConfigAIBeta",
+    "enable": true,
+    "moveSetting": {
+      "$type": "ConfigAIMove",
+      "useNavMesh": false,
+      "navMeshAgentName": "Undead01"
+    },
+    "sensing": {
+      "$type": "ConfigAISensing",
+      "settings": {
+        "DefaultSetting": {
+          "$type": "ConfigAISensingSetting",
+          "viewPanoramic": true,
+          "feelRange": 8.75
+        }
+      },
+      "templates": {
+        "DefaultTemplate": {
+          "DefaultPoses": "DefaultSetting"
+        }
+      }
+    },
+    "threat": {
+      "$type": "ConfigAIThreatSetting",
+      "clearThreatTargetDistance": 30,
+      "clearThreatEdgeDistance": 5,
+      "clearThreatTimerByDistance": 1.5,
+      "viewThreatGrow": 35,
+      "feelThreatGrow": 100,
+      "threatDecreaseSpeed": 10
+    },
+    "defendArea": {
+      "$type": "ConfigAIDefendArea",
+      "defendRange": 75
+    },
+    "fly": {
+      "$type": "ConfigAIFlySetting",
+      "enable": true,
+      "floatingPoses": [
+        100,
+        101,
+        102,
+        103,
+        104
+      ]
+    },
+    "skills": {
+      "100": {
+        "$type": "ConfigAISkill",
+        "name": "OnAlert",
+        "skillType": "OnAlert",
+        "faceTarget": true,
+        "triggerGCD": false,
+        "stateIDs": [
+          "Warning"
+        ],
+        "skillQueryingTime": 3
+      },
+      "1": {
+        "$type": "ConfigAISkill",
+        "name": "HurricaneRush",
+        "priority": 2,
+        "cd": 15,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            101,
+            103
+          ],
+          "pickRangeMin": 7.5,
+          "pickRangeMax": 25
+        },
+        "stateIDs": [
+          "HurricaneRush_BS",
+          "HurricaneRush_Loop",
+          "HurricaneRush_AS"
+        ]
+      },
+      "3": {
+        "$type": "ConfigAISkill",
+        "name": "Shock",
+        "priority": 2,
+        "cd": 25,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            101,
+            103
+          ],
+          "pickRangeMax": 10
+        },
+        "stateIDs": [
+          "Shock_BS",
+          "Shock_Fall",
+          "Shock_AS"
+        ]
+      },
+      "5": {
+        "$type": "ConfigAISkill",
+        "name": "EarthWrath",
+        "priority": 1,
+        "cd": 60,
+        "initialCD": 30,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            101,
+            103
+          ],
+          "pickRangeMax": 15
+        },
+        "stateIDs": [
+          "EarthWrath_BS",
+          "EarthWrath_Strike"
+        ]
+      },
+      "901": {
+        "$type": "ConfigAISkill",
+        "name": "RandomWalk",
+        "cd": 3,
+        "triggerGCD": false,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            103
+          ]
+        },
+        "stateIDs": [
+          "RandomWalk"
+        ]
+      }
+    },
+    "skillGCD": 10,
+    "returnToBornTactic": {
+      "$type": "ConfigAIReturnToBornPosSetting",
+      "enable": true
+    },
+    "spacialChaseTactic": {
+      "$type": "ConfigAISpacialChaseSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          101,
+          102,
+          103
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAISpacialChaseData",
+        "speedLevel": 2,
+        "chaseStartDistance": 12.5,
+        "chaseStopDistance": 7.5,
+        "yOffsetMin": 3
+      }
+    },
+    "spacialProbeTactic": {
+      "$type": "ConfigAISpacialProbeSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          100
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAISpacialProbeData",
+        "cdMax": 5,
+        "cdMin": 3,
+        "terrainOffsetMin": 5,
+        "terrainOffsetMax": 8,
+        "distanceFromBorn": 30,
+        "distanceFromCurrentMin": 8,
+        "distanceFromCurrentMax": 12
+      }
+    },
+    "spacialAdjustTactic": {
+      "$type": "ConfigAISpacialAdjustSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          101,
+          102,
+          103
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAISpacialAdjustData",
+        "yLow": 3
+      }
+    }
+  },
+  "inputKeys": [
+    {
+      "$type": "ConfigKeyInput",
+      "keyID": 1,
+      "inputKeyCode": 257
+    },
+    {
+      "$type": "ConfigKeyInput",
+      "keyID": 3,
+      "inputKeyCode": 258
+    },
+    {
+      "$type": "ConfigKeyInput",
+      "keyID": 5,
+      "inputKeyCode": 259
+    }
+  ],
+  "audio": {
+    "$type": "ConfigMonsterAudio",
+    "animAudio": {
+      "$type": "ConfigAnimationAudio",
+      "onTransitionIn": [
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Born",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_born"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Die",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_die"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "SwimDie",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_die"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "EarthWrath_Strike",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_earthWrath_strike"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "HurricaneRush_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_hurricaneRush_BS"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "HurricaneRush_Loop",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_hurricaneRush_loop"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "HurricaneRush_AS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_hurricaneRush_AS"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Shock_BS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_shock_BS"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Shock_Fall",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_shock_fall"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Shock_AS",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_shock_AS"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Weak_Start",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_weak_start"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Weak_loop",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_weak_loop"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Weak_ToGround",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_weak_end"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Weak_ToGround",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_weak_end"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "HitThrowToGround",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_weak_end"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "WeakEnd",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_born"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Shock_Up",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_born"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Ani_Monster_Elemental_Wind_WeakLoop",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_weak_loop"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Walk",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_idle"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Standby",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Play_sfx_monster_elemental_wind_idle"
+          }
+        }
+      ],
+      "onTransitionOut": [
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "HurricaneRush_Loop",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_hurricaneRush_loop"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Weak_loop",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_weak_loop"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Ani_Monster_Elemental_Wind_WeakLoop",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_weak_loop"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Walk",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_walk_loop"
+          }
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Standby",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_idle"
+          },
+          "otherStateNames": [
+            "Walk",
+            "Turn",
+            "Run",
+            "RandomWalk_Left",
+            "RandomWalk_Right",
+            "RandomWalk_Back",
+            "HurricaneRush_Drop"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Walk",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_idle"
+          },
+          "otherStateNames": [
+            "Standby",
+            "Turn",
+            "Run",
+            "RandomWalk_Left",
+            "RandomWalk_Right",
+            "RandomWalk_Back",
+            "HurricaneRush_Drop"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Turn",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_idle"
+          },
+          "otherStateNames": [
+            "Walk",
+            "Standby",
+            "Run",
+            "RandomWalk_Left",
+            "RandomWalk_Right",
+            "RandomWalk_Back",
+            "HurricaneRush_Drop"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "Run",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_idle"
+          },
+          "otherStateNames": [
+            "Standby",
+            "Turn",
+            "Walk",
+            "RandomWalk_Left",
+            "RandomWalk_Right",
+            "RandomWalk_Back",
+            "HurricaneRush_Drop"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "RandomWalk_Left",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_idle"
+          },
+          "otherStateNames": [
+            "Walk",
+            "Turn",
+            "Run",
+            "Standby",
+            "RandomWalk_Right",
+            "RandomWalk_Back",
+            "HurricaneRush_Drop"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "RandomWalk_Right",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_idle"
+          },
+          "otherStateNames": [
+            "Standby",
+            "Turn",
+            "Run",
+            "RandomWalk_Left",
+            "Walk",
+            "RandomWalk_Back",
+            "HurricaneRush_Drop"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "RandomWalk_Back",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_idle"
+          },
+          "otherStateNames": [
+            "Walk",
+            "Turn",
+            "Run",
+            "RandomWalk_Left",
+            "RandomWalk_Right",
+            "Standby",
+            "HurricaneRush_Drop"
+          ],
+          "usage": "Except"
+        },
+        {
+          "$type": "ConfigStateAudioEvent",
+          "currentStateName": "HurricaneRush_Drop",
+          "audioEvent": {
+            "$type": "ConfigWwiseString",
+            "text": "Stop_sfx_monster_elemental_wind_idle"
+          },
+          "otherStateNames": [
+            "Standby",
+            "Turn",
+            "Run",
+            "RandomWalk_Left",
+            "RandomWalk_Right",
+            "RandomWalk_Back",
+            "Walk"
+          ],
+          "usage": "Except"
+        }
+      ]
+    }
+  }
+}

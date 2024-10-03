@@ -1,0 +1,284 @@
+{
+  "Shaman_GrassField": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 100,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 75,
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Shaman_GrassField",
+        "abilityName": "Monster_Shaman_GrassField"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 10
+    }
+  },
+  "Shaman_GrassWall": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2.5,
+      "affectedByWorld": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 5000,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 201,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shaman_GrassWall_Interact",
+        "abilityName": "Shaman_GrassWall_Interact"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shaman_GrassWall_EnableCollider",
+        "abilityName": "Shaman_GrassWall_EnableCollider"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shaman_GrassWall_Detect",
+        "abilityName": "Shaman_GrassWall_Detect"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shaman_GrassWall_Attack",
+        "abilityName": "Shaman_GrassWall_Attack"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shaman_GrassWall_Effect",
+        "abilityName": "Shaman_GrassWall_Effect"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shaman_GrassWall_LifeTime",
+        "abilityName": "Shaman_GrassWall_LifeTime"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 10
+    },
+    "gadget": {
+      "$type": "ConfigGadgetCollidedPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "triggerType": "TriggerAlways",
+        "triggerCD": 0.3,
+        "targetType": "All"
+      },
+      "collisionActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Shaman_GrassWall_Attack"
+        }
+      ],
+      "thisColliderName": "Collider",
+      "targetColliderName": "InteeTrigger"
+    }
+  },
+  "Shaman_Tornado": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon"
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 90,
+        "isInvincible": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shaman_Tornado_Config",
+        "abilityName": "Shaman_Tornado_Config"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 15
+    },
+    "move": {
+      "$type": "ConfigPinballBulletMove",
+      "velocityForce": {
+        "$type": "ConfigMoveVelocityForce",
+        "excludeForces": [
+          "WindZoneType",
+          "AirflowType",
+          "RiseType",
+          "SpeedupType",
+          "AirflowAccType"
+        ]
+      },
+      "speed": 3.25,
+      "canBornInWater": true,
+      "delay": 0.25,
+      "stickToGround": {
+        "$type": "ConfigMoveStickToGround",
+        "maxStepHeight": 1,
+        "maxSlopeAngle": 60,
+        "heightToGround": 0.5,
+        "flexibleRange": 0.5,
+        "isStickToWater": true,
+        "unstickWhenDownSlide": "Keep",
+        "unstickWhenUpSlide": "Stay"
+      },
+      "radius": 3.5,
+      "traceOnYAxis": true,
+      "randomBackAngleAdded": 60,
+      "reboundInterval": 0.2,
+      "outOfRangeFixCD": 0.5
+    }
+  },
+  "Shaman_Tornado_Position": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 100,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 75,
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Shaman_Wind_Tornado_Trigger",
+        "abilityName": "Monster_Shaman_Wind_Tornado_Trigger"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 15
+    }
+  },
+  "Shaman_Torrent_Area": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox"
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Shaman_Torrent_Area_Damage",
+        "abilityName": "Shaman_Torrent_Area_Damage"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 5
+    }
+  },
+  "Shaman_WindZone_Position": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 100,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 75,
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Shaman_Wind_WindZone",
+        "abilityName": "Monster_Shaman_Wind_WindZone"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 7.5
+    }
+  }
+}

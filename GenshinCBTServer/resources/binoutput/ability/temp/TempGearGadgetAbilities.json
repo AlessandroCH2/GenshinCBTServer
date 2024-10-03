@@ -1,0 +1,278 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Gadget_Gear_Spray_Fire_Test",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Start"
+          ],
+          "modifierName": "FireSpray"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Stop"
+          ],
+          "modifierName": "FireStop"
+        }
+      ],
+      "modifiers": {
+        "FireStop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "FireSpray"
+            }
+          ]
+        },
+        "FireSpray": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "FireStop"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Gear_Spray_Fire"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "doOffStage": true,
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "checkHitLayerType": "Both",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "WeaponR"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 1.4,
+                    "y": 1.4,
+                    "z": 8
+                  },
+                  "muteHitBehindScene": true
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.2,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 30,
+                    "strikeType": "Default"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitLevel": "Shake",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.22
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Gadget_Gear_Spray_Fire_Single_Test",
+      "modifiers": {
+        "FireSpray_Single": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Gear_Spray_Fire"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "doOffStage": true,
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "checkHitLayerType": "Both",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1
+                    }
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 1.4,
+                    "y": 1.4,
+                    "z": 8
+                  },
+                  "muteHitBehindScene": true
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.25,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementDurability": 30,
+                    "strikeType": "Default"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Shake",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "content": "Gadget_Gear_Spray_Fire_Single_Test"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "FireSpray_Single"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Gadget_Gear_Spray_Ice_Single_Test",
+      "modifiers": {
+        "FireSpray_Single": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Monster_Hili_Fire_Spray"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "doOffStage": true,
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "checkHitLayerType": "Both",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1
+                    }
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 1.4,
+                    "y": 1.4,
+                    "z": 8
+                  },
+                  "muteHitBehindScene": true
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0.25,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementDurability": 30,
+                    "strikeType": "Default"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Shake",
+                    "hitImpulseX": 0,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "FireSpray_Single"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Gear_Electric_ElectricBall_Loop",
+      "modifiers": {
+        "Gear_ElectricBall_Loop": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Electric",
+          "elementDurability": 50,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Gear_ElectricBall_Shoot"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Gear_ElectricBall_Loop"
+        }
+      ]
+    }
+  }
+]

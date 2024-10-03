@@ -1,0 +1,1810 @@
+{
+  "SceneObj_Chest_Default_Lv1": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv1"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Default_Lv2": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv2"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Default_Lv3": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv3"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Default_Lv4": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv4"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Default_Lv5": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv5"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Locked_Lv1": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv1"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ],
+              "Unlock_State": [
+                "Chest_Unlock"
+              ]
+            }
+          },
+          "Lock": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Special_State": [
+                "Chest_Lock"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "enable": true
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "ChestState",
+          "value": 1
+        },
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "gadgetState": "ChestLocked"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "ChestLocked",
+          "intID": "ChestState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Chest_Locked_Lv2": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv2"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ],
+              "Unlock_State": [
+                "Chest_Unlock"
+              ]
+            }
+          },
+          "Lock": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Special_State": [
+                "Chest_Lock"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "enable": true
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "ChestState",
+          "value": 1
+        },
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "gadgetState": "ChestLocked"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "ChestLocked",
+          "intID": "ChestState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Chest_Locked_Lv3": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv3"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ],
+              "Unlock_State": [
+                "Chest_Unlock"
+              ]
+            }
+          },
+          "Lock": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Special_State": [
+                "Chest_Lock"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "enable": true
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "ChestState",
+          "value": 1
+        },
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "gadgetState": "ChestLocked"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "ChestLocked",
+          "intID": "ChestState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Chest_Locked_Lv4": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv4"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ],
+              "Unlock_State": [
+                "Chest_Unlock"
+              ]
+            }
+          },
+          "Lock": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Special_State": [
+                "Chest_Lock"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "enable": true
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "ChestState",
+          "value": 1
+        },
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "gadgetState": "ChestLocked"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "ChestLocked",
+          "intID": "ChestState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Chest_Locked_Lv5": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv5"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ],
+              "Unlock_State": [
+                "Chest_Unlock"
+              ]
+            }
+          },
+          "Lock": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Special_State": [
+                "Chest_Lock"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "enable": true
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "ChestState",
+          "value": 1
+        },
+        {
+          "$type": "ConfigGadgetStateEnableGadgetIntee",
+          "gadgetState": "ChestLocked"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "ChestLocked",
+          "intID": "ChestState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Chest_Bramble_Lv1": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2,
+      "affectedByWorld": true
+    },
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Bramble_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv1"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Bramble_Lv2": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2,
+      "affectedByWorld": true
+    },
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Bramble_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv2"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Bramble_Lv3": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2,
+      "affectedByWorld": true
+    },
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Bramble_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv3"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Bramble_Lv4": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2,
+      "affectedByWorld": true
+    },
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Bramble_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv4"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Bramble_Lv5": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2,
+      "affectedByWorld": true
+    },
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Bramble_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv5"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Frozen_Lv1": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Frozen_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv1"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Frozen_Lv2": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Frozen_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv2"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Frozen_Lv3": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Frozen_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv3"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Frozen_Lv4": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Frozen_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv4"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Frozen_Lv5": {
+    "$type": "ConfigGadget",
+    "model": {
+      "$type": "ConfigModel",
+      "bornEffect": "Chest_Born"
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 4.8,
+        "dieForceDisappearTime": 4.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Frozen_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open_Lv5"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Default": [
+                "EffectInvisible"
+              ],
+              "Special_State": [],
+              "ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_NormalChest": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "mass": 500,
+      "viewSize": 2.5,
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "canTriggerBullet": false,
+        "rangeScale": 0.3,
+        "normalPri": 0.3,
+        "combatPri": 0.1
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 7.8,
+        "dieForceDisappearTime": 7.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 6
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Interact"
+      }
+    ],
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "000_Default": [
+                "Chest_State_Clear"
+              ],
+              "101_LockState": [],
+              "102_ChestOpen": [
+                "Audio_SceneObj_Item_Treasurebox01_102_ChestOpen"
+              ],
+              "103_TrapState": [],
+              "104_BrambleState": [
+                "Chest_State_Bramble"
+              ],
+              "105_FrozenState": [
+                "Chest_State_Frozen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Test_FM02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "mass": 500,
+      "viewSize": 3,
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 7.8,
+        "dieForceDisappearTime": 7.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 6
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Interact"
+      }
+    ],
+    "move": {
+      "$type": "ConfigFollowMove",
+      "target": "GroupGadgetEntity",
+      "attachPoint": "FollowMove02",
+      "followRotation": true
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open"
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "000_Default": [
+                "Chest_State_Clear"
+              ],
+              "101_LockState": [
+                "Chest_State_Clear"
+              ],
+              "103_TrapState": [
+                "Chest_State_Clear"
+              ],
+              "104_BrambleState": [
+                "Chest_State_Bramble"
+              ],
+              "105_FrozenState": [
+                "Chest_State_Frozen"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "SceneObj_Chest_Drop_Chest": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "mass": 500,
+      "viewSize": 2.5,
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 7.8,
+        "dieForceDisappearTime": 7.8,
+        "dieShaderData": "GadgetDie",
+        "dieModelFadeDelay": 6
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Chest_Drop"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "shape": "CircleR5",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5
+    },
+    "uiInteract": {
+      "$type": "ConfigGadgetUI",
+      "gadgetUIBtnCfgPath": "TEST/TEST_Chest_Btn"
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "chest": {
+        "$type": "ConfigChest",
+        "openEffect": "Chest_Open"
+      },
+      "pickup": {
+        "$type": "ConfigPickup"
+      }
+    }
+  }
+}

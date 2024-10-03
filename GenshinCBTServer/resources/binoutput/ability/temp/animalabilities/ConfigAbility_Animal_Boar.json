@@ -1,0 +1,341 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Boar_AIStateInitial",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "Standby"
+          ],
+          "enterActions": [
+            {
+              "$type": "ResetAISkillInitialCD",
+              "skillIDs": [
+                101,
+                102
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Boar_Small_AIStateInitial",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "poseIDs": [
+            1
+          ],
+          "enterActions": [
+            {
+              "$type": "ResetAISkillInitialCD",
+              "skillIDs": [
+                101,
+                102,
+                201
+              ]
+            }
+          ]
+        },
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "poseIDs": [
+            2
+          ],
+          "enterActions": [
+            {
+              "$type": "ResetAISkillInitialCD",
+              "skillIDs": [
+                202
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Boar_SetPose",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            101
+          ],
+          "modifierName": "SetFleePoseTimer"
+        }
+      ],
+      "modifiers": {
+        "SetFleePoseTimer": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 6,
+          "onThinkInterval": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "FleeState",
+              "value": 1
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseInt",
+          "intID": "FleeState"
+        },
+        {
+          "$type": "Predicated",
+          "target": "SelfAttackTarget",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetPositionToSelfPosition",
+              "logic": "LesserOrEqual",
+              "value": 6
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "FleeState",
+              "value": 2
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "FleeState",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Boar_RushAtk",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "RushAtk"
+          ],
+          "endNormalizedTime": 3,
+          "angularSpeed": 35,
+          "attackDistance": 1.5
+        },
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": [
+            "RushAtk"
+          ],
+          "exitActions": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "FleeState",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": [
+            "RushAtk"
+          ],
+          "enterActions": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42802001,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "trackTarget": "Self"
+            }
+          ],
+          "exitActions": [
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 42802001,
+                "type": "Last"
+              }
+            }
+          ]
+        },
+        {
+          "$type": "AttackHittingSceneMixin",
+          "onHittingScene": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "CrashTrigger"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Boar_RushAtk_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.01,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Blunt",
+                "attackType": "Melee"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 800,
+                "hitImpulseY": 180,
+                "canBeDefenceHalt": true
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Boar_Disappear",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "poseIDs": [
+            202
+          ],
+          "enterActions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Flee"
+            },
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "valueRangeMax": 7.5,
+              "valueRangeMin": 5,
+              "overrideMapKey": "RandomTimer"
+            }
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "RandomTimer": 5
+      },
+      "modifiers": {
+        "Flee": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "RandomTimer",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "DisappearTimer"
+            }
+          ]
+        },
+        "DisappearTimer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 2,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "StartDither",
+              "duration": 3
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Disappear",
+              "value": true
+            },
+            {
+              "$type": "KillSelf",
+              "banDrop": true,
+              "banExp": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Boar_Small_ToRun",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "RunState",
+          "value": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Boar_Small_ToWander",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "RunState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Boar_Die",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Death_Animal_Common_DropPoint",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": 0.3,
+              "y": -0.1
+            },
+            "onGround": true
+          }
+        }
+      ]
+    }
+  }
+]

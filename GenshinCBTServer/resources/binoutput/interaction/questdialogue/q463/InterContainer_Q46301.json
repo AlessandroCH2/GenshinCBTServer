@@ -1,0 +1,271 @@
+{
+  "$type": "ConfigInterContainer",
+  "isSimpleTalk": true,
+  "startFade": {
+    "$type": "ConfigInterFade",
+    "startFadeOutDuration": 2
+  },
+  "actors": [
+    {
+      "$type": "ConfigInterActor",
+      "alias": "Avatar",
+      "visible": true,
+      "bornPointName": "Q46307Player"
+    },
+    {
+      "$type": "ConfigInterActor",
+      "configID": 1005,
+      "alias": "1005",
+      "visible": true,
+      "bornPointName": "Q463Paimon"
+    }
+  ],
+  "group": [
+    [
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_FOCUS",
+        "aliasList": [
+          "Avatar"
+        ]
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630101
+      },
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 0.8,
+        "aliasList": [
+          "1005"
+        ],
+        "steerType": "TO_LOCAL_AVATAR"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630102
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1190
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630103
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630104
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1250
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogSelectAction",
+        "type": "DIALOG_SELECT",
+        "delayTime": 0.4,
+        "aliasList": [
+          "Avatar"
+        ],
+        "dialogIDList": [
+          4630106
+        ],
+        "grpIDList": [
+          3767030021
+        ],
+        "useGrpId": true
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630105
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogSelectAction",
+        "type": "DIALOG_SELECT",
+        "delayTime": 0.4,
+        "aliasList": [
+          "Avatar"
+        ],
+        "dialogIDList": [
+          4630108
+        ],
+        "grpIDList": [
+          3767030022
+        ],
+        "useGrpId": true
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630107
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1060
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630109
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1180
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630110
+      }
+    ],
+    [
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "isContinue": true,
+        "bodyLangParam": 1180
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ]
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ]
+      }
+    ]
+  ],
+  "groupId": [
+    {
+      "$type": "ConfigInterGrpId",
+      "grpId": 3767030016,
+      "nextGrpId": 3767030017
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 1,
+      "grpId": 3767030017,
+      "nextGrpId": 3767030018
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 2,
+      "grpId": 3767030018,
+      "nextGrpId": 3767030019
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 3,
+      "grpId": 3767030019,
+      "nextGrpId": 3767030020
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 4,
+      "grpId": 3767030020,
+      "nextGrpId": 3767030021
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 5,
+      "grpId": 3767030021,
+      "nextGrpId": 3767030022
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 6,
+      "grpId": 3767030022,
+      "nextGrpId": 3767030023
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 7,
+      "grpId": 3767030023,
+      "nextGrpId": 3767030024
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 8,
+      "grpId": 3767030024,
+      "nextGrpId": 813813552
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 9,
+      "grpId": 813813552,
+      "nextGrpId": 813813553
+    }
+  ]
+}

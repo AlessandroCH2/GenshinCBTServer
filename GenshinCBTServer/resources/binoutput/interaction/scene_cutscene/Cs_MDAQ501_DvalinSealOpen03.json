@@ -1,0 +1,18 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigCutsceneInterAction",
+        "type": "CUTSCENE",
+        "cutsceneCfg": {
+          "$type": "ConfigTimeline",
+          "type": "TIME_LINE_PREFAB",
+          "resPath": "ART/Cutscene/Cs_MDAQ501_DvalinSealOpen03",
+          "needYEuler": true,
+          "fadeInDuration": 0
+        }
+      }
+    ]
+  ]
+}

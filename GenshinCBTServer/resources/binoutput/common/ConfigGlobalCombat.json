@@ -1,0 +1,567 @@
+{
+  "$type": "ConfigGlobalCombat",
+  "hitData": {
+    "$type": "ConfigGlobalHit",
+    "minHitVX": 1,
+    "maxHitVX": 1000,
+    "minHitVY": 8,
+    "maxHitVY": 1000,
+    "gravity": 2,
+    "hitRetreatFriction": 3,
+    "airFrictionX": 0.5,
+    "airFrictionY": 2,
+    "dieRetreatRatio": 1.5,
+    "dieRetreatAdd": 20,
+    "dieRetreatAirXAdd": 5,
+    "dieRetreatAirYAdd": 6
+  },
+  "collisionData": {
+    "$type": "ConfigGlobalCollision",
+    "highSpdThreshold": 35
+  },
+  "aiData": {
+    "$type": "ConfigGlobalAI",
+    "avatarMeleeSlotRadius": 2,
+    "facingMoveTurnInterval": 0.8,
+    "facingMoveMinAvoidanceVelecity": 0.375,
+    "avoidanceRadius": 2,
+    "avoidanceForce": 50,
+    "lod1": 30,
+    "lod2": 50,
+    "publicCDs": {
+      "meleeAttack": {
+        "$type": "ConfigPublicAISkillCD",
+        "name": "meleeAttack",
+        "minInterval": 5
+      },
+      "meleeAttack_short": {
+        "$type": "ConfigPublicAISkillCD",
+        "name": "meleeAttack_short",
+        "minInterval": 2
+      },
+      "meleeAttack_long": {
+        "$type": "ConfigPublicAISkillCD",
+        "name": "meleeAttack_long",
+        "minInterval": 15
+      },
+      "rangedAttack": {
+        "$type": "ConfigPublicAISkillCD",
+        "name": "rangedAttack",
+        "minInterval": 2
+      },
+      "rangedAttack_long": {
+        "$type": "ConfigPublicAISkillCD",
+        "name": "rangedAttack",
+        "minInterval": 5
+      },
+      "RandomAction": {
+        "$type": "ConfigPublicAISkillCD",
+        "name": "RandomAction",
+        "minInterval": 1.5
+      }
+    }
+  },
+  "moveData": {
+    "$type": "ConfigGlobalMove",
+    "syncInterval": {
+      "$type": "ConfigMoveSyncInterval",
+      "lod0": {
+        "$type": "ConfigSpecificFloatValue",
+        "defaultValue": 0.1,
+        "specificValue": {
+          "EnvAnimal": 0.5
+        }
+      },
+      "lod1": {
+        "$type": "ConfigSpecificFloatValue",
+        "defaultValue": 0.2,
+        "specificValue": {
+          "EnvAnimal": 1
+        }
+      },
+      "lod2": {
+        "$type": "ConfigSpecificFloatValue",
+        "defaultValue": -1
+      }
+    },
+    "noGroundStayInPlace": false
+  },
+  "elementBladeData": {
+    "Fire": {
+      "$type": "ConfigBladeElementFx",
+      "slash": "ElementAlter_Default_Fire",
+      "colorA": "F24D0000",
+      "colorB": "FFF6EB00"
+    },
+    "Water": {
+      "$type": "ConfigBladeElementFx",
+      "slash": "ElementAlter_Default_Water",
+      "colorA": "0056FF00",
+      "colorB": "A3CEFF00"
+    },
+    "Wind": {
+      "$type": "ConfigBladeElementFx",
+      "slash": "ElementAlter_Default_Wind",
+      "colorA": "03C1DB00",
+      "colorB": "C9FFFD00"
+    },
+    "Ice": {
+      "$type": "ConfigBladeElementFx",
+      "slash": "ElementAlter_Default_Water",
+      "colorA": "6599FF00",
+      "colorB": "EBF1FF00"
+    },
+    "Electric": {
+      "$type": "ConfigBladeElementFx",
+      "slash": "ElementAlter_Default_Electric",
+      "colorA": "3714FB00",
+      "colorB": "F9EBFF00"
+    }
+  },
+  "fireGrassAirflowData": {
+    "$type": "ConfigFireGrassAirflowField",
+    "gadgetId": 40200008,
+    "velocity": 10,
+    "stayEffect": "Eff_Windfield_Stay",
+    "enterEffect": "Eff_Windfield_Enter",
+    "triggerNum": 3,
+    "height": 10,
+    "heightSpeed": -1
+  },
+  "miscs": {
+    "$type": "ConfigGloablMiscs",
+    "airFlowAcc": -1.8,
+    "paimonGadgetID": 90000003,
+    "cureEffect": "Eff_AvatarCommon_Heal",
+    "focus": {
+      "$type": "ConfigAvatarFocus",
+      "cameraHorMoveSpeed": 0.8,
+      "cameraVerMoveSpeed": 1.2,
+      "gyroHorMoveSpeed": 16
+    }
+  },
+  "defaultAbilities": {
+    "$type": "ConfigDefaultAbilities",
+    "monterEliteAbilityName": "MonsterEliteAbility",
+    "nonHumanoidMoveAbilities": [
+      "Unique_AbilityCrash"
+    ],
+    "levelDefaultAbilities": [
+      "AI_LeaveCombat_Reset"
+    ],
+    "levelElementAbilities": [
+      "SceneAbility_WaterArea",
+      "SceneAbility_Rain",
+      "ElementAbility_Buring",
+      "ElementAbility_Wet",
+      "ElementAbility_Ice",
+      "ElementAbility_Growing",
+      "ElementAbility_Steam",
+      "ElementAbility_Explode",
+      "ElementAbility_Melt",
+      "ElementAbility_Freeze",
+      "ElementAbility_Frozen",
+      "ElementAbility_Electric",
+      "ElementAbility_Rock",
+      "ElementAbility_Overload",
+      "ElementAbility_Wind",
+      "ElementAbility_StickElectric",
+      "ElementAbility_Fire",
+      "ElementAbility_Superconductor",
+      "ElementAbility_Swirl_Fire",
+      "ElementAbility_Swirl_Electric",
+      "ElementAbility_Swirl_Water",
+      "ElementAbility_Swirl_Ice"
+    ],
+    "levelItemAbilities": [
+      "Item_Food_RecoverHP",
+      "Item_Food_RecoverInstantHP",
+      "Item_Food_MoveSpeed"
+    ],
+    "levelSBuffAbilities": [
+      "Item_Food_Attack",
+      "Item_Food_Defence",
+      "Item_Food_MaxHP",
+      "ReHP_Ins&Con",
+      "Atk_Team",
+      "Def_Team",
+      "Elec_Team",
+      "Fire_Team",
+      "Water_Team",
+      "revive_buff",
+      "Critical_Team",
+      "Stamina_Fly_lv3_1",
+      "Stamina_Fly_lv3_2",
+      "Stamina_Fly_lv3_3",
+      "Stamina_Climb_lv3_1",
+      "Stamina_Climb_lv3_2",
+      "Stamina_Climb_lv3_3",
+      "MoveSpeed_lv2_1",
+      "Def_Element_lv2_1"
+    ],
+    "teamCustomAbilities": [
+      "TeamTalentSwitch",
+      "TeamTalent_CoolDown_Trigger"
+    ]
+  },
+  "elemReactDamage": {
+    "Burning": {},
+    "Stream": {},
+    "Explode": {},
+    "GrassGrowing": {},
+    "Shock": {},
+    "Freeze": {},
+    "Melt": {}
+  },
+  "elemAmplifyDamage": {
+    "Stream": {
+      "Water": 1,
+      "Fire": 0.5
+    },
+    "Melt": {
+      "Fire": 1,
+      "Ice": 0.5
+    }
+  },
+  "elemPrority": [
+    "Electric",
+    "Fire",
+    "Wind",
+    "Ice",
+    "Frozen",
+    "Water",
+    "Ice",
+    "Grass",
+    "Rock",
+    "None"
+  ],
+  "shakeOff": {
+    "$type": "ConfigGlobalShakeOff",
+    "reduceDurability": 3,
+    "interval": 0.09,
+    "shakeLifeTime": 0.15,
+    "shakeValue": 0.24,
+    "shakePeriod": 0.03,
+    "shakeSmoothRatio": 1,
+    "shakeZRatio": 1
+  },
+  "elementShield": {
+    "$type": "ConfigElementShield",
+    "row": [
+      "None",
+      "Fire",
+      "Water",
+      "Grass",
+      "Ice",
+      "Electric",
+      "Wind",
+      "Rock"
+    ],
+    "shieldDamageRatiosMap": {
+      "None": {
+        "$type": "ConfigElementShieldResistance",
+        "damageRatio": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "restraint": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "Fire": {
+        "$type": "ConfigElementShieldResistance",
+        "elementType": "Fire",
+        "damageRatio": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "restraint": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "Water": {
+        "$type": "ConfigElementShieldResistance",
+        "elementType": "Water",
+        "damageRatio": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "restraint": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "Grass": {
+        "$type": "ConfigElementShieldResistance",
+        "elementType": "Grass",
+        "damageRatio": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "restraint": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "Ice": {
+        "$type": "ConfigElementShieldResistance",
+        "elementType": "Ice",
+        "damageRatio": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "restraint": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "Frozen": {
+        "$type": "ConfigElementShieldResistance",
+        "elementType": "Frozen",
+        "damageRatio": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "restraint": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "Electric": {
+        "$type": "ConfigElementShieldResistance",
+        "elementType": "Electric",
+        "damageRatio": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "restraint": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "Wind": {
+        "$type": "ConfigElementShieldResistance",
+        "elementType": "Wind",
+        "damageRatio": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "restraint": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "Rock": {
+        "$type": "ConfigElementShieldResistance",
+        "elementType": "Rock",
+        "damageRatio": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "restraint": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "eliteShield": {
+    "$type": "ConfigEliteShield",
+    "row": [
+      "None",
+      "Fire",
+      "Water",
+      "Grass",
+      "Ice",
+      "Electric",
+      "Wind",
+      "Rock"
+    ],
+    "shieldDamageRatiosMap": {
+      "default": {
+        "$type": "ConfigEliteShieldResistance",
+        "type": "default",
+        "damageRatio": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "globalSwitch": {
+    "$type": "ConfigGlobalSwitch",
+    "enableMultiPlayer": true
+  },
+  "lockTarget": {
+    "$type": "ConfigGlobalLockTarget",
+    "lockWeightOutCameraParam": 0.2,
+    "clearLockTargetInCombat": 3,
+    "forceLockTargetInCombat": 0
+  },
+  "elemUI": {
+    "$type": "ConfigElementUI",
+    "showIconEntityTypes": [
+      "Monster"
+    ],
+    "showReactionEntityTypes": [
+      "Monster",
+      "Avatar"
+    ],
+    "iconRecoverTime": 0.5,
+    "iconDisappearTime": 2,
+    "iconDisappearRound": 2,
+    "iconShowDistance": 40,
+    "overrideElemPath": {
+      "Burning": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Eff_KeepBurning",
+      "Frozen": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Eff_KeepFrozen"
+    },
+    "reactionElemPath": {
+      "Burning": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Burning",
+      "Explode": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Explode",
+      "Freeze": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Freeze",
+      "Melt": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Melt",
+      "Shock": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Shock",
+      "Stream": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Stream",
+      "Superconductor": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/Superconductor",
+      "SwirlElectric": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/SwirlElectric",
+      "SwirlFire": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/SwirlFire",
+      "SwirlIce": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/SwirlIce",
+      "SwirlWater": "ART/UI/Menus/Widget/InLevel/Billboard/EffElemReaction/SwirlWater"
+    }
+  },
+  "rejectElementReaction": {
+    "ElementFreeze": [
+      "Stream",
+      "Wet",
+      "Shock",
+      "SwirlWater",
+      "Fire"
+    ],
+    "ElementFrozen": [
+      "Stream",
+      "Wet",
+      "Shock",
+      "SwirlWater",
+      "Fire"
+    ]
+  },
+  "logSetting": {
+    "$type": "ConfigLogSetting"
+  }
+}

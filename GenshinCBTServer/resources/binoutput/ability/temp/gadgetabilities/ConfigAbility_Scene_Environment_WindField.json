@@ -1,0 +1,2016 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_AirflowAgent",
+      "modifiers": {
+        "Delay1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        },
+        "Circle": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_HAS_ONE",
+                  "value": 0
+                }
+              ],
+              "gadgetID": 70690005,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 70690005,
+                "type": "Nearest"
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Delay1"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -5,
+          "key": "_HAS_ONE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_AirflowAgent2",
+      "modifiers": {
+        "Delay2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 2,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        },
+        "Circle": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_HAS_ONE",
+                  "value": 0
+                }
+              ],
+              "gadgetID": 70690005,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 70690005,
+                "type": "Nearest"
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Delay2"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -5,
+          "key": "_HAS_ONE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_AirflowAgent3",
+      "modifiers": {
+        "Delay4": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 4,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        },
+        "Circle": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_HAS_ONE",
+                  "value": 0
+                }
+              ],
+              "gadgetID": 70690005,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 70690005,
+                "type": "Nearest"
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Delay4"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -5,
+          "key": "_HAS_ONE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_AirflowAgent4",
+      "modifiers": {
+        "Delay6": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        },
+        "Circle": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_HAS_ONE",
+                  "value": 0
+                }
+              ],
+              "gadgetID": 70690005,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 70690005,
+                "type": "Nearest"
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Delay6"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -1,
+          "key": "_HAS_ONE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_AirflowAgent5",
+      "modifiers": {
+        "Delay8": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 8,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        },
+        "Circle": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_HAS_ONE",
+                  "value": 0
+                }
+              ],
+              "gadgetID": 70690005,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 70690005,
+                "type": "Nearest"
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_HAS_ONE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Circle"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Delay8"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -1,
+          "key": "_HAS_ONE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_PushForce_01",
+      "modifiers": {
+        "Duration": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "AvatarCount"
+            }
+          ]
+        },
+        "AvatarCount": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 10
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "value": 1,
+                  "key": "EnterCount",
+                  "useLimitRange": true,
+                  "maxValue": 999,
+                  "minValue": 0
+                }
+              ]
+            }
+          ]
+        },
+        "PushForceModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Duration"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "EnterCount",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "$type": "ConfigAttackEvent",
+                    "attackPattern": {
+                      "$type": "ConfigAttackCircle",
+                      "triggerType": "TriggerNoRepeat",
+                      "height": 30,
+                      "scale": 1,
+                      "centerYOffset": -10,
+                      "fanAngle": 360,
+                      "radius": 9,
+                      "innerRadius": 3
+                    },
+                    "attackInfo": {
+                      "$type": "ConfigAttackInfo",
+                      "attackProperty": {
+                        "$type": "ConfigAttackProperty",
+                        "damagePercentage": 0,
+                        "damagePercentageRatio": 0,
+                        "elementType": "Wind",
+                        "elementDurability": 20,
+                        "strikeType": "Pierce",
+                        "enBreak": 200,
+                        "ignoreLevelDiff": true
+                      },
+                      "hitPattern": {
+                        "$type": "ConfigHitPattern",
+                        "onHitEffectName": "default",
+                        "hitLevel": "Heavy",
+                        "hitImpulseX": 1000,
+                        "hitImpulseY": 0,
+                        "retreatType": "ByHitDirection",
+                        "hitHaltTimeScale": 0.05
+                      }
+                    }
+                  },
+                  "targetType": "AllExceptSelf"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "PushForceModifier"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "EnterCount",
+          "useLimitRange": true,
+          "maxValue": 999,
+          "minValue": 0
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "AddGlobalValue",
+          "value": -1,
+          "key": "EnterCount",
+          "useLimitRange": true,
+          "maxValue": 999,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_PushForce_02",
+      "modifiers": {
+        "Duration": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "AvatarCount"
+            }
+          ]
+        },
+        "AvatarCount": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 10
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "value": 1,
+                  "key": "EnterCount",
+                  "useLimitRange": true,
+                  "maxValue": 999,
+                  "minValue": 0
+                }
+              ]
+            }
+          ]
+        },
+        "PushForceModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Duration"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "EnterCount",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "$type": "ConfigAttackEvent",
+                    "attackPattern": {
+                      "$type": "ConfigAttackCircle",
+                      "triggerType": "TriggerNoRepeat",
+                      "height": 4,
+                      "scale": 1,
+                      "fanAngle": 360,
+                      "radius": 9,
+                      "innerRadius": 3
+                    },
+                    "attackInfo": {
+                      "$type": "ConfigAttackInfo",
+                      "attackProperty": {
+                        "$type": "ConfigAttackProperty",
+                        "damagePercentage": 0,
+                        "damagePercentageRatio": 0,
+                        "elementType": "Wind",
+                        "elementDurability": 20,
+                        "strikeType": "Pierce",
+                        "enBreak": 200,
+                        "ignoreLevelDiff": true
+                      },
+                      "hitPattern": {
+                        "$type": "ConfigHitPattern",
+                        "onHitEffectName": "default",
+                        "hitLevel": "Heavy",
+                        "hitImpulseX": 1000,
+                        "hitImpulseY": 0,
+                        "retreatType": "ByHitDirection",
+                        "hitHaltTimeScale": 0.05
+                      }
+                    }
+                  },
+                  "targetType": "AllExceptSelf"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "PushForceModifier"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "EnterCount",
+          "useLimitRange": true,
+          "maxValue": 999,
+          "minValue": 0
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "AddGlobalValue",
+          "value": -1,
+          "key": "EnterCount",
+          "useLimitRange": true,
+          "maxValue": 999,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_PushForce_03",
+      "modifiers": {
+        "Duration": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "AvatarCount"
+            }
+          ]
+        },
+        "AvatarCount": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 10
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "value": 1,
+                  "key": "EnterCount",
+                  "useLimitRange": true,
+                  "maxValue": 999,
+                  "minValue": 0
+                }
+              ]
+            }
+          ]
+        },
+        "PushForceModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.9,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Duration"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "EnterCount",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "$type": "ConfigAttackEvent",
+                    "attackPattern": {
+                      "$type": "ConfigAttackCircle",
+                      "triggerType": "TriggerNoRepeat",
+                      "height": 1.5,
+                      "scale": 1,
+                      "fanAngle": 360,
+                      "radius": 15,
+                      "innerRadius": 3
+                    },
+                    "attackInfo": {
+                      "$type": "ConfigAttackInfo",
+                      "attackProperty": {
+                        "$type": "ConfigAttackProperty",
+                        "damagePercentage": 0,
+                        "damagePercentageRatio": 0,
+                        "elementType": "Wind",
+                        "elementDurability": 20,
+                        "strikeType": "Pierce",
+                        "enBreak": 200,
+                        "ignoreLevelDiff": true
+                      },
+                      "hitPattern": {
+                        "$type": "ConfigHitPattern",
+                        "onHitEffectName": "default",
+                        "hitLevel": "Heavy",
+                        "hitImpulseX": 1000,
+                        "hitImpulseY": 0,
+                        "retreatType": "ByHitDirection",
+                        "hitHaltTimeScale": 0.05
+                      }
+                    }
+                  },
+                  "targetType": "AllExceptSelf"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "PushForceModifier"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "EnterCount",
+          "useLimitRange": true,
+          "maxValue": 999,
+          "minValue": 0
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "AddGlobalValue",
+          "value": -1,
+          "key": "EnterCount",
+          "useLimitRange": true,
+          "maxValue": 999,
+          "minValue": 0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_DragonNest_Barrier_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "doOffStage": true,
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.75
+                }
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementType": "Wind",
+                "elementDurability": 10,
+                "strikeType": "Pierce",
+                "enBreak": 9999999,
+                "ignoreLevelDiff": true
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 500,
+                "hitImpulseY": 200,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "AllExceptSelf"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_DragonNest_Element",
+      "modifiers": {
+        "Wind": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Wind",
+          "elementDurability": 1
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Wind"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "DragonNest_Tornado_WindField_DragonNest_Tornado_Controller",
+      "modifiers": {
+        "Random_Time": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "valueRangeMax": 60,
+              "overrideMapKey": "RandomTime"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Bullet_Delay"
+            }
+          ]
+        },
+        "Bullet_Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "RandomTime",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Create_Tornado"
+            }
+          ]
+        },
+        "Create_Tornado": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 60,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 70630001,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                }
+              }
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 70630001,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Random_Time"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_DragonNest_Tornado_Bullet",
+      "modifiers": {
+        "Tornado_Monitor": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 28.5,
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "CurLocalAvatar",
+              "value": 0,
+              "key": "_Target_Tornado_Tiny_Position",
+              "maxValue": 0,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 0,
+              "key": "_Target_Is_In_Struggle",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Tornado_Die",
+              "value": true
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "WindZone"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Delay"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "compareType": "Y",
+                  "value": 15
+                },
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 5
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Target",
+                  "value": 10,
+                  "key": "_Target_Tornado_Tiny_Position",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 5
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Target",
+                  "value": 10,
+                  "key": "_Target_Tornado_Tiny_Struggle",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Target",
+                  "value": -10,
+                  "key": "_Target_Tornado_Tiny_Struggle",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Is_In_Struggle",
+                  "value": 0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "CurLocalAvatar",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Target_Tornado_Tiny_Struggle",
+                      "value": 1
+                    }
+                  ],
+                  "modifierName": "Tornado_Struggle"
+                }
+              ]
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Tornado_Tiny_Struggle",
+                  "value": 1
+                }
+              ],
+              "modifierName": "Struggle_Count"
+            }
+          ]
+        },
+        "Tornado_Struggle": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1.5,
+          "elementDurability": 100,
+          "state": "Struggle",
+          "onAdded": [
+            {
+              "$type": "SetAvatarCanShakeOff"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAvatarCanShakeOff",
+              "canShakeOff": true
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "CurLocalAvatar",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 1,
+                  "damagePercentageRatio": 0,
+                  "elementDurability": 40,
+                  "strikeType": "Default"
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "default",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 420,
+                  "hitHaltTimeScale": 0.01
+                }
+              }
+            }
+          ]
+        },
+        "Struggle_Count": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 7,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AddGravityScale": -1.3
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "DragonNest_Tornado_SlowDown"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 10,
+              "key": "_Target_Is_In_Struggle",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_Target_Tornado_Tiny_Struggle",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_Target_Tornado_Tiny_Position",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_Target_Is_In_Struggle",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.5,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "WindZone_OutSide"
+            }
+          ]
+        },
+        "WindZone_OutSide": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR40H40",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "strength": 2,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Tornado_Tiny_Position",
+                  "value": 0,
+                  "compareType": "LessAndEqual"
+                }
+              ]
+            }
+          ]
+        },
+        "WindZone": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR6H40",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "strength": 5,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Tornado_Tiny_Position",
+                  "value": 0,
+                  "compareType": "LessAndEqual"
+                }
+              ]
+            },
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "RectW10L10H30",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "strength": 10,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR20H60",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "strength": -10,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Tornado_Tiny_Position",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Tornado_Monitor"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WindZone"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WindZone_OutSide"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_DragonNest_Tornado_Tiny",
+      "modifiers": {
+        "Tornado_Monitor": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "CurLocalAvatar",
+              "value": 0,
+              "key": "_Target_Tornado_Tiny_Position",
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "compareType": "Y",
+                  "value": 5
+                },
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 2
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Target",
+                  "value": 10,
+                  "key": "_Target_Tornado_Tiny_Position",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 2
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Target",
+                  "value": 10,
+                  "key": "_Target_Tornado_Tiny_Struggle",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Target",
+                  "value": -10,
+                  "key": "_Target_Tornado_Tiny_Struggle",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Tornado_Tiny_Struggle",
+                  "value": 1
+                }
+              ],
+              "modifierName": "Tornado_Struggle"
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Tornado_Tiny_Struggle",
+                  "value": 1
+                }
+              ],
+              "modifierName": "Struggle_Count"
+            }
+          ]
+        },
+        "Tornado_Struggle": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.3,
+          "elementDurability": 100,
+          "state": "Struggle"
+        },
+        "Struggle_Count": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 4,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_Target_Tornado_Tiny_Struggle",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_Target_Tornado_Tiny_Position",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "WindZone": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR35H40",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "strength": 2,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Tornado_Tiny_Position",
+                  "value": 0,
+                  "compareType": "LessAndEqual"
+                }
+              ]
+            },
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "RectW5L5",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "strength": 3,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR20H20",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "strength": -10,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar",
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Target_Tornado_Tiny_Position",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Tornado_Monitor"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WindZone"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WindField_StrongWindAbility",
+      "abilitySpecials": {
+        "Stage1Time": 0
+      },
+      "modifiers": {
+        "Stage0": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "valueRangeMax": 25,
+              "valueRangeMin": 20,
+              "overrideMapKey": "Stage1Time"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Stage1"
+            }
+          ]
+        },
+        "Stage1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": "Stage1Time",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR10",
+              "strength": -2,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "maxNum": 0
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "=========StrongWind CoolDown========"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Stage2"
+            }
+          ]
+        },
+        "Stage2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR10",
+              "strength": -4,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "maxNum": 0
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "=========StrongWind Ready========"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "PlayEffect"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ClearGlobalValue",
+              "key": "EffectCount"
+            },
+            {
+              "$type": "ShowScreenEffect"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Stage3"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "CurLocalAvatar",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IGNORE_STRONG_WIND",
+                  "value": 0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "value": 400
+                },
+                {
+                  "$type": "ByTargetPositionToSelfPosition",
+                  "logic": "LesserOrEqual",
+                  "compareType": "Y",
+                  "value": 60
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Caster",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "EffectCount",
+                      "value": 0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ShowScreenEffect",
+                      "show": true
+                    },
+                    {
+                      "$type": "AddGlobalValue",
+                      "value": 1,
+                      "key": "EffectCount",
+                      "maxValue": 0,
+                      "minValue": 0
+                    }
+                  ]
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Caster",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "EffectCount",
+                      "value": 1
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ShowScreenEffect"
+                    },
+                    {
+                      "$type": "AddGlobalValue",
+                      "value": -1,
+                      "key": "EffectCount",
+                      "maxValue": 0,
+                      "minValue": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "ShowScreenEffect"
+            }
+          ]
+        },
+        "Stage3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR10",
+              "strength": -8,
+              "attenuation": 0,
+              "innerRadius": 0,
+              "maxNum": 0
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "=========StrongWind Trigger========"
+            },
+            {
+              "$type": "AttachEffect",
+              "target": "CurLocalAvatar",
+              "effectPattern": "StrongWindShot",
+              "born": {
+                "$type": "ConfigBornBySelf"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ClearGlobalValue",
+              "key": "AttackCount"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Stage0"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "PlayEffect"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "AttackCount",
+                  "value": 0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "CurLocalAvatar",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_IGNORE_STRONG_WIND",
+                      "value": 0,
+                      "compareType": "NoneOrEqual"
+                    },
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "logic": "LesserOrEqual",
+                      "value": 400
+                    },
+                    {
+                      "$type": "ByTargetPositionToSelfPosition",
+                      "logic": "LesserOrEqual",
+                      "compareType": "Y",
+                      "value": 60
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetGlobalPos",
+                      "target": "CurLocalAvatar",
+                      "key": "PlayerPos",
+                      "born": {
+                        "$type": "ConfigBornByTarget"
+                      },
+                      "setTarget": false
+                    },
+                    {
+                      "$type": "TriggerAttackEvent",
+                      "target": "Caster",
+                      "attackEvent": {
+                        "$type": "ConfigAttackEvent",
+                        "attackPattern": {
+                          "$type": "ConfigAttackSphere",
+                          "triggerType": "TriggerNoRepeat",
+                          "filterByFrame": true,
+                          "born": {
+                            "$type": "ConfigBornByGlobalValue",
+                            "positionKey": "PlayerPos"
+                          },
+                          "radius": 1
+                        },
+                        "attackInfo": {
+                          "$type": "ConfigAttackInfo",
+                          "attackProperty": {
+                            "$type": "ConfigAttackProperty",
+                            "damagePercentage": 0.5,
+                            "damagePercentageRatio": 0,
+                            "elementType": "Wind",
+                            "elementDurability": 100,
+                            "strikeType": "Pierce",
+                            "ignoreLevelDiff": true
+                          },
+                          "hitPattern": {
+                            "$type": "ConfigHitPattern",
+                            "onHitEffectName": "default",
+                            "hitLevel": "Heavy",
+                            "hitImpulseX": 2000,
+                            "hitImpulseY": 300,
+                            "hitHaltTimeScale": 0.05
+                          }
+                        }
+                      },
+                      "targetType": "Enemy"
+                    },
+                    {
+                      "$type": "AddGlobalValue",
+                      "value": 1,
+                      "key": "AttackCount",
+                      "maxValue": 0,
+                      "minValue": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "PlayEffect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "CurLocalAvatar",
+              "effectPattern": "StrongWindPrepare",
+              "born": {
+                "$type": "ConfigBornBySelf"
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Stage0"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "StrongWindSafeRegion",
+      "modifiers": {
+        "HealModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 5,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "amount": 50
+            }
+          ]
+        }
+      },
+      "onFieldEnter": [
+        {
+          "$type": "AddGlobalValue",
+          "target": "Target",
+          "value": 1,
+          "key": "_IGNORE_STRONG_WIND",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "modifierName": "HealModifier"
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "AddGlobalValue",
+          "target": "Target",
+          "value": -1,
+          "key": "_IGNORE_STRONG_WIND",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "RemoveModifier",
+          "target": "Target",
+          "modifierName": "HealModifier"
+        }
+      ]
+    }
+  }
+]

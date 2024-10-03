@@ -1,0 +1,344 @@
+{
+  "SceneObj_Gear_Gate_DungeonGate01": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Gate_DungeonGate02": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Gate_Close": [
+                "Audio_SceneObj_Gear_DungeonGate02_Close"
+              ],
+              "Gate_Open": [
+                "Gear_Gate02_Open",
+                "Audio_SceneObj_Gear_DungeonGate02_Open"
+              ],
+              "Gate_Lock": [],
+              "Gate_Unlock": []
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Gate_DungeonGate03": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Gate_Close": [
+                "Audio_SceneObj_Gear_DungeonGate03_Close"
+              ],
+              "Gate_Open": [
+                "Gear_Gate03_Open",
+                "Audio_SceneObj_Gear_DungeonGate03_Open"
+              ],
+              "Gate_Lock": [],
+              "Gate_Unlock": []
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Gate_IronFence": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Gate_Close": [
+                "Eff_IronFence_Down",
+                "Audio_SceneObj_IronFence_Close"
+              ],
+              "Gate_Open": [
+                "Eff_IronFence_Up",
+                "Audio_SceneObj_IronFence_Open"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Gate_PfDungeon_Door02": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Gate_Close": [
+                "Audio_SceneObj_Gear_PFDungeon_Door02_Close"
+              ],
+              "Gate_Open": [
+                "Audio_SceneObj_Gear_PFDungeon_Door02_Open"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  },
+  "SceneObj_Gear_Gate_HiliSleepingGroup02": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 99999,
+        "attack": 200,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      }
+    },
+    "stateLayers": {
+      "defaultLayer": {
+        "$type": "ConfigNormalStateLayer",
+        "stateIDs": {
+          "All": {
+            "$type": "ConfigNormalStateIDInfo",
+            "animatorStates": {
+              "Gate_Close": [
+                "Eff_IronFence_Down",
+                "Audio_SceneObj_IronFence_Close"
+              ],
+              "Gate_Open": [
+                "Eff_IronFence_Up",
+                "Audio_SceneObj_IronFence_Open"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "gadgetAction": {
+      "$type": "ConfigGadgetAction",
+      "gadgetStateActionList": [
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "intID": "GadgetState"
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStart",
+          "intID": "GadgetState",
+          "value": 201
+        },
+        {
+          "$type": "ConfigGadgetStateSetAnimInt",
+          "gadgetState": "GearStop",
+          "intID": "GadgetState"
+        }
+      ]
+    }
+  }
+}

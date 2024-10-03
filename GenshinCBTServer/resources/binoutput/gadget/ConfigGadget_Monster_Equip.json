@@ -1,0 +1,1339 @@
+{
+  "MonEquip_WoodenClub_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "AttachGrassSelf",
+        "abilityName": "Monster_Weapon_Grass_30"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_WoodenClub_01_SetGlobalValue",
+        "abilityName": "MonEquip_WoodenClub_01_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "SwordOneHand"
+    }
+  },
+  "MonEquip_WoodenClub_02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "AttachGrassSelf",
+        "abilityName": "Monster_Weapon_Grass_30"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "SwordOneHand"
+    }
+  },
+  "MonEquip_Shield_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Defend",
+        "abilityName": "Monster_Weapon_ShieldDefendAttack"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Shield_01_SetGlobalValue",
+        "abilityName": "MonEquip_Shield_01_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip02",
+      "equipEntityType": "SmallShield"
+    },
+    "billboard": {
+      "$type": "ConfigCombatBillboard",
+      "attachPoint": "BillboardAttach",
+      "depthOffset": 0.25,
+      "showDistance": 0,
+      "showHPBar": true,
+      "size": "Small",
+      "shieldBarOnly": true
+    }
+  },
+  "MonEquip_Shield_02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2,
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "dither": {
+      "$type": "ConfigDither",
+      "showDitherDuration": 2
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Defend",
+        "abilityName": "Brute_Shield_Defend"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Shield_02_SetGlobalValue",
+        "abilityName": "MonEquip_Shield_02_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip02",
+      "equipEntityType": "SmallShield"
+    },
+    "billboard": {
+      "$type": "ConfigCombatBillboard",
+      "attachPoint": "BillboardAttach",
+      "depthOffset": 1,
+      "showHPBar": true,
+      "shieldBarOnly": true
+    }
+  },
+  "MonEquip_WoodenClub_Fire_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Spear"
+    }
+  },
+  "MonEquip_Crossbow_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Crossbow_01_SetGlobalValue",
+        "abilityName": "MonEquip_Crossbow_01_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "CrossBow"
+    }
+  },
+  "MonEquip_Crossbow_Fire_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Crossbow_01_SetGlobalValue",
+        "abilityName": "MonEquip_Crossbow_01_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "CrossBow"
+    }
+  },
+  "MonEquip_Crossbow_Ice_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Crossbow_01_SetGlobalValue",
+        "abilityName": "MonEquip_Crossbow_01_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "CrossBow"
+    }
+  },
+  "MonEquip_Crossbow_Thunder_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Crossbow_01_SetGlobalValue",
+        "abilityName": "MonEquip_Crossbow_01_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "CrossBow"
+    }
+  },
+  "MonEquip_Backpack_Fire": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 0.5,
+        "scaleY": 0.5,
+        "scaleZ": 0.6
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 9999999,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 1,
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "BackpackInit",
+        "abilityName": "Hili_Fire_Spray_BackpackInit"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip02",
+      "equipEntityType": "Spear"
+    }
+  },
+  "MonEquip_Staff_Fire_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "WeaponInit",
+        "abilityName": "Monster_Staff_Fire_WeaponInit"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Catalyst"
+    }
+  },
+  "MonEquip_Staff_Ice_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "WeaponInit",
+        "abilityName": "Monster_Staff_Ice_WeaponInit"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Catalyst"
+    }
+  },
+  "MonEquip_Staff_Water_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "WeaponInit",
+        "abilityName": "Monster_Staff_Water_WeaponInit"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Catalyst"
+    }
+  },
+  "MonEquip_Axe_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "dither": {
+      "$type": "ConfigDither",
+      "showDitherDuration": 2
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Axe_01_SetGlobalValue",
+        "abilityName": "MonEquip_Axe_01_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Spear"
+    }
+  },
+  "MonEquip_Wand_Water_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Shaman_Water_WeaponInit",
+        "abilityName": "Monster_Shaman_Water_WeaponInit"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Catalyst"
+    }
+  },
+  "MonEquip_Wand_Grass_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Shaman_Grass_WeaponInit",
+        "abilityName": "Monster_Shaman_Grass_WeaponInit"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Catalyst"
+    }
+  },
+  "MonEquip_Wand_Wind_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Shaman_Wind_WeaponInit",
+        "abilityName": "Monster_Shaman_Wind_WeaponInit"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Catalyst"
+    }
+  },
+  "MonEquip_Torch_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Torch_FireState",
+        "abilityName": "MonEquip_Torch_FireState"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_WoodenClub_01_SetGlobalValue",
+        "abilityName": "MonEquip_WoodenClub_01_SetGlobalValue"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "SwordOneHand"
+    }
+  },
+  "MonEquip_Torch_02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_Torch_FireState",
+        "abilityName": "MonEquip_Torch_FireState"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "SwordOneHand"
+    }
+  },
+  "MonEquip_WoodenClub_Grass_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 4,
+        "dieDisappearEffect": "Death_MonsterEquip",
+        "dieShaderData": "MonsterEquipDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "MonEquip_WoodenClub_Grass_SetGlobalValue",
+        "abilityName": "MonEquip_WoodenClub_Grass_SetGlobalValue"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Equip_SelfDestroy",
+        "abilityName": "Monster_Equip_SelfDestroy"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "SwordOneHand"
+    }
+  },
+  "Gadget_WoodenClub_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_Gadget_Disappear",
+        "abilityName": "Monster_Weapon_Gadget_Disappear"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_BeingHitDetect",
+        "abilityName": "Monster_Weapon_BeingHitDetect"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "SwordOneHand"
+    }
+  },
+  "Gadget_Shield_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_Gadget_Disappear",
+        "abilityName": "Monster_Weapon_Gadget_Disappear"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_BeingHitDetect",
+        "abilityName": "Monster_Weapon_BeingHitDetect"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip02",
+      "equipEntityType": "SmallShield"
+    }
+  },
+  "Gadget_Crossbow_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_Gadget_Disappear",
+        "abilityName": "Monster_Weapon_Gadget_Disappear"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_BeingHitDetect",
+        "abilityName": "Monster_Weapon_BeingHitDetect"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "CrossBow"
+    }
+  },
+  "Gadget_Shield_02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "mass": 40,
+      "viewSize": 2,
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_Gadget_Disappear",
+        "abilityName": "Monster_Weapon_Gadget_Disappear"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_BeingHitDetect",
+        "abilityName": "Monster_Weapon_BeingHitDetect"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip02",
+      "equipEntityType": "SmallShield"
+    }
+  },
+  "Gadget_Axe_01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "mass": 50,
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 10,
+        "lockShape": "CircleLockEnemy",
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_Gadget_Disappear",
+        "abilityName": "Monster_Weapon_Gadget_Disappear"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Monster_Weapon_BeingHitDetect",
+        "abilityName": "Monster_Weapon_BeingHitDetect"
+      }
+    ],
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip01",
+      "equipEntityType": "Spear"
+    }
+  }
+}

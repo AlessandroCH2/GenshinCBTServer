@@ -1,0 +1,543 @@
+{
+  "AccountPlayer": {
+    "$type": "ConfigGadget",
+    "move": {
+      "$type": "ConfigFollowMove",
+      "attachPoint": "RootNode",
+      "forward": {
+        "$type": "Vector",
+        "z": 1
+      }
+    }
+  },
+  "Enviro01": {
+    "$type": "ConfigGadget",
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "ThunderOnce",
+        "abilityName": "Enviro_ThunderOnce"
+      }
+    ],
+    "weather": {
+      "$type": "ConfigWeather",
+      "dropElemBalls": [
+        {
+          "$type": "ConfigElemBall",
+          "type": "InStorm",
+          "curMaxNum": 6,
+          "dropItems": [
+            2004,
+            2004,
+            2012,
+            2004
+          ],
+          "maxNum": 30,
+          "poissonDisk": 4,
+          "maxRadius": 25
+        },
+        {
+          "$type": "ConfigElemBall",
+          "type": "InRain",
+          "curMaxNum": 6,
+          "intervalTimes": [
+            10,
+            15,
+            20
+          ],
+          "dropItems": [
+            2002,
+            2002,
+            2002,
+            2010
+          ],
+          "dropCounts": [
+            5,
+            8,
+            15
+          ],
+          "maxNum": 30,
+          "poissonDisk": 4,
+          "maxRadius": 25
+        },
+        {
+          "$type": "ConfigElemBall",
+          "type": "InSnow",
+          "curMaxNum": 6,
+          "intervalTimes": [
+            10,
+            15,
+            20
+          ],
+          "dropItems": [
+            2006,
+            2006,
+            2014,
+            2014
+          ],
+          "dropCounts": [
+            5,
+            8,
+            15
+          ],
+          "maxNum": 30,
+          "poissonDisk": 4,
+          "maxRadius": 25
+        },
+        {
+          "$type": "ConfigElemBall",
+          "type": "AfterRain",
+          "curMaxNum": 6,
+          "intervalTimes": [
+            10,
+            15,
+            20
+          ],
+          "dropItems": [
+            2003,
+            2003,
+            2011
+          ],
+          "dropCounts": [
+            5,
+            8,
+            15
+          ],
+          "maxNum": 15,
+          "poissonDisk": 3,
+          "maxRadius": 25
+        }
+      ],
+      "shapeName": "CircleR10000",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "defaultEnviro": "MengdeAreaDefault03",
+      "weatherList": [
+        "ClearSky",
+        "Cloudy",
+        "Cloudy1",
+        "Cloudy2",
+        "Cloudy3",
+        "HeavyRain",
+        "HeavySnow",
+        "Storm",
+        "Blustery"
+      ],
+      "weatherWeightList": [
+        90,
+        50,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "Enviro02": {
+    "$type": "ConfigGadget",
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "ThunderOnce",
+        "abilityName": "Enviro_ThunderOnce"
+      }
+    ],
+    "weather": {
+      "$type": "ConfigWeather",
+      "dropElemBalls": [
+        {
+          "$type": "ConfigElemBall",
+          "type": "InStorm",
+          "curMaxNum": 6,
+          "dropItems": [
+            2004,
+            2004,
+            2012,
+            2004
+          ],
+          "maxNum": 30,
+          "poissonDisk": 4,
+          "maxRadius": 25
+        },
+        {
+          "$type": "ConfigElemBall",
+          "type": "InRain",
+          "curMaxNum": 6,
+          "intervalTimes": [
+            10,
+            15,
+            20
+          ],
+          "dropItems": [
+            2002,
+            2002,
+            2002,
+            2010
+          ],
+          "dropCounts": [
+            5,
+            8,
+            15
+          ],
+          "maxNum": 30,
+          "poissonDisk": 4,
+          "maxRadius": 25
+        },
+        {
+          "$type": "ConfigElemBall",
+          "type": "InSnow",
+          "curMaxNum": 6,
+          "intervalTimes": [
+            10,
+            15,
+            20
+          ],
+          "dropItems": [
+            2006,
+            2006,
+            2014,
+            2014
+          ],
+          "dropCounts": [
+            5,
+            8,
+            15
+          ],
+          "maxNum": 30,
+          "poissonDisk": 4,
+          "maxRadius": 25
+        },
+        {
+          "$type": "ConfigElemBall",
+          "type": "AfterRain",
+          "curMaxNum": 6,
+          "intervalTimes": [
+            10,
+            15,
+            20
+          ],
+          "dropItems": [
+            2003,
+            2003,
+            2011
+          ],
+          "dropCounts": [
+            5,
+            8,
+            15
+          ],
+          "maxNum": 15,
+          "poissonDisk": 3,
+          "maxRadius": 25
+        }
+      ],
+      "shapeName": "CircleRWindDragon",
+      "position": [
+        2698,
+        195,
+        158
+      ],
+      "priority": 10,
+      "defaultEnviro": "WindDragonEnviroArea",
+      "weatherList": [
+        "WindDragonWeather"
+      ],
+      "weatherWeightList": [
+        100,
+        0
+      ]
+    }
+  },
+  "Enviro03": {
+    "$type": "ConfigGadget",
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "ThunderOnce",
+        "abilityName": "Enviro_ThunderOnce"
+      }
+    ],
+    "weather": {
+      "$type": "ConfigWeather",
+      "shapeName": "CircleR350",
+      "position": [
+        2368,
+        208,
+        -793
+      ],
+      "priority": 20,
+      "defaultEnviro": "MengdeAreaDefault03",
+      "weatherList": [
+        "Blustery"
+      ],
+      "weatherWeightList": [
+        100,
+        0
+      ],
+      "refreshTime": 1000
+    }
+  },
+  "Grass01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 0.8,
+        "scaleY": 0.8,
+        "scaleZ": 0.3
+      },
+      "affectedByWorld": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 999999,
+        "attack": 1,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Grass",
+        "abilityName": "GrassMaterial"
+      }
+    ]
+  },
+  "Water01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 2,
+        "scaleY": 2,
+        "scaleZ": 0.5
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 999999,
+        "attack": 1,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Water",
+        "abilityName": "WaterMaterial"
+      }
+    ]
+  },
+  "Tree01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 300,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 75,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "canTriggerBullet": false,
+        "ignorePurgeRate": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieDisappearEffect": "WoodSpike_Disappear"
+      }
+    }
+  },
+  "Bush01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 1.7,
+      "affectedByWorld": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 100,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 75,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "ignorePurgeRate": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Bush01",
+        "abilityName": "BushMaterial01"
+      }
+    ]
+  },
+  "Bush02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 2.1,
+      "affectedByWorld": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 100,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 75,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "ignorePurgeRate": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Bush01",
+        "abilityName": "BushMaterial01"
+      }
+    ]
+  },
+  "Windmill": {
+    "$type": "ConfigGadget",
+    "move": {
+      "$type": "ConfigWindmillMove"
+    }
+  },
+  "Oil": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "viewSize": 1.5,
+      "affectedByWorld": true
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 5000,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieEndTime": 0.1,
+        "dieForceDisappearTime": 0.2
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Oil_Interact",
+        "abilityName": "Oil_Interact"
+      }
+    ],
+    "keepModifierOutSight": false,
+    "billboard": {
+      "$type": "ConfigCombatBillboard",
+      "attachPoint": "BillboardAttach",
+      "offset": {
+        "$type": "Vector",
+        "y": 1.5
+      },
+      "depthOffset": 1,
+      "showHPBar": true,
+      "shieldBarOnly": true
+    }
+  }
+}

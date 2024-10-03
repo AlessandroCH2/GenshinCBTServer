@@ -1,0 +1,635 @@
+{
+  "Test_Monster_Arrow": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 0.5,
+        "scaleY": 0.5
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "animEvents": {
+        "ATK01": {
+          "$type": "ConfigAttackEvent",
+          "attackPattern": {
+            "$type": "ConfigAttackBox",
+            "triggerType": "TriggerNoRepeat",
+            "born": {
+              "$type": "ConfigBornByCollisionPoint",
+              "offset": {
+                "$type": "Vector",
+                "z": -0.5
+              }
+            },
+            "size": {
+              "$type": "DynamicFloatVector",
+              "x": 0.1,
+              "y": 0.1,
+              "z": 1
+            }
+          },
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 1,
+              "damagePercentageRatio": 0,
+              "elementDurability": 100,
+              "strikeType": "Pierce",
+              "enBreak": 50
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "onHitEffectName": "default",
+              "hitLevel": "Light",
+              "hitImpulseX": 200,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.01
+            },
+            "cameraShake": {
+              "$type": "ConfigCameraShake",
+              "shakeRange": 0.06,
+              "shakeTime": 0.09
+            }
+          }
+        }
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Hili_None_ShootArrow_Effect",
+        "abilityName": "Hili_None_ShootArrow_Effect"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 8
+    },
+    "move": {
+      "$type": "ConfigLinerParabolaBulletMove",
+      "speed": 30,
+      "updateAngle": {
+        "$type": "ConfigBulletMoveAngleByVelocity"
+      },
+      "straightRange": 40,
+      "gravityOfAcceleration": 10,
+      "airResistance": 0.01
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetDoAttackEvent",
+          "attackEvent": "ATK01"
+        }
+      ]
+    }
+  },
+  "Hili_PebbleBullet": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 0.5,
+        "scaleY": 0.5
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "ThrowPebble_Loop",
+        "abilityName": "Hili_None_ThrowPebble_Loop"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 8
+    },
+    "move": {
+      "$type": "ConfigParabolaBulletMove",
+      "speed": 20,
+      "updateAngle": {
+        "$type": "ConfigBulletMoveAngleByVelocity"
+      },
+      "angleOffHor": 15,
+      "gravityOfAcceleration": 15,
+      "correction": {
+        "$type": "ConfigParabolaBulletMoveCorrection",
+        "fixAngleOfVer": 15,
+        "minSpeed": 4,
+        "maxSpeed": 24
+      }
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Hili_None_ThrowPebble_Loop"
+        }
+      ]
+    }
+  },
+  "PlantThorns": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "animEvents": {
+        "ATK01": {
+          "$type": "ConfigAttackEvent",
+          "attackPattern": {
+            "$type": "ConfigAttackBox",
+            "triggerType": "TriggerNoRepeat",
+            "born": {
+              "$type": "ConfigBornByCollisionPoint"
+            },
+            "size": {
+              "$type": "DynamicFloatVector",
+              "x": 0.4,
+              "y": 0.4,
+              "z": 1
+            }
+          },
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 1,
+              "damagePercentageRatio": 0,
+              "elementType": "Grass",
+              "elementDurability": 100
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "onHitEffectName": "default",
+              "hitLevel": "Light",
+              "hitImpulseX": 120,
+              "hitImpulseY": 0,
+              "hitHaltTime": 0.12,
+              "hitHaltTimeScale": 0.01
+            }
+          }
+        }
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "PlantGrasping",
+        "abilityName": "Hili_Grass_PlantGrasping"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "PlantThorns_Loop",
+        "abilityName": "Hili_Grass_PlantThorns_Loop"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 1.5
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "speed": 15,
+      "updateAngle": {
+        "$type": "ConfigBulletMoveAngleByVelocity"
+      },
+      "stickToGround": {
+        "$type": "ConfigMoveStickToGround",
+        "maxStepHeight": 0.6,
+        "maxSlopeAngle": 70,
+        "heightToGround": 0.3,
+        "flexibleRange": 0.05
+      }
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetDoAttackEvent",
+          "attackEvent": "ATK01"
+        },
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Hili_Grass_PlantGrasping"
+        }
+      ]
+    }
+  },
+  "PlantGrasping_Field": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachMesh",
+        "mesh": "EffectMesh"
+      },
+      "affectedByWorld": true,
+      "checkInSurface": true
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 20,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 75,
+        "isInvincible": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "PlantGrasping_Element",
+        "abilityName": "Hili_Grass_PlantGrasping_Element"
+      }
+    ]
+  },
+  "Hili_Fire_Arrow": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 0.5,
+        "scaleY": 0.5
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Damage",
+        "abilityName": "Hili_Fire_Arrow_Damage"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 8
+    },
+    "move": {
+      "$type": "ConfigLinerParabolaBulletMove",
+      "speed": 30,
+      "updateAngle": {
+        "$type": "ConfigBulletMoveAngleByVelocity"
+      },
+      "straightRange": 40,
+      "gravityOfAcceleration": 10,
+      "airResistance": 0.01
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Hili_Fire_Arrow_Damage"
+        }
+      ]
+    }
+  },
+  "Hili_Ice_Arrow": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 0.5,
+        "scaleY": 0.5
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Damage",
+        "abilityName": "Hili_Ice_Arrow_Damage"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 8
+    },
+    "move": {
+      "$type": "ConfigLinerParabolaBulletMove",
+      "speed": 30,
+      "updateAngle": {
+        "$type": "ConfigBulletMoveAngleByVelocity"
+      },
+      "straightRange": 40,
+      "gravityOfAcceleration": 10,
+      "airResistance": 0.01
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Hili_Ice_Arrow_Damage"
+        }
+      ]
+    }
+  },
+  "Hili_Electric_Arrow": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleX": 0.5,
+        "scaleY": 0.5
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Damage",
+        "abilityName": "Hili_Electric_Arrow_Damage"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 8
+    },
+    "move": {
+      "$type": "ConfigLinerParabolaBulletMove",
+      "speed": 30,
+      "updateAngle": {
+        "$type": "ConfigBulletMoveAngleByVelocity"
+      },
+      "straightRange": 40,
+      "gravityOfAcceleration": 10,
+      "airResistance": 0.01
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Hili_Electric_Arrow_Damage"
+        }
+      ]
+    }
+  },
+  "Hili_Fire_SlimeThrow": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox"
+      },
+      "mass": 5,
+      "affectedByWorld": true,
+      "checkInSurface": true,
+      "scale": 1.15
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Bomb_Explode",
+        "abilityName": "Hili_Fire_SlimeThrow_Explode"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Bomb_Element",
+        "abilityName": "Hili_Fire_SlimeThrow_Element"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Bomb_HitScene",
+        "abilityName": "Hili_Fire_SlimeThrow_HitScene"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "LightUpShader",
+        "abilityName": "Hili_Fire_SlimeThrow_LightUpShader"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "BulletTriggerClose",
+        "abilityName": "Hili_Fire_SlimeThrow_BulletTriggerClose"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "BulletTriggerOpen",
+        "abilityName": "Hili_Fire_SlimeThrow_BulletTriggerOpen"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 12.5
+    },
+    "move": {
+      "$type": "ConfigParabolaBulletMove",
+      "velocityForce": {
+        "$type": "ConfigMoveVelocityForce",
+        "includeForces": [
+          "RetreatType",
+          "RetreatAirType",
+          "WindZoneType"
+        ]
+      },
+      "speed": 15,
+      "updateAngle": {
+        "$type": "ConfigBulletMoveAngleRotating",
+        "angularVelocity": {
+          "$type": "Vector",
+          "x": -900
+        }
+      },
+      "angleOffHor": 45,
+      "gravityOfAcceleration": 10,
+      "correction": {
+        "$type": "ConfigParabolaBulletMoveCorrection",
+        "deviation": 1,
+        "fixAngleOfVer": 15,
+        "minSpeed": 5,
+        "maxSpeed": 20
+      }
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy",
+        "bornWithTriggerEnabled": false
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Hili_Fire_SlimeThrow_Explode"
+        },
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Hili_Fire_SlimeThrow_HitScene"
+        }
+      ],
+      "triggerLifeOverActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Hili_Fire_SlimeThrow_Explode"
+        }
+      ],
+      "killByOther": true
+    },
+    "equipment": {
+      "$type": "ConfigEquipment",
+      "attachTo": "equip03",
+      "equipEntityType": "Spear"
+    }
+  }
+}

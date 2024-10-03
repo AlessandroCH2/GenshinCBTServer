@@ -1,0 +1,268 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Electric_ShootArrow_WithRandom",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Aim"
+          ],
+          "angularSpeed": 120,
+          "attackDistance": 3.75
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Aim"
+          ],
+          "modifierName": "ShowAimingEffect"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Shoot"
+          ],
+          "modifierName": "FireArrow"
+        }
+      ],
+      "modifiers": {
+        "ShowAimingEffect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Hili_Electric_FireArrow_Aiming",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "WeaponR"
+              }
+            }
+          ]
+        },
+        "FireArrow": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42101011,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "x": 0.2,
+                  "z": 0.1
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget",
+                  "randomAngleHor": 0.3,
+                  "randomAngleVer": 0.5,
+                  "maxAngle": 60
+                },
+                "attachPointName": "WeaponR"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Hili_Electric_FireArrow_AimAS"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Electric_Arrow_Damage",
+      "modifiers": {
+        "FireEffectModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Electric",
+          "elementDurability": 50,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Hili_Electric_FireArrow_Arrow"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Hili_Electric_FireArrow_Arrow_Trail"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "FireEffectModifier"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Electric"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "checkHitLayerType": "Both",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.75
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1.5,
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementDurability": 50,
+                "strikeType": "Pierce",
+                "enBreak": 50
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitLevel": "Light",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.01
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.06,
+                "shakeTime": 0.09
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Electric"
+                }
+              ]
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "triggerType": "TriggerNoRepeat",
+              "checkHitLayerType": "Both",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "z": -0.5
+                }
+              },
+              "size": {
+                "$type": "DynamicFloatVector",
+                "x": 0.1,
+                "y": 0.1,
+                "z": 1
+              }
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 1,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Pierce"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Shake",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.01
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Electric"
+            }
+          ],
+          "effectPattern": "Hili_Electric_FireArrow_Arrow_Hit",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "$type": "Vector",
+              "z": 0.35
+            }
+          }
+        },
+        {
+          "$type": "FireHitEffect",
+          "predicates": [
+            {
+              "$type": "ByHasElement",
+              "element": "Electric"
+            }
+          ],
+          "hitScene": {
+            "$type": "ConfigHitScene",
+            "defaultEffect": "Hili_Electric_FireArrow_Arrow_Hit",
+            "surfaceEffect": {
+              "Water": "Eff_Arrow_Hit_Water"
+            }
+          }
+        },
+        {
+          "$type": "FireHitEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Electric"
+                }
+              ]
+            }
+          ],
+          "hitEntity": "Eff_Arrow_Hit_Monster",
+          "hitScene": {
+            "$type": "ConfigHitScene",
+            "defaultEffect": "Eff_Arrow_Hit_Earth",
+            "surfaceEffect": {
+              "Water": "Eff_Arrow_Hit_Water"
+            }
+          }
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "FireEffectModifier"
+        }
+      ]
+    }
+  }
+]

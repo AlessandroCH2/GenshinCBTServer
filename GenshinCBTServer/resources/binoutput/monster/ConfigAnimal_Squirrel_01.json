@@ -1,0 +1,441 @@
+{
+  "$type": "ConfigMonster",
+  "common": {
+    "$type": "ConfigEntityCommon",
+    "effectAttachShape": {
+      "$type": "ConfigEffectAttachSkinnedMesh",
+      "mesh": "EffectMesh"
+    },
+    "mass": 30,
+    "height": 0.7,
+    "affectedByWorld": true,
+    "checkInSurface": true,
+    "canTriggerElementReactionText": false,
+    "useGrassDisplacement": true
+  },
+  "dither": {
+    "$type": "ConfigDither",
+    "showDitherDuration": 1
+  },
+  "combat": {
+    "$type": "ConfigCombat",
+    "property": {
+      "$type": "ConfigCombatProperty",
+      "endureType": "Monster_Minion",
+      "lockShape": "CircleLockEnemy",
+      "weight": 30,
+      "rangeScale": 0.5,
+      "normalPri": 0.5,
+      "combatPri": 0
+    },
+    "beHit": {
+      "$type": "ConfigCombatBeHit"
+    },
+    "die": {
+      "$type": "ConfigDie",
+      "dieEndTime": 2,
+      "dieForceDisappearTime": 10
+    }
+  },
+  "abilities": [
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "CommonInitial",
+      "abilityName": "Animal_Common_Initial"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "AIStateInitial",
+      "abilityName": "Animal_Squirrel_AIStateInitial"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "IntoWander",
+      "abilityName": "Animal_Squirrel_IntoWander"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "IntoIdle",
+      "abilityName": "Animal_Squirrel_IntoIdle"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Random",
+      "abilityName": "Animal_Squirrel_Random"
+    },
+    {
+      "$type": "ConfigEntityAbilityEntry",
+      "abilityID": "Disappear",
+      "abilityName": "Animal_Squirrel_Disappear"
+    }
+  ],
+  "stateLayers": {
+    "defaultLayer": {
+      "$type": "ConfigNormalStateLayer",
+      "stateIDs": {
+        "Born": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Born": []
+          },
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "NormalIdle": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Standby": []
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "NormalMove": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Walk": [
+              "Audio_Squirrel_Walk"
+            ],
+            "Run": [
+              "Audio_Squirrel_Run"
+            ],
+            "Disappear": [
+              "Audio_Squirrel_Run"
+            ]
+          },
+          "canDoSkill": true,
+          "canSyncMove": true,
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ],
+          "canSteer": true
+        },
+        "BeHit": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Hit_L": [
+              "Audio_Squirrel_Hit_L"
+            ]
+          },
+          "resetAnimatorTriggerOnEnter": [
+            "BeHit"
+          ],
+          "resetAnimatorTriggerOnExit": [
+            "DoSkill"
+          ]
+        },
+        "Die": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Die": [
+              "Animal_Squirrel_Die",
+              "Audio_Squirrel_Die"
+            ],
+            "Die_Disappear": [
+              "Animal_Squirrel_Disappear",
+              "Audio_Squirrel_Run"
+            ]
+          }
+        },
+        "Aware": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "WanderOnAware": [],
+            "IdleOnAware": []
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Alert": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Alert": []
+          },
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "IntoWander": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "IntoWander": [
+              "Animal_Squirrel_IntoWander"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "IntoIdle": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "IntoIdle": [
+              "Animal_Squirrel_IntoIdle"
+            ]
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Personality_101": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Personality_101": []
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Personality_102": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Personality_102": []
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        },
+        "Personality_103": {
+          "$type": "ConfigMonsterStateIDInfo",
+          "animatorStates": {
+            "Personality_103": []
+          },
+          "canDoSkill": true,
+          "resetAnimatorTriggerOnExit": [
+            "BeHit",
+            "DoSkill"
+          ]
+        }
+      }
+    }
+  },
+  "aibeta": {
+    "$type": "ConfigAIBeta",
+    "enable": true,
+    "friendliness": 1,
+    "tickStrength": 2,
+    "sensing": {
+      "$type": "ConfigAISensing",
+      "settings": {
+        "DefaultSetting": {
+          "$type": "ConfigAISensingSetting",
+          "enableVision": false,
+          "feelRange": 12
+        }
+      }
+    },
+    "neurons": [
+      "HIT"
+    ],
+    "threat": {
+      "$type": "ConfigAIThreatSetting",
+      "feelThreatGrow": 1000,
+      "threatDecreaseSpeed": 500,
+      "viewAttenuation": [
+        {
+          "$type": "AIPoint",
+          "x": 10,
+          "y": 1
+        },
+        {
+          "$type": "AIPoint",
+          "x": 15,
+          "y": 0.5
+        }
+      ]
+    },
+    "defendArea": {
+      "$type": "ConfigAIDefendArea",
+      "defendRange": 100
+    },
+    "skills": {
+      "1": {
+        "$type": "ConfigAISkill",
+        "name": "WanderOnAware",
+        "skillType": "OnAware",
+        "triggerGCD": false,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1
+          ]
+        },
+        "stateIDs": [
+          "Aware"
+        ],
+        "skillQueryingTime": 3
+      },
+      "2": {
+        "$type": "ConfigAISkill",
+        "name": "IdleOnAware",
+        "skillType": "OnAware",
+        "triggerGCD": false,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            2
+          ]
+        },
+        "stateIDs": [
+          "Aware"
+        ],
+        "skillQueryingTime": 3
+      },
+      "3": {
+        "$type": "ConfigAISkill",
+        "name": "Alert",
+        "skillType": "OnAlert",
+        "triggerGCD": false,
+        "stateIDs": [
+          "Alert"
+        ],
+        "skillQueryingTime": 3
+      },
+      "101": {
+        "$type": "ConfigAISkill",
+        "name": "Personality_101",
+        "skillType": "Free",
+        "cd": 15,
+        "cdUpperRange": 30,
+        "initialCD": 5,
+        "initialCDUpperRange": 15,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            2
+          ]
+        },
+        "stateIDs": [
+          "Personality_101"
+        ]
+      },
+      "102": {
+        "$type": "ConfigAISkill",
+        "name": "Personality_102",
+        "skillType": "Free",
+        "cd": 15,
+        "cdUpperRange": 30,
+        "initialCD": 15,
+        "initialCDUpperRange": 15,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            2
+          ]
+        },
+        "stateIDs": [
+          "Personality_102"
+        ]
+      },
+      "103": {
+        "$type": "ConfigAISkill",
+        "name": "Personality_103",
+        "skillType": "Free",
+        "cd": 15,
+        "cdUpperRange": 30,
+        "initialCD": 5,
+        "initialCDUpperRange": 25,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1
+          ]
+        },
+        "stateIDs": [
+          "Personality_103"
+        ]
+      },
+      "201": {
+        "$type": "ConfigAISkill",
+        "name": "IntoWander",
+        "skillType": "Free",
+        "priority": 1,
+        "cd": 10,
+        "initialCD": 40,
+        "initialCDUpperRange": 40,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            2
+          ]
+        },
+        "stateIDs": [
+          "IntoWander"
+        ]
+      },
+      "202": {
+        "$type": "ConfigAISkill",
+        "name": "IntoIdle",
+        "skillType": "Free",
+        "priority": 1,
+        "cd": 10,
+        "initialCD": 10,
+        "initialCDUpperRange": 40,
+        "castCondition": {
+          "$type": "ConfigAISkillCastCondition",
+          "pose": [
+            1
+          ]
+        },
+        "stateIDs": [
+          "IntoIdle"
+        ]
+      }
+    },
+    "skillGCD": 5,
+    "returnToBornTactic": {
+      "$type": "ConfigAIReturnToBornPosSetting",
+      "enable": true
+    },
+    "wanderTactic": {
+      "$type": "ConfigAIWanderSetting",
+      "enable": true,
+      "condition": {
+        "$type": "ConfigAITacticCondition",
+        "pose": [
+          1
+        ]
+      },
+      "defaultSetting": {
+        "$type": "ConfigAIWanderData",
+        "turnSpeedOverride": 1.2,
+        "cdMax": 10,
+        "cdMin": 5,
+        "distanceFromBorn": 12,
+        "distanceFromCurrentMax": 4
+      }
+    },
+    "fleeTactic": {
+      "$type": "ConfigAIFleeSetting",
+      "enable": true,
+      "nerveTrigger": [
+        "HIT"
+      ],
+      "defaultSetting": {
+        "$type": "ConfigAIFleeData",
+        "turnSpeedOverride": 235,
+        "cd": 0,
+        "triggerDistance": 20,
+        "fleeNumberMin": 10,
+        "fleeNumberMax": 10,
+        "fleeDistanceMin": 10.25,
+        "fleeDistanceMax": 20.75
+      }
+    }
+  }
+}

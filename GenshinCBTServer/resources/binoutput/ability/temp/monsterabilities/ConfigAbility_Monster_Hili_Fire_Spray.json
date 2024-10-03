@@ -1,0 +1,195 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_Spray",
+      "modifiers": {
+        "UNIQUE_FireSpray": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 15,
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Monster_Hili_Fire_Spray",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget"
+                }
+              }
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Monster_Hili_Fire_Spray_BS",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": 0.5
+                }
+              }
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "FireSpray",
+              "value": true
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42103001,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "ByAnimatorFloat",
+              "logic": "Equal",
+              "value": 101,
+              "parameter": "PoseID"
+            }
+          ],
+          "modifierName": "UNIQUE_FireSpray"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_Spray_BackpackOn",
+      "modifiers": {
+        "UNIQUE_BackpackState": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementType": "Fire",
+          "elementDurability": 300,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Undead01_Fire_BlastingFuse"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Element_Burning"
+            },
+            {
+              "$type": "SetPoseBool",
+              "target": "Owner",
+              "boolID": "equip02_Fire",
+              "value": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Undead01_Fire_Extinguish"
+            },
+            {
+              "$type": "SetPoseBool",
+              "target": "Owner",
+              "boolID": "equip02_Fire"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Owner",
+              "modifierName": "UNIQUE_FireSpray"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": [
+              "equip02"
+            ]
+          },
+          "modifierName": "UNIQUE_BackpackState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_Spray_BackpackOff",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": [
+              "equip02"
+            ]
+          },
+          "modifierName": "UNIQUE_BackpackState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_Spray_Backpack_Reload",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Reload"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_Spray_Backpack_Repair",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAbility",
+          "abilityName": "Hili_Fire_Spray_BackpackOn"
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Reload"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_Fire_Spray_BackpackInit",
+      "onAdded": [
+        {
+          "$type": "TriggerAbility",
+          "target": "Owner",
+          "abilityName": "Hili_Fire_Spray_BackpackOn"
+        }
+      ]
+    }
+  }
+]

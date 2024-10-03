@@ -1,0 +1,225 @@
+{
+  "Ayaka_RinRenka_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike",
+      "paramSpecial": "LiquidStrike_MoveSpeedRatio",
+      "paramDelta": 0.1
+    }
+  ],
+  "Ayaka_RinRenka_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike",
+      "paramSpecial": "LiquidStrike_MoveSpeedRatio",
+      "paramDelta": 0.1
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike",
+      "paramSpecial": "Ice_Bloom_Radius",
+      "paramRatio": 0.15
+    }
+  ],
+  "Ayaka_RinRenka_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike",
+      "paramSpecial": "LiquidStrike_MoveSpeedRatio",
+      "paramDelta": 0.1
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike",
+      "paramSpecial": "Ice_Bloom_Radius",
+      "paramRatio": 0.15
+    }
+  ],
+  "Ayaka_IceDance_1": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Ayaka_Talent_IceDance"
+    }
+  ],
+  "Ayaka_IceDance_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Talent_IceDance",
+      "paramSpecial": "IceDance_Chance_OnFreeze",
+      "paramDelta": 0.09
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Talent_IceDance",
+      "paramSpecial": "IceDance_Chance_OnIce",
+      "paramDelta": 0.03
+    }
+  ],
+  "Ayaka_IceDance_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Talent_IceDance",
+      "paramSpecial": "IceDance_Chance_OnFreeze",
+      "paramDelta": 0.09
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Talent_IceDance",
+      "paramSpecial": "IceDance_Chance_OnIce",
+      "paramDelta": 0.03
+    },
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Ayaka_Talent_IceDance",
+      "talentParam": "Avatar_Ayaka_IceDance_Enhancement"
+    }
+  ],
+  "Ayaka_Oboro_1": [
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Ayaka_FrozenWindmill",
+      "talentParam": "Avatar_Ayaka_Oboro"
+    }
+  ],
+  "Ayaka_Oboro_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_FrozenWindmill_Sub_Damage",
+      "paramSpecial": "FrozenWindmill_SubFactor",
+      "paramDelta": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_FrozenWindmill_Sub_Dissipate",
+      "paramSpecial": "FrozenWindmill_SubFactor",
+      "paramDelta": 0.15
+    }
+  ],
+  "Ayaka_Oboro_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_FrozenWindmill_Sub_Damage",
+      "paramSpecial": "FrozenWindmill_SubFactor",
+      "paramDelta": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_FrozenWindmill_Sub_Dissipate",
+      "paramSpecial": "FrozenWindmill_SubFactor",
+      "paramDelta": 0.15
+    }
+  ],
+  "Ayaka_HyouShin_1": [
+    {
+      "$type": "ModifySkillCD",
+      "skillID": 10019,
+      "cdRatio": -0.08
+    }
+  ],
+  "Ayaka_HyouShin_2": [
+    {
+      "$type": "ModifySkillCD",
+      "skillID": 10019,
+      "cdRatio": -0.08
+    }
+  ],
+  "Ayaka_HyouShin_3": [
+    {
+      "$type": "ModifySkillCD",
+      "skillID": 10019,
+      "cdRatio": -0.08
+    }
+  ],
+  "Ayaka_YayoiKaeshi_1": [
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Ayaka_Liquid_TriggerAbility",
+      "talentParam": "Avatar_Ayaka_YayoiKaeshi"
+    }
+  ],
+  "Ayaka_YayoiKaeshi_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike",
+      "paramSpecial": "HPRatio",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike_YayoiKaeshi",
+      "paramSpecial": "FatalStrike_Damage",
+      "paramDelta": 0.5
+    }
+  ],
+  "Ayaka_YayoiKaeshi_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike",
+      "paramSpecial": "HPRatio",
+      "paramDelta": 0.05
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_LiquidStrike_YayoiKaeshi",
+      "paramSpecial": "FatalStrike_Damage",
+      "paramDelta": 0.5
+    }
+  ],
+  "Ayaka_EarlyWinter_1": [
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Ayaka_Icespine_Strike_New",
+      "talentParam": "Avatar_Ayaka_EarlyWinter"
+    }
+  ],
+  "Ayaka_EarlyWinter_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Icespine_Strike_New",
+      "paramSpecial": "EarlyWinter_Factor",
+      "paramDelta": 0.15
+    }
+  ],
+  "Ayaka_EarlyWinter_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Icespine_Strike_New",
+      "paramSpecial": "EarlyWinter_Factor",
+      "paramDelta": 0.15
+    }
+  ],
+  "Ayaka_EbbAndFlow_1": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Ayaka_Talent_EbbAndFlow"
+    }
+  ],
+  "Ayaka_EbbAndFlow_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Talent_EbbAndFlow",
+      "paramSpecial": "Ebb_Factor",
+      "paramDelta": 0.1
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Talent_EbbAndFlow",
+      "paramSpecial": "Flow_Factor",
+      "paramDelta": 0.05
+    }
+  ],
+  "Ayaka_EbbAndFlow_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Talent_EbbAndFlow",
+      "paramSpecial": "Ebb_Factor",
+      "paramDelta": 0.1
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Ayaka_Talent_EbbAndFlow",
+      "paramSpecial": "Flow_Factor",
+      "paramDelta": 0.05
+    }
+  ]
+}

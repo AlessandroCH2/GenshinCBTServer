@@ -1,0 +1,230 @@
+{
+  "Weapon_Bow_Zephyrus_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Bow_Zephyrus"
+    }
+  ],
+  "Weapon_Bow_Zephyrus_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_Zephyrus",
+      "paramSpecial": "SubHurtDelta",
+      "paramDelta": -0.06
+    }
+  ],
+  "Weapon_Bow_Zephyrus_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_Zephyrus",
+      "paramSpecial": "SubHurtDelta",
+      "paramDelta": -0.06
+    }
+  ],
+  "Weapon_Bow_Zephyrus_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_Zephyrus",
+      "paramSpecial": "SubHurtDelta",
+      "paramDelta": -0.06
+    }
+  ],
+  "Weapon_Bow_Zephyrus_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_Zephyrus",
+      "paramSpecial": "SubHurtDelta",
+      "paramDelta": -0.06
+    }
+  ],
+  "Weapon_Bow_HealAmountHPonEnemyKilled_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Bow_HealAmountHPonEnemyKilled"
+    }
+  ],
+  "Weapon_Bow_HealAmountHPonEnemyKilled_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_HealAmountHPonEnemyKilled",
+      "paramSpecial": "HealAmount",
+      "paramDelta": 30
+    }
+  ],
+  "Weapon_Bow_HealAmountHPonEnemyKilled_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_HealAmountHPonEnemyKilled",
+      "paramSpecial": "HealAmount",
+      "paramDelta": 30
+    }
+  ],
+  "Weapon_Bow_HealAmountHPonEnemyKilled_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_HealAmountHPonEnemyKilled",
+      "paramSpecial": "HealAmount",
+      "paramDelta": 30
+    }
+  ],
+  "Weapon_Bow_HealAmountHPonEnemyKilled_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_HealAmountHPonEnemyKilled",
+      "paramSpecial": "HealAmount",
+      "paramDelta": 30
+    }
+  ],
+  "Weapon_Bow_RiseElementDMGWhenEnergyMax_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Bow_RiseElementDMGWhenEnergyMax"
+    }
+  ],
+  "Weapon_Bow_RiseElementDMGWhenEnergyMax_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseElementDMGWhenEnergyMax",
+      "paramSpecial": "EleDmgUpRate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Bow_RiseElementDMGWhenEnergyMax_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseElementDMGWhenEnergyMax",
+      "paramSpecial": "EleDmgUpRate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Bow_RiseElementDMGWhenEnergyMax_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseElementDMGWhenEnergyMax",
+      "paramSpecial": "EleDmgUpRate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Bow_RiseElementDMGWhenEnergyMax_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseElementDMGWhenEnergyMax",
+      "paramSpecial": "EleDmgUpRate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn"
+    }
+  ],
+  "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn",
+      "paramSpecial": "UpDmgRate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn",
+      "paramSpecial": "UpDmgRate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn",
+      "paramSpecial": "UpDmgRate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseUltimateSkillDMGonAvatarIn",
+      "paramSpecial": "UpDmgRate",
+      "paramDelta": 0.05
+    }
+  ],
+  "Weapon_Bow_ReduceEnemySubHurtonBranchAttack_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Bow_ReduceEnemySubHurtonBranchAttack"
+    }
+  ],
+  "Weapon_Bow_ReduceEnemySubHurtonBranchAttack_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_ReduceEnemySubHurtonBranchAttack",
+      "paramSpecial": "SubHurtDownRate",
+      "paramDelta": -0.05
+    }
+  ],
+  "Weapon_Bow_ReduceEnemySubHurtonBranchAttack_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_ReduceEnemySubHurtonBranchAttack",
+      "paramSpecial": "SubHurtDownRate",
+      "paramDelta": -0.05
+    }
+  ],
+  "Weapon_Bow_ReduceEnemySubHurtonBranchAttack_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_ReduceEnemySubHurtonBranchAttack",
+      "paramSpecial": "SubHurtDownRate",
+      "paramDelta": -0.05
+    }
+  ],
+  "Weapon_Bow_ReduceEnemySubHurtonBranchAttack_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_ReduceEnemySubHurtonBranchAttack",
+      "paramSpecial": "SubHurtDownRate",
+      "paramDelta": -0.05
+    }
+  ],
+  "Weapon_Bow_RiseDMGonBranchAttack_0": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Weapon_Bow_RiseDMGonBranchAttack"
+    }
+  ],
+  "Weapon_Bow_RiseDMGonBranchAttack_1": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseDMGonBranchAttack",
+      "paramSpecial": "UpDmgRate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Bow_RiseDMGonBranchAttack_2": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseDMGonBranchAttack",
+      "paramSpecial": "UpDmgRate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Bow_RiseDMGonBranchAttack_3": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseDMGonBranchAttack",
+      "paramSpecial": "UpDmgRate",
+      "paramDelta": 0.1
+    }
+  ],
+  "Weapon_Bow_RiseDMGonBranchAttack_4": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Weapon_Bow_RiseDMGonBranchAttack",
+      "paramSpecial": "UpDmgRate",
+      "paramDelta": 0.1
+    }
+  ]
+}

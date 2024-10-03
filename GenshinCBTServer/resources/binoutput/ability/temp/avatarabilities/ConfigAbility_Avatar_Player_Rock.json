@@ -1,0 +1,1478 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Hogyoku",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41005003,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "z": 3
+            },
+            "onGround": true,
+            "alongGround": true
+          }
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10077,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Hogyoku_Base",
+      "abilitySpecials": {
+        "Damage_Explode": 0.5,
+        "GetElementRatio": 1
+      },
+      "modifiers": {
+        "Hogyoku_Base_Appear": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Hogyoku_Base_Appear",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 1
+                },
+                "onGround": true,
+                "alongGround": true
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "height": 1.5,
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 3
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Hogyoku_Base_Explode",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "Damage_Explode",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Rock",
+                    "elementRank": 1.5,
+                    "elementDurability": 50,
+                    "strikeType": "Blunt",
+                    "enBreak": 168
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Air",
+                    "hitImpulseX": 480,
+                    "hitImpulseY": 600,
+                    "retreatType": "ByHitDirection",
+                    "hitHaltTime": 0.05,
+                    "hitHaltTimeScale": 0.05,
+                    "canBeDefenceHalt": true
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.3,
+                    "shakeTime": 0.15
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41005004,
+              "campID": 1001,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 1
+                },
+                "onGround": true,
+                "alongGround": true
+              }
+            }
+          ]
+        },
+        "Hogyoku_Base_Elem_Ball": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Hogyoku_Base_Explode"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "Ball"
+                }
+              ]
+            }
+          ]
+        },
+        "Ball": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2023,
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "ratio": "GetElementRatio"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Hogyoku_Base_Appear"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Hogyoku_Base_Elem_Ball"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Hogyoku_Barrier",
+      "abilitySpecials": {
+        "BarrierHP": 0.3,
+        "Damage_Explode": 0.5,
+        "Damage_Explode_Ratio": 0.3
+      },
+      "modifiers": {
+        "Hogyoku_Barrier_HP": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_MaxHPRatio": "BarrierHP"
+          }
+        },
+        "Hogyoku_Barrier_Explode": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onKill": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "height": 1.5,
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 3
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Hogyoku_Base_Explode",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%Damage_Explode*%Damage_Explode_Ratio",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Rock",
+                    "elementRank": 1.5,
+                    "elementDurability": 50,
+                    "strikeType": "Blunt",
+                    "enBreak": 112
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Air",
+                    "hitImpulseX": 480,
+                    "hitImpulseY": 600,
+                    "retreatType": "ByHitDirection",
+                    "hitHaltTime": 0.05,
+                    "hitHaltTimeScale": 0.05,
+                    "canBeDefenceHalt": true
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.3,
+                    "shakeTime": 0.15
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Hogyoku_Barrier_Explode"
+            }
+          ]
+        },
+        "Gadget_Summon_Detect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.25,
+                      "z": -1.4
+                    }
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 2.8,
+                    "y": 4,
+                    "z": 2.8
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Gadget_Summon_Detect",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementDurability": 0,
+                    "enBreak": 0
+                  }
+                }
+              },
+              "targetType": "All"
+            }
+          ]
+        },
+        "Gadget_Summon_Suicide": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetIsSelf",
+                  "isSelf": false
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_COMMON_GADGET_ISSUMMON",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "KillSelf"
+                },
+                {
+                  "$type": "ActCameraShake",
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.04,
+                    "shakeTime": 0.08
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Hogyoku_Barrier_HP"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Player_Rock_UnstablePrime"
+            }
+          ],
+          "modifierName": "Hogyoku_Barrier_Explode"
+        },
+        {
+          "$type": "RemoveModifier",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Player_Rock_UnstablePrime"
+                }
+              ]
+            }
+          ],
+          "modifierName": "Hogyoku_Barrier_Explode"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_COMMON_GADGET_ISSUMMON",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Gadget_Summon_Detect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Gadget_Summon_Suicide"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Hogyoku_Barrier_Material",
+      "modifiers": {
+        "Hogyoku_Barrier_Material_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.05,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Hogyoku_Barrier_Material"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "Start"
+            }
+          ]
+        },
+        "Hogyoku_Barrier_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Hogyoku_Barrier"
+            }
+          ]
+        },
+        "Hogyoku_Barrier_Disappear": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByUnlockTalentParam",
+                      "talentParam": "Player_Rock_UnstablePrime"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "Hogyoku_Barrier_Disappear"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Hogyoku_Barrier_Impact"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Hogyoku_Barrier_Material_Timer"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Hogyoku_Barrier_Disappear"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_RockTide",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41005005,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10078,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_RockTide_AttackWave",
+      "abilitySpecials": {
+        "ReviveElemEnergyRatio": 1.5,
+        "GaeaAnthem_TimeDelta": 0,
+        "GaeaAnthem_EndureDelta": 0.5,
+        "GaeaAnthem_CriticalDelta": 0.05,
+        "AttackWaveDamage": 0.4
+      },
+      "modifiers": {
+        "RockTide_Push": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.2,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR6",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "strength": -2,
+              "attenuation": 4,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ],
+                  "reject": true
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "logic": "LesserOrEqual",
+                  "weight": 100
+                }
+              ]
+            }
+          ]
+        },
+        "RockTide_Attack_Start": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.1,
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onRemoved": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Avatar_Player_RockTide_Barrier_Appear"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "height": 1.5,
+                  "scale": 1,
+                  "fanAngle": 360,
+                  "radius": 6
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Avatar_RockTide_AttackWave",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "AttackWaveDamage",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Rock",
+                    "elementRank": 3,
+                    "elementDurability": 25,
+                    "enBreak": 10.59
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 800,
+                    "hitImpulseY": 0,
+                    "retreatType": "ByHitDirection",
+                    "hitHaltTimeScale": 0.05
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.04,
+                    "shakeTime": 0.2
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "RockTide_AttackWave_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "RockTide_AttackWave"
+            }
+          ]
+        },
+        "RockTide_AttackWave_StarDustReturn": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR13",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "value": 0,
+              "key": "_ABILITY_ROCKTIDE_STARDUSTRETURN_MARK",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Avatar_RockTide_AttackWave"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_ROCKTIDE_STARDUSTRETURN_MARK",
+                  "value": 0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Owner",
+                  "modifierName": "StarDustReturn_Restore"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "modifierName": "StarDustReturn_Mark"
+                }
+              ]
+            }
+          ]
+        },
+        "StarDustReturn_Restore": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Multiple",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 5
+          },
+          "duration": 1.5,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ReviveElemEnergyMixin",
+              "period": 1,
+              "baseEnergy": 1,
+              "ratio": "ReviveElemEnergyRatio"
+            }
+          ]
+        },
+        "StarDustReturn_Mark": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ROCKTIDE_STARDUSTRETURN_MARK",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -5,
+              "key": "_ABILITY_ROCKTIDE_STARDUSTRETURN_MARK",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "UNIQUE_RockTide_GaeaAnthem": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": "%GaeaAnthem_TimeDelta+10",
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR6",
+                "sizeRatio": 1
+              },
+              "modifierName": "UNIQUE_GaeaAnthem_PowerUp"
+            }
+          ]
+        },
+        "UNIQUE_GaeaAnthem_PowerUp": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 2,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_EndureDelta": "GaeaAnthem_EndureDelta",
+            "Actor_CriticalDelta": "GaeaAnthem_CriticalDelta"
+          },
+          "isLimitedProperties": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "RockTide_Push"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "RockTide_Attack_Start"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "RockTide_AttackWave_Material"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Player_Rock_StarDustReturn"
+            }
+          ],
+          "modifierName": "RockTide_AttackWave_StarDustReturn"
+        },
+        {
+          "$type": "RemoveModifier",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Player_Rock_StarDustReturn"
+                }
+              ]
+            }
+          ],
+          "modifierName": "RockTide_AttackWave_StarDustReturn"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Player_Rock_GaeaAnthem"
+            }
+          ],
+          "modifierName": "UNIQUE_RockTide_GaeaAnthem"
+        },
+        {
+          "$type": "RemoveUniqueModifier",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Player_Rock_GaeaAnthem"
+                }
+              ]
+            }
+          ],
+          "modifierName": "UNIQUE_RockTide_GaeaAnthem"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_RockTide_Barrier_Appear",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41005006,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": 2.75,
+              "z": 6.67
+            },
+            "onGround": true,
+            "direction": {
+              "$type": "ConfigDirectionByLookAtEntity"
+            },
+            "alongGround": true
+          }
+        },
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41005006,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": -2.75,
+              "z": -6.67
+            },
+            "onGround": true,
+            "direction": {
+              "$type": "ConfigDirectionByLookAtEntity"
+            },
+            "alongGround": true
+          }
+        },
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41005006,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": 6.67,
+              "z": -2.75
+            },
+            "onGround": true,
+            "direction": {
+              "$type": "ConfigDirectionByLookAtEntity"
+            },
+            "alongGround": true
+          }
+        },
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41005006,
+          "campID": 1001,
+          "campTargetType": "Enemy",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "x": -6.67,
+              "z": 2.75
+            },
+            "onGround": true,
+            "direction": {
+              "$type": "ConfigDirectionByLookAtEntity"
+            },
+            "alongGround": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_RockTide_Barrier",
+      "abilitySpecials": {
+        "BarrierHP": 0.2,
+        "BarrierLifeTimeDelta": 0
+      },
+      "modifiers": {
+        "Barrier_Stat": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_MaxHPRatio": "BarrierHP",
+            "Entity_LifeTimeDelta": "BarrierLifeTimeDelta"
+          }
+        },
+        "Barrier_Material_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.05,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Barrier_Material"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "Start"
+            }
+          ]
+        },
+        "Barrier_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "RockTide_Barrier_Material"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "RockTide_Barrier_Collapse"
+            }
+          ]
+        },
+        "Barrier_Damage": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "Gadget_Summon_Detect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 8,
+                    "y": 4,
+                    "z": 1.2
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Gadget_Summon_Detect",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementDurability": 0,
+                    "enBreak": 0
+                  }
+                }
+              },
+              "targetType": "All"
+            }
+          ]
+        },
+        "Gadget_Summon_Suicide": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetIsSelf",
+                  "isSelf": false
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_COMMON_GADGET_ISSUMMON",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "KillSelf"
+                },
+                {
+                  "$type": "ActCameraShake",
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.04,
+                    "shakeTime": 0.08
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Barrier_Stat"
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "RockTide_Barrier_Material_Impact"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Barrier_Material_Timer"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Barrier_Damage"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_COMMON_GADGET_ISSUMMON",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Gadget_Summon_Detect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Gadget_Summon_Suicide"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Rock_Avalanche",
+      "abilitySpecials": {
+        "Avalanche_Chance": 0.15,
+        "Avalanche_Damage": 0.15
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Randomed",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Player_Rock_Avalanche"
+            }
+          ],
+          "chance": "Avalanche_Chance",
+          "successActions": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 2.4
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "Avalanche_Damage",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Rock",
+                    "elementDurability": 20,
+                    "strikeType": "Blunt",
+                    "enBreak": 13.5,
+                    "attackType": "Melee"
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Light",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  },
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.08,
+                    "shakeTime": 0.04
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Player_Rock_Avalanche"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Rock_Climber",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Climb"
+          ],
+          "modifierName": "Player_Rock_Climber"
+        }
+      ],
+      "abilitySpecials": {
+        "Climber_CostStaminaRatio": -0.08
+      },
+      "modifiers": {
+        "Player_Rock_Climber": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_CostStaminaRatio": "Climber_CostStaminaRatio"
+          },
+          "isLimitedProperties": true
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_PlayerBoy_CrouchThrowTrigger",
+      "abilityMixins": [
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "skillID": 10035,
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "endHoldTrigger": "EndHoldTrigger",
+          "beforeStateIDs": [
+            "CrouchThrowBS"
+          ],
+          "chargeLoopStateIDs": [
+            "CrouchThrowLoop",
+            "CrouchThrowAS"
+          ],
+          "chargeLoopDurations": [
+            0.05,
+            6.5
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "CrouchThrowLoop"
+          ],
+          "modifierName": "Charge"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "CrouchThrowLoop"
+          ],
+          "modifierName": "Charge2"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "CrouchThrowLoop"
+          ],
+          "modifierName": "Focus"
+        }
+      ],
+      "abilitySpecials": {
+        "DummyThrowSpeedUp": 0
+      },
+      "modifiers": {
+        "Focus": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarEnterFocus",
+              "cameraFollowLower": {
+                "$type": "Vector",
+                "x": 0.8,
+                "y": 0.2,
+                "z": -2.5
+              },
+              "cameraFollowUpper": {
+                "$type": "Vector",
+                "x": 0.5,
+                "y": -0.2
+              },
+              "dragButtonName": "Skill1",
+              "showCrosshair": false
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AvatarExitFocus"
+            }
+          ]
+        },
+        "Charge": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 8,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Charge_Return"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Charge_Return"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Charge_Return"
+            }
+          ]
+        },
+        "Charge_Return": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.9,
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 3,
+              "key": "_DUMMY_THROW_RANGE",
+              "useLimitRange": true,
+              "maxValue": 3,
+              "minValue": 3
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Dummy_Line"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 0.25,
+              "key": "_DUMMY_THROW_RANGE",
+              "useLimitRange": true,
+              "maxValue": 10,
+              "minValue": 3
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "_DUMMY_THROW_RANGE",
+              "overrideMapKey": "DummyThrowSpeedUp"
+            }
+          ]
+        },
+        "Charge2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Charge_Return2_Trigger"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Charge_Return2"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Charge_Return2_Trigger"
+            }
+          ]
+        },
+        "Charge_Return2_Trigger": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5,
+          "elementDurability": 100,
+          "thinkInterval": 4,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Charge_Return2"
+            }
+          ]
+        },
+        "Charge_Return2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 8,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Charge_Return2_Loop"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Charge_Return2_Loop"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Charge_Return2_Loop"
+            }
+          ]
+        },
+        "Charge_Return2_Loop": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 3.9,
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 10,
+              "key": "_DUMMY_THROW_RANGE",
+              "useLimitRange": true,
+              "maxValue": 10,
+              "minValue": 10
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Dummy_Line"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -0.25,
+              "key": "_DUMMY_THROW_RANGE",
+              "useLimitRange": true,
+              "maxValue": 10,
+              "minValue": 3
+            },
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "_DUMMY_THROW_RANGE",
+              "overrideMapKey": "DummyThrowSpeedUp"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 4,
+          "key": "_DUMMY_THROW_RANGE",
+          "useLimitRange": true,
+          "maxValue": 10,
+          "minValue": 4
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_PlayerBoy_CrouchThrow",
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10035,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 70300036,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.8,
+              "z": 0.1
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_PlayerBoy_CrouchThrow_Speed_Fix",
+      "abilitySpecials": {
+        "DummyThrowSpeedUp": 0
+      },
+      "modifiers": {
+        "SpeedUP": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Animator_OverallSpeedRatio": "DummyThrowSpeedUp"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "abilityFormula": "DummyThrowSpeed",
+          "isFromOwner": true,
+          "globalValueKey": "_DUMMY_THROW_RANGE",
+          "overrideMapKey": "DummyThrowSpeedUp"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SpeedUP"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_PlayerBoy_CreateCrouchThrow",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Dummy_Throw"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireAISoundEvent",
+          "volume": 0
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Dummy_ThrowGround"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_FlyingBomber",
+      "modifiers": {
+        "MixinStart": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ButtonHoldChargeMixin",
+              "skillID": 10037,
+              "chargeTime": 0.1,
+              "OnBeginUncharged": [
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 40000174,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 0.5,
+                      "z": 0.1
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "MixinStart"
+        }
+      ]
+    }
+  }
+]

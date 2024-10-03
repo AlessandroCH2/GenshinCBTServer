@@ -1,0 +1,327 @@
+{
+  "$type": "ConfigInterContainer",
+  "isSimpleTalk": true,
+  "startFade": {
+    "$type": "ConfigInterFade"
+  },
+  "actors": [
+    {
+      "$type": "ConfigInterActor",
+      "alias": "Avatar",
+      "visible": true,
+      "bornPointName": "Q46307Player"
+    },
+    {
+      "$type": "ConfigInterActor",
+      "configID": 1005,
+      "alias": "1005",
+      "visible": true,
+      "bornPointName": "Q463Paimon"
+    }
+  ],
+  "group": [
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630101
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630102
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630103
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630104
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630105
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "Avatar"
+        ],
+        "dialogID": 4630106
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630107
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "Avatar"
+        ],
+        "dialogID": 4630108
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630109
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 4630110
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ]
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ]
+      }
+    ]
+  ],
+  "groupId": [
+    {
+      "$type": "ConfigInterGrpId",
+      "grpId": 1338990138,
+      "nextGrpId": 1338990139
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 1,
+      "grpId": 1338990139,
+      "nextGrpId": 1338990140
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 2,
+      "grpId": 1338990140,
+      "nextGrpId": 1338990141
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 3,
+      "grpId": 1338990141,
+      "nextGrpId": 1338990142
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 4,
+      "grpId": 1338990142,
+      "nextGrpId": 1338990143
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 5,
+      "grpId": 1338990143,
+      "nextGrpId": 1338990144
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 6,
+      "grpId": 1338990144,
+      "nextGrpId": 1338990145
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 7,
+      "grpId": 1338990145,
+      "nextGrpId": 1338990146
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 8,
+      "grpId": 1338990146,
+      "nextGrpId": 2853988662
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 9,
+      "grpId": 2853988662,
+      "nextGrpId": 2853988663
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 10,
+      "grpId": 2853988663,
+      "nextGrpId": 2853988664
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 11,
+      "grpId": 2853988664,
+      "nextGrpId": 2853988665
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 12,
+      "grpId": 2853988665,
+      "nextGrpId": 2853988666
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 13,
+      "grpId": 2853988666,
+      "nextGrpId": 2853988667
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 14,
+      "grpId": 2853988667,
+      "nextGrpId": 2853988668
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 15,
+      "grpId": 2853988668,
+      "nextGrpId": 2853988669
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 16,
+      "grpId": 2853988669,
+      "nextGrpId": 2853988670
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 17,
+      "grpId": 2853988670,
+      "nextGrpId": 2853988671
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 18,
+      "grpId": 2853988671,
+      "nextGrpId": 2853988693
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 19,
+      "grpId": 2853988693,
+      "nextGrpId": 2853988694
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 20,
+      "grpId": 2853988694,
+      "nextGrpId": 2853988695
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 21,
+      "grpId": 2853988695,
+      "nextGrpId": 2853988696
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 22,
+      "grpId": 2853988696,
+      "nextGrpId": 2853988697
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 23,
+      "grpId": 2853988697,
+      "nextGrpId": 2853988698
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 24,
+      "grpId": 2853988698,
+      "nextGrpId": 2853988699
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 25,
+      "grpId": 2853988699,
+      "nextGrpId": 2853988700
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 26,
+      "grpId": 2853988700,
+      "nextGrpId": 2853988701
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 27,
+      "grpId": 2853988701,
+      "nextGrpId": 2853988702
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 28,
+      "grpId": 2853988702,
+      "nextGrpId": 2853988724
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 29,
+      "grpId": 2853988724,
+      "nextGrpId": 2853988725
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 30,
+      "grpId": 2853988725,
+      "nextGrpId": 2853988726
+    }
+  ]
+}

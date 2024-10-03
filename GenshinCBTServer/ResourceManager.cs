@@ -513,7 +513,32 @@ namespace GenshinCBTServer
                         trigger.conditionLua = (string)triggerTable["condition"];
                         if (triggerTable["event"] != null) trigger.eventType = (int)(long)triggerTable["event"];
                         group.triggers.Add(trigger);
-                        // Server.Print($"Trigger: " + trigger.name + " added");
+                       // Server.Print($"Trigger: " + trigger.name + " added");
+                    }
+                    LuaTable regions = sceneGroup["regions"] as LuaTable;
+                    for (int i = 0; i < regions.Keys.Count; i++)
+                    {
+                        try
+                        {
+                            LuaTable regionTable = regions[i + 1] as LuaTable;
+                            if (regionTable == null) break;
+                            SceneRegion region = new SceneRegion();
+                            if (regionTable["config_id"] != null) region.config_id = (uint)(long)regionTable["config_id"];
+                            if (regionTable["shape"] != null) region.shape = (uint)(long)regionTable["shape"];
+                            if (regionTable["pos"] != null)
+                            {
+                                LuaTable pos = regionTable["pos"] as LuaTable;
+                                region.pos = new Vector() { X = (float)(double)Convert.ToDouble(pos["x"]), Y = (float)(double)Convert.ToDouble(pos["y"]), Z = (float)(double)Convert.ToDouble(pos["z"]) };
+                            }
+
+                            if (regionTable["radius"] != null) region.radius = (float)(double)Convert.ToDouble(regionTable["radius"]);
+                            //Need to add size for cubic
+                            group.regions.Add(region);
+                        }
+                        catch(Exception e)
+                        {
+                            Server.Print("Error occured " + e.Message);
+                        }
                     }
                 }
             }

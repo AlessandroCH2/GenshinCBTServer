@@ -1,0 +1,90 @@
+{
+  "Defender_Laser": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox",
+        "scaleZ": 0.4
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "isInvincible": true,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Laser_Light",
+        "abilityName": "Defender_None_Laser_Light"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Laser_Explode",
+        "abilityName": "Defender_None_Laser_Explode"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 1
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "speed": 60,
+      "updateAngle": {
+        "$type": "ConfigBulletMoveAngleByVelocity"
+      }
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "Enemy"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Defender_None_Laser_Explode"
+        }
+      ]
+    }
+  },
+  "Defender_AirflowField": {
+    "$type": "ConfigGadget",
+    "move": {
+      "$type": "ConfigFollowMove",
+      "target": "TargetEntity",
+      "forward": {
+        "$type": "Vector",
+        "z": 1
+      }
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 10,
+        "stayEffect": "Eff_Windfield_Stay",
+        "enterEffect": "Eff_Windfield_Enter"
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "CameraFocusLongShot": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraFocusLongShot"
+  },
+  "CameraSceneLookGroup": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraSceneLookLongShot"
+  },
+  "CameraAttackLongShot": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraAttackLongShot"
+  },
+  "CameraMovePush": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraTestPush"
+  },
+  "CameraRotateRush": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraRotateRush"
+  },
+  "CameraTimelineShot": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraTimelineShot"
+  },
+  "CameraWormhole": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraWormhole"
+  },
+  "Camera_Ayaka_LiquidStrike01": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Ayaka_LiquidStrike01"
+  },
+  "Camera_Ayaka_LiquidStrike02": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Ayaka_LiquidStrike02"
+  },
+  "Camera_Barbara_IdolHeal": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Barbara_IdolHeal"
+  },
+  "Camera_Diluc_FireCross": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Diluc_FireCross"
+  },
+  "Camera_Venti_WindBlade": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Venti_WindBlade"
+  },
+  "Camera_Venti_Hurricane": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Venti_Hurricane"
+  },
+  "Camera_Beidou_ThunderFlash": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Beidou_ThunderFlash"
+  },
+  "Camera_Diluc_ExtraAttack": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Diluc_ExtraAttack"
+  },
+  "Camera_Razor_LycanMode_In": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_In_Razor"
+  },
+  "Camera_Razor_LycanMode_Out": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_Out_Razor"
+  },
+  "Camera_Qin_DandelionWind": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraQinDandelionWind"
+  },
+  "Camera_Dungeon_Dvalin_S01_Overlook": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Dungeon_Dvalin_S01_Overlook"
+  },
+  "Camera_Monster_Dvalin_S01_LookAtSeal": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Monster_Dvalin_S01_LookAtSeal"
+  },
+  "Camera_Monster_Dvalin_Starfall": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Monster_Dvalin_Starfall"
+  },
+  "Camera_Monster_Dvalin_WeakStart": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Monster_Dvalin_WeakStart"
+  },
+  "Camera_Elemental_Burst_In": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_In1"
+  },
+  "Camera_Elemental_Burst_In_2": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_In_2"
+  },
+  "Camera_Elemental_Burst_Out": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_Out"
+  },
+  "Camera_Elemental_Burst_Restore": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_Restore"
+  },
+  "Camera_Kaeya_FrozenTrap_In": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Kaeya_FrozenTrap_In"
+  },
+  "Camera_Kaeya_FrozenTrap_Out": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Kaeya_FrozenTrap_Out"
+  },
+  "Camera_Elemental_Burst_Out_2": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_Out_2"
+  },
+  "Camera_Ayaka_Windmill": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Ayaka_Windmill"
+  },
+  "Camera_Lisa_ElementBurst_In": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Lisa_ElementBurst_In"
+  },
+  "Camera_Lisa_ElementBurst_Out": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/Camera_Lisa_ElementBurst_Out"
+  },
+  "Camera_Elemental_Burst_In_Angle": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_In_Angle"
+  },
+  "Camera_Elemental_Burst_Out_Angle": {
+    "$type": "ConfigCameraMove",
+    "cfgPath": "Data/Camera/Shot/CameraElementalBurst_Out_Angle"
+  }
+}

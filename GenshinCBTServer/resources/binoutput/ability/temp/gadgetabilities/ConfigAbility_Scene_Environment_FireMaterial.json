@@ -1,0 +1,806 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_FireMaterial_FireBasin_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Fire_Off"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Fire_On"
+        }
+      ],
+      "modifiers": {
+        "GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "isElementDurabilityMutable": false
+        },
+        "Fire_Off": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Water",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ]
+        },
+        "Fire_On": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FireBasin"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Fire",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "FireBasin_Smoke",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ]
+        },
+        "State_Controller": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByEventMixin",
+              "type": "Current",
+              "onAbilityStateAdded": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua",
+                      "param1": 1
+                    }
+                  ]
+                }
+              ],
+              "onAbilityStateRemoved": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_CUSTOM_ATTACK_SHAPE_TYPE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrassMaterial"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_FireMaterial_Torch01_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMutexMixin",
+          "gadgetStates": [
+            0,
+            201
+          ],
+          "modifierNames": [
+            [
+              "Fire_Off"
+            ],
+            [
+              "Fire_On"
+            ]
+          ]
+        }
+      ],
+      "modifiers": {
+        "GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "isElementDurabilityMutable": false
+        },
+        "Fire_Off": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Water",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ]
+        },
+        "Fire_On": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Torch"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Fire",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Torch_Smoke",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ]
+        },
+        "State_Controller": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByEventMixin",
+              "type": "Current",
+              "onAbilityStateAdded": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua",
+                      "param1": 1
+                    }
+                  ]
+                }
+              ],
+              "onAbilityStateRemoved": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_CUSTOM_ATTACK_SHAPE_TYPE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrassMaterial"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_FireMaterial_BornFires_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMutexMixin",
+          "gadgetStates": [
+            0,
+            201
+          ],
+          "modifierNames": [
+            [
+              "Fire_Off"
+            ],
+            [
+              "Fire_On"
+            ]
+          ]
+        }
+      ],
+      "modifiers": {
+        "GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "isElementDurabilityMutable": false
+        },
+        "Fire_Off": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Water",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ]
+        },
+        "Fire_On": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "FireBasin"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Fire",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "FireBasin_Smoke",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ]
+        },
+        "State_Controller": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByEventMixin",
+              "type": "Current",
+              "onAbilityStateAdded": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua",
+                      "param1": 1
+                    }
+                  ]
+                }
+              ],
+              "onAbilityStateRemoved": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_CUSTOM_ATTACK_SHAPE_TYPE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrassMaterial"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_FireMaterial_CookingPot_Interact",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMutexMixin",
+          "gadgetStates": [
+            0,
+            201
+          ],
+          "modifierNames": [
+            [
+              "Fire_Off"
+            ],
+            [
+              "Fire_On"
+            ]
+          ]
+        }
+      ],
+      "modifiers": {
+        "GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "isElementDurabilityMutable": false
+        },
+        "Fire_Off": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Water",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ]
+        },
+        "Fire_On": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "CookingFire"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Fire",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "FireBasin_Smoke",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ]
+        },
+        "State_Controller": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByEventMixin",
+              "type": "Current",
+              "onAbilityStateAdded": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua",
+                      "param1": 1
+                    }
+                  ]
+                }
+              ],
+              "onAbilityStateRemoved": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_CUSTOM_ATTACK_SHAPE_TYPE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrassMaterial"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_FireMaterial_CookingPot_NoLight",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMutexMixin",
+          "gadgetStates": [
+            0,
+            201
+          ],
+          "modifierNames": [
+            [
+              "Fire_Off"
+            ],
+            [
+              "Fire_On"
+            ]
+          ]
+        }
+      ],
+      "modifiers": {
+        "GrassMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 100,
+          "isElementDurabilityMutable": false
+        },
+        "Fire_Off": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Water",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ]
+        },
+        "Fire_On": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "CookingFireNoLight"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Fire",
+                  "elementDurability": 50,
+                  "ignoreAttackerProperty": true
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_Controller"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "FireBasin_Smoke",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint"
+              }
+            }
+          ]
+        },
+        "State_Controller": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByEventMixin",
+              "type": "Current",
+              "onAbilityStateAdded": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua",
+                      "param1": 1
+                    }
+                  ]
+                }
+              ],
+              "onAbilityStateRemoved": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "ExecuteGadgetLua"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_CUSTOM_ATTACK_SHAPE_TYPE",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrassMaterial"
+        }
+      ]
+    }
+  }
+]

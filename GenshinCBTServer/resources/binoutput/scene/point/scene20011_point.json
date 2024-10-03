@@ -1,0 +1,696 @@
+{
+  "$type": "ConfigScene",
+  "points": {
+    "1": {
+      "$type": "DungeonWayPoint",
+      "gadgetId": 70120003,
+      "pos": {
+        "$type": "Vector",
+        "x": 473.4387,
+        "y": -20.03349,
+        "z": 55.62364
+      },
+      "rot": {
+        "$type": "Vector",
+        "y": 90
+      },
+      "unlocked": true,
+      "size": {
+        "$type": "Vector",
+        "x": 35,
+        "y": 10,
+        "z": 40
+      },
+      "groupIds": [
+        0
+      ]
+    },
+    "2": {
+      "$type": "DungeonWayPoint",
+      "gadgetId": 70120003,
+      "pos": {
+        "$type": "Vector",
+        "x": 456.45,
+        "y": -9.56848,
+        "z": 133.1425
+      },
+      "rot": {
+        "$type": "Vector",
+        "y": 270
+      },
+      "unlocked": true,
+      "size": {
+        "$type": "Vector",
+        "x": 30,
+        "y": 10,
+        "z": 30
+      }
+    },
+    "3": {
+      "$type": "DungeonQuitPoint",
+      "gadgetId": 70120004,
+      "pos": {
+        "$type": "Vector",
+        "x": 533.5605,
+        "y": -1.983715,
+        "z": 262.8517
+      },
+      "rot": {
+        "$type": "Vector",
+        "y": 177.0109
+      },
+      "unlocked": true,
+      "size": {
+        "$type": "Vector",
+        "x": 8,
+        "y": 8,
+        "z": 8
+      }
+    },
+    "4": {
+      "$type": "DungeonWayPoint",
+      "gadgetId": 70120003,
+      "pos": {
+        "$type": "Vector",
+        "x": 542.7703,
+        "y": -7.883276,
+        "z": 197.5941
+      },
+      "unlocked": true,
+      "size": {
+        "$type": "Vector",
+        "x": 30,
+        "y": 20,
+        "z": 20
+      }
+    }
+  },
+  "forces": {
+    "1": {
+      "$type": "ConfigAirflowField",
+      "gadgetId": 70610102,
+      "pos": {
+        "$type": "Vector",
+        "x": 498.3882,
+        "y": -55,
+        "z": 67.59563
+      },
+      "unlocked": true,
+      "velocity": 5,
+      "stayEffect": "Eff_Windfield_Stay",
+      "enterEffect": "Eff_Windfield_Enter"
+    },
+    "2": {
+      "$type": "ConfigAirflowField",
+      "gadgetId": 70610102,
+      "pos": {
+        "$type": "Vector",
+        "x": 424.9563,
+        "y": -43.8,
+        "z": 121.789
+      },
+      "unlocked": true,
+      "velocity": 8,
+      "stayEffect": "Eff_Windfield_Stay",
+      "enterEffect": "Eff_Windfield_Enter"
+    },
+    "4": {
+      "$type": "ConfigAirflowField",
+      "gadgetId": 40200001,
+      "pos": {
+        "$type": "Vector",
+        "x": 531.7469,
+        "y": -110.1773,
+        "z": 151
+      },
+      "velocity": 10,
+      "stayEffect": "Eff_Windfield_Stay",
+      "enterEffect": "Eff_Windfield_Enter"
+    }
+  },
+  "entities": {
+    "1": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 400.12,
+        "y": 4.3,
+        "z": 120.7844
+      },
+      "unlocked": true,
+      "triggerFlag": "ReturnRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 20,
+        "centerType": "Center",
+        "width": 30,
+        "length": 30
+      },
+      "floatParam": 15,
+      "stringParam": "1033001"
+    },
+    "2": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 474.5,
+        "y": -58.72672,
+        "z": 98.2
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 20,
+        "centerType": "Center",
+        "width": 200,
+        "length": 250
+      }
+    },
+    "3": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 417.88,
+        "y": -34.48327,
+        "z": 2
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 40,
+        "centerType": "Center",
+        "width": 30,
+        "length": 30
+      }
+    },
+    "4": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 225.9,
+        "y": -81.4,
+        "z": 26.52288
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 50,
+        "centerType": "Center",
+        "width": 300,
+        "length": 200
+      }
+    },
+    "7": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": -11,
+        "y": -35.2,
+        "z": 99.55
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 40,
+        "centerType": "Center",
+        "width": 150,
+        "length": 200
+      }
+    },
+    "8": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 54.9,
+        "y": 16.1,
+        "z": 119.6
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 40,
+        "centerType": "Center",
+        "width": 20,
+        "length": 50
+      }
+    },
+    "9": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 221.8,
+        "y": -33.7884,
+        "z": 140.5
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 150,
+        "centerType": "Center",
+        "width": 300,
+        "length": 50
+      }
+    },
+    "10": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 212.5,
+        "y": -33.97552,
+        "z": -83.9
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 150,
+        "centerType": "Center",
+        "width": 300,
+        "length": 50
+      }
+    },
+    "11": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 450.4,
+        "y": -23.5,
+        "z": 199.6
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 100,
+        "centerType": "Center",
+        "width": 100,
+        "length": 100
+      }
+    },
+    "12": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 592.1,
+        "y": -38.08341,
+        "z": 87.9
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 200,
+        "centerType": "Center",
+        "width": 50,
+        "length": 400
+      }
+    },
+    "13": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 481.0157,
+        "y": -38.08352,
+        "z": -155.8798
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 200,
+        "centerType": "Center",
+        "width": 50,
+        "length": 400
+      }
+    },
+    "14": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 529.0883,
+        "y": -37.8,
+        "z": 97.47881
+      },
+      "unlocked": true,
+      "triggerFlag": "ReturnRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 20,
+        "centerType": "Center",
+        "width": 50,
+        "length": 15
+      },
+      "floatParam": 15,
+      "stringParam": "1042003"
+    },
+    "15": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 425.3,
+        "y": -6.9,
+        "z": 108.4648
+      },
+      "unlocked": true,
+      "triggerFlag": "ReturnRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 50,
+        "centerType": "Center",
+        "width": 15,
+        "length": 10
+      },
+      "floatParam": 15,
+      "stringParam": "1042003"
+    },
+    "16": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 427.1799,
+        "y": -9.283442,
+        "z": 135.7501
+      },
+      "unlocked": true,
+      "triggerFlag": "ReturnRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 50,
+        "centerType": "Center",
+        "width": 20,
+        "length": 10
+      },
+      "floatParam": 15,
+      "stringParam": "1042003"
+    },
+    "17": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 424.5597,
+        "y": -38.2,
+        "z": 92.38559
+      },
+      "unlocked": true,
+      "triggerFlag": "ReturnRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 30,
+        "centerType": "Center",
+        "width": 22,
+        "length": 22
+      },
+      "floatParam": 15,
+      "stringParam": "1033001"
+    },
+    "18": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 391.7641,
+        "y": -37.9,
+        "z": 94.32626
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 30,
+        "centerType": "Center",
+        "width": 15,
+        "length": 25
+      }
+    },
+    "19": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 550.8614,
+        "y": -43.55,
+        "z": 18.84944
+      },
+      "unlocked": true,
+      "triggerFlag": "ReturnRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 50,
+        "centerType": "Center",
+        "width": 30,
+        "length": 10
+      },
+      "stringParam": "1042003"
+    },
+    "20": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 425.5,
+        "y": -35.93645,
+        "z": 123.6731
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 20,
+        "centerType": "Center",
+        "width": 15,
+        "length": 40
+      }
+    },
+    "21": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 477.5206,
+        "y": -30.8,
+        "z": 94.25314
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 20,
+        "centerType": "Center",
+        "width": 30,
+        "length": 20
+      }
+    },
+    "22": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 475,
+        "y": -62.58046,
+        "z": 98.2
+      },
+      "unlocked": true,
+      "triggerFlag": "NoReviveRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 30,
+        "centerType": "Center",
+        "width": 200,
+        "length": 250
+      }
+    },
+    "23": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 426.4317,
+        "y": -33.63243,
+        "z": 103.3657
+      },
+      "unlocked": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 20,
+        "centerType": "Center",
+        "width": 15,
+        "length": 20
+      }
+    },
+    "24": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 523.1021,
+        "y": -55.49594,
+        "z": 150.2527
+      },
+      "unlocked": true,
+      "checkDist": 500,
+      "withGO": true,
+      "triggerFlag": "NoReviveRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 50,
+        "centerType": "Center",
+        "width": 40,
+        "length": 100
+      }
+    },
+    "25": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 146.4739,
+        "y": -64.45686,
+        "z": 33.25624
+      },
+      "unlocked": true,
+      "checkDist": 500,
+      "withGO": true,
+      "triggerFlag": "NoReviveRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 50,
+        "centerType": "Center",
+        "width": 400,
+        "length": 100
+      },
+      "checkCount": 20
+    },
+    "26": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 77.50123,
+        "y": -35.46569,
+        "z": 33.52937
+      },
+      "unlocked": true,
+      "checkDist": 500,
+      "withGO": true,
+      "triggerFlag": "NoReviveRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 40,
+        "centerType": "Center",
+        "width": 60,
+        "length": 100
+      },
+      "checkCount": 40
+    },
+    "27": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 403.2243,
+        "y": 0.7193351,
+        "z": 122.4146
+      },
+      "unlocked": true,
+      "triggerFlag": "NoReviveRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 20,
+        "centerType": "Center",
+        "width": 50,
+        "length": 200
+      }
+    },
+    "28": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 526.6456,
+        "y": -42.06021,
+        "z": 222.7013
+      },
+      "unlocked": true,
+      "checkDist": 500,
+      "withGO": true,
+      "triggerFlag": "NoReviveRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 50,
+        "centerType": "Center",
+        "width": 40,
+        "length": 100
+      }
+    },
+    "29": {
+      "$type": "ConfigLocalTrigger",
+      "gadgetId": 70010006,
+      "pos": {
+        "$type": "Vector",
+        "x": 527.4599,
+        "y": -44.37101,
+        "z": 238.8669
+      },
+      "unlocked": true,
+      "checkDist": 500,
+      "withGO": true,
+      "triggerFlag": "DeadRegion",
+      "shape": {
+        "$type": "ConfigShapeRect",
+        "useHeight": true,
+        "height": 50,
+        "centerType": "Center",
+        "width": 40,
+        "length": 100
+      }
+    }
+  }
+}

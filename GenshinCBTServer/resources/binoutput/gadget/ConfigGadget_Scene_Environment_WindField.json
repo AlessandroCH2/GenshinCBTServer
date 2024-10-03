@@ -1,0 +1,620 @@
+{
+  "SceneObj_Environment_WindField_AirflowField": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 10,
+        "scale": 1.5,
+        "stayEffect": "Eff_Windfield_Stay",
+        "enterEffect": "Eff_Windfield_Enter"
+      }
+    }
+  },
+  "Airflow_Block3001": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 10,
+        "stayEffect": "Eff_Windfield_Stay",
+        "enterEffect": "Eff_Windfield_Enter"
+      }
+    }
+  },
+  "SceneObj_Environment_WindField_PeriodWindField": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "die": {
+        "$type": "ConfigDie",
+        "hasAnimatorDie": true,
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 2
+      }
+    },
+    "field": {
+      "$type": "ConfigTrigger",
+      "concernType": "AllAvatars",
+      "shape": "CircleR8",
+      "triggerInfinite": true,
+      "checkInterval": 8,
+      "lifeTime": 8
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 10,
+        "scale": 1.5,
+        "stayEffect": "Eff_Windfield_Stay",
+        "enterEffect": "Eff_Windfield_Enter"
+      }
+    },
+    "keepModifierOutSight": false
+  },
+  "AirflowFieldBlue": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 10,
+        "scale": 1.5,
+        "stayEffect": "Eff_Windfield_Stay_Blue",
+        "enterEffect": "Eff_Windfield_Enter_Blue"
+      }
+    }
+  },
+  "SceneObj_Environment_WindField_SpeedupField": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigSpeedupField",
+        "velocity": 19,
+        "attenuation": 2.3
+      }
+    }
+  },
+  "SceneObj_Environment_WindField_CannonField": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigCannonField",
+        "velocity": 19,
+        "attenuation": 2.3
+      }
+    }
+  },
+  "SceneObj_Environment_WindField_AirflowAgent": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_AirflowAgent"
+      }
+    ],
+    "keepModifierOutSight": false
+  },
+  "SceneObj_Environment_WindField_AirflowAgent2": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_AirflowAgent2"
+      }
+    ],
+    "keepModifierOutSight": false
+  },
+  "SceneObj_Environment_WindField_AirflowAgent3": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_AirflowAgent3"
+      }
+    ],
+    "keepModifierOutSight": false
+  },
+  "SceneObj_Environment_WindField_AirflowAgent4": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_AirflowAgent4"
+      }
+    ],
+    "keepModifierOutSight": false
+  },
+  "SceneObj_Environment_WindField_AirflowAgent5": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_AirflowAgent5"
+      }
+    ],
+    "keepModifierOutSight": false
+  },
+  "SceneObj_Environment_WindField_PushField01": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_PushForce_01"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "concernType": "AllAvatars",
+      "shape": "CircleR10H40",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5
+    }
+  },
+  "SceneObj_Environment_WindField_PushField02": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_PushForce_02"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "concernType": "AllAvatars",
+      "shape": "CircleR10",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5
+    }
+  },
+  "SceneObj_Environment_WindField_PushField03": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_PushForce_03"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "concernType": "AllAvatars",
+      "shape": "CircleR15",
+      "triggerInfinite": true,
+      "lifeInfinite": true,
+      "checkInterval": 0.5
+    }
+  },
+  "SceneObj_Environment_WindField_DragonNest_Barrier": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 450
+    },
+    "model": {
+      "$type": "ConfigModel",
+      "matLinearChangedByDistance": [
+        {
+          "$type": "ConfigMatLinearChangedByDistance",
+          "transformName": "LinearMat",
+          "floatProperty": [
+            "_ColorBrightness"
+          ],
+          "minRatio": 1,
+          "minDistance": 150,
+          "maxDistance": 300
+        },
+        {
+          "$type": "ConfigMatLinearChangedByDistance",
+          "transformName": "LinearMat",
+          "floatProperty": [
+            "_AlphaBrightness"
+          ],
+          "minRatio": 1,
+          "maxRatio": 0.25,
+          "minDistance": 150,
+          "maxDistance": 300
+        },
+        {
+          "$type": "ConfigMatLinearChangedByDistance",
+          "transformName": "LinearMat",
+          "textureProperty": [
+            "_BaseTex",
+            "_NoiseTex01",
+            "_MaskTexture",
+            "_MaskTexture02"
+          ],
+          "minRatio": 1,
+          "maxRatio": 2,
+          "minDistance": 150,
+          "maxDistance": 300
+        },
+        {
+          "$type": "ConfigMatLinearChangedByDistance",
+          "transformName": "SurfaceCloudMat",
+          "floatProperty": [
+            "_FresnelPower"
+          ],
+          "minRatio": 1,
+          "maxRatio": 0.2,
+          "minDistance": 150,
+          "maxDistance": 300
+        },
+        {
+          "$type": "ConfigMatLinearChangedByDistance",
+          "transformName": "UVmoveMat",
+          "textureProperty": [
+            "_BaseTex",
+            "_NoiseTex01",
+            "_MaskTexture"
+          ],
+          "minRatio": 1,
+          "maxRatio": 2,
+          "minDistance": 150,
+          "maxDistance": 300
+        }
+      ]
+    },
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 5000,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "hitAutoRedirect": false,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "dieDisappearEffect": "DragonNest_Barrier_Die"
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_DragonNest_Barrier_Attack"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_02",
+        "abilityName": "SceneObj_Environment_WindField_DragonNest_Element"
+      }
+    ],
+    "gadget": {
+      "$type": "ConfigGadgetCollidedPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "triggerType": "TriggerAlways",
+        "targetType": "All"
+      },
+      "collisionActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "SceneObj_Environment_WindField_DragonNest_Barrier_Attack"
+        }
+      ],
+      "thisColliderName": "Collider",
+      "targetColliderName": "InteeTrigger"
+    }
+  },
+  "DragonNest_Tornado_WindField_Controller": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 450
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 5000,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "DragonNest_Tornado_WindField_DragonNest_Tornado_Controller"
+      }
+    ]
+  },
+  "SceneObj_Environment_WindField_DragonNest_Tornado_Bullet": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox"
+      },
+      "disableTickDistance": 450
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 99999,
+        "lockShape": "CircleLockEnemy",
+        "defense": 99999,
+        "weight": 1,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "die": {
+        "$type": "ConfigDie",
+        "hasAnimatorDie": true,
+        "dieEndTime": 3,
+        "dieForceDisappearTime": 3
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_DragonNest_Tornado_Bullet"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 30
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "velocityForce": {
+        "$type": "ConfigMoveVelocityForce",
+        "excludeForces": [
+          "WindZoneType",
+          "AirflowType",
+          "RiseType",
+          "SpeedupType",
+          "AirflowAccType"
+        ]
+      },
+      "speed": 1,
+      "delay": 1,
+      "stickToGround": {
+        "$type": "ConfigMoveStickToGround",
+        "maxStepHeight": 1,
+        "maxSlopeAngle": 45,
+        "heightToGround": 0.1,
+        "flexibleRange": 0.5,
+        "isStickToWater": true,
+        "unstickWhenDownSlide": "Keep",
+        "unstickWhenUpSlide": "Keep"
+      },
+      "syncToRemote": true
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "triggerType": "TriggerAlways",
+        "triggerCD": 0.5,
+        "targetType": "Enemy",
+        "ignoreScene": true
+      }
+    }
+  },
+  "SceneObj_Environment_WindField_DragonNest_Tornado_Tiny": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 450
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 5000,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "weight": 50,
+        "isLockHP": true,
+        "denyLockOn": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_DragonNest_Tornado_Tiny"
+      }
+    ]
+  },
+  "SceneObj_Environment_WindField_DragonNest_StrongWind": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 800
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "attack": 25,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "SceneObj_Environment_WindField_StrongWindAbility"
+      }
+    ]
+  },
+  "DragonNest_StrongWindSafeRegion": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "HP": 1,
+        "lockShape": "CircleLockEnemy",
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Ability_01",
+        "abilityName": "StrongWindSafeRegion"
+      }
+    ],
+    "field": {
+      "$type": "ConfigTrigger",
+      "concernType": "LocalAvatar",
+      "triggerInfinite": true,
+      "lifeInfinite": true
+    }
+  },
+  "SceneObj_Environment_WindField_PeriodWindField_Continue": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "die": {
+        "$type": "ConfigDie",
+        "hasAnimatorDie": true,
+        "dieEndTime": 2,
+        "dieForceDisappearTime": 2
+      }
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 10,
+        "scale": 1.5,
+        "stayEffect": "Eff_Windfield_Stay",
+        "enterEffect": "Eff_Windfield_Enter"
+      }
+    },
+    "keepModifierOutSight": false
+  }
+}

@@ -1,0 +1,516 @@
+{
+  "$type": "ConfigPlatformGrahpicsSetting",
+  "volatileSettings": {
+    "Default": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Beautiful",
+      "shadowGrade": "Medium",
+      "useShadowCache": true,
+      "halfResolutionParticle": true
+    },
+    "Topmost": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Beautiful",
+      "shadowGrade": "Medium",
+      "useShadowCache": true,
+      "halfResolutionParticle": true
+    },
+    "High": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Beautiful",
+      "shadowGrade": "High",
+      "useShadowCache": true,
+      "halfResolutionParticle": true
+    },
+    "Middle": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Beautiful",
+      "shadowGrade": "Medium",
+      "useShadowCache": true,
+      "halfResolutionParticle": true,
+      "checkboardType": "MSAA2x"
+    },
+    "Low": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Beautiful",
+      "shadowGrade": "Medium",
+      "useShadowCache": true,
+      "halfResolutionParticle": true,
+      "checkboardType": "MSAA2x",
+      "enableAO": false,
+      "enableMotionBlur": false
+    },
+    "Off": {
+      "$type": "ConfigGraphicsVolatileSetting",
+      "qualityLevel": "Beautiful",
+      "shadowGrade": "Medium",
+      "useShadowCache": true,
+      "halfResolutionParticle": true
+    }
+  },
+  "deviceSettings": {
+    "Default": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "EcoMode": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Low",
+      "recommendVolatile": "Off",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPhone6": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1024,
+      "refPostProcessSecondHeight": 576,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Low",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPhone6Plus": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1024,
+      "refPostProcessSecondHeight": 576,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Low",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPhone6S": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "High",
+      "recommendVolatile": "Low",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPhone6SPlus": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Low",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadMini1Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1024,
+      "refPostProcessSecondHeight": 768,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Off",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadMini2Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1024,
+      "refPostProcessSecondHeight": 768,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Off",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadMini3Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1024,
+      "refPostProcessSecondHeight": 768,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Middle",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadMini4Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "High",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPad2Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1024,
+      "refPostProcessSecondHeight": 768,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Off",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPad3Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1024,
+      "refPostProcessSecondHeight": 768,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Middle",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPad4Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 2048,
+      "refPostProcessSecondHeight": 1536,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Middle",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadAir1": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1024,
+      "refPostProcessSecondHeight": 768,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Off",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadAir2": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 2048,
+      "refPostProcessSecondHeight": 1536,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "High",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadPro1Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 2048,
+      "refPostProcessSecondHeight": 1536,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "High",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPhone7": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Low",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPhone7Plus": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Low",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadPro2Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 2048,
+      "refPostProcessSecondHeight": 1536,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "High",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "virtualJoystickRadius": 1,
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPhone8": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Middle",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault_Middle",
+      "lightOnLevel": "Middle",
+      "TerrainGrassScaleFactor": 0.7
+    },
+    "iPhone8Plus": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Middle",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault_Middle",
+      "lightOnLevel": "Middle",
+      "TerrainGrassScaleFactor": 0.7
+    },
+    "iPhoneX": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1440,
+      "refPostProcessSecondHeight": 900,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Low",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault_Low",
+      "lightOnLevel": "Middle",
+      "TerrainGrassScaleFactor": 0.65
+    },
+    "iPhoneXS": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1440,
+      "refPostProcessSecondHeight": 900,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle",
+      "TerrainGrassScaleFactor": 0.8
+    },
+    "iPhoneXSMax": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1440,
+      "refPostProcessSecondHeight": 900,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle",
+      "TerrainGrassScaleFactor": 0.8
+    },
+    "iPhoneXR": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1440,
+      "refPostProcessSecondHeight": 900,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle",
+      "enableCutsceneTextureStreaming": false
+    },
+    "iPadPro11Inch": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 2048,
+      "refPostProcessSecondHeight": 1536,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "High",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "virtualJoystickRadius": 1,
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle",
+      "TerrainGrassScaleFactor": 0.8
+    },
+    "iPadPro3Gen": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 2048,
+      "refPostProcessSecondHeight": 1536,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "High",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "virtualJoystickRadius": 1,
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle",
+      "TerrainGrassScaleFactor": 0.8
+    },
+    "iPhoneUnknown": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "Topmost",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    },
+    "iPadUnknown": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1638,
+      "refPostProcessSecondHeight": 1228,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "High",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "virtualJoystickRadius": 1,
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle",
+      "TerrainGrassScaleFactor": 0.8
+    },
+    "iPodTouchUnknown": {
+      "$type": "ConfigGraphicsRecommendSetting",
+      "refPostProcessSecondWidth": 1280,
+      "refPostProcessSecondHeight": 720,
+      "postProcessPercentage": 1,
+      "resolutionQuality": "Middle",
+      "recommendVolatile": "High",
+      "candidateVolatile": [
+        "Low",
+        "Middle",
+        "High"
+      ],
+      "levelStreamingConfig": "iOSDefault",
+      "lightOnLevel": "Middle"
+    }
+  }
+}

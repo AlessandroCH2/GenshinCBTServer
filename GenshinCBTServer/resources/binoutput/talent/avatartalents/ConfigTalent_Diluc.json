@@ -1,0 +1,251 @@
+{
+  "Diluc_Talent_1410": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Diluc_SecondWind"
+    }
+  ],
+  "Diluc_Talent_1411": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_SecondWind",
+      "paramSpecial": "HpRatio",
+      "paramDelta": 0.2
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_SecondWind",
+      "paramSpecial": "HealRatio",
+      "paramDelta": 0.005
+    }
+  ],
+  "Diluc_Talent_1412": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_SecondWind",
+      "paramSpecial": "HpRatio",
+      "paramDelta": 0.3
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_SecondWind",
+      "paramSpecial": "HealRatio",
+      "paramDelta": 0.005
+    }
+  ],
+  "Diluc_Talent_1430": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Diluc_NextFireBlade1"
+    },
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Diluc_NextFireBlade2"
+    }
+  ],
+  "Diluc_Talent_1431": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_NextFireBlade1",
+      "paramSpecial": "Rate2",
+      "paramDelta": 0.3
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_NextFireBlade2",
+      "paramSpecial": "Rate3",
+      "paramDelta": 0.3
+    }
+  ],
+  "Diluc_Talent_1432": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_NextFireBlade1",
+      "paramSpecial": "Rate2",
+      "paramDelta": 0.3
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_NextFireBlade2",
+      "paramSpecial": "Rate3",
+      "paramDelta": 0.3
+    }
+  ],
+  "Diluc_Talent_1440": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Diluc_FireHowl"
+    }
+  ],
+  "Diluc_Talent_1441": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireHowl",
+      "paramSpecial": "AttackRate",
+      "paramDelta": 0.02
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireHowl",
+      "paramSpecial": "SpeedRate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Diluc_Talent_1442": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireHowl",
+      "paramSpecial": "maxStackCount",
+      "paramDelta": 1
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireHowl",
+      "paramSpecial": "AttackRate",
+      "paramDelta": 0.02
+    }
+  ],
+  "Diluc_Talent_1443": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireHowl",
+      "paramSpecial": "AttackRate",
+      "paramDelta": 0.03
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireHowl",
+      "paramSpecial": "SpeedRate",
+      "paramDelta": 0.01
+    }
+  ],
+  "Diluc_Talent_1450": [
+    {
+      "$type": "AddAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade"
+    }
+  ],
+  "Diluc_Talent_1451": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "paramSpecial": "AtkPercent1",
+      "paramDelta": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "paramSpecial": "AtkPercent2",
+      "paramDelta": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "paramSpecial": "AtkPercent3",
+      "paramDelta": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "paramSpecial": "AtkPercent4",
+      "paramDelta": 0.15
+    }
+  ],
+  "Diluc_Talent_1452": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "paramSpecial": "AtkPercent1",
+      "paramDelta": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "paramSpecial": "AtkPercent2",
+      "paramDelta": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "paramSpecial": "AtkPercent3",
+      "paramDelta": 0.15
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_AfterFireBlade",
+      "paramSpecial": "AtkPercent4",
+      "paramDelta": 0.15
+    }
+  ],
+  "Diluc_Talent_1460": [
+    {
+      "$type": "UnlockTalentParam",
+      "abilityName": "Avatar_Diluc_Fire_Enhancement",
+      "talentParam": "Diluc_Fire_Enhancement"
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_Fire_Enhancement",
+      "paramSpecial": "Dura",
+      "paramDelta": 10
+    }
+  ],
+  "Diluc_Talent_1461": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_Fire_Enhancement",
+      "paramSpecial": "FireUp",
+      "paramDelta": 0.1
+    }
+  ],
+  "Diluc_Talent_1462": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_Fire_Enhancement",
+      "paramSpecial": "FireUp",
+      "paramDelta": 0.1
+    }
+  ],
+  "Diluc_Talent_1470": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Material",
+      "paramSpecial": "damage",
+      "paramRatio": 0.11
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Explode",
+      "paramSpecial": "damage",
+      "paramRatio": 0.11
+    }
+  ],
+  "Diluc_Talent_1471": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Material",
+      "paramSpecial": "damage",
+      "paramRatio": 0.11
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Explode",
+      "paramSpecial": "damage",
+      "paramRatio": 0.11
+    }
+  ],
+  "Diluc_Talent_1472": [
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Material",
+      "paramSpecial": "damage",
+      "paramRatio": 0.11
+    },
+    {
+      "$type": "ModifyAbility",
+      "abilityName": "Avatar_Diluc_FireCross_Explode",
+      "paramSpecial": "damage",
+      "paramRatio": 0.11
+    }
+  ]
+}

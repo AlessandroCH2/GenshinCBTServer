@@ -1,0 +1,4043 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_UziExplode",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "UziExplode_Charge_01",
+            "UziExplode_BS_1"
+          ],
+          "modifierName": "Charge1"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "UziExplode_Charge_01",
+            "UziExplode_BS_1",
+            "UziExplode_Charge_02"
+          ],
+          "modifierName": "UziExplode_ArmEffect"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "UziExplode_Charge_02"
+          ],
+          "modifierName": "Charge2"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "UziExplode_Charge_01",
+            "UziExplode_BS_1",
+            "UziExplode_Charge_02"
+          ],
+          "modifierName": "Cooldown_Count"
+        },
+        {
+          "$type": "SkillButtonHoldChargeMixin",
+          "skillID": 10067,
+          "nextLoopTriggerID": "NextLoopTrigger",
+          "endHoldTrigger": "EndHoldTrigger",
+          "beforeStateIDs": [
+            "UziExplode_BS_1"
+          ],
+          "chargeLoopStateIDs": [
+            "UziExplode_Charge_01",
+            "UziExplode_Charge_02"
+          ],
+          "afterStateIDs": [
+            "UziExplode_Strike_02"
+          ],
+          "chargeLoopDurations": [
+            0.4,
+            1.2
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "GetElementRatio": 1,
+        "ResurrectUzi_Heal": 0.02,
+        "SliceDamage1": 0.25,
+        "SliceDamage2": 0.45,
+        "Element_Embrace_Factor": 0.25
+      },
+      "modifiers": {
+        "UziExplode_ArmEffect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "UziExplode_Charge_Arm_01"
+            }
+          ]
+        },
+        "Charge1": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Avatar_Player_UziExplode_Mix"
+            },
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByUnlockTalentParam",
+                      "talentParam": "Avatar_Player_Wind_SubVacuum_2"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "UziExplode_WindZone_Charge1_OnlyGrass"
+            },
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Avatar_Player_Wind_SubVacuum_2"
+                }
+              ],
+              "modifierName": "UziExplode_WindZone_Charge1_All"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "UziExplode_Charge_01"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_UziExplode_Count",
+              "useLimitRange": true,
+              "maxValue": 2,
+              "minValue": 0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 1.7
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "SliceDamage1",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Wind",
+                    "elementRank": 1.5,
+                    "elementDurability": 5,
+                    "strikeType": "Slash",
+                    "enBreak": 10
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Light",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Fire",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 1.7
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%SliceDamage1*%Element_Embrace_Factor",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementRank": 1.5,
+                    "elementDurability": 2,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Water",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 1.7
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%SliceDamage1*%Element_Embrace_Factor",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Water",
+                    "elementRank": 1.5,
+                    "elementDurability": 2,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Ice",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 1.7
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%SliceDamage1*%Element_Embrace_Factor",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementRank": 1.5,
+                    "elementDurability": 2,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Electric",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 1.7
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%SliceDamage1*%Element_Embrace_Factor",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Electric",
+                    "elementRank": 1.5,
+                    "elementDurability": 2,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Charge2": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.25,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10006,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByUnlockTalentParam",
+                      "talentParam": "Avatar_Player_Wind_SubVacuum_1"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "UziExplode_WindZone_Charge2_OnlyGrass"
+            },
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Avatar_Player_Wind_SubVacuum_1"
+                }
+              ],
+              "modifierName": "UziExplode_WindZone_Charge2_All"
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed",
+                  "value": 1,
+                  "forceByCaster": true
+                }
+              ],
+              "effectPattern": "UziExplode_Charge_02_Wind"
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Fire",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Charge_02_Fire"
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Water",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Charge_02_Water"
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Ice",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Charge_02_Ice"
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Electric",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Charge_02_Electric"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_UziExplode_Count",
+              "useLimitRange": true,
+              "maxValue": 2,
+              "minValue": 0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 3.6
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "SliceDamage2",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Wind",
+                    "elementRank": 1.5,
+                    "elementDurability": 5,
+                    "strikeType": "Slash",
+                    "enBreak": 10
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Light",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.08,
+                    "shakeTime": 0.24,
+                    "shakeDistance": 30,
+                    "shakeDir": {
+                      "$type": "Vector",
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "extension": {
+                      "$type": "ConfigCameraShakeExt",
+                      "baseCycle": 0.08,
+                      "cycleDamping": 0,
+                      "rangeAttenuation": 1
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Fire",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 3.6
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%SliceDamage2*%Element_Embrace_Factor",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementRank": 1.5,
+                    "elementDurability": 2,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Water",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 3.6
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%SliceDamage2*%Element_Embrace_Factor",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Water",
+                    "elementRank": 1.5,
+                    "elementDurability": 2,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Ice",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 3.6
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%SliceDamage2*%Element_Embrace_Factor",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementRank": 1.5,
+                    "elementDurability": 2,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Electric",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "ignoreMassive": true,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 3.6
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Elemental_Art",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "%SliceDamage2*%Element_Embrace_Factor",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Electric",
+                    "elementRank": 1.5,
+                    "elementDurability": 2,
+                    "enBreak": 0
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "none",
+                    "hitImpulseX": 200,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "UziExplode_WindZone_Charge1_OnlyGrass": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR5",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "strength": 2,
+              "attenuation": 2,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Grass"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "UziExplode_WindZone_Charge1_All": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR5",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": 1.2
+                }
+              },
+              "strength": 4,
+              "attenuation": 2,
+              "innerRadius": 0.5,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ],
+                  "reject": true
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "logic": "LesserOrEqual",
+                  "weight": 100
+                }
+              ]
+            }
+          ]
+        },
+        "UziExplode_WindZone_Charge2_OnlyGrass": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR5",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "strength": 2,
+              "attenuation": 2,
+              "innerRadius": 0,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Grass"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "UziExplode_WindZone_Charge2_All": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR5",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": 1.2
+                }
+              },
+              "strength": 4,
+              "attenuation": 2,
+              "innerRadius": 0.5,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ],
+                  "reject": true
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "logic": "LesserOrEqual",
+                  "weight": 100
+                }
+              ]
+            }
+          ]
+        },
+        "Cooldown_Count": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_Count",
+                  "value": 1,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AvatarSkillStart",
+                  "skillID": 10067,
+                  "cdRatio": 1.6,
+                  "costStaminaRatio": 1
+                },
+                {
+                  "$type": "ClearGlobalValue",
+                  "key": "_ABILITY_UziExplode_Count"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "AvatarSkillStart",
+                  "skillID": 10067,
+                  "costStaminaRatio": 1
+                },
+                {
+                  "$type": "ClearGlobalValue",
+                  "key": "_ABILITY_UziExplode_Count"
+                }
+              ]
+            }
+          ]
+        },
+        "ResurrectUzi_Flag": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onKill": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Caster",
+              "modifierName": "UNIQUE_ResurrectUzi_Heal"
+            }
+          ]
+        },
+        "UNIQUE_ResurrectUzi_Heal": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 5.2,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "amountByCasterMaxHPRatio": "ResurrectUzi_Heal"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "DandelionWind_Buff"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_UziExplode_Strike_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "UziExplode_Strike_01"
+          ],
+          "modifierName": "GenerateElemBall_UziExplode"
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "UziExplode_Strike_01",
+          "modifierName": "UziExplode_Strike_Material_01",
+          "normalizeStart": 0.076,
+          "normalizeEnd": 0.2
+        }
+      ],
+      "abilitySpecials": {
+        "GetElementRatio": 1,
+        "ResurrectUzi_Heal": 0.02,
+        "StrikeDamage1": 2.4,
+        "Element_Embrace_Factor": 0.25
+      },
+      "modifiers": {
+        "UziExplode_Strike_Material_01": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed",
+                  "value": 1,
+                  "forceByCaster": true
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_01_Wind"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Fire",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_01_Fire"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Water",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_01_Water"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Ice",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_01_Ice"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Electric",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_01_Electric"
+            }
+          ]
+        },
+        "ResurrectUzi_Flag": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onKill": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Caster",
+              "modifierName": "UNIQUE_ResurrectUzi_Heal"
+            }
+          ]
+        },
+        "UNIQUE_ResurrectUzi_Heal": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 5.2,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "amountByCasterMaxHPRatio": "ResurrectUzi_Heal"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "DandelionWind_Buff"
+            }
+          ]
+        },
+        "GenerateElemBall_UziExplode": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Elemental_Art_Extra"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "DropBall_Base"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "DropBall_Extra"
+                }
+              ]
+            }
+          ]
+        },
+        "DropBall_Base": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 3,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2021,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 1
+                }
+              },
+              "ratio": "GetElementRatio",
+              "baseEnergy": 6
+            }
+          ]
+        },
+        "DropBall_Extra": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleRefreshNoRemove",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 3,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 0.67,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2021,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": 1
+                    }
+                  },
+                  "ratio": "GetElementRatio",
+                  "baseEnergy": 3
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10067,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "StrikeDamage1",
+                "damagePercentageRatio": 0,
+                "elementType": "Wind",
+                "elementRank": 1.5,
+                "elementDurability": 25,
+                "strikeType": "Default",
+                "enBreak": 200
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 480,
+                "hitImpulseY": 600,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.2,
+                "shakeTime": 0.12,
+                "shakeDistance": 30,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "x": 1
+                }
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_UziExplode_IsMixed_Fire",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%StrikeDamage1*%Element_Embrace_Factor",
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 1.5,
+                "elementDurability": 12,
+                "strikeType": "Default",
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_UziExplode_IsMixed_Water",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%StrikeDamage1*%Element_Embrace_Factor",
+                "damagePercentageRatio": 0,
+                "elementType": "Water",
+                "elementRank": 1.5,
+                "elementDurability": 12,
+                "strikeType": "Default",
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_UziExplode_IsMixed_Ice",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%StrikeDamage1*%Element_Embrace_Factor",
+                "damagePercentageRatio": 0,
+                "elementType": "Ice",
+                "elementRank": 1.5,
+                "elementDurability": 12,
+                "strikeType": "Default",
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_UziExplode_IsMixed_Electric",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%StrikeDamage1*%Element_Embrace_Factor",
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementRank": 1.5,
+                "elementDurability": 12,
+                "strikeType": "Default",
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_UziExplode_Strike_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "UziExplode_Strike_02"
+          ],
+          "modifierName": "GenerateElemBall_UziExplode"
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "UziExplode_Strike_02",
+          "modifierName": "UziExplode_Strike_Material_02",
+          "normalizeStart": 0.076,
+          "normalizeEnd": 0.2
+        }
+      ],
+      "abilitySpecials": {
+        "GetElementRatio": 1,
+        "ReviveEnergyRatio": 1,
+        "ResurrectUzi_Heal": 0.02,
+        "StrikeDamage2": 3,
+        "Element_Embrace_Factor": 0.25
+      },
+      "modifiers": {
+        "UziExplode_Strike_Material_02": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed",
+                  "value": 1,
+                  "forceByCaster": true
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_02_Wind"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Fire",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_02_Fire"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Water",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_02_Water"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Ice",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_02_Ice"
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed_Electric",
+                  "value": 1,
+                  "forceByCaster": true,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "effectPattern": "UziExplode_Explode_02_Electric"
+            }
+          ]
+        },
+        "ResurrectUzi_Flag": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onKill": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Caster",
+              "modifierName": "UNIQUE_ResurrectUzi_Heal"
+            }
+          ]
+        },
+        "UNIQUE_ResurrectUzi_Heal": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 5.2,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "amountByCasterMaxHPRatio": "ResurrectUzi_Heal"
+            },
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "DandelionWind_Buff"
+            }
+          ]
+        },
+        "GenerateElemBall_UziExplode": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Elemental_Art_Extra"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "DropBall_Base"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "DropBall_Extra"
+                }
+              ]
+            }
+          ]
+        },
+        "DropBall_Base": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 3,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2021,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 1
+                }
+              },
+              "ratio": "GetElementRatio",
+              "baseEnergy": 6
+            },
+            {
+              "$type": "Randomed",
+              "chance": 0.33,
+              "successActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "configID": 2021,
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "z": 1
+                    }
+                  },
+                  "ratio": "GetElementRatio",
+                  "baseEnergy": 3
+                }
+              ]
+            }
+          ]
+        },
+        "DropBall_Extra": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleRefreshNoRemove",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 3,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2021,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 1
+                }
+              },
+              "ratio": "GetElementRatio",
+              "baseEnergy": 3
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10067,
+          "cdRatio": 1.6,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "StrikeDamage2",
+                "damagePercentageRatio": 0,
+                "elementType": "Wind",
+                "elementRank": 1.5,
+                "elementDurability": 25,
+                "strikeType": "Default",
+                "enBreak": 200
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Air",
+                "hitImpulseX": 655,
+                "hitImpulseY": 800,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeType": "CustomVector",
+                "shakeRange": 0.25,
+                "shakeTime": 0.12,
+                "shakeDistance": 30,
+                "shakeDir": {
+                  "$type": "Vector",
+                  "x": 1
+                }
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_UziExplode_IsMixed_Fire",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%StrikeDamage2*%Element_Embrace_Factor",
+                "damagePercentageRatio": 0,
+                "elementType": "Fire",
+                "elementRank": 1.5,
+                "elementDurability": 12,
+                "strikeType": "Default",
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_UziExplode_IsMixed_Water",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%StrikeDamage2*%Element_Embrace_Factor",
+                "damagePercentageRatio": 0,
+                "elementType": "Water",
+                "elementRank": 1.5,
+                "elementDurability": 12,
+                "strikeType": "Default",
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_UziExplode_IsMixed_Ice",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%StrikeDamage2*%Element_Embrace_Factor",
+                "damagePercentageRatio": 0,
+                "elementType": "Ice",
+                "elementRank": 1.5,
+                "elementDurability": 12,
+                "strikeType": "Default",
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_UziExplode_IsMixed_Electric",
+              "value": 1,
+              "forceByCaster": true,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 2,
+              "scale": 1,
+              "centerYOffset": -0.5,
+              "fanAngle": 100,
+              "radius": 6
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Elemental_Art_Extra",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%StrikeDamage2*%Element_Embrace_Factor",
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementRank": 1.5,
+                "elementDurability": 12,
+                "strikeType": "Default",
+                "enBreak": 0
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "none",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_UziExplode_Mix",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "UziExplode_BS",
+            "UziExplode_BS_1",
+            "UziExplode_Charge_01",
+            "UziExplode_Charge_02",
+            "UziExplode_Strike_01",
+            "UziExplode_Strike_02"
+          ],
+          "modifierName": "UziExplode_Mix_Initializer"
+        }
+      ],
+      "modifiers": {
+        "UziExplode_Mix_Start": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_UziExplode_Mix_Handler"
+            }
+          ]
+        },
+        "UNIQUE_UziExplode_Mix_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_UziExplode_IsMixed",
+              "defaultGlobalValueOnCreate": 0,
+              "valueSteps": [
+                -1,
+                0.5,
+                1.5
+              ],
+              "modifierNameSteps": [
+                "Blank",
+                "UziExplode_Mix_Detect"
+              ]
+            }
+          ]
+        },
+        "Blank": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "UziExplode_Mix_Detect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByHasElement",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "ByHasElement",
+                      "element": "Frozen"
+                    }
+                  ]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "UziExplode_Mix_Detect"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_UziExplode_IsMixed",
+                  "value": 1,
+                  "forceByCaster": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "UziExplode_Mix_Ice"
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "value": -1,
+                  "key": "_ABILITY_UziExplode_IsMixed",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByAny",
+                      "predicates": [
+                        {
+                          "$type": "ByHasElement",
+                          "element": "Fire"
+                        },
+                        {
+                          "$type": "ByHasAbilityState",
+                          "abilityState": "ElementBurning"
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "UziExplode_Mix_Detect"
+                      ]
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_UziExplode_IsMixed",
+                      "value": 1,
+                      "forceByCaster": true
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "modifierName": "UziExplode_Mix_Fire"
+                    },
+                    {
+                      "$type": "AddGlobalValue",
+                      "value": -1,
+                      "key": "_ABILITY_UziExplode_IsMixed",
+                      "useLimitRange": true,
+                      "maxValue": 1,
+                      "minValue": 0
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "Predicated",
+                      "target": "Target",
+                      "targetPredicates": [
+                        {
+                          "$type": "ByHasElement",
+                          "element": "Water"
+                        },
+                        {
+                          "$type": "ByAttackTags",
+                          "attackTags": [
+                            "UziExplode_Mix_Detect"
+                          ]
+                        },
+                        {
+                          "$type": "ByTargetGlobalValue",
+                          "key": "_ABILITY_UziExplode_IsMixed",
+                          "value": 1,
+                          "forceByCaster": true
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "ApplyModifier",
+                          "modifierName": "UziExplode_Mix_Water"
+                        },
+                        {
+                          "$type": "AddGlobalValue",
+                          "value": -1,
+                          "key": "_ABILITY_UziExplode_IsMixed",
+                          "useLimitRange": true,
+                          "maxValue": 1,
+                          "minValue": 0
+                        }
+                      ],
+                      "failActions": [
+                        {
+                          "$type": "Predicated",
+                          "target": "Target",
+                          "targetPredicates": [
+                            {
+                              "$type": "ByHasElement",
+                              "element": "Electric"
+                            },
+                            {
+                              "$type": "ByAttackTags",
+                              "attackTags": [
+                                "UziExplode_Mix_Detect"
+                              ]
+                            },
+                            {
+                              "$type": "ByTargetGlobalValue",
+                              "key": "_ABILITY_UziExplode_IsMixed",
+                              "value": 1,
+                              "forceByCaster": true
+                            }
+                          ],
+                          "successActions": [
+                            {
+                              "$type": "ApplyModifier",
+                              "modifierName": "UziExplode_Mix_Electric"
+                            },
+                            {
+                              "$type": "AddGlobalValue",
+                              "value": -1,
+                              "key": "_ABILITY_UziExplode_IsMixed",
+                              "useLimitRange": true,
+                              "maxValue": 1,
+                              "minValue": 0
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1,
+                      "z": 1.2
+                    }
+                  },
+                  "radius": 3
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "UziExplode_Mix_Detect",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "AntiFire",
+                    "elementRank": 1.5,
+                    "elementDurability": 0,
+                    "enBreak": 0
+                  }
+                }
+              },
+              "targetType": "All"
+            }
+          ]
+        },
+        "UziExplode_Mix_Fire": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UziExplode_Mix_Fire_Material"
+            }
+          ]
+        },
+        "UziExplode_Mix_Fire_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "UziExplode_SFX_Fire"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Fire",
+              "effectPattern": "UziExplode_Charge_01"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Fire",
+              "effectPattern": "UziExplode_Charge_02_Wind"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Fire",
+              "effectPattern": "UziExplode_Charge_Arm_01"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_UziExplode_IsMixed_Fire",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "UziExplode_Mix_Water": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UziExplode_Mix_Water_Material"
+            }
+          ]
+        },
+        "UziExplode_Mix_Water_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "UziExplode_SFX_Water"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Water",
+              "effectPattern": "UziExplode_Charge_01"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Water",
+              "effectPattern": "UziExplode_Charge_02_Wind"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Water",
+              "effectPattern": "UziExplode_Charge_Arm_01"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_UziExplode_IsMixed_Water",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "UziExplode_Mix_Electric": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UziExplode_Mix_Electric_Material"
+            }
+          ]
+        },
+        "UziExplode_Mix_Electric_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "UziExplode_SFX_Electric"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Electric",
+              "effectPattern": "UziExplode_Charge_01"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Electric",
+              "effectPattern": "UziExplode_Charge_02_Wind"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Electric",
+              "effectPattern": "UziExplode_Charge_Arm_01"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_UziExplode_IsMixed_Electric",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "UziExplode_Mix_Ice": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UziExplode_Mix_Ice_Material"
+            }
+          ]
+        },
+        "UziExplode_Mix_Ice_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "UziExplode_SFX_Ice"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Ice",
+              "effectPattern": "UziExplode_Charge_01"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Ice",
+              "effectPattern": "UziExplode_Charge_02_Wind"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Ice",
+              "effectPattern": "UziExplode_Charge_Arm_01"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_UziExplode_IsMixed_Ice",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "UziExplode_Mix_Initializer": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 999,
+              "key": "_ABILITY_UziExplode_IsMixed",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_ABILITY_UziExplode_IsMixed_Ice",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_ABILITY_UziExplode_IsMixed_Water",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_ABILITY_UziExplode_IsMixed_Fire",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_ABILITY_UziExplode_IsMixed_Electric",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -999,
+              "key": "_ABILITY_UziExplode_IsMixed",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_ABILITY_UziExplode_IsMixed_Ice",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_ABILITY_UziExplode_IsMixed_Water",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_ABILITY_UziExplode_IsMixed_Fire",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": -10,
+              "key": "_ABILITY_UziExplode_IsMixed_Electric",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_UziExplode_Mix_Handler"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UziExplode_Mix_Fire_Material"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UziExplode_Mix_Water_Material"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UziExplode_Mix_Ice_Material"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UziExplode_Mix_Electric_Material"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 999,
+          "key": "_ABILITY_UziExplode_IsMixed",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -10,
+          "key": "_ABILITY_UziExplode_IsMixed_Ice",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -10,
+          "key": "_ABILITY_UziExplode_IsMixed_Water",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -10,
+          "key": "_ABILITY_UziExplode_IsMixed_Fire",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": -10,
+          "key": "_ABILITY_UziExplode_IsMixed_Electric",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UziExplode_Mix_Start"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_WindBreathe",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "WindBreathe"
+          ],
+          "modifierName": "WindBreathe_Camera_Protection_Ghost"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "WindBreathe"
+          ],
+          "modifierName": "WindBreathe_Camera_Protection_Invincible"
+        }
+      ],
+      "modifiers": {
+        "WindBreathe_Camera_Protection_Ghost": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceBuffDebuffs": [
+                "ElementFreeze",
+                "ElementBurning",
+                "ElementWet",
+                "ElementFrozen",
+                "ElementShock",
+                "Struggle",
+                "ElementIce",
+                "DefenseDown",
+                "SpeedDown"
+              ]
+            }
+          ]
+        },
+        "WindBreathe_Camera_Protection_Invincible": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "state": "Invincible"
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10068,
+          "costStaminaRatio": 1
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41005001,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "$type": "Vector",
+              "y": 1.7
+            },
+            "onGround": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_WindBreathe_CameraController",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "WindBreathe",
+            "WindBreathe_AS"
+          ],
+          "modifierName": "WindBreathe_Camera_Remover"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "WindBreathe"
+          ],
+          "modifierName": "WindBreathe_Camera_ReSet"
+        }
+      ],
+      "modifiers": {
+        "WindBreathe_Camera_Remover": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ]
+        },
+        "WindBreathe_Camera_ReSet": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AvatarCameraParam",
+              "lockParam": true,
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0
+              }
+            },
+            {
+              "$type": "AvatarCameraParam",
+              "doOffStage": true,
+              "cameraParam": {
+                "$type": "ConfigStateCameraParam",
+                "forceRadius": 6,
+                "forceRadiusDuration": 0.1
+              }
+            }
+          ]
+        },
+        "WindBreathe_Delay_CameraShake": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ActCameraRadialBlur",
+              "cameraRadialBlur": {
+                "$type": "ConfigCameraRadialBlur",
+                "power": 1,
+                "blurTime": 0.4,
+                "fadeTime": 0.2
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WindBreathe_Delay_CameraShake"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_WindBreathe_Tornado",
+      "abilitySpecials": {
+        "Tornado_Damage": 0.8042
+      },
+      "modifiers": {
+        "Tornado_BlackHole": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR5",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1,
+                  "z": 0.3
+                },
+                "attachPointName": "RootNode"
+              },
+              "strength": 7,
+              "attenuation": 0.5,
+              "innerRadius": 1,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ],
+                  "reject": true
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "logic": "LesserOrEqual",
+                  "weight": 100
+                }
+              ]
+            }
+          ]
+        },
+        "Tornado_Damage_Delay": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Damage"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.5,
+                      "z": -1.5
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 3,
+                    "y": 7,
+                    "z": 3
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Avatar_WindBreathe_Tornado_Strike",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementRank": 3,
+                    "elementDurability": 100,
+                    "enBreak": 0
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Tornado_Damage": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.5,
+                      "z": -1.5
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 3,
+                    "y": 7,
+                    "z": 3
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Avatar_WindBreathe_Tornado_Strike",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "Tornado_Damage",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Wind",
+                    "elementRank": 3,
+                    "elementDurability": 10,
+                    "enBreak": 13
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Tornado_Material": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "WindBreathe_Tornado"
+            }
+          ]
+        },
+        "Tornado_Material_Start": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.3,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Material"
+            }
+          ]
+        },
+        "Tornado_DetectStruggle": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5.8,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Avatar_WindBreathe_Tornado_Strike"
+                  ]
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "logic": "LesserOrEqual",
+                  "weight": 100
+                }
+              ],
+              "modifierName": "Drag"
+            }
+          ]
+        },
+        "Drag": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AddGravityScale": -2
+          },
+          "state": "Struggle",
+          "isLimitedProperties": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Tornado_BlackHole"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Tornado_Damage_Delay"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Tornado_Material_Start"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Tornado_DetectStruggle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_WindBreathe_Tornado_Mix",
+      "abilitySpecials": {
+        "Tornado_Mixed_Damage": 0.2
+      },
+      "modifiers": {
+        "Tornado_Dissipate_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 5.8,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Avatar_Player_WindBreathe_Dissipate"
+            }
+          ]
+        },
+        "Tornado_Mix_Start": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.7,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Handler"
+            }
+          ]
+        },
+        "Tornado_Mix_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_Tornado_IsMixed",
+              "defaultGlobalValueOnCreate": 0,
+              "valueSteps": [
+                -1,
+                0.5,
+                1.5
+              ],
+              "modifierNameSteps": [
+                "Blank",
+                "Tornado_Mix_Wind_Material"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Detect_Pre"
+            }
+          ]
+        },
+        "Blank": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "Tornado_Mix_Wind_Material": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "WindBreathe_Tornado_Wind"
+            }
+          ]
+        },
+        "Tornado_Mix_Detect_Pre": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_Tornado_IsMixed",
+              "defaultGlobalValueOnCreate": 0,
+              "valueSteps": [
+                -1,
+                0.5,
+                1.5
+              ],
+              "modifierNameSteps": [
+                "Blank",
+                "Tornado_Mix_Detect"
+              ]
+            }
+          ]
+        },
+        "Tornado_Mix_Detect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.3,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.5,
+                      "z": -1.5
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 2.5,
+                    "y": 7,
+                    "z": 2.5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackTag": "Tornado_Mix_Detect",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 0,
+                    "damagePercentageRatio": 0,
+                    "elementType": "AntiFire",
+                    "elementDurability": 0,
+                    "enBreak": 0
+                  }
+                }
+              },
+              "targetType": "All"
+            }
+          ]
+        },
+        "Tornado_Mix": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByHasElement",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "ByHasElement",
+                      "element": "Frozen"
+                    }
+                  ]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Tornado_Mix_Detect"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Tornado_IsMixed",
+                  "value": 1,
+                  "forceByCaster": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Tornado_Mix_Ice"
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "value": -1,
+                  "key": "_ABILITY_Tornado_IsMixed",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByHasElement",
+                      "element": "Fire"
+                    },
+                    {
+                      "$type": "ByHasAbilityState",
+                      "abilityState": "ElementBurning"
+                    }
+                  ]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Tornado_Mix_Detect"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Tornado_IsMixed",
+                  "value": 1,
+                  "forceByCaster": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Tornado_Mix_Fire"
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "value": -1,
+                  "key": "_ABILITY_Tornado_IsMixed",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Water"
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Tornado_Mix_Detect"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Tornado_IsMixed",
+                  "value": 1,
+                  "forceByCaster": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Tornado_Mix_Water"
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "value": -1,
+                  "key": "_ABILITY_Tornado_IsMixed",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasElement",
+                  "element": "Electric"
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "Tornado_Mix_Detect"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Tornado_IsMixed",
+                  "value": 1,
+                  "forceByCaster": true
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Tornado_Mix_Electric"
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "value": -1,
+                  "key": "_ABILITY_Tornado_IsMixed",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 0
+                }
+              ]
+            }
+          ]
+        },
+        "Tornado_Mix_Fire": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Fire_Damage"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Fire_Material"
+            }
+          ]
+        },
+        "Tornado_Mix_Fire_Damage": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "ignoreMassive": true,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.5,
+                      "z": -1
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 2.5,
+                    "y": 7,
+                    "z": 2.5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "Tornado_Mixed_Damage",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Fire",
+                    "elementRank": 1.5,
+                    "elementDurability": 5,
+                    "enBreak": 3
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "RectW3L3H7",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Grass",
+                    "Water"
+                  ]
+                }
+              ],
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Fire",
+                  "elementRank": 3,
+                  "elementDurability": 30,
+                  "enBreak": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05,
+                  "muteHitText": true
+                }
+              }
+            }
+          ]
+        },
+        "Tornado_Mix_Fire_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "WindBreathe_Tornado_Fire"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Fire"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_Tornado_IsMixed_Fire",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Tornado_Mix_Water": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Water_Damage"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Water_Material"
+            }
+          ]
+        },
+        "Tornado_Mix_Water_Damage": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "ignoreMassive": true,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.5,
+                      "z": -1
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 2.5,
+                    "y": 7,
+                    "z": 2.5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "Tornado_Mixed_Damage",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Water",
+                    "elementRank": 1.5,
+                    "elementDurability": 5,
+                    "enBreak": 3
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "RectW3L3H7",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Grass",
+                    "Water"
+                  ]
+                }
+              ],
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Water",
+                  "elementRank": 3,
+                  "elementDurability": 30,
+                  "enBreak": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05,
+                  "muteHitText": true
+                }
+              }
+            }
+          ]
+        },
+        "Tornado_Mix_Water_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "WindBreathe_Tornado_Water"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Water"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_Tornado_IsMixed_Water",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Tornado_Mix_Electric": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Electric_Damage"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Electric_Material"
+            }
+          ]
+        },
+        "Tornado_Mix_Electric_Damage": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "ignoreMassive": true,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.5,
+                      "z": -1
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 2.5,
+                    "y": 7,
+                    "z": 2.5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "Tornado_Mixed_Damage",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Electric",
+                    "elementRank": 1.5,
+                    "elementDurability": 5,
+                    "enBreak": 3
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Tornado_Mix_Electric_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "WindBreathe_Tornado_Electric"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Electric"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_Tornado_IsMixed_Electric",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Tornado_Mix_Ice": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 8,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Ice_Damage"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tornado_Mix_Ice_Material"
+            }
+          ]
+        },
+        "Tornado_Mix_Ice_Damage": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "ignoreMassive": true,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "$type": "Vector",
+                      "y": 1.5,
+                      "z": -1
+                    },
+                    "attachPointName": "RootNode"
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 2.5,
+                    "y": 7,
+                    "z": 2.5
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": "Tornado_Mixed_Damage",
+                    "damagePercentageRatio": 0,
+                    "elementType": "Ice",
+                    "elementRank": 1.5,
+                    "elementDurability": 5,
+                    "enBreak": 3
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "RectW3L3H7",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Grass",
+                    "Water"
+                  ]
+                }
+              ],
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Ice",
+                  "elementRank": 3,
+                  "elementDurability": 50,
+                  "enBreak": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "none",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.05,
+                  "muteHitText": true
+                }
+              }
+            }
+          ]
+        },
+        "Tornado_Mix_Ice_Material": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "WindBreathe_Tornado_Ice"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get_Ice"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_Tornado_IsMixed_Ice",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_Tornado_IsMixed",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Tornado_Mix_Start"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Tornado_Dissipate_Timer"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_WindBreathe_Dissipate",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed",
+              "value": 1
+            }
+          ],
+          "effectPattern": "WindBreathe_Tornado_Dissipate_Wind"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed",
+              "value": 0
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed_Fire",
+              "value": 1,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "effectPattern": "WindBreathe_Tornado_Dissipate_Fire"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed",
+              "value": 0
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed_Water",
+              "value": 1,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "effectPattern": "WindBreathe_Tornado_Dissipate_Water"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed",
+              "value": 0
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed_Electric",
+              "value": 1,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "effectPattern": "WindBreathe_Tornado_Dissipate_Electric"
+        },
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed",
+              "value": 0
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Tornado_IsMixed_Ice",
+              "value": 1,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "effectPattern": "WindBreathe_Tornado_Dissipate_Ice"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Wind_Captain",
+      "abilitySpecials": {
+        "MaxHpRatio": 0.05,
+        "Wind_DefenseElemDelta": 0.05
+      },
+      "modifiers": {
+        "Avatar_Player_Wind_Captain": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_MaxHPRatio": "MaxHpRatio",
+            "Actor_WindDefenseDelta": "Wind_DefenseElemDelta"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "modifierName": "Avatar_Player_Wind_Captain"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Wind_WindWalk",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Sprint"
+          ],
+          "modifierName": "SprintSpeed"
+        }
+      ],
+      "abilitySpecials": {
+        "SprintSpeed": 0.15
+      },
+      "modifiers": {
+        "SprintSpeed": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Animator_OverallSpeedRatio": "SprintSpeed"
+          },
+          "isLimitedProperties": true
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Wind_EnchantedBlade",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "UziExplode_BS_1",
+            "UziExplode_Charge_01",
+            "UziExplode_Charge_02",
+            "UziExplode_Strike_01",
+            "UziExplode_Strike_02"
+          ],
+          "modifierName": "Player_Wind_EnchantedBlade"
+        }
+      ],
+      "abilitySpecials": {
+        "damage1": 0.3,
+        "damage2": 0.3,
+        "damage3": 0.5,
+        "damage4": 0.6,
+        "damage5": 0.84
+      },
+      "modifiers": {
+        "Player_Wind_EnchantedBlade": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR1",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Equip"
+                  ]
+                }
+              ],
+              "modifierName": "EnchantedBlade_Weapon"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "EnchantedBlade_Avatar"
+            }
+          ]
+        },
+        "EnchantedBlade_Weapon": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementType": "Wind",
+          "elementDurability": 30,
+          "overrideWeaponElement": true
+        },
+        "EnchantedBlade_Avatar": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 6,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "Attack01",
+              "damagePercentage": "damage1",
+              "damagePercentageRatio": 0
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "Attack02",
+              "damagePercentage": "damage2",
+              "damagePercentageRatio": 0
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "Attack03",
+              "damagePercentage": "damage3",
+              "damagePercentageRatio": 0
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "Attack04",
+              "damagePercentage": "damage4",
+              "damagePercentageRatio": 0
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "animEventName": "Attack05",
+              "damagePercentage": "damage5",
+              "damagePercentageRatio": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Wind_Arashi",
+      "abilitySpecials": {
+        "Arashi_Chance": 0.6
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Randomed",
+          "predicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Player_Wind_Arashi"
+            }
+          ],
+          "chance": "Arashi_Chance",
+          "successActions": [
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41005002,
+              "campID": 1001,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.7,
+                  "z": 0.2
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Wind_Arashi_Bullet",
+      "abilitySpecials": {
+        "Player_Wind_Arashi_Damage": 0.4
+      },
+      "onAbilityStart": [
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": "Player_Wind_Arashi_Damage",
+              "damagePercentageRatio": 0,
+              "elementType": "Wind",
+              "elementDurability": 20,
+              "strikeType": "Slash",
+              "enBreak": 36,
+              "attackType": "Melee"
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "onHitEffectName": "default",
+              "hitLevel": "Light",
+              "hitImpulseX": 200,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.05
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Wind_Arashi_Bullet_Material",
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "PlayerBoy_Arashi"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Wind_DvalinPulse",
+      "abilitySpecials": {
+        "EnergyCostDelta": -10
+      },
+      "modifiers": {
+        "DvalinPulse_EnergyCostReduction": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_EnergyCostDelta": "EnergyCostDelta"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DvalinPulse_EnergyCostReduction"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Player_Wind_HowlingBlade",
+      "abilityMixins": [
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "ATK01",
+          "damagePercentageRatio": 0,
+          "bonusCritical": "BonusCritical",
+          "bonusCriticalHurt": "BonusCriticalHurt"
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "ATK02",
+          "damagePercentageRatio": 0,
+          "bonusCritical": "BonusCritical",
+          "bonusCriticalHurt": "BonusCriticalHurt"
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "ATK03",
+          "damagePercentageRatio": 0,
+          "bonusCritical": "BonusCritical",
+          "bonusCriticalHurt": "BonusCriticalHurt"
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "ATK04",
+          "damagePercentageRatio": 0,
+          "bonusCritical": "BonusCritical",
+          "bonusCriticalHurt": "BonusCriticalHurt"
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventName": "ATK05",
+          "damagePercentageRatio": 0,
+          "bonusCritical": "BonusCritical",
+          "bonusCriticalHurt": "BonusCriticalHurt"
+        }
+      ],
+      "abilitySpecials": {
+        "BonusCritical": 0.04,
+        "BonusCriticalHurt": 0.2
+      }
+    }
+  }
+]

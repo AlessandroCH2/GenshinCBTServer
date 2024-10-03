@@ -1,0 +1,466 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WoodenMaterial_Bramble_Interact",
+      "modifiers": {
+        "Bramble_Burning": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 30,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin"
+            },
+            {
+              "$type": "RejectAttackMixin",
+              "attackTag": "_Bramble_Attack"
+            },
+            {
+              "$type": "DoActionByEventMixin",
+              "type": "Current",
+              "onAbilityStateAdded": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "AttachModifier",
+                      "modifierName": "Burning_Effect"
+                    }
+                  ]
+                }
+              ],
+              "onAbilityStateRemoved": [
+                {
+                  "$type": "ConfigAbilityStateToActions",
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "RemoveModifier",
+                      "modifierName": "Burning_Effect"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "WoodenObject_BurnOut",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint1"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "WoodenObject_BurnOut",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint2"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "Burning_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Element_Burning"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "value": 2,
+          "key": "_CUSTOM_ATTACK_SHAPE_TYPE",
+          "useLimitRange": true,
+          "maxValue": 2,
+          "minValue": 2
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Bramble_Burning"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WoodenMaterial_Bramble_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackTag": "_Bramble_Attack",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 1,
+              "damagePercentageRatio": 0,
+              "elementType": "Grass",
+              "elementDurability": 10,
+              "strikeType": "Default",
+              "enBreak": 100,
+              "ignoreLevelDiff": true
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "hitLevel": "Heavy",
+              "hitImpulseX": 800,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.01
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WoodenMaterial_WoodenObject_Interact",
+      "modifiers": {
+        "WoodMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 30,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Die_Effect"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_WoodenObject_DeathType",
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Fire"
+                    }
+                  ]
+                }
+              ],
+              "effectPattern": "WoodenObject_Broken"
+            },
+            {
+              "$type": "DropSubfield",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Fire"
+                    }
+                  ]
+                }
+              ],
+              "dropValue": 1,
+              "dropType": 1
+            },
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Fire"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Die_Effect": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_WoodenObject_DeathType",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "effectPattern": "WoodenObject_BurnOut"
+            },
+            {
+              "$type": "DropSubfield",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_WoodenObject_DeathType",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "dropValue": 1,
+              "dropType": 1
+            },
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_WoodenObject_DeathType",
+                  "value": 0,
+                  "compareType": "MoreThan"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WoodMaterial"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 0,
+          "key": "_WoodenObject_DeathType",
+          "maxValue": 0,
+          "minValue": 0
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WoodenMaterial_FirewoodStacks_Interact",
+      "modifiers": {
+        "NormalModifier": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 50,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "LeaveStack_Burnout",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "NormalModifier"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WoodenMaterial_BrambleWorld_Interact",
+      "modifiers": {
+        "Burning": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Grass",
+          "elementDurability": 30,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "WoodenObject_BurnOut",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint1"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "WoodenObject_BurnOut",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint2"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Double_Attack"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Double_Attack"
+            }
+          ]
+        },
+        "Double_Attack": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "thinkInterval": 0.75,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "doOffStage": true,
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackBox",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "$type": "Vector",
+                      "x": 0.15,
+                      "y": 0.75,
+                      "z": -0.5
+                    }
+                  },
+                  "size": {
+                    "$type": "DynamicFloatVector",
+                    "x": 4.4,
+                    "y": 1.5,
+                    "z": 0.8
+                  }
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 1,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Grass",
+                    "elementDurability": 10,
+                    "strikeType": "Pierce",
+                    "enBreak": 9999999
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Heavy",
+                    "hitImpulseX": 800,
+                    "hitImpulseY": 0,
+                    "hitHaltTimeScale": 0.05
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Burning"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_BURNING_IGNITE_ONLY",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_WoodenMaterial_BrambleWorld_Attack",
+      "onAbilityStart": [
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 1,
+              "damagePercentageRatio": 0,
+              "elementType": "Grass",
+              "elementDurability": 10,
+              "strikeType": "Default",
+              "enBreak": 100,
+              "ignoreLevelDiff": true
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "hitLevel": "Heavy",
+              "hitImpulseX": 800,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.01
+            }
+          }
+        }
+      ]
+    }
+  }
+]

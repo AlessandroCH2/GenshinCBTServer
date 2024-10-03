@@ -1,0 +1,483 @@
+{
+  "Dvalin_S04_AirFlowController": {
+    "$type": "ConfigGadget",
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_EnableAirFlows_Controller",
+        "abilityName": "Dvalin_S04_EnableAirFlows_Controller"
+      },
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_DisableAirFlows_Controller",
+        "abilityName": "Dvalin_S04_DisableAirFlows_Controller"
+      }
+    ]
+  },
+  "Dvalin_S04_WindField01": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 20,
+        "stayEffect": "Eff_Windfield_Stay",
+        "enterEffect": "Eff_Windfield_Enter"
+      }
+    }
+  },
+  "Dvalin_S04_WindField02": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 20,
+        "scale": 0.7,
+        "stayEffect": "Eff_Windfield_Stay",
+        "enterEffect": "Eff_Windfield_Enter",
+        "autoFly": true
+      }
+    }
+  },
+  "Dvalin_S04_WindField03": {
+    "$type": "ConfigGadget",
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "forceField": {
+        "$type": "ConfigAirflowField",
+        "velocity": 20,
+        "scale": 0.3,
+        "stayEffect": "Eff_Windfield_Stay",
+        "enterEffect": "Eff_Windfield_Enter"
+      }
+    }
+  },
+  "Dvalin_S04_Platform01": {
+    "$type": "ConfigGadget",
+    "hasModel": true,
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_Platform",
+        "abilityName": "Dvalin_S04_Platform"
+      }
+    ]
+  },
+  "Dvalin_S04_AbyssTrigger": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_FallInAbyss",
+        "abilityName": "Dvalin_S04_FallInAbyss"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeInfinite": true
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "triggerType": "TriggerAlways",
+        "triggerCD": 1,
+        "targetType": "Enemy",
+        "ignoreScene": true
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Dvalin_S04_FallInAbyss"
+        }
+      ]
+    }
+  },
+  "Dvalin_S04_StarFall_Platform": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 10000
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_StarFall_Platform",
+        "abilityName": "Dvalin_S04_StarFall_Platform"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 60
+    }
+  },
+  "Dvalin_S04_StarFall_Launcher": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 10000
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_StarFall_Launcher",
+        "abilityName": "Dvalin_S04_StarFall_Launcher"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 10
+    }
+  },
+  "Dvalin_S04_StarFall_Bullet": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 10000
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_StarFall_Bullet",
+        "abilityName": "Dvalin_S04_StarFall_Bullet"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 2
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "speed": 80
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "All"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Dvalin_S04_StarFall_Bullet"
+        }
+      ]
+    }
+  },
+  "Dvalin_S04_Breathe_Bullet": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_Breathe_Explode",
+        "abilityName": "Dvalin_S04_Breathe_Explode"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 2
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "speed": 99
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "All"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Dvalin_S04_Breathe_Explode"
+        }
+      ]
+    }
+  },
+  "Dvalin_S04_TwistedWind_Bullet": {
+    "$type": "ConfigGadget",
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 15,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "weight": 50,
+        "denyLockOn": true,
+        "isGhostToAllied": true,
+        "isGhostToEnemy": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_TwistedWind_Bullet",
+        "abilityName": "Dvalin_S04_TwistedWind_Bullet"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 4
+    },
+    "move": {
+      "$type": "ConfigLinerBulletMove",
+      "speed": 70
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "targetType": "All"
+      },
+      "triggerActions": [
+        {
+          "$type": "ConfigGadgetTriggerAbility",
+          "abilityName": "Dvalin_S04_TwistedWind_Bullet"
+        }
+      ]
+    }
+  },
+  "Dvalin_S04_Hurricane_Bullet": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "effectAttachShape": {
+        "$type": "ConfigEffectAttachBox"
+      }
+    },
+    "combat": {
+      "$type": "ConfigCombat",
+      "property": {
+        "$type": "ConfigCombatProperty",
+        "useCreatorProperty": true,
+        "HP": 999999,
+        "attack": 10,
+        "lockShape": "CircleLockEnemy",
+        "defense": 999999,
+        "denyLockOn": true,
+        "canTriggerBullet": false
+      },
+      "beHit": {
+        "$type": "ConfigCombatBeHit",
+        "muteAllHit": true,
+        "muteAllHitEffect": true,
+        "muteAllHitText": true
+      },
+      "animEvents": {
+        "ATK01": {
+          "$type": "ConfigAttackEvent",
+          "attackPattern": {
+            "$type": "ConfigAttackSphere",
+            "triggerType": "TriggerNoRepeat",
+            "born": {
+              "$type": "ConfigBornByCollisionPoint"
+            },
+            "radius": 3
+          },
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 2,
+              "damagePercentageRatio": 0,
+              "elementDurability": 100
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "onHitEffectName": "default",
+              "hitLevel": "Heavy",
+              "hitImpulseX": 120,
+              "hitImpulseY": 0,
+              "hitHaltTime": 0.12,
+              "hitHaltTimeScale": 0.01
+            },
+            "cameraShake": {
+              "$type": "ConfigCameraShake",
+              "shakeRange": 0.07,
+              "shakeTime": 0.1
+            }
+          }
+        }
+      }
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_Hurricane_Bullet",
+        "abilityName": "Dvalin_S04_Hurricane_Bullet"
+      }
+    ],
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 25
+    },
+    "move": {
+      "$type": "ConfigFollowMove",
+      "target": "TargetEntity",
+      "attachPoint": "HurricaneRoot",
+      "followRotation": true
+    },
+    "gadget": {
+      "$type": "ConfigBulletPattern",
+      "collision": {
+        "$type": "ConfigCollision",
+        "triggerType": "TriggerAlways",
+        "triggerCD": 0.2,
+        "targetType": "Enemy",
+        "ignoreScene": true
+      }
+    }
+  },
+  "Dvalin_S04_Camera_Center": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon",
+      "disableTickDistance": 10000
+    },
+    "abilities": [
+      {
+        "$type": "ConfigEntityAbilityEntry",
+        "abilityID": "Dvalin_S04_Update_Camera_Center",
+        "abilityName": "Dvalin_S04_Update_Camera_Center"
+      }
+    ]
+  }
+}

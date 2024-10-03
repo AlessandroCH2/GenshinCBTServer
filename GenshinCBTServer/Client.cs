@@ -83,7 +83,7 @@ namespace GenshinCBTServer
         public MotionInfo motionInfo = new MotionInfo(){ Pos=new Vector() { X = 2136.926f, Y = 208, Z = -1172 }, Rot = new(), Speed = new(), State = MotionState.MotionStandby };
         public World world;
         public List<uint> unlockedPoints = new();
-
+        public List<uint> inRegions = new List<uint>();
         public MapField<uint,PropValue> GetPlayerProps()
         {
             MapField<uint, PropValue> props = new MapField<uint, PropValue>();

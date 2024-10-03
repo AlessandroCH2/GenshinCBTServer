@@ -1,0 +1,9 @@
+{
+  "$type": "ConfigUI",
+  "context": {
+    "InLevelDebugAIInfoDialog": {
+      "$type": "ConfigBaseContext",
+      "enableInputPenetrate": true
+    }
+  }
+}

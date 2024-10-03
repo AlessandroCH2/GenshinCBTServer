@@ -1,0 +1,644 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_TurnToSleep",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sleep",
+          "value": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_OutOfSleep",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sleep"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_TurnToSit",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sit",
+          "value": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_OutOfSit",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sit"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_AwakeAlert",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sleep"
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sit"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_Alert",
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sleep"
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Sit"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_SpecialsState_Weapon",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            9002,
+            9003
+          ],
+          "modifierName": "SpecialsState"
+        },
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "predicates": [
+            {
+              "$type": "ByAny",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "value": 9002,
+                  "parameter": "PoseID"
+                },
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "value": 9003,
+                  "parameter": "PoseID"
+                }
+              ]
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_IS_CLUB_01",
+              "value": 1,
+              "forceByCaster": true
+            }
+          ],
+          "modifierName": "SleepState_Club"
+        },
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "predicates": [
+            {
+              "$type": "ByAny",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "value": 9002,
+                  "parameter": "PoseID"
+                },
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "value": 9003,
+                  "parameter": "PoseID"
+                }
+              ]
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_IS_SHIELD_01",
+              "value": 1,
+              "forceByCaster": true
+            }
+          ],
+          "modifierName": "SleepState_Shield"
+        },
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "predicates": [
+            {
+              "$type": "ByAny",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "value": 9002,
+                  "parameter": "PoseID"
+                },
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "value": 9003,
+                  "parameter": "PoseID"
+                }
+              ]
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_IS_CROSSBOW_01",
+              "value": 1,
+              "forceByCaster": true
+            }
+          ],
+          "modifierName": "SleepState_CrossBow"
+        }
+      ],
+      "modifiers": {
+        "SpecialsState": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Entity_MassRatio": 9999,
+            "Entity_WeightRatio": 5
+          },
+          "onBeingHit": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Sleep"
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Sit"
+            }
+          ]
+        },
+        "SleepState_Club": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "place": true,
+              "equipPartName": "equip01",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": 1
+                },
+                "minRandomRange": 0,
+                "maxRandomRange": 0.5,
+                "onGround": true,
+                "alongGround": true
+              }
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "equipPartName": "equip01"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "equipPartName": "equip01"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ]
+        },
+        "SleepState_Shield": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "place": true,
+              "equipPartName": "equip02",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": -1.25
+                },
+                "minRandomRange": 0,
+                "maxRandomRange": 0.5,
+                "onGround": true,
+                "alongGround": true
+              }
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "equipPartName": "equip02"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "equipPartName": "equip02"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip02"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ]
+        },
+        "SleepState_CrossBow": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "place": true,
+              "equipPartName": "equip01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 0.1,
+                  "z": 1.25
+                },
+                "minRandomRange": 0,
+                "maxRandomRange": 0.25,
+                "onGround": true,
+                "useRotation": true,
+                "attachPointName": "SetWeaponBindAttachPoint"
+              }
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ]
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "equipPartName": "equip01"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            },
+            {
+              "$type": "SetWeaponBindState",
+              "equipPartName": "equip01"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "hitBoxNames": [
+                "HitBox"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "FireEffect",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01"
+                ]
+              },
+              "effectPattern": "Monster_Weapon_Disappear"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_SpecialsState_AIStateInitial",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "poseIDs": [
+            9002
+          ],
+          "enterActions": [
+            {
+              "$type": "ResetAISkillInitialCD",
+              "skillIDs": [
+                124,
+                125,
+                126
+              ]
+            }
+          ]
+        },
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "poseIDs": [
+            9003
+          ],
+          "enterActions": [
+            {
+              "$type": "ResetAISkillInitialCD",
+              "skillIDs": [
+                127,
+                123
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

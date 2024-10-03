@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="resources\binoutput\**" />
+    <EmbeddedResource Remove="resources\binoutput\**" />
+    <None Remove="resources\binoutput\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="33.0.1" />
     <PackageReference Include="Google.Protobuf" Version="3.27.2" />
     <PackageReference Include="HttpServerLite" Version="2.1.5" />

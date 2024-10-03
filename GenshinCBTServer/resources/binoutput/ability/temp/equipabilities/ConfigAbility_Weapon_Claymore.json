@@ -1,0 +1,710 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Claymore_Zephyrus",
+      "abilityMixins": [
+        {
+          "$type": "OnAvatarUseSkillMixin",
+          "onTriggerSkill": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Claymore_Zephyrus_Handler"
+            }
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "GetElementRatio": 1
+      },
+      "modifiers": {
+        "UNIQUE_Claymore_Zephyrus_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 4,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitCritical"
+                }
+              ],
+              "modifierName": "UNIQUE_Ball"
+            }
+          ]
+        },
+        "UNIQUE_Ball": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 1,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2024,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 1
+                }
+              },
+              "ratio": "GetElementRatio",
+              "baseEnergy": 5
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Claymore_ExtraPhyDamagePerHit",
+      "abilitySpecials": {
+        "Rate": 2,
+        "Rate2": 0
+      },
+      "modifiers": {
+        "UNIQUE_Claymore_ExtraPhyDamagePerHit_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "damage": 0
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Claymore_ExtraPhyDamagePerHit"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "DamageByAttackValue",
+                  "target": "Target",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "RootNode"
+                  },
+                  "attackInfo": {
+                    "$type": "ConfigAttackInfo",
+                    "attackTag": "Claymore_ExtraPhyDamagePerHit",
+                    "attackProperty": {
+                      "$type": "ConfigAttackProperty",
+                      "damagePercentage": "Rate2",
+                      "damagePercentageRatio": 0,
+                      "elementDurability": 100,
+                      "strikeType": "Default",
+                      "enBreak": 0,
+                      "damageExtra": "Rate"
+                    },
+                    "hitPattern": {
+                      "$type": "ConfigHitPattern",
+                      "onHitEffectName": "default",
+                      "hitImpulseX": 0,
+                      "hitImpulseY": 0,
+                      "hitHaltTimeScale": 0.01
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Claymore_ExtraPhyDamagePerHit_Handler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Claymore_LowHPAddExtraAttackEndura",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "onEvent": "HP",
+          "predicates": [
+            {
+              "$type": "ByTargetHPRatio",
+              "target": "Self",
+              "logic": "LesserOrEqual",
+              "HPRatio": "Rate"
+            }
+          ],
+          "modifierName": "UNIQUE_Claymore_LowHPAddExtraAttackEndura_Handler"
+        }
+      ],
+      "abilitySpecials": {
+        "Rate": 0.4
+      },
+      "modifiers": {
+        "UNIQUE_Claymore_LowHPAddExtraAttackEndura_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "ExtraAttack",
+                "ExtraAttack1",
+                "ExtraAttack2",
+                "ExtraAttack3"
+              ],
+              "modifierName": "UNIQUE_Claymore_LowHPAddExtraAttackEndura"
+            }
+          ]
+        },
+        "UNIQUE_Claymore_LowHPAddExtraAttackEndura": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_EndureDelta": 0.6
+          },
+          "state": "DefenseUp",
+          "isLimitedProperties": true
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Claymore_GenerateBallWhenCritic",
+      "abilitySpecials": {
+        "Rate": 0.4
+      },
+      "modifiers": {
+        "UNIQUE_Claymore_GenerateBallWhenCritic_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Randomed",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByHitCritical"
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "chance": "Rate",
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "UNIQUE_Claymore_GenerateBallWhenCritic"
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Claymore_GenerateBallWhenCritic": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 3,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "GenerateElemBall",
+              "configID": 2024,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "minRandomRange": 1,
+                "maxRandomRange": 3
+              },
+              "ratio": 1,
+              "baseEnergy": 2
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Claymore_GenerateBallWhenCritic_Handler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Claymore_GetShieldBeingHit",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_Weapon_Claymore_GetShieldBeingHit",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -1.5,
+            -0.5,
+            0.5
+          ],
+          "modifierNameSteps": [
+            "UNIQUE_Claymore_GetShieldBeingHit_CD",
+            "UNIQUE_Claymore_GetShieldBeingHit_Handler"
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "Rate": 0.3
+      },
+      "modifiers": {
+        "UNIQUE_Claymore_GetShieldBeingHit_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onBeingHit": [
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "BySkillReady",
+                  "skillID": 10101
+                }
+              ],
+              "value": -1,
+              "key": "_ABILITY_Weapon_Claymore_GetShieldBeingHit",
+              "useLimitRange": true,
+              "maxValue": -1,
+              "minValue": -1
+            }
+          ]
+        },
+        "UNIQUE_Claymore_GetShieldBeingHit_CD": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 40,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10101,
+              "cdRatio": 4,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "UNIQUE_Claymore_GetShieldBeingHit_Shield"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": 1,
+              "key": "_ABILITY_Weapon_Claymore_GetShieldBeingHit",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ]
+        },
+        "UNIQUE_Claymore_GetShieldBeingHit_Shield": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 10,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "EliteShieldMixin",
+              "shieldType": "default",
+              "shieldAngle": 360,
+              "shieldHPRatio": "Rate",
+              "showDamageText": "INFO_ELITE_DEFENCE",
+              "onShieldBroken": [
+                {
+                  "$type": "FireEffect",
+                  "effectPattern": "Avatar_Properties_Shield_AS"
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Avatar_Properties_Shield"
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Claymore_GetShieldBeingHit_Shield"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Claymore_ResetCDWhenSkillHit",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_Weapon_Claymore_ResetCDWhenSkillHit",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -1.5,
+            -0.5,
+            0.5
+          ],
+          "modifierNameSteps": [
+            "UNIQUE_Claymore_ResetCDWhenSkillHit_CD",
+            "UNIQUE_Claymore_ResetCDWhenSkillHit_Handler"
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "Rate": 0.3
+      },
+      "modifiers": {
+        "UNIQUE_Claymore_ResetCDWhenSkillHit_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "BySkillReady",
+                  "skillID": 10101
+                }
+              ],
+              "modifierName": "UNIQUE_Claymore_ResetCDWhenSkillHit_SanCheck"
+            }
+          ]
+        },
+        "UNIQUE_Claymore_ResetCDWhenSkillHit_SanCheck": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Multiple",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "isUnique": true,
+          "duration": 1.9,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": "Rate",
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "value": -1,
+                  "key": "_ABILITY_Weapon_Claymore_ResetCDWhenSkillHit",
+                  "useLimitRange": true,
+                  "maxValue": -1,
+                  "minValue": -1
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Claymore_ResetCDWhenSkillHit_CD": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 36,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10101,
+              "cdRatio": 3.6,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "ModifyAvatarSkillCD",
+              "skillSlot": [
+                2
+              ],
+              "cdRatio": -1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": 1,
+              "key": "_ABILITY_Weapon_Claymore_ResetCDWhenSkillHit",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Claymore_CritUpWhenHitNoCrit",
+      "abilitySpecials": {
+        "Rate": 0.04
+      },
+      "modifiers": {
+        "UNIQUE_Claymore_CritUpWhenHitNoCrit_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "damage": 0
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHitCritical"
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "UNIQUE_Claymore_CritUpWhenHitNoCrit_CD"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "damage": 0
+                },
+                {
+                  "$type": "ByHitCritical"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "UNIQUE_Claymore_CritUpWhenHitNoCrit"
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Claymore_CritUpWhenHitNoCrit_CD": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Claymore_CritUpWhenHitNoCrit"
+            }
+          ]
+        },
+        "UNIQUE_Claymore_CritUpWhenHitNoCrit": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Multiple",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 5
+          },
+          "isUnique": true,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_CriticalDelta": "Rate"
+          },
+          "isLimitedProperties": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Claymore_CritUpWhenHitNoCrit_Handler"
+        }
+      ],
+      "onRemoved": [
+        {
+          "$type": "RemoveModifier",
+          "doOffStage": true,
+          "modifierName": "UNIQUE_Claymore_CritUpWhenHitNoCrit"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Claymore_AtkDefUpWhenExtraAttack",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_Weapon_Claymore_AtkDefUpWhenExtraAttack",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -1.5,
+            -0.5,
+            0.5
+          ],
+          "modifierNameSteps": [
+            "UNIQUE_Claymore_AtkDefUpWhenExtraAttack_CD",
+            "UNIQUE_Claymore_AtkDefUpWhenExtraAttack_Handler"
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "Rate": 0.2
+      },
+      "modifiers": {
+        "UNIQUE_Claymore_AtkDefUpWhenExtraAttack_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "ExtraAttack"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "predicates": [
+                    {
+                      "$type": "BySkillReady",
+                      "skillID": 10101
+                    }
+                  ],
+                  "value": -1,
+                  "key": "_ABILITY_Weapon_Claymore_AtkDefUpWhenExtraAttack",
+                  "useLimitRange": true,
+                  "maxValue": -1,
+                  "minValue": -1
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Claymore_AtkDefUpWhenExtraAttack_CD": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 20,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10101,
+              "cdRatio": 2,
+              "costStaminaRatio": 1
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "UNIQUE_Claymore_AtkDefUpWhenExtraAttack"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": 1,
+              "key": "_ABILITY_Weapon_Claymore_AtkDefUpWhenExtraAttack",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ]
+        },
+        "UNIQUE_Claymore_AtkDefUpWhenExtraAttack": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 10,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_AttackRatio": "Rate",
+            "Actor_DefenceRatio": "Rate"
+          },
+          "state": "AttackUp"
+        }
+      }
+    }
+  }
+]

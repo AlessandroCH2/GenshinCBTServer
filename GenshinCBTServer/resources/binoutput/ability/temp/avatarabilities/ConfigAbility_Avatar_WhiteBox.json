@@ -1,0 +1,228 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Frost_Orb_Material",
+      "modifiers": {
+        "Frost_Orb_Attack_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 12,
+          "elementDurability": 100,
+          "thinkInterval": 0.4,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000173,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": -0.1,
+                  "z": 0.1
+                }
+              },
+              "trackTarget": "Caster"
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000173,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": 0.1
+                }
+              },
+              "trackTarget": "Caster"
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000173,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": 0.1,
+                  "z": 0.1
+                }
+              },
+              "trackTarget": "Caster"
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000173,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": -0.1
+                }
+              },
+              "trackTarget": "Caster"
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000173,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": 0.1
+                }
+              },
+              "trackTarget": "Caster"
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000173,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": -0.1,
+                  "z": -0.1
+                }
+              },
+              "trackTarget": "Caster"
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000173,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "z": -0.1
+                }
+              },
+              "trackTarget": "Caster"
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 40000173,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "x": 0.1,
+                  "z": -0.1
+                }
+              },
+              "trackTarget": "Caster"
+            }
+          ]
+        },
+        "Frost_Orb_FX": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_WhiteBox_WaterBall"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Frost_Orb_Attack_Handler"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Frost_Orb_FX"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "attackInfo": {
+            "$type": "ConfigAttackInfo",
+            "attackProperty": {
+              "$type": "ConfigAttackProperty",
+              "damagePercentage": 2.5,
+              "damagePercentageRatio": 0,
+              "elementType": "Ice",
+              "elementRank": 3,
+              "elementDurability": 100,
+              "strikeType": "Default",
+              "enBreak": 90
+            },
+            "hitPattern": {
+              "$type": "ConfigHitPattern",
+              "hitLevel": "Light",
+              "hitImpulseX": 0,
+              "hitImpulseY": 0,
+              "hitHaltTimeScale": 0.05
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Frost_Orb_Bullet_Material",
+      "modifiers": {
+        "Frost_Orb_Bullet_FX": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_WhiteBox_Ice_Missile"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Frost_Orb_Bullet_FX"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "scale": 1,
+              "fanAngle": 360,
+              "radius": 3
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.25,
+                "damagePercentageRatio": 0,
+                "elementType": "Ice",
+                "elementRank": 1.5,
+                "elementDurability": 15,
+                "strikeType": "Default",
+                "enBreak": 23
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Light",
+                "hitImpulseX": 10,
+                "hitImpulseY": 10,
+                "hitHaltTimeScale": 0.05
+              },
+              "cameraShake": {
+                "$type": "ConfigCameraShake"
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  }
+]

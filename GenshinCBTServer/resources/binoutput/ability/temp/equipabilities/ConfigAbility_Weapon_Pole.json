@@ -1,0 +1,322 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Pole_Zephyrus",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByEnergyChangeMixin",
+          "elementTypes": [
+            "Water",
+            "Fire",
+            "Electric",
+            "Ice",
+            "Frozen",
+            "Wind",
+            "Rock"
+          ],
+          "doWhenEnergyMax": true,
+          "onGainEnergyMax": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "UNIQUE_Pole_Zephyrus_Handler"
+            }
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "HealHP": 0.03
+      },
+      "modifiers": {
+        "UNIQUE_Pole_Zephyrus_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Pole_Zephyrus_Heal"
+            }
+          ]
+        },
+        "UNIQUE_Pole_Zephyrus_Heal": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "duration": 5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "HealHP",
+              "doOffStage": true,
+              "amountByTargetMaxHPRatio": "HealHP"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Pole_NormalAttackUpUnlessBeinghit",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_Weapon_Pole_NormalAttackUpUnlessBeinghit",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -1.5,
+            -0.5,
+            0.5
+          ],
+          "modifierNameSteps": [
+            "UNIQUE_NormalAttackUp_CD",
+            "UNIQUE_Pole_NormalAttackUpUnlessBeinghit"
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "Rate": 0.2
+      },
+      "modifiers": {
+        "UNIQUE_Pole_NormalAttackUpUnlessBeinghit": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "attackTag": "NormalAttack_01",
+              "damagePercentageRatio": "Rate"
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "attackTag": "NormalAttack_02",
+              "damagePercentageRatio": "Rate"
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "attackTag": "NormalAttack_03",
+              "damagePercentageRatio": "Rate"
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "attackTag": "NormalAttack_04",
+              "damagePercentageRatio": "Rate"
+            },
+            {
+              "$type": "ModifyDamageMixin",
+              "attackTag": "NormalAttack_05",
+              "damagePercentageRatio": "Rate"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_Weapon_Pole_NormalAttackUpUnlessBeinghit",
+              "useLimitRange": true,
+              "maxValue": -1,
+              "minValue": -1
+            }
+          ]
+        },
+        "UNIQUE_NormalAttackUp_CD": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10101,
+              "costStaminaRatio": 1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": 1,
+              "key": "_ABILITY_Weapon_Pole_NormalAttackUpUnlessBeinghit",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Pole_ExtraDamageWhenCDReady",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_Weapon_Pole_ExtraDamageWhenCDReady",
+          "defaultGlobalValueOnCreate": 0,
+          "valueSteps": [
+            -1.5,
+            -0.5,
+            0.5
+          ],
+          "modifierNameSteps": [
+            "UNIQUE_Pole_ExtraDamageWhenCDReady_CD",
+            "UNIQUE_Pole_ExtraDamageWhenCDReady_Handler"
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "Rate": 1.2
+      },
+      "modifiers": {
+        "UNIQUE_Pole_ExtraDamageWhenCDReady_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "isUnique": true,
+          "elementDurability": 100,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "BySkillReady",
+                  "target": "Self",
+                  "skillID": 10101
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "DamageByAttackValue",
+                  "target": "Target",
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  },
+                  "attackInfo": {
+                    "$type": "ConfigAttackInfo",
+                    "attackProperty": {
+                      "$type": "ConfigAttackProperty",
+                      "damagePercentage": "Rate",
+                      "damagePercentageRatio": 0,
+                      "elementDurability": 100,
+                      "strikeType": "Default",
+                      "enBreak": 50
+                    },
+                    "hitPattern": {
+                      "$type": "ConfigHitPattern",
+                      "onHitEffectName": "default",
+                      "hitImpulseX": 0,
+                      "hitImpulseY": 0,
+                      "hitHaltTimeScale": 0.01
+                    }
+                  }
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "value": -1,
+                  "key": "_ABILITY_Weapon_Pole_ExtraDamageWhenCDReady",
+                  "useLimitRange": true,
+                  "maxValue": -1,
+                  "minValue": -1
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Pole_ExtraDamageWhenCDReady_CD": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10101,
+              "cdRatio": 2,
+              "costStaminaRatio": 1
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "doOffStage": true,
+              "value": 1,
+              "key": "_ABILITY_Weapon_Pole_ExtraDamageWhenCDReady",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Weapon_Pole_DamageUpToWaterEnemy",
+      "abilitySpecials": {
+        "Rate": 0.18
+      },
+      "modifiers": {
+        "UNIQUE_Pole_DamageUpToWaterEnemy_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "ignoreEventInfo": true,
+              "damagePercentageRatio": "Rate",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByHasAbilityState",
+                  "abilityState": "ElementWet"
+                },
+                {
+                  "$type": "BySkillReady",
+                  "target": "Applier",
+                  "skillID": 10101
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Pole_DamageUpToWaterEnemy_Handler"
+        }
+      ]
+    }
+  }
+]

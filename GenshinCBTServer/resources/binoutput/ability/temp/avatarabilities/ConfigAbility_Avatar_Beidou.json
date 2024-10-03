@@ -1,0 +1,2140 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_ExtraAttack",
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "skillID": 10241,
+          "chargeTime": 0.15,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 1
+            }
+          ],
+          "OnBeginCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "value": 6
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "EndHoldTrigger"
+            }
+          ],
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "EndHoldTrigger"
+            }
+          ],
+          "chargeStateIDs": [
+            "Attack01_BS",
+            "Attack01",
+            "Attack02",
+            "Attack03",
+            "Attack04",
+            "ExtraAttack_BS",
+            "ExtraAttack",
+            "ExtraAttack1"
+          ]
+        },
+        {
+          "$type": "AvatarSteerByCameraMixin",
+          "stateIDs": [
+            "ExtraAttack1"
+          ],
+          "angularSpeed": 120
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack1",
+            "ExtraAttack2",
+            "ExtraAttack3"
+          ],
+          "modifierName": "Camera"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "ExtraAttack1"
+          ],
+          "modifierName": "Cost"
+        }
+      ],
+      "modifiers": {
+        "Camera": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ]
+        },
+        "Cost": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "CostStaminaMixin",
+              "costStaminaDelta": 40,
+              "onStaminaEmpty": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "triggerID": "EndHoldTrigger"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_ThunderFlash_Base",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "gadgetID": 41024011
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10242,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_Gadget41024011_CreateGadget153",
+      "onAdded": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 40010002,
+          "born": {
+            "$type": "ConfigBornByTarget"
+          },
+          "ownerIsTarget": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Beidou_ThunderTrace_PreSet",
+      "modifiers": {
+        "PutThunder": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 2,
+          "elementDurability": 100,
+          "thinkInterval": 0.2,
+          "onThinkInterval": [
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41024012,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "onGround": true
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "PutThunder"
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10242,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_Gadget41024012_ThunderAttack",
+      "abilitySpecials": {
+        "BaseDamage": 1.5,
+        "TalentRate": 1
+      },
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Eff_Beidou_ThunderFlash_Fall"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "height": 4,
+              "scale": 1,
+              "centerYOffset": -0.2,
+              "fanAngle": 360,
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackTag": "Skill1",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": "%BaseDamage*%TalentRate",
+                "damagePercentageRatio": 0,
+                "elementType": "Electric",
+                "elementRank": 1.5,
+                "elementDurability": 30,
+                "enBreak": 50,
+                "attackType": "Range"
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Heavy",
+                "hitImpulseX": 0,
+                "hitImpulseY": 0,
+                "hitHaltTime": 0.03,
+                "hitHaltTimeScale": 0.05
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "$type": "ConfigCameraShake",
+                "shakeRange": 0.04,
+                "shakeTime": 0.06
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_ThunderShield_BS",
+      "modifiers": {
+        "Windzone": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.8,
+          "elementDurability": 100,
+          "thinkInterval": 0.3,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR6",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 1.2,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 20,
+                  "strikeType": "Default"
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTime": 0.03,
+                  "hitHaltTimeScale": 0.01
+                }
+              }
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "DamageByAttackValue",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 1.2,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 20,
+                  "strikeType": "Default"
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Light",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "hitHaltTime": 0.03,
+                  "hitHaltTimeScale": 0.01
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Windzone"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_ThunderShield",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Beidou_ThunderShield"
+          ],
+          "modifierName": "camera"
+        }
+      ],
+      "abilitySpecials": {
+        "HealAmount": 10,
+        "Speed": 0.05,
+        "ElectricDown": -0.1,
+        "SlowRate": -0.3,
+        "ShieldHP": 0.08
+      },
+      "modifiers": {
+        "camera": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "doOffStage": true
+            }
+          ]
+        },
+        "ThunderShield": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 12,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_EndureDelta": 0.5
+          },
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ThunderShield",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_Beidou_ThunderShield_01"
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByEquipParts",
+                "equipPartNames": [
+                  "equip01",
+                  "sheathPoint"
+                ]
+              },
+              "modifierName": "UNIQUE_ChargedBlade_WeaponMaterial"
+            },
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Beidou_ElectricDown"
+                }
+              ],
+              "modifierName": "Beidou_ElectricDown"
+            },
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Shield_And_Thorns"
+                }
+              ],
+              "modifierName": "Beidou_ShieldAndThorns"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ThunderShield",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_ABILITY_ThunderChain_COUNT",
+                  "value": 0.5,
+                  "forceByCaster": true,
+                  "compareType": "MoreThan"
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "ExtraAttack"
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "Randomed",
+                  "target": "Target",
+                  "chance": 0.3,
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Target",
+                      "modifierName": "Beidou_Lightining0"
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "modifierName": "Beidou_LightiningCD"
+                    },
+                    {
+                      "$type": "AddGlobalValue",
+                      "value": -1,
+                      "key": "_ABILITY_ThunderChain_COUNT",
+                      "useLimitRange": true,
+                      "maxValue": 1,
+                      "minValue": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Beidou_ShieldAndThorns": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "EliteShieldMixin",
+              "shieldType": "default",
+              "shieldAngle": 360,
+              "shieldHPRatio": "shieldHP",
+              "showDamageText": "INFO_ELITE_DEFENCE"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "target": "Target",
+              "effectPattern": "Eff_Beidou_ThunderShield_Attack"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Caster"
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 1,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0,
+                  "strikeType": "Default"
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Heavy",
+                  "hitImpulseX": 240,
+                  "hitImpulseY": 0,
+                  "hitHaltTimeScale": 0.01
+                }
+              }
+            }
+          ]
+        },
+        "Beidou_ElectricDown": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR4",
+                "campTargetType": "Enemy",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Monster"
+                  ]
+                }
+              ],
+              "modifierName": "UNIQUE_Beidou_Talent_ElectricDown"
+            }
+          ]
+        },
+        "UNIQUE_Beidou_Talent_ElectricDown": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 10,
+          "elementDurability": 100,
+          "properties": {
+            "Actor_ElecSubHurtDelta": "ElectricDown",
+            "Animator_OverallSpeedRatioMultiplied": "SlowRate"
+          },
+          "state": "DefenseDown"
+        },
+        "UNIQUE_ChargedBlade_WeaponMaterial": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "duration": 12,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Razor_ChargedBlade_WeaponMaterial"
+            }
+          ]
+        },
+        "Beidou_LightiningCD": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": 0.6,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 1
+            }
+          ]
+        },
+        "Beidou_Lightining0": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41024001,
+              "campID": 1002,
+              "ownerIsTarget": true,
+              "lifeByOwnerIsAlive": true,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Caster"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        },
+        "Beidou_Lightining1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.15,
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "topLimit": 1,
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetIsSelf",
+                  "isSelf": false
+                }
+              ],
+              "modifierName": "Beidou_Lightining2"
+            },
+            {
+              "$type": "FireEffect",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "topLimit": 1,
+                "sizeRatio": 1
+              },
+              "effectPattern": "Element_Conduct_Lightning",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Self"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Lisa_NormalAttack_Burst01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "TriggerAudio",
+              "responder": "FreeAgent",
+              "operation": {
+                "$type": "ConfigAudioPositionedEventOp",
+                "operation": {
+                  "$type": "ConfigWwiseString",
+                  "text": "Play_sfx_char_lisa_catalyst_electric_attackElect"
+                },
+                "positioning": 0.5,
+                "duration": 5
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        },
+        "Beidou_Lightining2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.15,
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "topLimit": 1,
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetIsSelf",
+                  "isSelf": false
+                }
+              ],
+              "modifierName": "Beidou_Lightining3"
+            },
+            {
+              "$type": "FireEffect",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "topLimit": 1,
+                "sizeRatio": 1
+              },
+              "effectPattern": "Element_Conduct_Lightning",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Self"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Lisa_NormalAttack_Burst01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "TriggerAudio",
+              "responder": "FreeAgent",
+              "operation": {
+                "$type": "ConfigAudioPositionedEventOp",
+                "operation": {
+                  "$type": "ConfigWwiseString",
+                  "text": "Play_sfx_char_lisa_catalyst_electric_attackElect"
+                },
+                "positioning": 0.5,
+                "duration": 5
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        },
+        "Beidou_Lightining3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.15,
+          "elementDurability": 100,
+          "thinkInterval": 0.1,
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Lisa_NormalAttack_Burst01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "TriggerAudio",
+              "responder": "FreeAgent",
+              "operation": {
+                "$type": "ConfigAudioPositionedEventOp",
+                "operation": {
+                  "$type": "ConfigWwiseString",
+                  "text": "Play_sfx_char_lisa_catalyst_electric_attackElect"
+                },
+                "positioning": 0.5,
+                "duration": 5
+              }
+            },
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraRadialBlur",
+          "cameraRadialBlur": {
+            "$type": "ConfigCameraRadialBlur",
+            "power": 0.5,
+            "blurTime": 0.2,
+            "fadeTime": 0.1
+          }
+        },
+        {
+          "$type": "AddGlobalValue",
+          "value": 1,
+          "key": "_ABILITY_ThunderChain_COUNT",
+          "useLimitRange": true,
+          "maxValue": 1,
+          "minValue": 1
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ThunderShield"
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "skillID": 10245,
+          "costStaminaRatio": 1
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_ThunderShield_Attack",
+      "modifiers": {
+        "ThunderShield_Attack": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_Beidou_ThunderShield_Attack"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ThunderShield_Attack"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Thunder_Chain_Start1",
+      "modifiers": {
+        "ThunderChain_Attack1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        },
+        "Beidou_Lightining_Gadget2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41024002,
+              "campID": 1001,
+              "ownerIsTarget": true,
+              "lifeByOwnerIsAlive": true,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Caster"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR5",
+            "campTargetType": "Enemy",
+            "topLimit": 1,
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "value": 0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "modifierName": "Beidou_Lightining_Gadget2"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Owner",
+          "modifierName": "ThunderChain_Attack1"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Thunder_Chain_Start2",
+      "modifiers": {
+        "ThunderShield_Attack2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        },
+        "Beidou_Lightining_Gadget3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41024003,
+              "campID": 1001,
+              "ownerIsTarget": true,
+              "lifeByOwnerIsAlive": true,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Caster"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "target": "Owner",
+          "modifierName": "ThunderShield_Attack2"
+        },
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR10",
+            "campTargetType": "Enemy",
+            "topLimit": 1,
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "value": 0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "modifierName": "Beidou_Lightining_Gadget3"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Thunder_Chain_Start3",
+      "modifiers": {
+        "ThunderShield_Attack": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "AttackLightning_01",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "RootNode",
+            "attachPointTargetType": "Caster"
+          }
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Owner",
+          "modifierName": "ThunderShield_Attack"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Thunder_Chain_End"
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_A_BladeCrossing",
+      "modifiers": {
+        "Fire_Enhancement_Weapon": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementType": "Fire",
+          "elementDurability": 100,
+          "overrideWeaponElement": true,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Eff_A_FireCross_Weapon_02"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Weapon_02",
+              "effectPattern": "Eff_A_FireCross_Weapon_02"
+            }
+          ]
+        },
+        "DandelionWind_Field1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "DandelionWind_Field"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "DandelionWind_Out"
+            }
+          ]
+        },
+        "DandelionWind_Buff1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 11,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR6",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "amountByTargetMaxHPRatio": 0.08
+            },
+            {
+              "$type": "AttachEffect",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR6",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "effectPattern": "DandelionWind_Buff"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "DandelionWind_Buff1"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "DandelionWind_Field1"
+        },
+        {
+          "$type": "ApplyModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": [
+              "equip01"
+            ]
+          },
+          "modifierName": "Fire_Enhancement_Weapon"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_A_BladeFlash",
+      "modifiers": {
+        "Timer0.1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.2,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 41016001,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "x": 1,
+                  "y": 1
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget"
+                },
+                "attachPointName": "RCalf"
+              }
+            }
+          ]
+        },
+        "Timer0.2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.4,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 41016001,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget"
+                },
+                "attachPointName": "CineHead"
+              }
+            }
+          ]
+        },
+        "Timer0.3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.6,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 41016001,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "x": 1,
+                  "y": 0.5
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget"
+                },
+                "attachPointName": "RThigh"
+              }
+            }
+          ]
+        },
+        "Timer0.4": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.8,
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 41016001,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "$type": "Vector",
+                  "x": -1,
+                  "y": 0.5
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByAttackTarget"
+                },
+                "attachPointName": "LThigh"
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41016001,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": -1,
+              "y": 1
+            },
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget"
+            },
+            "attachPointName": "Neck"
+          }
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Timer0.1"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Timer0.2"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Timer0.3"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Timer0.4"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Test_A1",
+      "modifiers": {
+        "DandelionWind_Field1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 10,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "DandelionWind_Field"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "DandelionWind_Out"
+            }
+          ]
+        },
+        "DandelionWind_Buff1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 11,
+          "elementDurability": 100,
+          "thinkInterval": 1,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR6",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "amountByTargetMaxHPRatio": 0.08
+            },
+            {
+              "$type": "AttachEffect",
+              "targets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR6",
+                "sizeRatio": 1
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": [
+                    "Avatar"
+                  ]
+                }
+              ],
+              "effectPattern": "DandelionWind_Buff"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "DandelionWind_Buff1"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "DandelionWind_Field1"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_JumpDrug_Start1",
+      "modifiers": {
+        "ThunderChain_Attack1": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTime": 0.03,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        },
+        "Beidou_Lightining_Gadget2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41024002,
+              "campID": 1001,
+              "ownerIsTarget": true,
+              "lifeByOwnerIsAlive": true,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Caster"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR5",
+            "campTargetType": "Enemy",
+            "topLimit": 1,
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "value": 0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "modifierName": "Beidou_Lightining_Gadget2"
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Owner",
+          "modifierName": "ThunderChain_Attack1"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Thunder_Chain2_Start2",
+      "modifiers": {
+        "ThunderShield_Attack2": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTime": 0.03,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        },
+        "Beidou_Lightining_Gadget3": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            },
+            {
+              "$type": "CreateGadget",
+              "gadgetID": 41024003,
+              "campID": 1001,
+              "ownerIsTarget": true,
+              "lifeByOwnerIsAlive": true,
+              "campTargetType": "Enemy",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "AttackLightning_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Caster"
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "value": -1,
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "target": "Owner",
+          "modifierName": "ThunderShield_Attack2"
+        },
+        {
+          "$type": "ApplyModifier",
+          "targets": {
+            "$type": "SelectTargetsByShape",
+            "shapeName": "CircleR10",
+            "campTargetType": "Enemy",
+            "topLimit": 1,
+            "sizeRatio": 1
+          },
+          "predicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": [
+                "Monster"
+              ]
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_ThunderChain_COUNT",
+              "value": 0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "modifierName": "Beidou_Lightining_Gadget3"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Thunder_Chain2_Start3",
+      "modifiers": {
+        "ThunderShield_Attack": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "DamageByAttackValue",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "$type": "Vector",
+                  "y": 1
+                }
+              },
+              "attackInfo": {
+                "$type": "ConfigAttackInfo",
+                "attackTag": "Elemental_Burst",
+                "attackProperty": {
+                  "$type": "ConfigAttackProperty",
+                  "damagePercentage": 0.6,
+                  "damagePercentageRatio": 0,
+                  "elementType": "Electric",
+                  "elementDurability": 0
+                },
+                "hitPattern": {
+                  "$type": "ConfigHitPattern",
+                  "onHitEffectName": "Lisa_NormalAttack_Burst01",
+                  "hitLevel": "Shake",
+                  "hitImpulseX": 0,
+                  "hitImpulseY": 0,
+                  "retreatType": "ByHitDirection",
+                  "hitHaltTime": 0.03,
+                  "hitHaltTimeScale": 0.05
+                }
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "effectPattern": "AttackLightning_01",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "RootNode",
+            "attachPointTargetType": "Caster"
+          }
+        },
+        {
+          "$type": "ApplyModifier",
+          "target": "Owner",
+          "modifierName": "ThunderShield_Attack"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_A_SecondWind",
+      "abilitySpecials": {
+        "HealRatio": 0.01
+      },
+      "modifiers": {
+        "HpHeal": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 10,
+          "onThinkInterval": [
+            {
+              "$type": "HealHP",
+              "amountByTargetMaxHPRatio": "HealRatio"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "HpHeal"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_A_FireHowl",
+      "abilitySpecials": {
+        "rate": 0.02
+      },
+      "modifiers": {
+        "Check": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onBeingHit": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Fire"
+                }
+              ],
+              "modifierName": "Howl"
+            }
+          ]
+        },
+        "Howl": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "MultipleAllRefresh",
+          "stackingOption": {
+            "$type": "ConfigModifierStackingOption",
+            "maxModifierNumForMultipleType": 3
+          },
+          "duration": 5,
+          "elementDurability": 100,
+          "properties": {
+            "Animator_OverallSpeedRatio": "rate",
+            "Actor_AttackRatio": "rate"
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Eff_A_Talent_Howl"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Check"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_Swim",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Swim"
+          ],
+          "modifierName": "Beidou_Talent_SwimLessStamina"
+        }
+      ],
+      "abilitySpecials": {
+        "Stamina": -0.1
+      },
+      "modifiers": {
+        "Beidou_Talent_SwimLessStamina": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Actor_CostStaminaRatio": "Stamina"
+          },
+          "isLimitedProperties": true
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_Talent_Wet",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "predicates": [
+            {
+              "$type": "ByAny",
+              "predicates": [
+                {
+                  "$type": "ByHasAbilityState",
+                  "abilityState": "ElementWet"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_ABILITY_ThunderShield",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "modifierName": "UNIQUE_Beidou_Talent_SpeedUp"
+        }
+      ],
+      "abilitySpecials": {
+        "Speed": 0.07
+      },
+      "modifiers": {
+        "UNIQUE_Beidou_Talent_SpeedUp_Handler": {
+          "$type": "ConfigAbilityModifier",
+          "isUnique": true,
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Sprint",
+                "NormalMoveWeapon",
+                "NormalMove",
+                "Attack01",
+                "Attack02",
+                "Attack03",
+                "Attack04",
+                "Attack05"
+              ],
+              "modifierName": "Beidou_Talent_SpeedUp"
+            }
+          ],
+          "state": "SpeedUp"
+        },
+        "Beidou_Talent_SpeedUp": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "properties": {
+            "Animator_OverallSpeedRatio": "Speed"
+          },
+          "isLimitedProperties": true
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Beidou_Talent_NormalAttackUp",
+      "abilitySpecials": {
+        "Rate": 0.1
+      },
+      "modifiers": {
+        "CheckHit": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "ignoreEventInfo": true,
+              "damagePercentageRatio": "Rate",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "ExtraAttack1",
+                    "ExtraAttack2"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "CheckHit"
+        }
+      ]
+    }
+  }
+]

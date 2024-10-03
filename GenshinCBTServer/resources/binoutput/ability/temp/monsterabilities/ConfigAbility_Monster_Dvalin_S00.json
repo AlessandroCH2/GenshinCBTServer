@@ -1,0 +1,143 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S00_StateController",
+      "abilityMixins": [
+        {
+          "$type": "StageReadyMixin",
+          "onStageReady": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "STAGE_ALREADY_BEGIN",
+                  "value": 1
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "S00"
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "value": 1,
+                  "key": "STAGE_ALREADY_BEGIN",
+                  "useLimitRange": true,
+                  "maxValue": 1,
+                  "minValue": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "Init": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100
+        },
+        "S00": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "value": 2,
+              "key": "PROCESS_STATE",
+              "useLimitRange": true,
+              "maxValue": 2,
+              "minValue": 2
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 1,
+              "key": "HPBAR_STATE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 1
+            },
+            {
+              "$type": "AddGlobalValue",
+              "value": 2,
+              "key": "DFM_STATE",
+              "useLimitRange": true,
+              "maxValue": 2,
+              "minValue": 2
+            },
+            {
+              "$type": "AddGlobalValue",
+              "otherTargets": {
+                "$type": "SelectTargetsByChildren",
+                "configID": 42901048
+              },
+              "value": 2,
+              "key": "AIRFLOW_STATE",
+              "useLimitRange": true,
+              "maxValue": 2,
+              "minValue": 2
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "SetShootCamera"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Monster_Dvalin_HitBlood",
+              "born": {
+                "$type": "ConfigBornByHitPoint"
+              }
+            }
+          ]
+        },
+        "SetLockCamera": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.5,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "CurTeamAvatars",
+              "value": 0,
+              "key": "AVATAR_SHOOT_MODE",
+              "useLimitRange": true,
+              "maxValue": 0,
+              "minValue": 0
+            }
+          ]
+        },
+        "SetShootCamera": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.1,
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "CurTeamAvatars",
+              "value": 1,
+              "key": "AVATAR_SHOOT_MODE",
+              "useLimitRange": true,
+              "maxValue": 1,
+              "minValue": 1
+            },
+            {
+              "$type": "FireEffect",
+              "target": "CurLocalAvatar",
+              "effectPattern": "Monster_Dvalin_AirGun_BS"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Init"
+        }
+      ]
+    }
+  }
+]

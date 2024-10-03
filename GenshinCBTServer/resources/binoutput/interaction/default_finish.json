@@ -1,0 +1,24 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "steerType": "RETURN",
+        "useSteerAnim": true,
+        "interruptFreestyle": true
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_FOCUS",
+        "duration": 3,
+        "cameraPosType": "EXIT",
+        "camTargetType": "TO_INTEE",
+        "lerpRatio": 4,
+        "lerpPattern": 9
+      }
+    ]
+  ]
+}

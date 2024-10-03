@@ -1,0 +1,29 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "duration": 5,
+        "dialogType": "BUBBLE"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "duration": 5,
+        "dialogType": "BUBBLE"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "duration": 5,
+        "dialogType": "BUBBLE"
+      }
+    ]
+  ]
+}

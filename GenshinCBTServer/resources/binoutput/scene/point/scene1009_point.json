@@ -1,0 +1,107 @@
+{
+  "$type": "ConfigScene",
+  "points": {
+    "1": {
+      "$type": "PersonalSceneJumpPoint",
+      "gadgetId": 70010002,
+      "pos": {
+        "$type": "Vector",
+        "x": 4.514344,
+        "y": -2.639437e-16,
+        "z": 4.260007
+      },
+      "rot": {
+        "$type": "Vector",
+        "y": 268.9998
+      },
+      "tranPos": {
+        "$type": "Vector",
+        "x": 2302.124,
+        "y": 214.0912,
+        "z": -922.9132
+      },
+      "tranRot": {
+        "$type": "Vector",
+        "y": 320
+      },
+      "unlocked": true,
+      "tranSceneId": 3,
+      "titleTextID": "UI_SCENE_ENTRY_EXIT_ANGELSHARE",
+      "triggerSize": {
+        "$type": "Vector",
+        "x": 1.5,
+        "y": 1.5,
+        "z": 1.5
+      },
+      "close_time": 24
+    },
+    "2": {
+      "$type": "PersonalSceneJumpPoint",
+      "gadgetId": 70010002,
+      "pos": {
+        "$type": "Vector",
+        "x": -4.758655,
+        "y": 0.4097932,
+        "z": 1.484655
+      },
+      "rot": {
+        "$type": "Vector",
+        "y": 91.58381
+      },
+      "tranPos": {
+        "$type": "Vector",
+        "x": 2313.2,
+        "y": 215.3,
+        "z": -929.8
+      },
+      "tranRot": {
+        "$type": "Vector",
+        "y": 146
+      },
+      "unlocked": true,
+      "tranSceneId": 3,
+      "titleTextID": "UI_SCENE_ENTRY_EXIT_ANGELSHARE",
+      "triggerSize": {
+        "$type": "Vector",
+        "x": 1.5,
+        "y": 1.5,
+        "z": 1.5
+      },
+      "close_time": 24
+    },
+    "3": {
+      "$type": "PersonalSceneJumpPoint",
+      "gadgetId": 70010002,
+      "pos": {
+        "$type": "Vector",
+        "x": 0.01841259,
+        "y": 4.89661,
+        "z": 8.859965
+      },
+      "rot": {
+        "$type": "Vector",
+        "y": 178.4372
+      },
+      "tranPos": {
+        "$type": "Vector",
+        "x": 2302.116,
+        "y": 219,
+        "z": -929.348
+      },
+      "tranRot": {
+        "$type": "Vector",
+        "y": 227
+      },
+      "unlocked": true,
+      "tranSceneId": 3,
+      "titleTextID": "UI_SCENE_ENTRY_EXIT_ANGELSHARE",
+      "triggerSize": {
+        "$type": "Vector",
+        "x": 1.5,
+        "y": 1.5,
+        "z": 1.5
+      },
+      "close_time": 24
+    }
+  }
+}

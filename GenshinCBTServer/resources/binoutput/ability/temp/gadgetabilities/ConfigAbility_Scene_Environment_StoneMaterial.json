@@ -1,0 +1,516 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePillar",
+      "modifiers": {
+        "BeHitBlunt": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Rock",
+          "elementDurability": 30,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "StonePillar_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "StonePillar_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "None"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Pierce"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Spear"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Slash"
+                }
+              ],
+              "value": -20,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StoneWall",
+      "modifiers": {
+        "BeHitBlunt": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Rock",
+          "elementDurability": 30,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "StoneWall_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "StoneWall_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "None"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Pierce"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Spear"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Slash"
+                }
+              ],
+              "value": -20,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePile",
+      "modifiers": {
+        "BeHitBlunt": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Rock",
+          "elementDurability": 30,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "StonePile_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "StonePillar_Broken",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              }
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "None"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Pierce"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Spear"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Slash"
+                }
+              ],
+              "value": -20,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_Stone",
+      "modifiers": {
+        "StoneHit": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onCrash": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "$type": "ConfigAttackEvent",
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByTarget"
+                  },
+                  "radius": 1
+                },
+                "attackInfo": {
+                  "$type": "ConfigAttackInfo",
+                  "attackProperty": {
+                    "$type": "ConfigAttackProperty",
+                    "damagePercentage": 1,
+                    "damagePercentageRatio": 0,
+                    "elementType": "Rock",
+                    "elementDurability": 50
+                  },
+                  "hitPattern": {
+                    "$type": "ConfigHitPattern",
+                    "onHitEffectName": "default",
+                    "hitLevel": "Air",
+                    "hitImpulseX": 10,
+                    "hitImpulseY": 10,
+                    "hitHaltTimeScale": 0.05
+                  },
+                  "cameraShake": {
+                    "$type": "ConfigCameraShake",
+                    "shakeRange": 0.36,
+                    "shakeTime": 0.36
+                  }
+                }
+              },
+              "targetType": "All"
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Stone_Destroy",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              }
+            },
+            {
+              "$type": "FireEffect",
+              "effectPattern": "Ceshi008",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "StoneHit"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePileWorld",
+      "modifiers": {
+        "BeHitBlunt": {
+          "$type": "ConfigAbilityModifier",
+          "elementType": "Rock",
+          "elementDurability": 30,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "StoneWall_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "effectPattern": "StoneWall_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "None"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Pierce"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Spear"
+                }
+              ],
+              "value": -10,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            },
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByHitStrikeType",
+                  "strikeType": "Slash"
+                }
+              ],
+              "value": -20,
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "minValue": 0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  }
+]

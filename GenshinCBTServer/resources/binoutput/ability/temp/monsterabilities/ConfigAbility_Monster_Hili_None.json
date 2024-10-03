@@ -1,0 +1,538 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_SteerAttack",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Sword_ThumpAttack"
+          ],
+          "endNormalizedTime": 0.36,
+          "angularSpeed": 240,
+          "attackDistance": 3.75
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Sword_TripleAttack"
+          ],
+          "startNormalizedTime": 0.07,
+          "endNormalizedTime": 0.08,
+          "angularSpeed": 720,
+          "attackDistance": 3.75
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Sword_TripleAttack"
+          ],
+          "startNormalizedTime": 0.21,
+          "endNormalizedTime": 0.215,
+          "angularSpeed": 720,
+          "attackDistance": 3.75
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Sword_TripleAttack"
+          ],
+          "startNormalizedTime": 0.46,
+          "endNormalizedTime": 0.47,
+          "angularSpeed": 720,
+          "attackDistance": 3.75
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ShootArrow_WithPredictive",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Aim"
+          ],
+          "angularSpeed": 120,
+          "attackDistance": 3.75
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": -0.1,
+              "z": 0.4
+            },
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngle": 60,
+              "speedForPredictive": 30
+            },
+            "attachPointName": "WeaponR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ShootArrow_WithRandom",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "Aim"
+          ],
+          "angularSpeed": 120,
+          "attackDistance": 3.75
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "$type": "Vector",
+              "x": 0.2,
+              "z": 0.1
+            },
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "randomAngleHor": 0.3,
+              "randomAngleVer": 0.5,
+              "maxAngle": 60
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "effectPattern": "Hili_None_FireArrow_ArrowBS"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ShootArrow_Effect",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "effectPattern": "Hili_None_FireArrow_Arrow"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_WeaponBlock",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "predicates": [
+            {
+              "$type": "ByAnimatorFloat",
+              "logic": "Equal",
+              "value": 1,
+              "parameter": "Weapon"
+            }
+          ],
+          "modifierName": "WeaponBlock"
+        }
+      ],
+      "modifiers": {
+        "WeaponBlock": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "stateIDs": [
+                "NormalIdle",
+                "NormalMove",
+                "BeHit",
+                "Defend"
+              ],
+              "defendTriggerID": "DefendTrigger",
+              "defendAngle": 90,
+              "defendProbability": 1,
+              "defendProbabilityDelta": 0,
+              "defendTimeInterval": 0,
+              "defendCountInterval": 0,
+              "attackType": "Melee"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_Dodge",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToPredicateMixin",
+          "predicates": [
+            {
+              "$type": "ByAnimatorFloat",
+              "logic": "Equal",
+              "value": 1401,
+              "parameter": "PoseID"
+            }
+          ],
+          "modifierName": "Dodge"
+        }
+      ],
+      "modifiers": {
+        "Dodge": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "stateIDs": [
+                "NormalIdle",
+                "NormalMove",
+                "BeHit",
+                "BeHitThrow",
+                "Dodge"
+              ],
+              "defendTriggerID": "DodgeTrigger",
+              "defendProbability": 0.25,
+              "defendProbabilityDelta": 0.15,
+              "defendTimeInterval": 3.75,
+              "defendCountInterval": 0,
+              "attackType": "Melee",
+              "onDefendSucceded": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "DodgeInvincible"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "DodgeDenyLockOn"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "DodgeSpeedup"
+                },
+                {
+                  "$type": "ClearLockTarget",
+                  "target": "CurLocalAvatar"
+                }
+              ],
+              "randomDirection": true
+            }
+          ]
+        },
+        "DodgeInvincible": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 0.75,
+          "elementDurability": 100,
+          "state": "Invincible"
+        },
+        "DodgeDenyLockOn": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 1.75,
+          "elementDurability": 100,
+          "state": "DenyLockOn"
+        },
+        "DodgeSpeedup": {
+          "$type": "ConfigAbilityModifier",
+          "duration": 2.25,
+          "elementDurability": 100,
+          "properties": {
+            "Animator_MoveSpeedRatio": 1.05
+          }
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble_Effect",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "BySceneSurfaceType",
+              "filters": [
+                "Water"
+              ],
+              "include": false
+            }
+          ],
+          "effectPattern": "Monster_Hili_None_PebbleBullet_BS"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "ThrowPebble"
+          ],
+          "startNormalizedTime": 0.55,
+          "endNormalizedTime": 0.62,
+          "angularSpeed": 320,
+          "attackDistance": 3.75
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101009,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngleType": "Horizontal",
+              "maxAngle": 15
+            },
+            "attachPointName": "WeaponL"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble_Shield_Effect",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "BySceneSurfaceType",
+              "filters": [
+                "Water"
+              ],
+              "include": false
+            }
+          ],
+          "effectPattern": "Monster_Hili_None_PebbleBullet_BS_Shield"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble_Shield",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "ThrowPebble_Shield"
+          ],
+          "startNormalizedTime": 0.55,
+          "endNormalizedTime": 0.62,
+          "angularSpeed": 240,
+          "attackDistance": 3.75
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101009,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByAttackTarget",
+              "maxAngleType": "Horizontal",
+              "maxAngle": 15
+            },
+            "attachPointName": "WeaponR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble_Loop",
+      "modifiers": {
+        "ThrowPebble_Loop": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "effectPattern": "Monster_Hili_None_PebbleBullet"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ThrowPebble_Loop"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "$type": "ConfigAttackEvent",
+            "attackPattern": {
+              "$type": "ConfigAttackBox",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "size": {
+                "$type": "DynamicFloatVector",
+                "x": 0.1,
+                "y": 0.1,
+                "z": 1
+              }
+            },
+            "attackInfo": {
+              "$type": "ConfigAttackInfo",
+              "attackProperty": {
+                "$type": "ConfigAttackProperty",
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0,
+                "elementDurability": 100,
+                "strikeType": "Blunt",
+                "enBreak": 40
+              },
+              "hitPattern": {
+                "$type": "ConfigHitPattern",
+                "onHitEffectName": "default",
+                "hitLevel": "Light",
+                "hitImpulseX": 200,
+                "hitImpulseY": 0,
+                "hitHaltTimeScale": 0.01
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireHitEffect",
+          "hitScene": {
+            "$type": "ConfigHitScene",
+            "defaultEffect": "Monster_Hili_None_PebbleBullet_AS",
+            "surfaceEffect": {
+              "Water": "Monster_Hili_None_PebbleBullet_AS_Water"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_EmojiBubble",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            1,
+            3,
+            101,
+            102,
+            201,
+            301
+          ],
+          "modifierName": "EmojiBubble_Timer"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            9002,
+            901
+          ],
+          "modifierName": "EmojiBubble_Sleep"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [
+            9003,
+            902
+          ],
+          "modifierName": "EmojiBubble_Sit"
+        }
+      ],
+      "modifiers": {
+        "EmojiBubble_Timer": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 5,
+          "onThinkInterval": [
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "valueRangeMax": 61,
+              "valueRangeMin": 26,
+              "overrideMapKey": "RandomTimer"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "EmojiBubble"
+            }
+          ]
+        },
+        "EmojiBubble": {
+          "$type": "ConfigAbilityModifier",
+          "stacking": "Unique",
+          "duration": "RandomTimer",
+          "elementDurability": 100,
+          "onRemoved": [
+            {
+              "$type": "PlayEmojiBubble",
+              "name": "EmojiBubble_Hili_01"
+            }
+          ]
+        },
+        "EmojiBubble_Sleep": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 5,
+          "onThinkInterval": [
+            {
+              "$type": "PlayEmojiBubble",
+              "name": "EmojiBubble_Hili_01_Sleep"
+            }
+          ]
+        },
+        "EmojiBubble_Sit": {
+          "$type": "ConfigAbilityModifier",
+          "elementDurability": 100,
+          "thinkInterval": 5,
+          "onThinkInterval": [
+            {
+              "$type": "PlayEmojiBubble",
+              "name": "EmojiBubble_Hili_01_Sit"
+            }
+          ]
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "$type": "ConfigAudioStageEvents",
+  "id": 7,
+  "stageProgressEvents": [
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.68,
+      "events": [
+        "Play_amb_scene_church_steal",
+        "Play_Music_Scene"
+      ]
+    }
+  ],
+  "stageTeleportEvents": [
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "events": [
+        "Stop_amb_scene_church_steal",
+        "Stop_Music_Scene"
+      ]
+    },
+    {
+      "$type": "ConfigAudioStageProgressEvent",
+      "progress": 0.68,
+      "events": [
+        "Play_amb_scene_church_steal",
+        "Play_Music_Scene"
+      ]
+    }
+  ],
+  "stageExitEvents": [
+    "Stop_amb_scene_church_steal",
+    "Stop_Music_Scene"
+  ],
+  "stateValue": "State_MD_ChurchBasement"
+}

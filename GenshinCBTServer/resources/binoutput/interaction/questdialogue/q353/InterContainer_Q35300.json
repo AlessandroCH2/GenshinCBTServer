@@ -1,0 +1,31 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "dialogType": "NARRATION",
+        "dialogID": 3530001
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG_FINISH"
+      },
+      {
+        "$type": "ConfigBaseInterAction",
+        "type": "GODDESS"
+      },
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "cameraPosType": "EXIT",
+        "camTargetType": "TO_INTEE",
+        "lerpRatio": 5
+      }
+    ]
+  ]
+}

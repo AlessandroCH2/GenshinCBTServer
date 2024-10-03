@@ -1,0 +1,19 @@
+{
+  "$type": "ConfigInterContainer",
+  "group": [
+    [
+      {
+        "$type": "ConfigCutsceneInterAction",
+        "type": "CUTSCENE",
+        "cutsceneCfg": {
+          "$type": "ConfigTimeline",
+          "type": "TIME_LINE_PREFAB",
+          "resPath": "ART/Cutscene/Cs_Scene_DungeonGate_02",
+          "startPosType": "RELATIVE_TO_INTEE",
+          "needYEuler": true,
+          "fadeInDuration": 0
+        }
+      }
+    ]
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "$type": "ConfigInterContainer",
+  "startFade": {
+    "$type": "ConfigInterFade"
+  },
+  "actors": [
+    {
+      "$type": "ConfigInterActor",
+      "alias": "Avatar",
+      "visible": true,
+      "bornPointName": "Q352View"
+    },
+    {
+      "$type": "ConfigInterActor",
+      "configID": 1005,
+      "alias": "1005",
+      "visible": true,
+      "bornPointName": "Q352PaimonName"
+    }
+  ],
+  "group": [
+    [
+      {
+        "$type": "ConfigCameraMoveInterAction",
+        "type": "CAMERA_MOVE",
+        "duration": 1,
+        "camPosOffset": {
+          "$type": "Vector",
+          "x": 2610.296,
+          "y": 237.6641,
+          "z": -1482.676
+        },
+        "camForwardTargetOffset": {
+          "$type": "Vector",
+          "x": 2610.023,
+          "y": 237.4851,
+          "z": -1481.731
+        },
+        "lerpRatio": 6,
+        "lerpPattern": 6,
+        "cutFrameTrans": {
+          "$type": "ConfigFrameTransition"
+        }
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ],
+        "enableHead": true,
+        "targetOffset": {
+          "$type": "Vector",
+          "x": 0.3,
+          "y": 1.4,
+          "z": 1
+        },
+        "headRotateVec": {
+          "$type": "Vector",
+          "y": 5
+        },
+        "headTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3521601
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "targetOffset": {
+          "$type": "Vector",
+          "y": 90
+        },
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": -30
+        },
+        "enableBody": true,
+        "bodyAngle": -10,
+        "headTurnTime": 0.2,
+        "bodyTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1140
+      },
+      {
+        "$type": "ConfigEmoSyncInterAction",
+        "type": "EMO_SYNC",
+        "aliasList": [
+          "1005"
+        ],
+        "dataPath": "Cs_Emo_Avatar_Simple_Common_Set/Cs_Emo_Pet_Paimon_VO_MDAQ006_Paimon_01"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "delayTime": 1,
+        "aliasList": [
+          "Avatar"
+        ],
+        "enableHead": true,
+        "targetOffset": {
+          "$type": "Vector",
+          "x": 0.3,
+          "y": 1.4,
+          "z": 1
+        },
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": 35
+        },
+        "headTurnTime": 0.3
+      },
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3521602
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "delayTime": 0.5,
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1180
+      },
+      {
+        "$type": "ConfigEmoSyncInterAction",
+        "type": "EMO_SYNC",
+        "aliasList": [
+          "1005"
+        ],
+        "dataPath": "Cs_Emo_Avatar_Simple_Common_Set/Cs_Emo_Pet_Paimon_3521602"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3521603
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "delayTime": 0.5,
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1170
+      },
+      {
+        "$type": "ConfigEmoSyncInterAction",
+        "type": "EMO_SYNC",
+        "aliasList": [
+          "1005"
+        ],
+        "dataPath": "Cs_Emo_Avatar_Simple_Common_Set/Cs_Emo_Pet_Paimon_3521603"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3521604
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "bodyLangParam": 1090
+      },
+      {
+        "$type": "ConfigEmoSyncInterAction",
+        "type": "EMO_SYNC",
+        "aliasList": [
+          "1005"
+        ],
+        "dataPath": "Cs_Emo_Avatar_Simple_Common_Set/Cs_Emo_Pet_Paimon_3521604"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigDialogInterAction",
+        "type": "DIALOG",
+        "aliasList": [
+          "1005"
+        ],
+        "dialogID": 3521605
+      },
+      {
+        "$type": "ConfigEmoSyncInterAction",
+        "type": "EMO_SYNC",
+        "aliasList": [
+          "1005"
+        ],
+        "dataPath": "Cs_Emo_Avatar_Simple_Common_Set/Cs_Emo_Pet_Paimon_3521605"
+      }
+    ],
+    [
+      {
+        "$type": "ConfigSteerInterAction",
+        "type": "STEER_TO",
+        "duration": 1,
+        "aliasList": [
+          "1005"
+        ],
+        "useAngle": true,
+        "steerAngle": -150
+      },
+      {
+        "$type": "ConfigEmoSyncInterAction",
+        "type": "EMO_SYNC",
+        "aliasList": [
+          "1005"
+        ],
+        "dataPath": "Cs_Emo_Avatar_Simple_Common_Set/Cs_Emo_Pet_Paimon_3521606"
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ],
+        "enableHead": true,
+        "headRotateVec": {
+          "$type": "Vector",
+          "x": -200
+        },
+        "headTurnTime": 0.8
+      },
+      {
+        "$type": "ConfigBodyLangInterAction",
+        "type": "BODY_LANG",
+        "aliasList": [
+          "1005"
+        ],
+        "isContinue": true
+      }
+    ],
+    [
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "Avatar"
+        ]
+      },
+      {
+        "$type": "ConfigLookAtInterAction",
+        "type": "LOOK_AT",
+        "aliasList": [
+          "1005"
+        ]
+      }
+    ]
+  ],
+  "groupId": [
+    {
+      "$type": "ConfigInterGrpId",
+      "grpId": 82975624,
+      "nextGrpId": 82975625
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 1,
+      "grpId": 82975625,
+      "nextGrpId": 82975626
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 2,
+      "grpId": 82975626,
+      "nextGrpId": 82975627
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 3,
+      "grpId": 82975627,
+      "nextGrpId": 82975628
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 4,
+      "grpId": 82975628,
+      "nextGrpId": 82975629
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 5,
+      "grpId": 82975629,
+      "nextGrpId": 82975630
+    },
+    {
+      "$type": "ConfigInterGrpId",
+      "index": 6,
+      "grpId": 82975630,
+      "nextGrpId": 82975631
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "SceneObj_Gather_Element_Ball01": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon"
+    },
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 10
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Auto"
+      }
+    }
+  },
+  "SceneObj_Gather_Element_Ball02": {
+    "$type": "ConfigGadget",
+    "common": {
+      "$type": "ConfigEntityCommon"
+    },
+    "timer": {
+      "$type": "ConfigTimer",
+      "lifeTime": 50
+    },
+    "misc": {
+      "$type": "ConfigGadgetMisc",
+      "pickup": {
+        "$type": "ConfigPickup",
+        "pickType": "Attract"
+      }
+    }
+  }
+}
