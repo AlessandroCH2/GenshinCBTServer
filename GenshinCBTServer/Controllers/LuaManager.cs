@@ -48,7 +48,7 @@ namespace GenshinCBTServer.Controllers
             GameEntityGadget gadget = (GameEntityGadget)entity;
             gadget.ChangeState(state);
             return 1;
-
+        }
         public int SetGroupGadgetStateByConfigId(Client client,int groupId, int configId, int gadgetState)
         {
             Server.Print($"[LUA] CallSetGroupGadgetStateByConfigId with {configId},{gadgetState}");
