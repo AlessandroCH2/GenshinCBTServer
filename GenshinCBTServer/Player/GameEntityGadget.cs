@@ -121,9 +121,13 @@ namespace GenshinCBTServer.Player
                 {
                     info.Gadget.Platform.StartPos = route.points[0].pos;
                 }
+                else
+                {
+                    info.Gadget.Platform.StartPos = motionInfo.Pos;
+
+                }
             }
-          //  if(GetGadgetExcel().hasMove )
-               // if (chest_drop > 0) info.Gadget.GadgetType = 1;
+         
             return info;
         }
     }
