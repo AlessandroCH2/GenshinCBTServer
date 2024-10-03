@@ -105,6 +105,11 @@ namespace GenshinCBTServer.Player
         }
         public void UpdateRegions()
         {
+            if (currentBlock == null || currentBlock.groups == null)
+            {
+                Server.Print($"Current {(currentBlock == null ? "currentBlock" : (currentBlock.groups == null ? "currentBlock.groups" : "none"))} is null");
+                return;
+            }
             foreach(SceneGroup group in currentBlock.groups)
             {
                 foreach (SceneRegion region in group.regions)
