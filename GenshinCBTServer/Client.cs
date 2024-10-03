@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static GenshinCBTServer.Dispatch;
 using static GenshinCBTServer.ENet;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GenshinCBTServer
 {
@@ -103,6 +104,44 @@ namespace GenshinCBTServer
             addProp((uint)PropType.PROP_IS_WORLD_ENTERABLE, 1,props);
             return props;
         }
+
+        public void AddItem(GameItem item)
+        {
+            inventory.Add(item);
+           
+            if(item.GetExcel().itemType==ItemType.ITEM_MATERIAL)
+            {
+                bool found = inventory.Find(i=>i.id==item.id) != null;
+
+                ItemAddHintNotify addHintNotify = new ItemAddHintNotify()
+                {
+                    Reason = (uint)ItemAddReasonType.ItemAddReasonTrifle,
+                    ItemList = { new ItemHint() {Count=(uint)item.amount,IsNew=!found,ItemId=item.id } }
+                };
+
+                if (found)
+                {
+                    inventory.Find(i => i.id == item.id).amount += item.amount;
+                }
+                else
+                {
+                    inventory.Add(item);
+                }
+                SendPacket((uint)CmdType.ItemAddHintNotify, addHintNotify);
+            }
+            else
+            {
+                bool found = inventory.Find(i => i.id == item.id) != null;
+                ItemAddHintNotify addHintNotify = new ItemAddHintNotify()
+                {
+                    Reason = (uint)ItemAddReasonType.ItemAddReasonTrifle,
+                    ItemList = { new ItemHint() { Count = (uint)item.amount, IsNew = !found, ItemId = item.id } }
+                };
+                inventory.Add(item);
+                SendPacket((uint)CmdType.ItemAddHintNotify, addHintNotify);
+            }
+            SendInventory();
+        }
         public void addProp(uint type, int value, MapField<uint, PropValue> map)
         {
             PropValue prop = new PropValue();
@@ -168,9 +207,9 @@ namespace GenshinCBTServer
                
             }
             //For testing fast
-              //avatars.Add(new Avatar(this, 10000015));
+              avatars.Add(new Avatar(this, 10000015));
 
-            // selectedAvatar = (int)avatars[0].guid;
+             selectedAvatar = (int)avatars[0].guid;
             SendInventory();
             SendAllAvatars();
             QuestController.UpdateQuestForClient(this);
@@ -286,6 +325,8 @@ namespace GenshinCBTServer
 
             SendPacket((uint)CmdType.SceneEntityAppearNotify, appear);
         }
+
+        
 
         public Client(IntPtr iD)
         {

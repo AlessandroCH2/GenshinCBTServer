@@ -1,4 +1,5 @@
-﻿using GenshinCBTServer.Protocol;
+﻿using GenshinCBTServer.Excel;
+using GenshinCBTServer.Protocol;
 using Google.Protobuf.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,22 +13,32 @@ namespace GenshinCBTServer.Player
     {
         public uint level, pose_id;
         public Vector bornPos;
-        public GadgetData GetMonsterExcel()
+        public MonsterData GetMonsterExcel()
         {
-            return null;
+            return Server.getResources().monsterDataDict[id];
+        }
+        public ItemStats CalcStats()
+        {
+            ItemStats stats = new ItemStats();
+            stats.hpFlat = GetMonsterExcel().hp_base;
+            stats.attack = GetMonsterExcel().attack_base;
+            stats.defense= GetMonsterExcel().defense_base;
+            //Calculate other stats + curve for levels
+            return stats;
         }
         public override void InitProps()
         {
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, 1000);
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, 1);
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, 1);
-            FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, 1);
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ATTACK, 1); //TODO calculate total attack
-            FightPropUpdate(FightPropType.FIGHT_PROP_HP, 1000);
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, 1000);
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, 1000); //TODO calculate total hp
+            ItemStats stats = CalcStats();
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, stats.hpFlat);
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, stats.defense);
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, stats.attack);
+            FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, stats.attack);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ATTACK, stats.attack); //TODO calculate total attack
+            FightPropUpdate(FightPropType.FIGHT_PROP_HP, stats.hpFlat);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, stats.hpFlat);
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, stats.hpFlat); //TODO calculate total hp
             FightPropUpdate(FightPropType.FIGHT_PROP_HP_PERCENT, 0);
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, 30);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, stats.defense);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_SPEED, 0.0f);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_FIRE_ENERGY, 100.0f);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ELEC_ENERGY, 100.0f);
@@ -44,17 +55,19 @@ namespace GenshinCBTServer.Player
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ICE_ENERGY, 100.0f);
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ROCK_ENERGY, 100.0f);
             props[(uint)PropType.PROP_EXP] = new PropValue() { Ival = 1, Val = 1, Type = (uint)PropType.PROP_EXP };
-            props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival = 1, Val = (long)1, Type = (uint)PropType.PROP_LEVEL };
+            props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival = level, Val = (long)level, Type = (uint)PropType.PROP_LEVEL };
            
         }
-        public GameEntityMonster(uint entityId, uint id, MotionInfo motionInfo) : base(entityId, id,motionInfo,ProtEntityType.ProtEntityMonster)
+        public GameEntityMonster(uint entityId, uint id, MotionInfo motionInfo, uint level) : base(entityId, id,motionInfo,ProtEntityType.ProtEntityMonster)
         {
 
-            InitProps();
+           
             this.entityId = entityId;
             this.id = id;
             this.motionInfo = motionInfo;
+            this.level=level;
             bornPos = motionInfo.Pos;
+            InitProps();
         }
    
        

@@ -11,7 +11,7 @@ namespace GenshinCBTServer.Player
 {
     public class GameEntityGadget : GameEntity
     {
-        public uint chest_drop;
+        public uint chest_drop, route_id;
       
 
 
@@ -27,13 +27,13 @@ namespace GenshinCBTServer.Player
         {
             GadgetProp prop = GetGadgetPropExcel();
            
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, 100000000f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, 1f);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, 1);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, 1);
             FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, 1);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ATTACK, 1); //TODO calculate total attack
-            FightPropUpdate(FightPropType.FIGHT_PROP_HP, 100000000f);
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, 100000000f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_HP, 1f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, 1f);
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, 1f); //TODO calculate total hp
             FightPropUpdate(FightPropType.FIGHT_PROP_HP_PERCENT, 0);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, 100);
@@ -104,10 +104,20 @@ namespace GenshinCBTServer.Player
                    
                     //  GadgetType = 1
 
-
+                      
 
                 };
-            
+            if(route_id > 0)
+            {
+                info.Gadget.Platform = new()
+                {
+                    IsStarted = true,
+                    RouteId = route_id,
+                    StartIndex = 0,
+                    StartPos = GetClientOwner().world.currentBlock.routeData.routes.Find(route=>route.localId== route_id).points[0].pos,
+                };
+            }
+          //  if(GetGadgetExcel().hasMove )
                // if (chest_drop > 0) info.Gadget.GadgetType = 1;
             return info;
         }

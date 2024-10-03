@@ -11,6 +11,47 @@ using System.Threading.Tasks;
 namespace GenshinCBTServer.Excel
 {
   
+    public class RoutePointData
+    {
+        public uint waitTime;
+        public float speedLevel;
+        public Vector pos;
+        public float targetVelocity;
+    }
+    public class RouteData
+    {
+        public uint localId;
+        public string type;
+        public string name;
+        public List<RoutePointData> points;
+    }
+    public class SceneBlockRoutes
+    {
+        public uint sceneId;
+        public uint blockId; //Not in the json
+        public List<RouteData> routes;
+    }
+    public class MonsterData
+    {
+        public uint id;
+        public bool canSwim;
+        public uint type;
+        public int killExp; //?
+
+        //Stats
+        public float hp_base;
+        public float attack_base;
+        public float defense_base;
+
+
+        public uint campId;
+        public List<PropGrowCurve> propGrowCurves;
+    }
+    public class PropGrowCurve
+    {
+        public FightPropType type;
+        public uint grow_curve;
+    }
     public class GadgetProp
     {
         public uint id;

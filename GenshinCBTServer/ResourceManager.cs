@@ -105,6 +105,7 @@ namespace GenshinCBTServer
         public Dictionary<uint, LevelCurve> weaponCurves = new Dictionary<uint, LevelCurve>();
         public Dictionary<uint, PromoteInfo>  weaponsPromote = new Dictionary<uint, PromoteInfo>();
         public Dictionary<uint, GadgetProp> gadgetProps = new Dictionary<uint, GadgetProp>();
+        public Dictionary<uint, MonsterData> monsterDataDict = new Dictionary<uint, MonsterData>();
         public List<DropData> dropData = new List<DropData>();
         public List<ChildDrop> childDropData = new List<ChildDrop>();
 
@@ -139,6 +140,7 @@ namespace GenshinCBTServer
             shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/excel/ShopGoodsExcelConfigData.json"));
             dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"));
             gadgetDataDict = JsonConvert.DeserializeObject<Dictionary<uint, GadgetData>>(File.ReadAllText("resources/excel/GadgetExcelConfigData.json"));
+            monsterDataDict = JsonConvert.DeserializeObject<Dictionary<uint, MonsterData>>(File.ReadAllText("resources/excel/MonsterExcelConfigData.json"));
             talentSkillData = LoadTalentSkillData();
             avatarSkillDepotData = LoadAvatarSkillDepotData();
             itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/WeaponExcelConfigData.json")));
@@ -235,8 +237,16 @@ namespace GenshinCBTServer
                 {
 
                     sceneBlock.DoString(mainLuaString);
-
-
+                    if (File.Exists(mainlocation + $"/scene{sceneId}_{block.blockId}_routes.json"))
+                    {
+                        string jsonRoute = File.ReadAllText(mainlocation + $"/scene{sceneId}_{block.blockId}_routes.json");
+                        block.routeData = JsonConvert.DeserializeObject<SceneBlockRoutes>(jsonRoute);
+                    }
+                    else
+                    {
+                        block.routeData.blockId = block.blockId;
+                    }
+                   
                     LuaTable groups = sceneBlock["groups"] as LuaTable;  // Cast to LuaTable for tables
 
 
@@ -288,7 +298,8 @@ namespace GenshinCBTServer
                 {
 
                     sceneGroup.DoString(mainLuaString);
-
+                   
+                    
 
                     LuaTable gadgets = sceneGroup["gadgets"] as LuaTable;  // Cast to LuaTable for tables
                     LuaTable npcs = sceneGroup["npcs"] as LuaTable;
@@ -308,7 +319,8 @@ namespace GenshinCBTServer
                         };
                         if (gadgetTable["chest_drop_id"] != null) gadget.chest_drop_id = (uint)(long)gadgetTable["chest_drop_id"];
                         if (gadgetTable["state"] != null) gadget.state = (uint)(long)gadgetTable["state"];
-
+                        if (gadgetTable["route_id"] != null) gadget.route_id = (uint)(long)gadgetTable["route_id"];
+                       
                         group.gadgets.Add(gadget);
                     }
 

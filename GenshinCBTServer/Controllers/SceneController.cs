@@ -114,29 +114,72 @@ namespace GenshinCBTServer.Controllers
         public static void OnGadgetInteractReq(Client session, CmdType cmdId, Network.Packet packet)
         {
             GadgetInteractReq req = packet.DecodeBody<GadgetInteractReq>();
-            if (session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId) is not GameEntityGadget) return;
-            GameEntityGadget entity = (GameEntityGadget)session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
-            if(entity != null)
+            GameEntity entity_ = session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
+            if(entity_ != null)
+            if (entity_ is GameEntityGadget)
             {
-                if (entity.chest_drop > 0)
-                {
-                    session.world.KillEntities(new List<GameEntity>(){entity},VisionType.VisionNone);
 
-                    DropList dropList = Server.getResources().GetRandomDrops(session, entity.chest_drop, entity.motionInfo);
-                    foreach(GameEntity en in dropList.entities)
+                GameEntityGadget entity = (GameEntityGadget)session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
+               
+                    if (entity.chest_drop > 0)
                     {
-                        session.world.SpawnEntity(en,true,VisionType.VisionReborn);
+                        session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
+
+                        DropList dropList = Server.getResources().GetRandomDrops(session, entity.chest_drop, entity.motionInfo);
+                        foreach (GameEntity en in dropList.entities)
+                        {
+                            session.world.SpawnEntity(en, true, VisionType.VisionReborn);
+                        }
+
+                        session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractOpenChest, OpType = InterOpType.InterOpStart });
+
+                    }
+                
+               
+
+            }else if (entity_ is GameEntityItem)
+                {
+
+                    GameEntityItem entity = (GameEntityItem)entity_;
+
+                    
+                        session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
+
+                        session.AddItem(entity.item);
+
+                        session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractPickItem, OpType = InterOpType.InterOpStart });
+
+                    
+
+
+
+                }
+                else if (entity_ is GameEntityMonster)
+                {
+
+                    GameEntityMonster entity = (GameEntityMonster)entity_;
+
+
+                    session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
+
+                    DropList dropList = Server.getResources().GetRandomDrops(session, entity.drop_id, entity.motionInfo);
+                    foreach (GameEntity en in dropList.entities)
+                    {
+                        if(en is GameEntityItem)
+                        {
+                            GameEntityItem eni = (GameEntityItem)en;
+                            session.AddItem(eni.item);
+                        }
+                        
                     }
 
-                    session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0,GadgetEntityId=req.GadgetEntityId,GadgetId=entity.id,InteractType=InteractType.InteractOpenChest,OpType=InterOpType.InterOpStart });
-                   
-                }
-            }
-            else
-            {
-                session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)Retcode.RetGadgetNotExist });
+                    session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractGather, OpType = InterOpType.InterOpStart });
 
-            }
+
+
+
+
+                }
         }
 
         [Server.Handler(CmdType.SceneTransToPointReq)]

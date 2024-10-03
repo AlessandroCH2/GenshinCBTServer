@@ -179,6 +179,7 @@ namespace GenshinCBTServer.Player
                         entity.owner = (uint)client.gamePeer;
                         entity.chest_drop = gadget.chest_drop_id;
                         entity.state = gadget.state;
+                        entity.route_id = gadget.route_id;
                         SpawnEntity(entity);
                     }
                 foreach (SceneMonster monster in group.monsters)
@@ -195,12 +196,12 @@ namespace GenshinCBTServer.Player
                             Rot = monster.rot,
                             State = MotionState.MotionFallOnGround,
                             Speed = new Vector(),
-                        }
+                        },monster.level
                         );
                     entity.configId = monster.config_id;
                     entity.groupId = group.id;
                     entity.owner = (uint)client.gamePeer;
-                    entity.level = monster.level;
+                
                     entity.drop_id = monster.drop_id;
                     entity.pose_id = monster.pose_id;
                     SpawnEntity(entity);
@@ -270,7 +271,7 @@ namespace GenshinCBTServer.Player
         public uint blockId;
         public Vector minPos,maxPos;
         public List<SceneGroup> groups = new List<SceneGroup>();
-
+        public SceneBlockRoutes routeData = new();
         public bool insideRegion(Vector point)
         {
             float minX = Math.Min(minPos.X, maxPos.X);
@@ -297,6 +298,7 @@ namespace GenshinCBTServer.Player
         public uint config_id;
         public uint chest_drop_id;
         public uint gadget_id;
+        public uint route_id;
         public Vector pos;
         public Vector rot;
     }
