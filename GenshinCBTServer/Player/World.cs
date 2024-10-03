@@ -178,8 +178,10 @@ namespace GenshinCBTServer.Player
                         entity.groupId = group.id;
                         entity.owner = (uint)client.gamePeer;
                         entity.chest_drop = gadget.chest_drop_id;
-                        entity.state = gadget.state;
+                        entity.state = (uint)gadget.state;
                         entity.route_id = gadget.route_id;
+                        entity.gadgetType = gadget.type;
+                        
                         SpawnEntity(entity);
                     }
                 foreach (SceneMonster monster in group.monsters)
@@ -294,11 +296,13 @@ namespace GenshinCBTServer.Player
     }
     public class SceneGadget
     {
-        public uint state;
+        public int state;
         public uint config_id;
         public uint chest_drop_id;
         public uint gadget_id;
         public uint route_id;
+        public uint type;
+        public bool showcutscene;
         public Vector pos;
         public Vector rot;
     }

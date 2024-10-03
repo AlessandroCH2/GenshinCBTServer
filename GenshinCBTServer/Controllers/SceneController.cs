@@ -138,11 +138,11 @@ namespace GenshinCBTServer.Controllers
             {
 
                 GameEntityGadget entity = (GameEntityGadget)session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
-               
-                    if (entity.GetGadgetExcel().type == (uint)GadgetType.GADGET_WORLD_CHECT)
+                    Server.Print("Type: " + entity.gadgetType);
+                    if (entity.gadgetType == (uint)GadgetType.GADGET_WORLD_CHECT)
                     {
 
-                        entity.ChangeState(GadgetState.ChestOpened);
+                        entity.ChangeState(GadgetState.GearStart);
                         session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
 
                         DropList dropList = Server.getResources().GetRandomDrops(session, entity.chest_drop, entity.motionInfo);

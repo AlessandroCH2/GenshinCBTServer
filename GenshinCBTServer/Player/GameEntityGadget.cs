@@ -11,8 +11,8 @@ namespace GenshinCBTServer.Player
 {
     public class GameEntityGadget : GameEntity
     {
-        public uint chest_drop, route_id;
-      
+        public uint chest_drop, route_id,gadgetType;
+       
 
         public void ChangeState(GadgetState state)
         {
@@ -99,7 +99,11 @@ namespace GenshinCBTServer.Player
                 MotionInfo = motionInfo,
                 LifeState = 1,
                 Name=GetGadgetExcel().jsonName,
-                
+                AiInfo = new()
+                {
+                    BornPos=motionInfo.Pos,
+                    IsAiOpen=true,
+                }
                // EntityCase = SceneEntityInfo.EntityOneofCase.Gadget
             };
             info.PropMap.Add(props);
@@ -113,11 +117,13 @@ namespace GenshinCBTServer.Player
                      GroupId=groupId,
                       BornType=GadgetBornType.GadgetBornGadget,
                       GadgetState = state,
-                      GadgetType = GetGadgetExcel().type,
+                      GadgetType = gadgetType,
+                      
                       AuthorityPeerId=owner,
+                      
                    
                     //  GadgetType = 1
-
+                    
                       
 
                 };

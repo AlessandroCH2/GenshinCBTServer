@@ -319,9 +319,15 @@ namespace GenshinCBTServer
                             rot = new Vector() { X = (float)(double)rot["x"], Y = (float)(double)rot["y"], Z = (float)(double)rot["z"] }
                         };
                         if (gadgetTable["chest_drop_id"] != null) gadget.chest_drop_id = (uint)(long)gadgetTable["chest_drop_id"];
-                        if (gadgetTable["state"] != null) gadget.state = (uint)(long)gadgetTable["state"];
+                        if (gadgetTable["state"] != null) gadget.state = (int)(long)gadgetTable["state"];
                         if (gadgetTable["route_id"] != null) gadget.route_id = (uint)(long)gadgetTable["route_id"];
-                       
+                        if (gadgetTable["type"] != null) gadget.type = (uint)(long)gadgetTable["type"];
+                        if (gadgetTable["showcutscene"] != null) gadget.showcutscene = (bool)gadgetTable["showcutscene"];
+
+                        if(gadget.type > 0)
+                        {
+                            Server.Print($" type: {((GadgetType)gadget.type).ToString()} & state {gadgetTable["state"]} & config id {gadget.config_id}");
+                        }
                         group.gadgets.Add(gadget);
                     }
 
