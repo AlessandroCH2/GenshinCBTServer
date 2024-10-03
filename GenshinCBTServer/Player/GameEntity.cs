@@ -49,7 +49,7 @@ namespace GenshinCBTServer.Player
         {
             Client client = GetClientOwner();
             SendUpdatedProps();
-            
+            /*
             EvtEntityStartDieEndNotify evtEntityStartDieEndNotify = new EvtEntityStartDieEndNotify()
             {
                 ForwardType = ForwardType.ForwardToAll,
@@ -58,9 +58,9 @@ namespace GenshinCBTServer.Player
                 DieStateFlag = 1,
             };
             client.SendPacket((uint)CmdType.EvtEntityStartDieEndNotify, evtEntityStartDieEndNotify);
-            
-            Task.Delay(TimeSpan.FromSeconds(2.5));
-            client.world.KillEntities(new() { this }, VisionType.VisionDie);
+            */
+            Task.Delay(TimeSpan.FromSeconds(1.0));
+            client.world.KillEntities(new() { this });
 
             DropList dropList = Server.getResources().GetRandomDrops(GetClientOwner(), this.drop_id, motionInfo);
             foreach (GameEntity en in dropList.entities)

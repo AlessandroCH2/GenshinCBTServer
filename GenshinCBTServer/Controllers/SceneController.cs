@@ -283,6 +283,24 @@ namespace GenshinCBTServer.Controllers
 
         }
 
+        [Server.Handler(CmdType.EvtDestroyGadgetNotify)]
+        public static void OnEvtDestroyGadgetNotify(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            EvtDestroyGadgetNotify req = packet.DecodeBody<EvtDestroyGadgetNotify>();
+            GameEntity? entity = session.world.entities.Find(entity=>entity.entityId==req.EntityId);
+            if(entity != null )
+            {
+                session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
+            }
+        }
+
+        [Server.Handler(CmdType.EvtCreateGadgetNotify)]
+        public static void OnEvtCreateGadgetNotify(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            EvtCreateGadgetNotify req = packet.DecodeBody<EvtCreateGadgetNotify>();
+            
+        }
+
         [Server.Handler(CmdType.SetOpenStateReq)]
         public static void OnSetOpenStateReq(Client session, CmdType cmdId, Network.Packet packet)
         {
