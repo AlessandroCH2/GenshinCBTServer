@@ -50,24 +50,29 @@ namespace GenshinCBTServer.Controllers
             {
                 using (Lua groupLua = new Lua())
                 {
-                    ScriptLib scriptLib = new();
-                    scriptLib.currentGroupId =(int) group.id;
-                    groupLua["ScriptLib"] = scriptLib;
-                    groupLua["context_"] = client;
-                    groupLua["evt"] = new EventInfo();
-                    groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
+                    try {
+                        ScriptLib scriptLib = new();
+                        scriptLib.currentGroupId =(int) group.id;
+                        groupLua["ScriptLib"] = scriptLib;
+                        groupLua["context_"] = client;
+                        groupLua["evt"] = new EventInfo();
+                        groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
 
-                    foreach (GroupTrigger trigger in triggers)
+                        foreach (GroupTrigger trigger in triggers)
+                        {
+                            string luaScript = @$"
+                                if {trigger.conditionLua}(context_, evt_) then
+
+                                    {trigger.actionLua}(context_, evt_)
+                                end
+                            ";
+
+                            // Execute the Lua script
+                            groupLua.DoString(luaScript);
+                        }
+                    } catch (Exception e)
                     {
-                        string luaScript = @$"
-                            if {trigger.conditionLua}(context_, evt_) then
-
-                                {trigger.actionLua}(context_, evt_)
-                            end
-                        ";
-
-                        // Execute the Lua script
-                        groupLua.DoString(luaScript);
+                        Server.Print($"[LUA] Error executing trigger lua: {e.Message}");
                     }
                 }
                

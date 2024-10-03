@@ -10,17 +10,25 @@ namespace GenshinCBTServer.Excel
 {
     public class AvatarData
     {
-        [JsonProperty("ID")]
         public uint id;
-        [JsonProperty("Base HP")]
+        [JsonProperty("hp_base")]
         public float baseHp;
-        [JsonProperty("Base Attack")]
+        [JsonProperty("attack_base")]
         public float baseAtk;
-        [JsonProperty("Base Defense")]
+        [JsonProperty("defense_base")]
         public float baseDef;
-        [JsonProperty("Skill Library ID")]
         public uint skillDepotId;
-        [JsonProperty("初始武器")]
+        [JsonProperty("initialWeapon")]
         public uint weaponId;
+        public float critical;
+        public float criticalHurt;
+        public float fireAddHurt;
+        public float waterAddHurt;
+        public float grassAddHurt;
+        public float elecAddHurt;
+        public float windAddHurt;
+        public float iceAddHurt;
+        public float rockAddHurt;
+        public List<PropGrowCurve> propGrowCurves = new List<PropGrowCurve>();
     }
 }

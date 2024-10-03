@@ -151,12 +151,38 @@ namespace GenshinCBTServer
         // public ConfigBulletPattern Gadget = new ConfigBulletPattern();
     }
 
+    public class AvatarPromoteExcel
+    {
+        public uint promoteLevel;
+        public ElementType elementType;
+        public List<CostItems> costItems = new List<CostItems>();
+        public uint unlockMaxLevel;
+        public List<PromoteProp> addProps = new List<PromoteProp>();
+        public uint playerExp;
+    }
+
+    public enum ElementType
+    {
+        None = 0,
+        Fire = 1,
+        Water = 2,
+        Grass = 3,
+        Electric = 4,
+        Ice = 5,
+        Frozen = 6,
+        Wind = 7,
+        Rock = 8,
+        AntiFire = 9,
+    }
+
     public class ResourceManager
     {
-        public List<AvatarData> avatarsData;
-        public List<TalentSkillData> talentSkillData;
-        public List<AvatarSkillDepotData> avatarSkillDepotData;
+        public List<AvatarData> avatarsData = new List<AvatarData>();
+        public List<TalentSkillData> talentSkillData = new List<TalentSkillData>();
+        public List<AvatarSkillDepotData> avatarSkillDepotData = new List<AvatarSkillDepotData>();
+        public List<AvatarPromoteExcel> avatarPromoteData = new List<AvatarPromoteExcel>();
         public Dictionary<uint, ItemData> itemData = new Dictionary<uint, ItemData>();
+        public Dictionary<uint, LevelCurve> avatarCurveDict = new Dictionary<uint, LevelCurve>();
         public List<SceneExcel> scenes = new List<SceneExcel>();
         public Dictionary<uint, ShopGoodsData> shopGoodsDict = new Dictionary<uint, ShopGoodsData>();
         public Dictionary<uint, ScenePointRow> scenePointDict = new Dictionary<uint, ScenePointRow>();
@@ -178,7 +204,7 @@ namespace GenshinCBTServer
         public DropList GetRandomDrops(Client session,uint id, MotionInfo motion)
         {
             DropList dropList = new DropList();
-            DropData data = dropData.Find(d=>d.drop_id== id);  
+            DropData data = dropData.Find(d=>d.drop_id== id)!;  
             if (data!= null)
             {
                 List<ChildDrop> childDrops = childDropData.FindAll(c=>c.child_drop_id==data.child_drop_id);
@@ -198,23 +224,25 @@ namespace GenshinCBTServer
         }
         public void Load()
         {
-            avatarsData = JsonConvert.DeserializeObject<List<AvatarData>>(File.ReadAllText("resources/excel/AvatarData.json"));
-            shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/excel/ShopGoodsExcelConfigData.json"));
-            dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"));
-            gadgetDataDict = JsonConvert.DeserializeObject<Dictionary<uint, GadgetData>>(File.ReadAllText("resources/excel/GadgetExcelConfigData.json"));
-            monsterDataDict = JsonConvert.DeserializeObject<Dictionary<uint, MonsterData>>(File.ReadAllText("resources/excel/MonsterExcelConfigData.json"));
+            shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/excel/ShopGoodsExcelConfigData.json"))!;
+            dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"))!;
+            gadgetDataDict = JsonConvert.DeserializeObject<Dictionary<uint, GadgetData>>(File.ReadAllText("resources/excel/GadgetExcelConfigData.json"))!;
+            monsterDataDict = JsonConvert.DeserializeObject<Dictionary<uint, MonsterData>>(File.ReadAllText("resources/excel/MonsterExcelConfigData.json"))!;
+            avatarPromoteData = JsonConvert.DeserializeObject<List<AvatarPromoteExcel>>(File.ReadAllText("resources/excel/AvatarPromoteExcelConfigData.json"))!;
             configGadgetDict = LoadConfigGadget();
+            avatarsData = LoadAvatarExcel();
             talentSkillData = LoadTalentSkillData();
             avatarSkillDepotData = LoadAvatarSkillDepotData();
-            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/WeaponExcelConfigData.json")));
-            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/MaterialExcelConfigData.json")));
-            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/ReliquaryExcelConfigData.json")));
-            weaponCurves = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/excel/WeaponCurveExcelConfigData.json"));
-            gadgetProps = JsonConvert.DeserializeObject<Dictionary<uint, GadgetProp>>(File.ReadAllText("resources/excel/GadgetPropExcelConfigData.json"));
+            avatarCurveDict = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/excel/AvatarCurveExcelConfigData.json"))!;
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/WeaponExcelConfigData.json"))!);
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/MaterialExcelConfigData.json"))!);
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/ReliquaryExcelConfigData.json"))!);
+            weaponCurves = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/excel/WeaponCurveExcelConfigData.json"))!;
+            gadgetProps = JsonConvert.DeserializeObject<Dictionary<uint, GadgetProp>>(File.ReadAllText("resources/excel/GadgetPropExcelConfigData.json"))!;
 
-            weaponsPromote = JsonConvert.DeserializeObject<Dictionary<uint, PromoteInfo>>(File.ReadAllText("resources/excel/WeaponPromoteExcelConfigData.json"));
-            dropData = JsonConvert.DeserializeObject<List<DropData>>(File.ReadAllText("resources/excel/DropTreeData.json"));
-            childDropData = JsonConvert.DeserializeObject<List<ChildDrop>>(File.ReadAllText("resources/excel/DropLeafData.json"));
+            weaponsPromote = JsonConvert.DeserializeObject<Dictionary<uint, PromoteInfo>>(File.ReadAllText("resources/excel/WeaponPromoteExcelConfigData.json"))!;
+            dropData = JsonConvert.DeserializeObject<List<DropData>>(File.ReadAllText("resources/excel/DropTreeData.json"))!;
+            childDropData = JsonConvert.DeserializeObject<List<ChildDrop>>(File.ReadAllText("resources/excel/DropLeafData.json"))!;
             Server.Print("Loading all scenes lua");
             string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
             foreach (string scene in scenes_)
@@ -223,6 +251,11 @@ namespace GenshinCBTServer
                 scenes.Add(LoadSceneLua(sceneid));
                 scenePointDict[sceneid] = LoadScenePointData(sceneid);
             }
+        }
+        public List<AvatarData> LoadAvatarExcel()
+        {
+            Dictionary<uint, AvatarData> data = JsonConvert.DeserializeObject<Dictionary<uint, AvatarData> >(File.ReadAllText("resources/excel/AvatarExcelConfigData.json"))!;
+            return data.Values.ToList();
         }
         public Dictionary<uint,ItemData> AddItemDataDic(Dictionary<uint,ItemData> data)
         {
@@ -248,7 +281,7 @@ namespace GenshinCBTServer
                     scene.bornRot = TableToVector2D(scene_config["born_rot"] as LuaTable);
 
                     LuaTable block_rects = scenelua["block_rects"] as LuaTable;
-                    for (int i = 0; i < blocks.Keys.Count; i++)
+                    for (int i = 0; i < blocks!.Keys.Count; i++)
                     {
                         uint blockId = (uint)(long)blocks[i + 1];
                         SceneBlock block = new SceneBlock() { blockId = blockId };
@@ -300,7 +333,7 @@ namespace GenshinCBTServer
                 if (fileInfo.Extension == ".json")
                 {
                     string text = File.ReadAllText(file);
-                    Dictionary<string, GadgetConfigRow> config = JsonConvert.DeserializeObject<Dictionary<string, GadgetConfigRow>>(text);
+                    Dictionary<string, GadgetConfigRow> config = JsonConvert.DeserializeObject<Dictionary<string, GadgetConfigRow>>(text)!;
                     foreach (var entry in config)
                     {
                         configGadgetDict[entry.Key] = entry.Value;
@@ -325,7 +358,7 @@ namespace GenshinCBTServer
                     if (File.Exists(mainlocation + $"/scene{sceneId}_{block.blockId}_routes.json"))
                     {
                         string jsonRoute = File.ReadAllText(mainlocation + $"/scene{sceneId}_{block.blockId}_routes.json");
-                        block.routeData = JsonConvert.DeserializeObject<SceneBlockRoutes>(jsonRoute);
+                        block.routeData = JsonConvert.DeserializeObject<SceneBlockRoutes>(jsonRoute)!;
                     }
                     else
                     {
@@ -417,7 +450,7 @@ namespace GenshinCBTServer
                         if (gadgetTable["chest_drop_id"] != null) gadget.chest_drop_id = (uint)(long)gadgetTable["chest_drop_id"];
                         if (gadgetTable["state"] != null) {
                             gadget.state = (int)(long)gadgetTable["state"];
-                            string stateName = sceneGroup.GetFunction("GetEnumName").Call(sceneGroup["GadgetState"], gadget.state)[0].ToString();
+                            string stateName = sceneGroup.GetFunction("GetEnumName").Call(sceneGroup["GadgetState"], gadget.state)[0].ToString()!;
                             if (Enum.TryParse(typeof(GadgetState), stateName, out var parsedState) && parsedState is GadgetState gadgetState)
                             {
                                 gadget.state = (int)gadgetState;
@@ -480,7 +513,7 @@ namespace GenshinCBTServer
                         trigger.conditionLua = (string)triggerTable["condition"];
                         if (triggerTable["event"] != null) trigger.eventType = (int)(long)triggerTable["event"];
                         group.triggers.Add(trigger);
-                        Server.Print($"Trigger: " + trigger.name + " added");
+                        // Server.Print($"Trigger: " + trigger.name + " added");
                     }
                 }
             }
@@ -497,13 +530,13 @@ namespace GenshinCBTServer
             FileInfo file = new(path);
             if (!file.Exists)
             {
-                Server.Print($"Cannot load scene point data for scene {sceneId} (Not found)");
+                // Server.Print($"Cannot load scene point data for scene {sceneId} (Not found)");
                 return new ScenePointRow();
             }
             using var reader = file.OpenRead();
             using StreamReader reader2 = new(reader);
             var text = reader2.ReadToEnd().Replace("$type", "JsonObjType");
-            return JsonConvert.DeserializeObject<ScenePointRow>(text);
+            return JsonConvert.DeserializeObject<ScenePointRow>(text)!;
         }
 
        
@@ -577,7 +610,7 @@ namespace GenshinCBTServer
         }
         public AvatarData GetAvatarDataById(uint id)
         {
-            return avatarsData.Find(av => av.id == id);
+            return avatarsData.Find(av => av.id == id)!;
         }
     }
 }

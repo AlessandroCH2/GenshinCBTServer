@@ -31,14 +31,18 @@ namespace GenshinCBTServer.Player
         {
             return Server.getResources().GetAvatarDataById(id);
         }
+        public LevelCurve GetCurveExcel()
+        {
+            return Server.getResources().avatarCurveDict[(uint)level];
+        }
         public GameItem getEquippedWeapon()
         {
-            return client.inventory.Find(item => item.guid == weaponGuid);
+            return client.inventory.Find(item => item.guid == weaponGuid)!;
         }
         public Avatar(Client client,uint id) {
             this.id = id;
             this.client = client;
-            this.level = 1;
+            this.level = 20; // currently 20 for testing
             entityId = ((uint)EntityType << 24) + (uint)client.random.Next();
             guid = (uint)client.random.Next();
             curHp = GetExcel().baseHp;
@@ -125,13 +129,13 @@ namespace GenshinCBTServer.Player
         private List<uint> getTalents()
         {
             List<uint> ids = new List<uint>();
-            AvatarSkillDepotData skillDepotData = Server.getResources().avatarSkillDepotData.Find(d => d.id == GetExcel().skillDepotId);
+            AvatarSkillDepotData skillDepotData = Server.getResources().avatarSkillDepotData.Find(d => d.id == GetExcel().skillDepotId)!;
             if(skillDepotData!= null)
             {
                // Server.Print($"Skill Depot trovato: (id: {skillDepotData.id} )" + skillDepotData.talent_groups.Count);
                 foreach(int talent_group in skillDepotData.talent_groups)
                 {
-                    TalentSkillData talentSkill = Server.getResources().talentSkillData.Find(t=>t.talent_group_id==talent_group);
+                    TalentSkillData talentSkill = Server.getResources().talentSkillData.Find(t=>t.talent_group_id==talent_group)!;
                     if(talentSkill!= null)
                     {
                       
@@ -151,13 +155,14 @@ namespace GenshinCBTServer.Player
         {
             float attack = GetFightProp(FightPropType.FIGHT_PROP_BASE_ATTACK);
             float perc = 1;
+            float flatAtk = 0;
             if (getEquippedWeapon() != null)
             {
                 GameItem weapon = getEquippedWeapon();
 
                 perc += weapon.GetWeaponAttack().atkperc;
+                flatAtk += weapon.GetWeaponAttack().attack;
             }
-            float flatAtk = 0;
            /* if (Player.playerInstance.GetInventoryItem(RELIQ1) != null)
             {
                 GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ1);
@@ -194,8 +199,47 @@ namespace GenshinCBTServer.Player
                 flatAtk += stats.attack;
             }*/
             //Need to add reliquary stats
-            return (attack * perc) + flatAtk; //need to add reliquary flat atk
+            return (attack * perc) + flatAtk; //need to add reliquary attack
         }
+
+        public float calculateDefence()
+        {
+            float defense = GetFightProp(FightPropType.FIGHT_PROP_BASE_DEFENSE);
+            float perc = 1;
+            float flatDef = 0;
+            if (getEquippedWeapon() != null)
+            {
+                GameItem weapon = getEquippedWeapon();
+
+                perc += weapon.GetWeaponAttack().defPerc;
+                flatDef += weapon.GetWeaponAttack().defense;
+            }
+            return (defense * perc) + flatDef; //need to add reliquary defence
+        }
+
+        public float calculateCritDmg()
+        {
+            float critDmg = GetExcel().criticalHurt;
+            float flatCrit = 0;
+            if (getEquippedWeapon() != null)
+            {
+                GameItem weapon = getEquippedWeapon();
+                flatCrit += weapon.GetWeaponAttack().critdmg;
+            }
+            return critDmg + flatCrit; //need to add reliquary critdmg
+        }
+        public float calculateCritRate()
+        {
+            float critRate = GetExcel().critical;
+            float flatcritRate = 0;
+            if (getEquippedWeapon() != null)
+            {
+                GameItem weapon = getEquippedWeapon();
+                flatcritRate += weapon.GetWeaponAttack().critrate;
+            }
+            return critRate + flatcritRate; //need to add reliquary critdmg
+        }
+
         public void SendUpdatedProps()
         {
             UpdateProps();
@@ -210,19 +254,66 @@ namespace GenshinCBTServer.Player
                 FightPropMap = { fightprops }
             });
         }
+
+        public float GetGrowCurveValue(float baseStat, GrowCurveType curveType)
+        {
+            LevelCurve curveExcel = GetCurveExcel();
+            // todo: make work with different ArithTypes
+            CurveInfo info = curveExcel.getCurveValue((int)curveType);
+            switch (info.arith) {
+                case ArithType.ARITH_ADD:
+                    return baseStat += info.value;
+                case ArithType.ARITH_MULTI:
+                    return baseStat *= info.value;
+                case ArithType.ARITH_SUB:
+                    return baseStat -= info.value;
+                case ArithType.ARITH_DIVIDE:
+                    return baseStat /= info.value;
+                default:
+                    break;
+            }
+            return baseStat;
+        }
+
+        // todo: add elemental AddHurt and use curve to calculate base stats
         public void UpdateProps()
         {
             ItemStats weaponStats = getEquippedWeapon().GetWeaponAttack();
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, Server.getResources().GetAvatarDataById(id).baseHp+ weaponStats.hpFlat); 
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, Server.getResources().GetAvatarDataById(id).baseDef);
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, Server.getResources().GetAvatarDataById(id).baseAtk+ weaponStats.attack);
+            GrowCurveType BaseHpCurveType = GetExcel().propGrowCurves.Find(curve => curve.type == FightPropType.FIGHT_PROP_BASE_HP)!.grow_curve;
+            GrowCurveType baseAtkCurveType = GetExcel().propGrowCurves.Find(curve => curve.type == FightPropType.FIGHT_PROP_BASE_ATTACK)!.grow_curve;
+            GrowCurveType baseDefCurveType = GetExcel().propGrowCurves.Find(curve => curve.type == FightPropType.FIGHT_PROP_BASE_DEFENSE)!.grow_curve;
+            float baseHp = GetGrowCurveValue(GetExcel().baseHp, BaseHpCurveType) + weaponStats.hpFlat;
+            float baseAtk = GetGrowCurveValue(GetExcel().baseAtk, baseAtkCurveType);
+            float baseDef = GetGrowCurveValue(GetExcel().baseDef, baseDefCurveType);
+            AvatarPromoteExcel promoteExcel = Server.getResources().avatarPromoteData.FirstOrDefault(p => p.promoteLevel == promoteLevel)!;
+            foreach (PromoteProp prop in promoteExcel.addProps)
+            {
+                switch (prop.propType)
+                {
+                    case (int)FightPropType.FIGHT_PROP_BASE_HP:
+                        baseHp += prop.value;
+                        break;
+                    case (int)FightPropType.FIGHT_PROP_BASE_ATTACK:
+                        baseAtk += prop.value;
+                        break;
+                    case (int)FightPropType.FIGHT_PROP_BASE_DEFENSE:
+                        baseDef += prop.value;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            curHp = baseHp;
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, baseHp); 
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, baseDef);
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, baseAtk + weaponStats.attack);
             FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, calculateAttack());
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ATTACK, calculateAttack()); //TODO calculate total attack
             FightPropUpdate(FightPropType.FIGHT_PROP_HP, curHp);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, Server.getResources().GetAvatarDataById(id).baseHp); //TODO calculate total hp
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, curHp); //TODO calculate total hp
             FightPropUpdate(FightPropType.FIGHT_PROP_HP_PERCENT, weaponStats.hpPerc);
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, 123456.0f );
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, calculateDefence());
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_SPEED, 0.0f );
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_FIRE_ENERGY, 100.0f );
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ELEC_ENERGY, 100.0f );
@@ -238,8 +329,8 @@ namespace GenshinCBTServer.Player
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_WIND_ENERGY, 100.0f );
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ICE_ENERGY, 100.0f );
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ROCK_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_CRITICAL_HURT, 0.5f);
-            FightPropUpdate(FightPropType.FIGHT_PROP_CRITICAL, 0.05f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CRITICAL_HURT, calculateCritDmg());
+            FightPropUpdate(FightPropType.FIGHT_PROP_CRITICAL, calculateCritRate());
             props[(uint)PropType.PROP_EXP] = new PropValue() { Ival = 1,Val = 1,Type= (uint)PropType.PROP_EXP };
             props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival=level,Val = (long)level, Type = (uint)PropType.PROP_LEVEL };
             props[(uint)PropType.PROP_BREAK_LEVEL] = new PropValue() { Ival=promoteLevel,Val = (long)promoteLevel, Type = (uint)PropType.PROP_BREAK_LEVEL };
