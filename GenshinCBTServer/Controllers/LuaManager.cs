@@ -166,12 +166,21 @@ namespace GenshinCBTServer.Controllers
                     groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
 
                     string luaScript = @$"
-                               
-                                {trigger.actionLua}(context_, evt_)
+                                if {trigger.conditionLua}(context_, evt_) then
+                                    {trigger.actionLua}(context_, evt_)
+
+                                end
                             
                         ";
                     try
                     {
+                        if(trigger.conditionLua.Length==0)
+                        {
+                            luaScript = @$"
+                                {trigger.actionLua}(context_, evt_)
+
+                        ";
+                        }
                         groupLua.DoString(luaScript);
                         Server.Print("Executed successfully LUA");
                     }
