@@ -126,7 +126,7 @@ namespace GenshinCBTServer.Player
                                     ScriptArgs args = new((int)group.id, (int)EventType.EVENT_ENTER_REGION, (int)region.config_id);
                                     args.target_eid = (int)entity.entityId;
                                     args.source_eid = (int)region.config_id;
-                                    LuaManager.executeTriggerLua(client, group, args);
+                                    LuaManager.executeTriggersLua(client, group, args);
                                 }
 
 
@@ -151,7 +151,7 @@ namespace GenshinCBTServer.Player
                             ScriptArgs args = new((int)group.id, (int)EventType.EVENT_ENTER_REGION, (int)region.config_id);
                             args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
                             args.source_eid = (int)region.config_id;
-                            LuaManager.executeTriggerLua(client, group, args);
+                            LuaManager.executeTriggersLua(client, group, args);
                         }
                     }
                     else
@@ -343,7 +343,7 @@ namespace GenshinCBTServer.Player
 
             foreach(GroupTrigger trigger in triggers)
             {
-                LuaManager.executeTriggerLua(this.client, currentBlock.groups.Find(g => g.id == trigger.groupId), args);
+                LuaManager.executeTrigger(this.client, trigger, args);
             }
 
         }

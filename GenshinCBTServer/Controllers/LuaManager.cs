@@ -147,9 +147,13 @@ namespace GenshinCBTServer.Controllers
     {
         public static List<GroupTrigger> errorTriggers = new();
 
-        public static void executeTrigger(Client client, GroupTrigger trigger, ScriptArgs args)
+        public static void executeTrigger(Client client, GroupTrigger trigger, ScriptArgs args, SceneGroup group = null)
         {
-            SceneGroup group = client.world.currentBlock.groups.Find(g=>g.id==args.group_id);
+            if(group == null)
+            {
+                group = client.world.currentBlock.groups.Find(g => g.id == args.group_id);
+            }
+            
             if (group!=null)
             {
                 using (Lua groupLua = new Lua())
@@ -163,19 +167,28 @@ namespace GenshinCBTServer.Controllers
                     groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
 
                     string luaScript = @$"
-                               
-                                {trigger.actionLua}(context_, evt_)
+                                if {trigger.conditionLua}(context_, evt_) then
+                                    {trigger.actionLua}(context_, evt_)
+
+                                end
                             
                         ";
                     try
                     {
+                        if(trigger.conditionLua.Length==0)
+                        {
+                            luaScript = @$"
+                                {trigger.actionLua}(context_, evt_)
+
+                        ";
+                        }
                         groupLua.DoString(luaScript);
                         Server.Print("Executed successfully LUA");
                     }
                     catch (Exception ex)
                     {
                         Server.Print("Error occured in executing Trigger Lua " + ex.Message);
-
+                        errorTriggers.Add(trigger);
                     }
                 }
             }
@@ -224,42 +237,20 @@ namespace GenshinCBTServer.Controllers
 
             }
         }
-        public static void executeTriggerLua(Client client,SceneGroup group,ScriptArgs args)
+        public static void executeTriggersLua(Client client,SceneGroup group,ScriptArgs args)
         {
             if (group == null) return;
             List<GroupTrigger> triggers = group.triggers.FindAll(t => t.eventType == (int)args.type && !errorTriggers.Contains(t));
 
             if(triggers.Count > 0)
             {
-                using (Lua groupLua = new Lua())
-                {
-                    ScriptLib scriptLib = new();
-                    scriptLib.curClient = client;
-                    scriptLib.currentGroupId =(int) group.id;
-                    groupLua["ScriptLib"] = scriptLib;
-                    groupLua["context_"] = client;
-                    groupLua["evt_"] = args;
-                    groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
+               
 
                         foreach (GroupTrigger trigger in triggers)
                         {
-                            string luaScript = @$"
-                                if {trigger.conditionLua}(context_, evt_) then
-                                {trigger.actionLua}(context_, evt_)
-                            end
-                        ";
-                        try
-                        {
-                            groupLua.DoString(luaScript);
+
+                            executeTrigger(client, trigger, args,group);
                         }
-                        catch(Exception ex)
-                        {
-                            Server.Print("Error occured in LUA "+ex.Message);
-                            errorTriggers.Add(trigger);
-                        }
-                        // Execute the Lua script
-                    }
-                }
                
             }
            
