@@ -33,6 +33,7 @@ namespace GenshinCBTServer.Controllers
                     } else {
                         isDamageable = false;
                     }
+                    gadget.GetGadgetConfigRow().Combat.property.
                 }
                 else
                 {
