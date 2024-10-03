@@ -116,11 +116,10 @@ namespace GenshinCBTServer.Controllers
                     groupLua["evt_"] = args;
                     groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
 
-                    foreach (GroupTrigger trigger in triggers)
-                    {
-                        string luaScript = @$"
-                            if {trigger.conditionLua}(context_, evt_) then
-
+                        foreach (GroupTrigger trigger in triggers)
+                        {
+                            string luaScript = @$"
+                                if {trigger.conditionLua}(context_, evt_) then
                                 {trigger.actionLua}(context_, evt_)
                             end
                         ";
@@ -133,7 +132,6 @@ namespace GenshinCBTServer.Controllers
                             Server.Print("Error occured in LUA "+ex.Message);
                         }
                         // Execute the Lua script
-                        
                     }
                 }
                

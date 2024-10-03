@@ -50,7 +50,7 @@ namespace GenshinCBTServer.Excel
     public class PropGrowCurve
     {
         public FightPropType type;
-        public uint grow_curve;
+        public GrowCurveType grow_curve;
     }
     public class GadgetProp
     {
@@ -283,6 +283,31 @@ namespace GenshinCBTServer.Excel
 
         ARITH_DIVIDE = 4, 
     }
+    public enum GrowCurveType
+    {
+        GROW_CURVE_NONE = 0,
+        GROW_CURVE_HP = 1,
+        GROW_CURVE_ATTACK = 2,
+        GROW_CURVE_STAMINA = 3,
+        GROW_CURVE_STRIKE = 4,
+        GROW_CURVE_ANTI_STRIKE = 5,
+        GROW_CURVE_ANTI_STRIKE1 = 6,
+        GROW_CURVE_ANTI_STRIKE2 = 7,
+        GROW_CURVE_ANTI_STRIKE3 = 8,
+        GROW_CURVE_STRIKE_HURT = 9,
+        GROW_CURVE_ELEMENT = 10,
+        GROW_CURVE_KILL_EXP = 11,
+        GROW_CURVE_DEFENSE = 12,
+        GROW_CURVE_ATTACK_BOMB = 13,
+        GROW_CURVE_HP_LITTLEMONSTER = 14,
+        GROW_CURVE_HP_S5 = 21,
+        GROW_CURVE_HP_S4 = 22,
+        GROW_CURVE_ATTACK_S5 = 31,
+        GROW_CURVE_ATTACK_S4 = 32,
+        GROW_CURVE_ATTACK_S3 = 33,
+        GROW_CURVE_DEFENSE_S5 = 41,
+        GROW_CURVE_DEFENSE_S4 = 42,
+    }
     public class PromoteProp
     {
         public int propType;
@@ -290,7 +315,7 @@ namespace GenshinCBTServer.Excel
     }
     public class CurveInfo
     {
-        public int type;
+        public GrowCurveType type;
         public ArithType arith;
         public float value;
     }
@@ -333,16 +358,20 @@ namespace GenshinCBTServer.Excel
     public class LevelCurve
     {
         public uint level;
-        public List<CurveInfo> curveInfos;
+        public List<CurveInfo> curveInfos = new List<CurveInfo>();
 
         public CurveInfo getCurveValue(int growcurve)
         {
             for (int i = 0; i < curveInfos.Count; i++)
             {
                 CurveInfo curveInfo = curveInfos[i];
-                if (curveInfo.type == growcurve) return curveInfo;
+                if ((uint)curveInfo.type == growcurve) return curveInfo;
             }
-            return curveInfos[0];
+            CurveInfo ret = curveInfos[0];
+            ret.type = (GrowCurveType)growcurve;
+            ret.arith = ArithType.ARITH_MULTI;
+            ret.value = 1;
+            return ret;
         }
     }
     public class WeaponPropValue
