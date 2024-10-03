@@ -171,9 +171,9 @@ namespace GenshinCBTServer.Player
                                 Pos=new Vector() { X=gadget.pos.X,Y=gadget.pos.Y-1,Z=gadget.pos.Z},
                                 Rot=gadget.rot,
                                 State=MotionState.MotionFallOnGround,
-                                Speed = new Vector(),
+                                Speed = new Vector() { Y=0.01f},
                             }
-                            );
+                        );
                         entity.configId = gadget.config_id;
                         entity.groupId = group.id;
                         entity.owner = (uint)client.gamePeer;

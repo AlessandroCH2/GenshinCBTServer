@@ -207,7 +207,7 @@ namespace GenshinCBTServer
                
             }
             //For testing fast
-              avatars.Add(new Avatar(this, 10000005));
+              avatars.Add(new Avatar(this, 10000015));
 
              selectedAvatar = (int)avatars[0].guid;
             SendInventory();

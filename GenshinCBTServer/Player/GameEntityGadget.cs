@@ -14,7 +14,18 @@ namespace GenshinCBTServer.Player
         public uint chest_drop, route_id;
       
 
+        public void ChangeState(GadgetState state)
+        {
+            this.state = (uint)state;
 
+            GadgetStateNotify notify = new GadgetStateNotify()
+            {
+                GadgetEntityId = entityId,
+                IsEnableInteract = true,
+                GadgetState = this.state
+            };
+            GetClientOwner().SendPacket((uint)CmdType.GadgetStateNotify, notify);
+        }
         public GadgetData GetGadgetExcel()
         {
             return Server.getResources().GetGadgetData(id);
@@ -54,6 +65,8 @@ namespace GenshinCBTServer.Player
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ROCK_ENERGY, 100.0f);
             props[(uint)PropType.PROP_EXP] = new PropValue() { Ival = 1, Val = 1, Type = (uint)PropType.PROP_EXP };
             props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival = 1, Val = (long)1, Type = (uint)PropType.PROP_LEVEL };
+            props[(uint)PropType.PROP_IS_FLYABLE] = new PropValue() { Fval=1,Ival = 1, Val = (long)1, Type = (uint)PropType.PROP_IS_FLYABLE };
+           
             if (prop != null)
             {
                 FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, prop.hp);
@@ -62,6 +75,7 @@ namespace GenshinCBTServer.Player
                 FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, prop.defense);
                 FightPropUpdate(FightPropType.FIGHT_PROP_DEFENSE, prop.defense);
                 FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, prop.defense);
+               
             }
         }
         public GameEntityGadget(uint entityId, uint id, MotionInfo motionInfo) : base(entityId, id,motionInfo,ProtEntityType.ProtEntityGadget)
