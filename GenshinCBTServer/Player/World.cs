@@ -168,7 +168,7 @@ namespace GenshinCBTServer.Player
                             gadget.gadget_id,
                             new MotionInfo()
                             {
-                                Pos=new Vector() { X=gadget.pos.X,Y=gadget.pos.Y,Z=gadget.pos.Z},
+                                Pos=new Vector() { X=gadget.pos.X,Y=gadget.pos.Y-1,Z=gadget.pos.Z},
                                 Rot=gadget.rot,
                                 State=MotionState.MotionFallOnGround,
                                 Speed = new Vector(),
