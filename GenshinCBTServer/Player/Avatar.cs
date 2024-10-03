@@ -42,7 +42,7 @@ namespace GenshinCBTServer.Player
         public Avatar(Client client,uint id) {
             this.id = id;
             this.client = client;
-            this.level = 20; // currently 20 for testing
+            this.level = 5; // currently 5 for testing
             entityId = ((uint)EntityType << 24) + (uint)client.random.Next();
             guid = (uint)client.random.Next();
             curHp = GetExcel().baseHp;
