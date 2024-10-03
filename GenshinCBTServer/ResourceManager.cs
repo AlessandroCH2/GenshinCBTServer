@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GenshinCBTServer
@@ -393,12 +394,13 @@ namespace GenshinCBTServer
                             return nil
                         end
                     ");
-                   
-                    
+
+                    group.luaFile = mainLuaString;
 
                     LuaTable gadgets = sceneGroup["gadgets"] as LuaTable;  // Cast to LuaTable for tables
                     LuaTable npcs = sceneGroup["npcs"] as LuaTable;
                     LuaTable monsters = sceneGroup["monsters"] as LuaTable;
+                   
                     for (int i = 0; i < gadgets.Keys.Count; i++)
                     {
                         LuaTable gadgetTable = gadgets[i + 1] as LuaTable;
@@ -467,6 +469,18 @@ namespace GenshinCBTServer
                             rot = new Vector() { X = (float)(double)rot["x"], Y = (float)(double)rot["y"], Z = (float)(double)rot["z"] }
                         };
                         group.npcs.Add(npc);
+                    }
+                    LuaTable triggers = sceneGroup["triggers"] as LuaTable;
+                    for (int i = 0; i < triggers.Keys.Count; i++)
+                    {
+                        LuaTable triggerTable = triggers[i + 1] as LuaTable;
+                        GroupTrigger trigger = new GroupTrigger();
+                        trigger.name = (string)triggerTable["name"];
+                        trigger.actionLua = (string)triggerTable["action"];
+                        trigger.conditionLua = (string)triggerTable["condition"];
+                        if (triggerTable["event"] != null) trigger.eventType = (int)(long)triggerTable["event"];
+                        group.triggers.Add(trigger);
+                        Server.Print($"Trigger: " + trigger.name + " added");
                     }
                 }
             }

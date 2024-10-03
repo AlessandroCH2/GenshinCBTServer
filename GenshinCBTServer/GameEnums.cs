@@ -16,8 +16,7 @@ namespace GenshinCBTServer
 
         GADGET_DUNGEON_PASS_CHEST = 3,
     }
-
-    public enum GadgetState
+    public enum GadgetState // TypeDefIndex: 10045
     {
         Default = 0,
         GatherDrop = 1,

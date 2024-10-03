@@ -139,10 +139,10 @@ namespace GenshinCBTServer.Controllers
 
                 GameEntityGadget entity = (GameEntityGadget)session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
                     Server.Print("Type: " + entity.gadgetType);
-                    if (entity.gadgetType == (uint)GadgetType.GADGET_WORLD_CHECT)
+                    if (entity.chest_drop > 0)
                     {
 
-                        entity.ChangeState(GadgetState.GearStart);
+                        entity.ChangeState(GadgetState.ChestOpened);
                         session.world.KillEntities(new List<GameEntity>() { entity }, VisionType.VisionNone);
 
                         DropList dropList = Server.getResources().GetRandomDrops(session, entity.chest_drop, entity.motionInfo);
@@ -151,7 +151,7 @@ namespace GenshinCBTServer.Controllers
                             session.world.SpawnEntity(en, true, VisionType.VisionReborn);
                         }
 
-                        session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractOpenChest, OpType = InterOpType.InterOpStart });
+                        session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractOpenChest, OpType = InterOpType.InterOpFinish });
 
                     }
                 

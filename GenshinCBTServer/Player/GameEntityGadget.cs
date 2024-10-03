@@ -131,8 +131,8 @@ namespace GenshinCBTServer.Player
                       BornType=GadgetBornType.GadgetBornGadget,
                       GadgetState = state,
                       GadgetType = gadgetType,
-                      
-                      AuthorityPeerId=owner,
+                    IsEnableInteract = false,
+                      AuthorityPeerId =owner,
                       
                    
                     //  GadgetType = 1

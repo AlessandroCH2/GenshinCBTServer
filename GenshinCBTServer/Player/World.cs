@@ -283,8 +283,17 @@ namespace GenshinCBTServer.Player
             return point.X >= minX && point.X <= maxX && point.Z >= minY && point.Z <= maxY;
         }
     }
+    public class GroupTrigger
+    {
+        public string name;
+        public int eventType;
+        public string conditionLua;
+        public string actionLua;
+
+    }
     public class SceneGroup
     {
+        public string luaFile;
         public uint id;
         public uint refreshTime;
         public uint area;
@@ -293,6 +302,7 @@ namespace GenshinCBTServer.Player
         public List<SceneGadget> gadgets = new List<SceneGadget>();
         public List<SceneNpc> npcs = new List<SceneNpc>();
         public List<SceneMonster> monsters = new List<SceneMonster>();
+        public List<GroupTrigger> triggers = new List<GroupTrigger>();
     }
     public class SceneGadget
     {

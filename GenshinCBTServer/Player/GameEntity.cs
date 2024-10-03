@@ -1,4 +1,5 @@
-﻿using GenshinCBTServer.Protocol;
+﻿using GenshinCBTServer.Controllers;
+using GenshinCBTServer.Protocol;
 using Google.Protobuf.Collections;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace GenshinCBTServer.Player
                 died = true;
                 new Thread(new ThreadStart(dieStart)).Start();
             }
-          
+            LuaManager.executeTriggerLua(GetClientOwner(), GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId), EventType.EVENT_ANY_MONSTER_DIE);
         }
         private void dieStart()
         {
