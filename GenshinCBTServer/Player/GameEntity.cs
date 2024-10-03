@@ -59,7 +59,7 @@ namespace GenshinCBTServer.Player
             };
             client.SendPacket((uint)CmdType.EvtEntityStartDieEndNotify, evtEntityStartDieEndNotify);
             */
-            Task.Delay(TimeSpan.FromSeconds(1.0));
+            Task.Delay(TimeSpan.FromSeconds(0.3));
             client.world.KillEntities(new() { this });
 
             DropList dropList = Server.getResources().GetRandomDrops(GetClientOwner(), this.drop_id, motionInfo);
