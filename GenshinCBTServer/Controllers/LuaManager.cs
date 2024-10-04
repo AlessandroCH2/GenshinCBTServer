@@ -132,9 +132,20 @@ namespace GenshinCBTServer.Controllers
         {
             SceneForceUnlockNotify ntf = new SceneForceUnlockNotify()
             {
-                ForceIdList = { (uint)sceneId }
+                ForceIdList = { (uint)sceneId },
+                IsAdd = true
             };
             client.SendPacket((uint)CmdType.SceneForceUnlockNotify, ntf);
+            return 0;
+        }
+        // ScriptLib.LockForce(context, 2)
+        public int LockForce(Client client, int sceneId)
+        {
+            SceneForceLockNotify ntf = new SceneForceLockNotify()
+            {
+                ForceIdList = { (uint)sceneId }
+            };
+            client.SendPacket((uint)CmdType.SceneForceLockNotify, ntf);
             return 0;
         }
         // ScriptLib.SetMonsterAIByGroup(context, 0, 26, 220011001)
