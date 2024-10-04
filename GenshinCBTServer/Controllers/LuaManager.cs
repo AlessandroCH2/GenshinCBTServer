@@ -117,6 +117,16 @@ namespace GenshinCBTServer.Controllers
             entity.Die();
             return 0;
         }
+        // ScriptLib.RefreshGroup(context, { group_id = 201011003, suite = 3 })
+        public int RefreshGroup(Client client, LuaTable parameters)
+        {
+            int groupId = (int)(long)parameters["group_id"];
+            int suite = (int)(long)parameters["suite"];
+            SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == groupId);
+            if (group == null) return 1;
+            // TODO: Implement group refresh
+            return 0;
+        }
         // ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "DungeonSound1001", play_type= 2, is_broadcast = false })
         public int ScenePlaySound(Client client, LuaTable parameters)
         {
