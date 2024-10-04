@@ -137,6 +137,11 @@ namespace GenshinCBTServer.Controllers
             monster.IsAiOpen = Convert.ToBoolean(is_enable);
             return 0;
         }
+        // ScriptLib.GetContextGroupId(context)
+        public int GetContextGroupId(Client client)
+        {
+            return currentGroupId;
+        }
         // ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "DungeonSound1001", play_type= 2, is_broadcast = false })
         public int ScenePlaySound(Client client, LuaTable parameters)
         {
