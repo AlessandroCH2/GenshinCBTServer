@@ -5,6 +5,7 @@ using Google.Protobuf;
 
 
 using Newtonsoft.Json;
+using Pastel;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,7 @@ namespace GenshinCBTServer
             }
             
             showLogs = !hideLogs;
+            showLogs = false;
             Print($"Logs are {(showLogs ? "enabled" : "disabled")}");
 
             enet_initialize();
@@ -110,6 +112,7 @@ namespace GenshinCBTServer
                 string[] split = cmd.Split(" ");
                 string[] args = cmd.Split(" ").Skip(1).ToArray();
                 string command = split[0];
+                //TODO Command handling system
                 switch(command.ToLower())
                 {
                     case "dispatch":
@@ -121,6 +124,17 @@ namespace GenshinCBTServer
                                     dispatch.NewAccount(args[1], args[2]);
                                 }
                             }
+                        }
+                        break;
+                    case "teleport":
+                        if (args.Length >= 4)
+                        {
+                            int uid = int.Parse(args[0]);
+                            float x = float.Parse(args[1]);
+                            float y = float.Parse(args[2]);
+                            float z = float.Parse(args[3]);
+                            clients.Find(c => c.uid == uid).TeleportToScene(clients.Find(c => c.uid == uid).currentSceneId, new Vector() { X = x, Y = y, Z = z });
+                            Server.Print($"Teleporting UID {uid} to {x}, {y}, {z}");
                         }
                         break;
                     case "endload":
@@ -159,7 +173,7 @@ namespace GenshinCBTServer
             dispatch.Start();
         }
         public static CmdType[] hideLog = [CmdType.SceneEntityDrownReq, CmdType.SceneEntityMoveReq, CmdType.SceneEntityMoveRsp, CmdType.PingReq, CmdType.AbilityInvocationsNotify, CmdType.AbilityInvocationFixedNotify
-            ,CmdType.EvtAnimatorParameterNotify,CmdType.ClientAbilityInitFinishNotify,CmdType.PingRsp,CmdType.SceneEntityAppearNotify];
+            ,CmdType.EvtAnimatorParameterNotify,CmdType.ClientAbilityInitFinishNotify,CmdType.PingRsp,CmdType.SceneEntityAppearNotify,CmdType.PlayerStoreNotify];
         public void PeerHandle()
         {
 
@@ -209,7 +223,7 @@ namespace GenshinCBTServer
                         CmdType cmd = (CmdType)genshinPacket.cmdId;
                         if (!hideLog.Contains(cmd) && showLogs == true)
                         {
-                            Server.Print($"[client->server] {cmd.ToString()}");
+                            Server.Print($"[{Server.ColoredText("client", "fcc603")}->{Server.ColoredText("server", "03fc4e")}] {cmd.ToString()}");
                         }
                         NotifyManager.Notify(clients.Find(client => client.peer == netEvent.peer), (CmdType)genshinPacket.cmdId, genshinPacket);
                        
@@ -220,9 +234,13 @@ namespace GenshinCBTServer
                 //enet_host_flush(server);
             }
         }
+        public static string ColoredText(string text,string color)
+        {
+            return text.Pastel(color);
+        }
         public static void Print(string text)
         {
-            Console.WriteLine("[Server] " + text);
+            Console.WriteLine($"[{ColoredText("Server", "03fcce")}] " + text);
         }
     }
 }

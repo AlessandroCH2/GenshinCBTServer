@@ -1,4 +1,5 @@
-﻿using GenshinCBTServer.Excel;
+﻿using GenshinCBTServer.Controllers;
+using GenshinCBTServer.Excel;
 using GenshinCBTServer.Protocol;
 using Google.Protobuf.Collections;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GenshinCBTServer.ResourceManager;
 
 namespace GenshinCBTServer.Player
 {
@@ -96,6 +98,13 @@ namespace GenshinCBTServer.Player
             
                // if (chest_drop > 0) info.Gadget.GadgetType = 1;
             return info;
+        }
+        public override bool onInteract(Client session, GadgetInteractReq req)
+        {
+            session.world.KillEntities(new List<GameEntity>() { this }, VisionType.VisionNone);
+            session.AddItem(item);
+            session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = id, InteractType = InteractType.InteractPickItem, OpType = InterOpType.InterOpStart });
+            return true;
         }
     }
 }

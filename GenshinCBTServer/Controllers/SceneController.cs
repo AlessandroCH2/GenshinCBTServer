@@ -159,12 +159,23 @@ namespace GenshinCBTServer.Controllers
         [Server.Handler(CmdType.GadgetInteractReq)]
         public static void OnGadgetInteractReq(Client session, CmdType cmdId, Network.Packet packet)
         {
+
             GadgetInteractReq req = packet.DecodeBody<GadgetInteractReq>();
             GameEntity entity_ = session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
+
+
             if(entity_ != null)
-            switch(entity_) {
+            {
+                if (entity_.onInteract(session, req))
+                {
+                    Server.Print("Gadget interacted successfully");
+                }
+            }
+            //To be removed
+            /*switch(entity_) {
                 case GameEntityGadget entity:
                 {
+                    //TODO GameEntityGadget.OnInteract()
                     Server.Print("Type: " + entity.gadgetType);
                     if (entity.chest_drop > 0)
                     {
@@ -176,6 +187,7 @@ namespace GenshinCBTServer.Controllers
                             session.world.SpawnEntity(en, true, VisionType.VisionReborn);
                         }
                         session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractOpenChest, OpType = InterOpType.InterOpFinish });
+                                LuaManager.executeTriggersLua(session, entity.GetGroup(), new ScriptArgs((int)entity.groupId, (int)EventType.EVENT_GATHER,(int)entity.configId));
                     }
                     break;
                 }
@@ -202,7 +214,7 @@ namespace GenshinCBTServer.Controllers
                     session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractGather, OpType = InterOpType.InterOpStart });
                 }
                 break;
-            }
+            }*/
         }
 
         [Server.Handler(CmdType.SceneTransToPointReq)]

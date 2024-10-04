@@ -24,7 +24,7 @@ namespace GenshinCBTServer
         public Webserver server;
         public static void Print(string text)
         {
-            Console.WriteLine("[Dispatch] " + text);
+            Console.WriteLine($"[{Server.ColoredText("Dispatch", "0307fc")}] " + text);
         }
         public void Start()
         {
