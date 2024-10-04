@@ -153,6 +153,26 @@ namespace GenshinCBTServer.Controllers
         {
             return (int)client.world.monsterDieCount;
         }
+        // ScriptLib.UnlockMonsterHp(context, 15)
+        public int UnlockMonsterHp(Client client, int configId)
+        {
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+            if (entity == null) return 1;
+            if (entity is not GameEntityMonster) return 1;
+            GameEntityMonster monster = (GameEntityMonster)entity;
+            monster.isHpLock = false;
+            return 0;
+        }
+        // ScriptLib.LockMonsterHp(context, 15)
+        public int LockMonsterHp(Client client, int configId)
+        {
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+            if (entity == null) return 1;
+            if (entity is not GameEntityMonster) return 1;
+            GameEntityMonster monster = (GameEntityMonster)entity;
+            monster.isHpLock = true;
+            return 0;
+        }
         // ScriptLib.CheckRemainGadgetCountByGroupId(context, {group_id = 133003196})
         public int CheckRemainGadgetCountByGroupId(Client client, LuaTable parameters)
         {

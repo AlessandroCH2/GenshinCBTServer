@@ -38,6 +38,15 @@ namespace GenshinCBTServer.Controllers
                 }
                 else
                 {
+                    if (entity is GameEntityMonster)
+                    {
+                        GameEntityMonster monster = (GameEntityMonster)entity;
+                        if(monster.isHpLock)
+                        {
+                            session.SendPacket((uint)CmdType.EvtBeingHitNotify, req);
+                            return;
+                        }
+                    }
                     entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
                 }
                 

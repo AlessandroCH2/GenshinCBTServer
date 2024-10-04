@@ -14,6 +14,7 @@ namespace GenshinCBTServer.Player
         public uint level, pose_id;
         public Vector bornPos;
         public bool IsAiOpen = true;
+        public bool isHpLock = false;
         public MonsterData GetMonsterExcel()
         {
             return Server.getResources().monsterDataDict[id];
