@@ -127,6 +127,16 @@ namespace GenshinCBTServer.Controllers
             // TODO: Implement group refresh
             return 0;
         }
+        // ScriptLib.UnlockForce(context, 2)
+        public int UnlockForce(Client client, int sceneId)
+        {
+            SceneForceUnlockNotify ntf = new SceneForceUnlockNotify()
+            {
+                ForceIdList = { (uint)sceneId }
+            };
+            client.SendPacket((uint)CmdType.SceneForceUnlockNotify, ntf);
+            return 0;
+        }
         // ScriptLib.SetMonsterAIByGroup(context, 0, 26, 220011001)
         public int SetMonsterAIByGroup(Client client, int is_enable, int configId, int group_id)
         {
