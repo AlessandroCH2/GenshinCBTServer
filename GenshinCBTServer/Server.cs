@@ -66,7 +66,7 @@ namespace GenshinCBTServer
 
                 NotifyManager.Init();
             }
-            
+            Logger.Initialize(); // can also pass hideLogs here
             showLogs = !hideLogs;
            // showLogs = false;
             Print($"Logs are {(showLogs ? "enabled" : "disabled")}");
@@ -129,18 +129,53 @@ namespace GenshinCBTServer
                     case "teleport":
                         if (args.Length >= 4)
                         {
-                            int uid = int.Parse(args[0]);
-                            float x = float.Parse(args[1]);
-                            float y = float.Parse(args[2]);
-                            float z = float.Parse(args[3]);
-                            clients.Find(c => c.uid == uid).TeleportToScene(clients.Find(c => c.uid == uid).currentSceneId, new Vector() { X = x, Y = y, Z = z });
-                            Server.Print($"Teleporting UID {uid} to {x}, {y}, {z}");
+                            try {
+                                int uid = int.Parse(args[0]);
+                                float x = float.Parse(args[1]);
+                                float y = float.Parse(args[2]);
+                                float z = float.Parse(args[3]);
+                                clients.Find(c => c.uid == uid).TeleportToScene(clients.Find(c => c.uid == uid).currentSceneId, new Vector() { X = x, Y = y, Z = z });
+                                Print($"Teleporting UID {uid} to {x}, {y}, {z}");
+                            } catch (Exception e)
+                            {
+                                Print("Invalid arguments");
+                            }
                         }
                         break;
                     case "endload":
                         foreach (Client client in clients)
                         {
                             client.SendPacket((uint)CmdType.EnterSceneDoneRsp, new EnterSceneDoneRsp() { Retcode = 0 });
+                        }
+                        break;
+                    case "pos":
+                        if (args.Length >= 1)
+                        {
+                            if (args[0].ToLower() == "all")
+                            {
+                                foreach (Client client in clients)
+                                {
+                                    Print($"Position of UID {client.uid}: {client.motionInfo.Pos.X}, {client.motionInfo.Pos.Y}, {client.motionInfo.Pos.Z}");
+                                }
+                                return;
+                            }
+                            try
+                            {
+                                int uid = int.Parse(args[0]);
+                                Client client = clients.Find(c => c.uid == uid);
+                                if (client != null)
+                                {
+                                    Print($"Position of UID {uid}: {client.motionInfo.Pos.X}, {client.motionInfo.Pos.Y}, {client.motionInfo.Pos.Z}");
+                                }
+                                else
+                                {
+                                    Print("Client not found");
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Print("Invalid arguments");
+                            }
                         }
                         break;
                     case "sendinventory":
@@ -225,6 +260,8 @@ namespace GenshinCBTServer
                         {
                             Server.Print($"[{Server.ColoredText("client", "fcc603")}->{Server.ColoredText("server", "03fc4e")}] {cmd.ToString()}");
                         }
+                        Logger.Log($"[client->server] {cmd.ToString()}");
+
                         try
                         {
                             NotifyManager.Notify(clients.Find(client => client.peer == netEvent.peer), (CmdType)genshinPacket.cmdId, genshinPacket);
@@ -233,7 +270,7 @@ namespace GenshinCBTServer
                         {
 
                         }
-                        
+
                        
 
                         break;
@@ -248,6 +285,7 @@ namespace GenshinCBTServer
         }
         public static void Print(string text)
         {
+            Logger.Log(text);
             Console.WriteLine($"[{ColoredText("Server", "03fcce")}] " + text);
         }
     }
