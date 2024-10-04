@@ -13,6 +13,8 @@ namespace GenshinCBTServer.Controllers
 {
     public class CombatController
     {
+
+        public static List<uint> blackList = new() { 70220008 };
        
         [Server.Handler(CmdType.EvtBeingHitNotify)]
         public static void OnEvtBeingHitNotify(Client session, CmdType cmdId, Network.Packet packet)
@@ -28,7 +30,7 @@ namespace GenshinCBTServer.Controllers
                 if(entity is GameEntityGadget)
                 {
                     GameEntityGadget gadget = (GameEntityGadget)entity;
-                    if(gadget.GetGadgetConfigRow().Combat.property.isInvincible || gadget.GetGadgetConfigRow().Combat.property.isLockHP || gadget.GetGadgetExcel().type >= 10 && gadget.GetGadgetExcel().type != 19){
+                    if((gadget.GetGadgetConfigRow().Combat.property.isInvincible || gadget.GetGadgetConfigRow().Combat.property.isLockHP || gadget.GetGadgetExcel().type >= 10 && gadget.GetGadgetExcel().type != 19) && !blackList.Contains(gadget.GetGadgetExcel().id)){
                         Server.Print($"Gadget {gadget.id} ({gadget.GetGadgetExcel().id} {gadget.GetGadgetExcel().jsonName} is invincible");
                         Server.Print($"isInvincible {gadget.GetGadgetConfigRow().Combat.property.isInvincible}, type {gadget.GetGadgetExcel().type}");
                         isDamageable = false;
