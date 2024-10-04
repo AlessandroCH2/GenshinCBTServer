@@ -384,6 +384,13 @@ namespace GenshinCBTServer.Player
         public int groupId;
 
     }
+
+    public class Variable
+    {
+        public string name;
+        public int value;
+    }
+
     public class SceneGroup
     {
         public string luaFile;
@@ -391,7 +398,7 @@ namespace GenshinCBTServer.Player
         public uint refreshTime;
         public uint area;
         public Vector pos;
-
+        public List<Variable> variables = new List<Variable>();
         public List<SceneGadget> gadgets = new List<SceneGadget>();
         public List<SceneNpc> npcs = new List<SceneNpc>();
         public List<SceneMonster> monsters = new List<SceneMonster>();

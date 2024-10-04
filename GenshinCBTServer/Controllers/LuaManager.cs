@@ -107,6 +107,58 @@ namespace GenshinCBTServer.Controllers
             return 0;
 
         }
+        // ScriptLib.ChangeGroupVariableValue(context, "var_MONSTER_NUM", -1)
+        public int ChangeGroupVariableValue(Client client, string variable, int value)
+        {
+            Server.Print($"[LUA] Call ChangeGroupVariableValue with {variable},{value}");
+            SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == currentGroupId);
+            if (group == null) return 1;
+            foreach (Variable var in group.variables)
+            {
+                if (var.name == variable)
+                {
+                    var.value = value;
+                    return 0;
+                }
+            }
+            return 1;
+        }
+        // ScriptLib.GetGroupVariableValue(context, "var_MONSTER_NUM")
+        public int GetGroupVariableValue(Client client, string variable)
+        {
+            Server.Print($"[LUA] Call GetGroupVariableValue with {variable}");
+            SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == currentGroupId);
+            if (group == null) return 0;
+            foreach (Variable var in group.variables)
+            {
+                if (var.name == variable)
+                {
+                    return var.value;
+                }
+            }
+            return 0;
+        }
+        // ScriptLib.CreateVariable(context, "int", 3)
+        public int CreateVariable(Client client, string variable, int value)
+        {
+            Server.Print($"[LUA] Call CreateVariable with {variable},{value}");
+            Variable var = new Variable()
+            {
+                name = variable,
+                value = value
+            };
+            SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == currentGroupId);
+            if (group == null) return 1; // idk if should be value
+            group.variables.Add(var);
+            return 0;
+        }
+        // ScriptLib.PrintLog(LogLevel.DEBUG, "CreateMonster succeed")
+        public int CreateVariable(Client client, LogLevel logLevel, string value)
+        {
+            Server.Print($"[LUA] Call CreateVariable with {logLevel},{value}");
+            Server.Print($"[LUA] ({logLevel}): {value}");
+            return 0;
+        }
         public int SetGadgetStateByConfigId(Client client, int configId, int gadgetState)
         {
             Server.Print($"[LUA] Call SetGadgetStateByConfigId with {configId},{gadgetState}");
@@ -154,6 +206,13 @@ namespace GenshinCBTServer.Controllers
             }
             
         }
+    }
+    public enum LogLevel
+    {
+        Info = 0,
+        Warning = 1,
+        Error = 2,
+        Debug = 3
     }
     public class ScriptArgs
     {
