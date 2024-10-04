@@ -170,7 +170,7 @@ namespace GenshinCBTServer.Controllers
             gadget.state = (uint)sceneGadget.state;
             gadget.route_id = sceneGadget.route_id;
             gadget.gadgetType = sceneGadget.type;
-            client.world.SpawnEntity(gadget, true);
+            client.world.SpawnEntity(gadget, true,VisionType.VisionMeet);
             return 0;
         }
         // ScriptLib.PlayCutScene(context, 200201, 60)
