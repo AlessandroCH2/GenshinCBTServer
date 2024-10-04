@@ -17,35 +17,40 @@ namespace GenshinCBTServer.Controllers
         [Server.Handler(CmdType.ClientScriptEventNotify)]
         public static void OnClientScriptEventNotify(Client session, CmdType cmdId, Network.Packet packet)
         {
-            ClientScriptEventNotify req = packet.DecodeBody<ClientScriptEventNotify>();
-            ScriptArgs args = new ScriptArgs(0,(int)req.EventType);
-            args.source_eid = (int)req.SourceEntityId;
-            args.target_eid= (int)req.TargetEntityId;
-            for(int i = 0; i < req.ParamList.Count; i++)
-            {
-                switch (i)
+            try {
+                ClientScriptEventNotify req = packet.DecodeBody<ClientScriptEventNotify>();
+                ScriptArgs args = new ScriptArgs(0,(int)req.EventType);
+                args.source_eid = (int)req.SourceEntityId;
+                args.target_eid= (int)req.TargetEntityId;
+                for(int i = 0; i < req.ParamList.Count; i++)
                 {
-                    case 0 : args.param1 = req.ParamList[i]; break;
-                    case 1: args.param1 = req.ParamList[i]; break;
-                    case 2: args.param1 = req.ParamList[i]; break;
-                }
-            }
-            GameEntity entity = session.world.entities.Find(e => e.entityId == req.SourceEntityId);
-            Server.Print($"Test type: {req.EventType}, {req.SourceEntityId}, entity {(entity!=null ? "Exist" : "Not exist" )}");
-            if (req.EventType == (uint)EventType.EVENT_AVATAR_NEAR_PLATFORM)
-            {
-                if (req.ParamList[0] == 0)
-                {
-                    //ConfigId workaround to implement
-
-                    if(entity != null)
+                    switch (i)
                     {
-                        args.param1 = (int)entity.configId;
+                        case 0 : args.param1 = req.ParamList[i]; break;
+                        case 1: args.param1 = req.ParamList[i]; break;
+                        case 2: args.param1 = req.ParamList[i]; break;
                     }
                 }
+                GameEntity entity = session.world.entities.Find(e => e.entityId == req.SourceEntityId);
+                Server.Print($"Test type: {req.EventType}, {req.SourceEntityId}, entity {(entity!=null ? "Exist" : "Not exist" )}");
+                if (req.EventType == (uint)EventType.EVENT_AVATAR_NEAR_PLATFORM)
+                {
+                    if (req.ParamList[0] == 0)
+                    {
+                        //ConfigId workaround to implement
+
+                        if(entity != null)
+                        {
+                            args.param1 = (int)entity.configId;
+                        }
+                    }
+                }
+                if(entity!=null)
+                LuaManager.executeTriggersLua(session,session.world.currentBlock.groups.Find(g=>g.id==entity.groupId), args);
+            } catch (Exception e)
+            {
+                Server.Print($"Failed to execute script event: {e.Message}");
             }
-            if(entity!=null)
-            LuaManager.executeTriggersLua(session,session.world.currentBlock.groups.Find(g=>g.id==entity.groupId), args);
         }
 
         [Server.Handler(CmdType.MonsterAlertChangeNotify)]

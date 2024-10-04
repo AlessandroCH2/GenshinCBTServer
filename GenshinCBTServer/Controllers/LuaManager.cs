@@ -326,7 +326,8 @@ namespace GenshinCBTServer.Controllers
                 Duration = duration,
                 IsForce = isForce
             };
-            client.SendPacket((uint)CmdType.BeginCameraSceneLookNotify, ntf);
+            // GOD THIS IS ANNOYING
+            // client.SendPacket((uint)CmdType.BeginCameraSceneLookNotify, ntf);
             return 1;
         }
         public int SetGadgetStateByConfigId(Client client, int configId, int gadgetState)

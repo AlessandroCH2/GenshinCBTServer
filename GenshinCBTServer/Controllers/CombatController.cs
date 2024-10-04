@@ -13,8 +13,8 @@ namespace GenshinCBTServer.Controllers
 {
     public class CombatController
     {
-
-        public static List<uint> blackList = new() { 70220008 };
+        // those are hardcoded ids of gadgets that are marked as invincible but they shouldn't be
+        public static List<uint> blackList = new() { 70220008, 70220021 }; // don't worry, it's temporary until we implement ability manager
        
         [Server.Handler(CmdType.EvtBeingHitNotify)]
         public static void OnEvtBeingHitNotify(Client session, CmdType cmdId, Network.Packet packet)
