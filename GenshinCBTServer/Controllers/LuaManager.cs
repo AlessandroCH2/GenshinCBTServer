@@ -127,6 +127,16 @@ namespace GenshinCBTServer.Controllers
             // TODO: Implement group refresh
             return 0;
         }
+        // ScriptLib.SetMonsterAIByGroup(context, 0, 26, 220011001)
+        public int SetMonsterAIByGroup(Client client, int is_enable, int configId, int group_id)
+        {
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId && e.groupId == group_id);
+            if (entity == null) return 1;
+            if (entity is not GameEntityMonster) return 1;
+            GameEntityMonster monster = (GameEntityMonster)entity;
+            monster.IsAiOpen = Convert.ToBoolean(is_enable);
+            return 0;
+        }
         // ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "DungeonSound1001", play_type= 2, is_broadcast = false })
         public int ScenePlaySound(Client client, LuaTable parameters)
         {
