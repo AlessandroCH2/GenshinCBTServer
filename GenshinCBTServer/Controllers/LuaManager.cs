@@ -108,6 +108,15 @@ namespace GenshinCBTServer.Controllers
             client.SendPacket((uint)CmdType.CutSceneBeginNotify, ntf);
             return 0;
         }
+        // ScriptLib.KillEntityByConfigId(context, { config_id = 2603 })
+        public int KillEntityByConfigId(Client client, LuaTable parameters)
+        {
+            int configId = (int)(long)parameters["config_id"];
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+            if (entity == null) return 1;
+            entity.Die();
+            return 0;
+        }
         // ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "DungeonSound1001", play_type= 2, is_broadcast = false })
         public int ScenePlaySound(Client client, LuaTable parameters)
         {
