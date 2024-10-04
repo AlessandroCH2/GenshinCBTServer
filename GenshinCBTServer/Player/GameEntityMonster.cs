@@ -13,6 +13,8 @@ namespace GenshinCBTServer.Player
     {
         public uint level, pose_id;
         public Vector bornPos;
+        public bool IsAiOpen = true;
+        public bool isHpLock = false;
         public MonsterData GetMonsterExcel()
         {
             return Server.getResources().monsterDataDict[id];
@@ -77,7 +79,7 @@ namespace GenshinCBTServer.Player
             {
                 EntityType = EntityType,
                 EntityId = entityId,
-                AiInfo = new() { BornPos=bornPos,IsAiOpen=true},
+                AiInfo = new() { BornPos=bornPos,IsAiOpen=IsAiOpen},
                 MotionInfo = motionInfo,
                 LifeState = fightprops[(uint)FightPropType.FIGHT_PROP_CUR_HP] > 0 ? (uint)LifeState.LIFE_ALIVE : (uint)LifeState.LIFE_DEAD,
                 //Name=GetGadgetExcel().jsonName,

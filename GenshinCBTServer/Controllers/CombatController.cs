@@ -28,16 +28,28 @@ namespace GenshinCBTServer.Controllers
                 if(entity is GameEntityGadget)
                 {
                     GameEntityGadget gadget = (GameEntityGadget)entity;
-                    if(gadget.GetGadgetConfigRow().Combat.property.isInvincible  || gadget.GetGadgetExcel().type == 26) {
+                    if(gadget.GetGadgetConfigRow().Combat.property.isInvincible  || gadget.GetGadgetExcel().type >= 10 && gadget.GetGadgetExcel().type != 19){
+                        // should add gadget.GetGadgetConfigRow().Combat.property.isLockHP to the check?
                         Server.Print($"Gadget {gadget.id} ({gadget.GetGadgetExcel().id} {gadget.GetGadgetExcel().jsonName} is invincible");
                         Server.Print($"isInvincible {gadget.GetGadgetConfigRow().Combat.property.isInvincible}, type {gadget.GetGadgetExcel().type}");
                         isDamageable = false;
+                    } else {
+                        entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
+                        Server.Print($"not invincible? {gadget.GetGadgetConfigRow().Combat.property.isInvincible}, type {gadget.GetGadgetExcel().type}, {gadget.GetGadgetExcel().id}");
                     }
-                    entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
 
                 }
                 else
                 {
+                    if (entity is GameEntityMonster)
+                    {
+                        GameEntityMonster monster = (GameEntityMonster)entity;
+                        if(monster.isHpLock)
+                        {
+                            session.SendPacket((uint)CmdType.EvtBeingHitNotify, req);
+                            return;
+                        }
+                    }
                     entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
                 }
                 

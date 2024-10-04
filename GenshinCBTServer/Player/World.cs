@@ -19,6 +19,7 @@ namespace GenshinCBTServer.Player
     {
         public uint sceneId;
         public Client client;
+        public uint monsterDieCount = 0;
 
         public List<GameEntity> entities = new List<GameEntity>();
         public List<uint> mobEntitiesNear = new List<uint>();
@@ -47,6 +48,7 @@ namespace GenshinCBTServer.Player
             KillEntities(entities);
             entities.Clear();
             currentBlock = null;
+            monsterDieCount = 0;
            
         }
         public void KillEntities(List<GameEntity> tokill,VisionType disType = VisionType.VisionNone)
@@ -58,6 +60,10 @@ namespace GenshinCBTServer.Player
                 notify.EntityList.Add(entity.entityId);
                 LifeStateChangeNotify notify1 = new LifeStateChangeNotify() { EntityId=entity.entityId,LifeState=(int)LifeState.LIFE_DEAD,DieType=PlayerDieType.PlayerDieNone};
                 client.SendPacket((uint)CmdType.LifeStateChangeNotify, notify1);
+                if (entity is GameEntityMonster)
+                {
+                    monsterDieCount++;
+                }
             }
             notify.DisappearType = disType;
             client.SendPacket((uint)CmdType.SceneEntityDisappearNotify, notify);
@@ -384,6 +390,13 @@ namespace GenshinCBTServer.Player
         public int groupId;
 
     }
+
+    public class Variable
+    {
+        public string name;
+        public int value;
+    }
+
     public class SceneGroup
     {
         public string luaFile;
@@ -391,7 +404,7 @@ namespace GenshinCBTServer.Player
         public uint refreshTime;
         public uint area;
         public Vector pos;
-
+        public List<Variable> variables = new List<Variable>();
         public List<SceneGadget> gadgets = new List<SceneGadget>();
         public List<SceneNpc> npcs = new List<SceneNpc>();
         public List<SceneMonster> monsters = new List<SceneMonster>();

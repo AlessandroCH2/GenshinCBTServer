@@ -36,14 +36,20 @@ namespace GenshinCBTServer.Player
         public bool died = false;
         public void Die()
         {
+            Client client = GetClientOwner();
             if (!died)
             {
                 died = true;
                 new Thread(new ThreadStart(dieStart)).Start();
             }
-           if(this is GameEntityMonster) LuaManager.executeTriggersLua(GetClientOwner(), GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId),
-                new ScriptArgs((int)groupId, (int)EventType.EVENT_ANY_MONSTER_DIE)
+            if(this is GameEntityMonster) {
+                LuaManager.executeTriggersLua(
+                    GetClientOwner(), 
+                    GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId),
+                    new ScriptArgs((int)groupId, (int)EventType.EVENT_ANY_MONSTER_DIE)
                 );
+                client.world.monsterDieCount++;
+            }
         }
         private void dieStart()
         {

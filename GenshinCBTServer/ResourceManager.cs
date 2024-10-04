@@ -379,6 +379,10 @@ namespace GenshinCBTServer
                                 refreshTime = (uint)(long)groupTable["refresh_time"],
 
                             };
+                            if (groupTable["variables"] != null)
+                            {
+                                /// here implement variables
+                            }
                             if (groupTable["area"] != null)
                             {
                                 group.area = (uint)(long)groupTable["area"];
@@ -514,7 +518,18 @@ namespace GenshinCBTServer
                         trigger.groupId = (int)group.id;
                         if (triggerTable["event"] != null) trigger.eventType = (int)(long)triggerTable["event"];
                         group.triggers.Add(trigger);
-                       // Server.Print($"Trigger: " + trigger.name + " added");
+                        // Server.Print($"Trigger: " + trigger.name + " added");
+                    }
+                    LuaTable variables = sceneGroup["variables"] as LuaTable;
+                    for (int i = 0; i < variables.Keys.Count; i++)
+                    {
+                        LuaTable variablesTable = variables[i + 1] as LuaTable;
+                        // Server.Print($"Variable:  {variablesTable["name"]}: {variablesTable["value"]} (on ${mainLua})");
+                        Variable variable = new Variable();
+                        variable.name = (string)variablesTable["name"];
+                        variable.value = (int)(long)variablesTable["value"];
+                        // Server.Print($"Variable: {variable.name} added with value {variable.value}");
+                        group.variables.Add(variable);
                     }
                     LuaTable regions = sceneGroup["regions"] as LuaTable;
                     for (int i = 0; i < regions.Keys.Count; i++)
