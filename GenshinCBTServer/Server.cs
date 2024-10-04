@@ -66,7 +66,7 @@ namespace GenshinCBTServer
 
                 NotifyManager.Init();
             }
-            
+            Logger.Initialize(); // can also pass hideLogs here
             showLogs = !hideLogs;
            // showLogs = false;
             Print($"Logs are {(showLogs ? "enabled" : "disabled")}");
@@ -260,6 +260,7 @@ namespace GenshinCBTServer
                         {
                             Server.Print($"[{Server.ColoredText("client", "fcc603")}->{Server.ColoredText("server", "03fc4e")}] {cmd.ToString()}");
                         }
+                        Logger.Log($"[client->server] {cmd.ToString()}");
                         NotifyManager.Notify(clients.Find(client => client.peer == netEvent.peer), (CmdType)genshinPacket.cmdId, genshinPacket);
                        
 
@@ -275,6 +276,7 @@ namespace GenshinCBTServer
         }
         public static void Print(string text)
         {
+            Logger.Log(text);
             Console.WriteLine($"[{ColoredText("Server", "03fcce")}] " + text);
         }
     }

@@ -315,7 +315,7 @@ namespace GenshinCBTServer
                 {
                     Server.Print($"[{Server.ColoredText("server", "03fc4e")}->{Server.ColoredText("client", "fcc603")}] {((CmdType)cmdId).ToString()} body: {protoMessage.ToString().Pastel(Color.FromArgb(165, 229, 250))}");
                 }
-               
+                Logger.Log($"[server->client] {((CmdType)cmdId).ToString()} body: {protoMessage.ToString()}");
             }
         }
 
