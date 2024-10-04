@@ -143,6 +143,10 @@ namespace GenshinCBTServer.Player
                                 if (entity.inRegions.Contains(region.config_id))
                                 {
                                     entity.inRegions.Remove(region.config_id);
+                                    ScriptArgs args = new((int)group.id, (int)EventType.EVENT_LEAVE_REGION, (int)region.config_id);
+                                    args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
+                                    args.source_eid = (int)region.config_id;
+                                    LuaManager.executeTriggersLua(client, group, args);
                                     Server.Print($"Leaving region id " + region.config_id);
                                 }
                             }
@@ -167,6 +171,10 @@ namespace GenshinCBTServer.Player
                         if (client.inRegions.Contains(region.config_id))
                         {
                             client.inRegions.Remove(region.config_id);
+                            ScriptArgs args = new((int)group.id, (int)EventType.EVENT_LEAVE_REGION, (int)region.config_id);
+                            args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
+                            args.source_eid = (int)region.config_id;
+                            LuaManager.executeTriggersLua(client, group, args);
                             Server.Print($"AvatarLeaving region id " + region.config_id);
                         }
                     }

@@ -129,12 +129,17 @@ namespace GenshinCBTServer
                     case "teleport":
                         if (args.Length >= 4)
                         {
-                            int uid = int.Parse(args[0]);
-                            float x = float.Parse(args[1]);
-                            float y = float.Parse(args[2]);
-                            float z = float.Parse(args[3]);
-                            clients.Find(c => c.uid == uid).TeleportToScene(clients.Find(c => c.uid == uid).currentSceneId, new Vector() { X = x, Y = y, Z = z });
-                            Server.Print($"Teleporting UID {uid} to {x}, {y}, {z}");
+                            try {
+                                int uid = int.Parse(args[0]);
+                                float x = float.Parse(args[1]);
+                                float y = float.Parse(args[2]);
+                                float z = float.Parse(args[3]);
+                                clients.Find(c => c.uid == uid).TeleportToScene(clients.Find(c => c.uid == uid).currentSceneId, new Vector() { X = x, Y = y, Z = z });
+                                Server.Print($"Teleporting UID {uid} to {x}, {y}, {z}");
+                            } catch (Exception e)
+                            {
+                                Server.Print("Invalid arguments");
+                            }
                         }
                         break;
                     case "endload":
