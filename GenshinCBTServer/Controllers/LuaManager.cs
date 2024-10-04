@@ -46,7 +46,36 @@ namespace GenshinCBTServer.Controllers
         {
             return client.world.entities.FindAll(e=>e.groupId == groupId && e is GameEntityMonster).Count;
         }
-
+        public int ShowReminder(Client client, int reminderId)
+        {
+            DungeonShowReminderNotify ntf = new DungeonShowReminderNotify()
+            {
+                ReminderId = (uint)reminderId
+            };
+            client.SendPacket((uint)CmdType.DungeonShowReminderNotify, ntf);
+            return 0;
+        }
+        // ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "DungeonSound1001", play_type= 2, is_broadcast = false })
+        public int ScenePlaySound(Client client, LuaTable parameters)
+        {
+            LuaTable play_pos = (LuaTable)parameters["play_pos"];
+            float x = (float)(double)play_pos["x"];
+            float y = (float)(double)play_pos["y"];
+            float z = (float)(double)play_pos["z"];
+            ScenePlayerSoundNotify ntf = new ScenePlayerSoundNotify()
+            {
+                PlayPos = new Vector()
+                {
+                    X = x,
+                    Y = y,
+                    Z = z
+                },
+                SoundName = (string)parameters["sound_name"],
+                PlayType = (ScenePlayerSoundNotify.Types.PlaySoundType)(uint)(long)parameters["play_type"],
+            };
+            client.SendPacket((uint)CmdType.ScenePlayerSoundNotify, ntf);
+            return 0;
+        }
         public int ChangeGroupGadget(Client client, LuaTable parameters)
         {
             int configId = (int)(long)parameters["config_id"];
@@ -150,24 +179,6 @@ namespace GenshinCBTServer.Controllers
             SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == currentGroupId);
             if (group == null) return 1; // idk if should be value
             group.variables.Add(var);
-            return 0;
-        }
-        // ScriptLib.PrintLog(LogLevel.DEBUG, "CreateMonster succeed")
-        public int CreateVariable(Client client, LogLevel logLevel, string value)
-        {
-            Server.Print($"[LUA] Call CreateVariable with {logLevel},{value}");
-            Server.Print($"[LUA] ({logLevel}): {value}");
-            return 0;
-        }
-        public int SetGadgetStateByConfigId(Client client, int configId, int gadgetState)
-        {
-            Server.Print($"[LUA] Call SetGadgetStateByConfigId with {configId},{gadgetState}");
-            GameEntity entity = client.world.entities.Find(e=>e.configId==configId);
-            if (!(entity is GameEntityGadget)) {
-                return 1;
-            }
-            GameEntityGadget gadget = (GameEntityGadget)entity;
-            gadget.ChangeState((GadgetState)gadgetState);
             return 0;
         }
         public int KillGroupEntity(Client client,LuaTable table)
