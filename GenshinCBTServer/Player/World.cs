@@ -258,6 +258,17 @@ namespace GenshinCBTServer.Player
                         entity.gadgetType = gadget.type;
                         
                         SpawnEntity(entity);
+
+                        if (entity.route_id > 0)
+                        {
+                            PlatformStartRouteNotify ntf = new PlatformStartRouteNotify()
+                            {
+                                EntityId = entity.entityId,
+                                Platform = entity.asInfo().Gadget.Platform,
+                                SceneTime = 9000
+                            };
+                            client.SendPacket((uint)CmdType.PlatformStartRouteNotify, ntf);
+                        }
                     }
                 foreach (SceneMonster monster in group.monsters)
                 {
