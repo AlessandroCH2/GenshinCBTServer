@@ -260,10 +260,10 @@ namespace GenshinCBTServer.Controllers
         public int BeginCameraSceneLook(Client client, LuaTable parameters)
         {
             LuaTable lookPos = (LuaTable)parameters["look_pos"];
-            float x = (float)(double)lookPos["x"];
-            float y = (float)(double)lookPos["y"];
-            float z = (float)(double)lookPos["z"];
-            float duration = (float)(double)parameters["duration"];
+            float x = (float)(double)Convert.ToDouble(lookPos["x"]);
+            float y = (float)(double)Convert.ToDouble(lookPos["y"]);
+            float z = (float)(double)Convert.ToDouble(lookPos["z"]);
+            float duration = (float)(double)Convert.ToDouble(parameters["duration"]);
             bool isForce = (bool)parameters["is_force"];
             bool isBroadcast = (bool)parameters["is_broadcast"];
             Server.Print($"[LUA] Call BeginCameraSceneLook with {x},{y},{z},{duration},{isForce},{isBroadcast}");
