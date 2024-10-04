@@ -102,7 +102,7 @@ namespace GenshinCBTServer.Controllers
         {
 
             PingReq req = packet.DecodeBody<PingReq>();
-
+            
 
             session.SendPacket((uint)CmdType.PingRsp, new PingRsp() { ClientTime=req.ClientTime,Retcode=0,Seq=req.Seq});
         }

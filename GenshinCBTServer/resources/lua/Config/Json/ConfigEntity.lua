@@ -8,14 +8,24 @@
 --物件状态
 GadgetState =
 {
-	Default = 0, -- 默认待机状态
-	ChestLocked = 1, -- 宝箱锁住状态
-	GearStart = 2, -- 机关启动状态
-	GearStop = 3, -- 机关停止状态
-	CrystalResonate1 = 4, -- 水晶共鸣等级1
-	CrystalResonate2 = 5, -- 水晶共鸣等级2
-	CrystalExplode = 6, -- 水晶爆发
-	CrystalDrain = 7, -- 水晶枯竭
+        Default = 0,
+        GatherDrop = 1,
+        ChestLocked = 101,
+        ChestOpened = 102,
+        ChestTrap = 103,
+        ChestBramble = 104,
+        ChestFrozen = 105,
+        GearStart = 201,
+        GearStop = 202,
+        GearAction1 = 203,
+        GearAction2 = 204,
+        CrystalResonate1 = 301,
+        CrystalResonate2 = 302,
+        CrystalExplode = 303,
+        CrystalDrain = 304,
+        Action01 = 901,
+        Action02 = 902,
+        Action03 = 903,
 }
 
 --机关类型

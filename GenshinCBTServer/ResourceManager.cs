@@ -427,7 +427,7 @@ namespace GenshinCBTServer
                 string mainLuaString = getRequiredLuas() + File.ReadAllText(mainLua);
                 using (Lua sceneGroup = new Lua())
                 {
-
+                    mainLuaString = ReplaceGadgetState(mainLuaString);
                     sceneGroup.DoString(mainLuaString);
 
                     sceneGroup.DoString(@"
@@ -473,11 +473,11 @@ namespace GenshinCBTServer
                         if (gadgetTable["chest_drop_id"] != null) gadget.chest_drop_id = (uint)(long)gadgetTable["chest_drop_id"];
                         if (gadgetTable["state"] != null) {
                             gadget.state = (int)(long)gadgetTable["state"];
-                            string stateName = sceneGroup.GetFunction("GetEnumName").Call(sceneGroup["GadgetState"], gadget.state)[0].ToString()!;
-                            if (Enum.TryParse(typeof(GadgetState), stateName, out var parsedState) && parsedState is GadgetState gadgetState)
-                            {
-                                gadget.state = (int)gadgetState;
-                            }
+                            //string stateName = sceneGroup.GetFunction("GetEnumName").Call(sceneGroup["GadgetState"], gadget.state)[0].ToString()!;
+                            //if (Enum.TryParse(typeof(GadgetState), stateName, out var parsedState) && parsedState is GadgetState gadgetState)
+                            //{
+                            // gadget.state = (int)gadgetState;
+                            // }
                         }
                         if (gadgetTable["route_id"] != null) gadget.route_id = (uint)(long)gadgetTable["route_id"];
                         if (gadgetTable["type"] != null) gadget.type = (uint)(long)gadgetTable["type"];
@@ -582,7 +582,17 @@ namespace GenshinCBTServer
                 Server.Print($"Cannot get scene group things because lua file not found");
             }
         }
-        
+
+        private string ReplaceGadgetState(string mainLuaString)
+        {
+            foreach(string v in Enum.GetNames(typeof(GadgetState)))
+            {
+                int val = (int)Enum.Parse(typeof(GadgetState), v);
+                string rep = "GadgetState." + v;
+                mainLuaString = mainLuaString.Replace(rep, ""+val);
+            }
+            return mainLuaString;
+        }
 
         private ScenePointRow LoadScenePointData(uint sceneId)
         {

@@ -38,7 +38,8 @@ namespace GenshinCBTServer.Controllers
                         entity.FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
                         Server.Print($"not invincible? {gadget.GetGadgetConfigRow().Combat.property.isInvincible}, type {gadget.GetGadgetExcel().type}, {gadget.GetGadgetExcel().id}");
                     }
-
+                    //momentary fix
+                    CheckIsController(gadget, req);
                 }
                 else
                 {
@@ -62,6 +63,37 @@ namespace GenshinCBTServer.Controllers
             }
 
             session.SendPacket((uint)CmdType.EvtBeingHitNotify, req);
+
+        }
+
+        private static void CheckIsController(GameEntityGadget gadget, EvtBeingHitNotify req)
+        {
+            //Anemo
+            if(gadget.id== 70900039 && req.AttackResult.ElementType == (int)ElementType.Wind)
+            {
+                gadget.ChangeState(GadgetState.GearStart);
+
+            }
+            //Electro
+            if (gadget.id == 70900008 && req.AttackResult.ElementType == (int)ElementType.Electric)
+            {
+                gadget.ChangeState(GadgetState.GearStart);
+
+            }
+            //Cryo
+            if (gadget.id == 70900009 && req.AttackResult.ElementType == (int)ElementType.Ice)
+            {
+                gadget.ChangeState(GadgetState.GearStart);
+
+            }
+            //Pyro
+            if (gadget.id == 70900007 && req.AttackResult.ElementType == (int)ElementType.Fire)
+            {
+                gadget.ChangeState(GadgetState.GearStart);
+
+            }
+            
+
 
         }
 

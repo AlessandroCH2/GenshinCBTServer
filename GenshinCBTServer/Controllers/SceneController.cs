@@ -44,9 +44,18 @@ namespace GenshinCBTServer.Controllers
                             args.param1 = (int)entity.configId;
                         }
                     }
+                    Server.Print("Near platform");
+                    
                 }
                 if(entity!=null)
                 LuaManager.executeTriggersLua(session,session.world.currentBlock.groups.Find(g=>g.id==entity.groupId), args);
+                if (entity != null && req.EventType == (uint)EventType.EVENT_AVATAR_NEAR_PLATFORM)
+                    if (entity is GameEntityGadget)
+                {
+
+                    GameEntityGadget gameEntityGadget = (GameEntityGadget)entity;
+                    if(!gameEntityGadget.Route.IsStarted)gameEntityGadget.StartPlatform();
+                }
             } catch (Exception e)
             {
                 Server.Print($"Failed to execute script event: {e.Message}");

@@ -45,7 +45,10 @@ namespace GenshinCBTServer.Controllers
         public int currentGroupId;
         public Client curClient;
 
-       
+        public void PrintLog(string msg)
+        {
+            Server.Print($"[LUA] {msg}");
+        }
         public int GetGroupMonsterCount(Client client)
         {
             return client.world.entities.FindAll(e => e.groupId == currentGroupId && e is GameEntityMonster).Count;
@@ -80,19 +83,20 @@ namespace GenshinCBTServer.Controllers
             if (entity is not GameEntityGadget) return 1;
             GameEntityGadget platform = (GameEntityGadget)entity;
             if (platform.route_id <= 0) return 1;
-            PlatformStartRouteNotify ntf = new PlatformStartRouteNotify()
-            {
-                EntityId = platform.entityId,
-                Platform = platform.asInfo().Gadget.Platform,
-                SceneTime = 9000
-            };
-            client.SendPacket((uint)CmdType.PlatformStartRouteNotify, ntf);
-            return 0;
+            /*  PlatformStartRouteNotify ntf = new PlatformStartRouteNotify()
+              {
+                  EntityId = platform.entityId,
+                  Platform = platform.asInfo().Gadget.Platform,
+                  SceneTime = 9000
+              };
+              client.SendPacket((uint)CmdType.PlatformStartRouteNotify, ntf);*/
+            ;
+            return platform.StartPlatform() ? 0 : 2;
         }
         // ScriptLib.StopPlatform(context, 172)
         public int StopPlatform(Client client, int configId)
         {
-            GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+         /*   GameEntity entity = client.world.entities.Find(e => e.configId == configId);
             if (entity == null) return 1;
             if (entity is not GameEntityGadget) return 1;
             GameEntityGadget platform = (GameEntityGadget)entity;
@@ -102,36 +106,53 @@ namespace GenshinCBTServer.Controllers
                 EntityId = platform.entityId,
                 SceneTime = 9000
             };
-            client.SendPacket((uint)CmdType.PlatformStopRouteNotify, ntf);
+            client.SendPacket((uint)CmdType.PlatformStopRouteNotify, ntf);*/
+         //TODO
             return 0;
         }
         // ScriptLib.SetPlatformRouteId(context, 87, 20000009)
         public int SetPlatformRouteId(Client client, int configId, int routeId)
         {
             GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+            Server.Print($"[LUA] Call SetPlatformRouteId with {configId}, entity is {(entity != null ? "not null" : "null")}");
             if (entity == null) return 1;
             if (entity is not GameEntityGadget) return 1;
             GameEntityGadget platform = (GameEntityGadget)entity;
+            if (platform.Route.RouteId == routeId) return 0;
+            platform.Route.RouteId = routeId;
+            platform.Route.StartIndex = 0;
+           
             platform.route_id = (uint)routeId;
+            //Implement tasks?
+
+            //
+
             PlatformChangeRouteNotify ntf = new PlatformChangeRouteNotify()
             {
                 EntityId = platform.entityId,
                 Platform = platform.asInfo().Gadget.Platform,
             };
             client.SendPacket((uint)CmdType.PlatformChangeRouteNotify, ntf);
-            PlatformStopRouteNotify stopNtf = new PlatformStopRouteNotify()
+            if (platform.Route.IsStarted)
             {
-                EntityId = platform.entityId,
-                SceneTime = 9000
-            };
-            client.SendPacket((uint)CmdType.PlatformStopRouteNotify, stopNtf);
-            PlatformStartRouteNotify startNtf = new PlatformStartRouteNotify()
-            {
-                EntityId = platform.entityId,
-                Platform = platform.asInfo().Gadget.Platform,
-                SceneTime = 9000
-            };
-            client.SendPacket((uint)CmdType.PlatformStartRouteNotify, startNtf);
+                platform.Route.IsStarted = false;
+                platform.StartPlatform();
+            }
+            
+            //platform.StartPlatform();
+            /* PlatformStopRouteNotify stopNtf = new PlatformStopRouteNotify()
+             {
+                 EntityId = platform.entityId,
+                 SceneTime = 9000
+             };
+             client.SendPacket((uint)CmdType.PlatformStopRouteNotify, stopNtf);
+             PlatformStartRouteNotify startNtf = new PlatformStartRouteNotify()
+             {
+                 EntityId = platform.entityId,
+                 Platform = platform.asInfo().Gadget.Platform,
+                 SceneTime = 9000
+             };
+             client.SendPacket((uint)CmdType.PlatformStartRouteNotify, startNtf);*/
             return 0;
         }
         // ScriptLib.CreateGadget(context, { config_id = 1405 })
@@ -142,6 +163,13 @@ namespace GenshinCBTServer.Controllers
             SceneGadget sceneGadget = client.world.currentBlock.groups.Find(g => g.id == currentGroupId).gadgets.Find(g => g.config_id == configId);
             sceneGadget.pos.Y -= 1.0f;
             GameEntityGadget gadget = new GameEntityGadget(entityId, sceneGadget.gadget_id, new MotionInfo() { Pos = sceneGadget.pos, Rot = sceneGadget.rot });
+            gadget.configId = sceneGadget.config_id;
+            gadget.groupId = (uint)currentGroupId;
+            gadget.owner = (uint)client.gamePeer;
+            gadget.chest_drop = sceneGadget.chest_drop_id;
+            gadget.state = (uint)sceneGadget.state;
+            gadget.route_id = sceneGadget.route_id;
+            gadget.gadgetType = sceneGadget.type;
             client.world.SpawnEntity(gadget, true);
             return 0;
         }
@@ -376,16 +404,35 @@ namespace GenshinCBTServer.Controllers
             }
             return 1;
         }
-        // ScriptLib.GetGroupVariableValue(context, "var_MONSTER_NUM")
-        public int GetGroupVariableValue(Client client, string variable)
+        public int SetGroupVariableValue(Client client, string variable, int value)
         {
-            Server.Print($"[LUA] Call GetGroupVariableValue with {variable}");
+
             SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == currentGroupId);
             if (group == null) return 0;
             foreach (Variable var in group.variables)
             {
                 if (var.name == variable)
                 {
+                    var.value = value;
+                    Server.Print($"[LUA] Call SetGroupVariableValue with {variable} set value: {var.value}");
+                    return 0;
+                }
+            }
+            group.variables.Add(new Variable() { name = variable, value = value });
+            Server.Print($"[LUA] Call SetGroupVariableValue with {variable} new value: {value}");
+            return 0;
+        }
+        // ScriptLib.GetGroupVariableValue(context, "var_MONSTER_NUM")
+        public int GetGroupVariableValue(Client client, string variable)
+        {
+           
+            SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == currentGroupId);
+            if (group == null) return 0;
+            foreach (Variable var in group.variables)
+            {
+                if (var.name == variable)
+                {
+                    Server.Print($"[LUA] Call GetGroupVariableValue with {variable} value: {var.value}");
                     return var.value;
                 }
             }
@@ -479,6 +526,13 @@ namespace GenshinCBTServer.Controllers
             this.type = eventType;
             this.param1 = param1;
         }
+
+        public object toTable()
+        {
+            
+
+            return new {param1=param1,param2=param2,param3=param3, source_eid = source_eid ,target_eid=target_eid,type=type,group_id=group_id,source=source};
+        }
     }
     public class LuaManager
     {
@@ -500,13 +554,18 @@ namespace GenshinCBTServer.Controllers
                     scriptLib.currentGroupId = (int)group.id;
                     groupLua["ScriptLib"] = scriptLib;
                     groupLua["context_"] = client;
-                    groupLua["evt_"] = args;
+                    groupLua["evt_"] = args.toTable();
+
                     groupLua.DoString(group.luaFile.Replace("ScriptLib.", "ScriptLib:"));
 
                     string luaScript = @$"
+                                ScriptLib:PrintLog(''..GadgetState.GearStart)
                                 if {trigger.conditionLua}(context_, evt_) then
                                     {trigger.actionLua}(context_, evt_)
-
+                                else
+                                    ScriptLib:PrintLog('Condition is false for some reason: '..evt_.param2..' state '..evt_.param1)
+                                    ScriptLib:PrintLog(''..type(evt_.param2))
+                                   
                                 end
                             
                         ";

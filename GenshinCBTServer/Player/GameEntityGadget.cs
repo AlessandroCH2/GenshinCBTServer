@@ -8,16 +8,130 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static GenshinCBTServer.ResourceManager;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace GenshinCBTServer.Player
 {
+    public abstract class BaseRoute
+    {
+        public bool IsStarted { get; set; }
+        public bool IsActive { get; set; }
+        public Vector StartPos { get; set; }
+        public int StartSceneTime { get; set; }
+        public int StopSceneTime { get; set; }
+
+        protected BaseRoute(Vector startPos, bool isStarted, bool isActive)
+        {
+            this.StartPos = startPos;
+            this.IsStarted = isStarted;
+            this.IsActive = isActive;
+        }
+
+        protected BaseRoute(SceneGadget gadget)
+        {
+            this.StartPos = gadget.pos;
+          //  this.IsStarted = gadget.StartRoute;
+          //  this.IsActive = gadget.StartRoute;
+        }
+
+        public static BaseRoute FromSceneGadget(SceneGadget sceneGadget)
+        {
+            if (sceneGadget.route_id != 0)
+            {
+                return new ConfigRoute(sceneGadget);
+            }
+           /* else if (sceneGadget.IsUsePointArray)
+            {
+                return new PointArrayRoute(sceneGadget);
+            }*/
+            return null;
+        }
+
+        public bool StartRoute(World scene)
+        {
+            if (this.IsStarted)
+            {
+                return false;
+            }
+            this.IsStarted = true;
+            this.IsActive = true;
+            this.StartSceneTime = scene.GetSceneTime() + 300;
+            return true;
+        }
+
+        public bool StopRoute(World scene)
+        {
+            if (!this.IsStarted)
+            {
+                return false;
+            }
+            this.IsStarted = false;
+            this.IsActive = false;
+            this.StartSceneTime = scene.GetSceneTime();
+            this.StopSceneTime = scene.GetSceneTime();
+
+            return true;
+        }
+
+        
+        public virtual PlatformInfo ToProto()
+        {
+            var result = new PlatformInfo
+            {
+                IsStarted = IsStarted,
+               StartPos = StartPos,
+              
+                StartSceneTime =(uint) StartSceneTime
+            };
+
+          
+
+            return result;
+        }
+    }
+    public class ConfigRoute : BaseRoute
+    {
+        public int RouteId { get; set; }
+        public int StartIndex { get; set; }
+        public List<int> ScheduledIndexes { get; set; }
+
+        public ConfigRoute(SceneGadget gadget) : base(gadget)
+        {
+            this.RouteId = (int)gadget.route_id;
+            this.StartIndex = 0;
+            this.ScheduledIndexes = new List<int>();
+        }
+
+        public ConfigRoute(Vector startRot, bool startRoute, bool isActive, int routeId)
+            : base(startRot, startRoute, isActive)
+        {
+            this.RouteId = routeId;
+            this.StartIndex = 0;
+            this.ScheduledIndexes = new List<int>();
+        }
+
+        public override PlatformInfo ToProto()
+        {
+            var proto = base.ToProto();
+
+            proto.RouteId = (uint)this.RouteId;
+            proto.StartIndex = StartIndex;
+            return proto;
+        }
+    }
     public class GameEntityGadget : GameEntity
     {
         public uint chest_drop, route_id,gadgetType;
-       
+        public ConfigRoute Route = null;
 
+
+        public void InitRoute(SceneGadget gadget)
+        {
+            Route = new ConfigRoute(gadget);
+        }
         public void ChangeState(GadgetState state)
         {
+            int oldState = (int)state;
             this.state = (uint)state;
 
             GadgetStateNotify notify = new GadgetStateNotify()
@@ -27,6 +141,10 @@ namespace GenshinCBTServer.Player
                 GadgetState = this.state
             };
             GetClientOwner().SendPacket((uint)CmdType.GadgetStateNotify, notify);
+            ScriptArgs args = new((int)groupId, (int)EventType.EVENT_GADGET_STATE_CHANGE, (int)this.state, (int)this.configId);
+            Server.Print("Gadget config id: " + configId);
+            args.param3 = oldState;
+            LuaManager.executeTriggersLua(GetClientOwner(), GetGroup(), args);
         }
         public GadgetData GetGadgetExcel()
         {
@@ -142,16 +260,10 @@ namespace GenshinCBTServer.Player
                       
 
                 };
-            if(route_id > 0)
+            if(Route!=null)
             {
-                info.Gadget.Platform = new()
-                {
-                    IsStarted = true,
-                    RouteId = route_id,
-                    StartIndex = 0,
-                   // StartPos = GetClientOwner().world.currentBlock.routeData.routes.Find(route=>route.localId== route_id).points[0].pos,
-                };
-                RouteData route = GetClientOwner().world.currentBlock.routeData.routes.Find(route => route.localId == route_id);
+                info.Gadget.Platform = Route.ToProto();
+               /* RouteData route = GetClientOwner().world.currentBlock.routeData.routes.Find(route => route.localId == route_id);
                 if (route != null)
                 {
                     info.Gadget.Platform.StartPos = route.points[0].pos;
@@ -160,7 +272,7 @@ namespace GenshinCBTServer.Player
                 {
                     info.Gadget.Platform.StartPos = motionInfo.Pos;
 
-                }
+                }*/
             }
          
             return info;
@@ -185,6 +297,76 @@ namespace GenshinCBTServer.Player
             {
                 return false;
             }
+        }
+        public Vector prevpos;
+        public bool StartPlatform()
+        {
+            if (Route == null)
+            {
+                return false;
+            }
+            if(Route.IsStarted)
+            {
+                return true;
+            }
+            RouteData routeData = GetClientOwner().world.currentBlock.routeData.routes.Find(route => route.localId == route_id);
+            if (routeData != null)
+            {
+                List<RoutePointData> points = routeData.points;
+                if(Route.StartIndex==points.Count-1) {
+                    Route.StartIndex = 0;
+
+                }
+                int curIndex = Route.StartIndex;
+                if (curIndex == 0)
+                {
+                    prevpos = this.motionInfo.Pos;
+                    //Call event lua
+                    ScriptArgs args = new((int)groupId, (int)EventType.EVENT_PLATFORM_REACH_POINT, (int)configId, Route.RouteId);
+                    args.param3 = 0;
+                    LuaManager.executeTriggersLua(GetClientOwner(), GetGroup(), args);
+                }
+                else
+                {
+                    prevpos = points[curIndex].pos;
+                }
+                Route.IsStarted = true;
+                double time = 0;
+                for(int i = curIndex; i < points.Count; i++)
+                {
+                    time += World.DistanceTo(prevpos, points[i].pos) / points[i].targetVelocity;
+                    prevpos = points[i].pos;
+                    int I = i;
+                    GetClientOwner().world.ScheduleDelayedTask(() =>
+                    {
+                        if (points[i].hasReachEvent && I > curIndex)
+                        {
+                            ScriptArgs args = new((int)this.groupId, (int)EventType.EVENT_PLATFORM_REACH_POINT, (int)this.configId,Route.RouteId);
+                            args.param3 = I;
+                            args.source_eid = (int)configId;
+                            LuaManager.executeTriggersLua(GetClientOwner(), GetGroup(), args);
+                        }
+                        Route.StartIndex = I;
+                        this.MoveEntity(new MotionInfo() { Pos= points[I].pos},true);
+
+                        if (I == points.Count - 1)
+                        {
+                            Route.IsStarted = false;
+                        }
+                    },(int)time);
+                }
+
+               
+            }
+            GetClientOwner().SendPacket((uint)CmdType.SceneTimeNotify, new SceneTimeNotify() { SceneId = GetClientOwner().currentSceneId, SceneTime = (ulong)GetClientOwner().world.GetSceneTime() });
+            PlatformStartRouteNotify ntf = new PlatformStartRouteNotify()
+            {
+                EntityId = entityId,
+                Platform = asInfo().Gadget.Platform,
+                SceneTime = (uint)GetClientOwner().world.GetSceneTime()
+            };
+            GetClientOwner().SendPacket((uint)CmdType.PlatformStartRouteNotify, ntf);
+            return true;
         }
     }
 }
