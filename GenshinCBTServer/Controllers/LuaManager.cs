@@ -148,6 +148,17 @@ namespace GenshinCBTServer.Controllers
             client.SendPacket((uint)CmdType.SceneForceLockNotify, ntf);
             return 0;
         }
+        // ScriptLib.UnlockScenePoint(context, 40)
+        public int UnlockScenePoint(Client client, int scenePointId)
+        {
+            ScenePointUnlockNotify ntf = new ScenePointUnlockNotify()
+            {
+                SceneId = client.currentSceneId,
+                PointList = { (uint)scenePointId }
+            };
+            client.SendPacket((uint)CmdType.ScenePointUnlockNotify, ntf);
+            return 0;
+        }
         // ScriptLib.SetMonsterAIByGroup(context, 0, 26, 220011001)
         public int SetMonsterAIByGroup(Client client, int is_enable, int configId, int group_id)
         {
