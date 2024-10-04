@@ -261,7 +261,16 @@ namespace GenshinCBTServer
                             Server.Print($"[{Server.ColoredText("client", "fcc603")}->{Server.ColoredText("server", "03fc4e")}] {cmd.ToString()}");
                         }
                         Logger.Log($"[client->server] {cmd.ToString()}");
-                        NotifyManager.Notify(clients.Find(client => client.peer == netEvent.peer), (CmdType)genshinPacket.cmdId, genshinPacket);
+
+                        try
+                        {
+                            NotifyManager.Notify(clients.Find(client => client.peer == netEvent.peer), (CmdType)genshinPacket.cmdId, genshinPacket);
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
+
                        
 
                         break;

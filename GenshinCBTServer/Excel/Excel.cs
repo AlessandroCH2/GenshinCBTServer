@@ -17,6 +17,7 @@ namespace GenshinCBTServer.Excel
         public float speedLevel;
         public Vector pos;
         public float targetVelocity;
+        public bool hasReachEvent;
     }
     public class RouteData
     {

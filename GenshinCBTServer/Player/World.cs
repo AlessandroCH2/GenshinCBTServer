@@ -17,6 +17,7 @@ namespace GenshinCBTServer.Player
 {
     public class World
     {
+        public int sceneTime;
         public uint sceneId;
         public Client client;
         public uint monsterDieCount = 0;
@@ -111,75 +112,86 @@ namespace GenshinCBTServer.Player
         }
         public void UpdateRegions()
         {
-            if (currentBlock == null || currentBlock.groups == null)
+            try
             {
-                Server.Print($"Current {(currentBlock == null ? "currentBlock" : (currentBlock.groups == null ? "currentBlock.groups" : "none"))} is null");
-                return;
-            }
-            foreach(SceneGroup group in currentBlock.groups)
-            {
-                foreach (SceneRegion region in group.regions)
+                if (currentBlock == null || currentBlock.groups == null)
                 {
-                    foreach (GameEntity entity in entities)
+                    Server.Print($"Current {(currentBlock == null ? "currentBlock" : (currentBlock.groups == null ? "currentBlock.groups" : "none"))} is null");
+                    return;
+                }
+                foreach (SceneGroup group in currentBlock.groups)
+                {
+                    foreach (SceneRegion region in group.regions)
                     {
-                        if (mobEntitiesNear.Contains(entity.entityId))
+                        foreach (GameEntity entity in entities)
                         {
-                            if (region.Inside(entity.motionInfo.Pos))
+                            if (entity == null) break;
+                            if (mobEntitiesNear.Contains(entity.entityId))
                             {
-                                if (!entity.inRegions.Contains(region.config_id))
+                                if (region.Inside(entity.motionInfo.Pos))
                                 {
-                                    entity.inRegions.Add(region.config_id);
-                                    ScriptArgs args = new((int)group.id, (int)EventType.EVENT_ENTER_REGION, (int)region.config_id);
-                                    args.target_eid = (int)entity.entityId;
-                                    args.source_eid = (int)region.config_id;
-                                    LuaManager.executeTriggersLua(client, group, args);
-                                    Server.Print($"Entering region id "+region.config_id);
-                                }
+                                    if (!entity.inRegions.Contains(region.config_id))
+                                    {
+                                        entity.inRegions.Add(region.config_id);
+                                        ScriptArgs args = new((int)group.id, (int)EventType.EVENT_ENTER_REGION, (int)region.config_id);
+                                        args.target_eid = (int)entity.entityId;
+                                        args.source_eid = (int)region.config_id;
+                                        LuaManager.executeTriggersLua(client, group, args);
+                                        Server.Print($"Entering region id " + region.config_id);
+                                    }
 
 
-                            }
-                            else
-                            {
-                                if (entity.inRegions.Contains(region.config_id))
+                                }
+                                else
                                 {
-                                    entity.inRegions.Remove(region.config_id);
-                                    ScriptArgs args = new((int)group.id, (int)EventType.EVENT_LEAVE_REGION, (int)region.config_id);
-                                    args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
-                                    args.source_eid = (int)region.config_id;
-                                    LuaManager.executeTriggersLua(client, group, args);
-                                    Server.Print($"Leaving region id " + region.config_id);
+
+                                    if (entity.inRegions.Contains(region.config_id))
+                                    {
+                                        entity.inRegions.Remove(region.config_id);
+                                        ScriptArgs args = new((int)group.id, (int)EventType.EVENT_LEAVE_REGION, (int)region.config_id);
+                                        args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
+                                        args.source_eid = (int)region.config_id;
+                                        LuaManager.executeTriggersLua(client, group, args);
+                                        Server.Print($"Leaving region id " + region.config_id);
+                                    }
+
                                 }
                             }
+
                         }
-                       
-                    }
-                    //Check avatar
-                    if (region.Inside(client.motionInfo.Pos))
-                    {
-                        if (!client.inRegions.Contains(region.config_id))
+                        //Check avatar
+                        if (region.Inside(client.motionInfo.Pos))
                         {
-                            client.inRegions.Add(region.config_id);
-                            ScriptArgs args = new((int)group.id, (int)EventType.EVENT_ENTER_REGION, (int)region.config_id);
-                            args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
-                            args.source_eid = (int)region.config_id;
-                            LuaManager.executeTriggersLua(client, group, args);
-                            Server.Print($"Avatar Entering region id " + region.config_id);
+                            if (!client.inRegions.Contains(region.config_id))
+                            {
+                                client.inRegions.Add(region.config_id);
+                                ScriptArgs args = new((int)group.id, (int)EventType.EVENT_ENTER_REGION, (int)region.config_id);
+                                args.target_eid = (int)client.avatars.Find(a => a.guid == client.GetCurrentAvatar()).entityId;
+                                args.source_eid = (int)region.config_id;
+                                LuaManager.executeTriggersLua(client, group, args);
+                                Server.Print($"Avatar Entering region id " + region.config_id);
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (client.inRegions.Contains(region.config_id))
+                        else
                         {
-                            client.inRegions.Remove(region.config_id);
+                            if (client.inRegions.Contains(region.config_id))
+                            {
+                               client.inRegions.Remove(region.config_id);
                             ScriptArgs args = new((int)group.id, (int)EventType.EVENT_LEAVE_REGION, (int)region.config_id);
                             args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
                             args.source_eid = (int)region.config_id;
                             LuaManager.executeTriggersLua(client, group, args);
                             Server.Print($"AvatarLeaving region id " + region.config_id);
+                            }
                         }
                     }
                 }
             }
+            catch(Exception e)
+            {
+
+            }
+           
             
         }
         public void UpdateMobs()
@@ -241,20 +253,41 @@ namespace GenshinCBTServer.Player
                 {
                     foreach(SceneGadget gadget in group.gadgets)
                     {
-
+                        
                         if (!group.isInSuite((int)gadget.config_id)) continue;
                         
                         uint entityId = ((uint)ProtEntityType.ProtEntityGadget << 24) + (uint)client.random.Next();
-                        GameEntityGadget entity = new GameEntityGadget(
+                        ItemData itemData = Server.getResources().itemData.Values.ToList().Find(i=>i.gadgetId==gadget.gadget_id);
+                        if (itemData != null)
+                        {
+                        GameEntityItem entity = new GameEntityItem(entityId, gadget.gadget_id, new MotionInfo()
+                        {
+                            Pos = new Vector() { X = gadget.pos.X, Y = gadget.pos.Y, Z = gadget.pos.Z },
+                            Rot = gadget.rot,
+                          
                             
+                        },
+                        new GameItem(client, itemData.id));
+                        entity.item.amount = 1;
+                        entity.configId = gadget.config_id;
+                        entity.groupId = group.id;
+                        entity.owner = (uint)client.gamePeer;
+                        
+                        entity.state = (uint)gadget.state;
+                        SpawnEntity(entity);
+                        }
+                        else
+                        {
+                        GameEntityGadget entity = new GameEntityGadget(
+
                             entityId,
                             gadget.gadget_id,
                             new MotionInfo()
                             {
-                                Pos=new Vector() { X=gadget.pos.X,Y=gadget.pos.Y-1,Z=gadget.pos.Z},
-                                Rot=gadget.rot,
-                                State=MotionState.MotionFallOnGround,
-                                Speed = new Vector() { Y=0.01f},
+                                Pos = new Vector() { X = gadget.pos.X, Y = gadget.pos.Y - 1, Z = gadget.pos.Z },
+                                Rot = gadget.rot,
+                                State = MotionState.MotionFallOnGround,
+                                Speed = new Vector() { Y = 0.01f },
                             }
                         );
                         entity.configId = gadget.config_id;
@@ -264,10 +297,9 @@ namespace GenshinCBTServer.Player
                         entity.state = (uint)gadget.state;
                         entity.route_id = gadget.route_id;
                         entity.gadgetType = gadget.type;
-                        
+                        if (entity.route_id > 0) entity.InitRoute(gadget);
                         SpawnEntity(entity);
-
-                        if (entity.route_id > 0)
+                        /*if (entity.route_id > 0)
                         {
                             PlatformStartRouteNotify ntf = new PlatformStartRouteNotify()
                             {
@@ -276,7 +308,11 @@ namespace GenshinCBTServer.Player
                                 SceneTime = 9000
                             };
                             client.SendPacket((uint)CmdType.PlatformStartRouteNotify, ntf);
-                        }
+                        }*/
+                    }
+
+
+                       
                     }
                 foreach (SceneMonster monster in group.monsters)
                 {
@@ -386,6 +422,20 @@ namespace GenshinCBTServer.Player
                     triggers.AddRange(group.triggers.FindAll(t => t.eventType == type));
             }
             return triggers;
+        }
+
+        public int GetSceneTime()
+        {
+            return sceneTime;
+        }
+
+        public void ScheduleDelayedTask(Action value, int time)
+        {
+            new Thread(new ThreadStart(() =>
+            {
+                Thread.Sleep(time);
+                value.Invoke();
+            }));
         }
     }
 

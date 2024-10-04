@@ -42,6 +42,7 @@ EventType =
 	EVENT_AREA_LEVELUP = 23, -- 一级区域升级
 	EVENT_CUTSCENE_END = 24, -- 所有客户端播放cutscene结束
 	EVENT_AVATAR_NEAR_PLATFORM = 25, -- 角色靠近移动平台，这时移动平台已停止(客户端发送)
+	EVENT_PLATFORM_REACH_POINT = 26,
 }
 
 --物件类型
