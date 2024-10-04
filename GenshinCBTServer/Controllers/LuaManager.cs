@@ -153,6 +153,22 @@ namespace GenshinCBTServer.Controllers
         {
             return (int)client.world.monsterDieCount;
         }
+        // ScriptLib.CheckRemainGadgetCountByGroupId(context, {group_id = 133003196})
+        public int CheckRemainGadgetCountByGroupId(Client client, LuaTable parameters)
+        {
+            int groupId = (int)(long)parameters["group_id"];
+            SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == groupId);
+            if (group == null) return 0;
+            int count = 0;
+            foreach (GameEntity entity in client.world.entities)
+            {
+                if (entity.groupId == groupId && entity is GameEntityGadget)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
         // ScriptLib.UnlockScenePoint(context, 40)
         public int UnlockScenePoint(Client client, int scenePointId)
         {
