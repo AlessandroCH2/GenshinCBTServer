@@ -113,6 +113,35 @@ namespace GenshinCBTServer.Controllers
             if (entity is not GameEntityGadget) return 1;
             GameEntityGadget platform = (GameEntityGadget)entity;
             platform.route_id = (uint)routeId;
+            PlatformChangeRouteNotify ntf = new PlatformChangeRouteNotify()
+            {
+                EntityId = platform.entityId,
+                Platform = platform.asInfo().Gadget.Platform,
+            };
+            client.SendPacket((uint)CmdType.PlatformChangeRouteNotify, ntf);
+            PlatformStopRouteNotify stopNtf = new PlatformStopRouteNotify()
+            {
+                EntityId = platform.entityId,
+                SceneTime = 9000
+            };
+            client.SendPacket((uint)CmdType.PlatformStopRouteNotify, stopNtf);
+            PlatformStartRouteNotify startNtf = new PlatformStartRouteNotify()
+            {
+                EntityId = platform.entityId,
+                Platform = platform.asInfo().Gadget.Platform,
+                SceneTime = 9000
+            };
+            client.SendPacket((uint)CmdType.PlatformStartRouteNotify, startNtf);
+            return 0;
+        }
+        // ScriptLib.CreateGadget(context, { config_id = 1405 })
+        public int CreateGadget(Client client, LuaTable parameters)
+        {
+            int configId = (int)(long)parameters["config_id"];
+            uint entityId = ((uint)ProtEntityType.ProtEntityGadget << 24) + (uint)client.random.Next();
+            SceneGadget sceneGadget = client.world.currentBlock.groups.Find(g => g.id == currentGroupId).gadgets.Find(g => g.config_id == configId);
+            GameEntityGadget gadget = new GameEntityGadget(entityId, sceneGadget.gadget_id, new MotionInfo() { Pos = sceneGadget.pos, Rot = sceneGadget.rot });
+            client.world.SpawnEntity(gadget, true);
             return 0;
         }
         // ScriptLib.PlayCutScene(context, 200201, 60)

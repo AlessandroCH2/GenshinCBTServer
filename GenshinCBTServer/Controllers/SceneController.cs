@@ -18,7 +18,6 @@ namespace GenshinCBTServer.Controllers
         public static void OnClientScriptEventNotify(Client session, CmdType cmdId, Network.Packet packet)
         {
             ClientScriptEventNotify req = packet.DecodeBody<ClientScriptEventNotify>();
-
             ScriptArgs args = new ScriptArgs(0,(int)req.EventType);
             args.source_eid = (int)req.SourceEntityId;
             args.target_eid= (int)req.TargetEntityId;
@@ -29,7 +28,6 @@ namespace GenshinCBTServer.Controllers
                     case 0 : args.param1 = req.ParamList[i]; break;
                     case 1: args.param1 = req.ParamList[i]; break;
                     case 2: args.param1 = req.ParamList[i]; break;
-
                 }
             }
             GameEntity entity = session.world.entities.Find(e => e.entityId == req.SourceEntityId);
@@ -39,6 +37,7 @@ namespace GenshinCBTServer.Controllers
                 if (req.ParamList[0] == 0)
                 {
                     //ConfigId workaround to implement
+
                     if(entity != null)
                     {
                         args.param1 = (int)entity.configId;
