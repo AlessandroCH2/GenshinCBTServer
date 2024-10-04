@@ -88,6 +88,13 @@ namespace GenshinCBTServer.Player
                 );
 
                 client.world.monsterDieCount++;
+            } else if (EntityType == ProtEntityType.ProtEntityGadget)
+            {
+                LuaManager.executeTriggersLua(
+                    GetClientOwner(),
+                    GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId),
+                    new ScriptArgs((int)groupId, (int)EventType.EVENT_ANY_GADGET_DIE)
+                );
             }
         }
         public virtual void InitProps()
