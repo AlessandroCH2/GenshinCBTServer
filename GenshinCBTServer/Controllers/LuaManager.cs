@@ -148,6 +148,11 @@ namespace GenshinCBTServer.Controllers
             client.SendPacket((uint)CmdType.SceneForceLockNotify, ntf);
             return 0;
         }
+        //ScriptLib.GetMonsterDieCount(context)
+        public int GetMonsterDieCount(Client client)
+        {
+            return (int)client.world.monsterDieCount;
+        }
         // ScriptLib.UnlockScenePoint(context, 40)
         public int UnlockScenePoint(Client client, int scenePointId)
         {

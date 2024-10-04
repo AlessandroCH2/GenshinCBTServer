@@ -19,6 +19,7 @@ namespace GenshinCBTServer.Player
     {
         public uint sceneId;
         public Client client;
+        public uint monsterDieCount = 0;
 
         public List<GameEntity> entities = new List<GameEntity>();
         public List<uint> mobEntitiesNear = new List<uint>();
@@ -47,6 +48,7 @@ namespace GenshinCBTServer.Player
             KillEntities(entities);
             entities.Clear();
             currentBlock = null;
+            monsterDieCount = 0;
            
         }
         public void KillEntities(List<GameEntity> tokill,VisionType disType = VisionType.VisionNone)
@@ -58,6 +60,10 @@ namespace GenshinCBTServer.Player
                 notify.EntityList.Add(entity.entityId);
                 LifeStateChangeNotify notify1 = new LifeStateChangeNotify() { EntityId=entity.entityId,LifeState=(int)LifeState.LIFE_DEAD,DieType=PlayerDieType.PlayerDieNone};
                 client.SendPacket((uint)CmdType.LifeStateChangeNotify, notify1);
+                if (entity is GameEntityMonster)
+                {
+                    monsterDieCount++;
+                }
             }
             notify.DisappearType = disType;
             client.SendPacket((uint)CmdType.SceneEntityDisappearNotify, notify);
