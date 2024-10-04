@@ -7,6 +7,23 @@ namespace GenshinCBTServer.Controllers
 {
     public static class LuaTableExtensions
     {
+        public static int[] GetIntArray(this LuaTable table_,string name)
+        {
+            LuaTable table = table_[name] as LuaTable;
+
+            if (table == null) return new int[0];
+            int[] result = new int[table.Values.Count];
+            int i = 0;
+
+            // Iterate through LuaTable and convert values to integers
+            foreach (var value in table.Values)
+            {
+                result[i++] = Convert.ToInt32(value);
+            }
+
+            return result;
+
+        }
         public static int[] ToIntArray(this LuaTable table)
         {
             if (table == null) return new int[0];
@@ -226,9 +243,11 @@ namespace GenshinCBTServer.Controllers
                 SceneId = client.currentSceneId,
                 PointList = { (uint)scenePointId }
             };
+            //TODO Unlock in client
             client.SendPacket((uint)CmdType.ScenePointUnlockNotify, ntf);
             return 0;
         }
+        
         // ScriptLib.SetMonsterAIByGroup(context, 0, 26, 220011001)
         public int SetMonsterAIByGroup(Client client, int is_enable, int configId, int group_id)
         {
@@ -310,7 +329,21 @@ namespace GenshinCBTServer.Controllers
             client.SendPacket((uint)CmdType.BeginCameraSceneLookNotify, ntf);
             return 1;
         }
+        public int SetGadgetStateByConfigId(Client client, int configId, int gadgetState)
+        {
+            Server.Print($"[LUA] SetGadgetStateByConfigId with {configId},{gadgetState}");
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId && e.groupId == currentGroupId);
+            if (entity == null) return 1;
+            if (!(entity is GameEntityGadget))
+            {
+                return 1;
+            }
+            GameEntityGadget gadget = (GameEntityGadget)entity;
+            gadget.ChangeState((GadgetState)gadgetState);
+            return 0;
 
+        }
+        
         public int SetGroupGadgetStateByConfigId(Client client,int groupId, int configId, int gadgetState)
         {
             Server.Print($"[LUA] CallSetGroupGadgetStateByConfigId with {configId},{gadgetState}");
@@ -485,7 +518,7 @@ namespace GenshinCBTServer.Controllers
                         ";
                         }
                         groupLua.DoString(luaScript);
-                        Server.Print("Executed successfully LUA");
+                        Server.Print("Executed successfully LUA of type: " + ((EventType)trigger.eventType).ToString());
                     }
                     catch (Exception ex)
                     {
@@ -526,7 +559,7 @@ namespace GenshinCBTServer.Controllers
                         try
                         {
                             groupLua.DoString(luaScript);
-                            Server.Print("Executed successfully LUA");
+                            Server.Print("Executed successfully LUA of type: "+((EventType)trigger.eventType).ToString());
                         }
                         catch (Exception ex)
                         {

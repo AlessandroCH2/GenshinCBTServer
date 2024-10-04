@@ -313,7 +313,7 @@ namespace GenshinCBTServer
             {
                 if (!Server.hideLog.Contains((CmdType)cmdId) && Server.showLogs == true)
                 {
-                    Server.Print($"[server->client] {((CmdType)cmdId).ToString()} body: {protoMessage.ToString().Pastel(Color.FromArgb(165, 229, 250))}");
+                    Server.Print($"[{Server.ColoredText("server", "03fc4e")}->{Server.ColoredText("client", "fcc603")}] {((CmdType)cmdId).ToString()} body: {protoMessage.ToString().Pastel(Color.FromArgb(165, 229, 250))}");
                 }
                
             }

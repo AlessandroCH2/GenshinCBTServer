@@ -31,17 +31,23 @@ namespace GenshinCBTServer.Controllers
                 }
             }
             GameEntity entity = session.world.entities.Find(e => e.entityId == req.SourceEntityId);
+            Server.Print($"Test type: {req.EventType}, {req.SourceEntityId}, entity {(entity!=null ? "Exist" : "Not exist" )}");
             if (req.EventType == (uint)EventType.EVENT_AVATAR_NEAR_PLATFORM)
             {
                 if (req.ParamList[0] == 0)
                 {
                     //ConfigId workaround to implement
+
+                    if(entity != null)
+                    {
+                        args.param1 = (int)entity.configId;
+                    }
                 }
             }
             if(entity!=null)
             LuaManager.executeTriggersLua(session,session.world.currentBlock.groups.Find(g=>g.id==entity.groupId), args);
         }
-        
+
         [Server.Handler(CmdType.MonsterAlertChangeNotify)]
         public static void OnMonsterAlertChangeNotify(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -186,12 +192,23 @@ namespace GenshinCBTServer.Controllers
         [Server.Handler(CmdType.GadgetInteractReq)]
         public static void OnGadgetInteractReq(Client session, CmdType cmdId, Network.Packet packet)
         {
+
             GadgetInteractReq req = packet.DecodeBody<GadgetInteractReq>();
             GameEntity entity_ = session.world.entities.Find(entity => entity.entityId == req.GadgetEntityId);
+
+
             if(entity_ != null)
-            switch(entity_) {
+            {
+                if (entity_.onInteract(session, req))
+                {
+                    Server.Print("Gadget interacted successfully");
+                }
+            }
+            //To be removed
+            /*switch(entity_) {
                 case GameEntityGadget entity:
                 {
+                    //TODO GameEntityGadget.OnInteract()
                     Server.Print("Type: " + entity.gadgetType);
                     if (entity.chest_drop > 0)
                     {
@@ -203,6 +220,7 @@ namespace GenshinCBTServer.Controllers
                             session.world.SpawnEntity(en, true, VisionType.VisionReborn);
                         }
                         session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractOpenChest, OpType = InterOpType.InterOpFinish });
+                                LuaManager.executeTriggersLua(session, entity.GetGroup(), new ScriptArgs((int)entity.groupId, (int)EventType.EVENT_GATHER,(int)entity.configId));
                     }
                     break;
                 }
@@ -229,7 +247,7 @@ namespace GenshinCBTServer.Controllers
                     session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = entity.id, InteractType = InteractType.InteractGather, OpType = InterOpType.InterOpStart });
                 }
                 break;
-            }
+            }*/
         }
 
         [Server.Handler(CmdType.SceneTransToPointReq)]

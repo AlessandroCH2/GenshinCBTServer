@@ -1,4 +1,5 @@
-﻿using GenshinCBTServer.Excel;
+﻿using GenshinCBTServer.Controllers;
+using GenshinCBTServer.Excel;
 using GenshinCBTServer.Protocol;
 using Google.Protobuf.Collections;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GenshinCBTServer.ResourceManager;
 
 namespace GenshinCBTServer.Player
 {
@@ -162,6 +164,27 @@ namespace GenshinCBTServer.Player
             }
          
             return info;
+        }
+
+        public override bool onInteract(Client session, GadgetInteractReq req)
+        {
+            if (chest_drop > 0)
+            {
+                ChangeState(GadgetState.ChestOpened);
+                session.world.KillEntities(new List<GameEntity>() { this }, VisionType.VisionNone);
+                DropList dropList = Server.getResources().GetRandomDrops(session, chest_drop, motionInfo);
+                foreach (GameEntity en in dropList.entities)
+                {
+                    session.world.SpawnEntity(en, true, VisionType.VisionReborn);
+                }
+                session.SendPacket((uint)CmdType.GadgetInteractRsp, new GadgetInteractRsp() { Retcode = (int)0, GadgetEntityId = req.GadgetEntityId, GadgetId = id, InteractType = InteractType.InteractOpenChest, OpType = InterOpType.InterOpFinish });
+                LuaManager.executeTriggersLua(session, GetGroup(), new ScriptArgs((int)groupId, (int)EventType.EVENT_GATHER, (int)configId));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

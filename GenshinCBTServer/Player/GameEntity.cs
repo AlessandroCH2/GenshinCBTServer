@@ -39,17 +39,23 @@ namespace GenshinCBTServer.Player
             Client client = GetClientOwner();
             if (!died)
             {
+               
+                Server.Print("Calling monster lua");
                 died = true;
                 new Thread(new ThreadStart(dieStart)).Start();
+
+               
             }
-            if(this is GameEntityMonster) {
-                LuaManager.executeTriggersLua(
-                    GetClientOwner(), 
-                    GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId),
-                    new ScriptArgs((int)groupId, (int)EventType.EVENT_ANY_MONSTER_DIE)
-                );
-                client.world.monsterDieCount++;
-            }
+            
+        }
+        public virtual bool onInteract(Client session, GadgetInteractReq req)
+        {
+
+            return false;
+        }
+        public SceneGroup GetGroup()
+        {
+            return GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId);
         }
         private void dieStart()
         {
@@ -72,6 +78,16 @@ namespace GenshinCBTServer.Player
             foreach (GameEntity en in dropList.entities)
             {
                 GetClientOwner().world.SpawnEntity(en, true, VisionType.VisionReborn);
+            }
+            if (EntityType == ProtEntityType.ProtEntityMonster)
+            {
+                LuaManager.executeTriggersLua(
+                    GetClientOwner(),
+                    GetClientOwner().world.currentBlock.groups.Find(g => g.id == groupId),
+                    new ScriptArgs((int)groupId, (int)EventType.EVENT_ANY_MONSTER_DIE)
+                );
+
+                client.world.monsterDieCount++;
             }
         }
         public virtual void InitProps()

@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using GenshinCBTServer.Controllers;
 using GenshinCBTServer.Excel;
 using GenshinCBTServer.Player;
 using Newtonsoft.Json;
@@ -441,6 +442,16 @@ namespace GenshinCBTServer
                     ");
 
                     group.luaFile = mainLuaString;
+                    LuaTable suites = sceneGroup["suites"] as LuaTable;
+                    for (int i = 0; i < suites.Keys.Count; i++)
+                    {
+                        LuaTable suiteTable = suites[i + 1] as LuaTable;
+                        GroupSuite suite = new GroupSuite();
+                        suite.monsters = suiteTable.GetIntArray("monsters");
+                        suite.gadgets = suiteTable.GetIntArray("gadgets");
+
+                        group.suites.Add(suite);
+                    }
 
                     LuaTable gadgets = sceneGroup["gadgets"] as LuaTable;  // Cast to LuaTable for tables
                     LuaTable npcs = sceneGroup["npcs"] as LuaTable;

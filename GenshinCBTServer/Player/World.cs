@@ -133,6 +133,7 @@ namespace GenshinCBTServer.Player
                                     args.target_eid = (int)entity.entityId;
                                     args.source_eid = (int)region.config_id;
                                     LuaManager.executeTriggersLua(client, group, args);
+                                    Server.Print($"Entering region id "+region.config_id);
                                 }
 
 
@@ -142,7 +143,7 @@ namespace GenshinCBTServer.Player
                                 if (entity.inRegions.Contains(region.config_id))
                                 {
                                     entity.inRegions.Remove(region.config_id);
-
+                                    Server.Print($"Leaving region id " + region.config_id);
                                 }
                             }
                         }
@@ -158,6 +159,7 @@ namespace GenshinCBTServer.Player
                             args.target_eid = (int)client.avatars.Find(a=>a.guid==client.GetCurrentAvatar()).entityId;
                             args.source_eid = (int)region.config_id;
                             LuaManager.executeTriggersLua(client, group, args);
+                            Server.Print($"Avatar Entering region id " + region.config_id);
                         }
                     }
                     else
@@ -165,7 +167,7 @@ namespace GenshinCBTServer.Player
                         if (client.inRegions.Contains(region.config_id))
                         {
                             client.inRegions.Remove(region.config_id);
-
+                            Server.Print($"AvatarLeaving region id " + region.config_id);
                         }
                     }
                 }
@@ -231,7 +233,9 @@ namespace GenshinCBTServer.Player
                 {
                     foreach(SceneGadget gadget in group.gadgets)
                     {
-                     //   Server.Print("gadget id " + gadget.gadget_id);
+
+                        if (!group.isInSuite((int)gadget.config_id)) continue;
+                        
                         uint entityId = ((uint)ProtEntityType.ProtEntityGadget << 24) + (uint)client.random.Next();
                         GameEntityGadget entity = new GameEntityGadget(
                             
@@ -257,6 +261,7 @@ namespace GenshinCBTServer.Player
                     }
                 foreach (SceneMonster monster in group.monsters)
                 {
+                    if (!group.isInSuite((int)monster.config_id)) continue;
                     //   Server.Print("gadget id " + gadget.gadget_id);
                     uint entityId = ((uint)ProtEntityType.ProtEntityMonster << 24) + (uint)client.random.Next();
                     GameEntityMonster entity = new GameEntityMonster(
@@ -396,7 +401,13 @@ namespace GenshinCBTServer.Player
         public string name;
         public int value;
     }
-
+    public class GroupSuite
+    {
+        public int[] monsters;
+        public int[] gadgets;
+        public int[] regions;
+        
+    }
     public class SceneGroup
     {
         public string luaFile;
@@ -410,6 +421,13 @@ namespace GenshinCBTServer.Player
         public List<SceneMonster> monsters = new List<SceneMonster>();
         public List<GroupTrigger> triggers = new List<GroupTrigger>();
         public List<SceneRegion> regions = new List<SceneRegion>();
+
+        public List<GroupSuite> suites = new();
+
+        public bool isInSuite(int id)
+        {
+            return suites.Find(s=>s.monsters.Contains(id) || s.gadgets.Contains(id)) != null;
+        }
     }
     public class SceneRegion
     {
