@@ -28,8 +28,7 @@ namespace GenshinCBTServer.Controllers
                 if(entity is GameEntityGadget)
                 {
                     GameEntityGadget gadget = (GameEntityGadget)entity;
-                    if(gadget.GetGadgetConfigRow().Combat.property.isInvincible  || gadget.GetGadgetExcel().type >= 10 && gadget.GetGadgetExcel().type != 19){
-                        // should add gadget.GetGadgetConfigRow().Combat.property.isLockHP to the check?
+                    if(gadget.GetGadgetConfigRow().Combat.property.isInvincible || gadget.GetGadgetConfigRow().Combat.property.isLockHP || gadget.GetGadgetExcel().type >= 10 && gadget.GetGadgetExcel().type != 19){
                         Server.Print($"Gadget {gadget.id} ({gadget.GetGadgetExcel().id} {gadget.GetGadgetExcel().jsonName} is invincible");
                         Server.Print($"isInvincible {gadget.GetGadgetConfigRow().Combat.property.isInvincible}, type {gadget.GetGadgetExcel().type}");
                         isDamageable = false;

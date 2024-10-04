@@ -110,11 +110,19 @@ namespace GenshinCBTServer
 
     }
 
+    public class ConfigDie
+    {
+        public string JsonObjType = "ConfigDie";
+        public float dieEndTime;
+        public float dieForceDisappearTime;
+    }
+
     public class ConfigCombat
     {
         public string JsonObjType = "ConfigCombat";
         public ConfigCombatProperty property = new ConfigCombatProperty();
         // ConfigSummon summon = new ConfigSummon();
+        public ConfigDie die = new ConfigDie();
     }
 
     public class ConfigEntityAbilityEntry
