@@ -55,6 +55,59 @@ namespace GenshinCBTServer.Controllers
             client.SendPacket((uint)CmdType.DungeonShowReminderNotify, ntf);
             return 0;
         }
+        // ScriptLib.StartPlatform(context, 28)
+        public int StartPlatform(Client client, int configId)
+        {
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+            if (entity == null) return 1;
+            if (entity is not GameEntityGadget) return 1;
+            GameEntityGadget platform = (GameEntityGadget)entity;
+            if (platform.route_id <= 0) return 1;
+            PlatformStartRouteNotify ntf = new PlatformStartRouteNotify()
+            {
+                EntityId = platform.entityId,
+                Platform = platform.asInfo().Gadget.Platform,
+                SceneTime = 9000
+            };
+            client.SendPacket((uint)CmdType.PlatformStartRouteNotify, ntf);
+            return 0;
+        }
+        // ScriptLib.StopPlatform(context, 172)
+        public int StopPlatform(Client client, int configId)
+        {
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+            if (entity == null) return 1;
+            if (entity is not GameEntityGadget) return 1;
+            GameEntityGadget platform = (GameEntityGadget)entity;
+            if (platform.route_id <= 0) return 1;
+            PlatformStopRouteNotify ntf = new PlatformStopRouteNotify()
+            {
+                EntityId = platform.entityId,
+                SceneTime = 9000
+            };
+            client.SendPacket((uint)CmdType.PlatformStopRouteNotify, ntf);
+            return 0;
+        }
+        // ScriptLib.SetPlatformRouteId(context, 87, 20000009)
+        public int SetPlatformRouteId(Client client, int configId, int routeId)
+        {
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+            if (entity == null) return 1;
+            if (entity is not GameEntityGadget) return 1;
+            GameEntityGadget platform = (GameEntityGadget)entity;
+            platform.route_id = (uint)routeId;
+            return 0;
+        }
+        // ScriptLib.PlayCutScene(context, 200201, 60)
+        public int PlayCutScene(Client client, int cutSceneId, int var2)
+        {
+            CutSceneBeginNotify ntf = new CutSceneBeginNotify()
+            {
+                CutsceneId = (uint)cutSceneId,
+            };
+            client.SendPacket((uint)CmdType.CutSceneBeginNotify, ntf);
+            return 0;
+        }
         // ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "DungeonSound1001", play_type= 2, is_broadcast = false })
         public int ScenePlaySound(Client client, LuaTable parameters)
         {
