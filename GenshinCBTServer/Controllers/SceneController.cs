@@ -33,11 +33,16 @@ namespace GenshinCBTServer.Controllers
                 }
             }
             GameEntity entity = session.world.entities.Find(e => e.entityId == req.SourceEntityId);
+            Server.Print($"Test type: {req.EventType}, {req.SourceEntityId}, entity {(entity!=null ? "Exist" : "Not exist" )}");
             if (req.EventType == (uint)EventType.EVENT_AVATAR_NEAR_PLATFORM)
             {
                 if (req.ParamList[0] == 0)
                 {
                     //ConfigId workaround to implement
+                    if(entity != null)
+                    {
+                        args.param1 = (int)entity.configId;
+                    }
                 }
             }
             if(entity!=null)
