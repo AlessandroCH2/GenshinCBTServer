@@ -68,7 +68,7 @@ namespace GenshinCBTServer
             }
             
             showLogs = !hideLogs;
-            showLogs = false;
+           // showLogs = false;
             Print($"Logs are {(showLogs ? "enabled" : "disabled")}");
 
             enet_initialize();
