@@ -36,6 +36,19 @@ namespace GenshinCBTServer
 
             public delegate void HandlerDelegate(Client client, int cmdId, Network.Packet packet);
         }
+        public class CommandAttribute : Attribute
+        {
+            public string command;
+            public string desc;
+            
+            public CommandAttribute(string cmdName,string desc = "No description")
+            {
+                this.command = cmdName;
+                this.desc = desc;
+            }
+
+            public delegate void HandlerDelegate(string command, string[] args);
+        }
         public static List<Client> clients = new List<Client>();
         public IntPtr server;
         public  static bool showLogs = true;
