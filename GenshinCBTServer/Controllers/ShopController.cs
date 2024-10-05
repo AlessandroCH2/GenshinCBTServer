@@ -1,12 +1,6 @@
-﻿using GenshinCBTServer.Network;
-using GenshinCBTServer.Player;
+﻿using GenshinCBTServer.Data;
 using GenshinCBTServer.Protocol;
-using System;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GenshinCBTServer.Excel;
 
 namespace GenshinCBTServer.Controllers
 {

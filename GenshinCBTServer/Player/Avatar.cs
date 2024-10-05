@@ -1,12 +1,7 @@
 ﻿using GenshinCBTServer.Excel;
 using GenshinCBTServer.Protocol;
+using GenshinCBTServer.Data;
 using Google.Protobuf.Collections;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenshinCBTServer.Player
 {

@@ -1,13 +1,6 @@
-﻿using GenshinCBTServer.Network;
-using GenshinCBTServer.Player;
+﻿using GenshinCBTServer.Excel;
+using GenshinCBTServer.Data;
 using GenshinCBTServer.Protocol;
-using System;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
 
 namespace GenshinCBTServer.Controllers
 {
@@ -55,7 +48,8 @@ namespace GenshinCBTServer.Controllers
             };
             session.returnPointId = req.PointId;
             DungeonData dungeonData = Server.getResources().dungeonDataDict[req.DungeonId];
-            SceneExcel scene = Server.getResources().LoadSceneLua(dungeonData.sceneId);
+            ResourceLoader resourceLoader = new(Server.getResources());
+            SceneExcel scene = resourceLoader.LoadSceneLua(dungeonData.sceneId);
 
             session.TeleportToScene(scene.sceneId, scene.bornPos, scene.bornRot, EnterType.EnterDungeon);
             //session.currentSceneId = scene.sceneId;

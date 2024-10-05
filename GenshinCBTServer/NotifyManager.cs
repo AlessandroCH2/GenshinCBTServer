@@ -13,8 +13,6 @@
 
     internal static class NotifyManager
     {
-       
-
         private static List<Type> s_handlerTypes = new List<Type>();
         private static ImmutableDictionary<CmdType, (Server.HandlerAttribute, Server.HandlerAttribute.HandlerDelegate)> s_notifyReqGroup;
 

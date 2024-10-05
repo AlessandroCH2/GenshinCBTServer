@@ -1,14 +1,8 @@
 ﻿using GenshinCBTServer.Controllers;
 using GenshinCBTServer.Excel;
 using GenshinCBTServer.Protocol;
-using Google.Protobuf.Collections;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GenshinCBTServer.Data;
 using static GenshinCBTServer.ResourceManager;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace GenshinCBTServer.Player
 {
@@ -40,7 +34,7 @@ namespace GenshinCBTServer.Player
             {
                 return new ConfigRoute(sceneGadget);
             }
-           /* else if (sceneGadget.IsUsePointArray)
+            /* else if (sceneGadget.IsUsePointArray)
             {
                 return new PointArrayRoute(sceneGadget);
             }*/

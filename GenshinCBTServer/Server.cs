@@ -85,8 +85,10 @@ namespace GenshinCBTServer
             Print("Created database!");
 
             Print("Loading resources...");
-            resourceManager=new ResourceManager();  
-            resourceManager.Load();
+            resourceManager=new ResourceManager();
+            ResourceLoader resourceLoader = new(resourceManager);
+            resourceLoader.LoadAll();
+            resourceLoader.LoadAllLua();
             Print("Resources loaded");
              enet_address_set_host(ref address, "127.0.0.1");
             address.port = (ushort)System.Net.IPAddress.HostToNetworkOrder((short)22102); 
@@ -108,7 +110,7 @@ namespace GenshinCBTServer
             new Thread(new ThreadStart(DispatchServer)).Start();
             while (true)
             {
-                string cmd = Console.ReadLine();
+                string cmd = Console.ReadLine()!;
                 string[] split = cmd.Split(" ");
                 string[] args = cmd.Split(" ").Skip(1).ToArray();
                 string command = split[0];

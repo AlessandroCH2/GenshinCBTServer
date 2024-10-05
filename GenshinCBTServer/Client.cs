@@ -2,24 +2,15 @@
 using GenshinCBTServer.Excel;
 using GenshinCBTServer.Network;
 using GenshinCBTServer.Player;
+using GenshinCBTServer.Data;
 using GenshinCBTServer.Protocol;
 using Google.Protobuf;
 using Google.Protobuf.Collections;
 using Pastel;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
-using SQLiteNetExtensions.Extensions;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using static GenshinCBTServer.Dispatch;
 using static GenshinCBTServer.ENet;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace GenshinCBTServer
 {
@@ -267,7 +258,8 @@ namespace GenshinCBTServer
             }
             else
             {
-                SceneExcel sceneEx = Server.getResources().LoadSceneLua(scene);
+                ResourceLoader loader = new(Server.getResources());
+                SceneExcel sceneEx = loader.LoadSceneLua(scene);
                 motionInfo.Pos = sceneEx.bornPos;
                 motionInfo.Rot=sceneEx.bornRot;
             }

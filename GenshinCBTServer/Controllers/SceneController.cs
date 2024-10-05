@@ -1,14 +1,7 @@
 ﻿using GenshinCBTServer.Network;
 using GenshinCBTServer.Player;
 using GenshinCBTServer.Protocol;
-using System;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection.Metadata.Ecma335;
-using static GenshinCBTServer.ResourceManager;
+using GenshinCBTServer.Data;
 
 namespace GenshinCBTServer.Controllers
 {
