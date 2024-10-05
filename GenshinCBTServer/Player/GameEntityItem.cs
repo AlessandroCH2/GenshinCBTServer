@@ -13,14 +13,10 @@ namespace GenshinCBTServer.Player
 {
     public class GameEntityItem : GameEntity
     {
-      
-        
         public GameItem item;
 
         public override void InitProps()
         {
-          
-           
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, 1f);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, 1);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, 1);

@@ -2,24 +2,15 @@
 using GenshinCBTServer.Excel;
 using GenshinCBTServer.Network;
 using GenshinCBTServer.Player;
+using GenshinCBTServer.Data;
 using GenshinCBTServer.Protocol;
 using Google.Protobuf;
 using Google.Protobuf.Collections;
 using Pastel;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
-using SQLiteNetExtensions.Extensions;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using static GenshinCBTServer.Dispatch;
 using static GenshinCBTServer.ENet;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace GenshinCBTServer
 {
@@ -36,21 +27,18 @@ namespace GenshinCBTServer
         public int level { get; set; }
         [Column("xp")]
         public float xp { get; set; }
-
         [Column("currentSceneId")]
         public uint currentSceneId { get; set; }
-
-
         [Column("selectedAvatar")]
         public int selectedAvatar { get; set; }
         [TextBlob("_team")]
         public uint[] team { get; set; }
         [TextBlob("_avatars")]
         public List<Avatar> avatars { get; set; }
-
         public string _avatars;
         public string _team;
     }
+
     public class GuidRandomizer
     {
         int v = 0;
@@ -60,6 +48,7 @@ namespace GenshinCBTServer
             return v;
         }
     }
+
     public class Client
     {
        
@@ -70,7 +59,6 @@ namespace GenshinCBTServer
         public uint currentSceneId = 3;
         public uint prevSceneId = 0;
         public uint returnPointId = 1;
-
         public uint[] team = { 10000016, 10000015, 10000002, 10000022 };
         public uint teamEntityId;
         public int selectedAvatar = 0;
@@ -86,7 +74,7 @@ namespace GenshinCBTServer
         public List<uint> inRegions = new List<uint>();
         public MapField<uint,PropValue> GetPlayerProps()
         {
-            MapField<uint, PropValue> props = new MapField<uint, PropValue>();
+            MapField<uint, PropValue>  ItemAddHintNotify addHintNotify = new ItemAddHintNotify()props = new MapField<uint, PropValue>();
             props.Add((uint)PropType.PROP_LAST_CHANGE_AVATAR_TIME, new PropValue() { Val=0});
             addProp((uint)PropType.PROP_IS_FLYABLE, 1, props);
             props.Add((uint)PropType.PROP_IS_WEATHER_LOCKED, new PropValue() { Val = 0 });
@@ -104,7 +92,6 @@ namespace GenshinCBTServer
             addProp((uint)PropType.PROP_IS_WORLD_ENTERABLE, 1,props);
             return props;
         }
-
         public void AddItem(GameItem item)
         {
            
@@ -112,13 +99,11 @@ namespace GenshinCBTServer
             if(item.GetExcel().itemType==ItemType.ITEM_MATERIAL)
             {
                 bool found = inventory.Find(i=>i.id==item.id) != null;
-
                 ItemAddHintNotify addHintNotify = new ItemAddHintNotify()
                 {
                     Reason = (uint)ItemAddReasonType.ItemAddReasonTrifle,
                     ItemList = { new ItemHint() {Count=(uint)item.amount,IsNew=!found,ItemId=item.id } }
                 };
-
                 if (found)
                 {
                     inventory.Find(i => i.id == item.id).amount += item.amount;
@@ -142,29 +127,30 @@ namespace GenshinCBTServer
             }
             SendInventory();
         }
+
         public void addProp(uint type, int value, MapField<uint, PropValue> map)
         {
             PropValue prop = new PropValue();
             prop.Val = value;
             prop.Type = type;
             prop.Ival = value;
-
             map.Add(type, prop);
         }
+
         public void SendInventory()
         {
             PlayerStoreNotify n = new()
             {
                 StoreType = StoreType.StorePack,
-                WeightLimit = 99999,
+                WeightLimit = 999999999,
             };
-
             foreach(GameItem item in inventory)
             {
                 n.ItemList.Add(item.toProtoItem());
             }
             SendPacket((uint)CmdType.PlayerStoreNotify, n);
         }
+
         public void InitiateAccount(string token)
         {
             world = new World(this);
@@ -182,22 +168,18 @@ namespace GenshinCBTServer
                 
             };
             playerDataNotify.PropMap.Add(GetPlayerProps());
-
             foreach (OpenStateType state in Enum.GetValues(typeof(OpenStateType)))
             {
                 openStateMap[(uint)state] = 1;
             }
-
             SendPacket((uint)CmdType.PlayerDataNotify, playerDataNotify);
                 
                 foreach (KeyValuePair<uint, uint> state in openStateMap)
                 {
                     openStateNotify.OpenStateMap.Add(state.Key, state.Value);
                 }
-
             foreach(ItemData itemData in Server.getResources().itemData.Values)
             {
-
                 if(itemData.itemType == ItemType.ITEM_MATERIAL || itemData.itemType == ItemType.ITEM_WEAPON)
                 {
                     GameItem it = new GameItem(this, (uint)itemData.id);
@@ -224,12 +206,30 @@ namespace GenshinCBTServer
             // Find the avatar with the id of the first avatar in the team, and get its guid
             selectedAvatar = (int)avatars.FirstOrDefault((avatar) => avatar.id == team.First()).guid;
             // selectedAvatar = (int)avatars[0].guid;
+                        // for cooking stuff
+            CookDataNotify cookDataNotify = new();
+            foreach (CookRecipeExcel recipe in Server.getResources().cookRecipeDict.Values)
+            {
+                cookDataNotify.RecipeDataList.Add(new CookRecipeData()
+                {
+                    RecipeId = recipe.id,
+                    Proficiency = recipe.maxProficiency
+                });
+            }
+            CompoundDataNotify compoundDataNtf = new();
+            foreach (CompoundExcel compound in Server.getResources().compoundDict.Values)
+            {
+                compoundDataNtf.UnlockCompoundList.Add(compound.id);
+            }
+            SendPacket((uint)CmdType.CookDataNotify, cookDataNotify);
+            SendPacket((uint)CmdType.CompoundDataNotify, compoundDataNtf);
             SendInventory();
             SendAllAvatars();
             QuestController.UpdateQuestForClient(this);
             SendPacket((uint)CmdType.OpenStateUpdateNotify, openStateNotify);
             SendPacket((uint)CmdType.AllSeenMonsterNotify, allSeenMonsterNotify);
         }
+
         //Need to be remade completely
         public Profile ToProfile()
         {
@@ -245,6 +245,7 @@ namespace GenshinCBTServer
             };
             return profile;
         }
+
         private void ReadProfile(Profile profile)
         {
             this.avatars = profile.avatars;
@@ -253,7 +254,6 @@ namespace GenshinCBTServer
             this.team = profile.team;
             this.uid = profile.uid;
             this.token = profile.token;
-           
         }
 
         public void TeleportToScene(uint scene,Vector newPos = null,Vector newRot = null, EnterType enterType = EnterType.EnterJump)
@@ -267,7 +267,8 @@ namespace GenshinCBTServer
             }
             else
             {
-                SceneExcel sceneEx = Server.getResources().LoadSceneLua(scene);
+                ResourceLoader loader = new(Server.getResources());
+                SceneExcel sceneEx = loader.LoadSceneLua(scene);
                 motionInfo.Pos = sceneEx.bornPos;
                 motionInfo.Rot=sceneEx.bornRot;
             }
@@ -275,12 +276,13 @@ namespace GenshinCBTServer
             SendPacket((uint)CmdType.PlayerEnterSceneNotify, new PlayerEnterSceneNotify() { SceneId = scene,TargetUid=uid,PrevPos= prevPos, Pos=motionInfo.Pos,PrevSceneId= prevSceneId, Type=enterType,SceneBeginTime=0 });
             currentSceneId = scene;
             world.LoadNewScene(currentSceneId);
-
         }
+
         public uint GetCurrentAvatar()
         {
             return (uint)selectedAvatar;
         }
+
         public void SendAllAvatars()
         {
             AvatarDataNotify notify = new AvatarDataNotify();
@@ -302,10 +304,11 @@ namespace GenshinCBTServer
             SendPacket((uint)CmdType.AvatarDataNotify, notify);
             
         }
+
         public void Update()
         {
-
         }
+
         public void SendPacket(uint cmdId,IMessage protoMessage)
         {
             IntPtr packet = Packet.EncodePacket((ushort)cmdId, protoMessage);
@@ -318,13 +321,12 @@ namespace GenshinCBTServer
                 Logger.Log($"[server->client] {((CmdType)cmdId).ToString()} body: {protoMessage.ToString()}");
             }
         }
-
+        
         public void SpawnElfie()
         {
             SceneEntityAppearNotify appear = new()
             {
                 AppearType = VisionType.VisionMeet,
-
             };
             appear.EntityList.Add(new SceneEntityInfo()
             {
@@ -337,12 +339,9 @@ namespace GenshinCBTServer
                     NpcId= 1469
                 }
             });
-
             SendPacket((uint)CmdType.SceneEntityAppearNotify, appear);
         }
-
         
-
         public Client(IntPtr iD)
         {
             this.peer = iD;
