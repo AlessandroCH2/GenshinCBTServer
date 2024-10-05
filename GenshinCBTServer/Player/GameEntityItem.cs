@@ -93,7 +93,7 @@ namespace GenshinCBTServer.Player
 
 
                 };
-                info.Gadget.ItemId = item.id;
+               // info.Gadget.ItemId = item.id;
            
                 info.Gadget.TrifleItem = item.toProtoItem();
                 

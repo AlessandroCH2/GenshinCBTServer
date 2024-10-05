@@ -37,8 +37,7 @@ namespace GenshinCBTServer.Controllers
                 {
                     if (req.ParamList[0] == 0)
                     {
-                        //ConfigId workaround to implement
-
+                        
                         if(entity != null)
                         {
                             args.param1 = (int)entity.configId;
@@ -50,7 +49,7 @@ namespace GenshinCBTServer.Controllers
                 if(entity!=null)
                 LuaManager.executeTriggersLua(session,session.world.currentBlock.groups.Find(g=>g.id==entity.groupId), args);
                 if (entity != null && req.EventType == (uint)EventType.EVENT_AVATAR_NEAR_PLATFORM)
-                    if (entity is GameEntityGadget)
+                if (entity is GameEntityGadget)
                 {
 
                     GameEntityGadget gameEntityGadget = (GameEntityGadget)entity;

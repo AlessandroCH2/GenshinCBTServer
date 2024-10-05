@@ -258,8 +258,10 @@ namespace GenshinCBTServer.Player
                         
                         uint entityId = ((uint)ProtEntityType.ProtEntityGadget << 24) + (uint)client.random.Next();
                         ItemData itemData = Server.getResources().itemData.Values.ToList().Find(i=>i.gadgetId==gadget.gadget_id);
-                        if (itemData != null)
+                        GadgetData gData=Server.getResources().gadgetDataDict.Values.ToList().Find(i => i.id == gadget.gadget_id);
+                        if (itemData != null && gData==null)
                         {
+                       
                         GameEntityItem entity = new GameEntityItem(entityId, gadget.gadget_id, new MotionInfo()
                         {
                             Pos = new Vector() { X = gadget.pos.X, Y = gadget.pos.Y, Z = gadget.pos.Z },

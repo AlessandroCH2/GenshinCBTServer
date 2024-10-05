@@ -138,8 +138,12 @@ namespace GenshinCBTServer.Controllers
                 platform.Route.IsStarted = false;
                 platform.StartPlatform();
             }
+            else
+            {
+               // platform.StartPlatform();
+            }
             
-            //platform.StartPlatform();
+            
             /* PlatformStopRouteNotify stopNtf = new PlatformStopRouteNotify()
              {
                  EntityId = platform.entityId,
