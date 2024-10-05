@@ -2,6 +2,7 @@
 using CsvHelper.Configuration.Attributes;
 using GenshinCBTServer.Player;
 using GenshinCBTServer.Protocol;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,153 +66,23 @@ namespace GenshinCBTServer.Excel
     }
     public class TalentSkillData
     {
-        [Index(0)]
-        public int id { get; set; }
-        [Index(1)]
-        public int? talent_group_id { get; set; }
-        [Index(2)]
-        public int rank { get; set; }
+        [JsonProperty("talentId")]
+        public int id;
+        [JsonProperty("talentGroupId")]
+        public int talent_group_id;
+        [JsonProperty("level")]
+        public int rank;
     };
     
     public class AvatarSkillDepotData
     {
-        [Index(0)]
-        public int id { get; set; }
-        [Index(9)]
-        public int? leader_Talent { get; set; }
-        [Index(13)]
-        public List<int> talent_groups { get; set; } // Talent groups (天赋组)
-        public AvatarSkillDepotData()
-        {
-            talent_groups = new List<int>(10);  // Initialize the list to avoid null reference issues
-        }
-
+        public int id;
+        [JsonProperty("leaderTalent")]
+        public int leader_Talent;
+        [JsonProperty("talentGroup")]
+        public List<int> talent_groups = new List<int>(10);
     }
 
-  /*  public enum FightPropType
-    {
-        FIGHT_PROP_NONE = 0, 
-
-    FIGHT_PROP_BASE_HP = 1, 
-
-    FIGHT_PROP_HP = 2, 
-
-    FIGHT_PROP_HP_PERCENT = 3, 
-
-    FIGHT_PROP_BASE_ATTACK = 4, 
-
-    FIGHT_PROP_ATTACK = 5, 
-
-    FIGHT_PROP_ATTACK_PERCENT = 6, 
-
-    FIGHT_PROP_BASE_DEFENSE = 7, 
-
-    FIGHT_PROP_DEFENSE = 8, 
-
-    FIGHT_PROP_DEFENSE_PERCENT = 9, 
-
-    FIGHT_PROP_BASE_SPEED = 10, 
-
-    FIGHT_PROP_SPEED_PERCENT = 11, 
-
-    FIGHT_PROP_CRITICAL = 20, 
-
-    FIGHT_PROP_ANTI_CRITICAL = 21, 
-
-    FIGHT_PROP_CRITICAL_HURT = 22, 
-
-    FIGHT_PROP_CHARGE_EFFICIENCY = 23, 
-
-    FIGHT_PROP_ADD_HURT = 24, 
-
-    FIGHT_PROP_SUB_HURT = 25, 
-
-    FIGHT_PROP_HEAL_ADD = 26, 
-
-    FIGHT_PROP_HEALED_ADD = 27, 
-
-    FIGHT_PROP_FIRE_ADD_HURT = 40,
-
-    FIGHT_PROP_ELEC_ADD_HURT = 41,
-
-    FIGHT_PROP_WATER_ADD_HURT = 42, 
-
-    FIGHT_PROP_GRASS_ADD_HURT = 43,
-
-    FIGHT_PROP_WIND_ADD_HURT = 44, 
-
-    FIGHT_PROP_ROCK_ADD_HURT = 45,
-
-    FIGHT_PROP_ICE_ADD_HURT = 46, 
-
-    FIGHT_PROP_FIRE_SUB_HURT = 50,
-
-    FIGHT_PROP_ELEC_SUB_HURT = 51, 
-
-    FIGHT_PROP_WATER_SUB_HURT = 52,
-
-    FIGHT_PROP_GRASS_SUB_HURT = 53, 
-
-    FIGHT_PROP_WIND_SUB_HURT = 54, 
-
-    FIGHT_PROP_ROCK_SUB_HURT = 55, 
-
-    FIGHT_PROP_ICE_SUB_HURT = 56, 
-
-    FIGHT_PROP_EFFECT_HIT = 60, 
-
-    FIGHT_PROP_EFFECT_RESIST = 61,
-
-    FIGHT_PROP_FREEZE_RESIST = 62,
-
-    FIGHT_PROP_TORPOR_RESIST = 63, 
-
-    FIGHT_PROP_DIZZY_RESIST = 64,
-
-    FIGHT_PROP_FREEZE_SHORTEN = 65,
-
-    FIGHT_PROP_TORPOR_SHORTEN = 66,
-
-    FIGHT_PROP_DIZZY_SHORTEN = 67, 
-
-    FIGHT_PROP_MAX_FIRE_ENERGY = 70, 
-
-    FIGHT_PROP_MAX_ELEC_ENERGY = 71, 
-
-    FIGHT_PROP_MAX_WATER_ENERGY = 72,
-
-    FIGHT_PROP_MAX_GRASS_ENERGY = 73, 
-
-    FIGHT_PROP_MAX_WIND_ENERGY = 74, 
-
-    FIGHT_PROP_MAX_ICE_ENERGY = 75, 
-
-    FIGHT_PROP_MAX_ROCK_ENERGY = 76,
-
-    FIGHT_PROP_CUR_FIRE_ENERGY = 1000,
-
-    FIGHT_PROP_CUR_ELEC_ENERGY = 1001, 
-
-    FIGHT_PROP_CUR_WATER_ENERGY = 1002,
-
-    FIGHT_PROP_CUR_GRASS_ENERGY = 1003,
-
-    FIGHT_PROP_CUR_WIND_ENERGY = 1004, 
-
-    FIGHT_PROP_CUR_ICE_ENERGY = 1005, 
-
-    FIGHT_PROP_CUR_ROCK_ENERGY = 1006, 
-
-    FIGHT_PROP_CUR_HP = 1010, 
-
-    FIGHT_PROP_MAX_HP = 2000,
-
-    FIGHT_PROP_CUR_ATTACK = 2001, 
-
-    FIGHT_PROP_CUR_DEFENSE = 2002, 
-
-    FIGHT_PROP_CUR_SPEED = 2003, 
-    }*/
     public enum EquipType
     {
         EQUIP_NONE = 0,
@@ -412,7 +283,7 @@ namespace GenshinCBTServer.Excel
         public uint drop_id;
         public string comment;
         public uint child_drop_id;
-        public int child_drop_id_weight; //idk how to use that for now
+        public int child_drop_id_weight;
     }
     public class ChildDrop
     {

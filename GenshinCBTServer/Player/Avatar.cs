@@ -27,7 +27,7 @@ namespace GenshinCBTServer.Player
         public uint weaponId { get { return GetExcel().weaponId; } }
         
         Client client;
-        public Excel.AvatarData GetExcel()
+        public AvatarData GetExcel()
         {
             return Server.getResources().GetAvatarDataById(id);
         }
@@ -286,17 +286,17 @@ namespace GenshinCBTServer.Player
             float baseAtk = GetGrowCurveValue(GetExcel().baseAtk, baseAtkCurveType);
             float baseDef = GetGrowCurveValue(GetExcel().baseDef, baseDefCurveType);
             AvatarPromoteExcel promoteExcel = Server.getResources().avatarPromoteData.FirstOrDefault(p => p.promoteLevel == promoteLevel)!;
-            foreach (PromoteProp prop in promoteExcel.addProps)
+            foreach (PropValConfig prop in promoteExcel.addProps)
             {
                 switch (prop.propType)
                 {
-                    case (int)FightPropType.FIGHT_PROP_BASE_HP:
+                    case FightPropType.FIGHT_PROP_BASE_HP:
                         baseHp += prop.value;
                         break;
-                    case (int)FightPropType.FIGHT_PROP_BASE_ATTACK:
+                    case FightPropType.FIGHT_PROP_BASE_ATTACK:
                         baseAtk += prop.value;
                         break;
-                    case (int)FightPropType.FIGHT_PROP_BASE_DEFENSE:
+                    case FightPropType.FIGHT_PROP_BASE_DEFENSE:
                         baseDef += prop.value;
                         break;
                     default:
