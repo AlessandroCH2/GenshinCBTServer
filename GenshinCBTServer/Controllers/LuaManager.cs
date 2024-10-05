@@ -165,6 +165,7 @@ namespace GenshinCBTServer.Controllers
             int configId = (int)(long)parameters["config_id"];
             uint entityId = ((uint)ProtEntityType.ProtEntityGadget << 24) + (uint)client.random.Next();
             SceneGadget sceneGadget = client.world.currentBlock.groups.Find(g => g.id == currentGroupId).gadgets.Find(g => g.config_id == configId);
+            if (sceneGadget == null) return 1;
             sceneGadget.pos.Y -= 1.0f;
             GameEntityGadget gadget = new GameEntityGadget(entityId, sceneGadget.gadget_id, new MotionInfo() { Pos = sceneGadget.pos, Rot = sceneGadget.rot });
             gadget.configId = sceneGadget.config_id;
