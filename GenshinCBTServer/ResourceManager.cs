@@ -1,11 +1,11 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using GenshinCBTServer.Controllers;
-using GenshinCBTServer.Excel;
+using GenshinCBTServer.Protocol;
 using GenshinCBTServer.Player;
 using Newtonsoft.Json;
 using NLua;
-using System;
+using GenshinCBTServer.Excel;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -17,6 +17,30 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GenshinCBTServer
 {
+    public class AvatarData
+    {
+        public uint id;
+        [JsonProperty("hp_base")]
+        public float baseHp;
+        [JsonProperty("attack_base")]
+        public float baseAtk;
+        [JsonProperty("defense_base")]
+        public float baseDef;
+        public uint skillDepotId;
+        [JsonProperty("initialWeapon")]
+        public uint weaponId;
+        public float critical;
+        public float criticalHurt;
+        public float fireAddHurt;
+        public float waterAddHurt;
+        public float grassAddHurt;
+        public float elecAddHurt;
+        public float windAddHurt;
+        public float iceAddHurt;
+        public float rockAddHurt;
+        public List<PropGrowCurve> propGrowCurves = new List<PropGrowCurve>();
+    }
+
     public class SceneExcel
     {
         public uint sceneId;
@@ -24,7 +48,16 @@ namespace GenshinCBTServer
         public Vector bornRot = new Vector();
         public List<SceneBlock> sceneBlocks = new List<SceneBlock>();
     }
-
+    public class IdCountConfig
+    {
+        public uint id;
+        public uint count;
+    }
+    public class PropValConfig
+    {
+        public FightPropType propType;
+        public float value;
+    }
     public class ScenePoint
     {
         required public string JsonObjType;
@@ -166,7 +199,7 @@ namespace GenshinCBTServer
         public ElementType elementType;
         public List<CostItems> costItems = new List<CostItems>();
         public uint unlockMaxLevel;
-        public List<PromoteProp> addProps = new List<PromoteProp>();
+        public List<PropValConfig> addProps = new List<PropValConfig>();
         public uint playerExp;
     }
 
@@ -233,37 +266,37 @@ namespace GenshinCBTServer
         }
         public void Load()
         {
-            shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/excel/ShopGoodsExcelConfigData.json"))!;
-            dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/excel/DungeonExcelConfigData.json"))!;
-            gadgetDataDict = JsonConvert.DeserializeObject<Dictionary<uint, GadgetData>>(File.ReadAllText("resources/excel/GadgetExcelConfigData.json"))!;
-            monsterDataDict = JsonConvert.DeserializeObject<Dictionary<uint, MonsterData>>(File.ReadAllText("resources/excel/MonsterExcelConfigData.json"))!;
-            avatarPromoteData = JsonConvert.DeserializeObject<List<AvatarPromoteExcel>>(File.ReadAllText("resources/excel/AvatarPromoteExcelConfigData.json"))!;
+            shopGoodsDict = JsonConvert.DeserializeObject<Dictionary<uint, ShopGoodsData>>(File.ReadAllText("resources/ExcelOutput/ShopGoodsExcelConfigData.json"))!;
+            dungeonDataDict = JsonConvert.DeserializeObject<Dictionary<uint, DungeonData>>(File.ReadAllText("resources/ExcelOutput/DungeonExcelConfigData.json"))!;
+            gadgetDataDict = JsonConvert.DeserializeObject<Dictionary<uint, GadgetData>>(File.ReadAllText("resources/ExcelOutput/GadgetExcelConfigData.json"))!;
+            monsterDataDict = JsonConvert.DeserializeObject<Dictionary<uint, MonsterData>>(File.ReadAllText("resources/ExcelOutput/MonsterExcelConfigData.json"))!;
+            avatarPromoteData = JsonConvert.DeserializeObject<List<AvatarPromoteExcel>>(File.ReadAllText("resources/ExcelOutput/AvatarPromoteExcelConfigData.json"))!;
             configGadgetDict = LoadConfigGadget();
             avatarsData = LoadAvatarExcel();
             talentSkillData = LoadTalentSkillData();
             avatarSkillDepotData = LoadAvatarSkillDepotData();
-            avatarCurveDict = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/excel/AvatarCurveExcelConfigData.json"))!;
-            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/WeaponExcelConfigData.json"))!);
-            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/MaterialExcelConfigData.json"))!);
-            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/excel/ReliquaryExcelConfigData.json"))!);
-            weaponCurves = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/excel/WeaponCurveExcelConfigData.json"))!;
-            gadgetProps = JsonConvert.DeserializeObject<Dictionary<uint, GadgetProp>>(File.ReadAllText("resources/excel/GadgetPropExcelConfigData.json"))!;
+            avatarCurveDict = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/ExcelOutput/AvatarCurveExcelConfigData.json"))!;
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/ExcelOutput/WeaponExcelConfigData.json"))!);
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/ExcelOutput/MaterialExcelConfigData.json"))!);
+            itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/ExcelOutput/ReliquaryExcelConfigData.json"))!);
+            weaponCurves = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/ExcelOutput/WeaponCurveExcelConfigData.json"))!;
+            gadgetProps = JsonConvert.DeserializeObject<Dictionary<uint, GadgetProp>>(File.ReadAllText("resources/ExcelOutput/GadgetPropExcelConfigData.json"))!;
 
-            weaponsPromote = JsonConvert.DeserializeObject<Dictionary<uint, PromoteInfo>>(File.ReadAllText("resources/excel/WeaponPromoteExcelConfigData.json"))!;
-            dropData = JsonConvert.DeserializeObject<List<DropData>>(File.ReadAllText("resources/excel/DropTreeData.json"))!;
-            childDropData = JsonConvert.DeserializeObject<List<ChildDrop>>(File.ReadAllText("resources/excel/DropLeafData.json"))!;
+            weaponsPromote = JsonConvert.DeserializeObject<Dictionary<uint, PromoteInfo>>(File.ReadAllText("resources/ExcelOutput/WeaponPromoteExcelConfigData.json"))!;
+            dropData = JsonConvert.DeserializeObject<List<DropData>>(File.ReadAllText("resources/ExcelOutput/DropTreeExcelConfigData.json"))!;
+            childDropData = JsonConvert.DeserializeObject<List<ChildDrop>>(File.ReadAllText("resources/ExcelOutput/DropLeafExcelConfigData.json"))!;
             Server.Print("Loading all scenes lua");
-            string[] scenes_ = Directory.GetDirectories("resources/lua/Scene");
+            string[] scenes_ = Directory.GetDirectories("resources/Lua/Scene");
             foreach (string scene in scenes_)
             {
-                uint sceneid = uint.Parse(scene.Replace("resources/lua/Scene\\", ""));
+                uint sceneid = uint.Parse(scene.Replace("resources/Lua/Scene\\", ""));
                 scenes.Add(LoadSceneLua(sceneid));
                 scenePointDict[sceneid] = LoadScenePointData(sceneid);
             }
         }
         public List<AvatarData> LoadAvatarExcel()
         {
-            Dictionary<uint, AvatarData> data = JsonConvert.DeserializeObject<Dictionary<uint, AvatarData> >(File.ReadAllText("resources/excel/AvatarExcelConfigData.json"))!;
+            Dictionary<uint, AvatarData> data = JsonConvert.DeserializeObject<Dictionary<uint, AvatarData> >(File.ReadAllText("resources/ExcelOutput/AvatarExcelConfigData.json"))!;
             return data.Values.ToList();
         }
         public Dictionary<uint,ItemData> AddItemDataDic(Dictionary<uint,ItemData> data)
@@ -333,7 +366,7 @@ namespace GenshinCBTServer
 
         public Dictionary<string, GadgetConfigRow> LoadConfigGadget()
         {
-            string mainlocation = $"resources/binoutput/gadget";
+            string mainlocation = $"resources/BinOutput/Gadget";
             string[] files = Directory.GetFiles(mainlocation);
             Dictionary<string, GadgetConfigRow> configGadgetDict = new();
             foreach (string file in files)
@@ -416,11 +449,11 @@ namespace GenshinCBTServer
         }
         public string getRequiredLuas()
         {
-            return File.ReadAllText("resources/lua/Config/Json/ConfigEntityType.lua") + "\n" + File.ReadAllText("resources/lua/Config/Json/ConfigEntity.lua") + "\n" + File.ReadAllText("resources/lua/Config/Excel/CommonScriptConfig.lua") + "\n";
+            return File.ReadAllText("resources/Lua/Config/Json/ConfigEntityType.lua") + "\n" + File.ReadAllText("resources/Lua/Config/Json/ConfigEntity.lua") + "\n" + File.ReadAllText("resources/Lua/Config/Excel/CommonScriptConfig.lua") + "\n";
         }
         private void LoadSceneGroupLua(SceneGroup group, uint sceneId)
         {
-            string mainlocation = $"resources/lua/Scene/{sceneId}";
+            string mainlocation = $"resources/Lua/Scene/{sceneId}";
             string mainLua = mainlocation + $"/scene{sceneId}_group{group.id}.lua";
             if (File.Exists(mainLua))
             {
@@ -596,7 +629,7 @@ namespace GenshinCBTServer
 
         private ScenePointRow LoadScenePointData(uint sceneId)
         {
-            string path = $"resources/binoutput/Scene/Point/scene{sceneId}_point.json";
+            string path = $"resources/BinOutput/Scene/Point/scene{sceneId}_point.json";
             FileInfo file = new(path);
             if (!file.Exists)
             {
@@ -613,62 +646,14 @@ namespace GenshinCBTServer
 
         private List<AvatarSkillDepotData> LoadAvatarSkillDepotData()
         {
-            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
-            {
-                Delimiter = "\t",
-                HasHeaderRecord = true,
-                BadDataFound = null
-
-            };
-            using (var reader = new StreamReader("resources/excel/AvatarSkillDepotData.tsv"))
-            using (var csv = new CsvReader(reader, configuration))
-            {
-
-                var records = new List<AvatarSkillDepotData>();
-
-                csv.Read(); // Read the header
-                csv.ReadHeader();
-
-                while (csv.Read())
-                {
-                    var record = new AvatarSkillDepotData
-                    {
-                        id = csv.GetField<int>(0),                   // Index 0 is for 'id'
-                        leader_Talent = csv.GetField<int?>(9),        // Index 9 is for 'leader_Talent'
-                    };
-
-                    // Manually reading talent_groups from index 13 to 23
-                    for (int i = 13; i <= 23; i++)
-                    {
-                        var field = csv.GetField(i);
-                        if (!string.IsNullOrWhiteSpace(field) && int.TryParse(field, out int result))
-                        {
-                            record.talent_groups.Add(result);
-                        }
-                    }
-
-                    records.Add(record); // Add the record to the list
-
-                }
-                    return records;
-            }
+            string path = $"resources/ExcelOutput/AvatarSkillDepotExcelConfigData.json";
+            return JsonConvert.DeserializeObject<Dictionary<uint, AvatarSkillDepotData>>(File.ReadAllText(path)).Values.ToList();
         }
 
         private List<TalentSkillData> LoadTalentSkillData()
         {
-            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
-            {
-                Delimiter = "\t",
-                HasHeaderRecord = true,
-                
-            };
-            using (var reader = new StreamReader("resources/excel/TalentSkillData.tsv"))
-            using (var csv = new CsvReader(reader, configuration))
-            {
-                var records = csv.GetRecords<TalentSkillData>().ToList();
-                return records;
-            }
-            
+            string path = $"resources/ExcelOutput/AvatarTalentExcelConfigData.json";
+            return JsonConvert.DeserializeObject<Dictionary<uint, TalentSkillData>>(File.ReadAllText(path)).Values.ToList();
         }
         public GadgetData GetGadgetData(uint id)
         {
