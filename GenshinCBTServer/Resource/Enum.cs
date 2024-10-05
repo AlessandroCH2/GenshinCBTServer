@@ -90,3 +90,10 @@ public enum ElementType
     Rock = 8,
     AntiFire = 9,
 }
+
+public enum CompoundType
+{
+    COMPOUND_NONE = 0,
+    COMPOUND_COOK = 1,
+    COMPOUND_PLACEHOLDER_2 = 2,
+}

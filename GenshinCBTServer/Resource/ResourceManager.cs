@@ -22,6 +22,8 @@ namespace GenshinCBTServer
         public Dictionary<uint, PromoteInfo>  weaponsPromote = new Dictionary<uint, PromoteInfo>();
         public Dictionary<uint, GadgetProp> gadgetProps = new Dictionary<uint, GadgetProp>();
         public Dictionary<uint, MonsterData> monsterDataDict = new Dictionary<uint, MonsterData>();
+        public Dictionary<uint, CookRecipeExcel> cookRecipeDict = new Dictionary<uint, CookRecipeExcel>();
+        public Dictionary<uint, CompoundExcel> compoundDict = new Dictionary<uint, CompoundExcel>();
         public Dictionary<string, GadgetConfigRow> configGadgetDict = new Dictionary<string, GadgetConfigRow>();
         public List<DropData> dropData = new List<DropData>();
         public List<ChildDrop> childDropData = new List<ChildDrop>();

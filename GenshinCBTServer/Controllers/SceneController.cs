@@ -2,6 +2,7 @@
 using GenshinCBTServer.Player;
 using GenshinCBTServer.Protocol;
 using GenshinCBTServer.Data;
+using GenshinCBTServer.Excel;
 
 namespace GenshinCBTServer.Controllers
 {
@@ -437,7 +438,6 @@ namespace GenshinCBTServer.Controllers
         public static void OnSceneInitFinishReq(Client session, CmdType cmdId, Network.Packet packet)
         {
             
-            
             SceneInitFinishReq req = packet.DecodeBody<SceneInitFinishReq>();
 
 
@@ -457,7 +457,6 @@ namespace GenshinCBTServer.Controllers
 
            // SendSceneTeamUpdate(session);
 
-           
             SendEnterSceneInfo(session);
             //Send GameTime
             PlayerGameTimeNotify playerGameTimeNotify = new()
@@ -494,11 +493,60 @@ namespace GenshinCBTServer.Controllers
                 i++;
             }
             session.team = team;
-            SendSceneTeamUpdate(session);
-            
-               
+            SendSceneTeamUpdate(session); 
         }
 
+        [Server.Handler(CmdType.GetCompoundDataReq)]
+        public static void OnGetCompoundDataReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            GetCompoundDataRsp rsp = new GetCompoundDataRsp();
+            foreach (CompoundExcel compound in Server.getResources().compoundDict.Values)
+            {
+                rsp.UnlockCompoundList.Add(compound.id);
+            }
+            session.SendPacket((uint)CmdType.GetCompoundDataRsp, rsp);
+        }
+
+        [Server.Handler(CmdType.PlayerCookReq)]
+        public static void OnPlayerCookReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            PlayerCookReq req = packet.DecodeBody<PlayerCookReq>();
+            CookRecipeExcel excel = Server.getResources().cookRecipeDict[req.RecipeId];
+            PlayerCookRsp rsp = new() {
+                Retcode = 0,
+                QteQuality = req.QteQuality,
+                RecipeData = new CookRecipeData() {
+                    RecipeId = req.RecipeId,
+                    Proficiency = excel.maxProficiency
+                },
+                Item = new ItemParam() {
+                    ItemId = excel.qualityOutputVec.Last().id,
+                    Count = excel.qualityOutputVec.Last().count
+                }
+            };
+            session.SendPacket((uint)CmdType.GetCompoundDataRsp, rsp);
+        }
+
+        [Server.Handler(CmdType.PlayerCompoundMaterialReq)]
+        public static void OnPlayerCompoundMaterialReq(Client session, CmdType cmdId, Network.Packet packet)
+        {
+            PlayerCompoundMaterialReq req = packet.DecodeBody<PlayerCompoundMaterialReq>();
+            CompoundExcel compound = Server.getResources().compoundDict[req.CompoundId];
+            PlayerCompoundMaterialRsp rsp = new() {
+                Retcode = 0,
+                CompoundQueData = new CompoundQueueData() {
+                    CompoundId = req.CompoundId,
+                    OutputCount = compound.outputVec[0].count,
+                    WaitCount = compound.costTime,
+                    OutputTime = 9000+compound.costTime, // TODO: sync with server time
+                }
+            };
+            CompoundDataNotify ntf = new() {
+                CompoundQueDataList = { rsp.CompoundQueData }
+            };
+            session.SendPacket((uint)CmdType.GetCompoundDataRsp, rsp);
+            session.SendPacket((uint)CmdType.CompoundDataNotify, ntf);
+        }
             
         public static void SendSceneTeamUpdate(Client session)
         {

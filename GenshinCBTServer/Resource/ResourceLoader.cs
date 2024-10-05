@@ -24,9 +24,11 @@ namespace GenshinCBTServer
             _resourceManager.monsterDataDict = JsonConvert.DeserializeObject<Dictionary<uint, MonsterData>>(File.ReadAllText("resources/ExcelOutput/MonsterExcelConfigData.json"))!;
             _resourceManager.avatarPromoteData = JsonConvert.DeserializeObject<List<AvatarPromoteExcel>>(File.ReadAllText("resources/ExcelOutput/AvatarPromoteExcelConfigData.json"))!;
             _resourceManager.avatarCurveDict = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/ExcelOutput/AvatarCurveExcelConfigData.json"))!;
+            _resourceManager.cookRecipeDict = JsonConvert.DeserializeObject<Dictionary<uint, CookRecipeExcel>>(File.ReadAllText("resources/ExcelOutput/CookRecipeExcelConfigData.json"))!;
             _resourceManager.itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/ExcelOutput/WeaponExcelConfigData.json"))!);
             _resourceManager.itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/ExcelOutput/MaterialExcelConfigData.json"))!);
             _resourceManager.itemData = AddItemDataDic(JsonConvert.DeserializeObject<Dictionary<uint, ItemData>>(File.ReadAllText("resources/ExcelOutput/ReliquaryExcelConfigData.json"))!);
+            _resourceManager.compoundDict = JsonConvert.DeserializeObject<Dictionary<uint, CompoundExcel>>(File.ReadAllText("resources/ExcelOutput/CompoundExcelConfigData.json"))!;
             _resourceManager.weaponCurves = JsonConvert.DeserializeObject<Dictionary<uint, LevelCurve>>(File.ReadAllText("resources/ExcelOutput/WeaponCurveExcelConfigData.json"))!;
             _resourceManager.gadgetProps = JsonConvert.DeserializeObject<Dictionary<uint, GadgetProp>>(File.ReadAllText("resources/ExcelOutput/GadgetPropExcelConfigData.json"))!;
             _resourceManager.weaponsPromote = JsonConvert.DeserializeObject<Dictionary<uint, PromoteInfo>>(File.ReadAllText("resources/ExcelOutput/WeaponPromoteExcelConfigData.json"))!;
