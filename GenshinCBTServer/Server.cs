@@ -1,4 +1,5 @@
 ﻿
+using GenshinCBTServer.Commands;
 using GenshinCBTServer.Network;
 using GenshinCBTServer.Protocol;
 using Google.Protobuf;
@@ -74,10 +75,11 @@ namespace GenshinCBTServer
                 {
 
                     NotifyManager.AddReqGroupHandler(type);
-
+                    CommandManager.AddReqGroupHandler(type);
                 }
 
                 NotifyManager.Init();
+                CommandManager.Init();
             }
             Logger.Initialize(); // can also pass hideLogs here
             showLogs = !hideLogs;
@@ -213,6 +215,7 @@ namespace GenshinCBTServer
                         break;
                     default:
                         // Print("Unknown command");
+                        CommandManager.Notify(command, args);
                         break;
                 }
             }
