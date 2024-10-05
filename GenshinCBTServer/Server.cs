@@ -235,17 +235,19 @@ namespace GenshinCBTServer
                         
                         break;
                     case ENet.EventType.Connect:
-                        Print("Client connected - ID: " + netEvent.peer + ", IP: " + netEvent.peer);
+                        Print("Player connected, Peer: " + netEvent.peer + ", IP: " + netEvent.peer);
                         Client client = new Client(netEvent.peer);
                         clients.Add(client);
 
                         break;
 
                     case ENet.EventType.Disconnect:
-                        Print("Client disconnected - ID: " + netEvent.peer + ", IP: " + netEvent.peer);
+                        
                         Client client_ = clients.Find(client => client.peer == netEvent.peer);
                         Server.GetDatabase().Update(client_.ToProfile());
                         clients.Remove(client_);
+                        if(client_!=null)
+                        Print($"Player UID {client_.uid}, Peer: {netEvent.peer} disconnected");
                         break;
 
 

@@ -165,10 +165,7 @@ namespace GenshinCBTServer
                                 id = (uint)(long)groupTable["id"],
                                 refreshTime = (uint)(long)groupTable["refresh_time"],
                             };
-                            if (groupTable["variables"] != null)
-                            {
-                                /// here implement variables
-                            }
+                           
                             if (groupTable["area"] != null)
                             {
                                 group.area = (uint)(long)groupTable["area"];

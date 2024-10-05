@@ -74,7 +74,7 @@ namespace GenshinCBTServer
         public List<uint> inRegions = new List<uint>();
         public MapField<uint,PropValue> GetPlayerProps()
         {
-            MapField<uint, PropValue>  ItemAddHintNotify addHintNotify = new ItemAddHintNotify()props = new MapField<uint, PropValue>();
+            MapField<uint, PropValue>  props = new MapField<uint, PropValue>();
             props.Add((uint)PropType.PROP_LAST_CHANGE_AVATAR_TIME, new PropValue() { Val=0});
             addProp((uint)PropType.PROP_IS_FLYABLE, 1, props);
             props.Add((uint)PropType.PROP_IS_WEATHER_LOCKED, new PropValue() { Val = 0 });
