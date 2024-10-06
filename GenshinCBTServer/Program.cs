@@ -25,7 +25,7 @@ class Program
         }
         else
         {
-            File.WriteAllText("server_config.json",JsonConvert.SerializeObject(config));
+            File.WriteAllText("server_config.json",JsonConvert.SerializeObject(config, Formatting.Indented));
         }
         ProxyService service = null;
         if (config.InternalProxy) service = new();
