@@ -51,12 +51,15 @@ namespace GenshinCBTServer
             public delegate void HandlerDelegate(string command, string[] args);
         }
         public static List<Client> clients = new List<Client>();
+        public static string ServerVersion = "1.0.0";
+        public static bool Initialized = false;
         public IntPtr server;
         public  static bool showLogs = true;
       
         public static SQLiteConnection _db;
         public static Dispatch dispatch;
         public static ResourceManager resourceManager;
+        public static ConfigFile config;
         public static SQLiteConnection GetDatabase()
         {
             return _db;
@@ -65,7 +68,7 @@ namespace GenshinCBTServer
         {
             return resourceManager;
         }
-        public void Start(bool hideLogs = false)
+        public void Start(bool hideLogs = false, ConfigFile config = null)
         {
            {
                 Assembly assembly = Assembly.GetExecutingAssembly();
@@ -105,12 +108,12 @@ namespace GenshinCBTServer
             resourceLoader.LoadAll();
             resourceLoader.LoadAllLua();
             Print("Resources loaded");
-             enet_address_set_host(ref address, "127.0.0.1");
-            address.port = (ushort)System.Net.IPAddress.HostToNetworkOrder((short)22102); 
+             enet_address_set_host(ref address, config.LocalIp);
+            address.port = (ushort)System.Net.IPAddress.HostToNetworkOrder((short)config.LocalPort); 
             //address.host = 0;
             //Print($"{address.host}:{address.port}");
            
-            server = enet_host_create(ref address, 16,0,0,0,0);
+            server = enet_host_create(ref address, config.MaxClients,0,0,0,0);
            
             if (server == IntPtr.Zero)
             {
@@ -120,9 +123,10 @@ namespace GenshinCBTServer
             }
             enet_host_compress_with_range_coder(server);
            // enet_host_set_checksum(server, new ENetChecksumCallback(ENet.enet_crc32)); //Not exist in the .dll, modified .dll compiled with checksum set when host is created.
-            Print($"Gameserver started on 22102");
+            Print($"Gameserver started on {config.LocalIp}:{config.LocalPort}");
             new Thread(new ThreadStart(PeerHandle)).Start();
             new Thread(new ThreadStart(DispatchServer)).Start();
+            Initialized = true;
             while (true)
             {
                 string cmd = Console.ReadLine()!;
@@ -132,17 +136,7 @@ namespace GenshinCBTServer
                 //TODO Command handling system
                 switch(command.ToLower())
                 {
-                    case "dispatch":
-                        if(args.Length > 0)
-                        {
-                            if (args[0].ToLower() == "new")
-                            {
-                                if (args.Length > 1) {
-                                    dispatch.NewAccount(args[1], args[2]);
-                                }
-                            }
-                        }
-                        break;
+
                     case "teleport":
                         if (args.Length >= 4)
                         {
@@ -227,6 +221,9 @@ namespace GenshinCBTServer
         }
         public static CmdType[] hideLog = [CmdType.SceneEntityDrownReq, CmdType.SceneEntityMoveReq, CmdType.SceneEntityMoveRsp, CmdType.PingReq, CmdType.AbilityInvocationsNotify, CmdType.AbilityInvocationFixedNotify
             ,CmdType.EvtAnimatorParameterNotify,CmdType.ClientAbilityInitFinishNotify,CmdType.PingRsp,CmdType.SceneEntityAppearNotify,CmdType.PlayerStoreNotify];
+
+       
+
         public void PeerHandle()
         {
 
@@ -307,6 +304,11 @@ namespace GenshinCBTServer
         {
             Logger.Log(text);
             Console.WriteLine($"[{ColoredText("Server", "03fcce")}] " + text);
+        }
+
+        public static void Shutdown()
+        {
+            //TODO
         }
     }
 }
