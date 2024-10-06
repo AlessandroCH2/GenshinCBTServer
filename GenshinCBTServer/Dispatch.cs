@@ -113,8 +113,8 @@ namespace GenshinCBTServer
                 {
                     ResourceUrl = "http://localhost:8099/game_res",
                     DataUrl = "http://localhost:8099/design_data",
-                    GateserverIp = "127.0.0.1",
-                    GateserverPort = 22102,
+                    GateserverIp = Server.config.LocalIp,
+                    GateserverPort =(uint) Server.config.LocalPort,
                     ResVersion = 138541,
                     DataVersion = 138541,
                     RegionCustomConfig = "{}",
