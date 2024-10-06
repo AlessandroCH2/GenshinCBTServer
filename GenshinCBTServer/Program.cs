@@ -14,7 +14,7 @@ class Program
     private static void StartServer(string[] args)
     {
         Console.Title = "Initializing...";
-        //TODO way to disable proxy if the server isn't used local (should create config file, even for set ip)
+       
         
         bool disableLogs = args.Length > 0 && args[0].ToLower() == "nologs";
         
