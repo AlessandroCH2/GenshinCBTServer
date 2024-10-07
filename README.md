@@ -1,5 +1,5 @@
 Server for Anime Game CBT 1\
-You need a proxy for redirect dispatch to localhost:8099\
+You need a proxy for redirect dispatch to localhost:8099 or use integrated proxy if you are using it localhost
 Download the resources folder from https://github.com/Hiro420/GI_CBT1_Data/tree/GenshinCBTServer_resources and paste it in your PS exe folder
 
 Create new dispatch account with:
