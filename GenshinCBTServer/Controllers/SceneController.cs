@@ -3,11 +3,34 @@ using GenshinCBTServer.Player;
 using GenshinCBTServer.Protocol;
 using GenshinCBTServer.Data;
 using GenshinCBTServer.Excel;
+using System.Diagnostics;
 
 namespace GenshinCBTServer.Controllers
 {
     public class SceneController
     {
+
+
+        [Server.Handler(CmdType.WorldPlayerReviveReq)]
+        public static void OnWorldPlayerReviveReq(Client session,CmdType cmdId,Packet packet)
+        {
+            WorldPlayerReviveReq req = packet.DecodeBody<WorldPlayerReviveReq>();
+
+            for (int i = 0; i < session.team.Length; i++)
+            {
+                Avatar av = session.avatars.Find(av => av.id == session.team[i]);
+                if (av != null)
+                {
+                    av.curHp = av.GetFightProp(FightPropType.FIGHT_PROP_MAX_HP) / 3;
+                    av.SendUpdatedProps();
+                    session.SendAllAvatars();
+
+                }
+            }
+            ScenePoint point = Server.getResources().scenePointDict[session.currentSceneId].points.Values.First();
+
+            session.TeleportToScene(session.currentSceneId, point.tranPos, point.tranRot, EnterType.EnterGoto);
+        }
         [Server.Handler(CmdType.ClientScriptEventNotify)]
         public static void OnClientScriptEventNotify(Client session, CmdType cmdId, Network.Packet packet)
         {
@@ -583,7 +606,7 @@ namespace GenshinCBTServer.Controllers
            
         }
 
-        private static void SwitchAvatar(Client session, uint guid)
+        public static void SwitchAvatar(Client session, uint guid)
         {
             Avatar prevAv =session.avatars.Find(av => av.guid == session.GetCurrentAvatar());
             session.selectedAvatar = (int)guid;

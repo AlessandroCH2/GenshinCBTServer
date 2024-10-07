@@ -24,6 +24,16 @@ namespace GenshinCBTServer.Controllers
             return result;
 
         }
+        public static Vector GetVector(this LuaTable table_, string name)
+        {
+            LuaTable table = table_[name] as LuaTable;
+
+            if (table == null) return new Vector();
+            float x = (float)(double)Convert.ToDouble(table["x"]);
+            float y = (float)(double)Convert.ToDouble(table["y"]);
+            float z = (float)(double)Convert.ToDouble(table["z"]);
+            return new Vector() { X = x, Y = y, Z = z };
+        }
         public static int[] ToIntArray(this LuaTable table)
         {
             if (table == null) return new int[0];
@@ -300,18 +310,10 @@ namespace GenshinCBTServer.Controllers
         // ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "DungeonSound1001", play_type= 2, is_broadcast = false })
         public int ScenePlaySound(Client client, LuaTable parameters)
         {
-            LuaTable play_pos = (LuaTable)parameters["play_pos"];
-            float x = (float)(double)play_pos["x"];
-            float y = (float)(double)play_pos["y"];
-            float z = (float)(double)play_pos["z"];
+           
             ScenePlayerSoundNotify ntf = new ScenePlayerSoundNotify()
             {
-                PlayPos = new Vector()
-                {
-                    X = x,
-                    Y = y,
-                    Z = z
-                },
+                PlayPos = parameters.GetVector("play_pos"),
                 SoundName = (string)parameters["sound_name"],
                 PlayType = (ScenePlayerSoundNotify.Types.PlaySoundType)(uint)(long)parameters["play_type"],
             };

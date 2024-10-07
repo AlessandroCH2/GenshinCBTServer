@@ -269,7 +269,7 @@ namespace GenshinCBTServer.Player
             }
             return baseStat;
         }
-
+        bool initialized = false;
         // todo: add elemental AddHurt and use curve to calculate base stats
         public void UpdateProps()
         {
@@ -298,7 +298,8 @@ namespace GenshinCBTServer.Player
                         break;
                 }
             }
-            curHp = baseHp;
+            if(!initialized) curHp = baseHp;
+            initialized = true;
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, baseHp); 
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, baseDef);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, baseAtk + weaponStats.attack);
@@ -306,7 +307,7 @@ namespace GenshinCBTServer.Player
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ATTACK, calculateAttack()); //TODO calculate total attack
             FightPropUpdate(FightPropType.FIGHT_PROP_HP, curHp);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_HP, curHp);
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, curHp); //TODO calculate total hp
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, baseHp); //TODO calculate total hp
             FightPropUpdate(FightPropType.FIGHT_PROP_HP_PERCENT, weaponStats.hpPerc);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, calculateDefence());
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_SPEED, 0.0f );
@@ -330,6 +331,18 @@ namespace GenshinCBTServer.Player
             props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival=level,Val = (long)level, Type = (uint)PropType.PROP_LEVEL };
             props[(uint)PropType.PROP_BREAK_LEVEL] = new PropValue() { Ival=promoteLevel,Val = (long)promoteLevel, Type = (uint)PropType.PROP_BREAK_LEVEL };
             Server.Print("Avatar total attack: " + GetFightProp(FightPropType.FIGHT_PROP_ATTACK));
+        }
+
+        public void Die()
+        {
+            SceneEntityDisappearNotify sceneEntityDisappearNotify = new SceneEntityDisappearNotify()
+            {
+                EntityList = {entityId},
+                DisappearType=VisionType.VisionDie,
+            };
+
+
+            client.SendPacket((uint)CmdType.SceneEntityDisappearNotify, sceneEntityDisappearNotify);
         }
     }
 }

@@ -40,6 +40,7 @@ class Program
             if(service != null)service.Shutdown();
             Server.Shutdown(); //TODO
         };
+      
         while (Server.Initialized == false)
         {
 

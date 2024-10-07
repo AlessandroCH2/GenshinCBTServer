@@ -88,7 +88,7 @@ namespace GenshinCBTServer
             showLogs = !hideLogs;
            // showLogs = false;
             Print($"Logs are {(showLogs ? "enabled" : "disabled")}");
-
+            Server.config = config;
             enet_initialize();
 
             ENetAddress address = new ENetAddress();

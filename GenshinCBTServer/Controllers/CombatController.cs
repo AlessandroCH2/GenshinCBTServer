@@ -1,4 +1,5 @@
 ﻿using GenshinCBTServer.Data;
+using GenshinCBTServer.Network;
 using GenshinCBTServer.Player;
 using GenshinCBTServer.Protocol;
 
@@ -6,11 +7,47 @@ namespace GenshinCBTServer.Controllers
 {
     public class CombatController
     {
+
+
         // those are hardcoded ids of gadgets that are marked as invincible but they shouldn't be
         public static List<uint> blackList = new() { 70220008, 70220021, 70220013, 70220014 }; // don't worry, it's temporary until we implement ability manager
-       
+        [Server.Handler(CmdType.AvatarDieAnimationEndReq)]
+        public static void OnAvatarDieAnimationEndReq(Client session,CmdType cmdId,Packet packet)
+        {
+            AvatarDieAnimationEndReq req = packet.DecodeBody<AvatarDieAnimationEndReq>();
+            bool switched = false;
+            for(int i=0; i < session.team.Length; i++)
+            {
+                Avatar av = session.avatars.Find(av => av.id == session.team[i]);
+                if (av != null)
+                {
+                    if(av.curHp > 0)
+                    {
+                        SceneController.SwitchAvatar(session, av.guid);
+                        switched = true;
+                    }
+                }
+            }
+            if (!switched)
+            {
+                WorldPlayerDieNotify n = new()
+                {
+                    DieType = PlayerDieType.PlayerDieNone,
+
+
+                };
+                session.SendPacket((uint)CmdType.WorldPlayerDieNotify, n);
+            }
+            AvatarDieAnimationEndRsp rsp = new()
+            {
+                DieGuid = req.DieGuid,
+                Retcode = 0,
+                SkillId = req.SkillId,
+            };
+            session.SendPacket((uint)CmdType.AvatarDieAnimationEndRsp, rsp);
+        }
         [Server.Handler(CmdType.EvtBeingHitNotify)]
-        public static void OnEvtBeingHitNotify(Client session, CmdType cmdId, Network.Packet packet)
+        public static void OnEvtBeingHitNotify(Client session, CmdType cmdId, Packet packet)
         {
 
             EvtBeingHitNotify req = packet.DecodeBody<EvtBeingHitNotify>();
@@ -52,6 +89,22 @@ namespace GenshinCBTServer.Controllers
                 if(curHp < 0 && isDamageable)
                 {
                     entity.Die();
+                }
+            }
+            else
+            {
+                Avatar avatar = session.avatars.Find(av => av.entityId == req.AttackResult.DefenseId);
+                if(avatar != null)
+                {
+                    float dmg = req.AttackResult.Damage;
+                    float curHp = avatar.curHp - dmg;
+                    avatar.curHp=curHp;
+                    avatar.SendUpdatedProps();
+                    if(curHp < 0)
+                    {
+                        session.SendAllAvatars();
+                        avatar.Die();
+                    }
                 }
             }
 
