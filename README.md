@@ -6,13 +6,14 @@
 
 # Notes:
 
+- everything with * means it's required
 - create new account:
-account new (name) (password)
+account new (name)* (password)*
 
 Commands:
-- account new (name) (password)
+- account new (name)* (password)*
 - elfie (will spawn elfie for change team)
-- teleport (uid) (x) (y) (z)
+- teleport (uid)* (x)* (y)* (z)*
 
 Features:
 - Load in scene
