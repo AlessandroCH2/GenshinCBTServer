@@ -24,8 +24,8 @@ namespace GenshinCBTServer.Player
         protected BaseRoute(SceneGadget gadget)
         {
             this.StartPos = gadget.pos;
-          //  this.IsStarted = gadget.StartRoute;
-          //  this.IsActive = gadget.StartRoute;
+            //  this.IsStarted = gadget.StartRoute;
+            //  this.IsActive = gadget.StartRoute;
         }
 
         public static BaseRoute FromSceneGadget(SceneGadget sceneGadget)
@@ -67,19 +67,15 @@ namespace GenshinCBTServer.Player
             return true;
         }
 
-        
+
         public virtual PlatformInfo ToProto()
         {
             var result = new PlatformInfo
             {
                 IsStarted = IsStarted,
-               StartPos = StartPos,
-              
-                StartSceneTime =(uint) StartSceneTime
+                StartPos = StartPos,
+                StartSceneTime = (uint)StartSceneTime
             };
-
-          
-
             return result;
         }
     }
@@ -115,7 +111,7 @@ namespace GenshinCBTServer.Player
     }
     public class GameEntityGadget : GameEntity
     {
-        public uint chest_drop, route_id,gadgetType;
+        public uint chest_drop, route_id, gadgetType;
         public ConfigRoute Route = null;
 
 
@@ -146,7 +142,7 @@ namespace GenshinCBTServer.Player
         }
         public GadgetProp GetGadgetPropExcel()
         {
-            return Server.getResources().gadgetProps.Values.ToList().Find(e=>e.id==id);
+            return Server.getResources().gadgetProps.Values.ToList().Find(e => e.id == id);
         }
         public GadgetConfigRow GetGadgetConfigRow()
         {
@@ -156,7 +152,7 @@ namespace GenshinCBTServer.Player
         {
             GadgetProp prop = GetGadgetPropExcel();
             GadgetData gadgetData = GetGadgetExcel();
-           
+
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, 1f);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, 1);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, 1);
@@ -184,8 +180,8 @@ namespace GenshinCBTServer.Player
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ROCK_ENERGY, 100.0f);
             props[(uint)PropType.PROP_EXP] = new PropValue() { Ival = 1, Val = 1, Type = (uint)PropType.PROP_EXP };
             props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival = 1, Val = (long)1, Type = (uint)PropType.PROP_LEVEL };
-            props[(uint)PropType.PROP_IS_FLYABLE] = new PropValue() { Fval=1,Ival = 1, Val = (long)1, Type = (uint)PropType.PROP_IS_FLYABLE };
-           
+            props[(uint)PropType.PROP_IS_FLYABLE] = new PropValue() { Fval = 1, Ival = 1, Val = (long)1, Type = (uint)PropType.PROP_IS_FLYABLE };
+
             if (prop != null)
             {
                 FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, prop.hp);
@@ -205,9 +201,8 @@ namespace GenshinCBTServer.Player
                 if (property.defense > 0) FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, property.defense);
             }
         }
-        public GameEntityGadget(uint entityId, uint id, MotionInfo motionInfo) : base(entityId, id,motionInfo,ProtEntityType.ProtEntityGadget)
+        public GameEntityGadget(uint entityId, uint id, MotionInfo motionInfo) : base(entityId, id, motionInfo, ProtEntityType.ProtEntityGadget)
         {
-
             InitProps();
             this.entityId = entityId;
             this.id = id;
@@ -225,50 +220,45 @@ namespace GenshinCBTServer.Player
                 EntityId = entityId,
                 MotionInfo = motionInfo,
                 LifeState = 1,
-                Name=GetGadgetExcel().jsonName,
+                Name = GetGadgetExcel().jsonName,
                 AiInfo = new()
                 {
-                    BornPos=motionInfo.Pos,
-                    IsAiOpen=true,
+                    BornPos = motionInfo.Pos,
+                    IsAiOpen = true,
                 }
-               // EntityCase = SceneEntityInfo.EntityOneofCase.Gadget
+                // EntityCase = SceneEntityInfo.EntityOneofCase.Gadget
             };
             info.PropMap.Add(props);
             info.FightPropMap.Add(fightprops);
 
-                info.Gadget = new SceneGadgetInfo()
-                {
-                  
-                   GadgetId=id,
-                     ConfigId=configId,
-                     GroupId=groupId,
-                      BornType=GadgetBornType.GadgetBornGadget,
-                      GadgetState = state,
-                      GadgetType = gadgetType,
-                    IsEnableInteract = false,
-                      AuthorityPeerId =owner,
-                      
-                   
-                    //  GadgetType = 1
-                    
-                      
+            info.Gadget = new SceneGadgetInfo()
+            {
+                GadgetId = id,
+                ConfigId = configId,
+                GroupId = groupId,
+                BornType = GadgetBornType.GadgetBornGadget,
+                GadgetState = state,
+                GadgetType = gadgetType,
+                IsEnableInteract = false,
+                AuthorityPeerId = owner,
 
-                };
-            if(Route!=null)
+                //  GadgetType = 1
+            };
+            if (Route != null)
             {
                 info.Gadget.Platform = Route.ToProto();
-               /* RouteData route = GetClientOwner().world.currentBlock.routeData.routes.Find(route => route.localId == route_id);
-                if (route != null)
-                {
-                    info.Gadget.Platform.StartPos = route.points[0].pos;
-                }
-                else
-                {
-                    info.Gadget.Platform.StartPos = motionInfo.Pos;
+                /* RouteData route = GetClientOwner().world.currentBlock.routeData.routes.Find(route => route.localId == route_id);
+                 if (route != null)
+                 {
+                     info.Gadget.Platform.StartPos = route.points[0].pos;
+                 }
+                 else
+                 {
+                     info.Gadget.Platform.StartPos = motionInfo.Pos;
 
-                }*/
+                 }*/
             }
-         
+
             return info;
         }
 
@@ -299,7 +289,7 @@ namespace GenshinCBTServer.Player
             {
                 return false;
             }
-            if(Route.IsStarted)
+            if (Route.IsStarted)
             {
                 return true;
             }
@@ -307,7 +297,8 @@ namespace GenshinCBTServer.Player
             if (routeData != null)
             {
                 List<RoutePointData> points = routeData.points;
-                if(Route.StartIndex==points.Count-1) {
+                if (Route.StartIndex == points.Count - 1)
+                {
                     Route.StartIndex = 0;
 
                 }
@@ -326,7 +317,7 @@ namespace GenshinCBTServer.Player
                 }
                 Route.IsStarted = true;
                 double time = 0;
-                for(int i = curIndex; i < points.Count; i++)
+                for (int i = curIndex; i < points.Count; i++)
                 {
                     time += World.DistanceTo(prevpos, points[i].pos) / points[i].targetVelocity;
                     prevpos = points[i].pos;
@@ -335,22 +326,20 @@ namespace GenshinCBTServer.Player
                     {
                         if (points[i].hasReachEvent && I > curIndex)
                         {
-                            ScriptArgs args = new((int)this.groupId, (int)EventType.EVENT_PLATFORM_REACH_POINT, (int)this.configId,Route.RouteId);
+                            ScriptArgs args = new((int)this.groupId, (int)EventType.EVENT_PLATFORM_REACH_POINT, (int)this.configId, Route.RouteId);
                             args.param3 = I;
                             args.source_eid = (int)configId;
                             LuaManager.executeTriggersLua(GetClientOwner(), GetGroup(), args);
                         }
                         Route.StartIndex = I;
-                        this.MoveEntity(new MotionInfo() { Pos= points[I].pos},true);
+                        this.MoveEntity(new MotionInfo() { Pos = points[I].pos }, true);
 
                         if (I == points.Count - 1)
                         {
                             Route.IsStarted = false;
                         }
-                    },(int)time);
+                    }, (int)time);
                 }
-
-               
             }
             GetClientOwner().SendPacket((uint)CmdType.SceneTimeNotify, new SceneTimeNotify() { SceneId = GetClientOwner().currentSceneId, SceneTime = (ulong)GetClientOwner().world.GetSceneTime() });
             PlatformStartRouteNotify ntf = new PlatformStartRouteNotify()

@@ -8,7 +8,6 @@ public class ItemData
     public ItemType itemType;
     public EquipType equipType;
     public List<WeaponPropValue> weaponProp = new List<WeaponPropValue>();
-    
     public uint mainPropDepotId;
     public uint rankLevel;
     public uint appendPropDepotId;

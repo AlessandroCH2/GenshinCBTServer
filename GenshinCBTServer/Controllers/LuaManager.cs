@@ -7,7 +7,7 @@ namespace GenshinCBTServer.Controllers
 {
     public static class LuaTableExtensions
     {
-        public static int[] GetIntArray(this LuaTable table_,string name)
+        public static int[] GetIntArray(this LuaTable table_, string name)
         {
             LuaTable table = table_[name] as LuaTable;
 
@@ -22,7 +22,6 @@ namespace GenshinCBTServer.Controllers
             }
 
             return result;
-
         }
         public static Vector GetVector(this LuaTable table_, string name)
         {
@@ -46,7 +45,6 @@ namespace GenshinCBTServer.Controllers
             {
                 result[i++] = Convert.ToInt32(value);
             }
-
             return result;
         }
     }
@@ -65,8 +63,8 @@ namespace GenshinCBTServer.Controllers
         }
         public int GetGadgetConfigId(int entityId)
         {
-            GameEntity en = curClient.world.entities.Find(e=>e.entityId == entityId);
-            if(en != null)
+            GameEntity en = curClient.world.entities.Find(e => e.entityId == entityId);
+            if (en != null)
             {
                 return (int)en.configId;
             }
@@ -74,7 +72,7 @@ namespace GenshinCBTServer.Controllers
         }
         public int GetGroupMonsterCountByGroupId(Client client, int groupId)
         {
-            return client.world.entities.FindAll(e=>e.groupId == groupId && e is GameEntityMonster).Count;
+            return client.world.entities.FindAll(e => e.groupId == groupId && e is GameEntityMonster).Count;
         }
         public int ShowReminder(Client client, int reminderId)
         {
@@ -106,18 +104,18 @@ namespace GenshinCBTServer.Controllers
         // ScriptLib.StopPlatform(context, 172)
         public int StopPlatform(Client client, int configId)
         {
-         /*   GameEntity entity = client.world.entities.Find(e => e.configId == configId);
-            if (entity == null) return 1;
-            if (entity is not GameEntityGadget) return 1;
-            GameEntityGadget platform = (GameEntityGadget)entity;
-            if (platform.route_id <= 0) return 1;
-            PlatformStopRouteNotify ntf = new PlatformStopRouteNotify()
-            {
-                EntityId = platform.entityId,
-                SceneTime = 9000
-            };
-            client.SendPacket((uint)CmdType.PlatformStopRouteNotify, ntf);*/
-         //TODO
+            /*   GameEntity entity = client.world.entities.Find(e => e.configId == configId);
+               if (entity == null) return 1;
+               if (entity is not GameEntityGadget) return 1;
+               GameEntityGadget platform = (GameEntityGadget)entity;
+               if (platform.route_id <= 0) return 1;
+               PlatformStopRouteNotify ntf = new PlatformStopRouteNotify()
+               {
+                   EntityId = platform.entityId,
+                   SceneTime = 9000
+               };
+               client.SendPacket((uint)CmdType.PlatformStopRouteNotify, ntf);*/
+            //TODO
             return 0;
         }
         // ScriptLib.SetPlatformRouteId(context, 87, 20000009)
@@ -131,12 +129,11 @@ namespace GenshinCBTServer.Controllers
             if (platform.Route.RouteId == routeId) return 0;
             platform.Route.RouteId = routeId;
             platform.Route.StartIndex = 0;
-           
+
             platform.route_id = (uint)routeId;
             //Implement tasks?
 
             //
-
             PlatformChangeRouteNotify ntf = new PlatformChangeRouteNotify()
             {
                 EntityId = platform.entityId,
@@ -150,10 +147,10 @@ namespace GenshinCBTServer.Controllers
             }
             else
             {
-               // platform.StartPlatform();
+                // platform.StartPlatform();
             }
-            
-            
+
+
             /* PlatformStopRouteNotify stopNtf = new PlatformStopRouteNotify()
              {
                  EntityId = platform.entityId,
@@ -185,7 +182,7 @@ namespace GenshinCBTServer.Controllers
             gadget.state = (uint)sceneGadget.state;
             gadget.route_id = sceneGadget.route_id;
             gadget.gadgetType = sceneGadget.type;
-            client.world.SpawnEntity(gadget, true,VisionType.VisionMeet);
+            client.world.SpawnEntity(gadget, true, VisionType.VisionMeet);
             return 0;
         }
         // ScriptLib.PlayCutScene(context, 200201, 60)
@@ -291,7 +288,7 @@ namespace GenshinCBTServer.Controllers
             client.SendPacket((uint)CmdType.ScenePointUnlockNotify, ntf);
             return 0;
         }
-        
+
         // ScriptLib.SetMonsterAIByGroup(context, 0, 26, 220011001)
         public int SetMonsterAIByGroup(Client client, int is_enable, int configId, int group_id)
         {
@@ -310,7 +307,7 @@ namespace GenshinCBTServer.Controllers
         // ScriptLib.ScenePlaySound(context, {play_pos = pos, sound_name = "DungeonSound1001", play_type= 2, is_broadcast = false })
         public int ScenePlaySound(Client client, LuaTable parameters)
         {
-           
+
             ScenePlayerSoundNotify ntf = new ScenePlayerSoundNotify()
             {
                 PlayPos = parameters.GetVector("play_pos"),
@@ -329,7 +326,7 @@ namespace GenshinCBTServer.Controllers
             GameEntity entity = client.world.entities.Find(e => e.configId == configId);
             if (entity == null)
             {
-                
+
                 Server.Print($"[LUA] Entity not found with configId {configId}");
                 return 0;
             }
@@ -380,11 +377,11 @@ namespace GenshinCBTServer.Controllers
             return 0;
 
         }
-        
-        public int SetGroupGadgetStateByConfigId(Client client,int groupId, int configId, int gadgetState)
+
+        public int SetGroupGadgetStateByConfigId(Client client, int groupId, int configId, int gadgetState)
         {
             Server.Print($"[LUA] CallSetGroupGadgetStateByConfigId with {configId},{gadgetState}");
-            GameEntity entity = client.world.entities.Find(e => e.configId == configId && e.groupId==groupId);
+            GameEntity entity = client.world.entities.Find(e => e.configId == configId && e.groupId == groupId);
             if (entity == null) return 1;
             if (!(entity is GameEntityGadget))
             {
@@ -432,7 +429,7 @@ namespace GenshinCBTServer.Controllers
         // ScriptLib.GetGroupVariableValue(context, "var_MONSTER_NUM")
         public int GetGroupVariableValue(Client client, string variable)
         {
-           
+
             SceneGroup group = client.world.currentBlock.groups.Find(g => g.id == currentGroupId);
             if (group == null) return 0;
             foreach (Variable var in group.variables)
@@ -459,18 +456,18 @@ namespace GenshinCBTServer.Controllers
             group.variables.Add(var);
             return 0;
         }
-        public int KillGroupEntity(Client client,LuaTable table)
+        public int KillGroupEntity(Client client, LuaTable table)
         {
             uint groupId = (uint)(long)table["group_id"];
             int[] gadgets = (table["gadgets"] as LuaTable).ToIntArray();
             int[] monsters = (table["monsters"] as LuaTable).ToIntArray();
-            List<GameEntity> entities = client.world.entities.FindAll(e=>e.groupId==groupId && gadgets.Contains((int)e.configId) || monsters.Contains((int)e.configId));
+            List<GameEntity> entities = client.world.entities.FindAll(e => e.groupId == groupId && gadgets.Contains((int)e.configId) || monsters.Contains((int)e.configId));
             client.world.KillEntities(entities);
             return 1;
         }
-        public int GetRegionEntityCount(Client client,LuaTable table)
+        public int GetRegionEntityCount(Client client, LuaTable table)
         {
-           // logger.debug("[LUA] Call GetRegionEntityCount with {}", printTable(table));
+            // logger.debug("[LUA] Call GetRegionEntityCount with {}", printTable(table));
             int regionId = (int)(long)table["region_eid"];
 
             int entityType = 0;
@@ -480,7 +477,7 @@ namespace GenshinCBTServer.Controllers
             }
             if (entityType == (int)EntityType.Avatar)
             {
-                if(client.inRegions.Contains((uint)regionId))
+                if (client.inRegions.Contains((uint)regionId))
                 {
                     return 1;
                 }
@@ -493,7 +490,7 @@ namespace GenshinCBTServer.Controllers
             {
                 return client.world.entities.FindAll(e => e.inRegions.Contains((uint)regionId)).Count;
             }
-            
+
         }
     }
     public enum LogLevel
@@ -513,8 +510,7 @@ namespace GenshinCBTServer.Controllers
         public int group_id;
         public string source; // source string, used for timers
         public int type;
-       
-  
+
         public ScriptArgs(int groupId, int eventType, int param1, int param2)
         {
             this.group_id = groupId;
@@ -536,9 +532,7 @@ namespace GenshinCBTServer.Controllers
 
         public object toTable()
         {
-            
-
-            return new {param1=param1,param2=param2,param3=param3, source_eid = source_eid ,target_eid=target_eid,type=type,group_id=group_id,source=source};
+            return new { param1 = param1, param2 = param2, param3 = param3, source_eid = source_eid, target_eid = target_eid, type = type, group_id = group_id, source = source };
         }
     }
     public class LuaManager
@@ -547,12 +541,12 @@ namespace GenshinCBTServer.Controllers
 
         public static void executeTrigger(Client client, GroupTrigger trigger, ScriptArgs args, SceneGroup group = null)
         {
-            if(group == null)
+            if (group == null)
             {
                 group = client.world.currentBlock.groups.Find(g => g.id == args.group_id);
             }
-            
-            if (group!=null)
+
+            if (group != null)
             {
                 using (Lua groupLua = new Lua())
                 {
@@ -570,7 +564,7 @@ namespace GenshinCBTServer.Controllers
                                 if {trigger.conditionLua}(context_, evt_) then
                                     {trigger.actionLua}(context_, evt_)
                                 else
-                                    -- ScriptLib:PrintLog('Condition is false for some reason: '..evt_.param2..' state '..evt_.param1)
+                                    -- ScriptLib:PrintLog('Condition is false for the following reason: '..evt_.param2..' state '..evt_.param1)
                                    --  ScriptLib:PrintLog(''..type(evt_.param2))
                                    
                                 end
@@ -578,12 +572,11 @@ namespace GenshinCBTServer.Controllers
                         ";
                     try
                     {
-                        if(trigger.conditionLua.Length==0)
+                        if (trigger.conditionLua.Length == 0)
                         {
                             luaScript = @$"
-                                {trigger.actionLua}(context_, evt_)
-
-                        ";
+                            {trigger.actionLua}(context_, evt_)
+                            ";
                         }
                         groupLua.DoString(luaScript);
                         Server.Print("[LUA] Executed successfully LUA of type: " + ((EventType)trigger.eventType).ToString());
@@ -595,14 +588,12 @@ namespace GenshinCBTServer.Controllers
                     }
                 }
             }
-            
-
         }
         public static void executeClientTriggerLua(Client client, SceneGroup group, ScriptArgs args)
         {
             if (group == null) return;
             GameEntity en = client.world.entities.Find(e => e.entityId == args.source_eid);
-            if(en == null) return;
+            if (en == null) return;
             List<GroupTrigger> triggers = group.triggers.FindAll(t => t.eventType == (int)args.type);
 
             if (triggers.Count > 0)
@@ -627,36 +618,31 @@ namespace GenshinCBTServer.Controllers
                         try
                         {
                             groupLua.DoString(luaScript);
-                            Server.Print("Executed successfully LUA of type: "+((EventType)trigger.eventType).ToString());
+                            Server.Print("Executed successfully LUA of type: " + ((EventType)trigger.eventType).ToString());
                         }
                         catch (Exception ex)
                         {
                             Server.Print("Error occured in LUA " + ex.Message);
-                           
+
                         }
                         // Execute the Lua script
                     }
                 }
-
             }
         }
-        public static void executeTriggersLua(Client client,SceneGroup group,ScriptArgs args)
+        public static void executeTriggersLua(Client client, SceneGroup group, ScriptArgs args)
         {
             if (group == null) return;
             List<GroupTrigger> triggers = group.triggers.FindAll(t => t.eventType == (int)args.type && !errorTriggers.Contains(t));
 
-            if(triggers.Count > 0)
+            if (triggers.Count > 0)
             {
-               
+                foreach (GroupTrigger trigger in triggers)
+                {
 
-                        foreach (GroupTrigger trigger in triggers)
-                        {
-
-                            executeTrigger(client, trigger, args,group);
-                        }
-               
+                    executeTrigger(client, trigger, args, group);
+                }
             }
-           
         }
     }
 }

@@ -9,7 +9,6 @@ namespace GenshinCBTServer.Player
     {
         public ProtEntityType EntityType = ProtEntityType.ProtEntityAvatar;
         public uint entityId;
-      
         public uint guid;
         public uint id;
         public int level;
@@ -20,7 +19,7 @@ namespace GenshinCBTServer.Player
         public MapField<uint, PropValue> props = new MapField<uint, PropValue>();
         public float curHp;
         public uint weaponId { get { return GetExcel().weaponId; } }
-        
+
         Client client;
         public AvatarData GetExcel()
         {
@@ -34,7 +33,8 @@ namespace GenshinCBTServer.Player
         {
             return client.inventory.Find(item => item.guid == weaponGuid)!;
         }
-        public Avatar(Client client,uint id) {
+        public Avatar(Client client, uint id)
+        {
             this.id = id;
             this.client = client;
             this.level = 5; // currently 5 for testing
@@ -45,9 +45,8 @@ namespace GenshinCBTServer.Player
             client.inventory.Add(weaponitem);
             weaponGuid = weaponitem.guid;
             UpdateProps();
-           
         }
-        public void FightPropUpdate(FightPropType key,float value)
+        public void FightPropUpdate(FightPropType key, float value)
         {
             fightprops[(uint)key] = value;
         }
@@ -60,12 +59,11 @@ namespace GenshinCBTServer.Player
                 MotionInfo = client.motionInfo,
                 LifeState = curHp > 0 ? (uint)LifeState.LIFE_ALIVE : (uint)LifeState.LIFE_DEAD,
                 RendererChangedInfo = new(),
-                AbilityInfo = new() { IsInited = false}
+                AbilityInfo = new() { IsInited = false }
             };
             info.Avatar = new()
             {
                 Uid = client.uid,
-
                 AvatarId = id,
                 Guid = guid,
                 PeerId = (uint)client.gamePeer,
@@ -73,20 +71,15 @@ namespace GenshinCBTServer.Player
                 SkillDepotId = Server.getResources().GetAvatarDataById(id).skillDepotId,
                 // TalentIdList = { 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013, 1014, 1015 },
                 Weapon = getEquippedWeapon().weaponSceneInfo()
-
-
-
             };
             info.Avatar.TalentIdList.Add(getTalents());
             foreach (KeyValuePair<uint, PropValue> prop in props)
             {
                 info.PropMap.Add(prop.Key, prop.Value);
-
             }
             foreach (KeyValuePair<uint, float> prop in fightprops)
             {
                 info.FightPropMap.Add(prop.Key, prop.Value);
-
             }
             return info;
         }
@@ -96,12 +89,9 @@ namespace GenshinCBTServer.Player
             {
                 Guid = guid,
                 AvatarId = id,
-                EquipGuidList = {weaponGuid},
-                LifeState=curHp > 0 ? (uint)LifeState.LIFE_ALIVE :(uint) LifeState.LIFE_DEAD,
-                SkillDepotId= Server.getResources().GetAvatarDataById(id).skillDepotId,
-               
-                
-                
+                EquipGuidList = { weaponGuid },
+                LifeState = curHp > 0 ? (uint)LifeState.LIFE_ALIVE : (uint)LifeState.LIFE_DEAD,
+                SkillDepotId = Server.getResources().GetAvatarDataById(id).skillDepotId,
             };
             info.TalentIdList.Add(getTalents());
             // info.SkillMap.Add(10001, new AvatarSkillInfo() { });
@@ -110,13 +100,11 @@ namespace GenshinCBTServer.Player
 
             foreach (KeyValuePair<uint, PropValue> prop in props)
             {
-                info.PropMap.Add(prop.Key,prop.Value);  
-
+                info.PropMap.Add(prop.Key, prop.Value);
             }
             foreach (KeyValuePair<uint, float> prop in fightprops)
             {
                 info.FightPropMap.Add(prop.Key, prop.Value);
-
             }
             return info;
         }
@@ -125,26 +113,25 @@ namespace GenshinCBTServer.Player
         {
             List<uint> ids = new List<uint>();
             AvatarSkillDepotData skillDepotData = Server.getResources().avatarSkillDepotData.Find(d => d.id == GetExcel().skillDepotId)!;
-            if(skillDepotData!= null)
+            if (skillDepotData != null)
             {
-               // Server.Print($"Skill Depot trovato: (id: {skillDepotData.id} )" + skillDepotData.talent_groups.Count);
-                foreach(int talent_group in skillDepotData.talent_groups)
+                // Server.Print($"Skill Depot trovato: (id: {skillDepotData.id} )" + skillDepotData.talent_groups.Count);
+                foreach (int talent_group in skillDepotData.talent_groups)
                 {
-                    TalentSkillData talentSkill = Server.getResources().talentSkillData.Find(t=>t.talent_group_id==talent_group)!;
-                    if(talentSkill!= null)
+                    TalentSkillData talentSkill = Server.getResources().talentSkillData.Find(t => t.talent_group_id == talent_group)!;
+                    if (talentSkill != null)
                     {
-                      
                         ids.Add((uint)talentSkill.id);
                     }
-                   
                 }
             }
 
             return ids;
+
         }
         public float GetFightProp(FightPropType propType)
         {
-           return fightprops[(uint)propType];
+            return fightprops[(uint)propType];
         }
         public float calculateAttack()
         {
@@ -158,41 +145,41 @@ namespace GenshinCBTServer.Player
                 perc += weapon.GetWeaponAttack().atkperc;
                 flatAtk += weapon.GetWeaponAttack().attack;
             }
-           /* if (Player.playerInstance.GetInventoryItem(RELIQ1) != null)
-            {
-                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ1);
-                ItemStats stats = reliq.GetReliquaryStats();
-                perc += stats.atkperc;
-                flatAtk += stats.attack;
-            }
-            if (Player.playerInstance.GetInventoryItem(RELIQ2) != null)
-            {
-                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ2);
-                ItemStats stats = reliq.GetReliquaryStats();
-                perc += stats.atkperc;
-                flatAtk += stats.attack;
-            }
-            if (Player.playerInstance.GetInventoryItem(RELIQ3) != null)
-            {
-                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ3);
-                ItemStats stats = reliq.GetReliquaryStats();
-                perc += stats.atkperc;
-                flatAtk += stats.attack;
-            }
-            if (Player.playerInstance.GetInventoryItem(RELIQ4) != null)
-            {
-                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ4);
-                ItemStats stats = reliq.GetReliquaryStats();
-                perc += stats.atkperc;
-                flatAtk += stats.attack;
-            }
-            if (Player.playerInstance.GetInventoryItem(RELIQ5) != null)
-            {
-                GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ5);
-                ItemStats stats = reliq.GetReliquaryStats();
-                perc += stats.atkperc;
-                flatAtk += stats.attack;
-            }*/
+            /* if (Player.playerInstance.GetInventoryItem(RELIQ1) != null)
+             {
+                 GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ1);
+                 ItemStats stats = reliq.GetReliquaryStats();
+                 perc += stats.atkperc;
+                 flatAtk += stats.attack;
+             }
+             if (Player.playerInstance.GetInventoryItem(RELIQ2) != null)
+             {
+                 GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ2);
+                 ItemStats stats = reliq.GetReliquaryStats();
+                 perc += stats.atkperc;
+                 flatAtk += stats.attack;
+             }
+             if (Player.playerInstance.GetInventoryItem(RELIQ3) != null)
+             {
+                 GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ3);
+                 ItemStats stats = reliq.GetReliquaryStats();
+                 perc += stats.atkperc;
+                 flatAtk += stats.attack;
+             }
+             if (Player.playerInstance.GetInventoryItem(RELIQ4) != null)
+             {
+                 GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ4);
+                 ItemStats stats = reliq.GetReliquaryStats();
+                 perc += stats.atkperc;
+                 flatAtk += stats.attack;
+             }
+             if (Player.playerInstance.GetInventoryItem(RELIQ5) != null)
+             {
+                 GameItem reliq = Player.playerInstance.GetInventoryItem(RELIQ5);
+                 ItemStats stats = reliq.GetReliquaryStats();
+                 perc += stats.atkperc;
+                 flatAtk += stats.attack;
+             }*/
             //Need to add reliquary stats
             return (attack * perc) + flatAtk; //need to add reliquary attack
         }
@@ -240,8 +227,8 @@ namespace GenshinCBTServer.Player
             UpdateProps();
             client.SendPacket((uint)CmdType.AvatarFightPropUpdateNotify, new AvatarFightPropUpdateNotify()
             {
-                AvatarGuid=guid,
-                FightPropMap = {fightprops}
+                AvatarGuid = guid,
+                FightPropMap = { fightprops }
             });
             client.SendPacket((uint)CmdType.AvatarFightPropNotify, new AvatarFightPropNotify()
             {
@@ -255,7 +242,8 @@ namespace GenshinCBTServer.Player
             LevelCurve curveExcel = GetCurveExcel();
             // todo: make work with different ArithTypes
             CurveInfo info = curveExcel.getCurveValue((int)curveType);
-            switch (info.arith) {
+            switch (info.arith)
+            {
                 case ArithType.ARITH_ADD:
                     return baseStat += info.value;
                 case ArithType.ARITH_MULTI:
@@ -298,9 +286,9 @@ namespace GenshinCBTServer.Player
                         break;
                 }
             }
-            if(!initialized) curHp = baseHp;
+            if (!initialized) curHp = baseHp;
             initialized = true;
-            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, baseHp); 
+            FightPropUpdate(FightPropType.FIGHT_PROP_BASE_HP, baseHp);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_DEFENSE, baseDef);
             FightPropUpdate(FightPropType.FIGHT_PROP_BASE_ATTACK, baseAtk + weaponStats.attack);
             FightPropUpdate(FightPropType.FIGHT_PROP_ATTACK, calculateAttack());
@@ -310,26 +298,26 @@ namespace GenshinCBTServer.Player
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_HP, baseHp); //TODO calculate total hp
             FightPropUpdate(FightPropType.FIGHT_PROP_HP_PERCENT, weaponStats.hpPerc);
             FightPropUpdate(FightPropType.FIGHT_PROP_CUR_DEFENSE, calculateDefence());
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_SPEED, 0.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_FIRE_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ELEC_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_WATER_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_GRASS_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_WIND_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ICE_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ROCK_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_FIRE_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ELEC_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_WATER_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_GRASS_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_WIND_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ICE_ENERGY, 100.0f );
-            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ROCK_ENERGY, 100.0f );
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_SPEED, 0.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_FIRE_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ELEC_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_WATER_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_GRASS_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_WIND_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ICE_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_CUR_ROCK_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_FIRE_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ELEC_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_WATER_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_GRASS_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_WIND_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ICE_ENERGY, 100.0f);
+            FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ROCK_ENERGY, 100.0f);
             FightPropUpdate(FightPropType.FIGHT_PROP_CRITICAL_HURT, calculateCritDmg());
             FightPropUpdate(FightPropType.FIGHT_PROP_CRITICAL, calculateCritRate());
-            props[(uint)PropType.PROP_EXP] = new PropValue() { Ival = 1,Val = 1,Type= (uint)PropType.PROP_EXP };
-            props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival=level,Val = (long)level, Type = (uint)PropType.PROP_LEVEL };
-            props[(uint)PropType.PROP_BREAK_LEVEL] = new PropValue() { Ival=promoteLevel,Val = (long)promoteLevel, Type = (uint)PropType.PROP_BREAK_LEVEL };
+            props[(uint)PropType.PROP_EXP] = new PropValue() { Ival = 1, Val = 1, Type = (uint)PropType.PROP_EXP };
+            props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival = level, Val = (long)level, Type = (uint)PropType.PROP_LEVEL };
+            props[(uint)PropType.PROP_BREAK_LEVEL] = new PropValue() { Ival = promoteLevel, Val = (long)promoteLevel, Type = (uint)PropType.PROP_BREAK_LEVEL };
             Server.Print("Avatar total attack: " + GetFightProp(FightPropType.FIGHT_PROP_ATTACK));
         }
 
@@ -337,8 +325,8 @@ namespace GenshinCBTServer.Player
         {
             SceneEntityDisappearNotify sceneEntityDisappearNotify = new SceneEntityDisappearNotify()
             {
-                EntityList = {entityId},
-                DisappearType=VisionType.VisionDie,
+                EntityList = { entityId },
+                DisappearType = VisionType.VisionDie,
             };
 
 

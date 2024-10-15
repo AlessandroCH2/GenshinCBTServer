@@ -12,20 +12,14 @@ namespace GenshinCBTServer
     public class ENet
     {
 
-
-
         //  [StructLayout(LayoutKind.Explicit, Size = 18)]
-         [StructLayout(LayoutKind.Sequential, Pack =1)]
-           public struct ENetAddress
-           {
-
-             public uint host;
-             public ushort port;
-
-             // [FieldOffset(16)]
-
-
-           }
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        public struct ENetAddress
+        {
+            public uint host;
+            public ushort port;
+            // [FieldOffset(16)]
+        }
         [StructLayout(LayoutKind.Sequential)]
         public struct ENetPacket
         {
@@ -81,46 +75,46 @@ namespace GenshinCBTServer
         public class ENetPeer
         {
             public IntPtr DispatchList;
-            public IntPtr Host ; // struct _ENetHost* in C, represented as IntPtr
-            public ushort OutgoingPeerID ;
-            public ushort IncomingPeerID ;
-            public uint ConnectID ;
-            public byte OutgoingSessionID ;
-            public byte IncomingSessionID ;
-            public IntPtr Address ;
-            public IntPtr Data ; // void* in C, represented as IntPtr
-            public ENetPeerState State ;
-            public IntPtr Channels ; // ENetChannel* in C, represented as IntPtr
-            public IntPtr ChannelCount ;
-            public uint IncomingBandwidth ;
-            public uint OutgoingBandwidth ;
-            public uint IncomingBandwidthThrottleEpoch ;
-            public uint OutgoingBandwidthThrottleEpoch ;
-            public uint IncomingDataTotal ;
-            public uint OutgoingDataTotal ;
-            public uint LastSendTime ;
-            public uint LastReceiveTime ;
-            public uint NextTimeout ;
-            public uint EarliestTimeout ;
-            public uint PacketLossEpoch ;
-            public uint PacketsSent ;
-            public uint PacketsLost ;
-            public uint PacketLoss ;
-            public uint PacketLossVariance ;
-            public uint PacketThrottle ;
-            public uint PacketThrottleLimit ;
-            public uint PacketThrottleCounter ;
-            public uint PacketThrottleEpoch ;
-            public uint PacketThrottleAcceleration ;
-            public uint PacketThrottleDeceleration ;
-            public uint PacketThrottleInterval ;
-            public uint PingInterval ;
-            public uint TimeoutLimit ;
-            public uint TimeoutMinimum ;
-            public uint TimeoutMaximum ;
-            public uint LastRoundTripTime ;
-            public uint LowestRoundTripTime ;
-            public uint LastRoundTripTimeVariance ;
+            public IntPtr Host; // struct _ENetHost* in C, represented as IntPtr
+            public ushort OutgoingPeerID;
+            public ushort IncomingPeerID;
+            public uint ConnectID;
+            public byte OutgoingSessionID;
+            public byte IncomingSessionID;
+            public IntPtr Address;
+            public IntPtr Data; // void* in C, represented as IntPtr
+            public ENetPeerState State;
+            public IntPtr Channels; // ENetChannel* in C, represented as IntPtr
+            public IntPtr ChannelCount;
+            public uint IncomingBandwidth;
+            public uint OutgoingBandwidth;
+            public uint IncomingBandwidthThrottleEpoch;
+            public uint OutgoingBandwidthThrottleEpoch;
+            public uint IncomingDataTotal;
+            public uint OutgoingDataTotal;
+            public uint LastSendTime;
+            public uint LastReceiveTime;
+            public uint NextTimeout;
+            public uint EarliestTimeout;
+            public uint PacketLossEpoch;
+            public uint PacketsSent;
+            public uint PacketsLost;
+            public uint PacketLoss;
+            public uint PacketLossVariance;
+            public uint PacketThrottle;
+            public uint PacketThrottleLimit;
+            public uint PacketThrottleCounter;
+            public uint PacketThrottleEpoch;
+            public uint PacketThrottleAcceleration;
+            public uint PacketThrottleDeceleration;
+            public uint PacketThrottleInterval;
+            public uint PingInterval;
+            public uint TimeoutLimit;
+            public uint TimeoutMinimum;
+            public uint TimeoutMaximum;
+            public uint LastRoundTripTime;
+            public uint LowestRoundTripTime;
+            public uint LastRoundTripTimeVariance;
             public uint HighestRoundTripTimeVariance;
             public uint RoundTripTime;
             public uint RoundTripTimeVariance;
@@ -153,7 +147,6 @@ namespace GenshinCBTServer
 
         }
 
-       
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate uint ENetChecksumCallback(IntPtr data, IntPtr dataLength);
 
@@ -193,9 +186,8 @@ namespace GenshinCBTServer
         public static extern void enet_host_flush(IntPtr host);
         [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr enet_packet_get_data(IntPtr packet);
-      //  [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
-       // public static extern ENetPacket enet_packet_create(IntPtr data, uint dataLength, uint flags);
-
+        //  [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
+        // public static extern ENetPacket enet_packet_create(IntPtr data, uint dataLength, uint flags);
         [DllImport("enet.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr enet_packet_create(IntPtr data, uint dataLength, uint flags);
 
