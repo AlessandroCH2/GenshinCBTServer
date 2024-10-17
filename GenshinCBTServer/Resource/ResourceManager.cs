@@ -19,7 +19,7 @@ namespace GenshinCBTServer
         public Dictionary<uint, GadgetData> gadgetDataDict = new Dictionary<uint, GadgetData>();
         public Dictionary<uint, ReliquaryCurve> reliquaryCurves = new Dictionary<uint, ReliquaryCurve>();
         public Dictionary<uint, LevelCurve> weaponCurves = new Dictionary<uint, LevelCurve>();
-        public Dictionary<uint, PromoteInfo>  weaponsPromote = new Dictionary<uint, PromoteInfo>();
+        public Dictionary<uint, PromoteInfo> weaponsPromote = new Dictionary<uint, PromoteInfo>();
         public Dictionary<uint, GadgetProp> gadgetProps = new Dictionary<uint, GadgetProp>();
         public Dictionary<uint, MonsterData> monsterDataDict = new Dictionary<uint, MonsterData>();
         public Dictionary<uint, CookRecipeExcel> cookRecipeDict = new Dictionary<uint, CookRecipeExcel>();
@@ -33,25 +33,24 @@ namespace GenshinCBTServer
             public List<GameEntity> entities = new();
         }
 
-        public DropList GetRandomDrops(Client session,uint id, MotionInfo motion)
+        public DropList GetRandomDrops(Client session, uint id, MotionInfo motion)
         {
             DropList dropList = new DropList();
-            DropData data = dropData.Find(d=>d.drop_id== id)!;  
-            if (data!= null)
+            DropData data = dropData.Find(d => d.drop_id == id)!;
+            if (data != null)
             {
-                List<ChildDrop> childDrops = childDropData.FindAll(c=>c.child_drop_id==data.child_drop_id);
+                List<ChildDrop> childDrops = childDropData.FindAll(c => c.child_drop_id == data.child_drop_id);
                 int size = new Random().Next(1, childDrops.Count);
-                for(int i=0; i<size; i++) { 
+                for (int i = 0; i < size; i++)
+                {
                     ChildDrop drop = childDrops[i];
                     ItemData itemD = itemData[drop.item_drop_id];
                     uint entityId = ((uint)ProtEntityType.ProtEntityGadget << 24) + (uint)session.random.Next();
-                    GameEntityItem gadgetItem = new(entityId, itemD.gadgetId, motion,new GameItem(session,itemD.id));
-                    gadgetItem.item.amount= new Random().Next(1, 10);
+                    GameEntityItem gadgetItem = new(entityId, itemD.gadgetId, motion, new GameItem(session, itemD.id));
+                    gadgetItem.item.amount = new Random().Next(1, 10);
                     dropList.entities.Add(gadgetItem);
                 }
-
             }
-
             return dropList;
         }
 

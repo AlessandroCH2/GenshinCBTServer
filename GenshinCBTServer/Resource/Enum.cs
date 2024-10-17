@@ -37,20 +37,15 @@ public enum ItemType
     ITEM_WEAPON = 4
 }
 
-
-
 public enum ArithType
 {
-    ARITH_NONE = 0, 
-
-    ARITH_ADD = 1, 
-
-    ARITH_MULTI = 2, 
-
-    ARITH_SUB = 3, 
-
-    ARITH_DIVIDE = 4, 
+    ARITH_NONE = 0,
+    ARITH_ADD = 1,
+    ARITH_MULTI = 2,
+    ARITH_SUB = 3,
+    ARITH_DIVIDE = 4,
 }
+
 public enum GrowCurveType
 {
     GROW_CURVE_NONE = 0,

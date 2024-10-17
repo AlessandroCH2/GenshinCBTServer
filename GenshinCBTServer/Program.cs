@@ -14,10 +14,9 @@ class Program
     private static void StartServer(string[] args)
     {
         Console.Title = "Initializing...";
-       
-        
+
         bool disableLogs = args.Length > 0 && args[0].ToLower() == "nologs";
-        
+
         ConfigFile config = new ConfigFile();
         if (File.Exists("server_config.json"))
         {
@@ -25,11 +24,11 @@ class Program
         }
         else
         {
-            File.WriteAllText("server_config.json",JsonConvert.SerializeObject(config, Formatting.Indented));
+            File.WriteAllText("server_config.json", JsonConvert.SerializeObject(config, Formatting.Indented));
         }
         ProxyService service = null;
         if (config.InternalProxy) service = new();
-        
+
         new Thread(() =>
         {
             new Server().Start(disableLogs, config);
@@ -37,10 +36,10 @@ class Program
         AppDomain.CurrentDomain.ProcessExit += (_, _) =>
         {
             Console.WriteLine("Shutting down...");
-            if(service != null)service.Shutdown();
+            if (service != null) service.Shutdown();
             Server.Shutdown(); //TODO
         };
-      
+
         while (Server.Initialized == false)
         {
 

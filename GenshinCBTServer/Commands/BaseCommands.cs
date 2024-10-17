@@ -8,11 +8,9 @@ namespace GenshinCBTServer.Commands
 {
     public static class BaseCommands
     {
-        [Server.Command("dispatch","Dispatch command")]
+        [Server.Command("account", "Account management")]
         public static void onDispatchCmd(string cmd, string[] args)
         {
-            
-                            
             if (args.Length > 0)
             {
                 if (args[0].ToLower() == "new")
@@ -23,15 +21,14 @@ namespace GenshinCBTServer.Commands
                     }
                     else
                     {
-                        Server.Print("Usage: dispatch new (name) (password)");
+                        Server.Print("Usage: account new (name) (password)");
                     }
                 }
             }
             else
             {
-                Server.Print("Usage: dispatch new, etc");
+                Server.Print("Usage: account new (name) (password)");
             }
-              
-            }
+        }
     }
 }

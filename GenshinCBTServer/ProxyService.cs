@@ -74,9 +74,7 @@ internal class ProxyService
 
             replacedUrl = replacedUrl.Replace("hk4e_cn", "hk4e_global"); // cn -> global for CN builds
             args.HttpClient.Request.Url = replacedUrl;
-
-            
-           // Console.WriteLine(requestUrl);
+            // Console.WriteLine(requestUrl);
         }
 
         return Task.CompletedTask;
@@ -89,7 +87,6 @@ internal class ProxyService
             if (hostname.EndsWith(domain))
                 return true;
         }
-
         return false;
     }
 }

@@ -18,7 +18,7 @@
 
         public static void Init()
         {
-            var handlers = ImmutableDictionary.CreateBuilder< CmdType, (Server.HandlerAttribute, Server.HandlerAttribute.HandlerDelegate)>();
+            var handlers = ImmutableDictionary.CreateBuilder<CmdType, (Server.HandlerAttribute, Server.HandlerAttribute.HandlerDelegate)>();
 
             foreach (var type in s_handlerTypes)
             {
@@ -39,13 +39,12 @@
                         Expression.Convert(cmdIdParameter, parameterInfo[1].ParameterType),
                         Expression.Convert(packetParameter, parameterInfo[2].ParameterType));
 
-                    var lambda = Expression.Lambda<Server.HandlerAttribute.HandlerDelegate>(call, sessionParameter, cmdIdParameter,packetParameter);
+                    var lambda = Expression.Lambda<Server.HandlerAttribute.HandlerDelegate>(call, sessionParameter, cmdIdParameter, packetParameter);
 
                     if (!handlers.TryGetKey(attribute.CmdId, out _))
                         handlers.Add(attribute.CmdId, (attribute, lambda.Compile()));
                 }
             }
-
             s_notifyReqGroup = handlers.ToImmutable();
         }
 
@@ -53,7 +52,7 @@
         {
             if (s_notifyReqGroup.TryGetValue(cmdId, out var handler))
             {
-                handler.Item2.Invoke(session, ((int)cmdId),packet);
+                handler.Item2.Invoke(session, ((int)cmdId), packet);
             }
             else
             {

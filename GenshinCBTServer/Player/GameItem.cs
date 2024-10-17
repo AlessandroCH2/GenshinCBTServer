@@ -31,13 +31,12 @@ namespace GenshinCBTServer.Player
     }
     public class GameItem
     {
-      
         public uint id;
         public uint guid;
         public uint entityId;
         public int amount;
 
-        //Weapon
+        //Weapons
         public uint level;
         public uint xp;
         public uint promoteLevel;
@@ -48,21 +47,21 @@ namespace GenshinCBTServer.Player
         {
             return Server.getResources().itemData[id];
         }
-        public GameItem(Client client,uint id)
+        public GameItem(Client client, uint id)
         {
             this.id = id;
             this.amount = 1;
             guid = (uint)client.random.Next();
-            if (GetExcel().itemType==ItemType.ITEM_WEAPON)
+            if (GetExcel().itemType == ItemType.ITEM_WEAPON)
             {
                 entityId = ((uint)ProtEntityType.ProtEntityWeapon << 24) + (uint)client.random.Next();
                 level = 1;
                 xp = 0;
                 promoteLevel = 0;
             }
-           
+
         }
-        
+
         public ItemStats GetWeaponAttack()
         {
             ItemData data = GetExcel();
@@ -72,13 +71,13 @@ namespace GenshinCBTServer.Player
             if (curve.arith == ArithType.ARITH_MULTI)
             {
                 stats.attack = data.weaponProp[0].initValue * curve.value;
-                
             }
             stats.attack += data.getPromoteInfo(promoteLevel).getPropByType(FightPropType.FIGHT_PROP_BASE_ATTACK).value;
             if (data.weaponProp.Count > 1)
             {
                 CurveInfo sub = Server.getResources().weaponCurves[level].getCurveValue(data.weaponProp[1].type);
-                switch (data.weaponProp[1].propType) {
+                switch (data.weaponProp[1].propType)
+                {
                     case FightPropType.FIGHT_PROP_ATTACK:
                         stats.attack += data.weaponProp[1].initValue * sub.value;
                         break;
@@ -102,8 +101,6 @@ namespace GenshinCBTServer.Player
                         break;
                 }
             }
-
-
             return stats;
         }
         public SceneWeaponInfo weaponSceneInfo()
@@ -126,26 +123,24 @@ namespace GenshinCBTServer.Player
         }
         public ItemStats addMainPropStats(ItemStats stats)
         {
-           //Idk how in CBT 1 work
+            //Idk how in CBT 1 work
             return stats;
         }
         public Item toProtoItem()
         {
             GameItem gameItem = this;
             ItemType itemType = GetExcel().itemType;
-            switch (itemType) {
+            switch (itemType)
+            {
                 case ItemType.ITEM_VIRTUAL:
                     return new Item()
                     {
                         Material = new Material()
                         {
                             Count = (uint)gameItem.amount,
-
                         },
-
                         Guid = gameItem.guid,
                         ItemId = gameItem.id
-
                     };
                 case ItemType.ITEM_MATERIAL:
                     return new Item()
@@ -156,7 +151,6 @@ namespace GenshinCBTServer.Player
                         },
                         Guid = gameItem.guid,
                         ItemId = gameItem.id
-
                     };
                 case ItemType.ITEM_WEAPON:
                     return new Item()
@@ -168,20 +162,17 @@ namespace GenshinCBTServer.Player
                                 Exp = gameItem.xp,
                                 Level = gameItem.level,
                                 PromoteLevel = gameItem.promoteLevel,
-
                             },
                         },
                         Guid = gameItem.guid,
                         ItemId = gameItem.id
-
                     };
             }
-           
+
             return new Item()
             {
-                Guid= gameItem.guid,
-                ItemId=gameItem.id,
-                
+                Guid = gameItem.guid,
+                ItemId = gameItem.id,
             };
         }
     }

@@ -44,11 +44,9 @@ namespace GenshinCBTServer.Player
             FightPropUpdate(FightPropType.FIGHT_PROP_MAX_ROCK_ENERGY, 100.0f);
             props[(uint)PropType.PROP_EXP] = new PropValue() { Ival = 1, Val = 1, Type = (uint)PropType.PROP_EXP };
             props[(uint)PropType.PROP_LEVEL] = new PropValue() { Ival = 1, Val = (long)1, Type = (uint)PropType.PROP_LEVEL };
-           
         }
-        public GameEntityItem(uint entityId, uint id, MotionInfo motionInfo,GameItem item) : base(entityId, id,motionInfo,ProtEntityType.ProtEntityGadget)
+        public GameEntityItem(uint entityId, uint id, MotionInfo motionInfo, GameItem item) : base(entityId, id, motionInfo, ProtEntityType.ProtEntityGadget)
         {
-
             InitProps();
             this.entityId = entityId;
             this.id = id;
@@ -66,34 +64,31 @@ namespace GenshinCBTServer.Player
                 EntityType = EntityType,
                 EntityId = entityId,
                 MotionInfo = motionInfo,
-                LifeState =(uint) LifeState.LIFE_ALIVE,
+                LifeState = (uint)LifeState.LIFE_ALIVE,
 
                 AiInfo = new() { IsAiOpen = true },
-               // EntityCase = SceneEntityInfo.EntityOneofCase.Gadget
+                // EntityCase = SceneEntityInfo.EntityOneofCase.Gadget
             };
             info.PropMap.Add(props);
-           // info.FightPropMap.Add(fightprops);
+            // info.FightPropMap.Add(fightprops);
 
-                info.Gadget = new SceneGadgetInfo()
-                {
-                  
-                   GadgetId=item.GetExcel().gadgetId,
-                    
-                      BornType=GadgetBornType.GadgetBornInAir,
-                      GadgetState = state,
-                      IsEnableInteract=true,
-                      AuthorityPeerId=owner,
-                   
-                    //  GadgetType = 1
+            info.Gadget = new SceneGadgetInfo()
+            {
 
+                GadgetId = item.GetExcel().gadgetId,
 
+                BornType = GadgetBornType.GadgetBornInAir,
+                GadgetState = state,
+                IsEnableInteract = true,
+                AuthorityPeerId = owner,
 
-                };
-               // info.Gadget.ItemId = item.id;
-           
-                info.Gadget.TrifleItem = item.toProtoItem();
-                
-               // if (chest_drop > 0) info.Gadget.GadgetType = 1;
+                //  GadgetType = 1
+            };
+            // info.Gadget.ItemId = item.id;
+
+            info.Gadget.TrifleItem = item.toProtoItem();
+
+            // if (chest_drop > 0) info.Gadget.GadgetType = 1;
             return info;
         }
         public override bool onInteract(Client session, GadgetInteractReq req)

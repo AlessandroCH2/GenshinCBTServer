@@ -7,14 +7,14 @@ using NLua;
 
 namespace GenshinCBTServer
 {
-    public class ResourceLoader {
+    public class ResourceLoader
+    {
         private readonly ResourceManager _resourceManager;
 
         public ResourceLoader(ResourceManager resourceManager)
         {
             _resourceManager = resourceManager;
         }
-
         public void LoadAll()
         {
             // JsonConvert stuff
@@ -40,11 +40,11 @@ namespace GenshinCBTServer
             _resourceManager.avatarsData = LoadAvatarExcel();
             _resourceManager.talentSkillData = LoadTalentSkillData();
             _resourceManager.avatarSkillDepotData = LoadAvatarSkillDepotData();
-
         }
 
-        public void LoadAllLua() {
-            Server.Print("Loading all scenes lua");
+        public void LoadAllLua()
+        {
+            Server.Print("Loading all lua scenes");
             string[] scenes_ = Directory.GetDirectories("resources/Lua/Scene");
             foreach (string scene in scenes_)
             {
@@ -97,7 +97,7 @@ namespace GenshinCBTServer
                     {
                         uint blockId = (uint)(long)blocks[i + 1];
                         SceneBlock block = new SceneBlock() { blockId = blockId };
-                        LoadSceneGroup(block,sceneId);
+                        LoadSceneGroup(block, sceneId);
                         if (block_rects != null)
                         {
                             LuaTable rectTable = block_rects[i + 1] as LuaTable;
@@ -115,7 +115,7 @@ namespace GenshinCBTServer
             }
             else
             {
-                Server.Print($"Cannot load scene {sceneId} lua file (Not found)");
+                Server.Print($"Cannot load scene from {sceneId} lua file (file not found)!");
             }
             return scene;
         }
@@ -125,12 +125,14 @@ namespace GenshinCBTServer
             if (pos["y"] != null)
             {
                 return new Vector() { X = Convert.ToSingle(pos["x"]), Y = Convert.ToSingle(pos["y"]), Z = Convert.ToSingle(pos["z"]) };
-            } else {
+            }
+            else
+            {
                 return new Vector() { X = (float)(double)pos["x"], Z = (float)(double)pos["z"] };
             }
         }
 
-        public Dictionary<uint,ItemData> AddItemDataDic(Dictionary<uint,ItemData> data)
+        public Dictionary<uint, ItemData> AddItemDataDic(Dictionary<uint, ItemData> data)
         {
             return _resourceManager.itemData.Union(data).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
         }
@@ -165,12 +167,12 @@ namespace GenshinCBTServer
                                 id = (uint)(long)groupTable["id"],
                                 refreshTime = (uint)(long)groupTable["refresh_time"],
                             };
-                           
+
                             if (groupTable["area"] != null)
                             {
                                 group.area = (uint)(long)groupTable["area"];
                             }
-                            LoadSceneGroupLua(group,sceneId);
+                            LoadSceneGroupLua(group, sceneId);
                             block.groups.Add(group);
                         }
                         catch (Exception e)
@@ -182,7 +184,7 @@ namespace GenshinCBTServer
             }
             else
             {
-                Server.Print($"Cannot get scene groups from {block.blockId} lua file (Not found)");
+                Server.Print($"Cannot get scene groups from {block.blockId} lua file (file not found)!");
             }
         }
 
@@ -227,14 +229,15 @@ namespace GenshinCBTServer
                         LuaTable pos = gadgetTable["pos"] as LuaTable;
                         LuaTable rot = gadgetTable["rot"] as LuaTable;
                         SceneGadget gadget = new()
-                        { 
+                        {
                             gadget_id = (uint)(long)gadgetTable["gadget_id"],
                             config_id = (uint)(long)gadgetTable["config_id"],
                             pos = new Vector() { X = (float)(double)pos["x"], Y = (float)(double)pos["y"], Z = (float)(double)pos["z"] },
                             rot = new Vector() { X = (float)(double)rot["x"], Y = (float)(double)rot["y"], Z = (float)(double)rot["z"] }
                         };
                         if (gadgetTable["chest_drop_id"] != null) gadget.chest_drop_id = (uint)(long)gadgetTable["chest_drop_id"];
-                        if (gadgetTable["state"] != null) {
+                        if (gadgetTable["state"] != null)
+                        {
                             gadget.state = (int)(long)gadgetTable["state"];
                         }
                         if (gadgetTable["route_id"] != null) gadget.route_id = (uint)(long)gadgetTable["route_id"];
@@ -317,7 +320,7 @@ namespace GenshinCBTServer
                             //Need to add size for cubic
                             group.regions.Add(region);
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
                             Server.Print("Error occured " + e.Message);
                         }
@@ -326,7 +329,7 @@ namespace GenshinCBTServer
             }
             else
             {
-                Server.Print($"Cannot get scene group things because lua file not found");
+                Server.Print($"Cannot get scene groups because lua files were not found!");
             }
         }
 
@@ -337,18 +340,18 @@ namespace GenshinCBTServer
 
         private string ReplaceGadgetState(string mainLuaString)
         {
-            foreach(string v in Enum.GetNames(typeof(GadgetState)))
+            foreach (string v in Enum.GetNames(typeof(GadgetState)))
             {
                 int val = (int)Enum.Parse(typeof(GadgetState), v);
                 string rep = "GadgetState." + v;
-                mainLuaString = mainLuaString.Replace(rep, ""+val);
+                mainLuaString = mainLuaString.Replace(rep, "" + val);
             }
             return mainLuaString;
         }
 
         public List<AvatarData> LoadAvatarExcel()
         {
-            Dictionary<uint, AvatarData> data = JsonConvert.DeserializeObject<Dictionary<uint, AvatarData> >(File.ReadAllText("resources/ExcelOutput/AvatarExcelConfigData.json"))!;
+            Dictionary<uint, AvatarData> data = JsonConvert.DeserializeObject<Dictionary<uint, AvatarData>>(File.ReadAllText("resources/ExcelOutput/AvatarExcelConfigData.json"))!;
             return data.Values.ToList();
         }
 
